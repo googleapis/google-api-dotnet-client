@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -63,7 +68,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         {
             /// <summary>Manage your Ad Exchange buyer account configuration</summary>
             public static string AdexchangeBuyer = "https://www.googleapis.com/auth/adexchange.buyer";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Ad Exchange Buyer API.</summary>
@@ -71,10 +75,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         {
             /// <summary>Manage your Ad Exchange buyer account configuration</summary>
             public const string AdexchangeBuyer = "https://www.googleapis.com/auth/adexchange.buyer";
-
         }
-
-
 
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
@@ -107,8 +108,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -120,8 +123,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -133,7 +137,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -205,9 +208,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets one account by ID.</summary>
         /// <param name="id">The account id</param>
@@ -226,11 +227,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
             /// <summary>The account id</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int Id { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -245,7 +244,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -255,7 +253,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves the authenticated user's list of accounts.</summary>
@@ -273,8 +270,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -288,9 +283,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
@@ -312,11 +305,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
             /// <summary>The account id</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int Id { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AdExchangeBuyer.v1_2.Data.Account Body { get; set; }
@@ -337,7 +328,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -347,7 +337,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates an existing account.</summary>
@@ -369,11 +358,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
             /// <summary>The account id</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int Id { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AdExchangeBuyer.v1_2.Data.Account Body { get; set; }
@@ -394,7 +381,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
                     Name = "id",
@@ -404,7 +390,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -420,22 +405,21 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
         public CreativesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Gets the status for a single creative. A creative will be available 30-40 minutes after
-        /// submission.</summary>
+        /// <summary>
+        /// Gets the status for a single creative. A creative will be available 30-40 minutes after submission.
+        /// </summary>
         /// <param name="accountId">The id for the account that will serve this creative.</param>
-        /// <param
-        /// name="buyerCreativeId">The buyer-specific id for this creative.</param>
+        /// <param name="buyerCreativeId">The buyer-specific id for this creative.</param>
         public virtual GetRequest Get(int accountId, string buyerCreativeId)
         {
             return new GetRequest(service, accountId, buyerCreativeId);
         }
 
-        /// <summary>Gets the status for a single creative. A creative will be available 30-40 minutes after
-        /// submission.</summary>
+        /// <summary>
+        /// Gets the status for a single creative. A creative will be available 30-40 minutes after submission.
+        /// </summary>
         public class GetRequest : AdExchangeBuyerBaseServiceRequest<Google.Apis.AdExchangeBuyer.v1_2.Data.Creative>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -446,7 +430,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
             /// <summary>The id for the account that will serve this creative.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual int AccountId { get; private set; }
@@ -454,7 +437,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             /// <summary>The buyer-specific id for this creative.</summary>
             [Google.Apis.Util.RequestParameterAttribute("buyerCreativeId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BuyerCreativeId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -469,7 +451,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
@@ -487,7 +468,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Submit a new creative.</summary>
@@ -506,8 +486,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.AdExchangeBuyer.v1_2.Data.Creative Body { get; set; }
@@ -528,20 +506,22 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40
-        /// minutes after submission.</summary>
+        /// <summary>
+        /// Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes
+        /// after submission.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40
-        /// minutes after submission.</summary>
+        /// <summary>
+        /// Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes
+        /// after submission.
+        /// </summary>
         public class ListRequest : AdExchangeBuyerBaseServiceRequest<Google.Apis.AdExchangeBuyer.v1_2.Data.CreativesList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -550,14 +530,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 InitParameters();
             }
 
-
-            /// <summary>Maximum number of entries returned on one result page. If not set, the default is 100.
-            /// Optional.</summary>
+            /// <summary>
+            /// Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>A continuation token, used to page through ad clients. To retrieve the next page, set this
-            /// parameter to the value of "nextPageToken" from the previous response. Optional.</summary>
+            /// <summary>
+            /// A continuation token, used to page through ad clients. To retrieve the next page, set this parameter to
+            /// the value of "nextPageToken" from the previous response. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -571,14 +553,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                 /// <summary>Creatives which have been approved.</summary>
                 [Google.Apis.Util.StringValueAttribute("approved")]
                 Approved,
+
                 /// <summary>Creatives which have been disapproved.</summary>
                 [Google.Apis.Util.StringValueAttribute("disapproved")]
                 Disapproved,
+
                 /// <summary>Creatives whose status is not yet checked.</summary>
                 [Google.Apis.Util.StringValueAttribute("not_checked")]
                 NotChecked,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -593,7 +576,6 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
@@ -619,14 +601,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.AdExchangeBuyer.v1_2.Data
-{    
-
+{
     /// <summary>Configuration data for an Ad Exchange buyer account.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -634,8 +613,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bidderLocation")]
         public virtual System.Collections.Generic.IList<BidderLocationData> BidderLocation { get; set; }
 
-        /// <summary>The nid parameter value used in cookie match requests. Please contact your technical account
-        /// manager if you need to change this.</summary>
+        /// <summary>
+        /// The nid parameter value used in cookie match requests. Please contact your technical account manager if you
+        /// need to change this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cookieMatchingNid")]
         public virtual string CookieMatchingNid { get; set; }
 
@@ -651,14 +632,18 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The maximum number of active creatives that an account can have, where a creative is active if it
-        /// was inserted or bid with in the last 30 days. Please contact your technical account manager if you need to
-        /// change this.</summary>
+        /// <summary>
+        /// The maximum number of active creatives that an account can have, where a creative is active if it was
+        /// inserted or bid with in the last 30 days. Please contact your technical account manager if you need to
+        /// change this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumActiveCreatives")]
         public virtual System.Nullable<int> MaximumActiveCreatives { get; set; }
 
-        /// <summary>The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical
-        /// account manager if you need to change this.</summary>
+        /// <summary>
+        /// The sum of all bidderLocation.maximumQps values cannot exceed this. Please contact your technical account
+        /// manager if you need to change this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumTotalQps")]
         public virtual System.Nullable<int> MaximumTotalQps { get; set; }
 
@@ -668,29 +653,31 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>Your bidder locations that have distinct URLs.</summary>
         public class BidderLocationData
         {
             /// <summary>The maximum queries per second the Ad Exchange will send.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
             public virtual System.Nullable<int> MaximumQps { get; set; }
 
-            /// <summary>The geographical region the Ad Exchange should send requests from. Only used by some quota
-            /// systems, but always setting the value is recommended. Allowed values: - ASIA - EUROPE - US_EAST -
-            /// US_WEST</summary>
+            /// <summary>
+            /// The geographical region the Ad Exchange should send requests from. Only used by some quota systems, but
+            /// always setting the value is recommended. Allowed values:   - ASIA  - EUROPE  - US_EAST  - US_WEST
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("region")]
             public virtual string Region { get; set; }
 
             /// <summary>The URL to which the Ad Exchange will send bid requests.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
-
         }
-    }    
+    }
 
-    /// <summary>An account feed lists Ad Exchange buyer accounts that the user has access to. Each entry in the feed
-    /// corresponds to a single buyer account.</summary>
+    /// <summary>
+    /// An account feed lists Ad Exchange buyer accounts that the user has access to. Each entry in the feed corresponds
+    /// to a single buyer account.
+    /// </summary>
     public class AccountsList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of accounts.</summary>
@@ -703,13 +690,14 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A creative and its classification data.</summary>
     public class Creative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be
-        /// set.</summary>
+        /// <summary>
+        /// The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("HTMLSnippet")]
         public virtual string HTMLSnippet { get; set; }
 
@@ -729,8 +717,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
         public virtual System.Nullable<long> AgencyId { get; set; }
 
-        /// <summary>The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this
-        /// field is generated, and will be ignored for uploads. (formatted RFC 3339 timestamp).</summary>
+        /// <summary>
+        /// The last upload timestamp of this creative if it was uploaded via API. Read-only. The value of this field is
+        /// generated, and will be ignored for uploads. (formatted RFC 3339 timestamp).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUploadTimestamp")]
         public virtual string ApiUploadTimestampRaw { get; set; }
 
@@ -754,20 +744,25 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clickThroughUrl")]
         public virtual System.Collections.Generic.IList<string> ClickThroughUrl { get; set; }
 
-        /// <summary>Shows any corrections that were applied to this creative. Read-only. This field should not be set
-        /// in requests.</summary>
+        /// <summary>
+        /// Shows any corrections that were applied to this creative. Read-only. This field should not be set in
+        /// requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corrections")]
         public virtual System.Collections.Generic.IList<CorrectionsData> Corrections { get; set; }
 
-        /// <summary>The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so
-        /// it is possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons.
-        /// In this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set
-        /// in requests.</summary>
+        /// <summary>
+        /// The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is
+        /// possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In
+        /// this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in
+        /// requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disapprovalReasons")]
         public virtual System.Collections.Generic.IList<DisapprovalReasonsData> DisapprovalReasons { get; set; }
 
-        /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
-        /// requests.</summary>
+        /// <summary>
+        /// The filtering reasons for the creative. Read-only. This field should not be set in requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filteringReasons")]
         public virtual FilteringReasonsData FilteringReasons { get; set; }
 
@@ -791,8 +786,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> RestrictedCategories { get; set; }
 
-        /// <summary>Detected sensitive categories, if any. Read-only. This field should not be set in
-        /// requests.</summary>
+        /// <summary>
+        /// Detected sensitive categories, if any. Read-only. This field should not be set in requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategories")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SensitiveCategories { get; set; }
 
@@ -818,8 +814,11 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>
+        /// Shows any corrections that were applied to this creative. Read-only. This field should not be set in
+        /// requests.
+        /// </summary>
         public class CorrectionsData
         {
             /// <summary>Additional details about the correction.</summary>
@@ -829,9 +828,14 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
             /// <summary>The type of correction that was applied to the creative.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reason")]
             public virtual string Reason { get; set; }
+        }
 
-        }    
-
+        /// <summary>
+        /// The reasons for disapproval, if any. Note that not all disapproval reasons may be categorized, so it is
+        /// possible for the creative to have a status of DISAPPROVED with an empty list for disapproval_reasons. In
+        /// this case, please reach out to your TAM to help debug the issue. Read-only. This field should not be set in
+        /// requests.
+        /// </summary>
         public class DisapprovalReasonsData
         {
             /// <summary>Additional details about the reason for disapproval.</summary>
@@ -841,15 +845,16 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
             /// <summary>The categorized reason for disapproval.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("reason")]
             public virtual string Reason { get; set; }
+        }
 
-        }    
-
-        /// <summary>The filtering reasons for the creative. Read-only. This field should not be set in
-        /// requests.</summary>
+        /// <summary>
+        /// The filtering reasons for the creative. Read-only. This field should not be set in requests.
+        /// </summary>
         public class FilteringReasonsData
         {
-            /// <summary>The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in
-            /// PST.</summary>
+            /// <summary>
+            /// The date in ISO 8601 format for the data. The data is collected from 00:00:00 to 23:59:59 in PST.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("date")]
             public virtual string Date { get; set; }
 
@@ -857,26 +862,30 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
             public virtual System.Collections.Generic.IList<ReasonsData> Reasons { get; set; }
 
-            
-
+            /// <summary>The filtering reasons.</summary>
             public class ReasonsData
             {
-                /// <summary>The number of times the creative was filtered for the status. The count is aggregated
-                /// across all publishers on the exchange.</summary>
+                /// <summary>
+                /// The number of times the creative was filtered for the status. The count is aggregated across all
+                /// publishers on the exchange.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringCount")]
                 public virtual System.Nullable<long> FilteringCount { get; set; }
 
-                /// <summary>The filtering status code. Please refer to the creative-status-codes.txt file for different
-                /// statuses.</summary>
+                /// <summary>
+                /// The filtering status code. Please refer to the creative-status-codes.txt file for different
+                /// statuses.
+                /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("filteringStatus")]
                 public virtual System.Nullable<int> FilteringStatus { get; set; }
-
             }
         }
-    }    
+    }
 
-    /// <summary>The creatives feed lists the active creatives for the Ad Exchange buyer accounts that the user has
-    /// access to. Each entry in the feed corresponds to a single creative.</summary>
+    /// <summary>
+    /// The creatives feed lists the active creatives for the Ad Exchange buyer accounts that the user has access to.
+    /// Each entry in the feed corresponds to a single creative.
+    /// </summary>
     public class CreativesList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of creatives.</summary>
@@ -887,8 +896,10 @@ namespace Google.Apis.AdExchangeBuyer.v1_2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Continuation token used to page through creatives. To retrieve the next page of results, set the
-        /// next request's "pageToken" value to this.</summary>
+        /// <summary>
+        /// Continuation token used to page through creatives. To retrieve the next page of results, set the next
+        /// request's "pageToken" value to this.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

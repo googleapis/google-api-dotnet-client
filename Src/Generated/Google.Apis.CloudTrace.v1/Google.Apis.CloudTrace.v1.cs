@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -68,7 +73,6 @@ namespace Google.Apis.CloudTrace.v1
 
             /// <summary>Read Trace data for a project or application</summary>
             public static string TraceReadonly = "https://www.googleapis.com/auth/trace.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Trace API.</summary>
@@ -82,10 +86,7 @@ namespace Google.Apis.CloudTrace.v1
 
             /// <summary>Read Trace data for a project or application</summary>
             public const string TraceReadonly = "https://www.googleapis.com/auth/trace.readonly";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -109,6 +110,7 @@ namespace Google.Apis.CloudTrace.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -128,9 +130,11 @@ namespace Google.Apis.CloudTrace.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -144,8 +148,10 @@ namespace Google.Apis.CloudTrace.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -157,8 +163,10 @@ namespace Google.Apis.CloudTrace.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -174,7 +182,6 @@ namespace Google.Apis.CloudTrace.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -279,7 +286,6 @@ namespace Google.Apis.CloudTrace.v1
         {
             this.service = service;
             Traces = new TracesResource(service);
-
         }
 
         /// <summary>Gets the Traces resource.</summary>
@@ -297,14 +303,11 @@ namespace Google.Apis.CloudTrace.v1
             public TracesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets a single trace by its ID.</summary>
             /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
-            /// <param
-            /// name="traceId">Required. ID of the trace to return.</param>
+            /// <param name="traceId">Required. ID of the trace to return.</param>
             public virtual GetRequest Get(string projectId, string traceId)
             {
                 return new GetRequest(service, projectId, traceId);
@@ -321,7 +324,6 @@ namespace Google.Apis.CloudTrace.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
@@ -329,7 +331,6 @@ namespace Google.Apis.CloudTrace.v1
                 /// <summary>Required. ID of the trace to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("traceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TraceId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -344,7 +345,6 @@ namespace Google.Apis.CloudTrace.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -362,7 +362,6 @@ namespace Google.Apis.CloudTrace.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
@@ -382,19 +381,20 @@ namespace Google.Apis.CloudTrace.v1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>End of the time interval (inclusive) during which the trace data was collected from the
-                /// application.</summary>
+                /// <summary>
+                /// End of the time interval (inclusive) during which the trace data was collected from the application.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
-                /// <summary>Optional. A filter against labels for the request. By default, searches use prefix
-                /// matching. To specify exact match, prepend a plus symbol (`+`) to the search term. Multiple terms are
-                /// ANDed. Syntax: * `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
+                /// <summary>
+                /// Optional. A filter against labels for the request. By default, searches use prefix matching. To
+                /// specify exact match, prepend a plus symbol (`+`) to the search term. Multiple terms are ANDed.
+                /// Syntax: * `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
                 /// `NAME_PREFIX`. * `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly
                 /// `NAME`. * `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. *
                 /// `+span:NAME`: Return traces where any span's name is exactly `NAME`. * `latency:DURATION`: Return
@@ -407,31 +407,39 @@ namespace Google.Apis.CloudTrace.v1
                 /// `VALUE_PREFIX`. Both a key and a value must be specified. * `+LABEL_KEY:VALUE`: Return all traces
                 /// containing a key:value pair exactly matching the specified text. Both a key and a value must be
                 /// specified. * `method:VALUE`: Equivalent to `/http/method:VALUE`. * `url:VALUE`: Equivalent to
-                /// `/http/url:VALUE`.</summary>
+                /// `/http/url:VALUE`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id`
-                /// * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and
+                /// <summary>
+                /// Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id` * `name`
+                /// (`name` field of root span in the trace) * `duration` (difference between `end_time` and
                 /// `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending
                 /// order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one
-                /// sort field is permitted.</summary>
+                /// sort field is permitted.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional. Maximum number of traces to return. If not specified or <= 0, the implementation
-                /// selects a reasonable value. The implementation may return fewer traces than the requested page
-                /// size.</summary>
+                /// <summary>
+                /// Optional. Maximum number of traces to return. If not specified or &amp;lt;= 0, the implementation
+                /// selects a reasonable value. The implementation may return fewer traces than the requested page size.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Token identifying the page of results to return. If provided, use the value of the
-                /// `next_page_token` field from a previous request.</summary>
+                /// <summary>
+                /// Token identifying the page of results to return. If provided, use the value of the `next_page_token`
+                /// field from a previous request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Start of the time interval (inclusive) during which the trace data was collected from the
-                /// application.</summary>
+                /// <summary>
+                /// Start of the time interval (inclusive) during which the trace data was collected from the
+                /// application.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
 
@@ -445,21 +453,27 @@ namespace Google.Apis.CloudTrace.v1
                     /// <summary>Default is `MINIMAL` if unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                     VIEWTYPEUNSPECIFIED,
-                    /// <summary>Minimal view of the trace record that contains only the project and trace
-                    /// IDs.</summary>
+
+                    /// <summary>
+                    /// Minimal view of the trace record that contains only the project and trace IDs.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("MINIMAL")]
                     MINIMAL,
-                    /// <summary>Root span view of the trace record that returns the root spans along with the minimal
-                    /// trace data.</summary>
+
+                    /// <summary>
+                    /// Root span view of the trace record that returns the root spans along with the minimal trace
+                    /// data.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
                     ROOTSPAN,
-                    /// <summary>Complete view of the trace record that contains the actual trace data. This is
-                    /// equivalent to calling the REST `get` or RPC `GetTrace` method using the ID of each listed
-                    /// trace.</summary>
+
+                    /// <summary>
+                    /// Complete view of the trace record that contains the actual trace data. This is equivalent to
+                    /// calling the REST `get` or RPC `GetTrace` method using the ID of each listed trace.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETE")]
                     COMPLETE,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -474,7 +488,6 @@ namespace Google.Apis.CloudTrace.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
@@ -540,14 +553,15 @@ namespace Google.Apis.CloudTrace.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
-        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
-        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
-        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
-        /// match, a new trace is created.</summary>
+        /// <summary>
+        /// Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that
+        /// of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values,
+        /// and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace
+        /// is created.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. ID of the Cloud project where the trace data is stored.</param>
         public virtual PatchTracesRequest PatchTraces(Google.Apis.CloudTrace.v1.Data.Traces body, string projectId)
@@ -555,10 +569,12 @@ namespace Google.Apis.CloudTrace.v1
             return new PatchTracesRequest(service, body, projectId);
         }
 
-        /// <summary>Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send
-        /// matches that of an existing trace, any fields in the existing trace and its spans are overwritten by the
-        /// provided values, and any new fields provided are merged with the existing trace data. If the ID does not
-        /// match, a new trace is created.</summary>
+        /// <summary>
+        /// Sends new traces to Cloud Trace or updates existing traces. If the ID of a trace that you send matches that
+        /// of an existing trace, any fields in the existing trace and its spans are overwritten by the provided values,
+        /// and any new fields provided are merged with the existing trace data. If the ID does not match, a new trace
+        /// is created.
+        /// </summary>
         public class PatchTracesRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v1.Data.Empty>
         {
             /// <summary>Constructs a new PatchTraces request.</summary>
@@ -569,11 +585,9 @@ namespace Google.Apis.CloudTrace.v1
                 InitParameters();
             }
 
-
             /// <summary>Required. ID of the Cloud project where the trace data is stored.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudTrace.v1.Data.Traces Body { get; set; }
@@ -594,7 +608,6 @@ namespace Google.Apis.CloudTrace.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -604,29 +617,30 @@ namespace Google.Apis.CloudTrace.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.CloudTrace.v1.Data
-{    
-
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+{
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for the `ListTraces` method.</summary>
     public class ListTracesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If defined, indicates that there are more traces that match the request and that this value should
-        /// be passed to the next request to continue retrieving additional traces.</summary>
+        /// <summary>
+        /// If defined, indicates that there are more traces that match the request and that this value should be passed
+        /// to the next request to continue retrieving additional traces.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -636,10 +650,12 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A trace describes how long it takes for an application to perform an operation. It consists of a set of
-    /// spans, each of which represent a single timed event within the operation.</summary>
+    /// <summary>
+    /// A trace describes how long it takes for an application to perform an operation. It consists of a set of spans,
+    /// each of which represent a single timed event within the operation.
+    /// </summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Project ID of the Cloud project where the trace data is stored.</summary>
@@ -650,48 +666,55 @@ namespace Google.Apis.CloudTrace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<TraceSpan> Spans { get; set; }
 
-        /// <summary>Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a
-        /// 32-byte hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be
-        /// zero.</summary>
+        /// <summary>
+        /// Globally unique identifier for the trace. This identifier is a 128-bit numeric value formatted as a 32-byte
+        /// hex string. For example, `382d4f4c6b7bb2f4a972559d9085001d`. The numeric value should not be zero.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A span represents a single timed event within a trace. Spans can be nested and form a trace tree.
-    /// Often, a trace contains a root span that describes the end-to-end latency of an operation and, optionally, one
-    /// or more subspans for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a
-    /// trace.</summary>
+    /// <summary>
+    /// A span represents a single timed event within a trace. Spans can be nested and form a trace tree. Often, a trace
+    /// contains a root span that describes the end-to-end latency of an operation and, optionally, one or more subspans
+    /// for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a trace.
+    /// </summary>
     public class TraceSpan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>End time of the span in nanoseconds from the UNIX epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Distinguishes between spans generated in a particular context. For example, two spans with the same
-        /// name may be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with
-        /// the span.</summary>
+        /// <summary>
+        /// Distinguishes between spans generated in a particular context. For example, two spans with the same name may
+        /// be distinguished using `RPC_CLIENT` and `RPC_SERVER` to identify queueing latency associated with the span.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values
-        /// must be less than 16 kilobytes (10MB for `/stacktrace` values). Some predefined label keys exist, or you may
-        /// create your own. When creating your own, we recommend the following formats: * `/category/product/key` for
-        /// agents of well-known products (e.g. `/db/mongodb/read_size`). * `short_host/path/key` for domain-specific
-        /// keys (e.g. `foo.com/myproduct/bar`) Predefined labels include: * `/agent` * `/component` * `/error/message`
-        /// * `/error/name` * `/http/client_city` * `/http/client_country` * `/http/client_protocol` *
+        /// <summary>
+        /// Collection of labels associated with the span. Label keys must be less than 128 bytes. Label values must be
+        /// less than 16 kilobytes (10MB for `/stacktrace` values). Some predefined label keys exist, or you may create
+        /// your own. When creating your own, we recommend the following formats: * `/category/product/key` for agents
+        /// of well-known products (e.g. `/db/mongodb/read_size`). * `short_host/path/key` for domain-specific keys
+        /// (e.g. `foo.com/myproduct/bar`) Predefined labels include: * `/agent` * `/component` * `/error/message` *
+        /// `/error/name` * `/http/client_city` * `/http/client_country` * `/http/client_protocol` *
         /// `/http/client_region` * `/http/host` * `/http/method` * `/http/path` * `/http/redirected_url` *
         /// `/http/request/size` * `/http/response/size` * `/http/route` * `/http/status_code` * `/http/url` *
-        /// `/http/user_agent` * `/pid` * `/stacktrace` * `/tid`</summary>
+        /// `/http/user_agent` * `/pid` * `/stacktrace` * `/tid`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the
-        /// Trace tool in the Google Cloud Platform Console. The name may be a method name or some other per-call site
-        /// name. For the same executable and the same call point, a best practice is to use a consistent name, which
-        /// makes it easier to correlate cross-trace spans.</summary>
+        /// <summary>
+        /// Name of the span. Must be less than 128 bytes. The span name is sanitized and displayed in the Trace tool in
+        /// the Google Cloud Platform Console. The name may be a method name or some other per-call site name. For the
+        /// same executable and the same call point, a best practice is to use a consistent name, which makes it easier
+        /// to correlate cross-trace spans.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -699,8 +722,10 @@ namespace Google.Apis.CloudTrace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual System.Nullable<ulong> ParentSpanId { get; set; }
 
-        /// <summary>Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For
-        /// example, `2205310701640571284`.</summary>
+        /// <summary>
+        /// Identifier for the span. Must be a 64-bit integer other than 0 and unique within a trace. For example,
+        /// `2205310701640571284`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual System.Nullable<ulong> SpanId { get; set; }
 
@@ -710,7 +735,7 @@ namespace Google.Apis.CloudTrace.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>List of new or updated traces.</summary>
     public class Traces : Google.Apis.Requests.IDirectResponseSchema

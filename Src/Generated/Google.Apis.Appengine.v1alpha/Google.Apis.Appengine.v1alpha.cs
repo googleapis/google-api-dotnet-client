@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -68,7 +73,6 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the App Engine Admin API.</summary>
@@ -82,10 +86,7 @@ namespace Google.Apis.Appengine.v1alpha
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
-
-
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
@@ -109,6 +110,7 @@ namespace Google.Apis.Appengine.v1alpha
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -128,9 +130,11 @@ namespace Google.Apis.Appengine.v1alpha
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -144,8 +148,10 @@ namespace Google.Apis.Appengine.v1alpha
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -157,8 +163,10 @@ namespace Google.Apis.Appengine.v1alpha
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -174,7 +182,6 @@ namespace Google.Apis.Appengine.v1alpha
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -283,7 +290,6 @@ namespace Google.Apis.Appengine.v1alpha
             DomainMappings = new DomainMappingsResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
-
         }
 
         /// <summary>Gets the AuthorizedCertificates resource.</summary>
@@ -301,13 +307,13 @@ namespace Google.Apis.Appengine.v1alpha
             public AuthorizedCertificatesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Uploads the specified SSL certificate.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="appsId">Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</param>
+            /// <param name="appsId">
+            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string appsId)
             {
                 return new CreateRequest(service, body, appsId);
@@ -324,11 +330,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate Body { get; set; }
@@ -349,7 +353,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -359,14 +362,13 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes the specified SSL certificate.</summary>
-            /// <param name="appsId">Part of `name`. Name of the resource to delete. Example:
-            /// apps/myapp/authorizedCertificates/12345.</param>
-            /// <param name="authorizedCertificatesId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+            /// </param>
+            /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string authorizedCertificatesId)
             {
                 return new DeleteRequest(service, appsId, authorizedCertificatesId);
@@ -383,16 +385,15 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource to delete. Example:
-                /// apps/myapp/authorizedCertificates/12345.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>Part of `name`. See documentation of `appsId`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizedCertificatesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AuthorizedCertificatesId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -407,7 +408,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -425,14 +425,13 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets the specified SSL certificate.</summary>
-            /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-            /// apps/myapp/authorizedCertificates/12345.</param>
-            /// <param name="authorizedCertificatesId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+            /// </param>
+            /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string authorizedCertificatesId)
             {
                 return new GetRequest(service, appsId, authorizedCertificatesId);
@@ -449,9 +448,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource requested. Example:
-                /// apps/myapp/authorizedCertificates/12345.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -466,16 +465,19 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Controls the set of fields returned in the GET response.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>Basic certificate information, including applicable domains and expiration
-                    /// date.</summary>
+                    /// <summary>
+                    /// Basic certificate information, including applicable domains and expiration date.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
-                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
-                    /// mappings that have this certificate mapped.</summary>
+
+                    /// <summary>
+                    /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that
+                    /// have this certificate mapped.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -490,7 +492,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -516,11 +517,12 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists all SSL certificates the user is authorized to administer.</summary>
-            /// <param name="appsId">Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</param>
+            /// <param name="appsId">
+            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
@@ -535,7 +537,6 @@ namespace Google.Apis.Appengine.v1alpha
                     AppsId = appsId;
                     InitParameters();
                 }
-
 
                 /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -556,16 +557,19 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Controls the set of fields returned in the LIST response.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>Basic certificate information, including applicable domains and expiration
-                    /// date.</summary>
+                    /// <summary>
+                    /// Basic certificate information, including applicable domains and expiration date.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
                     BASICCERTIFICATE,
-                    /// <summary>The information from BASIC_CERTIFICATE, plus detailed information on the domain
-                    /// mappings that have this certificate mapped.</summary>
+
+                    /// <summary>
+                    /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that
+                    /// have this certificate mapped.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -580,7 +584,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -614,25 +617,28 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the specified SSL certificate. To renew a certificate and maintain its existing domain
-            /// mappings, update certificate_data with a new certificate. The new certificate must be applicable to the
-            /// same domains as the original certificate. The certificate display_name may also be updated.</summary>
+            /// <summary>
+            /// Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings,
+            /// update certificate_data with a new certificate. The new certificate must be applicable to the same
+            /// domains as the original certificate. The certificate display_name may also be updated.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
-            /// apps/myapp/authorizedCertificates/12345.</param>
-            /// <param name="authorizedCertificatesId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+            /// </param>
+            /// <param name="authorizedCertificatesId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate body, string appsId, string authorizedCertificatesId)
             {
                 return new PatchRequest(service, body, appsId, authorizedCertificatesId);
             }
 
-            /// <summary>Updates the specified SSL certificate. To renew a certificate and maintain its existing domain
-            /// mappings, update certificate_data with a new certificate. The new certificate must be applicable to the
-            /// same domains as the original certificate. The certificate display_name may also be updated.</summary>
+            /// <summary>
+            /// Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings,
+            /// update certificate_data with a new certificate. The new certificate must be applicable to the same
+            /// domains as the original certificate. The certificate display_name may also be updated.
+            /// </summary>
             public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -644,9 +650,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource to update. Example:
-                /// apps/myapp/authorizedCertificates/12345.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -654,11 +660,12 @@ namespace Google.Apis.Appengine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("authorizedCertificatesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AuthorizedCertificatesId { get; private set; }
 
-                /// <summary>Standard field mask for the set of fields to be updated. Updates are only supported on the
-                /// certificate_raw_data and display_name fields.</summary>
+                /// <summary>
+                /// Standard field mask for the set of fields to be updated. Updates are only supported on the
+                /// certificate_raw_data and display_name fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1alpha.Data.AuthorizedCertificate Body { get; set; }
@@ -679,7 +686,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -705,9 +711,9 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the AuthorizedDomains resource.</summary>
         public virtual AuthorizedDomainsResource AuthorizedDomains { get; }
 
@@ -723,12 +729,12 @@ namespace Google.Apis.Appengine.v1alpha
             public AuthorizedDomainsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
             /// <summary>Lists all domains the user is authorized to administer.</summary>
-            /// <param name="appsId">Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</param>
+            /// <param name="appsId">
+            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
@@ -744,7 +750,6 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -756,7 +761,6 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -771,7 +775,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -797,9 +800,9 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the DomainMappings resource.</summary>
         public virtual DomainMappingsResource DomainMappings { get; }
 
@@ -815,23 +818,25 @@ namespace Google.Apis.Appengine.v1alpha
             public DomainMappingsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Maps a domain to an application. A user must be authorized to administer a domain in order to
-            /// map it to an application. For a list of available authorized domains, see
-            /// AuthorizedDomains.ListAuthorizedDomains.</summary>
+            /// <summary>
+            /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to
+            /// an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="appsId">Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</param>
+            /// <param name="appsId">
+            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string appsId)
             {
                 return new CreateRequest(service, body, appsId);
             }
 
-            /// <summary>Maps a domain to an application. A user must be authorized to administer a domain in order to
-            /// map it to an application. For a list of available authorized domains, see
-            /// AuthorizedDomains.ListAuthorizedDomains.</summary>
+            /// <summary>
+            /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to
+            /// an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+            /// </summary>
             public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Operation>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -842,42 +847,51 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Whether a managed certificate should be provided by App Engine. If true, a certificate ID
-                /// must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a
-                /// managed certificate will be provisioned and a certificate ID will be automatically
-                /// populated.</summary>
+                /// <summary>
+                /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be
+                /// manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed
+                /// certificate will be provisioned and a certificate ID will be automatically populated.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("noManagedCertificate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NoManagedCertificate { get; set; }
 
-                /// <summary>Whether the domain creation should override any existing mappings for this domain. By
-                /// default, overrides are rejected.</summary>
+                /// <summary>
+                /// Whether the domain creation should override any existing mappings for this domain. By default,
+                /// overrides are rejected.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("overrideStrategy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<OverrideStrategyEnum> OverrideStrategy { get; set; }
 
-                /// <summary>Whether the domain creation should override any existing mappings for this domain. By
-                /// default, overrides are rejected.</summary>
+                /// <summary>
+                /// Whether the domain creation should override any existing mappings for this domain. By default,
+                /// overrides are rejected.
+                /// </summary>
                 public enum OverrideStrategyEnum
                 {
                     /// <summary>Strategy unspecified. Defaults to STRICT.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY")]
                     UNSPECIFIEDDOMAINOVERRIDESTRATEGY,
-                    /// <summary>Overrides not allowed. If a mapping already exists for the specified domain, the
-                    /// request will return an ALREADY_EXISTS (409).</summary>
+
+                    /// <summary>
+                    /// Overrides not allowed. If a mapping already exists for the specified domain, the request will
+                    /// return an ALREADY_EXISTS (409).
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("STRICT")]
                     STRICT,
-                    /// <summary>Overrides allowed. If a mapping already exists for the specified domain, the request
-                    /// will overwrite it. Note that this might stop another Google product from serving. For example,
-                    /// if the domain is mapped to another App Engine application, that app will no longer serve from
-                    /// that domain.</summary>
+
+                    /// <summary>
+                    /// Overrides allowed. If a mapping already exists for the specified domain, the request will
+                    /// overwrite it. Note that this might stop another Google product from serving. For example, if the
+                    /// domain is mapped to another App Engine application, that app will no longer serve from that
+                    /// domain.
+                    /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OVERRIDE")]
                     OVERRIDE__,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1alpha.Data.DomainMapping Body { get; set; }
@@ -898,7 +912,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -924,22 +937,25 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Deletes the specified domain mapping. A user must be authorized to administer the associated
-            /// domain in order to delete a DomainMapping resource.</summary>
-            /// <param name="appsId">Part of `name`. Name of the resource to delete. Example:
-            /// apps/myapp/domainMappings/example.com.</param>
-            /// <param name="domainMappingsId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <summary>
+            /// Deletes the specified domain mapping. A user must be authorized to administer the associated domain in
+            /// order to delete a DomainMapping resource.
+            /// </summary>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+            /// </param>
+            /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual DeleteRequest Delete(string appsId, string domainMappingsId)
             {
                 return new DeleteRequest(service, appsId, domainMappingsId);
             }
 
-            /// <summary>Deletes the specified domain mapping. A user must be authorized to administer the associated
-            /// domain in order to delete a DomainMapping resource.</summary>
+            /// <summary>
+            /// Deletes the specified domain mapping. A user must be authorized to administer the associated domain in
+            /// order to delete a DomainMapping resource.
+            /// </summary>
             public class DeleteRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Operation>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -950,16 +966,15 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource to delete. Example:
-                /// apps/myapp/domainMappings/example.com.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>Part of `name`. See documentation of `appsId`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string DomainMappingsId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -974,7 +989,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -992,14 +1006,13 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Gets the specified domain mapping.</summary>
-            /// <param name="appsId">Part of `name`. Name of the resource requested. Example:
-            /// apps/myapp/domainMappings/example.com.</param>
-            /// <param name="domainMappingsId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+            /// </param>
+            /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string domainMappingsId)
             {
                 return new GetRequest(service, appsId, domainMappingsId);
@@ -1016,16 +1029,15 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource requested. Example:
-                /// apps/myapp/domainMappings/example.com.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
                 /// <summary>Part of `name`. See documentation of `appsId`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string DomainMappingsId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1040,7 +1052,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1058,11 +1069,12 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists the domain mappings on an application.</summary>
-            /// <param name="appsId">Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</param>
+            /// <param name="appsId">
+            /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
@@ -1078,7 +1090,6 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `parent`. Name of the parent Application resource. Example: apps/myapp.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1090,7 +1101,6 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1105,7 +1115,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1131,25 +1140,28 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
+            /// <summary>
+            /// Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
             /// certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer
-            /// the associated domain in order to update a DomainMapping resource.</summary>
+            /// the associated domain in order to update a DomainMapping resource.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
-            /// apps/myapp/domainMappings/example.com.</param>
-            /// <param name="domainMappingsId">Part of `name`. See
-            /// documentation of `appsId`.</param>
+            /// <param name="appsId">
+            /// Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+            /// </param>
+            /// <param name="domainMappingsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual PatchRequest Patch(Google.Apis.Appengine.v1alpha.Data.DomainMapping body, string appsId, string domainMappingsId)
             {
                 return new PatchRequest(service, body, appsId, domainMappingsId);
             }
 
-            /// <summary>Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
+            /// <summary>
+            /// Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update
             /// certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer
-            /// the associated domain in order to update a DomainMapping resource.</summary>
+            /// the associated domain in order to update a DomainMapping resource.
+            /// </summary>
             public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Operation>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1161,9 +1173,9 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Part of `name`. Name of the resource to update. Example:
-                /// apps/myapp/domainMappings/example.com.</summary>
+                /// <summary>
+                /// Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
@@ -1171,17 +1183,18 @@ namespace Google.Apis.Appengine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string DomainMappingsId { get; private set; }
 
-                /// <summary>Whether a managed certificate should be provided by App Engine. If true, a certificate ID
-                /// must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a
-                /// managed certificate will be provisioned and a certificate ID will be automatically populated. Only
-                /// applicable if ssl_settings.certificate_id is specified in the update mask.</summary>
+                /// <summary>
+                /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be
+                /// manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed
+                /// certificate will be provisioned and a certificate ID will be automatically populated. Only
+                /// applicable if ssl_settings.certificate_id is specified in the update mask.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("noManagedCertificate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NoManagedCertificate { get; set; }
 
                 /// <summary>Standard field mask for the set of fields to be updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Appengine.v1alpha.Data.DomainMapping Body { get; set; }
@@ -1202,7 +1215,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1236,9 +1248,9 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
 
@@ -1254,14 +1266,11 @@ namespace Google.Apis.Appengine.v1alpha
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Gets information about a location.</summary>
             /// <param name="appsId">Part of `name`. Resource name for the location.</param>
-            /// <param name="locationsId">Part
-            /// of `name`. See documentation of `appsId`.</param>
+            /// <param name="locationsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string locationsId)
             {
                 return new GetRequest(service, appsId, locationsId);
@@ -1278,7 +1287,6 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `name`. Resource name for the location.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1286,7 +1294,6 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Part of `name`. See documentation of `appsId`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string LocationsId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1301,7 +1308,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1319,11 +1325,12 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
-            /// <param name="appsId">Part of `name`. The resource that owns the locations collection, if applicable.</param>
+            /// <param name="appsId">
+            /// Part of `name`. The resource that owns the locations collection, if applicable.
+            /// </param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
@@ -1338,7 +1345,6 @@ namespace Google.Apis.Appengine.v1alpha
                     AppsId = appsId;
                     InitParameters();
                 }
-
 
                 /// <summary>Part of `name`. The resource that owns the locations collection, if applicable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1356,7 +1362,6 @@ namespace Google.Apis.Appengine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1370,7 +1375,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1404,9 +1408,9 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
 
@@ -1422,22 +1426,23 @@ namespace Google.Apis.Appengine.v1alpha
             public OperationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             /// <param name="appsId">Part of `name`. The name of the operation resource.</param>
-            /// <param
-            /// name="operationsId">Part of `name`. See documentation of `appsId`.</param>
+            /// <param name="operationsId">Part of `name`. See documentation of `appsId`.</param>
             public virtual GetRequest Get(string appsId, string operationsId)
             {
                 return new GetRequest(service, appsId, operationsId);
             }
 
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1448,7 +1453,6 @@ namespace Google.Apis.Appengine.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Part of `name`. The name of the operation resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
@@ -1456,7 +1460,6 @@ namespace Google.Apis.Appengine.v1alpha
                 /// <summary>Part of `name`. See documentation of `appsId`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("operationsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string OperationsId { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1471,7 +1474,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1489,27 +1491,30 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
-            /// to use different resource name schemes, such as users/operations. To override the binding, API services
-            /// can add a binding such as "/v1/{name=users}/operations" to their service configuration. For backwards
+            /// <summary>
+            /// Lists operations that match the specified filter in the request. If the server doesn't support this
+            /// method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to
+            /// use different resource name schemes, such as users/*/operations. To override the binding, API services
+            /// can add a binding such as "/v1/{name=users/*}/operations" to their service configuration. For backwards
             /// compatibility, the default name includes the operations collection id, however overriding users must
-            /// ensure the name binding is the parent resource, without the operations collection id.</summary>
+            /// ensure the name binding is the parent resource, without the operations collection id.
+            /// </summary>
             /// <param name="appsId">Part of `name`. The name of the operation's parent resource.</param>
             public virtual ListRequest List(string appsId)
             {
                 return new ListRequest(service, appsId);
             }
 
-            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding
-            /// to use different resource name schemes, such as users/operations. To override the binding, API services
-            /// can add a binding such as "/v1/{name=users}/operations" to their service configuration. For backwards
+            /// <summary>
+            /// Lists operations that match the specified filter in the request. If the server doesn't support this
+            /// method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to
+            /// use different resource name schemes, such as users/*/operations. To override the binding, API services
+            /// can add a binding such as "/v1/{name=users/*}/operations" to their service configuration. For backwards
             /// compatibility, the default name includes the operations collection id, however overriding users must
-            /// ensure the name binding is the parent resource, without the operations collection id.</summary>
+            /// ensure the name binding is the parent resource, without the operations collection id.
+            /// </summary>
             public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1alpha.Data.ListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1518,7 +1523,6 @@ namespace Google.Apis.Appengine.v1alpha
                     AppsId = appsId;
                     InitParameters();
                 }
-
 
                 /// <summary>Part of `name`. The name of the operation's parent resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1536,7 +1540,6 @@ namespace Google.Apis.Appengine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -1550,7 +1553,6 @@ namespace Google.Apis.Appengine.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "appsId",
@@ -1584,111 +1586,137 @@ namespace Google.Apis.Appengine.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.Appengine.v1alpha.Data
-{    
-
-    /// <summary>An SSL certificate that a user has been authorized to administer. A user is authorized to administer
-    /// any certificate that applies to one of their authorized domains.</summary>
+{
+    /// <summary>
+    /// An SSL certificate that a user has been authorized to administer. A user is authorized to administer any
+    /// certificate that applies to one of their authorized domains.
+    /// </summary>
     public class AuthorizedCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently
-        /// from a certificate authority.</summary>
+        /// <summary>
+        /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a
+        /// certificate authority.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateRawData")]
         public virtual CertificateRawData CertificateRawData { get; set; }
 
-        /// <summary>The user-specified display name of the certificate. This is not guaranteed to be unique. Example:
-        /// My Certificate.</summary>
+        /// <summary>
+        /// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My
+        /// Certificate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Aggregate count of the domain mappings with this certificate mapped. This count includes domain
-        /// mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST
-        /// requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly</summary>
+        /// <summary>
+        /// Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on
+        /// applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when
+        /// specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainMappingsCount")]
         public virtual System.Nullable<int> DomainMappingsCount { get; set; }
 
-        /// <summary>Topmost applicable domains of this certificate. This certificate applies to these domains and their
-        /// subdomains. Example: example.com.@OutputOnly</summary>
+        /// <summary>
+        /// Topmost applicable domains of this certificate. This certificate applies to these domains and their
+        /// subdomains. Example: example.com.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domainNames")]
         public virtual System.Collections.Generic.IList<string> DomainNames { get; set; }
 
-        /// <summary>The time when this certificate expires. To update the renewal time on this certificate, upload an
-        /// SSL certificate with a different expiration time using
-        /// AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly</summary>
+        /// <summary>
+        /// The time when this certificate expires. To update the renewal time on this certificate, upload an SSL
+        /// certificate with a different expiration time using
+        /// AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
-        /// <summary>Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate
-        /// resource creation. Example: 12345.@OutputOnly</summary>
+        /// <summary>
+        /// Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource
+        /// creation. Example: 12345.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the
-        /// lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this
-        /// certificate is manually administered by the user, this field will be empty.@OutputOnly</summary>
+        /// <summary>
+        /// Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle
+        /// of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate
+        /// is manually administered by the user, this field will be empty.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedCertificate")]
         public virtual ManagedCertificate ManagedCertificate { get; set; }
 
-        /// <summary>Full path to the AuthorizedCertificate resource in the API. Example:
-        /// apps/myapp/authorizedCertificates/12345.@OutputOnly</summary>
+        /// <summary>
+        /// Full path to the AuthorizedCertificate resource in the API. Example:
+        /// apps/myapp/authorizedCertificates/12345.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The full paths to user visible Domain Mapping resources that have this certificate mapped. Example:
+        /// <summary>
+        /// The full paths to user visible Domain Mapping resources that have this certificate mapped. Example:
         /// apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the
         /// user does not have VIEWER permissions on all of the applications that have this certificate mapped. See
         /// domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested
-        /// by the view=FULL_CERTIFICATE option.@OutputOnly</summary>
+        /// by the view=FULL_CERTIFICATE option.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibleDomainMappings")]
         public virtual System.Collections.Generic.IList<string> VisibleDomainMappings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership
-    /// via Webmaster Central (https://www.google.com/webmasters/verification/home).</summary>
+    /// <summary>
+    /// A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via
+    /// Webmaster Central (https://www.google.com/webmasters/verification/home).
+    /// </summary>
     public class AuthorizedDomain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Fully qualified domain name of the domain authorized for use. Example: example.com.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Full path to the AuthorizedDomain resource in the API. Example:
-        /// apps/myapp/authorizedDomains/example.com.@OutputOnly</summary>
+        /// <summary>
+        /// Full path to the AuthorizedDomain resource in the API. Example:
+        /// apps/myapp/authorizedDomains/example.com.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An SSL certificate obtained from a certificate authority.</summary>
     public class CertificateRawData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then
-        /// encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN
-        /// RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly</summary>
+        /// <summary>
+        /// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted.
+        /// The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE
+        /// KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; }
 
-        /// <summary>PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must
-        /// include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- </summary>
+        /// <summary>
+        /// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the
+        /// header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicCertificate")]
         public virtual string PublicCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata for the given google.longrunning.Operation during a
-    /// google.appengine.v1.CreateVersionRequest.</summary>
+    /// <summary>
+    /// Metadata for the given google.longrunning.Operation during a google.appengine.v1.CreateVersionRequest.
+    /// </summary>
     public class CreateVersionMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
@@ -1697,10 +1725,11 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata for the given google.longrunning.Operation during a
-    /// google.appengine.v1alpha.CreateVersionRequest.</summary>
+    /// <summary>
+    /// Metadata for the given google.longrunning.Operation during a google.appengine.v1alpha.CreateVersionRequest.
+    /// </summary>
     public class CreateVersionMetadataV1Alpha : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
@@ -1709,10 +1738,11 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata for the given google.longrunning.Operation during a
-    /// google.appengine.v1beta.CreateVersionRequest.</summary>
+    /// <summary>
+    /// Metadata for the given google.longrunning.Operation during a google.appengine.v1beta.CreateVersionRequest.
+    /// </summary>
     public class CreateVersionMetadataV1Beta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
@@ -1721,7 +1751,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A domain serving an App Engine application.</summary>
     public class DomainMapping : Google.Apis.Requests.IDirectResponseSchema
@@ -1730,13 +1760,17 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Full path to the DomainMapping resource in the API. Example:
-        /// apps/myapp/domainMapping/example.com.@OutputOnly</summary>
+        /// <summary>
+        /// Full path to the DomainMapping resource in the API. Example:
+        /// apps/myapp/domainMapping/example.com.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The resource records required to configure this domain mapping. These records must be added to the
-        /// domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly</summary>
+        /// <summary>
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's
+        /// DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRecords")]
         public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; }
 
@@ -1746,17 +1780,19 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
-    /// JSON object {}.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON
+    /// object {}.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for AuthorizedCertificates.ListAuthorizedCertificates.</summary>
     public class ListAuthorizedCertificatesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1771,7 +1807,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for AuthorizedDomains.ListAuthorizedDomains.</summary>
     public class ListAuthorizedDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1786,7 +1822,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for DomainMappings.ListDomainMappings.</summary>
     public class ListDomainMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1801,7 +1837,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1816,7 +1852,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1831,7 +1867,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
@@ -1840,7 +1876,8 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
+        /// <summary>
+        /// Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -1853,14 +1890,16 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>Resource name for the location, which may vary between implementations. For example: "projects
-        /// /example-project/locations/us-east1"</summary>
+        /// <summary>
+        /// Resource name for the location, which may vary between implementations. For example:
+        /// "projects/example-project/locations/us-east1"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for the given google.cloud.location.Location.</summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1875,31 +1914,37 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A certificate managed by App Engine.</summary>
     public class ManagedCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time at which the certificate was last renewed. The renewal process is fully managed. Certificate
-        /// renewal will automatically occur before the certificate expires. Renewal errors can be tracked via
-        /// ManagementStatus.@OutputOnly</summary>
+        /// <summary>
+        /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal
+        /// will automatically occur before the certificate expires. Renewal errors can be tracked via
+        /// ManagementStatus.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRenewalTime")]
         public virtual object LastRenewalTime { get; set; }
 
-        /// <summary>Status of certificate management. Refers to the most recent certificate acquisition or renewal
-        /// attempt.@OutputOnly</summary>
+        /// <summary>
+        /// Status of certificate management. Refers to the most recent certificate acquisition or renewal
+        /// attempt.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
-        /// completed, and either error or response is available.</summary>
+        /// <summary>
+        /// If the value is false, it means the operation is still in progress. If true, the operation is completed, and
+        /// either error or response is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -1907,29 +1952,34 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the name should be a resource name ending with
-        /// operations/{unique_id}.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
-        /// Get/Create/Update, the response should be the resource. For other methods, the response should have the type
-        /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
-        /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update,
+        /// the response should be the resource. For other methods, the response should have the type XxxResponse, where
+        /// Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
+        /// response type is TakeSnapshotResponse.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
@@ -1949,13 +1999,15 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual object InsertTime { get; set; }
 
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.v1.Versions.CreateVersion.@OutputOnly</summary>
+        /// <summary>
+        /// API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/services/default.@OutputOnly</summary>
+        /// <summary>
+        /// Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
@@ -1969,7 +2021,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1Alpha : Google.Apis.Requests.IDirectResponseSchema
@@ -1989,13 +2041,16 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual object InsertTime { get; set; }
 
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly</summary>
+        /// <summary>
+        /// API method that initiated this operation. Example:
+        /// google.appengine.v1alpha.Versions.CreateVersion.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/services/default.@OutputOnly</summary>
+        /// <summary>
+        /// Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
@@ -2009,7 +2064,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1Beta : Google.Apis.Requests.IDirectResponseSchema
@@ -2029,13 +2084,16 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual object InsertTime { get; set; }
 
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.v1beta.Versions.CreateVersion.@OutputOnly</summary>
+        /// <summary>
+        /// API method that initiated this operation. Example:
+        /// google.appengine.v1beta.Versions.CreateVersion.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/services/default.@OutputOnly</summary>
+        /// <summary>
+        /// Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
@@ -2049,18 +2107,21 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A DNS resource record.</summary>
     public class ResourceRecord : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Relative name of the object affected by this record. Only applicable for CNAME records. Example:
-        /// 'www'.</summary>
+        /// <summary>
+        /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034
-        /// (section 3.6.1).</summary>
+        /// <summary>
+        /// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section
+        /// 3.6.1).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rrdata")]
         public virtual string Rrdata { get; set; }
 
@@ -2070,46 +2131,55 @@ namespace Google.Apis.Appengine.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>SSL configuration for a DomainMapping resource.</summary>
     public class SslSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field
-        /// will remove SSL support.By default, a managed certificate is automatically created for every domain mapping.
-        /// To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE
-        /// request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a
-        /// DomainMapping resource. Example: 12345.</summary>
+        /// <summary>
+        /// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
+        /// remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To
+        /// omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request.
+        /// You must be authorized to administer the AuthorizedCertificate resource to manually map it to a
+        /// DomainMapping resource. Example: 12345.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateId")]
         public virtual string CertificateId { get; set; }
 
-        /// <summary>Whether the mapped certificate is an App Engine managed certificate. Managed certificates are
-        /// created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE
-        /// request.@OutputOnly</summary>
+        /// <summary>
+        /// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by
+        /// default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE
+        /// request.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isManagedCertificate")]
         public virtual System.Nullable<bool> IsManagedCertificate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The Status type defines a logical error model that is suitable for different programming environments,
-    /// including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains
-    /// three pieces of data: error code, error message, and error details.You can find out more about this error model
-    /// and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The Status type defines a logical error model that is suitable for different programming environments, including
+    /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
+    /// of data: error code, error message, and error details.You can find out more about this error model and how to
+    /// work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 

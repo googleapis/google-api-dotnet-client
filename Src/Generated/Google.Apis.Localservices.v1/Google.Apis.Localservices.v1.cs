@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -63,7 +68,6 @@ namespace Google.Apis.Localservices.v1
         {
             /// <summary>Manage your AdWords campaigns</summary>
             public static string Adwords = "https://www.googleapis.com/auth/adwords";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Local Services API.</summary>
@@ -71,10 +75,7 @@ namespace Google.Apis.Localservices.v1
         {
             /// <summary>Manage your AdWords campaigns</summary>
             public const string Adwords = "https://www.googleapis.com/auth/adwords";
-
         }
-
-
 
         /// <summary>Gets the AccountReports resource.</summary>
         public virtual AccountReportsResource AccountReports { get; }
@@ -101,6 +102,7 @@ namespace Google.Apis.Localservices.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -120,9 +122,11 @@ namespace Google.Apis.Localservices.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -136,8 +140,10 @@ namespace Google.Apis.Localservices.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -149,8 +155,10 @@ namespace Google.Apis.Localservices.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -166,7 +174,6 @@ namespace Google.Apis.Localservices.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -270,21 +277,23 @@ namespace Google.Apis.Localservices.v1
         public AccountReportsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to
-        /// provide their manager customer id and the associated auth credential that allows them read permissions on
-        /// their linked accounts.</summary>
+        /// <summary>
+        /// Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide
+        /// their manager customer id and the associated auth credential that allows them read permissions on their
+        /// linked accounts.
+        /// </summary>
         public virtual SearchRequest Search()
         {
             return new SearchRequest(service);
         }
 
-        /// <summary>Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to
-        /// provide their manager customer id and the associated auth credential that allows them read permissions on
-        /// their linked accounts.</summary>
+        /// <summary>
+        /// Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide
+        /// their manager customer id and the associated auth credential that allows them read permissions on their
+        /// linked accounts.
+        /// </summary>
         public class SearchRequest : LocalservicesBaseServiceRequest<Google.Apis.Localservices.v1.Data.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -293,14 +302,16 @@ namespace Google.Apis.Localservices.v1
                 InitParameters();
             }
 
-
-            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
-            /// by itself or a year and month where the day isn't significant.</summary>
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateDay { get; set; }
 
-            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-            /// day.</summary>
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateMonth { get; set; }
 
@@ -308,38 +319,46 @@ namespace Google.Apis.Localservices.v1
             [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateYear { get; set; }
 
-            /// <summary>The maximum number of accounts to return. If the page size is unset, page size will default to
-            /// 1000. Maximum page_size is 10000. Optional.</summary>
+            /// <summary>
+            /// The maximum number of accounts to return. If the page size is unset, page size will default to 1000.
+            /// Maximum page_size is 10000. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The `next_page_token` value returned from a previous request to SearchAccountReports that
-            /// indicates where listing should continue. Optional.</summary>
+            /// <summary>
+            /// The `next_page_token` value returned from a previous request to SearchAccountReports that indicates
+            /// where listing should continue. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>A query string for searching for account reports. Caller must provide a customer id of their
-            /// MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search
-            /// expressions are case insensitive. Example query: | Query | Description |
+            /// <summary>
+            /// A query string for searching for account reports. Caller must provide a customer id of their MCC account
+            /// with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions
+            /// are case insensitive. Example query: | Query | Description |
             /// |-------------------------|-----------------------------------------------| | manager_customer_id:123 |
-            /// Get Account Report for Manager with id 123. | Required.</summary>
+            /// Get Account Report for Manager with id 123. | Required.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
-            /// by itself or a year and month where the day isn't significant.</summary>
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateDay { get; set; }
 
-            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-            /// day.</summary>
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateMonth { get; set; }
 
             /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateYear { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
@@ -354,7 +373,6 @@ namespace Google.Apis.Localservices.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("endDate.day", new Google.Apis.Discovery.Parameter
                 {
                     Name = "endDate.day",
@@ -428,7 +446,6 @@ namespace Google.Apis.Localservices.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -444,21 +461,23 @@ namespace Google.Apis.Localservices.v1
         public DetailedLeadReportsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Get detailed lead reports containing leads that have been received by all linked GLS accounts.
-        /// Caller needs to provide their manager customer id and the associated auth credential that allows them read
-        /// permissions on their linked accounts.</summary>
+        /// <summary>
+        /// Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs
+        /// to provide their manager customer id and the associated auth credential that allows them read permissions on
+        /// their linked accounts.
+        /// </summary>
         public virtual SearchRequest Search()
         {
             return new SearchRequest(service);
         }
 
-        /// <summary>Get detailed lead reports containing leads that have been received by all linked GLS accounts.
-        /// Caller needs to provide their manager customer id and the associated auth credential that allows them read
-        /// permissions on their linked accounts.</summary>
+        /// <summary>
+        /// Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs
+        /// to provide their manager customer id and the associated auth credential that allows them read permissions on
+        /// their linked accounts.
+        /// </summary>
         public class SearchRequest : LocalservicesBaseServiceRequest<Google.Apis.Localservices.v1.Data.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -467,14 +486,16 @@ namespace Google.Apis.Localservices.v1
                 InitParameters();
             }
 
-
-            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
-            /// by itself or a year and month where the day isn't significant.</summary>
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateDay { get; set; }
 
-            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-            /// day.</summary>
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateMonth { get; set; }
 
@@ -482,38 +503,46 @@ namespace Google.Apis.Localservices.v1
             [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> EndDateYear { get; set; }
 
-            /// <summary>The maximum number of accounts to return. If the page size is unset, page size will default to
-            /// 1000. Maximum page_size is 10000. Optional.</summary>
+            /// <summary>
+            /// The maximum number of accounts to return. If the page size is unset, page size will default to 1000.
+            /// Maximum page_size is 10000. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that
-            /// indicates where listing should continue. Optional.</summary>
+            /// <summary>
+            /// The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that indicates
+            /// where listing should continue. Optional.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>A query string for searching for account reports. Caller must provide a customer id of their
-            /// MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search
-            /// expressions are case insensitive. Example query: | Query | Description |
+            /// <summary>
+            /// A query string for searching for account reports. Caller must provide a customer id of their MCC account
+            /// with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions
+            /// are case insensitive. Example query: | Query | Description |
             /// |-------------------------|-----------------------------------------------| | manager_customer_id:123 |
-            /// Get Detailed Lead Report for Manager with id | | | 123. | Required.</summary>
+            /// Get Detailed Lead Report for Manager with id | | | 123. | Required.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year
-            /// by itself or a year and month where the day isn't significant.</summary>
+            /// <summary>
+            /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself
+            /// or a year and month where the day isn't significant.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateDay { get; set; }
 
-            /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-            /// day.</summary>
+            /// <summary>
+            /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateMonth { get; set; }
 
             /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> StartDateYear { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
@@ -528,7 +557,6 @@ namespace Google.Apis.Localservices.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("endDate.day", new Google.Apis.Discovery.Parameter
                 {
                     Name = "endDate.day",
@@ -602,16 +630,15 @@ namespace Google.Apis.Localservices.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Localservices.v1.Data
-{    
-
-    /// <summary>An Account Report of a GLS account identified by their account id containing aggregate data gathered
-    /// from a particular date range.</summary>
+{
+    /// <summary>
+    /// An Account Report of a GLS account identified by their account id containing aggregate data gathered from a
+    /// particular date range.
+    /// </summary>
     public class GoogleAdsHomeservicesLocalservicesV1AccountReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unique identifier of the GLS account.</summary>
@@ -646,19 +673,23 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentPeriodConnectedPhoneCalls")]
         public virtual System.Nullable<long> CurrentPeriodConnectedPhoneCalls { get; set; }
 
-        /// <summary>Number of phone calls in current specified period, including both connected and unconnected
-        /// calls.</summary>
+        /// <summary>
+        /// Number of phone calls in current specified period, including both connected and unconnected calls.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPeriodPhoneCalls")]
         public virtual System.Nullable<long> CurrentPeriodPhoneCalls { get; set; }
 
-        /// <summary>Total cost of the account in current specified period in the account's specified
-        /// currency.</summary>
+        /// <summary>
+        /// Total cost of the account in current specified period in the account's specified currency.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPeriodTotalCost")]
         public virtual System.Nullable<double> CurrentPeriodTotalCost { get; set; }
 
-        /// <summary>Phone lead responsiveness of the account for the past 90 days from current date. This is computed
-        /// by taking the total number of connected calls from charged phone leads and dividing by the total number of
-        /// calls received.</summary>
+        /// <summary>
+        /// Phone lead responsiveness of the account for the past 90 days from current date. This is computed by taking
+        /// the total number of connected calls from charged phone leads and dividing by the total number of calls
+        /// received.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneLeadResponsiveness")]
         public virtual System.Nullable<double> PhoneLeadResponsiveness { get; set; }
 
@@ -670,13 +701,15 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("previousPeriodConnectedPhoneCalls")]
         public virtual System.Nullable<long> PreviousPeriodConnectedPhoneCalls { get; set; }
 
-        /// <summary>Number of phone calls in previous specified period, including both connected and unconnected
-        /// calls.</summary>
+        /// <summary>
+        /// Number of phone calls in previous specified period, including both connected and unconnected calls.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousPeriodPhoneCalls")]
         public virtual System.Nullable<long> PreviousPeriodPhoneCalls { get; set; }
 
-        /// <summary>Total cost of the account in previous specified period in the account's specified
-        /// currency.</summary>
+        /// <summary>
+        /// Total cost of the account in previous specified period in the account's specified currency.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousPeriodTotalCost")]
         public virtual System.Nullable<double> PreviousPeriodTotalCost { get; set; }
 
@@ -686,7 +719,7 @@ namespace Google.Apis.Localservices.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Conatiner for aggregator specific information if lead is for an aggregator GLS account.</summary>
     public class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -697,10 +730,12 @@ namespace Google.Apis.Localservices.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A Detailed Lead Report of a lead identified by their lead id and contains consumer, account,
-    /// monetization, and lead data.</summary>
+    /// <summary>
+    /// A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and
+    /// lead data.
+    /// </summary>
     public class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies account that received the lead.</summary>
@@ -765,7 +800,7 @@ namespace Google.Apis.Localservices.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Container for message lead specific information.</summary>
     public class GoogleAdsHomeservicesLocalservicesV1MessageLead : Google.Apis.Requests.IDirectResponseSchema
@@ -788,7 +823,7 @@ namespace Google.Apis.Localservices.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Container for phone lead specific information.</summary>
     public class GoogleAdsHomeservicesLocalservicesV1PhoneLead : Google.Apis.Requests.IDirectResponseSchema
@@ -807,43 +842,51 @@ namespace Google.Apis.Localservices.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A page of the response received from the SearchAccountReports method. A paginated response where more
-    /// pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the
-    /// next request page.</summary>
+    /// <summary>
+    /// A page of the response received from the SearchAccountReports method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request
+    /// page.
+    /// </summary>
     public class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of account reports which maps 1:1 to a particular linked GLS account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountReports")]
         public virtual System.Collections.Generic.IList<GoogleAdsHomeservicesLocalservicesV1AccountReport> AccountReports { get; set; }
 
-        /// <summary>Pagination token to retrieve the next page of results. When `next_page_token` is not filled in,
-        /// there is no next page and the list returned is the last page in the result set.</summary>
+        /// <summary>
+        /// Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no
+        /// next page and the list returned is the last page in the result set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A page of the response received from the SearchDetailedLeadReports method. A paginated response where
-    /// more pages are available has `next_page_token` set. This token can be used in a subsequent request to retrieve
-    /// the next request page.</summary>
+    /// <summary>
+    /// A page of the response received from the SearchDetailedLeadReports method. A paginated response where more pages
+    /// are available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next
+    /// request page.
+    /// </summary>
     public class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of detailed lead reports uniquely identified by external lead id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailedLeadReports")]
         public virtual System.Collections.Generic.IList<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> DetailedLeadReports { get; set; }
 
-        /// <summary>Pagination token to retrieve the next page of results. When `next_page_token` is not filled in,
-        /// there is no next page and the list returned is the last page in the result set.</summary>
+        /// <summary>
+        /// Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no
+        /// next page and the list returned is the last page in the result set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
     public class GoogleTypeTimeZone : Google.Apis.Requests.IDirectResponseSchema

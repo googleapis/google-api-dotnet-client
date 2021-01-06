@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -58,10 +63,6 @@ namespace Google.Apis.AdExperienceReport.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Sites resource.</summary>
         public virtual SitesResource Sites { get; }
 
@@ -87,6 +88,7 @@ namespace Google.Apis.AdExperienceReport.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -106,9 +108,11 @@ namespace Google.Apis.AdExperienceReport.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -122,8 +126,10 @@ namespace Google.Apis.AdExperienceReport.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -135,8 +141,10 @@ namespace Google.Apis.AdExperienceReport.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -152,7 +160,6 @@ namespace Google.Apis.AdExperienceReport.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -256,13 +263,13 @@ namespace Google.Apis.AdExperienceReport.v1
         public SitesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets a site's Ad Experience Report summary.</summary>
-        /// <param name="name">Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`.
-        /// Format: `sites/{site}`</param>
+        /// <param name="name">
+        /// Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format:
+        /// `sites/{site}`
+        /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -278,12 +285,12 @@ namespace Google.Apis.AdExperienceReport.v1
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the site whose summary to get, e.g.
-            /// `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}`</summary>
+            /// <summary>
+            /// Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`.
+            /// Format: `sites/{site}`
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -298,7 +305,6 @@ namespace Google.Apis.AdExperienceReport.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -308,7 +314,6 @@ namespace Google.Apis.AdExperienceReport.v1
                     Pattern = @"^sites/[^/]+$",
                 });
             }
-
         }
     }
 
@@ -324,9 +329,7 @@ namespace Google.Apis.AdExperienceReport.v1
         public ViolatingSitesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Lists sites that are failing in the Ad Experience Report on at least one platform.</summary>
         public virtual ListRequest List()
@@ -343,8 +346,6 @@ namespace Google.Apis.AdExperienceReport.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -358,16 +359,12 @@ namespace Google.Apis.AdExperienceReport.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.AdExperienceReport.v1.Data
-{    
-
+{
     /// <summary>A site's Ad Experience Report summary on a single platform.</summary>
     public class PlatformSummary : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -375,13 +372,16 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
         public virtual string BetterAdsStatus { get; set; }
 
-        /// <summary>The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the
-        /// site began or will begin on this platform. Not set when the filter_status is OFF.</summary>
+        /// <summary>
+        /// The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began
+        /// or will begin on this platform. Not set when the filter_status is OFF.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
         public virtual object EnforcementTime { get; set; }
 
-        /// <summary>The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this
-        /// platform.</summary>
+        /// <summary>
+        /// The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
         public virtual string FilterStatus { get; set; }
 
@@ -389,15 +389,19 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
         public virtual object LastChangeTime { get; set; }
 
-        /// <summary>The site's regions on this platform. No longer populated, because there is no longer any semantic
-        /// difference between sites in different regions.</summary>
+        /// <summary>
+        /// The site's regions on this platform. No longer populated, because there is no longer any semantic difference
+        /// between sites in different regions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual System.Collections.Generic.IList<string> Region { get; set; }
 
-        /// <summary>A link to the full Ad Experience Report for the site on this platform.. Not set in
-        /// ViolatingSitesResponse. Note that you must complete the [Search Console verification
+        /// <summary>
+        /// A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse.
+        /// Note that you must complete the [Search Console verification
         /// process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full
-        /// report.</summary>
+        /// report.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportUrl")]
         public virtual string ReportUrl { get; set; }
 
@@ -407,7 +411,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for GetSiteSummary.</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -426,7 +430,7 @@ namespace Google.Apis.AdExperienceReport.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListViolatingSites.</summary>
     public class ViolatingSitesResponse : Google.Apis.Requests.IDirectResponseSchema

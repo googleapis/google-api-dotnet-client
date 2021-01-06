@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.CloudSecurityToken.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the V1 resource.</summary>
         public virtual V1Resource V1 { get; }
     }
@@ -83,6 +84,7 @@ namespace Google.Apis.CloudSecurityToken.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -102,9 +104,11 @@ namespace Google.Apis.CloudSecurityToken.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -118,8 +122,10 @@ namespace Google.Apis.CloudSecurityToken.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -131,8 +137,10 @@ namespace Google.Apis.CloudSecurityToken.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -148,7 +156,6 @@ namespace Google.Apis.CloudSecurityToken.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -252,9 +259,7 @@ namespace Google.Apis.CloudSecurityToken.v1
         public V1Resource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Exchanges a credential for a Google OAuth 2.0 access token.</summary>
         /// <param name="body">The body of the request.</param>
@@ -272,8 +277,6 @@ namespace Google.Apis.CloudSecurityToken.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudSecurityToken.v1.Data.GoogleIdentityStsV1ExchangeTokenRequest Body { get; set; }
@@ -294,49 +297,54 @@ namespace Google.Apis.CloudSecurityToken.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.CloudSecurityToken.v1.Data
-{    
-
+{
     /// <summary>Request message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1ExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which
-        /// indicates a token exchange.</summary>
+        /// <summary>
+        /// Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which indicates a token
+        /// exchange.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantType")]
         public virtual string GrantType { get; set; }
 
-        /// <summary>A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
-        /// exchange, formatted as a serialized JSON object of Options.</summary>
+        /// <summary>
+        /// A set of features that Security Token Service supports, in addition to the standard OAuth 2.0 token
+        /// exchange, formatted as a serialized JSON object of Options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; }
 
-        /// <summary>Required. An identifier for the type of requested security token. Must be `urn:ietf:params:oauth
-        /// :token-type:access_token`.</summary>
+        /// <summary>
+        /// Required. An identifier for the type of requested security token. Must be
+        /// `urn:ietf:params:oauth:token-type:access_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }
 
-        /// <summary>Required. The input token. You can use a Google-issued OAuth 2.0 access token with this field to
-        /// obtain an access token with new security attributes applied, such as a Credential Access Boundary. If an
-        /// access token already contains security attributes, you cannot apply additional security
-        /// attributes.</summary>
+        /// <summary>
+        /// Required. The input token. You can use a Google-issued OAuth 2.0 access token with this field to obtain an
+        /// access token with new security attributes applied, such as a Credential Access Boundary. If an access token
+        /// already contains security attributes, you cannot apply additional security attributes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
         public virtual string SubjectToken { get; set; }
 
-        /// <summary>Required. An identifier that indicates the type of the security token in the `subject_token`
-        /// parameter. Must be `urn:ietf:params:oauth:token-type:access_token`.</summary>
+        /// <summary>
+        /// Required. An identifier that indicates the type of the security token in the `subject_token` parameter. Must
+        /// be `urn:ietf:params:oauth:token-type:access_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
         public virtual string SubjectTokenType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ExchangeToken.</summary>
     public class GoogleIdentityStsV1ExchangeTokenResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -345,10 +353,12 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
         public virtual string AccessToken { get; set; }
 
-        /// <summary>The amount of time, in seconds, between the time when the `access_token` was issued and the time
-        /// when the `access_token` will expire. This field is absent when the `subject_token` in the request is a
-        /// Google-issued, short-lived access token. In this case, the `access_token` has the same expiration time as
-        /// the `subject_token`.</summary>
+        /// <summary>
+        /// The amount of time, in seconds, between the time when the `access_token` was issued and the time when the
+        /// `access_token` will expire. This field is absent when the `subject_token` in the request is a Google-issued,
+        /// short-lived access token. In this case, the `access_token` has the same expiration time as the
+        /// `subject_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
         public virtual System.Nullable<int> ExpiresIn { get; set; }
 

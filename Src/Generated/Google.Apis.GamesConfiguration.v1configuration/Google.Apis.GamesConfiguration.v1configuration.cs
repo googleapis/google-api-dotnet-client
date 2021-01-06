@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -64,18 +69,16 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         {
             /// <summary>View and manage your Google Play Developer account</summary>
             public static string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services Publishing API.</summary>
+        /// <summary>
+        /// Available OAuth 2.0 scope constants for use with the Google Play Game Services Publishing API.
+        /// </summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your Google Play Developer account</summary>
             public const string Androidpublisher = "https://www.googleapis.com/auth/androidpublisher";
-
         }
-
-
 
         /// <summary>Gets the AchievementConfigurations resource.</summary>
         public virtual AchievementConfigurationsResource AchievementConfigurations { get; }
@@ -105,6 +108,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -124,9 +128,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -140,8 +146,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -153,8 +161,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -170,7 +180,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -274,9 +283,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public AchievementConfigurationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Delete the achievement configuration with the given ID.</summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
@@ -295,11 +302,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -314,7 +319,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -324,7 +328,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves the metadata of the achievement configuration with the given ID.</summary>
@@ -344,11 +347,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -363,7 +364,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -373,7 +373,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Insert a new achievement configuration in this application.</summary>
@@ -395,11 +394,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesConfiguration.v1configuration.Data.AchievementConfiguration Body { get; set; }
@@ -420,7 +417,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -430,7 +426,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Returns a list of the achievement configurations in this application.</summary>
@@ -450,21 +445,20 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>The maximum number of resource configurations to return in the response, used for paging. For
-            /// any response, the actual number of resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of resource configurations to return in the response, used for paging. For any
+            /// response, the actual number of resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -479,7 +473,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -505,7 +498,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the metadata of the achievement configuration with the given ID.</summary>
@@ -527,11 +519,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesConfiguration.v1configuration.Data.AchievementConfiguration Body { get; set; }
@@ -552,7 +542,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -562,7 +551,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -578,14 +566,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public ImageConfigurationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
         /// <param name="resourceId">The ID of the resource used by this method.</param>
-        /// <param name="imageType">Selects
-        /// which image in a resource for this method.</param>
+        /// <param name="imageType">Selects which image in a resource for this method.</param>
         public virtual UploadRequest Upload(string resourceId, UploadRequest.ImageTypeEnum imageType)
         {
             return new UploadRequest(service, resourceId, imageType);
@@ -602,7 +587,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the resource used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceId { get; private set; }
@@ -617,14 +601,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
                 IMAGETYPEUNSPECIFIED,
+
                 /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
                 ACHIEVEMENTICON,
+
                 /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
                 LEADERBOARDICON,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "upload";
@@ -639,7 +624,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "resourceId",
@@ -657,31 +641,28 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Uploads an image for a resource with the given ID and image type.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
-        /// <item><description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-        /// seekable, then it will be read from its current position.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-        /// upload is completed.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for closing the <paramref name="stream"/>.
-        /// </description></item>
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
         /// </list>
         /// </remarks>
-
         /// <param name="resourceId">The ID of the resource used by this method.</param>
-        /// <param name="imageType">Selects
-        /// which image in a resource for this method.</param>
+        /// <param name="imageType">Selects which image in a resource for this method.</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
         public virtual UploadMediaUpload Upload(string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
@@ -692,7 +673,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         /// <summary>Upload media upload which supports resumable upload.</summary>
         public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.GamesConfiguration.v1configuration.Data.ImageConfiguration>
         {
-
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -703,6 +683,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
                 Value1,
+
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
                 Value2,
@@ -722,9 +703,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
+
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
                 Media,
+
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
                 Proto,
@@ -738,8 +721,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fields { get; set; }
 
-            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Key { get; set; }
 
@@ -751,8 +736,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-            /// assigned to a user, but should not exceed 40 characters.</summary>
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
@@ -763,7 +750,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
-
 
             /// <summary>The ID of the resource used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
@@ -779,9 +765,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
                 IMAGETYPEUNSPECIFIED,
+
                 /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
                 ACHIEVEMENTICON,
+
                 /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
                 LEADERBOARDICON,
@@ -791,18 +779,19 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
             public UploadMediaUpload(Google.Apis.Services.IClientService service, string resourceId, UploadMediaUpload.ImageTypeEnum imageType, System.IO.Stream stream, string contentType)
@@ -826,9 +815,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         public LeaderboardConfigurationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Delete the leaderboard configuration with the given ID.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
@@ -847,11 +834,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -866,7 +851,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -876,7 +860,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves the metadata of the leaderboard configuration with the given ID.</summary>
@@ -896,11 +879,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -915,7 +896,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -925,7 +905,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Insert a new leaderboard configuration in this application.</summary>
@@ -947,11 +926,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesConfiguration.v1configuration.Data.LeaderboardConfiguration Body { get; set; }
@@ -972,7 +949,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -982,7 +958,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Returns a list of the leaderboard configurations in this application.</summary>
@@ -1002,21 +977,20 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>The maximum number of resource configurations to return in the response, used for paging. For
-            /// any response, the actual number of resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of resource configurations to return in the response, used for paging. For any
+            /// response, the actual number of resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1031,7 +1005,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -1057,7 +1030,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update the metadata of the leaderboard configuration with the given ID.</summary>
@@ -1079,11 +1051,9 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesConfiguration.v1configuration.Data.LeaderboardConfiguration Body { get; set; }
@@ -1104,7 +1074,6 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -1114,14 +1083,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.GamesConfiguration.v1configuration.Data
-{    
-
+{
     /// <summary>An achievement configuration resource.</summary>
     public class AchievementConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1141,8 +1107,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialState")]
         public virtual string InitialState { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#achievementConfiguration`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#achievementConfiguration`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1160,7 +1128,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement configuration detail.</summary>
     public class AchievementConfigurationDetail : Google.Apis.Requests.IDirectResponseSchema
@@ -1173,8 +1141,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#achievementConfigurationDetail`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#achievementConfigurationDetail`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1192,7 +1162,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ListConfigurations response.</summary>
     public class AchievementConfigurationListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1201,8 +1171,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<AchievementConfiguration> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#achievementConfigurationListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#achievementConfigurationListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1212,34 +1184,41 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A number affix resource.</summary>
     public class GamesNumberAffixConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When the language requires special treatment of "small" numbers (as with 2, 3, and 4 in Czech; or
-        /// numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish).</summary>
+        /// <summary>
+        /// When the language requires special treatment of "small" numbers (as with 2, 3, and 4 in Czech; or numbers
+        /// ending 2, 3, or 4 but not 12, 13, or 14 in Polish).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("few")]
         public virtual LocalizedStringBundle Few { get; set; }
 
-        /// <summary>When the language requires special treatment of "large" numbers (as with numbers ending 11-99 in
-        /// Maltese).</summary>
+        /// <summary>
+        /// When the language requires special treatment of "large" numbers (as with numbers ending 11-99 in Maltese).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("many")]
         public virtual LocalizedStringBundle Many { get; set; }
 
-        /// <summary>When the language requires special treatment of numbers like one (as with the number 1 in English
-        /// and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this
-        /// class).</summary>
+        /// <summary>
+        /// When the language requires special treatment of numbers like one (as with the number 1 in English and most
+        /// other languages; in Russian, any number ending in 1 but not ending in 11 is in this class).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("one")]
         public virtual LocalizedStringBundle One { get; set; }
 
-        /// <summary>When the language does not require special treatment of the given quantity (as with all numbers in
-        /// Chinese, or 42 in English).</summary>
+        /// <summary>
+        /// When the language does not require special treatment of the given quantity (as with all numbers in Chinese,
+        /// or 42 in English).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("other")]
         public virtual LocalizedStringBundle Other { get; set; }
 
-        /// <summary>When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in
-        /// Slovenian).</summary>
+        /// <summary>
+        /// When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("two")]
         public virtual LocalizedStringBundle Two { get; set; }
 
@@ -1249,7 +1228,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A number format resource.</summary>
     public class GamesNumberFormatConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -1266,14 +1245,16 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numberFormatType")]
         public virtual string NumberFormatType { get; set; }
 
-        /// <summary>An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all
-        /// Android string resources.</summary>
+        /// <summary>
+        /// An optional suffix for the NUMERIC format type. These strings follow the same plural rules as all Android
+        /// string resources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
         public virtual GamesNumberAffixConfiguration Suffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An image configuration resource.</summary>
     public class ImageConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -1282,8 +1263,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#imageConfiguration`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#imageConfiguration`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1297,7 +1280,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An leaderboard configuration resource.</summary>
     public class LeaderboardConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -1310,8 +1293,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#leaderboardConfiguration`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#leaderboardConfiguration`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1336,7 +1321,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A leaderboard configuration detail.</summary>
     public class LeaderboardConfigurationDetail : Google.Apis.Requests.IDirectResponseSchema
@@ -1345,8 +1330,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#leaderboardConfigurationDetail`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#leaderboardConfigurationDetail`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1364,7 +1351,7 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ListConfigurations response.</summary>
     public class LeaderboardConfigurationListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1373,8 +1360,10 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<LeaderboardConfiguration> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#leaderboardConfigurationListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#leaderboardConfigurationListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1384,13 +1373,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A localized string resource.</summary>
     public class LocalizedString : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#localizedString`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#localizedString`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1404,13 +1395,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A localized string bundle resource.</summary>
     public class LocalizedStringBundle : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesConfiguration#localizedStringBundle`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesConfiguration#localizedStringBundle`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

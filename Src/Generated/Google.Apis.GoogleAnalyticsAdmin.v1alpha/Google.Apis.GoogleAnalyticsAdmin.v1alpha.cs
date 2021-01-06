@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -73,7 +78,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>See and download your Google Analytics data</summary>
             public static string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Analytics Admin API.</summary>
@@ -90,10 +94,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>See and download your Google Analytics data</summary>
             public const string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
-
         }
-
-
 
         /// <summary>Gets the AccountSummaries resource.</summary>
         public virtual AccountSummariesResource AccountSummaries { get; }
@@ -123,6 +124,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -142,9 +144,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -158,8 +162,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -171,8 +177,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -188,7 +196,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -292,9 +299,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         public AccountSummariesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Returns summaries of all accounts accessible by the caller.</summary>
         public virtual ListRequest List()
@@ -311,19 +316,21 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>The maximum number of AccountSummary resources to return. The service may return fewer than
-            /// this value, even if there are additional pages. If unspecified, at most 50 resources will be returned.
-            /// The maximum value is 200; (higher values will be coerced to the maximum)</summary>
+            /// <summary>
+            /// The maximum number of AccountSummary resources to return. The service may return fewer than this value,
+            /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum
+            /// value is 200; (higher values will be coerced to the maximum)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve
-            /// the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match
-            /// the call that provided the page token.</summary>
+            /// <summary>
+            /// A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the
+            /// call that provided the page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -338,7 +345,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -356,7 +362,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -373,7 +378,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         {
             this.service = service;
             UserLinks = new UserLinksResource(service);
-
         }
 
         /// <summary>Gets the UserLinks resource.</summary>
@@ -391,15 +395,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public UserLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Lists all user links on an account or property, including implicit ones that come from
-            /// effective permissions granted by groups or organization admin roles. If a returned user link does not
-            /// have direct permissions, they cannot be removed from the account or property directly with the
-            /// DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is
-            /// currently only usable/discoverable in the GA or GMP UIs.</summary>
+            /// <summary>
+            /// Lists all user links on an account or property, including implicit ones that come from effective
+            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
+            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
+            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
+            /// usable/discoverable in the GA or GMP UIs.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Example format: accounts/1234</param>
             public virtual AuditRequest Audit(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent)
@@ -407,11 +411,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new AuditRequest(service, body, parent);
             }
 
-            /// <summary>Lists all user links on an account or property, including implicit ones that come from
-            /// effective permissions granted by groups or organization admin roles. If a returned user link does not
-            /// have direct permissions, they cannot be removed from the account or property directly with the
-            /// DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is
-            /// currently only usable/discoverable in the GA or GMP UIs.</summary>
+            /// <summary>
+            /// Lists all user links on an account or property, including implicit ones that come from effective
+            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
+            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
+            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
+            /// usable/discoverable in the GA or GMP UIs.
+            /// </summary>
             public class AuditRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse>
             {
                 /// <summary>Constructs a new Audit request.</summary>
@@ -422,11 +428,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest Body { get; set; }
@@ -447,7 +451,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -457,22 +460,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Creates information about multiple users' links to an account or property. This method is
-            /// transactional. If any UserLink cannot be created, none of the UserLinks will be created.</summary>
+            /// <summary>
+            /// Creates information about multiple users' links to an account or property. This method is transactional.
+            /// If any UserLink cannot be created, none of the UserLinks will be created.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. This field is
-            /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
-            /// format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. This field is required.
+            /// The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
+            /// format: accounts/1234
+            /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent)
             {
                 return new BatchCreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates information about multiple users' links to an account or property. This method is
-            /// transactional. If any UserLink cannot be created, none of the UserLinks will be created.</summary>
+            /// <summary>
+            /// Creates information about multiple users' links to an account or property. This method is transactional.
+            /// If any UserLink cannot be created, none of the UserLinks will be created.
+            /// </summary>
             public class BatchCreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse>
             {
                 /// <summary>Constructs a new BatchCreate request.</summary>
@@ -483,13 +491,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. This field is
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. This field is
                 /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this
-                /// field. Example format: accounts/1234</summary>
+                /// field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest Body { get; set; }
@@ -510,7 +518,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -520,13 +527,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent of all
-            /// values for user link names to delete must match this field. Example format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent of all values
+            /// for user link names to delete must match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent)
             {
                 return new BatchDeleteRequest(service, body, parent);
@@ -543,13 +551,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent of
-                /// all values for user link names to delete must match this field. Example format:
-                /// accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent of all
+                /// values for user link names to delete must match this field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest Body { get; set; }
@@ -570,7 +577,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -580,12 +586,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent of all
-            /// provided values for the 'names' field must match this field. Example format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent of all provided
+            /// values for the 'names' field must match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchGetRequest BatchGet(string parent)
             {
                 return new BatchGetRequest(service, parent);
@@ -601,18 +608,19 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent of
-                /// all provided values for the 'names' field must match this field. Example format:
-                /// accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent of all
+                /// provided values for the 'names' field must match this field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required. The names of the user links to retrieve. A maximum of 1000 user links can be
-                /// retrieved in a batch. Format: accounts/{accountId}/userLinks/{userLinkId}</summary>
+                /// <summary>
+                /// Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in
+                /// a batch. Format: accounts/{accountId}/userLinks/{userLinkId}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchGet";
@@ -627,7 +635,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -645,14 +652,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent field
-            /// in the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
-            /// accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent field in the
+            /// UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent)
             {
                 return new BatchUpdateRequest(service, body, parent);
@@ -669,13 +676,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent
-                /// field in the UpdateUserLinkRequest messages must either be empty or match this field. Example
-                /// format: accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent field in
+                /// the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
+                /// accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest Body { get; set; }
@@ -696,7 +703,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -706,12 +712,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Creates a user link on an account or property. If the user with the specified email already has
+            /// <summary>
+            /// Creates a user link on an account or property. If the user with the specified email already has
             /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.</summary>
+            /// permissions specified in the new UserLink.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Example format: accounts/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent)
@@ -719,9 +726,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a user link on an account or property. If the user with the specified email already has
+            /// <summary>
+            /// Creates a user link on an account or property. If the user with the specified email already has
             /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.</summary>
+            /// permissions specified in the new UserLink.
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -732,16 +741,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If set, then email the new user notifying them that they've been granted
-                /// permissions to the resource.</summary>
+                /// <summary>
+                /// Optional. If set, then email the new user notifying them that they've been granted permissions to
+                /// the resource.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NotifyNewUser { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
@@ -762,7 +771,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -780,7 +788,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a user link on an account or property.</summary>
@@ -800,11 +807,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -819,7 +824,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -829,7 +833,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets information about a user's link to an account or property.</summary>
@@ -849,11 +852,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -868,7 +869,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -878,7 +878,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists all user links on an account or property.</summary>
@@ -898,23 +897,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of user links to return. The service may return fewer than this value.
-                /// If unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
-                /// will be coerced to 500.</summary>
+                /// <summary>
+                /// The maximum number of user links to return. The service may return fewer than this value. If
+                /// unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
+                /// will be coerced to 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListUserLinks` must match the
-                /// call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters provided to `ListUserLinks` must match the call that
+                /// provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -929,7 +930,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -955,7 +955,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a user link on an account or property.</summary>
@@ -977,11 +976,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Example format: properties/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
@@ -1002,7 +999,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1012,27 +1008,31 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
         }
 
-        /// <summary>Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a
-        /// method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the
-        /// accounts are not restored before the expiration time, the account and all child resources (eg: Properties,
-        /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
-        /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found.</summary>
-        /// <param name="name">Required. The name of the Account to soft-delete. Format: accounts/{account} Example:
-        /// "accounts/100"</param>
+        /// <summary>
+        /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
+        /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
+        /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
+        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
+        /// an error if the target is not found.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100"
+        /// </param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a
-        /// method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the
-        /// accounts are not restored before the expiration time, the account and all child resources (eg: Properties,
-        /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
-        /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found.</summary>
+        /// <summary>
+        /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
+        /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
+        /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
+        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
+        /// an error if the target is not found.
+        /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1042,12 +1042,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the Account to soft-delete. Format: accounts/{account} Example:
-            /// "accounts/100"</summary>
+            /// <summary>
+            /// Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1062,7 +1061,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1072,12 +1070,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = @"^accounts/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lookup for a single Account.</summary>
-        /// <param name="name">Required. The name of the account to lookup. Format: accounts/{account} Example:
-        /// "accounts/100"</param>
+        /// <param name="name">
+        /// Required. The name of the account to lookup. Format: accounts/{account} Example: "accounts/100"
+        /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1093,12 +1091,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the account to lookup. Format: accounts/{account} Example:
-            /// "accounts/100"</summary>
+            /// <summary>
+            /// Required. The name of the account to lookup. Format: accounts/{account} Example: "accounts/100"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1113,7 +1110,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1123,12 +1119,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = @"^accounts/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Get data sharing settings on an account. Data sharing settings are singletons.</summary>
-        /// <param name="name">Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings
-        /// Example: "accounts/1000/dataSharingSettings"</param>
+        /// <param name="name">
+        /// Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example:
+        /// "accounts/1000/dataSharingSettings"
+        /// </param>
         public virtual GetDataSharingSettingsRequest GetDataSharingSettings(string name)
         {
             return new GetDataSharingSettingsRequest(service, name);
@@ -1144,12 +1141,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings
-            /// Example: "accounts/1000/dataSharingSettings"</summary>
+            /// <summary>
+            /// Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example:
+            /// "accounts/1000/dataSharingSettings"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getDataSharingSettings";
@@ -1164,7 +1161,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1174,20 +1170,23 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = @"^accounts/[^/]+/dataSharingSettings$",
                 });
             }
-
         }
 
-        /// <summary>Returns all accounts accessible by the caller. Note that these accounts might not currently have
-        /// GA4 properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
-        /// relevant accounts are found.</summary>
+        /// <summary>
+        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4
+        /// properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
+        /// relevant accounts are found.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Returns all accounts accessible by the caller. Note that these accounts might not currently have
-        /// GA4 properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
-        /// relevant accounts are found.</summary>
+        /// <summary>
+        /// Returns all accounts accessible by the caller. Note that these accounts might not currently have GA4
+        /// properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no
+        /// relevant accounts are found.
+        /// </summary>
         public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAccountsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1196,24 +1195,28 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>The maximum number of resources to return. The service may return fewer than this value, even
-            /// if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
-            /// is 200; (higher values will be coerced to the maximum)</summary>
+            /// <summary>
+            /// The maximum number of resources to return. The service may return fewer than this value, even if there
+            /// are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200;
+            /// (higher values will be coerced to the maximum)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
-            /// that provided the page token.</summary>
+            /// <summary>
+            /// A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent
+            /// page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided
+            /// the page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Whether to include soft-deleted (ie: "trashed") Accounts in the results. Accounts can be
-            /// inspected to determine whether they are deleted or not.</summary>
+            /// <summary>
+            /// Whether to include soft-deleted (ie: "trashed") Accounts in the results. Accounts can be inspected to
+            /// determine whether they are deleted or not.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1228,7 +1231,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -1254,13 +1256,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates an account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Output only. Resource name of this account. Format: accounts/{account} Example:
-        /// "accounts/100"</param>
+        /// <param name="name">
+        /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccount body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -1277,17 +1279,18 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Output only. Resource name of this account. Format: accounts/{account} Example:
-            /// "accounts/100"</summary>
+            /// <summary>
+            /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-            /// entire entity, use one path with the string "*" to match all fields.</summary>
+            /// <summary>
+            /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire
+            /// entity, use one path with the string "*" to match all fields.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAccount Body { get; set; }
@@ -1308,7 +1311,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1326,7 +1328,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Requests a ticket for creating an account.</summary>
@@ -1345,8 +1346,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest Body { get; set; }
@@ -1367,9 +1366,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -1391,7 +1388,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             IosAppDataStreams = new IosAppDataStreamsResource(service);
             UserLinks = new UserLinksResource(service);
             WebDataStreams = new WebDataStreamsResource(service);
-
         }
 
         /// <summary>Gets the AndroidAppDataStreams resource.</summary>
@@ -1409,14 +1405,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public AndroidAppDataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates an android app stream with the specified location and attributes.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource where this android app data stream will be created. Format:
-            /// properties/123</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this android app data stream will be created. Format: properties/123
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1433,12 +1428,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent resource where this android app data stream will be created. Format:
-                /// properties/123</summary>
+                /// <summary>
+                /// Required. The parent resource where this android app data stream will be created. Format:
+                /// properties/123
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream Body { get; set; }
@@ -1459,7 +1454,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1469,13 +1463,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes an android app stream on a property.</summary>
-            /// <param name="name">Required. The name of the android app data stream to delete. Format:
+            /// <param name="name">
+            /// Required. The name of the android app data stream to delete. Format:
             /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-            /// "properties/123/androidAppDataStreams/456"</param>
+            /// "properties/123/androidAppDataStreams/456"
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1491,13 +1486,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the android app data stream to delete. Format:
+                /// <summary>
+                /// Required. The name of the android app data stream to delete. Format:
                 /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-                /// "properties/123/androidAppDataStreams/456"</summary>
+                /// "properties/123/androidAppDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -1512,7 +1507,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1522,13 +1516,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/androidAppDataStreams/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lookup for a single AndroidAppDataStream</summary>
-            /// <param name="name">Required. The name of the android app data stream to lookup. Format:
+            /// <param name="name">
+            /// Required. The name of the android app data stream to lookup. Format:
             /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-            /// "properties/123/androidAppDataStreams/456"</param>
+            /// "properties/123/androidAppDataStreams/456"
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1544,13 +1539,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the android app data stream to lookup. Format:
+                /// <summary>
+                /// Required. The name of the android app data stream to lookup. Format:
                 /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-                /// "properties/123/androidAppDataStreams/456"</summary>
+                /// "properties/123/androidAppDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -1565,7 +1560,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1575,22 +1569,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/androidAppDataStreams/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Returns child android app streams under the specified parent property. Android app streams will
-            /// be excluded if the caller does not have access. Returns an empty list if no relevant android app streams
-            /// are found.</summary>
-            /// <param name="parent">Required. The name of the parent property. For example, to limit results to app streams under
-            /// the property with Id 123: "properties/123"</param>
+            /// <summary>
+            /// Returns child android app streams under the specified parent property. Android app streams will be
+            /// excluded if the caller does not have access. Returns an empty list if no relevant android app streams
+            /// are found.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent property. For example, to limit results to app streams under the
+            /// property with Id 123: "properties/123"
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns child android app streams under the specified parent property. Android app streams will
-            /// be excluded if the caller does not have access. Returns an empty list if no relevant android app streams
-            /// are found.</summary>
+            /// <summary>
+            /// Returns child android app streams under the specified parent property. Android app streams will be
+            /// excluded if the caller does not have access. Returns an empty list if no relevant android app streams
+            /// are found.
+            /// </summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1600,23 +1599,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the parent property. For example, to limit results to app streams
-                /// under the property with Id 123: "properties/123"</summary>
+                /// <summary>
+                /// Required. The name of the parent property. For example, to limit results to app streams under the
+                /// property with Id 123: "properties/123"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of resources to return. If unspecified, at most 50 resources will be
-                /// returned. The maximum value is 200; (higher values will be coerced to the maximum)</summary>
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous call. Provide this to retrieve the subsequent page.
-                /// When paginating, all other parameters provided to `ListAndroidAppDataStreams` must match the call
-                /// that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous call. Provide this to retrieve the subsequent page. When
+                /// paginating, all other parameters provided to `ListAndroidAppDataStreams` must match the call that
+                /// provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1631,7 +1634,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1657,14 +1659,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates an android app stream on a property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Resource name of this Data Stream. Format:
+            /// <param name="name">
+            /// Output only. Resource name of this Data Stream. Format:
             /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-            /// "properties/1000/androidAppDataStreams/2000"</param>
+            /// "properties/1000/androidAppDataStreams/2000"
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1681,18 +1684,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Output only. Resource name of this Data Stream. Format:
+                /// <summary>
+                /// Output only. Resource name of this Data Stream. Format:
                 /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-                /// "properties/1000/androidAppDataStreams/2000"</summary>
+                /// "properties/1000/androidAppDataStreams/2000"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream Body { get; set; }
@@ -1713,7 +1718,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1731,9 +1735,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the FirebaseLinks resource.</summary>
         public virtual FirebaseLinksResource FirebaseLinks { get; }
 
@@ -1749,9 +1753,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public FirebaseLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a FirebaseLink. Properties can have at most one FirebaseLink.</summary>
             /// <param name="body">The body of the request.</param>
@@ -1772,11 +1774,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink Body { get; set; }
@@ -1797,7 +1797,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1807,12 +1806,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes a FirebaseLink on a property</summary>
-            /// <param name="name">Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-            /// properties/1234/firebaseLinks/5678</param>
+            /// <param name="name">
+            /// Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
+            /// properties/1234/firebaseLinks/5678
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1828,12 +1828,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-                /// properties/1234/firebaseLinks/5678</summary>
+                /// <summary>
+                /// Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
+                /// properties/1234/firebaseLinks/5678
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -1848,7 +1848,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1858,7 +1857,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/firebaseLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink.</summary>
@@ -1878,23 +1876,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of resources to return. The service may return fewer than this value,
-                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
-                /// maximum value is 200; (higher values will be coerced to the maximum)</summary>
+                /// <summary>
+                /// The maximum number of resources to return. The service may return fewer than this value, even if
+                /// there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
+                /// is 200; (higher values will be coerced to the maximum)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve
-                /// the subsequent page. When paginating, all other parameters provided to `ListProperties` must match
-                /// the call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListProperties` must match the
+                /// call that provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -1909,7 +1909,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -1935,7 +1934,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a FirebaseLink on a property</summary>
@@ -1957,16 +1955,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Output only. Example format: properties/1234/firebaseLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink Body { get; set; }
@@ -1987,7 +1985,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2005,9 +2002,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the GoogleAdsLinks resource.</summary>
         public virtual GoogleAdsLinksResource GoogleAdsLinks { get; }
 
@@ -2023,9 +2020,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public GoogleAdsLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a GoogleAdsLink.</summary>
             /// <param name="body">The body of the request.</param>
@@ -2046,11 +2041,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: properties/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink Body { get; set; }
@@ -2071,7 +2064,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2081,7 +2073,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes a GoogleAdsLink on a property</summary>
@@ -2101,11 +2092,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: properties/1234/googleAdsLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2120,7 +2109,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2130,7 +2118,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/googleAdsLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists GoogleAdsLinks on a property.</summary>
@@ -2150,22 +2137,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: properties/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of resources to return. If unspecified, at most 50 resources will be
-                /// returned. The maximum value is 200 (higher values will be coerced to the maximum).</summary>
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve
-                /// the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must
-                /// match the call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match
+                /// the call that provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2180,7 +2169,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2206,13 +2194,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a GoogleAdsLink on a property</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
-            /// googleAdsLinkId is not the Google Ads customer ID.</param>
+            /// <param name="name">
+            /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is
+            /// not the Google Ads customer ID.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2229,17 +2218,19 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note:
-                /// googleAdsLinkId is not the Google Ads customer ID.</summary>
+                /// <summary>
+                /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId
+                /// is not the Google Ads customer ID.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGoogleAdsLink Body { get; set; }
@@ -2260,7 +2251,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2278,9 +2268,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the IosAppDataStreams resource.</summary>
         public virtual IosAppDataStreamsResource IosAppDataStreams { get; }
 
@@ -2296,14 +2286,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public IosAppDataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates an iOS app data stream with the specified location and attributes.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource where this ios app data stream will be created. Format:
-            /// properties/123</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this ios app data stream will be created. Format: properties/123
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2320,12 +2309,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent resource where this ios app data stream will be created. Format:
-                /// properties/123</summary>
+                /// <summary>
+                /// Required. The parent resource where this ios app data stream will be created. Format: properties/123
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream Body { get; set; }
@@ -2346,7 +2334,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2356,12 +2343,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes an iOS app stream on a property.</summary>
-            /// <param name="name">Required. The name of the iOS app data stream to delete. Format:
-            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/123/iosAppDataStreams/456"</param>
+            /// <param name="name">
+            /// Required. The name of the iOS app data stream to delete. Format:
+            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/123/iosAppDataStreams/456"
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2377,13 +2365,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the iOS app data stream to delete. Format:
+                /// <summary>
+                /// Required. The name of the iOS app data stream to delete. Format:
                 /// properties/{property_id}/iosAppDataStreams/{stream_id} Example:
-                /// "properties/123/iosAppDataStreams/456"</summary>
+                /// "properties/123/iosAppDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2398,7 +2386,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2408,12 +2395,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/iosAppDataStreams/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lookup for a single IosAppDataStream</summary>
-            /// <param name="name">Required. The name of the iOS app data stream to lookup. Format:
-            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/123/iosAppDataStreams/456"</param>
+            /// <param name="name">
+            /// Required. The name of the iOS app data stream to lookup. Format:
+            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/123/iosAppDataStreams/456"
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2429,13 +2417,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the iOS app data stream to lookup. Format:
+                /// <summary>
+                /// Required. The name of the iOS app data stream to lookup. Format:
                 /// properties/{property_id}/iosAppDataStreams/{stream_id} Example:
-                /// "properties/123/iosAppDataStreams/456"</summary>
+                /// "properties/123/iosAppDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -2450,7 +2438,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2460,22 +2447,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/iosAppDataStreams/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Returns child iOS app data streams under the specified parent property. iOS app data streams
-            /// will be excluded if the caller does not have access. Returns an empty list if no relevant iOS app data
-            /// streams are found.</summary>
-            /// <param name="parent">Required. The name of the parent property. For example, to list results of app streams under
-            /// the property with Id 123: "properties/123"</param>
+            /// <summary>
+            /// Returns child iOS app data streams under the specified parent property. iOS app data streams will be
+            /// excluded if the caller does not have access. Returns an empty list if no relevant iOS app data streams
+            /// are found.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent property. For example, to list results of app streams under the
+            /// property with Id 123: "properties/123"
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns child iOS app data streams under the specified parent property. iOS app data streams
-            /// will be excluded if the caller does not have access. Returns an empty list if no relevant iOS app data
-            /// streams are found.</summary>
+            /// <summary>
+            /// Returns child iOS app data streams under the specified parent property. iOS app data streams will be
+            /// excluded if the caller does not have access. Returns an empty list if no relevant iOS app data streams
+            /// are found.
+            /// </summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2485,23 +2477,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the parent property. For example, to list results of app streams
-                /// under the property with Id 123: "properties/123"</summary>
+                /// <summary>
+                /// Required. The name of the parent property. For example, to list results of app streams under the
+                /// property with Id 123: "properties/123"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of resources to return. If unspecified, at most 50 resources will be
-                /// returned. The maximum value is 200; (higher values will be coerced to the maximum)</summary>
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListIosAppDataStreams` call. Provide this to
-                /// retrieve the subsequent page. When paginating, all other parameters provided to
-                /// `ListIosAppDataStreams` must match the call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListIosAppDataStreams` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListIosAppDataStreams` must
+                /// match the call that provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2516,7 +2512,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2542,14 +2537,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates an iOS app stream on a property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Resource name of this Data Stream. Format:
-            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example:
-            /// "properties/1000/iosAppDataStreams/2000"</param>
+            /// <param name="name">
+            /// Output only. Resource name of this Data Stream. Format:
+            /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/1000/iosAppDataStreams/2000"
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2566,18 +2561,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Output only. Resource name of this Data Stream. Format:
+                /// <summary>
+                /// Output only. Resource name of this Data Stream. Format:
                 /// properties/{property_id}/iosAppDataStreams/{stream_id} Example:
-                /// "properties/1000/iosAppDataStreams/2000"</summary>
+                /// "properties/1000/iosAppDataStreams/2000"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream Body { get; set; }
@@ -2598,7 +2595,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2616,9 +2612,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the UserLinks resource.</summary>
         public virtual UserLinksResource UserLinks { get; }
 
@@ -2634,15 +2630,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public UserLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Lists all user links on an account or property, including implicit ones that come from
-            /// effective permissions granted by groups or organization admin roles. If a returned user link does not
-            /// have direct permissions, they cannot be removed from the account or property directly with the
-            /// DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is
-            /// currently only usable/discoverable in the GA or GMP UIs.</summary>
+            /// <summary>
+            /// Lists all user links on an account or property, including implicit ones that come from effective
+            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
+            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
+            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
+            /// usable/discoverable in the GA or GMP UIs.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Example format: accounts/1234</param>
             public virtual AuditRequest Audit(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent)
@@ -2650,11 +2646,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new AuditRequest(service, body, parent);
             }
 
-            /// <summary>Lists all user links on an account or property, including implicit ones that come from
-            /// effective permissions granted by groups or organization admin roles. If a returned user link does not
-            /// have direct permissions, they cannot be removed from the account or property directly with the
-            /// DeleteUserLink command. They have to be removed from the group/etc that gives them permissions, which is
-            /// currently only usable/discoverable in the GA or GMP UIs.</summary>
+            /// <summary>
+            /// Lists all user links on an account or property, including implicit ones that come from effective
+            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
+            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
+            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
+            /// usable/discoverable in the GA or GMP UIs.
+            /// </summary>
             public class AuditRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse>
             {
                 /// <summary>Constructs a new Audit request.</summary>
@@ -2665,11 +2663,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest Body { get; set; }
@@ -2690,7 +2686,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2700,22 +2695,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Creates information about multiple users' links to an account or property. This method is
-            /// transactional. If any UserLink cannot be created, none of the UserLinks will be created.</summary>
+            /// <summary>
+            /// Creates information about multiple users' links to an account or property. This method is transactional.
+            /// If any UserLink cannot be created, none of the UserLinks will be created.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. This field is
-            /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
-            /// format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. This field is required.
+            /// The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
+            /// format: accounts/1234
+            /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent)
             {
                 return new BatchCreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates information about multiple users' links to an account or property. This method is
-            /// transactional. If any UserLink cannot be created, none of the UserLinks will be created.</summary>
+            /// <summary>
+            /// Creates information about multiple users' links to an account or property. This method is transactional.
+            /// If any UserLink cannot be created, none of the UserLinks will be created.
+            /// </summary>
             public class BatchCreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse>
             {
                 /// <summary>Constructs a new BatchCreate request.</summary>
@@ -2726,13 +2726,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. This field is
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. This field is
                 /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this
-                /// field. Example format: accounts/1234</summary>
+                /// field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest Body { get; set; }
@@ -2753,7 +2753,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2763,13 +2762,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent of all
-            /// values for user link names to delete must match this field. Example format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent of all values
+            /// for user link names to delete must match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent)
             {
                 return new BatchDeleteRequest(service, body, parent);
@@ -2786,13 +2786,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent of
-                /// all values for user link names to delete must match this field. Example format:
-                /// accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent of all
+                /// values for user link names to delete must match this field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest Body { get; set; }
@@ -2813,7 +2812,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2823,12 +2821,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent of all
-            /// provided values for the 'names' field must match this field. Example format: accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent of all provided
+            /// values for the 'names' field must match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchGetRequest BatchGet(string parent)
             {
                 return new BatchGetRequest(service, parent);
@@ -2844,18 +2843,19 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent of
-                /// all provided values for the 'names' field must match this field. Example format:
-                /// accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent of all
+                /// provided values for the 'names' field must match this field. Example format: accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required. The names of the user links to retrieve. A maximum of 1000 user links can be
-                /// retrieved in a batch. Format: accounts/{accountId}/userLinks/{userLinkId}</summary>
+                /// <summary>
+                /// Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in
+                /// a batch. Format: accounts/{accountId}/userLinks/{userLinkId}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "batchGet";
@@ -2870,7 +2870,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2888,14 +2887,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates information about multiple users' links to an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The account or property that all user links in the request are for. The parent field
-            /// in the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
-            /// accounts/1234</param>
+            /// <param name="parent">
+            /// Required. The account or property that all user links in the request are for. The parent field in the
+            /// UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234
+            /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent)
             {
                 return new BatchUpdateRequest(service, body, parent);
@@ -2912,13 +2911,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The account or property that all user links in the request are for. The parent
-                /// field in the UpdateUserLinkRequest messages must either be empty or match this field. Example
-                /// format: accounts/1234</summary>
+                /// <summary>
+                /// Required. The account or property that all user links in the request are for. The parent field in
+                /// the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
+                /// accounts/1234
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest Body { get; set; }
@@ -2939,7 +2938,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2949,12 +2947,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Creates a user link on an account or property. If the user with the specified email already has
+            /// <summary>
+            /// Creates a user link on an account or property. If the user with the specified email already has
             /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.</summary>
+            /// permissions specified in the new UserLink.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. Example format: accounts/1234</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent)
@@ -2962,9 +2961,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a user link on an account or property. If the user with the specified email already has
+            /// <summary>
+            /// Creates a user link on an account or property. If the user with the specified email already has
             /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.</summary>
+            /// permissions specified in the new UserLink.
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2975,16 +2976,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If set, then email the new user notifying them that they've been granted
-                /// permissions to the resource.</summary>
+                /// <summary>
+                /// Optional. If set, then email the new user notifying them that they've been granted permissions to
+                /// the resource.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NotifyNewUser { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
@@ -3005,7 +3006,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3023,7 +3023,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a user link on an account or property.</summary>
@@ -3043,11 +3042,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3062,7 +3059,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3072,7 +3068,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets information about a user's link to an account or property.</summary>
@@ -3092,11 +3087,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3111,7 +3104,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3121,7 +3113,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists all user links on an account or property.</summary>
@@ -3141,23 +3132,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Required. Example format: accounts/1234</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of user links to return. The service may return fewer than this value.
-                /// If unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
-                /// will be coerced to 500.</summary>
+                /// <summary>
+                /// The maximum number of user links to return. The service may return fewer than this value. If
+                /// unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
+                /// will be coerced to 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListUserLinks` must match the
-                /// call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters provided to `ListUserLinks` must match the call that
+                /// provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3172,7 +3165,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3198,7 +3190,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a user link on an account or property.</summary>
@@ -3220,11 +3211,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
                 /// <summary>Example format: properties/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
@@ -3245,7 +3234,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3255,9 +3243,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the WebDataStreams resource.</summary>
         public virtual WebDataStreamsResource WebDataStreams { get; }
 
@@ -3273,14 +3261,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public WebDataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a web stream with the specified location and attributes.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource where this web data stream will be created. Format:
-            /// properties/123</param>
+            /// <param name="parent">
+            /// Required. The parent resource where this web data stream will be created. Format: properties/123
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaWebDataStream body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3297,12 +3284,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent resource where this web data stream will be created. Format:
-                /// properties/123</summary>
+                /// <summary>
+                /// Required. The parent resource where this web data stream will be created. Format: properties/123
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaWebDataStream Body { get; set; }
@@ -3323,7 +3309,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3333,12 +3318,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes a web stream on a property.</summary>
-            /// <param name="name">Required. The name of the web data stream to delete. Format:
-            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"</param>
+            /// <param name="name">
+            /// Required. The name of the web data stream to delete. Format:
+            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -3354,13 +3340,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the web data stream to delete. Format:
-                /// properties/{property_id}/webDataStreams/{stream_id} Example:
-                /// "properties/123/webDataStreams/456"</summary>
+                /// <summary>
+                /// Required. The name of the web data stream to delete. Format:
+                /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3375,7 +3360,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3385,12 +3369,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/webDataStreams/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lookup for a single WebDataStream</summary>
-            /// <param name="name">Required. The name of the web data stream to lookup. Format:
-            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"</param>
+            /// <param name="name">
+            /// Required. The name of the web data stream to lookup. Format:
+            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -3406,13 +3391,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the web data stream to lookup. Format:
-                /// properties/{property_id}/webDataStreams/{stream_id} Example:
-                /// "properties/123/webDataStreams/456"</summary>
+                /// <summary>
+                /// Required. The name of the web data stream to lookup. Format:
+                /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/123/webDataStreams/456"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -3427,7 +3411,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3437,21 +3420,26 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/webDataStreams/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Returns the singleton enhanced measurement settings for this web stream. Note that the stream
-            /// must enable enhanced measurement for these settings to take effect.</summary>
-            /// <param name="name">Required. The name of the settings to lookup. Format:
+            /// <summary>
+            /// Returns the singleton enhanced measurement settings for this web stream. Note that the stream must
+            /// enable enhanced measurement for these settings to take effect.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the settings to lookup. Format:
             /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"</param>
+            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
+            /// </param>
             public virtual GetEnhancedMeasurementSettingsRequest GetEnhancedMeasurementSettings(string name)
             {
                 return new GetEnhancedMeasurementSettingsRequest(service, name);
             }
 
-            /// <summary>Returns the singleton enhanced measurement settings for this web stream. Note that the stream
-            /// must enable enhanced measurement for these settings to take effect.</summary>
+            /// <summary>
+            /// Returns the singleton enhanced measurement settings for this web stream. Note that the stream must
+            /// enable enhanced measurement for these settings to take effect.
+            /// </summary>
             public class GetEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
             {
                 /// <summary>Constructs a new GetEnhancedMeasurementSettings request.</summary>
@@ -3461,13 +3449,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the settings to lookup. Format:
+                /// <summary>
+                /// Required. The name of the settings to lookup. Format:
                 /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"</summary>
+                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getEnhancedMeasurementSettings";
@@ -3482,7 +3470,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3492,21 +3479,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/webDataStreams/[^/]+/enhancedMeasurementSettings$",
                     });
                 }
-
             }
 
-            /// <summary>Returns the Site Tag for the specified web stream. Site Tags are immutable
-            /// singletons.</summary>
-            /// <param name="name">Required. The name of the site tag to lookup. Note that site tags are singletons and do not have
-            /// unique IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
-            /// "properties/123/webDataStreams/456/globalSiteTag"</param>
+            /// <summary>
+            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have unique
+            /// IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
+            /// "properties/123/webDataStreams/456/globalSiteTag"
+            /// </param>
             public virtual GetGlobalSiteTagRequest GetGlobalSiteTag(string name)
             {
                 return new GetGlobalSiteTagRequest(service, name);
             }
 
-            /// <summary>Returns the Site Tag for the specified web stream. Site Tags are immutable
-            /// singletons.</summary>
+            /// <summary>
+            /// Returns the Site Tag for the specified web stream. Site Tags are immutable singletons.
+            /// </summary>
             public class GetGlobalSiteTagRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaGlobalSiteTag>
             {
                 /// <summary>Constructs a new GetGlobalSiteTag request.</summary>
@@ -3516,13 +3506,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the site tag to lookup. Note that site tags are singletons and do not
-                /// have unique IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
-                /// "properties/123/webDataStreams/456/globalSiteTag"</summary>
+                /// <summary>
+                /// Required. The name of the site tag to lookup. Note that site tags are singletons and do not have
+                /// unique IDs. Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag Example:
+                /// "properties/123/webDataStreams/456/globalSiteTag"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getGlobalSiteTag";
@@ -3537,7 +3527,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3547,22 +3536,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = @"^properties/[^/]+/webDataStreams/[^/]+/globalSiteTag$",
                     });
                 }
-
             }
 
-            /// <summary>Returns child web data streams under the specified parent property. Web data streams will be
-            /// excluded if the caller does not have access. Returns an empty list if no relevant web data streams are
-            /// found.</summary>
-            /// <param name="parent">Required. The name of the parent property. For example, to list results of web streams under
-            /// the property with Id 123: "properties/123"</param>
+            /// <summary>
+            /// Returns child web data streams under the specified parent property. Web data streams will be excluded if
+            /// the caller does not have access. Returns an empty list if no relevant web data streams are found.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the parent property. For example, to list results of web streams under the
+            /// property with Id 123: "properties/123"
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Returns child web data streams under the specified parent property. Web data streams will be
-            /// excluded if the caller does not have access. Returns an empty list if no relevant web data streams are
-            /// found.</summary>
+            /// <summary>
+            /// Returns child web data streams under the specified parent property. Web data streams will be excluded if
+            /// the caller does not have access. Returns an empty list if no relevant web data streams are found.
+            /// </summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3572,23 +3564,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the parent property. For example, to list results of web streams
-                /// under the property with Id 123: "properties/123"</summary>
+                /// <summary>
+                /// Required. The name of the parent property. For example, to list results of web streams under the
+                /// property with Id 123: "properties/123"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of resources to return. If unspecified, at most 50 resources will be
-                /// returned. The maximum value is 200; (higher values will be coerced to the maximum)</summary>
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListWebDataStreams` call. Provide this to retrieve
-                /// the subsequent page. When paginating, all other parameters provided to `ListWebDataStreams` must
-                /// match the call that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListWebDataStreams` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListWebDataStreams` must match
+                /// the call that provided the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3603,7 +3599,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3629,13 +3624,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a web stream on a property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Resource name of this Data Stream. Format:
-            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/1000/webDataStreams/2000"</param>
+            /// <param name="name">
+            /// Output only. Resource name of this Data Stream. Format:
+            /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/1000/webDataStreams/2000"
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaWebDataStream body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -3652,18 +3648,19 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Output only. Resource name of this Data Stream. Format:
-                /// properties/{property_id}/webDataStreams/{stream_id} Example:
-                /// "properties/1000/webDataStreams/2000"</summary>
+                /// <summary>
+                /// Output only. Resource name of this Data Stream. Format:
+                /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/1000/webDataStreams/2000"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaWebDataStream Body { get; set; }
@@ -3684,7 +3681,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3702,22 +3698,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the singleton enhanced measurement settings for this web stream. Note that the stream
-            /// must enable enhanced measurement for these settings to take effect.</summary>
+            /// <summary>
+            /// Updates the singleton enhanced measurement settings for this web stream. Note that the stream must
+            /// enable enhanced measurement for these settings to take effect.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Resource name of this Data Stream. Format:
+            /// <param name="name">
+            /// Output only. Resource name of this Data Stream. Format:
             /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"</param>
+            /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
+            /// </param>
             public virtual UpdateEnhancedMeasurementSettingsRequest UpdateEnhancedMeasurementSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings body, string name)
             {
                 return new UpdateEnhancedMeasurementSettingsRequest(service, body, name);
             }
 
-            /// <summary>Updates the singleton enhanced measurement settings for this web stream. Note that the stream
-            /// must enable enhanced measurement for these settings to take effect.</summary>
+            /// <summary>
+            /// Updates the singleton enhanced measurement settings for this web stream. Note that the stream must
+            /// enable enhanced measurement for these settings to take effect.
+            /// </summary>
             public class UpdateEnhancedMeasurementSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>
             {
                 /// <summary>Constructs a new UpdateEnhancedMeasurementSettings request.</summary>
@@ -3728,18 +3729,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-
-                /// <summary>Output only. Resource name of this Data Stream. Format:
+                /// <summary>
+                /// Output only. Resource name of this Data Stream. Format:
                 /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"</summary>
+                /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace
-                /// the entire entity, use one path with the string "*" to match all fields.</summary>
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings Body { get; set; }
@@ -3760,7 +3763,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3778,7 +3780,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -3799,8 +3800,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty Body { get; set; }
 
@@ -3820,30 +3819,32 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a
-        /// method to restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the
-        /// properties are not restored before the expiration time, the Property and all child resources (eg:
-        /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
-        /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not
-        /// an GA4 Property.</summary>
-        /// <param name="name">Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
-        /// "properties/1000"</param>
+        /// <summary>
+        /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
+        /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
+        /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
+        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
+        /// if the target is not found, or is not an GA4 Property.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
+        /// "properties/1000"
+        /// </param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a
-        /// method to restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the
-        /// properties are not restored before the expiration time, the Property and all child resources (eg:
-        /// GoogleAdsLinks, Streams, UserLinks) will be permanently purged.
-        /// https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found, or is not
-        /// an GA4 Property.</summary>
+        /// <summary>
+        /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
+        /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
+        /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
+        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
+        /// if the target is not found, or is not an GA4 Property.
+        /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3853,12 +3854,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
-            /// "properties/1000"</summary>
+            /// <summary>
+            /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
+            /// "properties/1000"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -3873,7 +3874,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3883,12 +3883,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = @"^properties/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lookup for a single "GA4" Property.</summary>
-        /// <param name="name">Required. The name of the property to lookup. Format: properties/{property_id} Example:
-        /// "properties/1000"</param>
+        /// <param name="name">
+        /// Required. The name of the property to lookup. Format: properties/{property_id} Example: "properties/1000"
+        /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -3904,12 +3904,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. The name of the property to lookup. Format: properties/{property_id} Example:
-            /// "properties/1000"</summary>
+            /// <summary>
+            /// Required. The name of the property to lookup. Format: properties/{property_id} Example:
+            /// "properties/1000"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -3924,7 +3924,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3934,20 +3933,23 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = @"^properties/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Returns child Properties under the specified parent Account. Only "GA4" properties will be
-        /// returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
-        /// properties are excluded by default. Returns an empty list if no relevant properties are found.</summary>
+        /// <summary>
+        /// Returns child Properties under the specified parent Account. Only "GA4" properties will be returned.
+        /// Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are
+        /// excluded by default. Returns an empty list if no relevant properties are found.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Returns child Properties under the specified parent Account. Only "GA4" properties will be
-        /// returned. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed")
-        /// properties are excluded by default. Returns an empty list if no relevant properties are found.</summary>
+        /// <summary>
+        /// Returns child Properties under the specified parent Account. Only "GA4" properties will be returned.
+        /// Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are
+        /// excluded by default. Returns an empty list if no relevant properties are found.
+        /// </summary>
         public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListPropertiesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3956,33 +3958,39 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Required. An expression for filtering the results of the request. Fields eligible for filtering
-            /// are: `parent:`(The resource name of the parent account) or `firebase_project:`(The id or number of the
-            /// linked firebase project). Some examples of filters: | Filter | Description |
+            /// <summary>
+            /// Required. An expression for filtering the results of the request. Fields eligible for filtering are:
+            /// `parent:`(The resource name of the parent account) or `firebase_project:`(The id or number of the linked
+            /// firebase project). Some examples of filters: | Filter | Description |
             /// |-----------------------------|-------------------------------------------| | parent:accounts/123 | The
-            /// account with account id: 123. | | firebase_project:project-id | The firebase project with id: project-
-            /// id. | | firebase_project:123 | The firebase project with number: 123. |</summary>
+            /// account with account id: 123. | | firebase_project:project-id | The firebase project with id:
+            /// project-id. | | firebase_project:123 | The firebase project with number: 123. |
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of resources to return. The service may return fewer than this value, even
-            /// if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value
-            /// is 200; (higher values will be coerced to the maximum)</summary>
+            /// <summary>
+            /// The maximum number of resources to return. The service may return fewer than this value, even if there
+            /// are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200;
+            /// (higher values will be coerced to the maximum)
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A page token, received from a previous `ListProperties` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call
-            /// that provided the page token.</summary>
+            /// <summary>
+            /// A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent
+            /// page. When paginating, all other parameters provided to `ListProperties` must match the call that
+            /// provided the page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Whether to include soft-deleted (ie: "trashed") Properties in the results. Properties can be
-            /// inspected to determine whether they are deleted or not.</summary>
+            /// <summary>
+            /// Whether to include soft-deleted (ie: "trashed") Properties in the results. Properties can be inspected
+            /// to determine whether they are deleted or not.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -3997,7 +4005,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
@@ -4031,13 +4038,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates a property.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Output only. Resource name of this property. Format: properties/{property_id} Example:
-        /// "properties/1000"</param>
+        /// <param name="name">
+        /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -4054,17 +4061,18 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 InitParameters();
             }
 
-
-            /// <summary>Output only. Resource name of this property. Format: properties/{property_id} Example:
-            /// "properties/1000"</summary>
+            /// <summary>
+            /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-            /// entire entity, use one path with the string "*" to match all fields.</summary>
+            /// <summary>
+            /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire
+            /// entity, use one path with the string "*" to match all fields.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty Body { get; set; }
@@ -4085,7 +4093,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -4103,19 +4110,18 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
-{    
-
+{
     /// <summary>A resource message representing a Google Analytics account.</summary>
     public class GoogleAnalyticsAdminV1alphaAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Country of business. Must be a non-deprecated code for a UN M.49 region.
-        /// https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html</summary>
+        /// <summary>
+        /// Country of business. Must be a non-deprecated code for a UN M.49 region.
+        /// https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
@@ -4123,8 +4129,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded
-        /// from List results unless specifically requested.</summary>
+        /// <summary>
+        /// Output only. Indicates whether this Account is soft-deleted or not. Deleted accounts are excluded from List
+        /// results unless specifically requested.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
@@ -4132,8 +4140,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. Resource name of this account. Format: accounts/{account} Example:
-        /// "accounts/100"</summary>
+        /// <summary>
+        /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4143,13 +4152,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A virtual resource representing an overview of an account and all its child GA4 properties.</summary>
     public class GoogleAnalyticsAdminV1alphaAccountSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of account referred to by this account summary Format: accounts/{account_id} Example:
-        /// "accounts/1000"</summary>
+        /// <summary>
+        /// Resource name of account referred to by this account summary Format: accounts/{account_id} Example:
+        /// "accounts/1000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual string Account { get; set; }
 
@@ -4157,8 +4168,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name for this account summary. Format: accountSummaries/{account_id} Example:
-        /// "accountSummaries/1000"</summary>
+        /// <summary>
+        /// Resource name for this account summary. Format: accountSummaries/{account_id} Example:
+        /// "accountSummaries/1000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4168,7 +4181,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing a Google Analytics Android app stream.</summary>
     public class GoogleAnalyticsAdminV1alphaAndroidAppDataStream : Google.Apis.Requests.IDirectResponseSchema
@@ -4177,24 +4190,31 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16
-        /// code units.</summary>
+        /// <summary>
+        /// Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16 code
+        /// units.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the
-        /// Android app is deleted and recreated.</summary>
+        /// <summary>
+        /// Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app
+        /// is deleted and recreated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
         public virtual string FirebaseAppId { get; set; }
 
-        /// <summary>Output only. Resource name of this Data Stream. Format:
+        /// <summary>
+        /// Output only. Resource name of this Data Stream. Format:
         /// properties/{property_id}/androidAppDataStreams/{stream_id} Example:
-        /// "properties/1000/androidAppDataStreams/2000"</summary>
+        /// "properties/1000/androidAppDataStreams/2000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Immutable. The package name for the app being measured. Example:
-        /// "com.example.myandroidapp"</summary>
+        /// <summary>
+        /// Immutable. The package name for the app being measured. Example: "com.example.myandroidapp"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
@@ -4204,18 +4224,22 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Read-only resource used to summarize a principal's effective roles.</summary>
     public class GoogleAnalyticsAdminV1alphaAuditUserLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Roles directly assigned to this user for this entity. Format: predefinedRoles/read Excludes roles
-        /// that are inherited from an account (if this is for a property), group, or organization admin role.</summary>
+        /// <summary>
+        /// Roles directly assigned to this user for this entity. Format: predefinedRoles/read Excludes roles that are
+        /// inherited from an account (if this is for a property), group, or organization admin role.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
         public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }
 
-        /// <summary>Union of all permissions a user has at this account or property (includes direct permissions,
-        /// group-inherited permissions, etc.). Format: predefinedRoles/read</summary>
+        /// <summary>
+        /// Union of all permissions a user has at this account or property (includes direct permissions,
+        /// group-inherited permissions, etc.). Format: predefinedRoles/read
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveRoles")]
         public virtual System.Collections.Generic.IList<string> EffectiveRoles { get; set; }
 
@@ -4229,32 +4253,37 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for AuditUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of user links to return. The service may return fewer than this value. If
-        /// unspecified, at most 1000 user links will be returned. The maximum value is 5000; values above 5000 will be
-        /// coerced to 5000.</summary>
+        /// <summary>
+        /// The maximum number of user links to return. The service may return fewer than this value. If unspecified, at
+        /// most 1000 user links will be returned. The maximum value is 5000; values above 5000 will be coerced to 5000.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>A page token, received from a previous `AuditUserLinks` call. Provide this to retrieve the
-        /// subsequent page. When paginating, all other parameters provided to `AuditUserLinks` must match the call that
-        /// provided the page token.</summary>
+        /// <summary>
+        /// A page token, received from a previous `AuditUserLinks` call. Provide this to retrieve the subsequent page.
+        /// When paginating, all other parameters provided to `AuditUserLinks` must match the call that provided the
+        /// page token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for AuditUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4264,25 +4293,29 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BatchCreateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If set, then email the new users notifying them that they've been granted permissions to
-        /// the resource. Regardless of whether this is set or not, notify_new_user field inside each individual request
-        /// is ignored.</summary>
+        /// <summary>
+        /// Optional. If set, then email the new users notifying them that they've been granted permissions to the
+        /// resource. Regardless of whether this is set or not, notify_new_user field inside each individual request is
+        /// ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUsers")]
         public virtual System.Nullable<bool> NotifyNewUsers { get; set; }
 
-        /// <summary>Required. The requests specifying the user links to create. A maximum of 1000 user links can be
-        /// created in a batch.</summary>
+        /// <summary>
+        /// Required. The requests specifying the user links to create. A maximum of 1000 user links can be created in a
+        /// batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest> Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for BatchCreateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4293,19 +4326,21 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BatchDeleteUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The requests specifying the user links to update. A maximum of 1000 user links can be
-        /// updated in a batch.</summary>
+        /// <summary>
+        /// Required. The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
+        /// batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest> Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for BatchGetUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4316,19 +4351,21 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for BatchUpdateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The requests specifying the user links to update. A maximum of 1000 user links can be
-        /// updated in a batch.</summary>
+        /// <summary>
+        /// Required. The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
+        /// batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest> Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for BatchUpdateUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4339,17 +4376,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Request message for CreateUserLink RPC. Users can have multiple email addresses associated with their
-    /// Google account, and one of these email addresses is the "primary" email address. Any of the email addresses
-    /// associated with a Google account may be used for a new UserLink, but the returned UserLink will always contain
-    /// the "primary" email address. As a result, the input and output email address for this request may
-    /// differ.</summary>
+    /// <summary>
+    /// Request message for CreateUserLink RPC. Users can have multiple email addresses associated with their Google
+    /// account, and one of these email addresses is the "primary" email address. Any of the email addresses associated
+    /// with a Google account may be used for a new UserLink, but the returned UserLink will always contain the
+    /// "primary" email address. As a result, the input and output email address for this request may differ.
+    /// </summary>
     public class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. If set, then email the new user notifying them that they've been granted permissions to
-        /// the resource.</summary>
+        /// <summary>
+        /// Optional. If set, then email the new user notifying them that they've been granted permissions to the
+        /// resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUser")]
         public virtual System.Nullable<bool> NotifyNewUser { get; set; }
 
@@ -4363,23 +4403,28 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing data sharing settings of a Google Analytics account.</summary>
     public class GoogleAnalyticsAdminV1alphaDataSharingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example:
-        /// "accounts/1000/dataSharingSettings"</summary>
+        /// <summary>
+        /// Output only. Resource name. Format: accounts/{account}/dataSharingSettings Example:
+        /// "accounts/1000/dataSharingSettings"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Allows any of Google sales to access the data in order to suggest configuration changes to improve
-        /// results.</summary>
+        /// <summary>
+        /// Allows any of Google sales to access the data in order to suggest configuration changes to improve results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySalesEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleAnySalesEnabled { get; set; }
 
-        /// <summary>Allows Google sales teams that are assigned to the customer to access the data in order to suggest
-        /// configuration changes to improve results. Sales team restrictions still apply when enabled.</summary>
+        /// <summary>
+        /// Allows Google sales teams that are assigned to the customer to access the data in order to suggest
+        /// configuration changes to improve results. Sales team restrictions still apply when enabled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAssignedSalesEnabled")]
         public virtual System.Nullable<bool> SharingWithGoogleAssignedSalesEnabled { get; set; }
 
@@ -4397,7 +4442,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for DeleteUserLink RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -4408,24 +4453,30 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Singleton resource under a WebDataStream, configuring measurement of additional site interactions and
-    /// content.</summary>
+    /// <summary>
+    /// Singleton resource under a WebDataStream, configuring measurement of additional site interactions and content.
+    /// </summary>
     public class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Capture events when your visitors view content on your site that has articles or blog
-        /// posts.</summary>
+        /// <summary>
+        /// Capture events when your visitors view content on your site that has articles or blog posts.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("articlesAndBlogsEnabled")]
         public virtual System.Nullable<bool> ArticlesAndBlogsEnabled { get; set; }
 
-        /// <summary>Capture events when your visitors view content on your site that has structured data (eg, articles,
-        /// blog posts, product details screens, etc.).</summary>
+        /// <summary>
+        /// Capture events when your visitors view content on your site that has structured data (eg, articles, blog
+        /// posts, product details screens, etc.).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentViewsEnabled")]
         public virtual System.Nullable<bool> ContentViewsEnabled { get; set; }
 
-        /// <summary>If enabled, capture a click event each time a visitor clicks a link or element that has data
-        /// attributes beginning with "data-ga".</summary>
+        /// <summary>
+        /// If enabled, capture a click event each time a visitor clicks a link or element that has data attributes
+        /// beginning with "data-ga".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataTaggedElementClicksEnabled")]
         public virtual System.Nullable<bool> DataTaggedElementClicksEnabled { get; set; }
 
@@ -4433,29 +4484,37 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDomains")]
         public virtual string ExcludedDomains { get; set; }
 
-        /// <summary>If enabled, capture a file download event each time a link is clicked with a common document,
-        /// compressed file, application, video, or audio extension.</summary>
+        /// <summary>
+        /// If enabled, capture a file download event each time a link is clicked with a common document, compressed
+        /// file, application, video, or audio extension.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileDownloadsEnabled")]
         public virtual System.Nullable<bool> FileDownloadsEnabled { get; set; }
 
-        /// <summary>If enabled, capture a view search results event each time a visitor interacts with a form on your
-        /// site.</summary>
+        /// <summary>
+        /// If enabled, capture a view search results event each time a visitor interacts with a form on your site.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInteractionsEnabled")]
         public virtual System.Nullable<bool> FormInteractionsEnabled { get; set; }
 
-        /// <summary>Output only. Resource name of this Data Stream. Format:
+        /// <summary>
+        /// Output only. Resource name of this Data Stream. Format:
         /// properties/{property_id}/webDataStreams/{stream_id}/enhancedMeasurementSettings Example:
-        /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"</summary>
+        /// "properties/1000/webDataStreams/2000/enhancedMeasurementSettings"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>If enabled, capture an outbound click event each time a visitor clicks a link that leads them away
-        /// from your domain.</summary>
+        /// <summary>
+        /// If enabled, capture an outbound click event each time a visitor clicks a link that leads them away from your
+        /// domain.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outboundClicksEnabled")]
         public virtual System.Nullable<bool> OutboundClicksEnabled { get; set; }
 
-        /// <summary>If enabled, capture a page view event each time the website changes the browser history
-        /// state.</summary>
+        /// <summary>
+        /// If enabled, capture a page view event each time the website changes the browser history state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageChangesEnabled")]
         public virtual System.Nullable<bool> PageChangesEnabled { get; set; }
 
@@ -4463,13 +4522,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageLoadsEnabled")]
         public virtual System.Nullable<bool> PageLoadsEnabled { get; set; }
 
-        /// <summary>Output only. If enabled, capture a page view event each time a page loads or the website changes
-        /// the browser history state.</summary>
+        /// <summary>
+        /// Output only. If enabled, capture a page view event each time a page loads or the website changes the browser
+        /// history state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewsEnabled")]
         public virtual System.Nullable<bool> PageViewsEnabled { get; set; }
 
-        /// <summary>Capture events when your visitors view content on your site that has product details screens,
-        /// etc.</summary>
+        /// <summary>
+        /// Capture events when your visitors view content on your site that has product details screens, etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productsAndEcommerceEnabled")]
         public virtual System.Nullable<bool> ProductsAndEcommerceEnabled { get; set; }
 
@@ -4477,19 +4539,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scrollsEnabled")]
         public virtual System.Nullable<bool> ScrollsEnabled { get; set; }
 
-        /// <summary>Required. URL query parameters to interpret as site search parameters. Max length is 1024
-        /// characters. Must not be empty.</summary>
+        /// <summary>
+        /// Required. URL query parameters to interpret as site search parameters. Max length is 1024 characters. Must
+        /// not be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQueryParameter")]
         public virtual string SearchQueryParameter { get; set; }
 
-        /// <summary>If enabled, capture a view search results event each time a visitor performs a search on your site
-        /// (based on a query parameter).</summary>
+        /// <summary>
+        /// If enabled, capture a view search results event each time a visitor performs a search on your site (based on
+        /// a query parameter).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteSearchEnabled")]
         public virtual System.Nullable<bool> SiteSearchEnabled { get; set; }
 
-        /// <summary>Indicates whether Enhanced Measurement Settings will be used to automatically measure interactions
-        /// and content on this web stream. Changing this value does not affect the settings themselves, but determines
-        /// whether they are respected.</summary>
+        /// <summary>
+        /// Indicates whether Enhanced Measurement Settings will be used to automatically measure interactions and
+        /// content on this web stream. Changing this value does not affect the settings themselves, but determines
+        /// whether they are respected.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamEnabled")]
         public virtual System.Nullable<bool> StreamEnabled { get; set; }
 
@@ -4497,14 +4565,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("urlQueryParameter")]
         public virtual string UrlQueryParameter { get; set; }
 
-        /// <summary>If enabled, capture video play, progress, and complete events as visitors view embedded videos on
-        /// your site.</summary>
+        /// <summary>
+        /// If enabled, capture video play, progress, and complete events as visitors view embedded videos on your site.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoEngagementEnabled")]
         public virtual System.Nullable<bool> VideoEngagementEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A link between an GA4 property and a Firebase project.</summary>
     public class GoogleAnalyticsAdminV1alphaFirebaseLink : Google.Apis.Requests.IDirectResponseSchema
@@ -4521,35 +4590,41 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this
-        /// resource name using either a project number or project ID. Once this resource has been created, returned
-        /// FirebaseLinks will always have a project_name that contains a project number. Format: 'projects/{project
-        /// number}' Example: 'projects/1234'</summary>
+        /// <summary>
+        /// Immutable. Firebase project resource name. When creating a FirebaseLink, you may provide this resource name
+        /// using either a project number or project ID. Once this resource has been created, returned FirebaseLinks
+        /// will always have a project_name that contains a project number. Format: 'projects/{project number}' Example:
+        /// 'projects/1234'
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Read-only resource with the tag for sending data from a website to a WebDataStream.</summary>
     public class GoogleAnalyticsAdminV1alphaGlobalSiteTag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. JavaScript code snippet to be pasted as the first item into the head tag of every
-        /// webpage to measure.</summary>
+        /// <summary>
+        /// Immutable. JavaScript code snippet to be pasted as the first item into the head tag of every webpage to
+        /// measure.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string Snippet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A link between an GA4 property and a Google Ads account.</summary>
     public class GoogleAnalyticsAdminV1alphaGoogleAdsLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Enable personalized advertising features with this integration. Automatically publish my Google
-        /// Analytics audience lists and Google Analytics remarketing events/parameters to the linked Google Ads
-        /// account. If this field is not set on create/update it will be defaulted to true.</summary>
+        /// <summary>
+        /// Enable personalized advertising features with this integration. Automatically publish my Google Analytics
+        /// audience lists and Google Analytics remarketing events/parameters to the linked Google Ads account. If this
+        /// field is not set on create/update it will be defaulted to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsPersonalizationEnabled")]
         public virtual System.Nullable<bool> AdsPersonalizationEnabled { get; set; }
 
@@ -4565,13 +4640,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
 
-        /// <summary>Output only. Email address of the user that created the link. An empty string will be returned if
-        /// the email address can't be retrieved.</summary>
+        /// <summary>
+        /// Output only. Email address of the user that created the link. An empty string will be returned if the email
+        /// address can't be retrieved.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        /// <summary>Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId
-        /// is not the Google Ads customer ID.</summary>
+        /// <summary>
+        /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not
+        /// the Google Ads customer ID.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4585,13 +4664,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing a Google Analytics IOS app stream.</summary>
     public class GoogleAnalyticsAdminV1alphaIosAppDataStream : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Immutable. The Apple App Store Bundle ID for the app Example:
-        /// "com.example.myiosapp"</summary>
+        /// <summary>
+        /// Required. Immutable. The Apple App Store Bundle ID for the app Example: "com.example.myiosapp"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
         public virtual string BundleId { get; set; }
 
@@ -4599,19 +4679,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16
-        /// code units.</summary>
+        /// <summary>
+        /// Human-readable display name for the Data Stream. The max allowed display name length is 255 UTF-16 code
+        /// units.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app
-        /// is deleted and recreated.</summary>
+        /// <summary>
+        /// Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is
+        /// deleted and recreated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
         public virtual string FirebaseAppId { get; set; }
 
-        /// <summary>Output only. Resource name of this Data Stream. Format:
-        /// properties/{property_id}/iosAppDataStreams/{stream_id} Example:
-        /// "properties/1000/iosAppDataStreams/2000"</summary>
+        /// <summary>
+        /// Output only. Resource name of this Data Stream. Format:
+        /// properties/{property_id}/iosAppDataStreams/{stream_id} Example: "properties/1000/iosAppDataStreams/2000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4621,7 +4706,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListAccountSummaries RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4630,14 +4715,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountSummaries")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccountSummary> AccountSummaries { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for ListAccounts RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4646,14 +4733,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccount> Accounts { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for ListAndroidDataStreams RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4662,14 +4751,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppDataStreams")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> AndroidAppDataStreams { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListFirebaseLinks RPC</summary>
     public class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4678,15 +4769,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaFirebaseLink> FirebaseLinks { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages. Currently, Google Analytics supports only one FirebaseLink per property, so
-        /// this will never be populated.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. Currently, Google Analytics supports only one FirebaseLink per property, so this will
+        /// never be populated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListGoogleAdsLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4695,14 +4788,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleAdsLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaGoogleAdsLink> GoogleAdsLinks { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for ListIosAppDataStreams RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4711,20 +4806,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppDataStreams")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaIosAppDataStream> IosAppDataStreams { get; set; }
 
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListProperties RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListPropertiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4734,13 +4833,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListUserLinks RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4750,13 +4851,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for ListWebDataStreams RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
-        /// there are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4766,7 +4869,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing a Google Analytics GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaProperty : Google.Apis.Requests.IDirectResponseSchema
@@ -4775,18 +4878,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The currency type used in reports involving monetary values. Format:
-        /// https://en.wikipedia.org/wiki/ISO_4217 Examples: "USD", "EUR", "JPY"</summary>
+        /// <summary>
+        /// The currency type used in reports involving monetary values. Format: https://en.wikipedia.org/wiki/ISO_4217
+        /// Examples: "USD", "EUR", "JPY"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
 
-        /// <summary>Output only. Indicates whether this Property is soft-deleted or not. Deleted properties are
-        /// excluded from List results unless specifically requested.</summary>
+        /// <summary>
+        /// Output only. Indicates whether this Property is soft-deleted or not. Deleted properties are excluded from
+        /// List results unless specifically requested.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
-        /// <summary>Required. Human-readable display name for this property. The max allowed display name length is 100
-        /// UTF-16 code units.</summary>
+        /// <summary>
+        /// Required. Human-readable display name for this property. The max allowed display name length is 100 UTF-16
+        /// code units.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -4794,20 +4903,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("industryCategory")]
         public virtual string IndustryCategory { get; set; }
 
-        /// <summary>Output only. Resource name of this property. Format: properties/{property_id} Example:
-        /// "properties/1000"</summary>
+        /// <summary>
+        /// Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Immutable. Resource name of this property's logical parent. Note: The Property-Moving UI can be
-        /// used to change the parent. Format: accounts/{account} Example: "accounts/100"</summary>
+        /// <summary>
+        /// Immutable. Resource name of this property's logical parent. Note: The Property-Moving UI can be used to
+        /// change the parent. Format: accounts/{account} Example: "accounts/100"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Reporting Time Zone, used as the day boundary for reports, regardless of where the data originates.
-        /// If the time zone honors DST, Analytics will automatically adjust for the changes. NOTE: Changing the time
-        /// zone only affects data going forward, and is not applied retroactively. Format: https://www.iana.org/time-
-        /// zones Example: "America/Los_Angeles"</summary>
+        /// <summary>
+        /// Reporting Time Zone, used as the day boundary for reports, regardless of where the data originates. If the
+        /// time zone honors DST, Analytics will automatically adjust for the changes. NOTE: Changing the time zone only
+        /// affects data going forward, and is not applied retroactively. Format: https://www.iana.org/time-zones
+        /// Example: "America/Los_Angeles"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
@@ -4817,7 +4931,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A virtual resource representing metadata for an GA4 property.</summary>
     public class GoogleAnalyticsAdminV1alphaPropertySummary : Google.Apis.Requests.IDirectResponseSchema
@@ -4826,14 +4940,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Resource name of property referred to by this property summary Format: properties/{property_id}
-        /// Example: "properties/1000"</summary>
+        /// <summary>
+        /// Resource name of property referred to by this property summary Format: properties/{property_id} Example:
+        /// "properties/1000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for ProvisionAccountTicket RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -4842,14 +4958,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
 
-        /// <summary>Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in
-        /// Developers Console as a Redirect URI</summary>
+        /// <summary>
+        /// Redirect URI where the user will be sent after accepting Terms of Service. Must be configured in Developers
+        /// Console as a Redirect URI
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ProvisionAccountTicket RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4860,7 +4978,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for UpdateUserLink RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -4871,15 +4989,17 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing a user's permissions on an Account or Property resource.</summary>
     public class GoogleAnalyticsAdminV1alphaUserLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Roles directly assigned to this user for this account or property. Valid values:
-        /// predefinedRoles/read predefinedRoles/collaborate predefinedRoles/edit predefinedRoles/manage-users Excludes
-        /// roles that are inherited from a higher-level entity, group, or organization admin role. A UserLink that is
-        /// updated to have an empty list of direct_roles will be deleted.</summary>
+        /// <summary>
+        /// Roles directly assigned to this user for this account or property. Valid values: predefinedRoles/read
+        /// predefinedRoles/collaborate predefinedRoles/edit predefinedRoles/manage-users Excludes roles that are
+        /// inherited from a higher-level entity, group, or organization admin role. A UserLink that is updated to have
+        /// an empty list of direct_roles will be deleted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
         public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }
 
@@ -4893,7 +5013,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource message representing a Google Analytics web stream.</summary>
     public class GoogleAnalyticsAdminV1alphaWebDataStream : Google.Apis.Requests.IDirectResponseSchema
@@ -4902,28 +5022,38 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Immutable. Domain name of the web app being measured, or empty. Example: "http://www.google.com",
-        /// "https://www.google.com"</summary>
+        /// <summary>
+        /// Immutable. Domain name of the web app being measured, or empty. Example: "http://www.google.com",
+        /// "https://www.google.com"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultUri")]
         public virtual string DefaultUri { get; set; }
 
-        /// <summary>Required. Human-readable display name for the Data Stream. The max allowed display name length is
-        /// 100 UTF-16 code units.</summary>
+        /// <summary>
+        /// Required. Human-readable display name for the Data Stream. The max allowed display name length is 100 UTF-16
+        /// code units.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app
-        /// is deleted and recreated.</summary>
+        /// <summary>
+        /// Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is
+        /// deleted and recreated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
         public virtual string FirebaseAppId { get; set; }
 
-        /// <summary>Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-1A2BCD345E" would
-        /// just be "1A2BCD345E"</summary>
+        /// <summary>
+        /// Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-1A2BCD345E" would just be
+        /// "1A2BCD345E"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; }
 
-        /// <summary>Output only. Resource name of this Data Stream. Format:
-        /// properties/{property_id}/webDataStreams/{stream_id} Example: "properties/1000/webDataStreams/2000"</summary>
+        /// <summary>
+        /// Output only. Resource name of this Data Stream. Format: properties/{property_id}/webDataStreams/{stream_id}
+        /// Example: "properties/1000/webDataStreams/2000"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4933,12 +5063,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
         {
             /// <summary>See and/or control the devices that you selected</summary>
             public static string SdmService = "https://www.googleapis.com/auth/sdm.service";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Smart Device Management API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
         {
             /// <summary>See and/or control the devices that you selected</summary>
             public const string SdmService = "https://www.googleapis.com/auth/sdm.service";
-
         }
-
-
 
         /// <summary>Gets the Enterprises resource.</summary>
         public virtual EnterprisesResource Enterprises { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.SmartDeviceManagement.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.SmartDeviceManagement.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.SmartDeviceManagement.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -268,7 +275,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
             this.service = service;
             Devices = new DevicesResource(service);
             Structures = new StructuresResource(service);
-
         }
 
         /// <summary>Gets the Devices resource.</summary>
@@ -286,9 +292,7 @@ namespace Google.Apis.SmartDeviceManagement.v1
             public DevicesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Executes a command to device managed by the enterprise.</summary>
             /// <param name="body">The body of the request.</param>
@@ -309,11 +313,9 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The name of the device requested. For example: "enterprises/XYZ/devices/123"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.SmartDeviceManagement.v1.Data.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest Body { get; set; }
@@ -334,7 +336,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -344,7 +345,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         Pattern = @"^enterprises/[^/]+/devices/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a device managed by the enterprise.</summary>
@@ -364,11 +364,9 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The name of the device requested. For example: "enterprises/XYZ/devices/123"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -383,7 +381,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -393,7 +390,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         Pattern = @"^enterprises/[^/]+/devices/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists devices managed by the enterprise.</summary>
@@ -413,25 +409,27 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The parent enterprise to list devices under. E.g. "enterprises/XYZ".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional filter to list devices. Filters can be done on: Device custom name (substring
-                /// match): 'customName=wing'</summary>
+                /// <summary>
+                /// Optional filter to list devices. Filters can be done on: Device custom name (substring match):
+                /// 'customName=wing'
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Optional requested page size. Server may return fewer devices than requested. If
-                /// unspecified, server will pick an appropriate default.</summary>
+                /// <summary>
+                /// Optional requested page size. Server may return fewer devices than requested. If unspecified, server
+                /// will pick an appropriate default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -446,7 +444,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -480,9 +477,9 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Structures resource.</summary>
         public virtual StructuresResource Structures { get; }
 
@@ -499,7 +496,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
             {
                 this.service = service;
                 Rooms = new RoomsResource(service);
-
             }
 
             /// <summary>Gets the Rooms resource.</summary>
@@ -517,13 +513,12 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 public RoomsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
                 /// <summary>Gets a room managed by the enterprise.</summary>
-                /// <param name="name">The name of the room requested. For example:
-                /// "enterprises/XYZ/structures/ABC/rooms/123".</param>
+                /// <param name="name">
+                /// The name of the room requested. For example: "enterprises/XYZ/structures/ABC/rooms/123".
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -539,12 +534,11 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>The name of the room requested. For example:
-                    /// "enterprises/XYZ/structures/ABC/rooms/123".</summary>
+                    /// <summary>
+                    /// The name of the room requested. For example: "enterprises/XYZ/structures/ABC/rooms/123".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -559,7 +553,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -569,12 +562,12 @@ namespace Google.Apis.SmartDeviceManagement.v1
                             Pattern = @"^enterprises/[^/]+/structures/[^/]+/rooms/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Lists rooms managed by the enterprise.</summary>
-                /// <param name="parent">The parent resource name of the rooms requested. For example:
-                /// "enterprises/XYZ/structures/ABC".</param>
+                /// <param name="parent">
+                /// The parent resource name of the rooms requested. For example: "enterprises/XYZ/structures/ABC".
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -590,21 +583,22 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>The parent resource name of the rooms requested. For example:
-                    /// "enterprises/XYZ/structures/ABC".</summary>
+                    /// <summary>
+                    /// The parent resource name of the rooms requested. For example: "enterprises/XYZ/structures/ABC".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Requested page size. Server may return fewer rooms than requested. If unspecified,
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>
+                    /// Requested page size. Server may return fewer rooms than requested. If unspecified, server will
+                    /// pick an appropriate default.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>The token of the page to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -619,7 +613,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -645,12 +638,13 @@ namespace Google.Apis.SmartDeviceManagement.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
             /// <summary>Gets a structure managed by the enterprise.</summary>
-            /// <param name="name">The name of the structure requested. For example: "enterprises/XYZ/structures/ABC".</param>
+            /// <param name="name">
+            /// The name of the structure requested. For example: "enterprises/XYZ/structures/ABC".
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -666,12 +660,11 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     InitParameters();
                 }
 
-
-                /// <summary>The name of the structure requested. For example:
-                /// "enterprises/XYZ/structures/ABC".</summary>
+                /// <summary>
+                /// The name of the structure requested. For example: "enterprises/XYZ/structures/ABC".
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -686,7 +679,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -696,7 +688,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         Pattern = @"^enterprises/[^/]+/structures/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists structures managed by the enterprise.</summary>
@@ -716,7 +707,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     InitParameters();
                 }
 
-
                 /// <summary>The parent enterprise to list structures under. E.g. "enterprises/XYZ".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -725,15 +715,16 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>Requested page size. Server may return fewer structures than requested. If unspecified,
-                /// server will pick an appropriate default.</summary>
+                /// <summary>
+                /// Requested page size. Server may return fewer structures than requested. If unspecified, server will
+                /// pick an appropriate default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -748,7 +739,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -782,15 +772,12 @@ namespace Google.Apis.SmartDeviceManagement.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.SmartDeviceManagement.v1.Data
-{    
-
+{
     /// <summary>Device resource represents an instance of enterprise managed device in the property.</summary>
     public class GoogleHomeEnterpriseSdmV1Device : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -806,15 +793,17 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("traits")]
         public virtual System.Collections.Generic.IDictionary<string, object> Traits { get; set; }
 
-        /// <summary>Output only. Type of the device for general display purposes. For example: "THERMOSTAT". The device
-        /// type should not be used to deduce or infer functionality of the actual device it is assigned to. Instead,
-        /// use the returned traits for the device.</summary>
+        /// <summary>
+        /// Output only. Type of the device for general display purposes. For example: "THERMOSTAT". The device type
+        /// should not be used to deduce or infer functionality of the actual device it is assigned to. Instead, use the
+        /// returned traits for the device.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for SmartDeviceManagementService.ExecuteDeviceCommand</summary>
     public class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -829,7 +818,7 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for SmartDeviceManagementService.ExecuteDeviceCommand</summary>
     public class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -840,7 +829,7 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for SmartDeviceManagementService.ListDevices</summary>
     public class GoogleHomeEnterpriseSdmV1ListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -855,13 +844,15 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for SmartDeviceManagementService.ListRooms</summary>
     public class GoogleHomeEnterpriseSdmV1ListRoomsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pagination token to retrieve the next page of results. If this field is omitted, there are no
-        /// subsequent pages.</summary>
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent
+        /// pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -871,13 +862,15 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for SmartDeviceManagementService.ListStructures</summary>
     public class GoogleHomeEnterpriseSdmV1ListStructuresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pagination token to retrieve the next page of results. If this field is omitted, there are no
-        /// subsequent pages.</summary>
+        /// <summary>
+        /// The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent
+        /// pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -887,32 +880,40 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents device relationships, for instance, structure/room to which the device is assigned to. For
-    /// now this is only filled in the enterprise flow.</summary>
+    /// <summary>
+    /// Represents device relationships, for instance, structure/room to which the device is assigned to. For now this
+    /// is only filled in the enterprise flow.
+    /// </summary>
     public class GoogleHomeEnterpriseSdmV1ParentRelation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The custom name of the relation -- e.g., structure/room where the device is assigned
-        /// to.</summary>
+        /// <summary>
+        /// Output only. The custom name of the relation -- e.g., structure/room where the device is assigned to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Output only. The name of the relation -- e.g., structure/room where the device is assigned to. For
-        /// example: "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123"</summary>
+        /// <summary>
+        /// Output only. The name of the relation -- e.g., structure/room where the device is assigned to. For example:
+        /// "enterprises/XYZ/structures/ABC" or "enterprises/XYZ/structures/ABC/rooms/123"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Room resource represents an instance of sub-space within a structure such as rooms in a hotel suite or
-    /// rental apartment.</summary>
+    /// <summary>
+    /// Room resource represents an instance of sub-space within a structure such as rooms in a hotel suite or rental
+    /// apartment.
+    /// </summary>
     public class GoogleHomeEnterpriseSdmV1Room : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The resource name of the room. For example:
-        /// "enterprises/XYZ/structures/ABC/rooms/123".</summary>
+        /// <summary>
+        /// Output only. The resource name of the room. For example: "enterprises/XYZ/structures/ABC/rooms/123".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -922,13 +923,14 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Structure resource represents an instance of enterprise managed home or hotel room.</summary>
     public class GoogleHomeEnterpriseSdmV1Structure : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The resource name of the structure. For example:
-        /// "enterprises/XYZ/structures/ABC".</summary>
+        /// <summary>
+        /// Output only. The resource name of the structure. For example: "enterprises/XYZ/structures/ABC".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

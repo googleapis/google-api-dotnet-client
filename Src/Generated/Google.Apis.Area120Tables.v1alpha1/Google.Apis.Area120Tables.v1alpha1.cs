@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -64,8 +69,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
-            /// <summary>View and manage Google Drive files and folders that you have opened or created with this
-            /// app</summary>
+            /// <summary>
+            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
             /// <summary>See and download all your Google Drive files</summary>
@@ -79,7 +85,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
 
             /// <summary>See, edit, create, and delete your tables in Tables by Area 120</summary>
             public static string Tables = "https://www.googleapis.com/auth/tables";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Area120 Tables API.</summary>
@@ -88,8 +93,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public const string Drive = "https://www.googleapis.com/auth/drive";
 
-            /// <summary>View and manage Google Drive files and folders that you have opened or created with this
-            /// app</summary>
+            /// <summary>
+            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// </summary>
             public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
             /// <summary>See and download all your Google Drive files</summary>
@@ -103,10 +109,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
 
             /// <summary>See, edit, create, and delete your tables in Tables by Area 120</summary>
             public const string Tables = "https://www.googleapis.com/auth/tables";
-
         }
-
-
 
         /// <summary>Gets the Tables resource.</summary>
         public virtual TablesResource Tables { get; }
@@ -133,6 +136,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -152,9 +156,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -168,8 +174,10 @@ namespace Google.Apis.Area120Tables.v1alpha1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -181,8 +189,10 @@ namespace Google.Apis.Area120Tables.v1alpha1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -198,7 +208,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -303,7 +312,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
         {
             this.service = service;
             Rows = new RowsResource(service);
-
         }
 
         /// <summary>Gets the Rows resource.</summary>
@@ -321,13 +329,13 @@ namespace Google.Apis.Area120Tables.v1alpha1
             public RowsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates multiple rows.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent table where the rows will be created. Format: tables/{table}</param>
+            /// <param name="parent">
+            /// Required. The parent table where the rows will be created. Format: tables/{table}
+            /// </param>
             public virtual BatchCreateRequest BatchCreate(Google.Apis.Area120Tables.v1alpha1.Data.BatchCreateRowsRequest body, string parent)
             {
                 return new BatchCreateRequest(service, body, parent);
@@ -344,11 +352,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent table where the rows will be created. Format: tables/{table}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Area120Tables.v1alpha1.Data.BatchCreateRowsRequest Body { get; set; }
@@ -369,7 +375,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -379,13 +384,13 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = @"^tables/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Updates multiple rows.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent table shared by all rows being updated. Format:
-            /// tables/{table}</param>
+            /// <param name="parent">
+            /// Required. The parent table shared by all rows being updated. Format: tables/{table}
+            /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Area120Tables.v1alpha1.Data.BatchUpdateRowsRequest body, string parent)
             {
                 return new BatchUpdateRequest(service, body, parent);
@@ -402,12 +407,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent table shared by all rows being updated. Format:
-                /// tables/{table}</summary>
+                /// <summary>
+                /// Required. The parent table shared by all rows being updated. Format: tables/{table}
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Area120Tables.v1alpha1.Data.BatchUpdateRowsRequest Body { get; set; }
@@ -428,7 +432,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -438,12 +441,13 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = @"^tables/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Creates a row.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent table where this row will be created. Format: tables/{table}</param>
+            /// <param name="parent">
+            /// Required. The parent table where this row will be created. Format: tables/{table}
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.Area120Tables.v1alpha1.Data.Row body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -460,7 +464,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent table where this row will be created. Format: tables/{table}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -475,11 +478,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
                     COLUMNIDVIEW,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Area120Tables.v1alpha1.Data.Row Body { get; set; }
@@ -500,7 +503,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -518,7 +520,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a row.</summary>
@@ -538,11 +539,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the row to delete. Format: tables/{table}/rows/{row}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -557,7 +556,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -567,7 +565,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = @"^tables/[^/]+/rows/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a row. Returns NOT_FOUND if the row does not exist in the table.</summary>
@@ -587,7 +584,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the row to retrieve. Format: tables/{table}/rows/{row}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -602,11 +598,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
                     COLUMNIDVIEW,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -621,7 +617,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -639,7 +634,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists rows in a table. Returns NOT_FOUND if the table does not exist.</summary>
@@ -659,20 +653,22 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent table. Format: tables/{table}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of rows to return. The service may return fewer than this value. If
-                /// unspecified, at most 50 rows are returned. The maximum value is 1,000; values above 1,000 are
-                /// coerced to 1,000.</summary>
+                /// <summary>
+                /// The maximum number of rows to return. The service may return fewer than this value. If unspecified,
+                /// at most 50 rows are returned. The maximum value is 1,000; values above 1,000 are coerced to 1,000.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A page token, received from a previous `ListRows` call. Provide this to retrieve the
-                /// subsequent page. When paginating, all other parameters provided to `ListRows` must match the call
-                /// that provided the page token.</summary>
+                /// <summary>
+                /// A page token, received from a previous `ListRows` call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters provided to `ListRows` must match the call that provided
+                /// the page token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -686,11 +682,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
                     COLUMNIDVIEW,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -705,7 +701,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -739,13 +734,14 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates a row.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is
-            /// ignored when creating a row.</param>
+            /// <param name="name">
+            /// The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored
+            /// when creating a row.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.Area120Tables.v1alpha1.Data.Row body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -762,9 +758,10 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     InitParameters();
                 }
 
-
-                /// <summary>The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name
-                /// is ignored when creating a row.</summary>
+                /// <summary>
+                /// The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is
+                /// ignored when creating a row.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -782,11 +779,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                     VIEWUNSPECIFIED,
+
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
                     COLUMNIDVIEW,
                 }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Area120Tables.v1alpha1.Data.Row Body { get; set; }
@@ -807,7 +804,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -833,7 +829,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
@@ -854,11 +849,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 InitParameters();
             }
 
-
             /// <summary>Required. The name of the table to retrieve. Format: tables/{table}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -873,7 +866,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -883,7 +875,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     Pattern = @"^tables/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lists tables for the user.</summary>
@@ -901,19 +892,20 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 InitParameters();
             }
 
-
-            /// <summary>The maximum number of tables to return. The service may return fewer than this value. If
-            /// unspecified, at most 20 tables are returned. The maximum value is 100; values above 100 are coerced to
-            /// 100.</summary>
+            /// <summary>
+            /// The maximum number of tables to return. The service may return fewer than this value. If unspecified, at
+            /// most 20 tables are returned. The maximum value is 100; values above 100 are coerced to 100.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A page token, received from a previous `ListTables` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that
-            /// provided the page token.</summary>
+            /// <summary>
+            /// A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page.
+            /// When paginating, all other parameters provided to `ListTables` must match the call that provided the
+            /// page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -928,7 +920,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -946,7 +937,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -962,9 +952,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
         public WorkspacesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Gets a workspace. Returns NOT_FOUND if the workspace does not exist.</summary>
         /// <param name="name">Required. The name of the workspace to retrieve. Format: workspaces/{workspace}</param>
@@ -983,11 +971,9 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 InitParameters();
             }
 
-
             /// <summary>Required. The name of the workspace to retrieve. Format: workspaces/{workspace}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1002,7 +988,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -1012,7 +997,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     Pattern = @"^workspaces/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lists workspaces for the user.</summary>
@@ -1030,19 +1014,21 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 InitParameters();
             }
 
-
-            /// <summary>The maximum number of workspaces to return. The service may return fewer than this value. If
+            /// <summary>
+            /// The maximum number of workspaces to return. The service may return fewer than this value. If
             /// unspecified, at most 10 workspaces are returned. The maximum value is 25; values above 25 are coerced to
-            /// 25.</summary>
+            /// 25.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>A page token, received from a previous `ListWorkspaces` call. Provide this to retrieve the
-            /// subsequent page. When paginating, all other parameters provided to `ListWorkspaces` must match the call
-            /// that provided the page token.</summary>
+            /// <summary>
+            /// A page token, received from a previous `ListWorkspaces` call. Provide this to retrieve the subsequent
+            /// page. When paginating, all other parameters provided to `ListWorkspaces` must match the call that
+            /// provided the page token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1057,7 +1043,6 @@ namespace Google.Apis.Area120Tables.v1alpha1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -1075,25 +1060,24 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Area120Tables.v1alpha1.Data
-{    
-
+{
     /// <summary>Request message for TablesService.BatchCreateRows.</summary>
     public class BatchCreateRowsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The request message specifying the rows to create. A maximum of 500 rows can be created
-        /// in a single batch.</summary>
+        /// <summary>
+        /// Required. The request message specifying the rows to create. A maximum of 500 rows can be created in a
+        /// single batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<CreateRowRequest> Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for TablesService.BatchCreateRows.</summary>
     public class BatchCreateRowsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1104,19 +1088,21 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for TablesService.BatchUpdateRows.</summary>
     public class BatchUpdateRowsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The request messages specifying the rows to update. A maximum of 500 rows can be modified
-        /// in a single batch.</summary>
+        /// <summary>
+        /// Required. The request messages specifying the rows to update. A maximum of 500 rows can be modified in a
+        /// single batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<UpdateRowRequest> Requests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for TablesService.BatchUpdateRows.</summary>
     public class BatchUpdateRowsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1127,15 +1113,17 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details on a column in the table.</summary>
     public class ColumnDescription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data type of the column Supported types are auto_id, boolean, boolean_list, creator,
-        /// create_timestamp, date, dropdown, location, integer, integer_list, number, number_list, person, person_list,
-        /// tags, check_list, text, text_list, update_timestamp, updater, relationship, file_attachment_list. These
-        /// types directly map to the column types supported on Tables website.</summary>
+        /// <summary>
+        /// Data type of the column Supported types are auto_id, boolean, boolean_list, creator, create_timestamp, date,
+        /// dropdown, location, integer, integer_list, number, number_list, person, person_list, tags, check_list, text,
+        /// text_list, update_timestamp, updater, relationship, file_attachment_list. These types directly map to the
+        /// column types supported on Tables website.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
@@ -1143,15 +1131,19 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Optional. Range of labeled values for the column. Some columns like tags and drop-downs limit the
-        /// values to a set of possible values. We return the range of values in such cases to help clients implement
-        /// better user data validation.</summary>
+        /// <summary>
+        /// Optional. Range of labeled values for the column. Some columns like tags and drop-downs limit the values to
+        /// a set of possible values. We return the range of values in such cases to help clients implement better user
+        /// data validation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<LabeledItem> Labels { get; set; }
 
-        /// <summary>Optional. Indicates that this is a lookup column whose value is derived from the relationship
-        /// column specified in the details. Lookup columns can not be updated directly. To change the value you must
-        /// update the associated relationship column.</summary>
+        /// <summary>
+        /// Optional. Indicates that this is a lookup column whose value is derived from the relationship column
+        /// specified in the details. Lookup columns can not be updated directly. To change the value you must update
+        /// the associated relationship column.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookupDetails")]
         public virtual LookupDetails LookupDetails { get; set; }
 
@@ -1159,14 +1151,15 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Additional details about a relationship column. Specified when data_type is
-        /// relationship.</summary>
+        /// <summary>
+        /// Optional. Additional details about a relationship column. Specified when data_type is relationship.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipDetails")]
         public virtual RelationshipDetails RelationshipDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for TablesService.CreateRow.</summary>
     public class CreateRowRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1185,17 +1178,19 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single item in a labeled column.</summary>
     public class LabeledItem : Google.Apis.Requests.IDirectResponseSchema
@@ -1210,13 +1205,15 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for TablesService.ListRows.</summary>
     public class ListRowsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there
-        /// are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1226,13 +1223,15 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for TablesService.ListTables.</summary>
     public class ListTablesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there
-        /// are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1242,13 +1241,15 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for TablesService.ListWorkspaces.</summary>
     public class ListWorkspacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there
-        /// are no subsequent pages.</summary>
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1258,7 +1259,7 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details about a lookup column whose value comes from the associated relationship.</summary>
     public class LookupDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -1273,7 +1274,7 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details about a relationship column.</summary>
     public class RelationshipDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -1284,24 +1285,28 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single row in a table.</summary>
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is
-        /// ignored when creating a row.</summary>
+        /// <summary>
+        /// The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when
+        /// creating a row.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The values of the row. This is a map of column key to value. Key is user entered name(default) or
-        /// the internal column id based on the view in the request.</summary>
+        /// <summary>
+        /// The values of the row. This is a map of column key to value. Key is user entered name(default) or the
+        /// internal column id based on the view in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string, object> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single table.</summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
@@ -1320,7 +1325,7 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for TablesService.UpdateRow.</summary>
     public class UpdateRowRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1339,7 +1344,7 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
@@ -1348,8 +1353,9 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The resource name of the workspace. Workspace names have the form
-        /// `workspaces/{workspace}`.</summary>
+        /// <summary>
+        /// The resource name of the workspace. Workspace names have the form `workspaces/{workspace}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

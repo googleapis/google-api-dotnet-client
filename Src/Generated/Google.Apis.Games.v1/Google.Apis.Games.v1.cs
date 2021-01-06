@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -76,7 +81,6 @@ namespace Google.Apis.Games.v1
 
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services.</summary>
@@ -87,10 +91,7 @@ namespace Google.Apis.Games.v1
 
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
-
         }
-
-
 
         /// <summary>Gets the AchievementDefinitions resource.</summary>
         public virtual AchievementDefinitionsResource AchievementDefinitions { get; }
@@ -147,6 +148,7 @@ namespace Google.Apis.Games.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -166,9 +168,11 @@ namespace Google.Apis.Games.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -182,8 +186,10 @@ namespace Google.Apis.Games.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -195,8 +201,10 @@ namespace Google.Apis.Games.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -212,7 +220,6 @@ namespace Google.Apis.Games.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -316,9 +323,7 @@ namespace Google.Apis.Games.v1
         public AchievementDefinitionsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Lists all the achievement definitions for your application.</summary>
         public virtual ListRequest List()
@@ -335,21 +340,21 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of achievement resources to return in the response, used for paging. For any
+            /// <summary>
+            /// The maximum number of achievement resources to return in the response, used for paging. For any
             /// response, the actual number of achievement resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -364,7 +369,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -390,7 +394,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -406,22 +409,21 @@ namespace Google.Apis.Games.v1
         public AchievementsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Increments the steps of the achievement with the given ID for the currently authenticated
-        /// player.</summary>
+        /// <summary>
+        /// Increments the steps of the achievement with the given ID for the currently authenticated player.
+        /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
-        /// <param
-        /// name="stepsToIncrement">The number of steps to increment.</param>
+        /// <param name="stepsToIncrement">The number of steps to increment.</param>
         public virtual IncrementRequest Increment(string achievementId, int stepsToIncrement)
         {
             return new IncrementRequest(service, achievementId, stepsToIncrement);
         }
 
-        /// <summary>Increments the steps of the achievement with the given ID for the currently authenticated
-        /// player.</summary>
+        /// <summary>
+        /// Increments the steps of the achievement with the given ID for the currently authenticated player.
+        /// </summary>
         public class IncrementRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementIncrementResponse>
         {
             /// <summary>Constructs a new Increment request.</summary>
@@ -432,7 +434,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
@@ -441,11 +442,12 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("stepsToIncrement", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int StepsToIncrement { get; private set; }
 
-            /// <summary>A randomly generated numeric ID for each request specified by the caller. This number is used
-            /// at the server to ensure that the request is handled correctly across retries.</summary>
+            /// <summary>
+            /// A randomly generated numeric ID for each request specified by the caller. This number is used at the
+            /// server to ensure that the request is handled correctly across retries.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> RequestId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "increment";
@@ -460,7 +462,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -486,20 +487,22 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Lists the progress for all your application's achievements for the currently authenticated
-        /// player.</summary>
-        /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
-        /// ID.</param>
+        /// <summary>
+        /// Lists the progress for all your application's achievements for the currently authenticated player.
+        /// </summary>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
         public virtual ListRequest List(string playerId)
         {
             return new ListRequest(service, playerId);
         }
 
-        /// <summary>Lists the progress for all your application's achievements for the currently authenticated
-        /// player.</summary>
+        /// <summary>
+        /// Lists the progress for all your application's achievements for the currently authenticated player.
+        /// </summary>
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerAchievementListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -509,7 +512,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
@@ -518,9 +520,11 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of achievement resources to return in the response, used for paging. For any
+            /// <summary>
+            /// The maximum number of achievement resources to return in the response, used for paging. For any
             /// response, the actual number of achievement resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -528,29 +532,35 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Tells the server to return only achievements with the specified state. If this parameter isn't
-            /// specified, all achievements are returned.</summary>
+            /// <summary>
+            /// Tells the server to return only achievements with the specified state. If this parameter isn't
+            /// specified, all achievements are returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateEnum> State { get; set; }
 
-            /// <summary>Tells the server to return only achievements with the specified state. If this parameter isn't
-            /// specified, all achievements are returned.</summary>
+            /// <summary>
+            /// Tells the server to return only achievements with the specified state. If this parameter isn't
+            /// specified, all achievements are returned.
+            /// </summary>
             public enum StateEnum
             {
                 /// <summary>List all achievements. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+
                 /// <summary>List only hidden achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("HIDDEN")]
                 HIDDEN,
+
                 /// <summary>List only revealed achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("REVEALED")]
                 REVEALED,
+
                 /// <summary>List only unlocked achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNLOCKED")]
                 UNLOCKED,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -565,7 +575,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "playerId",
@@ -607,19 +616,20 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated
-        /// player.</summary>
+        /// <summary>
+        /// Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.
+        /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual RevealRequest Reveal(string achievementId)
         {
             return new RevealRequest(service, achievementId);
         }
 
-        /// <summary>Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated
-        /// player.</summary>
+        /// <summary>
+        /// Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.
+        /// </summary>
         public class RevealRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementRevealResponse>
         {
             /// <summary>Constructs a new Reveal request.</summary>
@@ -629,11 +639,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "reveal";
@@ -648,7 +656,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -658,23 +665,25 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Sets the steps for the currently authenticated player towards unlocking an achievement. If the
-        /// steps parameter is less than the current number of steps that the player already gained for the achievement,
-        /// the achievement is not modified.</summary>
+        /// <summary>
+        /// Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps
+        /// parameter is less than the current number of steps that the player already gained for the achievement, the
+        /// achievement is not modified.
+        /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
-        /// <param name="steps">The
-        /// minimum value to set the steps to.</param>
+        /// <param name="steps">The minimum value to set the steps to.</param>
         public virtual SetStepsAtLeastRequest SetStepsAtLeast(string achievementId, int steps)
         {
             return new SetStepsAtLeastRequest(service, achievementId, steps);
         }
 
-        /// <summary>Sets the steps for the currently authenticated player towards unlocking an achievement. If the
-        /// steps parameter is less than the current number of steps that the player already gained for the achievement,
-        /// the achievement is not modified.</summary>
+        /// <summary>
+        /// Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps
+        /// parameter is less than the current number of steps that the player already gained for the achievement, the
+        /// achievement is not modified.
+        /// </summary>
         public class SetStepsAtLeastRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.AchievementSetStepsAtLeastResponse>
         {
             /// <summary>Constructs a new SetStepsAtLeast request.</summary>
@@ -685,7 +694,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
@@ -693,7 +701,6 @@ namespace Google.Apis.Games.v1
             /// <summary>The minimum value to set the steps to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("steps", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Steps { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "setStepsAtLeast";
@@ -708,7 +715,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -726,7 +732,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Unlocks this achievement for the currently authenticated player.</summary>
@@ -746,11 +751,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "unlock";
@@ -765,7 +768,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -775,7 +777,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates multiple achievements for the currently authenticated player.</summary>
@@ -794,8 +795,6 @@ namespace Google.Apis.Games.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.AchievementUpdateMultipleRequest Body { get; set; }
@@ -816,9 +815,7 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -834,22 +831,22 @@ namespace Google.Apis.Games.v1
         public ApplicationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Retrieves the metadata of the application with the given ID. If the requested application is not
-        /// available for the specified `platformType`, the returned response will not include any instance
-        /// data.</summary>
+        /// <summary>
+        /// Retrieves the metadata of the application with the given ID. If the requested application is not available
+        /// for the specified `platformType`, the returned response will not include any instance data.
+        /// </summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual GetRequest Get(string applicationId)
         {
             return new GetRequest(service, applicationId);
         }
 
-        /// <summary>Retrieves the metadata of the application with the given ID. If the requested application is not
-        /// available for the specified `platformType`, the returned response will not include any instance
-        /// data.</summary>
+        /// <summary>
+        /// Retrieves the metadata of the application with the given ID. If the requested application is not available
+        /// for the specified `platformType`, the returned response will not include any instance data.
+        /// </summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Application>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -858,7 +855,6 @@ namespace Google.Apis.Games.v1
                 ApplicationId = applicationId;
                 InitParameters();
             }
-
 
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
@@ -878,17 +874,19 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value, don't use.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_TYPE_UNSPECIFIED")]
                 PLATFORMTYPEUNSPECIFIED,
+
                 /// <summary>Retrieve applications that can be played on Android.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
                 ANDROID,
+
                 /// <summary>Retrieve applications that can be played on iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
                 IOS,
+
                 /// <summary>Retrieve applications that can be played on desktop web.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_APP")]
                 WEBAPP,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -903,7 +901,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -929,7 +926,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Returns a URL for the requested end point type.</summary>
@@ -947,7 +943,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ApplicationId { get; set; }
@@ -962,14 +957,15 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("END_POINT_TYPE_UNSPECIFIED")]
                 ENDPOINTTYPEUNSPECIFIED,
+
                 /// <summary>Request a URL to create a new profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROFILE_CREATION")]
                 PROFILECREATION,
+
                 /// <summary>Request a URL for the Settings view.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROFILE_SETTINGS")]
                 PROFILESETTINGS,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEndPoint";
@@ -984,7 +980,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -1002,7 +997,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Indicate that the currently authenticated user is playing your application.</summary>
@@ -1020,8 +1014,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "played";
 
@@ -1035,21 +1027,23 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Verifies the auth token provided with this request is for the application with the specified ID,
-        /// and returns the ID of the player it was granted for.</summary>
+        /// <summary>
+        /// Verifies the auth token provided with this request is for the application with the specified ID, and returns
+        /// the ID of the player it was granted for.
+        /// </summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual VerifyRequest Verify(string applicationId)
         {
             return new VerifyRequest(service, applicationId);
         }
 
-        /// <summary>Verifies the auth token provided with this request is for the application with the specified ID,
-        /// and returns the ID of the player it was granted for.</summary>
+        /// <summary>
+        /// Verifies the auth token provided with this request is for the application with the specified ID, and returns
+        /// the ID of the player it was granted for.
+        /// </summary>
         public class VerifyRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.ApplicationVerifyResponse>
         {
             /// <summary>Constructs a new Verify request.</summary>
@@ -1059,11 +1053,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "verify";
@@ -1078,7 +1070,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -1088,7 +1079,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1104,19 +1094,21 @@ namespace Google.Apis.Games.v1
         public EventsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Returns a list showing the current progress on events in this application for the currently
-        /// authenticated user.</summary>
+        /// <summary>
+        /// Returns a list showing the current progress on events in this application for the currently authenticated
+        /// user.
+        /// </summary>
         public virtual ListByPlayerRequest ListByPlayer()
         {
             return new ListByPlayerRequest(service);
         }
 
-        /// <summary>Returns a list showing the current progress on events in this application for the currently
-        /// authenticated user.</summary>
+        /// <summary>
+        /// Returns a list showing the current progress on events in this application for the currently authenticated
+        /// user.
+        /// </summary>
         public class ListByPlayerRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerEventListResponse>
         {
             /// <summary>Constructs a new ListByPlayer request.</summary>
@@ -1125,20 +1117,20 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of events to return in the response, used for paging. For any response, the
-            /// actual number of events to return may be less than the specified maxResults.</summary>
+            /// <summary>
+            /// The maximum number of events to return in the response, used for paging. For any response, the actual
+            /// number of events to return may be less than the specified maxResults.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByPlayer";
@@ -1153,7 +1145,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -1179,7 +1170,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Returns a list of the event definitions in this application.</summary>
@@ -1197,21 +1187,20 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of event definitions to return in the response, used for paging. For any
-            /// response, the actual number of event definitions to return may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of event definitions to return in the response, used for paging. For any response,
+            /// the actual number of event definitions to return may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listDefinitions";
@@ -1226,7 +1215,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -1252,19 +1240,22 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Records a batch of changes to the number of times events have occurred for the currently
-        /// authenticated user of this application.</summary>
+        /// <summary>
+        /// Records a batch of changes to the number of times events have occurred for the currently authenticated user
+        /// of this application.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual RecordRequest Record(Google.Apis.Games.v1.Data.EventRecordRequest body)
         {
             return new RecordRequest(service, body);
         }
 
-        /// <summary>Records a batch of changes to the number of times events have occurred for the currently
-        /// authenticated user of this application.</summary>
+        /// <summary>
+        /// Records a batch of changes to the number of times events have occurred for the currently authenticated user
+        /// of this application.
+        /// </summary>
         public class RecordRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.EventUpdateResponse>
         {
             /// <summary>Constructs a new Record request.</summary>
@@ -1274,11 +1265,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.EventRecordRequest Body { get; set; }
@@ -1299,7 +1288,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -1309,7 +1297,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1325,9 +1312,7 @@ namespace Google.Apis.Games.v1
         public LeaderboardsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieves the metadata of the leaderboard with the given ID.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
@@ -1346,7 +1331,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
@@ -1354,7 +1338,6 @@ namespace Google.Apis.Games.v1
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1369,7 +1352,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -1387,7 +1369,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all the leaderboard metadata for your application.</summary>
@@ -1405,20 +1386,20 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboards to return in the response. For any response, the actual
-            /// number of leaderboards returned may be less than the specified `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of leaderboards to return in the response. For any response, the actual number of
+            /// leaderboards returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1433,7 +1414,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -1459,7 +1439,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1475,9 +1454,7 @@ namespace Google.Apis.Games.v1
         public MetagameResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Return the metagame configuration data for the calling application.</summary>
         public virtual GetMetagameConfigRequest GetMetagameConfig()
@@ -1494,8 +1471,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getMetagameConfig";
 
@@ -1509,16 +1484,14 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>List play data aggregated per category for the player corresponding to `playerId`.</summary>
-        /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
-        /// ID.</param>
-        /// <param name="collection">The collection of categories for which data will be
-        /// returned.</param>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
+        /// <param name="collection">The collection of categories for which data will be returned.</param>
         public virtual ListCategoriesByPlayerRequest ListCategoriesByPlayer(string playerId, ListCategoriesByPlayerRequest.CollectionEnum collection)
         {
             return new ListCategoriesByPlayerRequest(service, playerId, collection);
@@ -1535,7 +1508,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
@@ -1550,6 +1522,7 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("COLLECTION_UNSPECIFIED")]
                 COLLECTIONUNSPECIFIED,
+
                 /// <summary>Retrieve data for all categories. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
@@ -1559,16 +1532,16 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of category resources to return in the response, used for paging. For any
-            /// response, the actual number of category resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of category resources to return in the response, used for paging. For any response,
+            /// the actual number of category resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listCategoriesByPlayer";
@@ -1583,7 +1556,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "playerId",
@@ -1625,7 +1597,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1641,21 +1612,24 @@ namespace Google.Apis.Games.v1
         public PlayersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Retrieves the Player resource with the given ID. To retrieve the player for the currently
-        /// authenticated user, set `playerId` to `me`.</summary>
-        /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
-        /// ID.</param>
+        /// <summary>
+        /// Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated
+        /// user, set `playerId` to `me`.
+        /// </summary>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
         public virtual GetRequest Get(string playerId)
         {
             return new GetRequest(service, playerId);
         }
 
-        /// <summary>Retrieves the Player resource with the given ID. To retrieve the player for the currently
-        /// authenticated user, set `playerId` to `me`.</summary>
+        /// <summary>
+        /// Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated
+        /// user, set `playerId` to `me`.
+        /// </summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.Player>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1665,7 +1639,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
@@ -1673,7 +1646,6 @@ namespace Google.Apis.Games.v1
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1688,7 +1660,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "playerId",
@@ -1706,7 +1677,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Get the collection of players for the currently authenticated user.</summary>
@@ -1726,7 +1696,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>Collection of players being retrieved</summary>
             [Google.Apis.Util.RequestParameterAttribute("collection", Google.Apis.Util.RequestParameterType.Path)]
             public virtual CollectionEnum Collection { get; private set; }
@@ -1734,14 +1703,18 @@ namespace Google.Apis.Games.v1
             /// <summary>Collection of players being retrieved</summary>
             public enum CollectionEnum
             {
-                /// <summary>Retrieve a list of players that are also playing this game in reverse chronological
-                /// order.</summary>
+                /// <summary>
+                /// Retrieve a list of players that are also playing this game in reverse chronological order.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("CONNECTED")]
                 CONNECTED,
-                /// <summary>Retrieve a list of players in the user's social graph that are visible to this
-                /// game.</summary>
+
+                /// <summary>
+                /// Retrieve a list of players in the user's social graph that are visible to this game.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("VISIBLE")]
                 VISIBLE,
+
                 /// <summary>Retrieve a list of players who are friends of the user in alphabetical order.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS_ALL")]
                 FRIENDSALL,
@@ -1751,16 +1724,16 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of player resources to return in the response, used for paging. For any
-            /// response, the actual number of player resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of player resources to return in the response, used for paging. For any response, the
+            /// actual number of player resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1775,7 +1748,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("collection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "collection",
@@ -1809,7 +1781,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1825,14 +1796,14 @@ namespace Google.Apis.Games.v1
         public RevisionsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Checks whether the games client is out of date.</summary>
-        /// <param name="clientRevision">The revision of the client SDK used by your application. Format:
-        /// `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the
-        /// Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.</param>
+        /// <param name="clientRevision">
+        /// The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`.
+        /// Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is
+        /// running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
+        /// </param>
         public virtual CheckRequest Check(string clientRevision)
         {
             return new CheckRequest(service, clientRevision);
@@ -1848,14 +1819,13 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
-            /// <summary>The revision of the client SDK used by your application. Format:
-            /// `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is
-            /// running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a
-            /// Web App.</summary>
+            /// <summary>
+            /// The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`.
+            /// Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` -
+            /// Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientRevision { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "check";
@@ -1870,7 +1840,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("clientRevision", new Google.Apis.Discovery.Parameter
                 {
                     Name = "clientRevision",
@@ -1880,7 +1849,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1896,29 +1864,32 @@ namespace Google.Apis.Games.v1
         public ScoresResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For
-        /// a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
+        /// <summary>
+        /// Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a
+        /// specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
         /// time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
-        /// parameter may be set to 'ALL'.</summary>
-        /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
-        /// ID.</param>
-        /// <param name="leaderboardId">The ID of the leaderboard. Can be set to 'ALL' to retrieve data for
-        /// all leaderboards for this application.</param>
-        /// <param name="timeSpan">The time span for the scores and ranks
-        /// you're requesting.</param>
+        /// parameter may be set to 'ALL'.
+        /// </summary>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
+        /// <param name="leaderboardId">
+        /// The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this application.
+        /// </param>
+        /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
         public virtual GetRequest Get(string playerId, string leaderboardId, GetRequest.TimeSpanEnum timeSpan)
         {
             return new GetRequest(service, playerId, leaderboardId, timeSpan);
         }
 
-        /// <summary>Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For
-        /// a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
+        /// <summary>
+        /// Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a
+        /// specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given
         /// time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
-        /// parameter may be set to 'ALL'.</summary>
+        /// parameter may be set to 'ALL'.
+        /// </summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.PlayerLeaderboardScoreListResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1930,13 +1901,14 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
 
-            /// <summary>The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this
-            /// application.</summary>
+            /// <summary>
+            /// The ID of the leaderboard. Can be set to 'ALL' to retrieve data for all leaderboards for this
+            /// application.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
 
@@ -1950,16 +1922,21 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
-                /// <summary>Get the high scores for all time spans. If this is used, maxResults values will be
-                /// ignored.</summary>
+
+                /// <summary>
+                /// Get the high scores for all time spans. If this is used, maxResults values will be ignored.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+
                 /// <summary>Get the all time high score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+
                 /// <summary>List the top scores for the current day.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+
                 /// <summary>List the top scores for the current week.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
@@ -1975,16 +1952,21 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. Should be unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_RANK_TYPE_UNSPECIFIED")]
                 INCLUDERANKTYPEUNSPECIFIED,
-                /// <summary>Retrieve all supported ranks. In HTTP, this parameter value can also be specified as
-                /// `ALL`.</summary>
+
+                /// <summary>
+                /// Retrieve all supported ranks. In HTTP, this parameter value can also be specified as `ALL`.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
                 ALL,
+
                 /// <summary>Retrieve public ranks, if the player is sharing their gameplay activity publicly.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+
                 /// <summary>(Obsolete) Retrieve the social rank.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+
                 /// <summary>Retrieve the rank on the friends collection.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
                 FRIENDS,
@@ -1994,15 +1976,16 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
-            /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of leaderboard scores to return in the response. For any response, the actual number
+            /// of leaderboard scores returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2017,7 +2000,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "playerId",
@@ -2075,15 +2057,12 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists the scores in a leaderboard, starting from the top.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
-        /// <param name="collection">The collection of
-        /// scores you're requesting.</param>
-        /// <param name="timeSpan">The time span for the scores and ranks you're
-        /// requesting.</param>
+        /// <param name="collection">The collection of scores you're requesting.</param>
+        /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
         public virtual ListRequest List(string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan)
         {
             return new ListRequest(service, leaderboardId, collection, timeSpan);
@@ -2101,7 +2080,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
@@ -2116,12 +2094,15 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
                 SCORECOLLECTIONUNSPECIFIED,
+
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+
                 /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+
                 /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
                 FRIENDS,
@@ -2137,12 +2118,15 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
+
                 /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+
                 /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+
                 /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
@@ -2152,15 +2136,16 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
-            /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of leaderboard scores to return in the response. For any response, the actual number
+            /// of leaderboard scores returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2175,7 +2160,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -2225,15 +2209,12 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists the scores in a leaderboard around (and including) a player's score.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
-        /// <param name="collection">The collection of
-        /// scores you're requesting.</param>
-        /// <param name="timeSpan">The time span for the scores and ranks you're
-        /// requesting.</param>
+        /// <param name="collection">The collection of scores you're requesting.</param>
+        /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
         public virtual ListWindowRequest ListWindow(string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan)
         {
             return new ListWindowRequest(service, leaderboardId, collection, timeSpan);
@@ -2251,7 +2232,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
@@ -2266,12 +2246,15 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
                 SCORECOLLECTIONUNSPECIFIED,
+
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
                 PUBLIC__,
+
                 /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
                 SOCIAL,
+
                 /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
                 FRIENDS,
@@ -2287,12 +2270,15 @@ namespace Google.Apis.Games.v1
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
                 SCORETIMESPANUNSPECIFIED,
+
                 /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
                 ALLTIME,
+
                 /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
                 WEEKLY,
+
                 /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
                 DAILY,
@@ -2302,8 +2288,10 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of leaderboard scores to return in the response. For any response, the
-            /// actual number of leaderboard scores returned may be less than the specified `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of leaderboard scores to return in the response. For any response, the actual number
+            /// of leaderboard scores returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2311,17 +2299,19 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The preferred number of scores to return above the player's score. More scores may be returned
-            /// if the player is at the bottom of the leaderboard; fewer may be returned if the player is at the top.
-            /// Must be less than or equal to maxResults.</summary>
+            /// <summary>
+            /// The preferred number of scores to return above the player's score. More scores may be returned if the
+            /// player is at the bottom of the leaderboard; fewer may be returned if the player is at the top. Must be
+            /// less than or equal to maxResults.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resultsAbove", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> ResultsAbove { get; set; }
 
-            /// <summary>True if the top scores should be returned when the player is not in the leaderboard. Defaults
-            /// to true.</summary>
+            /// <summary>
+            /// True if the top scores should be returned when the player is not in the leaderboard. Defaults to true.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("returnTopIfAbsent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ReturnTopIfAbsent { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listWindow";
@@ -2336,7 +2326,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -2402,16 +2391,16 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Submits a score to the specified leaderboard.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
-        /// <param name="score">The score you're
-        /// submitting. The submitted score is ignored if it is worse than a previously submitted score, where worse depends on
-        /// the leaderboard sort order. The meaning of the score value depends on the leaderboard format type. For fixed-point,
-        /// the score represents the raw value. For time, the score represents elapsed time in milliseconds. For currency, the
-        /// score represents a value in micro units.</param>
+        /// <param name="score">
+        /// The score you're submitting. The submitted score is ignored if it is worse than a previously submitted
+        /// score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the
+        /// leaderboard format type. For fixed-point, the score represents the raw value. For time, the score represents
+        /// elapsed time in milliseconds. For currency, the score represents a value in micro units.
+        /// </param>
         public virtual SubmitRequest Submit(string leaderboardId, long score)
         {
             return new SubmitRequest(service, leaderboardId, score);
@@ -2428,16 +2417,16 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
 
-            /// <summary>The score you're submitting. The submitted score is ignored if it is worse than a previously
-            /// submitted score, where worse depends on the leaderboard sort order. The meaning of the score value
-            /// depends on the leaderboard format type. For fixed-point, the score represents the raw value. For time,
-            /// the score represents elapsed time in milliseconds. For currency, the score represents a value in micro
-            /// units.</summary>
+            /// <summary>
+            /// The score you're submitting. The submitted score is ignored if it is worse than a previously submitted
+            /// score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the
+            /// leaderboard format type. For fixed-point, the score represents the raw value. For time, the score
+            /// represents elapsed time in milliseconds. For currency, the score represents a value in micro units.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("score", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Score { get; private set; }
 
@@ -2445,11 +2434,12 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>Additional information about the score you're submitting. Values must contain no more than 64
-            /// URI-safe characters as defined by section 2.3 of RFC 3986.</summary>
+            /// <summary>
+            /// Additional information about the score you're submitting. Values must contain no more than 64 URI-safe
+            /// characters as defined by section 2.3 of RFC 3986.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scoreTag", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ScoreTag { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "submit";
@@ -2464,7 +2454,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -2498,7 +2487,6 @@ namespace Google.Apis.Games.v1
                     Pattern = @"[a-zA-Z0-9-._~]{0,64}",
                 });
             }
-
         }
 
         /// <summary>Submits multiple scores to leaderboards.</summary>
@@ -2518,11 +2506,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.PlayerScoreSubmissionList Body { get; set; }
@@ -2543,7 +2529,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("language", new Google.Apis.Discovery.Parameter
                 {
                     Name = "language",
@@ -2553,7 +2538,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2569,9 +2553,7 @@ namespace Google.Apis.Games.v1
         public SnapshotsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieves the metadata for a given snapshot ID.</summary>
         /// <param name="snapshotId">The ID of the snapshot.</param>
@@ -2590,7 +2572,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>The ID of the snapshot.</summary>
             [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SnapshotId { get; private set; }
@@ -2598,7 +2579,6 @@ namespace Google.Apis.Games.v1
             /// <summary>The preferred language to use for strings returned by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2613,7 +2593,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "snapshotId",
@@ -2631,20 +2610,22 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Retrieves a list of snapshots created by your application for the player corresponding to the
-        /// player ID.</summary>
-        /// <param name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's
-        /// ID.</param>
+        /// <summary>
+        /// Retrieves a list of snapshots created by your application for the player corresponding to the player ID.
+        /// </summary>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
         public virtual ListRequest List(string playerId)
         {
             return new ListRequest(service, playerId);
         }
 
-        /// <summary>Retrieves a list of snapshots created by your application for the player corresponding to the
-        /// player ID.</summary>
+        /// <summary>
+        /// Retrieves a list of snapshots created by your application for the player corresponding to the player ID.
+        /// </summary>
         public class ListRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.SnapshotListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2654,7 +2635,6 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
@@ -2663,16 +2643,16 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
-            /// <summary>The maximum number of snapshot resources to return in the response, used for paging. For any
-            /// response, the actual number of snapshot resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of snapshot resources to return in the response, used for paging. For any response,
+            /// the actual number of snapshot resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2687,7 +2667,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("playerId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "playerId",
@@ -2721,7 +2700,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2737,12 +2715,12 @@ namespace Google.Apis.Games.v1
         public SnapshotsExtendedResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Resolves any potential conflicts according to the resolution policy specified in the request and
-        /// returns the snapshot head after the resolution.</summary>
+        /// <summary>
+        /// Resolves any potential conflicts according to the resolution policy specified in the request and returns the
+        /// snapshot head after the resolution.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="snapshotName">Required. Name of the snapshot.</param>
         public virtual ResolveSnapshotHeadRequest ResolveSnapshotHead(Google.Apis.Games.v1.Data.ResolveSnapshotHeadRequest body, string snapshotName)
@@ -2750,8 +2728,10 @@ namespace Google.Apis.Games.v1
             return new ResolveSnapshotHeadRequest(service, body, snapshotName);
         }
 
-        /// <summary>Resolves any potential conflicts according to the resolution policy specified in the request and
-        /// returns the snapshot head after the resolution.</summary>
+        /// <summary>
+        /// Resolves any potential conflicts according to the resolution policy specified in the request and returns the
+        /// snapshot head after the resolution.
+        /// </summary>
         public class ResolveSnapshotHeadRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.ResolveSnapshotHeadResponse>
         {
             /// <summary>Constructs a new ResolveSnapshotHead request.</summary>
@@ -2762,11 +2742,9 @@ namespace Google.Apis.Games.v1
                 InitParameters();
             }
 
-
             /// <summary>Required. Name of the snapshot.</summary>
             [Google.Apis.Util.RequestParameterAttribute("snapshotName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SnapshotName { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Games.v1.Data.ResolveSnapshotHeadRequest Body { get; set; }
@@ -2787,7 +2765,6 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("snapshotName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "snapshotName",
@@ -2797,7 +2774,6 @@ namespace Google.Apis.Games.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2813,19 +2789,19 @@ namespace Google.Apis.Games.v1
         public StatsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Returns engagement and spend statistics in this application for the currently authenticated
-        /// user.</summary>
+        /// <summary>
+        /// Returns engagement and spend statistics in this application for the currently authenticated user.
+        /// </summary>
         public virtual GetRequest Get()
         {
             return new GetRequest(service);
         }
 
-        /// <summary>Returns engagement and spend statistics in this application for the currently authenticated
-        /// user.</summary>
+        /// <summary>
+        /// Returns engagement and spend statistics in this application for the currently authenticated user.
+        /// </summary>
         public class GetRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.StatsResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2833,8 +2809,6 @@ namespace Google.Apis.Games.v1
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2849,16 +2823,12 @@ namespace Google.Apis.Games.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Games.v1.Data
-{    
-
+{
     /// <summary>An achievement definition object.</summary>
     public class AchievementDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2886,18 +2856,22 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialState")]
         public virtual string InitialState { get; set; }
 
-        /// <summary>Indicates whether the revealed icon image being returned is a default image, or is provided by the
-        /// game.</summary>
+        /// <summary>
+        /// Indicates whether the revealed icon image being returned is a default image, or is provided by the game.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isRevealedIconUrlDefault")]
         public virtual System.Nullable<bool> IsRevealedIconUrlDefault { get; set; }
 
-        /// <summary>Indicates whether the unlocked icon image being returned is a default image, or is game-
-        /// provided.</summary>
+        /// <summary>
+        /// Indicates whether the unlocked icon image being returned is a default image, or is game-provided.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isUnlockedIconUrlDefault")]
         public virtual System.Nullable<bool> IsUnlockedIconUrlDefault { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementDefinition`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementDefinition`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -2919,7 +2893,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of achievement definition objects.</summary>
     public class AchievementDefinitionsListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2928,8 +2902,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<AchievementDefinition> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementDefinitionsListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementDefinitionsListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -2939,7 +2915,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement increment response</summary>
     public class AchievementIncrementResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2948,36 +2924,43 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
         public virtual System.Nullable<int> CurrentSteps { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementIncrementResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementIncrementResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Whether the current steps for the achievement has reached the number of steps required to
-        /// unlock.</summary>
+        /// <summary>
+        /// Whether the current steps for the achievement has reached the number of steps required to unlock.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
         public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement reveal response</summary>
     public class AchievementRevealResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current state of the achievement for which a reveal was attempted. This might be `UNLOCKED` if
-        /// the achievement was already unlocked.</summary>
+        /// <summary>
+        /// The current state of the achievement for which a reveal was attempted. This might be `UNLOCKED` if the
+        /// achievement was already unlocked.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementRevealResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementRevealResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement set steps at least response.</summary>
     public class AchievementSetStepsAtLeastResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2986,42 +2969,51 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
         public virtual System.Nullable<int> CurrentSteps { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementSetStepsAtLeastResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementSetStepsAtLeastResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Whether the current steps for the achievement has reached the number of steps required to
-        /// unlock.</summary>
+        /// <summary>
+        /// Whether the current steps for the achievement has reached the number of steps required to unlock.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
         public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement unlock response</summary>
     public class AchievementUnlockResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementUnlockResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementUnlockResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Whether this achievement was newly unlocked (that is, whether the unlock request for the
-        /// achievement was the first for the player).</summary>
+        /// <summary>
+        /// Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the
+        /// first for the player).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
         public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of achievement update requests.</summary>
     public class AchievementUpdateMultipleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementUpdateMultipleRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementUpdateMultipleRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3031,13 +3023,15 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for UpdateMultipleAchievements rpc.</summary>
     public class AchievementUpdateMultipleResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementUpdateMultipleResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementUpdateMultipleResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3047,7 +3041,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request to update an achievement.</summary>
     public class AchievementUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3060,8 +3054,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("incrementPayload")]
         public virtual GamesAchievementIncrement IncrementPayload { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementUpdateRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementUpdateRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3075,7 +3071,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An updated achievement.</summary>
     public class AchievementUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3092,13 +3088,17 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
         public virtual System.Nullable<int> CurrentSteps { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#achievementUpdateResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#achievementUpdateResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Whether this achievement was newly unlocked (that is, whether the unlock request for the
-        /// achievement was the first for the player).</summary>
+        /// <summary>
+        /// Whether this achievement was newly unlocked (that is, whether the unlock request for the achievement was the
+        /// first for the player).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newlyUnlocked")]
         public virtual System.Nullable<bool> NewlyUnlocked { get; set; }
 
@@ -3108,7 +3108,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Application resource.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
@@ -3145,8 +3145,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#application`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#application`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3162,20 +3163,23 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB
-        /// triplet (e.g. "E0E0E0").</summary>
+        /// <summary>
+        /// A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB triplet
+        /// (e.g. "E0E0E0").
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("themeColor")]
         public virtual string ThemeColor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An application category object.</summary>
     public class ApplicationCategory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#applicationCategory`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#applicationCategory`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3189,18 +3193,22 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party application verification response resource.</summary>
     public class ApplicationVerifyResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An alternate ID that was once used for the player that was issued the auth token used in this
-        /// request. (This field is not normally populated.)</summary>
+        /// <summary>
+        /// An alternate ID that was once used for the player that was issued the auth token used in this request. (This
+        /// field is not normally populated.)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternate_player_id")]
         public virtual string AlternatePlayerId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#applicationVerifyResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#applicationVerifyResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3210,7 +3218,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Data related to individual game categories.</summary>
     public class Category : Google.Apis.Requests.IDirectResponseSchema
@@ -3223,14 +3231,15 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experiencePoints")]
         public virtual System.Nullable<long> ExperiencePoints { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#category`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#category`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party list metagame categories response.</summary>
     public class CategoryListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3239,8 +3248,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Category> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#categoryListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#categoryListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3250,7 +3261,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Container for a URL end point of the requested type.</summary>
     public class EndPoint : Google.Apis.Requests.IDirectResponseSchema
@@ -3261,7 +3272,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A batch update failure resource.</summary>
     public class EventBatchRecordFailure : Google.Apis.Requests.IDirectResponseSchema
@@ -3270,8 +3281,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
         public virtual string FailureCause { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventBatchRecordFailure`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#eventBatchRecordFailure`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3281,7 +3294,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event child relationship resource.</summary>
     public class EventChild : Google.Apis.Requests.IDirectResponseSchema
@@ -3290,14 +3303,15 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("childId")]
         public virtual string ChildId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventChild`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventChild`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event definition resource.</summary>
     public class EventDefinition : Google.Apis.Requests.IDirectResponseSchema
@@ -3326,8 +3340,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDefaultImageUrl")]
         public virtual System.Nullable<bool> IsDefaultImageUrl { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventDefinition`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventDefinition`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3337,7 +3352,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ListDefinitions response.</summary>
     public class EventDefinitionListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3346,8 +3361,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<EventDefinition> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventDefinitionListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#eventDefinitionListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3357,13 +3374,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event period time range.</summary>
     public class EventPeriodRange : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventPeriodRange`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodRange`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3377,13 +3395,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event period update resource.</summary>
     public class EventPeriodUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventPeriodUpdate`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodUpdate`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3397,7 +3416,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event update failure resource.</summary>
     public class EventRecordFailure : Google.Apis.Requests.IDirectResponseSchema
@@ -3410,14 +3429,15 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
         public virtual string FailureCause { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventRecordFailure`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordFailure`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event period update resource.</summary>
     public class EventRecordRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3426,8 +3446,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentTimeMillis")]
         public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventRecordRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventRecordRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3441,7 +3462,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event period update resource.</summary>
     public class EventUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3450,8 +3471,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
         public virtual string DefinitionId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventUpdateRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3461,7 +3483,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event period update resource.</summary>
     public class EventUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3474,8 +3496,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventFailures")]
         public virtual System.Collections.Generic.IList<EventRecordFailure> EventFailures { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#eventUpdateResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3485,13 +3508,15 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The payload to request to increment an achievement.</summary>
     public class GamesAchievementIncrement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#GamesAchievementIncrement`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#GamesAchievementIncrement`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3505,13 +3530,15 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The payload to request to increment an achievement.</summary>
     public class GamesAchievementSetStepsAtLeast : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#GamesAchievementSetStepsAtLeast`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#GamesAchievementSetStepsAtLeast`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3521,7 +3548,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An image asset object.</summary>
     public class ImageAsset : Google.Apis.Requests.IDirectResponseSchema
@@ -3530,8 +3557,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#imageAsset`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#imageAsset`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3549,7 +3577,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Instance resource.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
@@ -3566,8 +3594,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosInstance")]
         public virtual InstanceIosDetails IosInstance { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#instance`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#instance`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3593,7 +3622,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Android instance details resource.</summary>
     public class InstanceAndroidDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -3602,8 +3631,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePiracyCheck")]
         public virtual System.Nullable<bool> EnablePiracyCheck { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#instanceAndroidDetails`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#instanceAndroidDetails`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3617,7 +3648,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The iOS details resource.</summary>
     public class InstanceIosDetails : Google.Apis.Requests.IDirectResponseSchema
@@ -3630,8 +3661,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itunesAppId")]
         public virtual string ItunesAppId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#instanceIosDetails`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceIosDetails`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3653,13 +3685,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Web details resource.</summary>
     public class InstanceWebDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#instanceWebDetails`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#instanceWebDetails`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3673,7 +3706,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Leaderboard resource.</summary>
     public class Leaderboard : Google.Apis.Requests.IDirectResponseSchema
@@ -3690,8 +3723,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isIconUrlDefault")]
         public virtual System.Nullable<bool> IsIconUrlDefault { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#leaderboard`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboard`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3705,7 +3739,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The Leaderboard Entry resource.</summary>
     public class LeaderboardEntry : Google.Apis.Requests.IDirectResponseSchema
@@ -3718,8 +3752,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScoreRank")]
         public virtual string FormattedScoreRank { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#leaderboardEntry`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardEntry`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3731,8 +3766,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scoreRank")]
         public virtual System.Nullable<long> ScoreRank { get; set; }
 
-        /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
-        /// defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>
+        /// Additional information about the score. Values must contain no more than 64 URI-safe characters as defined
+        /// by section 2.3 of RFC 3986.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; }
 
@@ -3750,7 +3787,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of leaderboard objects.</summary>
     public class LeaderboardListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3759,8 +3796,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Leaderboard> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#leaderboardListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#leaderboardListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3770,7 +3809,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A score rank in a leaderboard.</summary>
     public class LeaderboardScoreRank : Google.Apis.Requests.IDirectResponseSchema
@@ -3783,8 +3822,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formattedRank")]
         public virtual string FormattedRank { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#leaderboardScoreRank`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#leaderboardScoreRank`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3798,7 +3839,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ListScores response.</summary>
     public class LeaderboardScores : Google.Apis.Requests.IDirectResponseSchema
@@ -3807,8 +3848,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<LeaderboardEntry> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#leaderboardScores`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#leaderboardScores`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3820,9 +3862,11 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numScores")]
         public virtual System.Nullable<long> NumScores { get; set; }
 
-        /// <summary>The score of the requesting player on the leaderboard. The player's score may appear both here and
-        /// in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their
-        /// gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present.</summary>
+        /// <summary>
+        /// The score of the requesting player on the leaderboard. The player's score may appear both here and in the
+        /// list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay
+        /// information publicly, the `scoreRank`and `formattedScoreRank` values will not be present.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerScore")]
         public virtual LeaderboardEntry PlayerScore { get; set; }
 
@@ -3832,18 +3876,21 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The metagame config resource</summary>
     public class MetagameConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Current version of the metagame configuration data. When this data is updated, the version number
-        /// will be increased by one.</summary>
+        /// <summary>
+        /// Current version of the metagame configuration data. When this data is updated, the version number will be
+        /// increased by one.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual System.Nullable<int> CurrentVersion { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#metagameConfig`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#metagameConfig`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3853,7 +3900,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Player resource.</summary>
     public class Player : Google.Apis.Requests.IDirectResponseSchema
@@ -3878,13 +3925,16 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experienceInfo")]
         public virtual PlayerExperienceInfo ExperienceInfo { get; set; }
 
-        /// <summary>The friend status of the given player, relative to the requester. This is unset if the player is
-        /// not sharing their friends list with the game.</summary>
+        /// <summary>
+        /// The friend status of the given player, relative to the requester. This is unset if the player is not sharing
+        /// their friends list with the game.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendStatus")]
         public virtual string FriendStatus { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#player`</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#player`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3892,9 +3942,11 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual NameData Name { get; set; }
 
-        /// <summary>The player ID that was used for this player the first time they signed into the game in question.
-        /// This is only populated for calls to player.get for the requesting player, only if the player ID has
-        /// subsequently changed, and only to clients that support remapping player IDs.</summary>
+        /// <summary>
+        /// The player ID that was used for this player the first time they signed into the game in question. This is
+        /// only populated for calls to player.get for the requesting player, only if the player ID has subsequently
+        /// changed, and only to clients that support remapping player IDs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPlayerId")]
         public virtual string OriginalPlayerId { get; set; }
 
@@ -3902,8 +3954,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; }
 
-        /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
-        /// players.</summary>
+        /// <summary>
+        /// The player's profile settings. Controls whether or not the player's profile is visible to other players.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileSettings")]
         public virtual ProfileSettings ProfileSettings { get; set; }
 
@@ -3913,7 +3966,6 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>A representation of the individual components of the name.</summary>
         public class NameData
@@ -3925,9 +3977,8 @@ namespace Google.Apis.Games.v1.Data
             /// <summary>The given name of this player. In some places, this is known as the first name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
             public virtual string GivenName { get; set; }
-
         }
-    }    
+    }
 
     /// <summary>An achievement object.</summary>
     public class PlayerAchievement : Google.Apis.Requests.IDirectResponseSchema
@@ -3940,9 +3991,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentSteps")]
         public virtual System.Nullable<int> CurrentSteps { get; set; }
 
-        /// <summary>Experience points earned for the achievement. This field is absent for achievements that have not
-        /// yet been unlocked and 0 for achievements that have been unlocked by testers but that are
-        /// unpublished.</summary>
+        /// <summary>
+        /// Experience points earned for the achievement. This field is absent for achievements that have not yet been
+        /// unlocked and 0 for achievements that have been unlocked by testers but that are unpublished.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiencePoints")]
         public virtual System.Nullable<long> ExperiencePoints { get; set; }
 
@@ -3954,8 +4006,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerAchievement`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerAchievement`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3965,7 +4018,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of achievement objects.</summary>
     public class PlayerAchievementListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -3974,8 +4027,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<PlayerAchievement> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerAchievementListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerAchievementListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -3985,7 +4040,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event status resource.</summary>
     public class PlayerEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -3994,13 +4049,16 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
         public virtual string DefinitionId { get; set; }
 
-        /// <summary>The current number of times this event has occurred, as a string. The formatting of this string
-        /// depends on the configuration of your event in the Play Games Developer Console.</summary>
+        /// <summary>
+        /// The current number of times this event has occurred, as a string. The formatting of this string depends on
+        /// the configuration of your event in the Play Games Developer Console.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedNumEvents")]
         public virtual string FormattedNumEvents { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerEvent`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerEvent`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4014,7 +4072,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A ListByPlayer response.</summary>
     public class PlayerEventListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4023,8 +4081,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<PlayerEvent> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerEventListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerEventListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4034,7 +4094,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>1P/3P metadata about the player's experience.</summary>
     public class PlayerExperienceInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -4047,8 +4107,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentLevel")]
         public virtual PlayerLevel CurrentLevel { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerExperienceInfo`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerExperienceInfo`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4056,14 +4118,16 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastLevelUpTimestampMillis")]
         public virtual System.Nullable<long> LastLevelUpTimestampMillis { get; set; }
 
-        /// <summary>The next level of the player. If the current level is the maximum level, this should be same as the
-        /// current level.</summary>
+        /// <summary>
+        /// The next level of the player. If the current level is the maximum level, this should be same as the current
+        /// level.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLevel")]
         public virtual PlayerLevel NextLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A player leaderboard score object.</summary>
     public class PlayerLeaderboardScore : Google.Apis.Requests.IDirectResponseSchema
@@ -4072,8 +4136,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendsRank")]
         public virtual LeaderboardScoreRank FriendsRank { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerLeaderboardScore`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerLeaderboardScore`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4081,8 +4147,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboard_id")]
         public virtual string LeaderboardId { get; set; }
 
-        /// <summary>The public rank of the score in this leaderboard. This object will not be present if the user is
-        /// not sharing their scores publicly.</summary>
+        /// <summary>
+        /// The public rank of the score in this leaderboard. This object will not be present if the user is not sharing
+        /// their scores publicly.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRank")]
         public virtual LeaderboardScoreRank PublicRank { get; set; }
 
@@ -4090,8 +4158,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scoreString")]
         public virtual string ScoreString { get; set; }
 
-        /// <summary>Additional information about the score. Values must contain no more than 64 URI-safe characters as
-        /// defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>
+        /// Additional information about the score. Values must contain no more than 64 URI-safe characters as defined
+        /// by section 2.3 of RFC 3986.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; }
 
@@ -4113,7 +4183,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of player leaderboard scores.</summary>
     public class PlayerLeaderboardScoreListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4122,8 +4192,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<PlayerLeaderboardScore> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerLeaderboardScoreListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerLeaderboardScoreListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4137,13 +4209,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>1P/3P metadata about a user's level.</summary>
     public class PlayerLevel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerLevel`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerLevel`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4161,7 +4234,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party player list response.</summary>
     public class PlayerListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4170,8 +4243,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Player> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4181,7 +4255,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A player score.</summary>
     public class PlayerScore : Google.Apis.Requests.IDirectResponseSchema
@@ -4190,8 +4264,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScore")]
         public virtual string FormattedScore { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerScore`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScore`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4199,8 +4274,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<long> Score { get; set; }
 
-        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
-        /// defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>
+        /// Additional information about this score. Values will contain no more than 64 URI-safe characters as defined
+        /// by section 2.3 of RFC 3986.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; }
 
@@ -4210,13 +4287,15 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of score submission statuses.</summary>
     public class PlayerScoreListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerScoreListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerScoreListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4226,13 +4305,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of leaderboard entry resources.</summary>
     public class PlayerScoreResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time spans where the submitted score is better than the existing score for that time
-        /// span.</summary>
+        /// <summary>
+        /// The time spans where the submitted score is better than the existing score for that time span.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beatenScoreTimeSpans")]
         public virtual System.Collections.Generic.IList<string> BeatenScoreTimeSpans { get; set; }
 
@@ -4240,8 +4320,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("formattedScore")]
         public virtual string FormattedScore { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerScoreResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4249,26 +4330,32 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("leaderboardId")]
         public virtual string LeaderboardId { get; set; }
 
-        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
-        /// defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>
+        /// Additional information about this score. Values will contain no more than 64 URI-safe characters as defined
+        /// by section 2.3 of RFC 3986.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; }
 
-        /// <summary>The scores in time spans that have not been beaten. As an example, the submitted score may be
-        /// better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or
-        /// `ALL_TIME` time spans.</summary>
+        /// <summary>
+        /// The scores in time spans that have not been beaten. As an example, the submitted score may be better than
+        /// the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or `ALL_TIME` time
+        /// spans.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unbeatenScores")]
         public virtual System.Collections.Generic.IList<PlayerScore> UnbeatenScores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of score submission requests.</summary>
     public class PlayerScoreSubmissionList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#playerScoreSubmissionList`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#playerScoreSubmissionList`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4278,7 +4365,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Profile settings</summary>
     public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -4286,8 +4373,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendsListVisibility")]
         public virtual string FriendsListVisibility { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#profileSettings`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#profileSettings`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4297,20 +4385,21 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request for ResolveSnapshotHead RPC.</summary>
     public class ResolveSnapshotHeadRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The automatic resolution policy. All conflicts are resolved in chronological order,
-        /// starting from the/ least recent. If the comparison metric is equal for the tentative head and the conflict,
-        /// the head wins.</summary>
+        /// <summary>
+        /// Required. The automatic resolution policy. All conflicts are resolved in chronological order, starting from
+        /// the/ least recent. If the comparison metric is equal for the tentative head and the conflict, the head wins.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolutionPolicy")]
         public virtual string ResolutionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response for ResolveSnapshotHead RPC.</summary>
     public class ResolveSnapshotHeadResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4321,7 +4410,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party checking a revision response.</summary>
     public class RevisionCheckResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4330,8 +4419,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#revisionCheckResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#revisionCheckResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4341,13 +4432,14 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request to submit a score to leaderboards.</summary>
     public class ScoreSubmission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#scoreSubmission`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#scoreSubmission`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4359,8 +4451,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<long> Score { get; set; }
 
-        /// <summary>Additional information about this score. Values will contain no more than 64 URI-safe characters as
-        /// defined by section 2.3 of RFC 3986.</summary>
+        /// <summary>
+        /// Additional information about this score. Values will contain no more than 64 URI-safe characters as defined
+        /// by section 2.3 of RFC 3986.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoreTag")]
         public virtual string ScoreTag { get; set; }
 
@@ -4370,7 +4464,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An snapshot object.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
@@ -4383,8 +4477,10 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a
-        /// view on a Drive file and the file is owned by the caller.</summary>
+        /// <summary>
+        /// The ID of the file underlying this snapshot in the Drive API. Only present if the snapshot is a view on a
+        /// Drive file and the file is owned by the caller.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
         public virtual string DriveId { get; set; }
 
@@ -4396,8 +4492,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#snapshot`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshot`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4423,20 +4520,24 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies a snapshot cover image resource. The image is provided by the game.</summary>
     public class SnapshotCoverImageResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per
-        /// application. The content hash for a given resource will not change if the binary data hasn't changed. Except
-        /// in very rare circumstances, the content_hash for matching binary data will be the same within a given player
-        /// and application.</summary>
+        /// <summary>
+        /// Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per application.
+        /// The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare
+        /// circumstances, the content_hash for matching binary data will be the same within a given player and
+        /// application.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
         public virtual string ContentHash { get; set; }
 
-        /// <summary>Output only. A URL the client can use to download the image. May vary across requests, and only
-        /// guaranteed to be valid for a short time after it is returned.</summary>
+        /// <summary>
+        /// Output only. A URL the client can use to download the image. May vary across requests, and only guaranteed
+        /// to be valid for a short time after it is returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
@@ -4448,11 +4549,13 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>The ID of the image resource. It's guaranteed that if two IDs are equal then the contents are equal
-        /// as well. It's not guaranteed that two identical blobs coming from separate uploads have the same ID. The
-        /// resource ID can only be used within the application, user and resource type it was originally returned for.
-        /// For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of a
-        /// SnapshotCoverImageResource, even if the blob is a valid image file.</summary>
+        /// <summary>
+        /// The ID of the image resource. It's guaranteed that if two IDs are equal then the contents are equal as well.
+        /// It's not guaranteed that two identical blobs coming from separate uploads have the same ID. The resource ID
+        /// can only be used within the application, user and resource type it was originally returned for. For example,
+        /// it's not possible to use SnapshotDataResource's resource ID as the resource_id of a
+        /// SnapshotCoverImageResource, even if the blob is a valid image file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
 
@@ -4462,28 +4565,34 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Identifies a snapshot data resource. The data is provided by the game.</summary>
     public class SnapshotDataResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Hash-like weak identifier of the uploaded blob bytes, consistent per player per
-        /// application. The content hash for a given resource will not change if the binary data hasn't changed. Except
-        /// in very rare circumstances, the content_hash for matching binary data will be the same within a given player
-        /// and application.</summary>
+        /// <summary>
+        /// Output only. Hash-like weak identifier of the uploaded blob bytes, consistent per player per application.
+        /// The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare
+        /// circumstances, the content_hash for matching binary data will be the same within a given player and
+        /// application.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
         public virtual string ContentHash { get; set; }
 
-        /// <summary>Output only. A URL that the client can use to download the blob. May vary across requests, and only
-        /// guaranteed to be valid for a short time after it is returned.</summary>
+        /// <summary>
+        /// Output only. A URL that the client can use to download the blob. May vary across requests, and only
+        /// guaranteed to be valid for a short time after it is returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; }
 
-        /// <summary>The ID of the blob resource. It's guaranteed that if two IDs are equal then the contents are equal
-        /// as well. It's not guaranteed that two identical blobs coming from separate uploads have the same resource
-        /// ID. The resource ID can only be used within the application, user and resource type it was originally
-        /// returned for. For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of
-        /// a SnapshotCoverImageResource, even if the blob is a valid image file.</summary>
+        /// <summary>
+        /// The ID of the blob resource. It's guaranteed that if two IDs are equal then the contents are equal as well.
+        /// It's not guaranteed that two identical blobs coming from separate uploads have the same resource ID. The
+        /// resource ID can only be used within the application, user and resource type it was originally returned for.
+        /// For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of a
+        /// SnapshotCoverImageResource, even if the blob is a valid image file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
 
@@ -4493,21 +4602,25 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A snapshot represents a saved game state referred to using the developer-provided snapshot_name. The
-    /// set of attributes and binary data for a specific state is called a revision. Each revision is itself immutable,
-    /// and referred to by a snapshot revision id. At any time, a snapshot has a "head" revision, and updates are made
+    /// <summary>
+    /// A snapshot represents a saved game state referred to using the developer-provided snapshot_name. The set of
+    /// attributes and binary data for a specific state is called a revision. Each revision is itself immutable, and
+    /// referred to by a snapshot revision id. At any time, a snapshot has a "head" revision, and updates are made
     /// against that revision. If a snapshot update is received that isn't against the current head revision, then
     /// instead of changing the head revision it will result in a conflicting revision that must be specifically
-    /// resolved.</summary>
+    /// resolved.
+    /// </summary>
     public class SnapshotExtended : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of conflicting revisions. Only set if explicitly requested (e.g. using a field mask or a
-        /// request flag), or if the RPC guarantees that this field is set. The conflicting revisions are sorted
-        /// chronologically by their server creation time (oldest first). If there are too many conflicting revisions to
-        /// return all of them in a single request this will only contain the first batch. In such case, the presented
-        /// conflicting revisions must be resolved first in order to fetch the next batch.</summary>
+        /// <summary>
+        /// A list of conflicting revisions. Only set if explicitly requested (e.g. using a field mask or a request
+        /// flag), or if the RPC guarantees that this field is set. The conflicting revisions are sorted chronologically
+        /// by their server creation time (oldest first). If there are too many conflicting revisions to return all of
+        /// them in a single request this will only contain the first batch. In such case, the presented conflicting
+        /// revisions must be resolved first in order to fetch the next batch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conflictingRevisions")]
         public virtual System.Collections.Generic.IList<SnapshotRevision> ConflictingRevisions { get; set; }
 
@@ -4519,14 +4632,15 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headRevision")]
         public virtual SnapshotRevision HeadRevision { get; set; }
 
-        /// <summary>An identifier of the snapshot, developer-specified. It must match the pattern [0-9a-
-        /// zA-Z-._~]{1,100}.</summary>
+        /// <summary>
+        /// An identifier of the snapshot, developer-specified. It must match the pattern [0-9a-zA-Z-._~]{1,100}.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotName")]
         public virtual string SnapshotName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An image of a snapshot.</summary>
     public class SnapshotImage : Google.Apis.Requests.IDirectResponseSchema
@@ -4535,8 +4649,9 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#snapshotImage`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#snapshotImage`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4554,7 +4669,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party list snapshots response.</summary>
     public class SnapshotListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4563,22 +4678,27 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Snapshot> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#snapshotListResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `games#snapshotListResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Token corresponding to the next page of results. If there are no more results, the token is
-        /// omitted.</summary>
+        /// <summary>
+        /// Token corresponding to the next page of results. If there are no more results, the token is omitted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Metadata about a snapshot revision. Snapshot metadata is immutable - a metadata change corresponds to a
-    /// new snapshot revision.</summary>
+    /// <summary>
+    /// Metadata about a snapshot revision. Snapshot metadata is immutable - a metadata change corresponds to a new
+    /// snapshot revision.
+    /// </summary>
     public class SnapshotMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The description of this snapshot.</summary>
@@ -4589,13 +4709,17 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; }
 
-        /// <summary>The duration associated with this snapshot. Values with sub-millisecond precision can be rounded or
-        /// trimmed to the closest millisecond.</summary>
+        /// <summary>
+        /// The duration associated with this snapshot. Values with sub-millisecond precision can be rounded or trimmed
+        /// to the closest millisecond.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gameplayDuration")]
         public virtual object GameplayDuration { get; set; }
 
-        /// <summary>The timestamp of the last modification to this snapshot as provided by the client. Values with sub-
-        /// millisecond precision can be rounded or trimmed to the closest millisecond.</summary>
+        /// <summary>
+        /// The timestamp of the last modification to this snapshot as provided by the client. Values with
+        /// sub-millisecond precision can be rounded or trimmed to the closest millisecond.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyTime")]
         public virtual object LastModifyTime { get; set; }
 
@@ -4605,7 +4729,7 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Snapshot revision resource. Snapshot revisions are immutable.</summary>
     public class SnapshotRevision : Google.Apis.Requests.IDirectResponseSchema
@@ -4628,65 +4752,86 @@ namespace Google.Apis.Games.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A third party stats resource.</summary>
     public class StatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not populated if there is
-        /// not enough information.</summary>
+        /// <summary>
+        /// Average session length in minutes of the player. E.g., 1, 30, 60, ... . Not populated if there is not enough
+        /// information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avg_session_length_minutes")]
         public virtual System.Nullable<float> AvgSessionLengthMinutes { get; set; }
 
-        /// <summary>The probability of the player not returning to play the game in the next day. E.g., 0, 0.1, 0.5,
-        /// ..., 1.0. Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The probability of the player not returning to play the game in the next day. E.g., 0, 0.1, 0.5, ..., 1.0.
+        /// Not populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("churn_probability")]
         public virtual System.Nullable<float> ChurnProbability { get; set; }
 
-        /// <summary>Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... . Not populated if
-        /// there is not enough information.</summary>
+        /// <summary>
+        /// Number of days since the player last played this game. E.g., 0, 1, 5, 10, ... . Not populated if there is
+        /// not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("days_since_last_played")]
         public virtual System.Nullable<int> DaysSinceLastPlayed { get; set; }
 
-        /// <summary>The probability of the player going to spend beyond a threshold amount of money. E.g., 0, 0.25,
-        /// 0.50, 0.75. Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The probability of the player going to spend beyond a threshold amount of money. E.g., 0, 0.25, 0.50, 0.75.
+        /// Not populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("high_spender_probability")]
         public virtual System.Nullable<float> HighSpenderProbability { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `games#statsResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `games#statsResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Number of in-app purchases made by the player in this game. E.g., 0, 1, 5, 10, ... . Not populated
-        /// if there is not enough information.</summary>
+        /// <summary>
+        /// Number of in-app purchases made by the player in this game. E.g., 0, 1, 5, 10, ... . Not populated if there
+        /// is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_purchases")]
         public virtual System.Nullable<int> NumPurchases { get; set; }
 
-        /// <summary>The approximate number of sessions of the player within the last 28 days, where a session begins
-        /// when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 1, 5, 10,
-        /// ... . Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The approximate number of sessions of the player within the last 28 days, where a session begins when the
+        /// player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 1, 5, 10, ... . Not
+        /// populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_sessions")]
         public virtual System.Nullable<int> NumSessions { get; set; }
 
-        /// <summary>The approximation of the sessions percentile of the player within the last 30 days, where a session
-        /// begins when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0,
-        /// 0.25, 0.5, 0.75. Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The approximation of the sessions percentile of the player within the last 30 days, where a session begins
+        /// when the player is connected to Play Games Services and ends when they are disconnected. E.g., 0, 0.25, 0.5,
+        /// 0.75. Not populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("num_sessions_percentile")]
         public virtual System.Nullable<float> NumSessionsPercentile { get; set; }
 
-        /// <summary>The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.5, 0.75. Not
-        /// populated if there is not enough information.</summary>
+        /// <summary>
+        /// The approximate spend percentile of the player in this game. E.g., 0, 0.25, 0.5, 0.75. Not populated if
+        /// there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spend_percentile")]
         public virtual System.Nullable<float> SpendPercentile { get; set; }
 
-        /// <summary>The probability of the player going to spend the game in the next seven days. E.g., 0, 0.25, 0.50,
-        /// 0.75. Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The probability of the player going to spend the game in the next seven days. E.g., 0, 0.25, 0.50, 0.75. Not
+        /// populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spend_probability")]
         public virtual System.Nullable<float> SpendProbability { get; set; }
 
-        /// <summary>The predicted amount of money that the player going to spend in the next 28 days. E.g., 1, 30, 60,
-        /// ... . Not populated if there is not enough information.</summary>
+        /// <summary>
+        /// The predicted amount of money that the player going to spend in the next 28 days. E.g., 1, 30, 60, ... . Not
+        /// populated if there is not enough information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("total_spend_next_28_days")]
         public virtual System.Nullable<float> TotalSpendNext28Days { get; set; }
 

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Speech.v2beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Speech-to-Text API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Speech.v2beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Speech.v2beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Speech.v2beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Speech.v2beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Speech.v2beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Speech.v2beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.Speech.v2beta1
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -286,7 +292,6 @@ namespace Google.Apis.Speech.v2beta1
             {
                 this.service = service;
                 Operations = new OperationsResource(service);
-
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -304,20 +309,22 @@ namespace Google.Apis.Speech.v2beta1
                 public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 public class GetRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v2beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -327,11 +334,9 @@ namespace Google.Apis.Speech.v2beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the operation resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -346,7 +351,6 @@ namespace Google.Apis.Speech.v2beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -356,29 +360,32 @@ namespace Google.Apis.Speech.v2beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 public class ListRequest : SpeechBaseServiceRequest<Google.Apis.Speech.v2beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -387,7 +394,6 @@ namespace Google.Apis.Speech.v2beta1
                         Name = name;
                         InitParameters();
                     }
-
 
                     /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -405,7 +411,6 @@ namespace Google.Apis.Speech.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -419,7 +424,6 @@ namespace Google.Apis.Speech.v2beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -453,16 +457,13 @@ namespace Google.Apis.Speech.v2beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.Speech.v2beta1.Data
-{    
-
+{
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -476,19 +477,22 @@ namespace Google.Apis.Speech.v2beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata`
-    /// field of the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations`
-    /// service.</summary>
+    /// <summary>
+    /// Describes the progress of a long-running `LongRunningRecognize` call. It is included in the `metadata` field of
+    /// the `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.
+    /// </summary>
     public class LongRunningRecognizeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time of the most recent processing update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
         public virtual object LastUpdateTime { get; set; }
 
-        /// <summary>Output only. Approximate percentage of audio processed thus far. Guaranteed to be 100 when the
-        /// audio is fully processed and the results are available.</summary>
+        /// <summary>
+        /// Output only. Approximate percentage of audio processed thus far. Guaranteed to be 100 when the audio is
+        /// fully processed and the results are available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; }
 
@@ -502,27 +506,32 @@ namespace Google.Apis.Speech.v2beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The only message returned to the client by the `LongRunningRecognize` method. It contains the result as
-    /// zero or more sequential SpeechRecognitionResult messages. It is included in the `result.response` field of the
-    /// `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.</summary>
+    /// <summary>
+    /// The only message returned to the client by the `LongRunningRecognize` method. It contains the result as zero or
+    /// more sequential SpeechRecognitionResult messages. It is included in the `result.response` field of the
+    /// `Operation` returned by the `GetOperation` call of the `google::longrunning::Operations` service.
+    /// </summary>
     public class LongRunningRecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Sequential list of transcription results corresponding to sequential portions of
-        /// audio.</summary>
+        /// <summary>
+        /// Output only. Sequential list of transcription results corresponding to sequential portions of audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -530,38 +539,45 @@ namespace Google.Apis.Speech.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
-        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
-        /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
+        /// <summary>
+        /// Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is set only for the top alternative of a
+        /// non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
-        /// indicating `confidence` was not set.</summary>
+        /// indicating `confidence` was not set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
@@ -569,92 +585,110 @@ namespace Google.Apis.Speech.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
 
-        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
-        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.</summary>
+        /// <summary>
+        /// Output only. A list of word-specific information for each recognized word. Note: When
+        /// `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
     public class SpeechRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. May contain one or more recognition hypotheses (up to the maximum specified in
+        /// <summary>
+        /// Output only. May contain one or more recognition hypotheses (up to the maximum specified in
         /// `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative
-        /// being the most probable, as ranked by the recognizer.</summary>
+        /// being the most probable, as ranked by the recognizer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; }
 
-        /// <summary>Output only. For multi-channel audio, this is the channel number corresponding to the recognized
-        /// result for the audio from that channel. For `audio_channel_count` = N, its output values can range from `1`
-        /// to `N`.</summary>
+        /// <summary>
+        /// Output only. For multi-channel audio, this is the channel number corresponding to the recognized result for
+        /// the audio from that channel. For `audio_channel_count` = N, its output values can range from `1` to `N`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelTag")]
         public virtual System.Nullable<int> ChannelTag { get; set; }
 
-        /// <summary>Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        /// language in this result. This language code was detected to have the most likelihood of being spoken in the
-        /// audio.</summary>
+        /// <summary>
+        /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this
+        /// result. This language code was detected to have the most likelihood of being spoken in the audio.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Word-specific information for recognized words.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
-        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
-        /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
+        /// <summary>
+        /// Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater
+        /// likelihood that the recognized words are correct. This field is set only for the top alternative of a
+        /// non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
-        /// indicating `confidence` was not set.</summary>
+        /// indicating `confidence` was not set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
-        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the end of
-        /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
-        /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
+        /// <summary>
+        /// Output only. Time offset relative to the beginning of the audio, and corresponding to the end of the spoken
+        /// word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+        /// experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual object EndOffset { get; set; }
 
-        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
-        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from `1` to
+        /// <summary>
+        /// Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies
+        /// which one of those speakers was detected to have spoken this word. Value ranges from `1` to
         /// `diarization_config.max_speaker_count` . `speaker_tag` is set if
-        /// `diarization_config.enable_speaker_diarization` = `true` and only in the top alternative.</summary>
+        /// `diarization_config.enable_speaker_diarization` = `true` and only in the top alternative.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
         public virtual System.Nullable<int> SpeakerTag { get; set; }
 
-        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
-        /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
-        /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
+        /// <summary>
+        /// Output only. Time offset relative to the beginning of the audio, and corresponding to the start of the
+        /// spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis. This
+        /// is an experimental feature and the accuracy of the time offset can vary.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
 

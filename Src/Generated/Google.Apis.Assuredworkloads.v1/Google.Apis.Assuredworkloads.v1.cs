@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Assuredworkloads.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Assured Workloads API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Assuredworkloads.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Assuredworkloads.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Assuredworkloads.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Assuredworkloads.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Assuredworkloads.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Assuredworkloads.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.Assuredworkloads.v1
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -287,7 +293,6 @@ namespace Google.Apis.Assuredworkloads.v1
                 this.service = service;
                 Operations = new OperationsResource(service);
                 Workloads = new WorkloadsResource(service);
-
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -305,20 +310,22 @@ namespace Google.Apis.Assuredworkloads.v1
                 public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 public class GetRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -328,11 +335,9 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the operation resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -347,7 +352,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -357,29 +361,32 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 public class ListRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleLongrunningListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -388,7 +395,6 @@ namespace Google.Apis.Assuredworkloads.v1
                         Name = name;
                         InitParameters();
                     }
-
 
                     /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -406,7 +412,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -420,7 +425,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -454,9 +458,9 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Workloads resource.</summary>
             public virtual WorkloadsResource Workloads { get; }
 
@@ -472,14 +476,14 @@ namespace Google.Apis.Assuredworkloads.v1
                 public WorkloadsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates Assured Workload.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The resource name of the new Workload's parent. Must be of the form
-                /// `organizations/{org_id}/locations/{location_id}`.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the new Workload's parent. Must be of the form
+                /// `organizations/{org_id}/locations/{location_id}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -496,19 +500,20 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The resource name of the new Workload's parent. Must be of the form
-                    /// `organizations/{org_id}/locations/{location_id}`.</summary>
+                    /// <summary>
+                    /// Required. The resource name of the new Workload's parent. Must be of the form
+                    /// `organizations/{org_id}/locations/{location_id}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. A identifier associated with the workload and underlying projects which
-                    /// allows for the break down of billing costs for a workload. The value provided for the identifier
-                    /// will add a label to the workload and contained projects with the identifier as the
-                    /// value.</summary>
+                    /// <summary>
+                    /// Optional. A identifier associated with the workload and underlying projects which allows for the
+                    /// break down of billing costs for a workload. The value provided for the identifier will add a
+                    /// label to the workload and contained projects with the identifier as the value.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("externalId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ExternalId { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload Body { get; set; }
@@ -529,7 +534,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -547,20 +551,25 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Deletes the workload. Make sure that workload's direct children are already in a deleted
-                /// state, otherwise the request will fail with a FAILED_PRECONDITION error.</summary>
-                /// <param name="name">Required. The `name` field is used to identify the workload. Format:
-                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}</param>
+                /// <summary>
+                /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
+                /// otherwise the request will fail with a FAILED_PRECONDITION error.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the workload. Format:
+                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes the workload. Make sure that workload's direct children are already in a deleted
-                /// state, otherwise the request will fail with a FAILED_PRECONDITION error.</summary>
+                /// <summary>
+                /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
+                /// otherwise the request will fail with a FAILED_PRECONDITION error.
+                /// </summary>
                 public class DeleteRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -570,17 +579,18 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The `name` field is used to identify the workload. Format:
-                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}</summary>
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the workload. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The etag of the workload. If this is provided, it must match the server's
-                    /// etag.</summary>
+                    /// <summary>
+                    /// Optional. The etag of the workload. If this is provided, it must match the server's etag.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -595,7 +605,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -613,13 +622,14 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
-                /// <param name="name">Required. The resource name of the Workload to fetch. This is the workloads's relative path in
-                /// the API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For
-                /// example, "organizations/123/locations/us-east1/workloads/assured-workload-1".</param>
+                /// <param name="name">
+                /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
+                /// API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
+                /// For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -635,14 +645,14 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The resource name of the Workload to fetch. This is the workloads's relative
-                    /// path in the API, formatted as
+                    /// <summary>
+                    /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in
+                    /// the API, formatted as
                     /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example,
-                    /// "organizations/123/locations/us-east1/workloads/assured-workload-1".</summary>
+                    /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -657,7 +667,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -667,12 +676,13 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Lists Assured Workloads under a CRM Node.</summary>
-                /// <param name="parent">Required. Parent Resource to list workloads from. Must be of the form
-                /// `organizations/{org_id}/locations/{location}`.</param>
+                /// <param name="parent">
+                /// Required. Parent Resource to list workloads from. Must be of the form
+                /// `organizations/{org_id}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -688,14 +698,17 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. Parent Resource to list workloads from. Must be of the form
-                    /// `organizations/{org_id}/locations/{location}`.</summary>
+                    /// <summary>
+                    /// Required. Parent Resource to list workloads from. Must be of the form
+                    /// `organizations/{org_id}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A custom filter for filtering by properties of a workload. At this time, only filtering
-                    /// by labels is supported.</summary>
+                    /// <summary>
+                    /// A custom filter for filtering by properties of a workload. At this time, only filtering by
+                    /// labels is supported.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -703,11 +716,12 @@ namespace Google.Apis.Assuredworkloads.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>Page token returned from previous request. Page token contains context from previous
-                    /// request. Page token needs to be passed in the second and following requests.</summary>
+                    /// <summary>
+                    /// Page token returned from previous request. Page token contains context from previous request.
+                    /// Page token needs to be passed in the second and following requests.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -722,7 +736,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -756,23 +769,28 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Updates an existing workload. Currently allows updating of workload display_name and
-                /// labels. For force updates don't set etag field in the Workload. Only one update operation per
-                /// workload can be in progress.</summary>
+                /// <summary>
+                /// Updates an existing workload. Currently allows updating of workload display_name and labels. For
+                /// force updates don't set etag field in the Workload. Only one update operation per workload can be in
+                /// progress.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Optional. The resource name of the workload. Format:
-                /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</param>
+                /// <param name="name">
+                /// Optional. The resource name of the workload. Format:
+                /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates an existing workload. Currently allows updating of workload display_name and
-                /// labels. For force updates don't set etag field in the Workload. Only one update operation per
-                /// workload can be in progress.</summary>
+                /// <summary>
+                /// Updates an existing workload. Currently allows updating of workload display_name and labels. For
+                /// force updates don't set etag field in the Workload. Only one update operation per workload can be in
+                /// progress.
+                /// </summary>
                 public class PatchRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -783,16 +801,16 @@ namespace Google.Apis.Assuredworkloads.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Optional. The resource name of the workload. Format:
-                    /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</summary>
+                    /// <summary>
+                    /// Optional. The resource name of the workload. Format:
+                    /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>Required. The list of fields to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1Workload Body { get; set; }
@@ -813,7 +831,6 @@ namespace Google.Apis.Assuredworkloads.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -831,21 +848,19 @@ namespace Google.Apis.Assuredworkloads.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.Assuredworkloads.v1.Data
-{    
-
+{
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Compliance controls that should be applied to the resources managed by the
-        /// workload.</summary>
+        /// <summary>
+        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
 
@@ -863,7 +878,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response of ListWorkloads endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -878,16 +893,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. The billing account used for the resources which are direct children of
-        /// workload. This billing account is initially associated with the resources created as part of Workload
-        /// creation. After the initial creation of these resources, the customer can change the assigned billing
-        /// account. The resource name has the form `billingAccounts/{billing_account_id}`. For example,
-        /// `billingAccounts/012345-567890-ABCDEF`.</summary>
+        /// <summary>
+        /// Required. Input only. The billing account used for the resources which are direct children of workload. This
+        /// billing account is initially associated with the resources created as part of Workload creation. After the
+        /// initial creation of these resources, the customer can change the assigned billing account. The resource name
+        /// has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }
 
@@ -899,19 +915,25 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
+        /// <summary>
+        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
-        /// My Workload</summary>
+        /// My Workload
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be
-        /// used in Update & Delete operations.</summary>
+        /// <summary>
+        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
+        /// Update &amp;amp; Delete operations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
-        /// provisioned. This field is mandatory for a subset of Compliance Regimes.</summary>
+        /// <summary>
+        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
+        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -919,43 +941,49 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Optional. The resource name of the workload. Format:
-        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</summary>
+        /// <summary>
+        /// Optional. The resource name of the workload. Format:
+        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Input only. The parent resource for the resources managed by this Assured Workload. May be either
-        /// an organization or a folder. Must be the same or a child of the Workload parent. If not specified all
-        /// resources are created under the Workload parent. Formats: folders/{folder_id}
-        /// organizations/{organization_id}</summary>
+        /// <summary>
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an
+        /// organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources
+        /// are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
         public virtual string ProvisionedResourcesParent { get; set; }
 
-        /// <summary>Output only. The resources associated with this workload. These resources will be created when
-        /// creating the workload. If any of the projects already exist, the workload creation will fail. Always read
-        /// only.</summary>
+        /// <summary>
+        /// Output only. The resources associated with this workload. These resources will be created when creating the
+        /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo> Resources { get; set; }
-
-    }    
+    }
 
     /// <summary>Settings specific to the Key Management Service.</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. The time at which the Key Management Service will automatically
-        /// create a new version of the crypto key and mark it as the primary.</summary>
+        /// <summary>
+        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
+        /// new version of the crypto key and mark it as the primary.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
         public virtual object NextRotationTime { get; set; }
 
-        /// <summary>Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
-        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000
-        /// hours.</summary>
+        /// <summary>
+        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
+        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
         public virtual object RotationPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represent the resources that are children of this Workload.</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -970,13 +998,14 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Compliance controls that should be applied to the resources managed by the
-        /// workload.</summary>
+        /// <summary>
+        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
 
@@ -994,16 +1023,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An Workload object for managing highly regulated workloads of cloud customers.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1Workload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. The billing account used for the resources which are direct children of
-        /// workload. This billing account is initially associated with the resources created as part of Workload
-        /// creation. After the initial creation of these resources, the customer can change the assigned billing
-        /// account. The resource name has the form `billingAccounts/{billing_account_id}`. For example,
-        /// `billingAccounts/012345-567890-ABCDEF`.</summary>
+        /// <summary>
+        /// Required. Input only. The billing account used for the resources which are direct children of workload. This
+        /// billing account is initially associated with the resources created as part of Workload creation. After the
+        /// initial creation of these resources, the customer can change the assigned billing account. The resource name
+        /// has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }
 
@@ -1019,14 +1049,18 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
+        /// <summary>
+        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
         /// characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example:
-        /// My Workload</summary>
+        /// My Workload
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be
-        /// used in Update & Delete operations.</summary>
+        /// <summary>
+        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in
+        /// Update &amp;amp; Delete operations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -1034,8 +1068,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampHighSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings FedrampHighSettings { get; set; }
 
-        /// <summary>Required. Input only. Immutable. Settings specific to resources needed for FedRAMP
-        /// Moderate.</summary>
+        /// <summary>
+        /// Required. Input only. Immutable. Settings specific to resources needed for FedRAMP Moderate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fedrampModerateSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings FedrampModerateSettings { get; set; }
 
@@ -1043,8 +1078,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("il4Settings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings Il4Settings { get; set; }
 
-        /// <summary>Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
-        /// provisioned. This field is mandatory for a subset of Compliance Regimes.</summary>
+        /// <summary>
+        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is
+        /// provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsSettings")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings KmsSettings { get; set; }
 
@@ -1052,25 +1089,28 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Optional. The resource name of the workload. Format:
-        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.</summary>
+        /// <summary>
+        /// Optional. The resource name of the workload. Format:
+        /// organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Input only. The parent resource for the resources managed by this Assured Workload. May be either
-        /// an organization or a folder. Must be the same or a child of the Workload parent. If not specified all
-        /// resources are created under the Workload parent. Formats: folders/{folder_id}
-        /// organizations/{organization_id}</summary>
+        /// <summary>
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an
+        /// organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources
+        /// are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
         public virtual string ProvisionedResourcesParent { get; set; }
 
-        /// <summary>Output only. The resources associated with this workload. These resources will be created when
-        /// creating the workload. If any of the projects already exist, the workload creation will fail. Always read
-        /// only.</summary>
+        /// <summary>
+        /// Output only. The resources associated with this workload. These resources will be created when creating the
+        /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo> Resources { get; set; }
-
-    }    
+    }
 
     /// <summary>Settings specific to resources needed for CJIS.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -1081,7 +1121,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Settings specific to resources needed for FedRAMP High.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -1092,7 +1132,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Settings specific to resources needed for FedRAMP Moderate.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings : Google.Apis.Requests.IDirectResponseSchema
@@ -1103,7 +1143,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Settings specific to resources needed for IL4.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings : Google.Apis.Requests.IDirectResponseSchema
@@ -1114,25 +1154,28 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Settings specific to the Key Management Service.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input only. Immutable. The time at which the Key Management Service will automatically
-        /// create a new version of the crypto key and mark it as the primary.</summary>
+        /// <summary>
+        /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
+        /// new version of the crypto key and mark it as the primary.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
         public virtual object NextRotationTime { get; set; }
 
-        /// <summary>Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
-        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000
-        /// hours.</summary>
+        /// <summary>
+        /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
+        /// Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
         public virtual object RotationPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represent the resources that are children of this Workload.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -1147,7 +1190,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1162,13 +1205,15 @@ namespace Google.Apis.Assuredworkloads.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -1176,58 +1221,69 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 

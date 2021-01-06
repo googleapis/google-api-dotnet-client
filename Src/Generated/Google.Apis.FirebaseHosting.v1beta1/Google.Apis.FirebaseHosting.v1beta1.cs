@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -72,7 +77,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>View all your Firebase data and settings</summary>
             public static string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Firebase Hosting API.</summary>
@@ -89,10 +93,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>View all your Firebase data and settings</summary>
             public const string FirebaseReadonly = "https://www.googleapis.com/auth/firebase.readonly";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -119,6 +120,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -138,9 +140,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -154,8 +158,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -167,8 +173,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -184,7 +192,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -290,7 +297,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             this.service = service;
             Operations = new OperationsResource(service);
             Sites = new SitesResource(service);
-
         }
 
         /// <summary>Gets the Operations resource.</summary>
@@ -308,20 +314,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             public OperationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             /// <param name="name">The name of the operation resource.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-            /// operation result at intervals as recommended by the API service.</summary>
+            /// <summary>
+            /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+            /// result at intervals as recommended by the API service.
+            /// </summary>
             public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -331,11 +339,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>The name of the operation resource.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -350,7 +356,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -360,9 +365,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^projects/[^/]+/operations/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Sites resource.</summary>
         public virtual SitesResource Sites { get; }
 
@@ -382,7 +387,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 Domains = new DomainsResource(service);
                 Releases = new ReleasesResource(service);
                 Versions = new VersionsResource(service);
-
             }
 
             /// <summary>Gets the Channels resource.</summary>
@@ -401,7 +405,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 {
                     this.service = service;
                     Releases = new ReleasesResource(service);
-
                 }
 
                 /// <summary>Gets the Releases resource.</summary>
@@ -419,21 +422,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     public ReleasesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
-                    /// <summary>Creates a new release which makes the content of the specified version actively display
-                    /// on the appropriate URL(s).</summary>
+                    /// <summary>
+                    /// Creates a new release which makes the content of the specified version actively display on the
+                    /// appropriate URL(s).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The site that the release belongs to, in the format: sites/ site-name</param>
+                    /// <param name="parent">
+                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new release which makes the content of the specified version actively display
-                    /// on the appropriate URL(s).</summary>
+                    /// <summary>
+                    /// Creates a new release which makes the content of the specified version actively display on the
+                    /// appropriate URL(s).
+                    /// </summary>
                     public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -444,19 +451,20 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The site that the release belongs to, in the format: sites/ site-
-                        /// name</summary>
+                        /// <summary>
+                        /// Required. The site that the release belongs to, in the format: sites/ site-name
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The unique identifier for a version, in the format: /sites/site-name
-                        /// /versions/versionID The site-name in this version identifier must match the site-name in the
-                        /// `parent` parameter. This query parameter must be empty if the `type` field in the request
-                        /// body is `SITE_DISABLE`.</summary>
+                        /// <summary>
+                        /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
+                        /// site-name in this version identifier must match the site-name in the `parent` parameter.
+                        /// This query parameter must be empty if the `type` field in the request body is
+                        /// `SITE_DISABLE`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string VersionName { get; set; }
-
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
@@ -477,7 +485,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -495,11 +502,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = null,
                             });
                         }
-
                     }
 
                     /// <summary>Lists the releases that have been created on the specified site.</summary>
-                    /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                    /// <param name="parent">
+                    /// Required. The parent for which to list files, in the format: sites/site-name
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -515,9 +523,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent for which to list files, in the format: sites/site-
-                        /// name</summary>
+                        /// <summary>
+                        /// Required. The parent for which to list files, in the format: sites/site-name
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -528,7 +536,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         /// <summary>The next_page_token from a previous request, if provided.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -543,7 +550,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -569,7 +575,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
@@ -592,7 +597,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The site in which this channel should be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -600,7 +604,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <summary>Required. Immutable. A unique id within the site to identify the channel.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ChannelId { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Channel Body { get; set; }
@@ -621,7 +624,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -639,7 +641,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes a channel of a site. The `live` channel cannot be deleted.</summary>
@@ -659,11 +660,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The fully-qualified identifier for the site.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -678,7 +677,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -688,7 +686,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/channels/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Retrieves information for the specified channel of a site.</summary>
@@ -708,11 +705,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The fully-qualified identifier for the channel.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -727,7 +722,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -737,19 +731,20 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/channels/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists the channels for the specified site. All sites have a default "live"
-                /// channel.</summary>
+                /// <summary>
+                /// Lists the channels for the specified site. All sites have a default "live" channel.
+                /// </summary>
                 /// <param name="parent">Required. The site from which to list channels.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists the channels for the specified site. All sites have a default "live"
-                /// channel.</summary>
+                /// <summary>
+                /// Lists the channels for the specified site. All sites have a default "live" channel.
+                /// </summary>
                 public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListChannelsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -759,21 +754,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The site from which to list channels.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The maximum number of versions to return. The service may return fewer than this value.
-                    /// If unspecified, at most 25 channels will be returned. The maximum value is 100; valuupdateses
-                    /// above 100 will be coerced to 100</summary>
+                    /// <summary>
+                    /// The maximum number of versions to return. The service may return fewer than this value. If
+                    /// unspecified, at most 25 channels will be returned. The maximum value is 100; valuupdateses above
+                    /// 100 will be coerced to 100
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>The next_page_token from a previous request, if provided.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -788,7 +783,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -814,11 +808,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Updates information for the specified channel of a site. This method will implicitly create
-                /// a channel if it doesn't exist.</summary>
+                /// <summary>
+                /// Updates information for the specified channel of a site. This method will implicitly create a
+                /// channel if it doesn't exist.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The fully-qualified identifier of the Channel.</param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
@@ -826,8 +821,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates information for the specified channel of a site. This method will implicitly create
-                /// a channel if it doesn't exist.</summary>
+                /// <summary>
+                /// Updates information for the specified channel of a site. This method will implicitly create a
+                /// channel if it doesn't exist.
+                /// </summary>
                 public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Channel>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -838,7 +835,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The fully-qualified identifier of the Channel.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -846,7 +842,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <summary>A comma-separated list of fields to be updated in this request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Channel Body { get; set; }
@@ -867,7 +862,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -885,9 +879,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Domains resource.</summary>
             public virtual DomainsResource Domains { get; }
 
@@ -903,14 +897,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 public DomainsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a domain mapping on the specified site.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent to create the domain association for, in the format: sites/site-
-                /// name</param>
+                /// <param name="parent">
+                /// Required. The parent to create the domain association for, in the format: sites/site-name
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -927,12 +920,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent to create the domain association for, in the format: sites/site-
-                    /// name</summary>
+                    /// <summary>
+                    /// Required. The parent to create the domain association for, in the format: sites/site-name
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Domain Body { get; set; }
@@ -953,7 +945,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -963,7 +954,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Deletes the existing domain mapping on the specified site.</summary>
@@ -983,11 +973,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The name of the domain association to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -1002,7 +990,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1012,7 +999,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Gets a domain mapping on the specified site.</summary>
@@ -1032,11 +1018,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The name of the domain configuration to get.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -1051,7 +1035,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1061,11 +1044,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Lists the domains for the specified site.</summary>
-                /// <param name="parent">Required. The parent for which to list domains, in the format: sites/ site-name</param>
+                /// <param name="parent">
+                /// Required. The parent for which to list domains, in the format: sites/ site-name
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1081,9 +1065,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent for which to list domains, in the format: sites/ site-
-                    /// name</summary>
+                    /// <summary>
+                    /// Required. The parent for which to list domains, in the format: sites/ site-name
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1094,7 +1078,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <summary>The next_page_token from a previous request, if provided.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1109,7 +1092,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1135,21 +1117,24 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Updates the specified domain mapping, creating the mapping as if it does not
-                /// exist.</summary>
+                /// <summary>
+                /// Updates the specified domain mapping, creating the mapping as if it does not exist.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the domain association to update or create, if an association doesn't
-                /// already exist.</param>
+                /// <param name="name">
+                /// Required. The name of the domain association to update or create, if an association doesn't already
+                /// exist.
+                /// </param>
                 public virtual UpdateRequest Update(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string name)
                 {
                     return new UpdateRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified domain mapping, creating the mapping as if it does not
-                /// exist.</summary>
+                /// <summary>
+                /// Updates the specified domain mapping, creating the mapping as if it does not exist.
+                /// </summary>
                 public class UpdateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Domain>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -1160,12 +1145,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The name of the domain association to update or create, if an association
-                    /// doesn't already exist.</summary>
+                    /// <summary>
+                    /// Required. The name of the domain association to update or create, if an association doesn't
+                    /// already exist.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Domain Body { get; set; }
@@ -1186,7 +1171,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1196,9 +1180,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/domains/[^/]+$",
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Releases resource.</summary>
             public virtual ReleasesResource Releases { get; }
 
@@ -1214,21 +1198,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 public ReleasesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Creates a new release which makes the content of the specified version actively display on
-                /// the appropriate URL(s).</summary>
+                /// <summary>
+                /// Creates a new release which makes the content of the specified version actively display on the
+                /// appropriate URL(s).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The site that the release belongs to, in the format: sites/ site-name</param>
+                /// <param name="parent">
+                /// Required. The site that the release belongs to, in the format: sites/ site-name
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new release which makes the content of the specified version actively display on
-                /// the appropriate URL(s).</summary>
+                /// <summary>
+                /// Creates a new release which makes the content of the specified version actively display on the
+                /// appropriate URL(s).
+                /// </summary>
                 public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1239,19 +1227,19 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The site that the release belongs to, in the format: sites/ site-
-                    /// name</summary>
+                    /// <summary>
+                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The unique identifier for a version, in the format: /sites/site-name
-                    /// /versions/versionID The site-name in this version identifier must match the site-name in the
-                    /// `parent` parameter. This query parameter must be empty if the `type` field in the request body
-                    /// is `SITE_DISABLE`.</summary>
+                    /// <summary>
+                    /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
+                    /// site-name in this version identifier must match the site-name in the `parent` parameter. This
+                    /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionName { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
@@ -1272,7 +1260,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1290,11 +1277,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists the releases that have been created on the specified site.</summary>
-                /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                /// <param name="parent">
+                /// Required. The parent for which to list files, in the format: sites/site-name
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1310,7 +1298,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1322,7 +1309,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <summary>The next_page_token from a previous request, if provided.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1337,7 +1323,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1363,9 +1348,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Versions resource.</summary>
             public virtual VersionsResource Versions { get; }
 
@@ -1382,7 +1367,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 {
                     this.service = service;
                     Files = new FilesResource(service);
-
                 }
 
                 /// <summary>Gets the Files resource.</summary>
@@ -1400,13 +1384,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     public FilesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
 
-
                     /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
-                    /// <param name="parent">Required. The parent to list files for, in the format: sites/site-name
-                    /// /versions/versionID</param>
+                    /// <param name="parent">
+                    /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -1422,9 +1405,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             InitParameters();
                         }
 
-
-                        /// <summary>Required. The parent to list files for, in the format: sites/site-name
-                        /// /versions/versionID</summary>
+                        /// <summary>
+                        /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -1432,8 +1415,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
-                        /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
+                        /// <summary>
+                        /// The next_page_token from a previous request, if provided. This will be the encoded version
+                        /// of a firebase.hosting.proto.metadata.ListFilesPageToken.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1447,15 +1432,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             /// <summary>The default status; should not be intentionally used.</summary>
                             [Google.Apis.Util.StringValueAttribute("STATUS_UNSPECIFIED")]
                             STATUSUNSPECIFIED,
-                            /// <summary>The file has been included in the version and is expected to be uploaded in the
-                            /// near future.</summary>
+
+                            /// <summary>
+                            /// The file has been included in the version and is expected to be uploaded in the near
+                            /// future.
+                            /// </summary>
                             [Google.Apis.Util.StringValueAttribute("EXPECTED")]
                             EXPECTED,
+
                             /// <summary>The file has already been uploaded to Firebase Hosting.</summary>
                             [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                             ACTIVE,
                         }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -1470,7 +1458,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -1504,22 +1491,24 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
-                /// <summary>Creates a new version on the target site using the content of the specified
-                /// version.</summary>
+                /// <summary>
+                /// Creates a new version on the target site using the content of the specified version.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The target site where the cloned version will reside, in the format:
-                /// `sites/{site}`</param>
+                /// <param name="parent">
+                /// Required. The target site where the cloned version will reside, in the format: `sites/{site}`
+                /// </param>
                 public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
                 {
                     return new CloneRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new version on the target site using the content of the specified
-                /// version.</summary>
+                /// <summary>
+                /// Creates a new version on the target site using the content of the specified version.
+                /// </summary>
                 public class CloneRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Clone request.</summary>
@@ -1530,12 +1519,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The target site where the cloned version will reside, in the format:
-                    /// `sites/{site}`</summary>
+                    /// <summary>
+                    /// Required. The target site where the cloned version will reside, in the format: `sites/{site}`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest Body { get; set; }
@@ -1556,7 +1544,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1566,12 +1553,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Creates a new version for a site.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent to create the version for, in the format: sites/ site-name</param>
+                /// <param name="parent">
+                /// Required. The parent to create the version for, in the format: sites/ site-name
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -1588,22 +1576,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent to create the version for, in the format: sites/ site-
-                    /// name</summary>
+                    /// <summary>
+                    /// Required. The parent to create the version for, in the format: sites/ site-name
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check
-                    /// for legacy version uploads.</summary>
+                    /// <summary>
+                    /// The self-reported size of the version. This value is used for a pre-emptive quota check for
+                    /// legacy version uploads.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> SizeBytes { get; set; }
 
-                    /// <summary>A unique id for the new version. This is was only specified for legacy version
-                    /// creations, and should be blank.</summary>
+                    /// <summary>
+                    /// A unique id for the new version. This is was only specified for legacy version creations, and
+                    /// should be blank.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionId { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Version Body { get; set; }
@@ -1624,7 +1615,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1650,12 +1640,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Deletes the specified version.</summary>
-                /// <param name="name">Required. The name of the version to be deleted, in the format: sites/ site-
-                /// name/versions/versionID</param>
+                /// <param name="name">
+                /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -1671,12 +1661,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The name of the version to be deleted, in the format: sites/ site-
-                    /// name/versions/versionID</summary>
+                    /// <summary>
+                    /// Required. The name of the version to be deleted, in the format: sites/
+                    /// site-name/versions/versionID
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -1691,7 +1681,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1701,19 +1690,24 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists the versions that have been created on the specified site. Will include filtering in
-                /// the future.</summary>
-                /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                /// <summary>
+                /// Lists the versions that have been created on the specified site. Will include filtering in the
+                /// future.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent for which to list files, in the format: sites/site-name
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists the versions that have been created on the specified site. Will include filtering in
-                /// the future.</summary>
+                /// <summary>
+                /// Lists the versions that have been created on the specified site. Will include filtering in the
+                /// future.
+                /// </summary>
                 public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListVersionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1723,27 +1717,29 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The filter string used to return a subset of versions in the response. Currently
-                    /// supported fields for filtering are: name, status, and create_time. Filter processing will be
-                    /// implemented in accordance with go/filtering.</summary>
+                    /// <summary>
+                    /// The filter string used to return a subset of versions in the response. Currently supported
+                    /// fields for filtering are: name, status, and create_time. Filter processing will be implemented
+                    /// in accordance with go/filtering.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>The maximum number of versions to return. The service may return fewer than this value.
-                    /// If unspecified, at most 25 versions will be returned. The maximum value is 100; values above 100
-                    /// will be coerced to 100</summary>
+                    /// <summary>
+                    /// The maximum number of versions to return. The service may return fewer than this value. If
+                    /// unspecified, at most 25 versions will be returned. The maximum value is 100; values above 100
+                    /// will be coerced to 100
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>The next_page_token from a previous request, if provided.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1758,7 +1754,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1792,26 +1787,31 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Updates the specified metadata for a version. Note that this method will fail with
+                /// <summary>
+                /// Updates the specified metadata for a version. Note that this method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
                 /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.</summary>
+                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The unique identifier for a version, in the format: sites/site-name /versions/versionID This name
-                /// is provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
-                /// endpoint.</param>
+                /// <param name="name">
+                /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
+                /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
+                /// endpoint.
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified metadata for a version. Note that this method will fail with
+                /// <summary>
+                /// Updates the specified metadata for a version. Note that this method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
                 /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.</summary>
+                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.
+                /// </summary>
                 public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1822,19 +1822,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The unique identifier for a version, in the format: sites/site-name /versions/versionID
-                    /// This name is provided in the response body when you call the
-                    /// [`CreateVersion`](../sites.versions/create) endpoint.</summary>
+                    /// <summary>
+                    /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This
+                    /// name is provided in the response body when you call the
+                    /// [`CreateVersion`](../sites.versions/create) endpoint.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>A set of field names from your [version](../sites.versions) that you want to update. A
-                    /// field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a
-                    /// default mask of only [`status`](../sites.versions#Version.FIELDS.status) will be used.</summary>
+                    /// <summary>
+                    /// A set of field names from your [version](../sites.versions) that you want to update. A field
+                    /// will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default
+                    /// mask of only [`status`](../sites.versions#Version.FIELDS.status) will be used.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Version Body { get; set; }
@@ -1855,7 +1857,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1873,13 +1874,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The version to add files to, in the format: sites/site-name
-                /// /versions/versionID</param>
+                /// <param name="parent">
+                /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                /// </param>
                 public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
                 {
                     return new PopulateFilesRequest(service, body, parent);
@@ -1896,12 +1897,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The version to add files to, in the format: sites/site-name
-                    /// /versions/versionID</summary>
+                    /// <summary>
+                    /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest Body { get; set; }
@@ -1922,7 +1922,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1932,13 +1931,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = @"^projects/[^/]+/sites/[^/]+/versions/[^/]+$",
                         });
                     }
-
                 }
             }
 
             /// <summary>Gets the Hosting metadata for a specific site.</summary>
-            /// <param name="name">Required. The site for which to get the SiteConfig, in the format: sites/ site-
-            /// name/config</param>
+            /// <param name="name">
+            /// Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config
+            /// </param>
             public virtual GetConfigRequest GetConfig(string name)
             {
                 return new GetConfigRequest(service, name);
@@ -1954,12 +1953,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The site for which to get the SiteConfig, in the format: sites/ site-
-                /// name/config</summary>
+                /// <summary>
+                /// Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "getConfig";
@@ -1974,7 +1972,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -1984,13 +1981,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^projects/[^/]+/sites/[^/]+/config$",
                     });
                 }
-
             }
 
             /// <summary>Sets the Hosting metadata for a specific site.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The site for which to update the SiteConfig, in the format: sites/ site-
-            /// name/config</param>
+            /// <param name="name">
+            /// Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config
+            /// </param>
             public virtual UpdateConfigRequest UpdateConfig(Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
             {
                 return new UpdateConfigRequest(service, body, name);
@@ -2007,19 +2004,19 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The site for which to update the SiteConfig, in the format: sites/ site-
-                /// name/config</summary>
+                /// <summary>
+                /// Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A set of field names from your [site configuration](../sites.SiteConfig) that you want to
-                /// update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided
-                /// then a default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be
-                /// used.</summary>
+                /// <summary>
+                /// A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A
+                /// field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a
+                /// default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig Body { get; set; }
@@ -2040,7 +2037,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2058,7 +2054,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
@@ -2079,7 +2074,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             Domains = new DomainsResource(service);
             Releases = new ReleasesResource(service);
             Versions = new VersionsResource(service);
-
         }
 
         /// <summary>Gets the Channels resource.</summary>
@@ -2098,7 +2092,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             {
                 this.service = service;
                 Releases = new ReleasesResource(service);
-
             }
 
             /// <summary>Gets the Releases resource.</summary>
@@ -2116,21 +2109,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 public ReleasesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Creates a new release which makes the content of the specified version actively display on
-                /// the appropriate URL(s).</summary>
+                /// <summary>
+                /// Creates a new release which makes the content of the specified version actively display on the
+                /// appropriate URL(s).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The site that the release belongs to, in the format: sites/ site-name</param>
+                /// <param name="parent">
+                /// Required. The site that the release belongs to, in the format: sites/ site-name
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new release which makes the content of the specified version actively display on
-                /// the appropriate URL(s).</summary>
+                /// <summary>
+                /// Creates a new release which makes the content of the specified version actively display on the
+                /// appropriate URL(s).
+                /// </summary>
                 public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2141,19 +2138,19 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The site that the release belongs to, in the format: sites/ site-
-                    /// name</summary>
+                    /// <summary>
+                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The unique identifier for a version, in the format: /sites/site-name
-                    /// /versions/versionID The site-name in this version identifier must match the site-name in the
-                    /// `parent` parameter. This query parameter must be empty if the `type` field in the request body
-                    /// is `SITE_DISABLE`.</summary>
+                    /// <summary>
+                    /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
+                    /// site-name in this version identifier must match the site-name in the `parent` parameter. This
+                    /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionName { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
@@ -2174,7 +2171,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -2192,11 +2188,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists the releases that have been created on the specified site.</summary>
-                /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+                /// <param name="parent">
+                /// Required. The parent for which to list files, in the format: sites/site-name
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2212,7 +2209,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2224,7 +2220,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <summary>The next_page_token from a previous request, if provided.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -2239,7 +2234,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -2265,7 +2259,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
@@ -2288,7 +2281,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The site in which this channel should be created.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2296,7 +2288,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>Required. Immutable. A unique id within the site to identify the channel.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ChannelId { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Channel Body { get; set; }
@@ -2317,7 +2308,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2335,7 +2325,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes a channel of a site. The `live` channel cannot be deleted.</summary>
@@ -2355,11 +2344,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The fully-qualified identifier for the site.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2374,7 +2361,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2384,7 +2370,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/channels/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Retrieves information for the specified channel of a site.</summary>
@@ -2404,11 +2389,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The fully-qualified identifier for the channel.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -2423,7 +2406,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2433,7 +2415,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/channels/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists the channels for the specified site. All sites have a default "live" channel.</summary>
@@ -2453,21 +2434,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The site from which to list channels.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of versions to return. The service may return fewer than this value. If
+                /// <summary>
+                /// The maximum number of versions to return. The service may return fewer than this value. If
                 /// unspecified, at most 25 channels will be returned. The maximum value is 100; valuupdateses above 100
-                /// will be coerced to 100</summary>
+                /// will be coerced to 100
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>The next_page_token from a previous request, if provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2482,7 +2463,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2508,11 +2488,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates information for the specified channel of a site. This method will implicitly create a
-            /// channel if it doesn't exist.</summary>
+            /// <summary>
+            /// Updates information for the specified channel of a site. This method will implicitly create a channel if
+            /// it doesn't exist.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The fully-qualified identifier of the Channel.</param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
@@ -2520,8 +2501,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates information for the specified channel of a site. This method will implicitly create a
-            /// channel if it doesn't exist.</summary>
+            /// <summary>
+            /// Updates information for the specified channel of a site. This method will implicitly create a channel if
+            /// it doesn't exist.
+            /// </summary>
             public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Channel>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -2532,7 +2515,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>The fully-qualified identifier of the Channel.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2540,7 +2522,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>A comma-separated list of fields to be updated in this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Channel Body { get; set; }
@@ -2561,7 +2542,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2579,9 +2559,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Domains resource.</summary>
         public virtual DomainsResource Domains { get; }
 
@@ -2597,14 +2577,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             public DomainsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Creates a domain mapping on the specified site.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent to create the domain association for, in the format: sites/site-
-            /// name</param>
+            /// <param name="parent">
+            /// Required. The parent to create the domain association for, in the format: sites/site-name
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -2621,12 +2600,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The parent to create the domain association for, in the format: sites/site-
-                /// name</summary>
+                /// <summary>
+                /// Required. The parent to create the domain association for, in the format: sites/site-name
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Domain Body { get; set; }
@@ -2647,7 +2625,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2657,7 +2634,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Deletes the existing domain mapping on the specified site.</summary>
@@ -2677,11 +2653,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the domain association to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -2696,7 +2670,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2706,7 +2679,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/domains/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Gets a domain mapping on the specified site.</summary>
@@ -2726,11 +2698,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The name of the domain configuration to get.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -2745,7 +2715,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2755,11 +2724,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/domains/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists the domains for the specified site.</summary>
-            /// <param name="parent">Required. The parent for which to list domains, in the format: sites/ site-name</param>
+            /// <param name="parent">
+            /// Required. The parent for which to list domains, in the format: sites/ site-name
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2775,7 +2745,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent for which to list domains, in the format: sites/ site-name</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2787,7 +2756,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>The next_page_token from a previous request, if provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -2802,7 +2770,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2828,13 +2795,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Updates the specified domain mapping, creating the mapping as if it does not exist.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The name of the domain association to update or create, if an association doesn't
-            /// already exist.</param>
+            /// <param name="name">
+            /// Required. The name of the domain association to update or create, if an association doesn't already
+            /// exist.
+            /// </param>
             public virtual UpdateRequest Update(Google.Apis.FirebaseHosting.v1beta1.Data.Domain body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -2851,12 +2819,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the domain association to update or create, if an association doesn't
-                /// already exist.</summary>
+                /// <summary>
+                /// Required. The name of the domain association to update or create, if an association doesn't already
+                /// exist.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Domain Body { get; set; }
@@ -2877,7 +2845,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2887,9 +2854,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/domains/[^/]+$",
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Releases resource.</summary>
         public virtual ReleasesResource Releases { get; }
 
@@ -2905,21 +2872,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             public ReleasesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Creates a new release which makes the content of the specified version actively display on the
-            /// appropriate URL(s).</summary>
+            /// <summary>
+            /// Creates a new release which makes the content of the specified version actively display on the
+            /// appropriate URL(s).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The site that the release belongs to, in the format: sites/ site-name</param>
+            /// <param name="parent">
+            /// Required. The site that the release belongs to, in the format: sites/ site-name
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a new release which makes the content of the specified version actively display on the
-            /// appropriate URL(s).</summary>
+            /// <summary>
+            /// Creates a new release which makes the content of the specified version actively display on the
+            /// appropriate URL(s).
+            /// </summary>
             public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2930,17 +2901,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The site that the release belongs to, in the format: sites/ site-name</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The unique identifier for a version, in the format: /sites/site-name /versions/versionID
-                /// The site-name in this version identifier must match the site-name in the `parent` parameter. This
-                /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.</summary>
+                /// <summary>
+                /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
+                /// site-name in this version identifier must match the site-name in the `parent` parameter. This query
+                /// parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionName { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Release Body { get; set; }
@@ -2961,7 +2932,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -2979,11 +2949,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Lists the releases that have been created on the specified site.</summary>
-            /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+            /// <param name="parent">
+            /// Required. The parent for which to list files, in the format: sites/site-name
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2999,7 +2970,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3011,7 +2981,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>The next_page_token from a previous request, if provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3026,7 +2995,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3052,9 +3020,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Versions resource.</summary>
         public virtual VersionsResource Versions { get; }
 
@@ -3071,7 +3039,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             {
                 this.service = service;
                 Files = new FilesResource(service);
-
             }
 
             /// <summary>Gets the Files resource.</summary>
@@ -3089,13 +3056,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 public FilesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
                 /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
-                /// <param name="parent">Required. The parent to list files for, in the format: sites/site-name
-                /// /versions/versionID</param>
+                /// <param name="parent">
+                /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -3111,9 +3077,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent to list files for, in the format: sites/site-name
-                    /// /versions/versionID</summary>
+                    /// <summary>
+                    /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3121,8 +3087,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The next_page_token from a previous request, if provided. This will be the encoded
-                    /// version of a firebase.hosting.proto.metadata.ListFilesPageToken.</summary>
+                    /// <summary>
+                    /// The next_page_token from a previous request, if provided. This will be the encoded version of a
+                    /// firebase.hosting.proto.metadata.ListFilesPageToken.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -3136,15 +3104,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         /// <summary>The default status; should not be intentionally used.</summary>
                         [Google.Apis.Util.StringValueAttribute("STATUS_UNSPECIFIED")]
                         STATUSUNSPECIFIED,
-                        /// <summary>The file has been included in the version and is expected to be uploaded in the
-                        /// near future.</summary>
+
+                        /// <summary>
+                        /// The file has been included in the version and is expected to be uploaded in the near future.
+                        /// </summary>
                         [Google.Apis.Util.StringValueAttribute("EXPECTED")]
                         EXPECTED,
+
                         /// <summary>The file has already been uploaded to Firebase Hosting.</summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                         ACTIVE,
                     }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -3159,7 +3129,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -3193,14 +3162,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
             /// <summary>Creates a new version on the target site using the content of the specified version.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The target site where the cloned version will reside, in the format:
-            /// `sites/{site}`</param>
+            /// <param name="parent">
+            /// Required. The target site where the cloned version will reside, in the format: `sites/{site}`
+            /// </param>
             public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
             {
                 return new CloneRequest(service, body, parent);
@@ -3217,12 +3186,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The target site where the cloned version will reside, in the format:
-                /// `sites/{site}`</summary>
+                /// <summary>
+                /// Required. The target site where the cloned version will reside, in the format: `sites/{site}`
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest Body { get; set; }
@@ -3243,7 +3211,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3253,12 +3220,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Creates a new version for a site.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent to create the version for, in the format: sites/ site-name</param>
+            /// <param name="parent">
+            /// Required. The parent to create the version for, in the format: sites/ site-name
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -3275,21 +3243,23 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent to create the version for, in the format: sites/ site-name</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The self-reported size of the version. This value is used for a pre-emptive quota check for
-                /// legacy version uploads.</summary>
+                /// <summary>
+                /// The self-reported size of the version. This value is used for a pre-emptive quota check for legacy
+                /// version uploads.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("sizeBytes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> SizeBytes { get; set; }
 
-                /// <summary>A unique id for the new version. This is was only specified for legacy version creations,
-                /// and should be blank.</summary>
+                /// <summary>
+                /// A unique id for the new version. This is was only specified for legacy version creations, and should
+                /// be blank.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionId { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Version Body { get; set; }
@@ -3310,7 +3280,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3336,12 +3305,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Deletes the specified version.</summary>
-            /// <param name="name">Required. The name of the version to be deleted, in the format: sites/ site-
-            /// name/versions/versionID</param>
+            /// <param name="name">
+            /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -3357,12 +3326,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the version to be deleted, in the format: sites/ site-
-                /// name/versions/versionID</summary>
+                /// <summary>
+                /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3377,7 +3345,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3387,19 +3354,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/versions/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Lists the versions that have been created on the specified site. Will include filtering in the
-            /// future.</summary>
-            /// <param name="parent">Required. The parent for which to list files, in the format: sites/site-name</param>
+            /// <summary>
+            /// Lists the versions that have been created on the specified site. Will include filtering in the future.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent for which to list files, in the format: sites/site-name
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists the versions that have been created on the specified site. Will include filtering in the
-            /// future.</summary>
+            /// <summary>
+            /// Lists the versions that have been created on the specified site. Will include filtering in the future.
+            /// </summary>
             public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListVersionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3409,27 +3379,29 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The filter string used to return a subset of versions in the response. Currently supported
-                /// fields for filtering are: name, status, and create_time. Filter processing will be implemented in
-                /// accordance with go/filtering.</summary>
+                /// <summary>
+                /// The filter string used to return a subset of versions in the response. Currently supported fields
+                /// for filtering are: name, status, and create_time. Filter processing will be implemented in
+                /// accordance with go/filtering.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The maximum number of versions to return. The service may return fewer than this value. If
+                /// <summary>
+                /// The maximum number of versions to return. The service may return fewer than this value. If
                 /// unspecified, at most 25 versions will be returned. The maximum value is 100; values above 100 will
-                /// be coerced to 100</summary>
+                /// be coerced to 100
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>The next_page_token from a previous request, if provided.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -3444,7 +3416,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3478,26 +3449,30 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
-            /// <summary>Updates the specified metadata for a version. Note that this method will fail with
-            /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
-            /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-            /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.</summary>
+            /// <summary>
+            /// Updates the specified metadata for a version. Note that this method will fail with `FAILED_PRECONDITION`
+            /// in the event of an invalid state transition. The only valid transition for a version is currently from a
+            /// `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
+            /// status of a version to `DELETED`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The unique identifier for a version, in the format: sites/site-name /versions/versionID This name
-            /// is provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
-            /// endpoint.</param>
+            /// <param name="name">
+            /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
+            /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create) endpoint.
+            /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
             {
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the specified metadata for a version. Note that this method will fail with
-            /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
-            /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-            /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.</summary>
+            /// <summary>
+            /// Updates the specified metadata for a version. Note that this method will fail with `FAILED_PRECONDITION`
+            /// in the event of an invalid state transition. The only valid transition for a version is currently from a
+            /// `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
+            /// status of a version to `DELETED`.
+            /// </summary>
             public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -3508,19 +3483,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>The unique identifier for a version, in the format: sites/site-name /versions/versionID
-                /// This name is provided in the response body when you call the
-                /// [`CreateVersion`](../sites.versions/create) endpoint.</summary>
+                /// <summary>
+                /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
+                /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
+                /// endpoint.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A set of field names from your [version](../sites.versions) that you want to update. A
-                /// field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a
-                /// default mask of only [`status`](../sites.versions#Version.FIELDS.status) will be used.</summary>
+                /// <summary>
+                /// A set of field names from your [version](../sites.versions) that you want to update. A field will be
+                /// overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only
+                /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Version Body { get; set; }
@@ -3541,7 +3518,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -3559,13 +3535,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The version to add files to, in the format: sites/site-name
-            /// /versions/versionID</param>
+            /// <param name="parent">
+            /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+            /// </param>
             public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
             {
                 return new PopulateFilesRequest(service, body, parent);
@@ -3582,12 +3558,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The version to add files to, in the format: sites/site-name
-                /// /versions/versionID</summary>
+                /// <summary>
+                /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest Body { get; set; }
@@ -3608,7 +3583,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -3618,13 +3592,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         Pattern = @"^sites/[^/]+/versions/[^/]+$",
                     });
                 }
-
             }
         }
 
         /// <summary>Gets the Hosting metadata for a specific site.</summary>
-        /// <param name="name">Required. The site for which to get the SiteConfig, in the format: sites/ site-
-        /// name/config</param>
+        /// <param name="name">
+        /// Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config
+        /// </param>
         public virtual GetConfigRequest GetConfig(string name)
         {
             return new GetConfigRequest(service, name);
@@ -3640,12 +3614,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>Required. The site for which to get the SiteConfig, in the format: sites/ site-
-            /// name/config</summary>
+            /// <summary>
+            /// Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getConfig";
@@ -3660,7 +3633,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3670,13 +3642,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     Pattern = @"^sites/[^/]+/config$",
                 });
             }
-
         }
 
         /// <summary>Sets the Hosting metadata for a specific site.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The site for which to update the SiteConfig, in the format: sites/ site-
-        /// name/config</param>
+        /// <param name="name">
+        /// Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config
+        /// </param>
         public virtual UpdateConfigRequest UpdateConfig(Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig body, string name)
         {
             return new UpdateConfigRequest(service, body, name);
@@ -3693,18 +3665,19 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>Required. The site for which to update the SiteConfig, in the format: sites/ site-
-            /// name/config</summary>
+            /// <summary>
+            /// Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>A set of field names from your [site configuration](../sites.SiteConfig) that you want to
-            /// update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a
-            /// default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used.</summary>
+            /// <summary>
+            /// A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A
+            /// field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default
+            /// mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.FirebaseHosting.v1beta1.Data.SiteConfig Body { get; set; }
@@ -3725,7 +3698,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -3743,30 +3715,30 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.FirebaseHosting.v1beta1.Data
-{    
-
-    /// <summary>Contains metadata about the user who performed an action, such as creating a release or finalizing a
-    /// version.</summary>
+{
+    /// <summary>
+    /// Contains metadata about the user who performed an action, such as creating a release or finalizing a version.
+    /// </summary>
     public class ActingUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The email address of the user when the user performed the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>A profile image URL for the user. May not be present if the user has changed their email address or
-        /// deleted their account.</summary>
+        /// <summary>
+        /// A profile image URL for the user. May not be present if the user has changed their email address or deleted
+        /// their account.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a DNS certificate challenge.</summary>
     public class CertDnsChallenge : Google.Apis.Requests.IDirectResponseSchema
@@ -3775,14 +3747,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual string DomainName { get; set; }
 
-        /// <summary>The value that must be present as a TXT record on the domain name to satisfy the
-        /// challenge.</summary>
+        /// <summary>
+        /// The value that must be present as a TXT record on the domain name to satisfy the challenge.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents an HTTP certificate challenge.</summary>
     public class CertHttpChallenge : Google.Apis.Requests.IDirectResponseSchema
@@ -3797,19 +3770,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A `Channel` represents a stream of releases for a site. All sites have a default `live` channel that
-    /// serves content to the live Firebase-provided domains and any connected custom domains.</summary>
+    /// <summary>
+    /// A `Channel` represents a stream of releases for a site. All sites have a default `live` channel that serves
+    /// content to the live Firebase-provided domains and any connected custom domains.
+    /// </summary>
     public class Channel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The time at which the channel was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The time at which the channel will be automatically deleted. If null, the channel will not be
-        /// automatically deleted. This field is present in output whether set directly or via the `ttl`
-        /// field.</summary>
+        /// <summary>
+        /// The time at which the channel will be automatically deleted. If null, the channel will not be automatically
+        /// deleted. This field is present in output whether set directly or via the `ttl` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
@@ -3825,13 +3801,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual Release Release { get; set; }
 
-        /// <summary>The number of previous releases to retain on the channel for rollback or other purposes. Must be a
-        /// number between 1-100. Defaults to 10 for new channels.</summary>
+        /// <summary>
+        /// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number
+        /// between 1-100. Defaults to 10 for new channels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainedReleaseCount")]
         public virtual System.Nullable<int> RetainedReleaseCount { get; set; }
 
-        /// <summary>Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the
-        /// time of the request.</summary>
+        /// <summary>
+        /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of
+        /// the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
 
@@ -3839,20 +3819,24 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Output only. The URL at which the channel can be viewed. For the `live` channel, the content of the
-        /// current release may also be visible at other URLs.</summary>
+        /// <summary>
+        /// Output only. The URL at which the channel can be viewed. For the `live` channel, the content of the current
+        /// release may also be visible at other URLs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request sent to CloneVersion.</summary>
     public class CloneVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If provided, only paths that do not match any of the regexes in this list will be included in the
-        /// new version.</summary>
+        /// <summary>
+        /// If provided, only paths that do not match any of the regexes in this list will be included in the new
+        /// version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
         public virtual PathFilter Exclude { get; set; }
 
@@ -3860,28 +3844,34 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finalize")]
         public virtual System.Nullable<bool> Finalize { get; set; }
 
-        /// <summary>If provided, only paths that match one or more regexes in this list will be included in the new
-        /// version.</summary>
+        /// <summary>
+        /// If provided, only paths that match one or more regexes in this list will be included in the new version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("include")]
         public virtual PathFilter Include { get; set; }
 
-        /// <summary>Required. The name of the version to be cloned, in the format:
-        /// `sites/{site}/versions/{version}`</summary>
+        /// <summary>
+        /// Required. The name of the version to be cloned, in the format: `sites/{site}/versions/{version}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
         public virtual string SourceVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not
-    /// exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the
-    /// Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to
-    /// that service receive a `404` error).</summary>
+    /// <summary>
+    /// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when
+    /// setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run
+    /// service are passed to the end user (for example, if you delete a service, any requests directed to that service
+    /// receive a `404` error).
+    /// </summary>
     public class CloudRunRewrite : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if
-        /// not supplied.</summary>
+        /// <summary>
+        /// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not
+        /// supplied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
@@ -3891,7 +3881,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The intended behavior and status information of a domain.</summary>
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
@@ -3904,8 +3894,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainRedirect")]
         public virtual DomainRedirect DomainRedirect { get; set; }
 
-        /// <summary>Output only. Information about the provisioning of certificates and the health of the DNS
-        /// resolution for the domain.</summary>
+        /// <summary>
+        /// Output only. Information about the provisioning of certificates and the health of the DNS resolution for the
+        /// domain.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioning")]
         public virtual DomainProvisioning Provisioning { get; set; }
 
@@ -3923,7 +3915,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The current certificate provisioning status information for a domain.</summary>
     public class DomainProvisioning : Google.Apis.Requests.IDirectResponseSchema
@@ -3940,8 +3932,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certChallengeHttp")]
         public virtual CertHttpChallenge CertChallengeHttp { get; set; }
 
-        /// <summary>The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate
-        /// for the domain.</summary>
+        /// <summary>
+        /// The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the
+        /// domain.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certStatus")]
         public virtual string CertStatus { get; set; }
 
@@ -3963,10 +3957,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but
-    /// replace the requested domain with the one specified in the redirect configuration.</summary>
+    /// <summary>
+    /// Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace
+    /// the requested domain with the one specified in the redirect configuration.
+    /// </summary>
     public class DomainRedirect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The domain name to redirect to.</summary>
@@ -3979,24 +3975,30 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A [`header`](/docs/hosting/full-config#headers) is an object that specifies a URL pattern that, if
-    /// matched to the request URL path, triggers Hosting to apply the specified custom response headers.</summary>
+    /// <summary>
+    /// A [`header`](/docs/hosting/full-config#headers) is an object that specifies a URL pattern that, if matched to
+    /// the request URL path, triggers Hosting to apply the specified custom response headers.
+    /// </summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
-        /// request URL path.</summary>
+        /// <summary>
+        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
+        /// path.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
 
@@ -4010,19 +4012,21 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>If provided, i18n rewrites are enabled.</summary>
     public class I18nConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The user-supplied path where country and language specific content will be looked for
-        /// within the public directory.</summary>
+        /// <summary>
+        /// Required. The user-supplied path where country and language specific content will be looked for within the
+        /// public directory.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
         public virtual string Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response returned by ListChannels.</summary>
     public class ListChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4031,14 +4035,16 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channels")]
         public virtual System.Collections.Generic.IList<Channel> Channels { get; set; }
 
-        /// <summary>If there are additional releases remaining beyond the ones in this response, then supply this token
-        /// in the next [`list`](../sites.channels/list) call to continue with the next set of releases.</summary>
+        /// <summary>
+        /// If there are additional releases remaining beyond the ones in this response, then supply this token in the
+        /// next [`list`](../sites.channels/list) call to continue with the next set of releases.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to listing Domains.</summary>
     public class ListDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4053,12 +4059,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListReleasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If there are additional releases remaining beyond the ones in this response, then supply this token
-        /// in the next [`list`](../sites.versions.files/list) call to continue with the next set of releases.</summary>
+        /// <summary>
+        /// If there are additional releases remaining beyond the ones in this response, then supply this token in the
+        /// next [`list`](../sites.versions.files/list) call to continue with the next set of releases.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4068,7 +4076,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4082,7 +4090,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4096,13 +4104,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -4110,29 +4120,34 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A representation of filter path.</summary>
     public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
@@ -4143,69 +4158,84 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request to populate a Version's Files.</summary>
     public class PopulateVersionFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of file paths to the hashes corresponding to assets that should be added to the version. Note
-        /// that a file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the
-        /// file then taking the SHA256 hash of the newly compressed file.</summary>
+        /// <summary>
+        /// A set of file paths to the hashes corresponding to assets that should be added to the version. Note that a
+        /// file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then
+        /// taking the SHA256 hash of the newly compressed file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IDictionary<string, string> Files { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PopulateVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content hashes of the specified files that need to be uploaded to the specified
-        /// endpoint.</summary>
+        /// <summary>
+        /// The content hashes of the specified files that need to be uploaded to the specified endpoint.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadRequiredHashes")]
         public virtual System.Collections.Generic.IList<string> UploadRequiredHashes { get; set; }
 
-        /// <summary>The URL to which the files should be uploaded, in the format: "https://upload-
-        /// firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/files". Perform a multipart `POST`
-        /// of the Gzipped file contents to the URL using a forward slash and the hash of the file appended to the
-        /// end.</summary>
+        /// <summary>
+        /// The URL to which the files should be uploaded, in the format:
+        /// "https://upload-firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/files". Perform a
+        /// multipart `POST` of the Gzipped file contents to the URL using a forward slash and the hash of the file
+        /// appended to the end.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
         public virtual string UploadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Version preview configuration. If active and unexpired, this version will be accessible via a custom
-    /// URL even if it is not the currently released version. Deprecated in favor of site channels.</summary>
+    /// <summary>
+    /// Version preview configuration. If active and unexpired, this version will be accessible via a custom URL even if
+    /// it is not the currently released version. Deprecated in favor of site channels.
+    /// </summary>
     public class PreviewConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, preview URLs are enabled for this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("active")]
         public virtual System.Nullable<bool> Active { get; set; }
 
-        /// <summary>Indicates the expiration time for previewing this version; preview URL requests received after this
-        /// time will 404.</summary>
+        /// <summary>
+        /// Indicates the expiration time for previewing this version; preview URL requests received after this time
+        /// will 404.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL pattern that, if matched to
-    /// the request URL path, triggers Hosting to respond with a redirect to the specified destination path.</summary>
+    /// <summary>
+    /// A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL pattern that, if matched to the
+    /// request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+    /// </summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
-        /// request URL path.</summary>
+        /// <summary>
+        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
+        /// path.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
 
-        /// <summary>Required. The value to put in the HTTP location header of the response. The location can contain
-        /// capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to
-        /// capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
-        /// "https://example.com/foo/:capture"</summary>
+        /// <summary>
+        /// Required. The value to put in the HTTP location header of the response. The location can contain capture
+        /// group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the
+        /// rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location":
+        /// "https://example.com/foo/:capture"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -4213,27 +4243,32 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
         public virtual string Regex { get; set; }
 
-        /// <summary>Required. The status HTTP code to return in the response. It must be a valid 3xx status
-        /// code.</summary>
+        /// <summary>
+        /// Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
         public virtual System.Nullable<int> StatusCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be
-    /// public at a particular time.</summary>
+    /// <summary>
+    /// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at
+    /// a particular time.
+    /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The deploy description when the release was created. The value can be up to 512
-        /// characters.</summary>
+        /// <summary>
+        /// The deploy description when the release was created. The value can be up to 512 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>Output only. The unique identifier for the release, in the format: sites/ site-
-        /// name/releases/releaseID This name is provided in the response body when you call the
-        /// [`CreateRelease`](sites.releases/create) endpoint.</summary>
+        /// <summary>
+        /// Output only. The unique identifier for the release, in the format: sites/ site-name/releases/releaseID This
+        /// name is provided in the response body when you call the [`CreateRelease`](sites.releases/create) endpoint.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4245,8 +4280,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releaseUser")]
         public virtual ActingUser ReleaseUser { get; set; }
 
-        /// <summary>Explains the reason for the release. Specify a value for this field only when creating a
-        /// `SITE_DISABLE` type release.</summary>
+        /// <summary>
+        /// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type
+        /// release.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -4256,11 +4293,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL pattern that, if matched to
-    /// the request URL path, triggers Hosting to respond as if the service were given the specified destination
-    /// URL.</summary>
+    /// <summary>
+    /// A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL pattern that, if matched to the request
+    /// URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+    /// </summary>
     public class Rewrite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The request will be forwarded to Firebase Dynamic Links.</summary>
@@ -4271,8 +4309,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; }
 
-        /// <summary>The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the
-        /// request URL path.</summary>
+        /// <summary>
+        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
+        /// path.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
 
@@ -4290,12 +4330,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The configuration for how incoming requests to a site should be routed and processed before serving
-    /// content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting
-    /// applies the applicable configuration according to a specific [priority order](/docs/hosting/full-
-    /// config#hosting_priority_order).</summary>
+    /// <summary>
+    /// The configuration for how incoming requests to a site should be routed and processed before serving content. The
+    /// URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the
+    /// applicable configuration according to a specific [priority
+    /// order](/docs/hosting/full-config#hosting_priority_order).
+    /// </summary>
     public class ServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How to handle well known App Association files.</summary>
@@ -4306,8 +4348,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cleanUrls")]
         public virtual System.Nullable<bool> CleanUrls { get; set; }
 
-        /// <summary>An array of objects, where each object specifies a URL pattern that, if matched to the request URL
-        /// path, triggers Hosting to apply the specified custom response headers.</summary>
+        /// <summary>
+        /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        /// triggers Hosting to apply the specified custom response headers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IList<Header> Headers { get; set; }
 
@@ -4315,15 +4359,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("i18n")]
         public virtual I18nConfig I18n { get; set; }
 
-        /// <summary>An array of objects (called redirect rules), where each rule specifies a URL pattern that, if
-        /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination
-        /// path.</summary>
+        /// <summary>
+        /// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the
+        /// request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirects")]
         public virtual System.Collections.Generic.IList<Redirect> Redirects { get; set; }
 
-        /// <summary>An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if
-        /// matched to the request URL path, triggers Hosting to respond as if the service were given the specified
-        /// destination URL.</summary>
+        /// <summary>
+        /// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
+        /// request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rewrites")]
         public virtual System.Collections.Generic.IList<Rewrite> Rewrites { get; set; }
 
@@ -4333,58 +4379,69 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A `SiteConfig` contains metadata associated with a specific site that controls Firebase Hosting serving
-    /// behavior</summary>
+    /// <summary>
+    /// A `SiteConfig` contains metadata associated with a specific site that controls Firebase Hosting serving behavior
+    /// </summary>
     public class SiteConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether or not web requests made by site visitors are logged via Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudLoggingEnabled")]
         public virtual System.Nullable<bool> CloudLoggingEnabled { get; set; }
 
-        /// <summary>The number of FINALIZED versions that will be held for a site before automatic deletion. When a new
-        /// version is deployed, content for versions in storage in excess of this number will be deleted, and will no
-        /// longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an
-        /// unlimited number of max_versions by default.</summary>
+        /// <summary>
+        /// The number of FINALIZED versions that will be held for a site before automatic deletion. When a new version
+        /// is deployed, content for versions in storage in excess of this number will be deleted, and will no longer be
+        /// billed for storage usage. Oldest versions will be deleted first; sites are created with an unlimited number
+        /// of max_versions by default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxVersions")]
         public virtual System.Nullable<long> MaxVersions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A `Version` is the collection of configuration and [static files](sites.versions.files) that determine
-    /// how a site is displayed.</summary>
+    /// <summary>
+    /// A `Version` is the collection of configuration and [static files](sites.versions.files) that determine how a
+    /// site is displayed.
+    /// </summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration for the behavior of the site. This configuration exists in the
-        /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.</summary>
+        /// <summary>
+        /// The configuration for the behavior of the site. This configuration exists in the
+        /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ServingConfig Config { get; set; }
 
@@ -4404,8 +4461,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteUser")]
         public virtual ActingUser DeleteUser { get; set; }
 
-        /// <summary>Output only. The total number of files associated with the version. This value is calculated after
-        /// a version is `FINALIZED`.</summary>
+        /// <summary>
+        /// Output only. The total number of files associated with the version. This value is calculated after a version
+        /// is `FINALIZED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileCount")]
         public virtual System.Nullable<long> FileCount { get; set; }
 
@@ -4421,35 +4480,42 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The unique identifier for a version, in the format: sites/site-name /versions/versionID This name
-        /// is provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
-        /// endpoint.</summary>
+        /// <summary>
+        /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
+        /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create) endpoint.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Deprecated in favor of site channels. Version preview configuration for the site version. This
-        /// configuration specifies whether previewing is enabled for this site version. Version previews allow you to
-        /// preview your site at a custom URL before releasing it as the live version.</summary>
+        /// <summary>
+        /// Deprecated in favor of site channels. Version preview configuration for the site version. This configuration
+        /// specifies whether previewing is enabled for this site version. Version previews allow you to preview your
+        /// site at a custom URL before releasing it as the live version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preview")]
         public virtual PreviewConfig Preview { get; set; }
 
-        /// <summary>The deploy status of a version. For a successful deploy, call the
-        /// [`CreateVersion`](sites.versions/create) endpoint to make a new version (`CREATED` status), [upload all
-        /// desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version
-        /// to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours,
-        /// the system will automatically mark the version as `ABANDONED`. You can also change the status of a version
-        /// to `DELETED` by calling the [`DeleteVersion`](sites.versions/delete) endpoint.</summary>
+        /// <summary>
+        /// The deploy status of a version. For a successful deploy, call the [`CreateVersion`](sites.versions/create)
+        /// endpoint to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles)
+        /// to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you
+        /// leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the
+        /// version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling the
+        /// [`DeleteVersion`](sites.versions/delete) endpoint.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. The total stored bytesize of the version. This value is calculated after a version is
-        /// `FINALIZED`.</summary>
+        /// <summary>
+        /// Output only. The total stored bytesize of the version. This value is calculated after a version is
+        /// `FINALIZED`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionBytes")]
         public virtual System.Nullable<long> VersionBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A static content file that is part of a version.</summary>
     public class VersionFile : Google.Apis.Requests.IDirectResponseSchema
@@ -4462,8 +4528,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Output only. The current status of a particular file in the specified version. The value will be
-        /// either `pending upload` or `uploaded`.</summary>
+        /// <summary>
+        /// Output only. The current status of a particular file in the specified version. The value will be either
+        /// `pending upload` or `uploaded`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 

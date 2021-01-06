@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,10 +67,6 @@ namespace Google.Apis.DomainsRDAP.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Autnum resource.</summary>
         public virtual AutnumResource Autnum { get; }
 
@@ -103,6 +104,7 @@ namespace Google.Apis.DomainsRDAP.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -122,9 +124,11 @@ namespace Google.Apis.DomainsRDAP.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -138,8 +142,10 @@ namespace Google.Apis.DomainsRDAP.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -151,8 +157,10 @@ namespace Google.Apis.DomainsRDAP.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -168,7 +176,6 @@ namespace Google.Apis.DomainsRDAP.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -272,20 +279,22 @@ namespace Google.Apis.DomainsRDAP.v1
         public AutnumResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
-        /// <param name="autnumId"></param>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
+        /// <param name="autnumId"><c>null</c></param>
         public virtual GetRequest Get(string autnumId)
         {
             return new GetRequest(service, autnumId);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -295,11 +304,8 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("autnumId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AutnumId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -314,7 +320,6 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("autnumId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "autnumId",
@@ -324,7 +329,6 @@ namespace Google.Apis.DomainsRDAP.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -340,9 +344,7 @@ namespace Google.Apis.DomainsRDAP.v1
         public DomainResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Look up RDAP information for a domain by name.</summary>
         /// <param name="domainName">Full domain name to look up. Example: "example.com"</param>
@@ -361,11 +363,9 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
             /// <summary>Full domain name to look up. Example: "example.com"</summary>
             [Google.Apis.Util.RequestParameterAttribute("domainName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DomainName { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -380,7 +380,6 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("domainName", new Google.Apis.Discovery.Parameter
                 {
                     Name = "domainName",
@@ -390,7 +389,6 @@ namespace Google.Apis.DomainsRDAP.v1
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
     }
 
@@ -406,20 +404,22 @@ namespace Google.Apis.DomainsRDAP.v1
         public EntityResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
-        /// <param name="entityId"></param>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
+        /// <param name="entityId"><c>null</c></param>
         public virtual GetRequest Get(string entityId)
         {
             return new GetRequest(service, entityId);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -429,11 +429,8 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("entityId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EntityId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -448,7 +445,6 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("entityId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "entityId",
@@ -458,7 +454,6 @@ namespace Google.Apis.DomainsRDAP.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -474,21 +469,23 @@ namespace Google.Apis.DomainsRDAP.v1
         public IpResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
-        /// <param name="ipId"></param>
-        /// <param name="ipId1"></param>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
+        /// <param name="ipId"><c>null</c></param>
+        /// <param name="ipId1"><c>null</c></param>
         public virtual GetRequest Get(string ipId, string ipId1)
         {
             return new GetRequest(service, ipId, ipId1);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -499,15 +496,11 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("ipId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string IpId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("ipId1", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string IpId1 { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -522,7 +515,6 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("ipId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ipId",
@@ -540,7 +532,6 @@ namespace Google.Apis.DomainsRDAP.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -556,20 +547,22 @@ namespace Google.Apis.DomainsRDAP.v1
         public NameserverResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
-        /// <param name="nameserverId"></param>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
+        /// <param name="nameserverId"><c>null</c></param>
         public virtual GetRequest Get(string nameserverId)
         {
             return new GetRequest(service, nameserverId);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -579,11 +572,8 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("nameserverId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string NameserverId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -598,7 +588,6 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("nameserverId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "nameserverId",
@@ -608,7 +597,6 @@ namespace Google.Apis.DomainsRDAP.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -624,19 +612,21 @@ namespace Google.Apis.DomainsRDAP.v1
         public V1Resource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public virtual GetDomainsRequest GetDomains()
         {
             return new GetDomainsRequest(service);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetDomainsRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetDomains request.</summary>
@@ -644,8 +634,6 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getDomains";
@@ -660,20 +648,22 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public virtual GetEntitiesRequest GetEntities()
         {
             return new GetEntitiesRequest(service);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetEntitiesRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetEntities request.</summary>
@@ -681,8 +671,6 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getEntities";
@@ -697,9 +685,7 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Get help information for the RDAP API, including links to documentation.</summary>
@@ -717,8 +703,6 @@ namespace Google.Apis.DomainsRDAP.v1
                 InitParameters();
             }
 
-
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getHelp";
 
@@ -732,20 +716,22 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public virtual GetIpRequest GetIp()
         {
             return new GetIpRequest(service);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetIpRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.HttpBody>
         {
             /// <summary>Constructs a new GetIp request.</summary>
@@ -753,8 +739,6 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getIp";
@@ -769,20 +753,22 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public virtual GetNameserversRequest GetNameservers()
         {
             return new GetNameserversRequest(service);
         }
 
-        /// <summary>The RDAP API recognizes this command from the RDAP specification but does not support it. The
-        /// response is a formatted 501 error.</summary>
+        /// <summary>
+        /// The RDAP API recognizes this command from the RDAP specification but does not support it. The response is a
+        /// formatted 501 error.
+        /// </summary>
         public class GetNameserversRequest : DomainsRDAPBaseServiceRequest<Google.Apis.DomainsRDAP.v1.Data.RdapResponse>
         {
             /// <summary>Constructs a new GetNameservers request.</summary>
@@ -790,8 +776,6 @@ namespace Google.Apis.DomainsRDAP.v1
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getNameservers";
@@ -806,27 +790,25 @@ namespace Google.Apis.DomainsRDAP.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.DomainsRDAP.v1.Data
-{    
-
-    /// <summary>Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't
-    /// be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-
-    /// streaming API methods in the request as well as the response. It can be used as a top-level request field, which
-    /// is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields
-    /// and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string
-    /// request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+{
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
     /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
     /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
     /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
     /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
-    /// how the request and response bodies are handled, all other features will continue to work unchanged.</summary>
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
     public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
@@ -837,17 +819,19 @@ namespace Google.Apis.DomainsRDAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
-        /// <summary>Application specific response metadata. Must be set in the first response for streaming
-        /// APIs.</summary>
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Links object defined in [section 4.2 of RFC
-    /// 7483](https://tools.ietf.org/html/rfc7483#section-4.2).</summary>
+    /// <summary>
+    /// Links object defined in [section 4.2 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-4.2).
+    /// </summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target URL of a link. Example: "http://example.com/previous".</summary>
@@ -880,10 +864,11 @@ namespace Google.Apis.DomainsRDAP.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Notices object defined in [section 4.3 of RFC
-    /// 7483](https://tools.ietf.org/html/rfc7483#section-4.3).</summary>
+    /// <summary>
+    /// Notices object defined in [section 4.3 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-4.3).
+    /// </summary>
     public class Notice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the notice.</summary>
@@ -898,16 +883,17 @@ namespace Google.Apis.DomainsRDAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Type values defined in [section 10.2.1 of RFC
-        /// 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1) specific to a whole response: "result set
-        /// truncated due to authorization", "result set truncated due to excessive load", "result set truncated due to
-        /// unexplainable reasons".</summary>
+        /// <summary>
+        /// Type values defined in [section 10.2.1 of RFC 7483](https://tools.ietf.org/html/rfc7483#section-10.2.1)
+        /// specific to a whole response: "result set truncated due to authorization", "result set truncated due to
+        /// excessive load", "result set truncated due to unexplainable reasons".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response to a general RDAP query.</summary>
     public class RdapResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -924,8 +910,10 @@ namespace Google.Apis.DomainsRDAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jsonResponse")]
         public virtual HttpBody JsonResponse { get; set; }
 
-        /// <summary>Error language code. Error response info fields are defined in [section 6 of RFC
-        /// 7483](https://tools.ietf.org/html/rfc7483#section-6).</summary>
+        /// <summary>
+        /// Error language code. Error response info fields are defined in [section 6 of RFC
+        /// 7483](https://tools.ietf.org/html/rfc7483#section-6).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lang")]
         public virtual string Lang { get; set; }
 

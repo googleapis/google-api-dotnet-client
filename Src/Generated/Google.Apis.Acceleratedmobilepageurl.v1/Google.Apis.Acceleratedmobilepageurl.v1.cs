@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the AmpUrls resource.</summary>
         public virtual AmpUrlsResource AmpUrls { get; }
     }
@@ -83,6 +84,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -102,9 +104,11 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -118,8 +122,10 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -131,8 +137,10 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -148,7 +156,6 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -252,20 +259,20 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
         public AmpUrlsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-
-        /// format).</summary>
+        /// <summary>
+        /// Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchGetRequest BatchGet(Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest body)
         {
             return new BatchGetRequest(service, body);
         }
 
-        /// <summary>Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-
-        /// format).</summary>
+        /// <summary>
+        /// Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
+        /// </summary>
         public class BatchGetRequest : AcceleratedmobilepageurlBaseServiceRequest<Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsResponse>
         {
             /// <summary>Constructs a new BatchGet request.</summary>
@@ -274,8 +281,6 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Acceleratedmobilepageurl.v1.Data.BatchGetAmpUrlsRequest Body { get; set; }
@@ -296,16 +301,12 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
-{    
-
+{
     /// <summary>AMP URL response for a requested URL.</summary>
     public class AmpUrl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -313,8 +314,10 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ampUrl")]
         public virtual string AmpUrlValue { get; set; }
 
-        /// <summary>The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in
-        /// the Google AMP Cache.</summary>
+        /// <summary>
+        /// The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google
+        /// AMP Cache.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cdnAmpUrl")]
         public virtual string CdnAmpUrl { get; set; }
 
@@ -324,7 +327,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>AMP URL Error resource for a requested URL that couldn't be found.</summary>
     public class AmpUrlError : Google.Apis.Requests.IDirectResponseSchema
@@ -343,7 +346,7 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>AMP URL request for a batch of URLs.</summary>
     public class BatchGetAmpUrlsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -352,21 +355,24 @@ namespace Google.Apis.Acceleratedmobilepageurl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lookupStrategy")]
         public virtual string LookupStrategy { get; set; }
 
-        /// <summary>List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per
-        /// lookup (see [Usage Limits](/amp/cache/reference/limits)).</summary>
+        /// <summary>
+        /// List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see
+        /// [Usage Limits](/amp/cache/reference/limits)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urls")]
         public virtual System.Collections.Generic.IList<string> Urls { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Batch AMP URL response.</summary>
     public class BatchGetAmpUrlsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order
-        /// as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only
-        /// once.</summary>
+        /// <summary>
+        /// For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs
+        /// in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ampUrls")]
         public virtual System.Collections.Generic.IList<AmpUrl> AmpUrls { get; set; }
 

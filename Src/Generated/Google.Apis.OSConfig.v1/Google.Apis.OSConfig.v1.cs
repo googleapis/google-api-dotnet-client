@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.OSConfig.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the OS Config API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.OSConfig.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.OSConfig.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.OSConfig.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.OSConfig.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.OSConfig.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.OSConfig.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -268,7 +275,6 @@ namespace Google.Apis.OSConfig.v1
             this.service = service;
             PatchDeployments = new PatchDeploymentsResource(service);
             PatchJobs = new PatchJobsResource(service);
-
         }
 
         /// <summary>Gets the PatchDeployments resource.</summary>
@@ -286,13 +292,13 @@ namespace Google.Apis.OSConfig.v1
             public PatchDeploymentsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
-
 
             /// <summary>Create an OS Config patch deployment.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The project to apply this patch deployment to in the form `projects`.</param>
+            /// <param name="parent">
+            /// Required. The project to apply this patch deployment to in the form `projects/*`.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.OSConfig.v1.Data.PatchDeployment body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -309,18 +315,18 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The project to apply this patch deployment to in the form `projects`.</summary>
+                /// <summary>Required. The project to apply this patch deployment to in the form `projects/*`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Required. A name for the patch deployment in the project. When creating a name the
-                /// following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start
-                /// with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be
-                /// unique within the project.</summary>
+                /// <summary>
+                /// Required. A name for the patch deployment in the project. When creating a name the following rules
+                /// apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. *
+                /// Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the
+                /// project.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("patchDeploymentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PatchDeploymentId { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OSConfig.v1.Data.PatchDeployment Body { get; set; }
@@ -341,7 +347,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -359,12 +364,12 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = null,
                     });
                 }
-
             }
 
             /// <summary>Delete an OS Config patch deployment.</summary>
-            /// <param name="name">Required. The resource name of the patch deployment in the form
-            /// `projects/patchDeployments`.</param>
+            /// <param name="name">
+            /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -380,12 +385,11 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the patch deployment in the form
-                /// `projects/patchDeployments`.</summary>
+                /// <summary>
+                /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -400,7 +404,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -410,12 +413,12 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = @"^projects/[^/]+/patchDeployments/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Get an OS Config patch deployment.</summary>
-            /// <param name="name">Required. The resource name of the patch deployment in the form
-            /// `projects/patchDeployments`.</param>
+            /// <param name="name">
+            /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -431,12 +434,11 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the patch deployment in the form
-                /// `projects/patchDeployments`.</summary>
+                /// <summary>
+                /// Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -451,7 +453,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -461,11 +462,10 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = @"^projects/[^/]+/patchDeployments/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Get a page of OS Config patch deployments.</summary>
-            /// <param name="parent">Required. The resource name of the parent in the form `projects`.</param>
+            /// <param name="parent">Required. The resource name of the parent in the form `projects/*`.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -481,8 +481,7 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The resource name of the parent in the form `projects`.</summary>
+                /// <summary>Required. The resource name of the parent in the form `projects/*`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -490,11 +489,12 @@ namespace Google.Apis.OSConfig.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Optional. A pagination token returned from a previous call to ListPatchDeployments that
-                /// indicates where this listing should continue from.</summary>
+                /// <summary>
+                /// Optional. A pagination token returned from a previous call to ListPatchDeployments that indicates
+                /// where this listing should continue from.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -509,7 +509,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -535,9 +534,9 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the PatchJobs resource.</summary>
         public virtual PatchJobsResource PatchJobs { get; }
 
@@ -554,7 +553,6 @@ namespace Google.Apis.OSConfig.v1
             {
                 this.service = service;
                 InstanceDetails = new InstanceDetailsResource(service);
-
             }
 
             /// <summary>Gets the InstanceDetails resource.</summary>
@@ -572,12 +570,12 @@ namespace Google.Apis.OSConfig.v1
                 public InstanceDetailsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
                 /// <summary>Get a list of instance details for a given patch job.</summary>
-                /// <param name="parent">Required. The parent for the instances are in the form of `projects/patchJobs`.</param>
+                /// <param name="parent">
+                /// Required. The parent for the instances are in the form of `projects/*/patchJobs/*`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -593,14 +591,16 @@ namespace Google.Apis.OSConfig.v1
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The parent for the instances are in the form of
-                    /// `projects/patchJobs`.</summary>
+                    /// <summary>
+                    /// Required. The parent for the instances are in the form of `projects/*/patchJobs/*`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>A filter expression that filters results listed in the response. This field supports
-                    /// filtering results by instance zone, name, state, or `failure_reason`.</summary>
+                    /// <summary>
+                    /// A filter expression that filters results listed in the response. This field supports filtering
+                    /// results by instance zone, name, state, or `failure_reason`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -608,11 +608,12 @@ namespace Google.Apis.OSConfig.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>A pagination token returned from a previous call that indicates where this listing
-                    /// should continue from.</summary>
+                    /// <summary>
+                    /// A pagination token returned from a previous call that indicates where this listing should
+                    /// continue from.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -627,7 +628,6 @@ namespace Google.Apis.OSConfig.v1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -661,21 +661,22 @@ namespace Google.Apis.OSConfig.v1
                             Pattern = null,
                         });
                     }
-
                 }
             }
 
-            /// <summary>Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be
-            /// restarted.</summary>
+            /// <summary>
+            /// Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. Name of the patch in the form `projects/patchJobs`</param>
+            /// <param name="name">Required. Name of the patch in the form `projects/*/patchJobs/*`</param>
             public virtual CancelRequest Cancel(Google.Apis.OSConfig.v1.Data.CancelPatchJobRequest body, string name)
             {
                 return new CancelRequest(service, body, name);
             }
 
-            /// <summary>Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be
-            /// restarted.</summary>
+            /// <summary>
+            /// Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted.
+            /// </summary>
             public class CancelRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchJob>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -686,11 +687,9 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Name of the patch in the form `projects/patchJobs`</summary>
+                /// <summary>Required. Name of the patch in the form `projects/*/patchJobs/*`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OSConfig.v1.Data.CancelPatchJobRequest Body { get; set; }
@@ -711,7 +710,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -721,12 +719,11 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = @"^projects/[^/]+/patchJobs/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Patch VM instances by creating and running a patch job.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The project in which to run this patch in the form `projects`</param>
+            /// <param name="parent">Required. The project in which to run this patch in the form `projects/*`</param>
             public virtual ExecuteRequest Execute(Google.Apis.OSConfig.v1.Data.ExecutePatchJobRequest body, string parent)
             {
                 return new ExecuteRequest(service, body, parent);
@@ -743,11 +740,9 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The project in which to run this patch in the form `projects`</summary>
+                /// <summary>Required. The project in which to run this patch in the form `projects/*`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.OSConfig.v1.Data.ExecutePatchJobRequest Body { get; set; }
@@ -768,7 +763,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -778,19 +772,22 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>Get the patch job. This can be used to track the progress of an ongoing patch job or review the
-            /// details of completed jobs.</summary>
-            /// <param name="name">Required. Name of the patch in the form `projects/patchJobs`</param>
+            /// <summary>
+            /// Get the patch job. This can be used to track the progress of an ongoing patch job or review the details
+            /// of completed jobs.
+            /// </summary>
+            /// <param name="name">Required. Name of the patch in the form `projects/*/patchJobs/*`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Get the patch job. This can be used to track the progress of an ongoing patch job or review the
-            /// details of completed jobs.</summary>
+            /// <summary>
+            /// Get the patch job. This can be used to track the progress of an ongoing patch job or review the details
+            /// of completed jobs.
+            /// </summary>
             public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.PatchJob>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -800,11 +797,9 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. Name of the patch in the form `projects/patchJobs`</summary>
+                /// <summary>Required. Name of the patch in the form `projects/*/patchJobs/*`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -819,7 +814,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -829,11 +823,10 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = @"^projects/[^/]+/patchJobs/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Get a list of patch jobs.</summary>
-            /// <param name="parent">Required. In the form of `projects`</param>
+            /// <param name="parent">Required. In the form of `projects/*`</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -849,14 +842,14 @@ namespace Google.Apis.OSConfig.v1
                     InitParameters();
                 }
 
-
-                /// <summary>Required. In the form of `projects`</summary>
+                /// <summary>Required. In the form of `projects/*`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>If provided, this field specifies the criteria that must be met by patch jobs to be
-                /// included in the response. Currently, filtering is only available on the patch_deployment
-                /// field.</summary>
+                /// <summary>
+                /// If provided, this field specifies the criteria that must be met by patch jobs to be included in the
+                /// response. Currently, filtering is only available on the patch_deployment field.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -864,11 +857,12 @@ namespace Google.Apis.OSConfig.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>A pagination token returned from a previous call that indicates where this listing should
-                /// continue from.</summary>
+                /// <summary>
+                /// A pagination token returned from a previous call that indicates where this listing should continue
+                /// from.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -883,7 +877,6 @@ namespace Google.Apis.OSConfig.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -917,54 +910,58 @@ namespace Google.Apis.OSConfig.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.OSConfig.v1.Data
-{    
-
-    /// <summary>Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be
-    /// set to control how this is executed.</summary>
+{
+    /// <summary>
+    /// Apt patching is completed by executing `apt-get update &amp;amp;&amp;amp; apt-get upgrade`. Additional options
+    /// can be set to control how this is executed.
+    /// </summary>
     public class AptSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of packages to exclude from update. These packages will be excluded</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
         public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
-        /// <summary>An exclusive list of packages to be updated. These are the only packages that will be updated. If
-        /// these packages are not installed, they will be ignored. This field cannot be specified with any other patch
-        /// configuration fields.</summary>
+        /// <summary>
+        /// An exclusive list of packages to be updated. These are the only packages that will be updated. If these
+        /// packages are not installed, they will be ignored. This field cannot be specified with any other patch
+        /// configuration fields.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePackages")]
         public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; }
 
-        /// <summary>By changing the type to DIST, the patching is performed using `apt-get dist-upgrade`
-        /// instead.</summary>
+        /// <summary>
+        /// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message for canceling a patch job.</summary>
     public class CancelPatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A step that runs an executable for a PatchJob.</summary>
     public class ExecStep : Google.Apis.Requests.IDirectResponseSchema
@@ -979,13 +976,14 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Common configurations for an ExecStep.</summary>
     public class ExecStepConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defaults to [0]. A list of possible return values that the execution can return to indicate a
-        /// success.</summary>
+        /// <summary>
+        /// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedSuccessCodes")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowedSuccessCodes { get; set; }
 
@@ -993,9 +991,11 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsObject")]
         public virtual GcsObject GcsObject { get; set; }
 
-        /// <summary>The script interpreter to use to run the script. If no interpreter is specified the script will be
-        /// executed directly, which will likely only succeed for scripts with [shebang lines]
-        /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).</summary>
+        /// <summary>
+        /// The script interpreter to use to run the script. If no interpreter is specified the script will be executed
+        /// directly, which will likely only succeed for scripts with [shebang lines]
+        /// (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
         public virtual string Interpreter { get; set; }
 
@@ -1005,7 +1005,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A request message to initiate patching across Compute Engine instances.</summary>
     public class ExecutePatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1026,13 +1026,15 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
 
-        /// <summary>Required. Instances to patch, either explicitly or filtered by some criteria such as zone or
-        /// labels.</summary>
+        /// <summary>
+        /// Required. Instances to patch, either explicitly or filtered by some criteria such as zone or labels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
-        /// <summary>Patch configuration being applied. If omitted, instances are patched using the default
-        /// configurations.</summary>
+        /// <summary>
+        /// Patch configuration being applied. If omitted, instances are patched using the default configurations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchConfig")]
         public virtual PatchConfig PatchConfig { get; set; }
 
@@ -1042,24 +1044,26 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a
-    /// value.</summary>
+    /// <summary>
+    /// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
+    /// </summary>
     public class FixedOrPercent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies a fixed value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
         public virtual System.Nullable<int> Fixed__ { get; set; }
 
-        /// <summary>Specifies the relative value defined as a percentage, which will be multiplied by a reference
-        /// value.</summary>
+        /// <summary>
+        /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Cloud Storage object representation.</summary>
     public class GcsObject : Google.Apis.Requests.IDirectResponseSchema
@@ -1068,8 +1072,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
-        /// <summary>Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep
-        /// specified by this PatchJob does not change.</summary>
+        /// <summary>
+        /// Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified
+        /// by this PatchJob does not change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationNumber")]
         public virtual System.Nullable<long> GenerationNumber { get; set; }
 
@@ -1079,21 +1085,23 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Googet patching is performed by running `googet update`.</summary>
     public class GooSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The inventory details of a VM.</summary>
     public class Inventory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Inventory items related to the VM keyed by an opaque unique identifier for each inventory item. The
+        /// <summary>
+        /// Inventory items related to the VM keyed by an opaque unique identifier for each inventory item. The
         /// identifier is unique to each distinct and addressable inventory item and will change, when there is a new
-        /// package version.</summary>
+        /// package version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string, InventoryItem> Items { get; set; }
 
@@ -1103,7 +1111,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single piece of inventory on a VM.</summary>
     public class InventoryItem : Google.Apis.Requests.IDirectResponseSchema
@@ -1138,7 +1146,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Operating system information for the VM.</summary>
     public class InventoryOsInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -1159,8 +1167,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
         public virtual string KernelVersion { get; set; }
 
-        /// <summary>The operating system long name. For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
-        /// Datacenter'.</summary>
+        /// <summary>
+        /// The operating system long name. For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
+        /// Datacenter'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longName")]
         public virtual string LongName { get; set; }
 
@@ -1178,13 +1188,14 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Software package information of the operating system.</summary>
     public class InventorySoftwarePackage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details of an APT package. For details about the apt package manager, see
-        /// https://wiki.debian.org/Apt.</summary>
+        /// <summary>
+        /// Details of an APT package. For details about the apt package manager, see https://wiki.debian.org/Apt.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aptPackage")]
         public virtual InventoryVersionedPackage AptPackage { get; set; }
 
@@ -1192,43 +1203,57 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cosPackage")]
         public virtual InventoryVersionedPackage CosPackage { get; set; }
 
-        /// <summary>Details of a Googet package. For details about the googet package manager, see
-        /// https://github.com/google/googet.</summary>
+        /// <summary>
+        /// Details of a Googet package. For details about the googet package manager, see
+        /// https://github.com/google/googet.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googetPackage")]
         public virtual InventoryVersionedPackage GoogetPackage { get; set; }
 
-        /// <summary>Details of a Windows Quick Fix engineering package. See https://docs.microsoft.com/en-
-        /// us/windows/win32/cimwin32prov/win32-quickfixengineering for info in Windows Quick Fix Engineering.</summary>
+        /// <summary>
+        /// Details of a Windows Quick Fix engineering package. See
+        /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering for info in Windows
+        /// Quick Fix Engineering.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qfePackage")]
         public virtual InventoryWindowsQuickFixEngineeringPackage QfePackage { get; set; }
 
-        /// <summary>Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/
-        /// for information about Windows Update.</summary>
+        /// <summary>
+        /// Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
+        /// information about Windows Update.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wuaPackage")]
         public virtual InventoryWindowsUpdatePackage WuaPackage { get; set; }
 
-        /// <summary>Yum package info. For details about the yum package manager, see
-        /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-
-        /// yum.</summary>
+        /// <summary>
+        /// Yum package info. For details about the yum package manager, see
+        /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumPackage")]
         public virtual InventoryVersionedPackage YumPackage { get; set; }
 
-        /// <summary>Details of a Zypper package. For details about the Zypper package manager, see
-        /// https://en.opensuse.org/SDB:Zypper_manual.</summary>
+        /// <summary>
+        /// Details of a Zypper package. For details about the Zypper package manager, see
+        /// https://en.opensuse.org/SDB:Zypper_manual.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zypperPackage")]
         public virtual InventoryVersionedPackage ZypperPackage { get; set; }
 
-        /// <summary>Details of a Zypper patch. For details about the Zypper package manager, see
-        /// https://en.opensuse.org/SDB:Zypper_manual.</summary>
+        /// <summary>
+        /// Details of a Zypper patch. For details about the Zypper package manager, see
+        /// https://en.opensuse.org/SDB:Zypper_manual.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zypperPatch")]
         public virtual InventoryZypperPatch ZypperPatch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information related to the a standard versioned package. This includes package info for APT, Yum,
-    /// Zypper, and Googet package managers.</summary>
+    /// <summary>
+    /// Information related to the a standard versioned package. This includes package info for APT, Yum, Zypper, and
+    /// Googet package managers.
+    /// </summary>
     public class InventoryVersionedPackage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The system architecture this package is intended for.</summary>
@@ -1245,11 +1270,13 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information related to a Quick Fix Engineering package. Fields are taken from Windows
-    /// QuickFixEngineering Interface and match the source names: https://docs.microsoft.com/en-
-    /// us/windows/win32/cimwin32prov/win32-quickfixengineering</summary>
+    /// <summary>
+    /// Information related to a Quick Fix Engineering package. Fields are taken from Windows QuickFixEngineering
+    /// Interface and match the source names:
+    /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
+    /// </summary>
     public class InventoryWindowsQuickFixEngineeringPackage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A short textual description of the QFE update.</summary>
@@ -1270,11 +1297,13 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Details related to a Windows Update package. Field data and names are taken from Windows Update API
-    /// IUpdate Interface: https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields like title, and
-    /// description are localized based on the locale of the VM being updated.</summary>
+    /// <summary>
+    /// Details related to a Windows Update package. Field data and names are taken from Windows Update API IUpdate
+    /// Interface: https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields like title, and
+    /// description are localized based on the locale of the VM being updated.
+    /// </summary>
     public class InventoryWindowsUpdatePackage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The categories that are associated with this update package.</summary>
@@ -1285,8 +1314,9 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>A collection of Microsoft Knowledge Base article IDs that are associated with the update
-        /// package.</summary>
+        /// <summary>
+        /// A collection of Microsoft Knowledge Base article IDs that are associated with the update package.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kbArticleIds")]
         public virtual System.Collections.Generic.IList<string> KbArticleIds { get; set; }
 
@@ -1316,7 +1346,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Categories specified by the Windows Update.</summary>
     public class InventoryWindowsUpdatePackageWindowsUpdateCategory : Google.Apis.Requests.IDirectResponseSchema
@@ -1331,7 +1361,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details related to a Zypper Patch.</summary>
     public class InventoryZypperPatch : Google.Apis.Requests.IDirectResponseSchema
@@ -1354,7 +1384,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message for listing patch deployments.</summary>
     public class ListPatchDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1369,7 +1399,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message for listing the instances details for a patch job.</summary>
     public class ListPatchJobInstanceDetailsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1384,7 +1414,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message for listing patch jobs.</summary>
     public class ListPatchJobsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1399,15 +1429,19 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the
-    /// month" or "on the 15th of the month".</summary>
+    /// <summary>
+    /// Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or
+    /// "on the 15th of the month".
+    /// </summary>
     public class MonthlySchedule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day
-        /// of the month. Months without the target day will be skipped. For example, a schedule to run "every month on
-        /// the 31st" will not run in February, April, June, etc.</summary>
+        /// <summary>
+        /// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the
+        /// month. Months without the target day will be skipped. For example, a schedule to run "every month on the
+        /// 31st" will not run in February, April, June, etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthDay")]
         public virtual System.Nullable<int> MonthDay { get; set; }
 
@@ -1417,10 +1451,12 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Sets the time for a one time patch deployment. Timestamp is in
-    /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+    /// <summary>
+    /// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+    /// text format.
+    /// </summary>
     public class OneTimeSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The desired patch job execution time.</summary>
@@ -1429,10 +1465,11 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Patch configuration specifications. Contains details on how to apply the patch(es) to a VM
-    /// instance.</summary>
+    /// <summary>
+    /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
+    /// </summary>
     public class PatchConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Apt update settings. Use this setting to override the default `apt` patch rules.</summary>
@@ -1469,21 +1506,26 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Patch deployments are configurations that individual patch jobs use to complete a patch. These
-    /// configurations include instance filter, package repository settings, and a schedule. For more information about
-    /// creating and managing patch deployments, see [Scheduling patch jobs](https://cloud.google.com/compute/docs/os-
-    /// patch-management/schedule-patch-jobs).</summary>
+    /// <summary>
+    /// Patch deployments are configurations that individual patch jobs use to complete a patch. These configurations
+    /// include instance filter, package repository settings, and a schedule. For more information about creating and
+    /// managing patch deployments, see [Scheduling patch
+    /// jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-jobs).
+    /// </summary>
     public class PatchDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Time the patch deployment was created. Timestamp is in
-        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        /// <summary>
+        /// Output only. Time the patch deployment was created. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Optional. Description of the patch deployment. Length of the description is limited to 1024
-        /// characters.</summary>
+        /// <summary>
+        /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -1495,14 +1537,18 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
-        /// <summary>Output only. The last time a patch job was started by this deployment. Timestamp is in
-        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        /// <summary>
+        /// Output only. The last time a patch job was started by this deployment. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastExecuteTime")]
         public virtual object LastExecuteTime { get; set; }
 
-        /// <summary>Unique name for the patch deployment resource in a project. The patch deployment name is in the
-        /// form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create
-        /// a new patch deployment.</summary>
+        /// <summary>
+        /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
+        /// `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new
+        /// patch deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1522,70 +1568,84 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual PatchRollout Rollout { get; set; }
 
-        /// <summary>Output only. Time the patch deployment was last updated. Timestamp is in
-        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.</summary>
+        /// <summary>
+        /// Output only. Time the patch deployment was last updated. Timestamp is in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if
-    /// both labels and zones are specified, the patch job targets only VMs with those labels and in those
-    /// zones.</summary>
+    /// <summary>
+    /// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both
+    /// labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
+    /// </summary>
     public class PatchInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target all VM instances in the project. If true, no other criteria is permitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("all")]
         public virtual System.Nullable<bool> All { get; set; }
 
-        /// <summary>Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups
-        /// of VM instances.</summary>
+        /// <summary>
+        /// Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM
+        /// instances.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupLabels")]
         public virtual System.Collections.Generic.IList<PatchInstanceFilterGroupLabel> GroupLabels { get; set; }
 
-        /// <summary>Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to
-        /// group VMs when targeting configs, for example prefix="prod-".</summary>
+        /// <summary>
+        /// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
+        /// VMs when targeting configs, for example prefix="prod-".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNamePrefixes")]
         public virtual System.Collections.Generic.IList<string> InstanceNamePrefixes { get; set; }
 
-        /// <summary>Targets any of the VM instances specified. Instances are specified by their URI in the form
+        /// <summary>
+        /// Targets any of the VM instances specified. Instances are specified by their URI in the form
         /// `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or
-        /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`</summar
-        /// y>
+        /// `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<string> Instances { get; set; }
 
-        /// <summary>Targets VM instances in ANY of these zones. Leave empty to target VM instances in any
-        /// zone.</summary>
+        /// <summary>
+        /// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs
-    /// /labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to
-    /// target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`:
-    /// `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels
-    /// `env=test` and `app=web`.</summary>
+    /// <summary>
+    /// Targets a group of VM instances by using their [assigned
+    /// labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is
+    /// a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that
+    /// have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs
+    /// that have both the labels `env=test` and `app=web`.
+    /// </summary>
     public class PatchInstanceFilterGroupLabel : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Compute Engine instance labels that must be present for a VM instance to be targeted by this
-        /// filter.</summary>
+        /// <summary>
+        /// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A high level representation of a patch job that is either in progress or has completed. Instance
-    /// details are not included in the job. To paginate through instance details, use ListPatchJobInstanceDetails. For
-    /// more information about patch jobs, see [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-
-    /// management/create-patch-job).</summary>
+    /// <summary>
+    /// A high level representation of a patch job that is either in progress or has completed. Instance details are not
+    /// included in the job. To paginate through instance details, use ListPatchJobInstanceDetails. For more information
+    /// about patch jobs, see [Creating patch
+    /// jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
+    /// </summary>
     public class PatchJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Time this patch job was created.</summary>
@@ -1600,8 +1660,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>If this patch job is a dry run, the agent reports that it has finished without running any updates
-        /// on the VM instance.</summary>
+        /// <summary>
+        /// If this patch job is a dry run, the agent reports that it has finished without running any updates on the VM
+        /// instance.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
         public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -1621,7 +1683,7 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceFilter")]
         public virtual PatchInstanceFilter InstanceFilter { get; set; }
 
-        /// <summary>Unique identifier for this patch job in the form `projects/patchJobs`</summary>
+        /// <summary>Unique identifier for this patch job in the form `projects/*/patchJobs/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1633,8 +1695,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("patchDeployment")]
         public virtual string PatchDeployment { get; set; }
 
-        /// <summary>Reflects the overall progress of the patch job in the range of 0.0 being no progress to 100.0 being
-        /// complete.</summary>
+        /// <summary>
+        /// Reflects the overall progress of the patch job in the range of 0.0 being no progress to 100.0 being
+        /// complete.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentComplete")]
         public virtual System.Nullable<double> PercentComplete { get; set; }
 
@@ -1652,11 +1716,13 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing
-    /// all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management
-    /// /manage-patch-jobs#list-instance-details).</summary>
+    /// <summary>
+    /// Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing all VM
+    /// instance details for a specific patch
+    /// job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
+    /// </summary>
     public class PatchJobInstanceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of times the agent that the agent attempts to apply the patch.</summary>
@@ -1671,7 +1737,7 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceSystemId")]
         public virtual string InstanceSystemId { get; set; }
 
-        /// <summary>The instance name in the form `projects/zones/instances`</summary>
+        /// <summary>The instance name in the form `projects/*/zones/*/instances/*`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1681,11 +1747,13 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A summary of the current patch state across all instances that this patch job affects. Contains counts
-    /// of instances in different states. These states map to `InstancePatchState`. List patch job instance details to
-    /// see the specific states of each instance.</summary>
+    /// <summary>
+    /// A summary of the current patch state across all instances that this patch job affects. Contains counts of
+    /// instances in different states. These states map to `InstancePatchState`. List patch job instance details to see
+    /// the specific states of each instance.
+    /// </summary>
     public class PatchJobInstanceDetailsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of instances that have acked and will start shortly.</summary>
@@ -1708,8 +1776,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inactiveInstanceCount")]
         public virtual System.Nullable<long> InactiveInstanceCount { get; set; }
 
-        /// <summary>Number of instances that do not appear to be running the agent. Check to ensure that the agent is
-        /// installed, running, and able to communicate with the service.</summary>
+        /// <summary>
+        /// Number of instances that do not appear to be running the agent. Check to ensure that the agent is installed,
+        /// running, and able to communicate with the service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noAgentDetectedInstanceCount")]
         public virtual System.Nullable<long> NoAgentDetectedInstanceCount { get; set; }
 
@@ -1751,14 +1821,17 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Patch rollout configuration specifications. Contains details on the concurrency control when applying
-    /// patch(es) to all targeted VMs.</summary>
+    /// <summary>
+    /// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es)
+    /// to all targeted VMs.
+    /// </summary>
     public class PatchRollout : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of
-        /// VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During
+        /// <summary>
+        /// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs
+        /// calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During
         /// patching, a VM is considered disrupted from the time the agent is notified to begin until patching has
         /// completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM
         /// contributes to the disruption budget if its patching operation fails either when applying the patches,
@@ -1769,7 +1842,8 @@ namespace Google.Apis.OSConfig.v1.Data
         /// the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job
         /// continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully,
         /// patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch
-        /// job stops.</summary>
+        /// job stops.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disruptionBudget")]
         public virtual FixedOrPercent DisruptionBudget { get; set; }
 
@@ -1779,13 +1853,14 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Sets the time for recurring patch deployments.</summary>
     public class RecurringSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The end time at which a recurring patch deployment schedule is no longer
-        /// active.</summary>
+        /// <summary>
+        /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -1805,8 +1880,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextExecuteTime")]
         public virtual object NextExecuteTime { get; set; }
 
-        /// <summary>Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the
-        /// patch deployment.</summary>
+        /// <summary>
+        /// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch
+        /// deployment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -1814,8 +1891,10 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeOfDay")]
         public virtual TimeOfDay TimeOfDay { get; set; }
 
-        /// <summary>Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving
-        /// time are determined by the chosen time zone.</summary>
+        /// <summary>
+        /// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are
+        /// determined by the chosen time zone.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual TimeZone TimeZone { get; set; }
 
@@ -1825,15 +1904,18 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
-    /// An API may choose to allow leap seconds. Related types are google.type.Date and
-    /// `google.protobuf.Timestamp`.</summary>
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
     public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
-        /// "24:00:00" for scenarios like business closing time.</summary>
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hours")]
         public virtual System.Nullable<int> Hours { get; set; }
 
@@ -1845,14 +1927,16 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
         public virtual System.Nullable<int> Nanos { get; set; }
 
-        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
-        /// allows leap-seconds.</summary>
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
     public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
@@ -1867,7 +1951,7 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents one week day in a month. An example is "the 4th Sunday".</summary>
     public class WeekDayOfMonth : Google.Apis.Requests.IDirectResponseSchema
@@ -1876,14 +1960,16 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
         public virtual string DayOfWeek { get; set; }
 
-        /// <summary>Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the
-        /// last week of the month.</summary>
+        /// <summary>
+        /// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week
+        /// of the month.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weekOrdinal")]
         public virtual System.Nullable<int> WeekOrdinal { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a weekly schedule.</summary>
     public class WeeklySchedule : Google.Apis.Requests.IDirectResponseSchema
@@ -1894,13 +1980,14 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Windows patching is performed using the Windows Update Agent.</summary>
     public class WindowsUpdateSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Only apply updates of these windows update classifications. If empty, all updates are
-        /// applied.</summary>
+        /// <summary>
+        /// Only apply updates of these windows update classifications. If empty, all updates are applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifications")]
         public virtual System.Collections.Generic.IList<string> Classifications { get; set; }
 
@@ -1908,27 +1995,34 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
         public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
-        /// <summary>An exclusive list of kbs to be updated. These are the only patches that will be updated. This field
-        /// must not be used with other patch configurations.</summary>
+        /// <summary>
+        /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not
+        /// be used with other patch configurations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePatches")]
         public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Yum patching is performed by executing `yum update`. Additional options can be set to control how this
-    /// is executed. Note that not all settings are supported on all platforms.</summary>
+    /// <summary>
+    /// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is
+    /// executed. Note that not all settings are supported on all platforms.
+    /// </summary>
     public class YumSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of packages to exclude from update. These packages are excluded by using the yum `--exclude`
-        /// flag.</summary>
+        /// <summary>
+        /// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
         public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
-        /// <summary>An exclusive list of packages to be updated. These are the only packages that will be updated. If
-        /// these packages are not installed, they will be ignored. This field must not be specified with any other
-        /// patch configuration fields.</summary>
+        /// <summary>
+        /// An exclusive list of packages to be updated. These are the only packages that will be updated. If these
+        /// packages are not installed, they will be ignored. This field must not be specified with any other patch
+        /// configuration fields.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePackages")]
         public virtual System.Collections.Generic.IList<string> ExclusivePackages { get; set; }
 
@@ -1942,14 +2036,16 @@ namespace Google.Apis.OSConfig.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Zypper patching is performed by running `zypper patch`. See also
-    /// https://en.opensuse.org/SDB:Zypper_manual.</summary>
+    /// <summary>
+    /// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
+    /// </summary>
     public class ZypperSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Install only patches with these categories. Common categories include security, recommended, and
-        /// feature.</summary>
+        /// <summary>
+        /// Install only patches with these categories. Common categories include security, recommended, and feature.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; }
 
@@ -1957,14 +2053,17 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludes")]
         public virtual System.Collections.Generic.IList<string> Excludes { get; set; }
 
-        /// <summary>An exclusive list of patches to be updated. These are the only patches that will be installed using
-        /// 'zypper patch patch:' command. This field must not be used with any other patch configuration
-        /// fields.</summary>
+        /// <summary>
+        /// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper
+        /// patch patch:' command. This field must not be used with any other patch configuration fields.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclusivePatches")]
         public virtual System.Collections.Generic.IList<string> ExclusivePatches { get; set; }
 
-        /// <summary>Install only patches with these severities. Common severities include critical, important,
-        /// moderate, and low.</summary>
+        /// <summary>
+        /// Install only patches with these severities. Common severities include critical, important, moderate, and
+        /// low.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severities")]
         public virtual System.Collections.Generic.IList<string> Severities { get; set; }
 

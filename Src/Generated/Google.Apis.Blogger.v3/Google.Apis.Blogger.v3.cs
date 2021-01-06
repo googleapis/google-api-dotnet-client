@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -72,7 +77,6 @@ namespace Google.Apis.Blogger.v3
 
             /// <summary>View your Blogger account</summary>
             public static string BloggerReadonly = "https://www.googleapis.com/auth/blogger.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Blogger API v3.</summary>
@@ -83,10 +87,7 @@ namespace Google.Apis.Blogger.v3
 
             /// <summary>View your Blogger account</summary>
             public const string BloggerReadonly = "https://www.googleapis.com/auth/blogger.readonly";
-
         }
-
-
 
         /// <summary>Gets the BlogUserInfos resource.</summary>
         public virtual BlogUserInfosResource BlogUserInfos { get; }
@@ -131,6 +132,7 @@ namespace Google.Apis.Blogger.v3
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -150,9 +152,11 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -166,8 +170,10 @@ namespace Google.Apis.Blogger.v3
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -179,8 +185,10 @@ namespace Google.Apis.Blogger.v3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -196,7 +204,6 @@ namespace Google.Apis.Blogger.v3
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -300,13 +307,11 @@ namespace Google.Apis.Blogger.v3
         public BlogUserInfosResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets one blog and user info pair by blog id and user id.</summary>
-        /// <param name="userId"></param>
-        /// <param name="blogId"></param>
+        /// <param name="userId"><c>null</c></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string userId, string blogId)
         {
             return new GetRequest(service, userId, blogId);
@@ -323,19 +328,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxPosts", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxPosts { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -350,7 +350,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userId",
@@ -376,7 +375,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -392,12 +390,10 @@ namespace Google.Apis.Blogger.v3
         public BlogsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets a blog by id.</summary>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string blogId)
         {
             return new GetRequest(service, blogId);
@@ -413,32 +409,33 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("maxPosts", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxPosts { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -453,7 +450,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -479,11 +475,10 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets a blog by url.</summary>
-        /// <param name="url"></param>
+        /// <param name="url"><c>null</c></param>
         public virtual GetByUrlRequest GetByUrl(string url)
         {
             return new GetByUrlRequest(service, url);
@@ -499,28 +494,30 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getByUrl";
@@ -535,7 +532,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
                 {
                     Name = "url",
@@ -553,11 +549,10 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists blogs by user.</summary>
-        /// <param name="userId"></param>
+        /// <param name="userId"><c>null</c></param>
         public virtual ListByUserRequest ListByUser(string userId)
         {
             return new ListByUserRequest(service, userId);
@@ -573,28 +568,30 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchUserInfo", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchUserInfo { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RoleEnum> Role { get; set; }
 
-
             public enum RoleEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
@@ -606,29 +603,36 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Default value of status is LIVE.</summary>
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
                 DELETED,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByUser";
@@ -643,7 +647,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userId",
@@ -685,7 +688,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -701,14 +703,12 @@ namespace Google.Apis.Blogger.v3
         public CommentsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Marks a comment as not spam by blog id, post id and comment id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
-        /// <param name="commentId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
+        /// <param name="commentId"><c>null</c></param>
         public virtual ApproveRequest Approve(string blogId, string postId, string commentId)
         {
             return new ApproveRequest(service, blogId, postId, commentId);
@@ -726,19 +726,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("commentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CommentId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "approve";
@@ -753,7 +748,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -779,13 +773,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Deletes a comment by blog id, post id and comment id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
-        /// <param name="commentId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
+        /// <param name="commentId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string postId, string commentId)
         {
             return new DeleteRequest(service, blogId, postId, commentId);
@@ -803,19 +796,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("commentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CommentId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -830,7 +818,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -856,13 +843,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets a comment by id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
-        /// <param name="commentId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
+        /// <param name="commentId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId, string commentId)
         {
             return new GetRequest(service, blogId, postId, commentId);
@@ -880,36 +866,36 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("commentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CommentId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -924,7 +910,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -958,12 +943,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists comments.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual ListRequest List(string blogId, string postId)
         {
             return new ListRequest(service, blogId, postId);
@@ -980,69 +964,70 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndDate { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartDate { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTIED")]
                 EMPTIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING")]
                 PENDING,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SPAM")]
                 SPAM,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1057,7 +1042,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1131,11 +1115,10 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists comments by blog.</summary>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual ListByBlogRequest ListByBlog(string blogId)
         {
             return new ListByBlogRequest(service, blogId);
@@ -1151,48 +1134,45 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndDate { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartDate { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTIED")]
                 EMPTIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING")]
                 PENDING,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SPAM")]
                 SPAM,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listByBlog";
@@ -1207,7 +1187,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1265,13 +1244,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Marks a comment as spam by blog id, post id and comment id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
-        /// <param name="commentId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
+        /// <param name="commentId"><c>null</c></param>
         public virtual MarkAsSpamRequest MarkAsSpam(string blogId, string postId, string commentId)
         {
             return new MarkAsSpamRequest(service, blogId, postId, commentId);
@@ -1289,19 +1267,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("commentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CommentId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "markAsSpam";
@@ -1316,7 +1289,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1342,13 +1314,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Removes the content of a comment by blog id, post id and comment id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
-        /// <param name="commentId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
+        /// <param name="commentId"><c>null</c></param>
         public virtual RemoveContentRequest RemoveContent(string blogId, string postId, string commentId)
         {
             return new RemoveContentRequest(service, blogId, postId, commentId);
@@ -1366,19 +1337,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("commentId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CommentId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "removeContent";
@@ -1393,7 +1359,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1419,7 +1384,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1435,12 +1399,10 @@ namespace Google.Apis.Blogger.v3
         public PageViewsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets page views by blog id.</summary>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual GetRequest Get(string blogId)
         {
             return new GetRequest(service, blogId);
@@ -1456,26 +1418,26 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RangeEnum> Range { get; set; }
 
-
             public enum RangeEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("30DAYS")]
                 Value30DAYS,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("7DAYS")]
                 Value7DAYS,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1490,7 +1452,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1508,7 +1469,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1524,13 +1484,11 @@ namespace Google.Apis.Blogger.v3
         public PagesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Deletes a page by blog id and page id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string pageId)
         {
             return new DeleteRequest(service, blogId, pageId);
@@ -1547,15 +1505,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1570,7 +1524,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1588,12 +1541,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets a page by blog id and page id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string pageId)
         {
             return new GetRequest(service, blogId, pageId);
@@ -1610,32 +1562,33 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1650,7 +1603,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1676,12 +1628,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Inserts a page.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual InsertRequest Insert(Google.Apis.Blogger.v3.Data.Page body, string blogId)
         {
             return new InsertRequest(service, body, blogId);
@@ -1698,15 +1649,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("isDraft", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IsDraft { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
@@ -1727,7 +1674,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1745,11 +1691,10 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists pages.</summary>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
             return new ListRequest(service, blogId);
@@ -1765,53 +1710,53 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
                 DRAFT,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1826,7 +1771,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1876,13 +1820,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Patches a page.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual PatchRequest Patch(Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
         {
             return new PatchRequest(service, body, blogId, pageId);
@@ -1900,23 +1843,17 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("publish", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Publish { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("revert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Revert { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
@@ -1937,7 +1874,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -1971,12 +1907,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Publishes a page.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual PublishRequest Publish(string blogId, string pageId)
         {
             return new PublishRequest(service, blogId, pageId);
@@ -1993,15 +1928,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "publish";
@@ -2016,7 +1947,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2034,12 +1964,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Reverts a published or scheduled page to draft state.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual RevertRequest Revert(string blogId, string pageId)
         {
             return new RevertRequest(service, blogId, pageId);
@@ -2056,15 +1985,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "revert";
@@ -2079,7 +2004,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2097,13 +2021,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates a page by blog id and page id.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
-        /// <param name="pageId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="pageId"><c>null</c></param>
         public virtual UpdateRequest Update(Google.Apis.Blogger.v3.Data.Page body, string blogId, string pageId)
         {
             return new UpdateRequest(service, body, blogId, pageId);
@@ -2121,23 +2044,17 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("pageId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PageId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("publish", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Publish { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("revert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Revert { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Page Body { get; set; }
@@ -2158,7 +2075,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2192,7 +2108,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2208,14 +2123,12 @@ namespace Google.Apis.Blogger.v3
         public PostUserInfosResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets one post and user info pair, by post_id and user_id.</summary>
-        /// <param name="userId"></param>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="userId"><c>null</c></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual GetRequest Get(string userId, string blogId, string postId)
         {
             return new GetRequest(service, userId, blogId, postId);
@@ -2233,23 +2146,17 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxComments { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2264,7 +2171,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userId",
@@ -2298,12 +2204,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists post and user info pairs.</summary>
-        /// <param name="userId"></param>
-        /// <param name="blogId"></param>
+        /// <param name="userId"><c>null</c></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string userId, string blogId)
         {
             return new ListRequest(service, userId, blogId);
@@ -2320,86 +2225,87 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndDate { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("labels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Labels { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
-
             public enum OrderByEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
                 ORDERBYUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                 PUBLISHED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
                 UPDATED,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartDate { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
                 DRAFT,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
                 SCHEDULED,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2414,7 +2320,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userId",
@@ -2504,7 +2409,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2520,13 +2424,11 @@ namespace Google.Apis.Blogger.v3
         public PostsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Deletes a post by blog id and post id.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual DeleteRequest Delete(string blogId, string postId)
         {
             return new DeleteRequest(service, blogId, postId);
@@ -2543,15 +2445,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -2566,7 +2464,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2584,12 +2481,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets a post by blog id and post id</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual GetRequest Get(string blogId, string postId)
         {
             return new GetRequest(service, blogId, postId);
@@ -2606,44 +2502,42 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchImages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchImages { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxComments { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2658,7 +2552,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2708,12 +2601,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Gets a post by path.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="path"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="path"><c>null</c></param>
         public virtual GetByPathRequest GetByPath(string blogId, string path)
         {
             return new GetByPathRequest(service, blogId, path);
@@ -2730,36 +2622,36 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Path { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxComments { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getByPath";
@@ -2774,7 +2666,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2808,12 +2699,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Inserts a post.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual InsertRequest Insert(Google.Apis.Blogger.v3.Data.Post body, string blogId)
         {
             return new InsertRequest(service, body, blogId);
@@ -2830,23 +2720,17 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchImages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchImages { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("isDraft", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IsDraft { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
@@ -2867,7 +2751,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -2901,11 +2784,10 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists posts.</summary>
-        /// <param name="blogId"></param>
+        /// <param name="blogId"><c>null</c></param>
         public virtual ListRequest List(string blogId)
         {
             return new ListRequest(service, blogId);
@@ -2921,86 +2803,87 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EndDate { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchImages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchImages { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("labels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Labels { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
-
             public enum OrderByEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
                 ORDERBYUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                 PUBLISHED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
                 UPDATED,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string StartDate { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-
             public enum StatusEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
                 LIVE,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
                 DRAFT,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
                 SCHEDULED,
             }
 
-
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-
             public enum ViewEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
                 VIEWTYPEUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
                 READER,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
                 AUTHOR,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
                 ADMIN,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -3015,7 +2898,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3105,13 +2987,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Patches a post.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual PatchRequest Patch(Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
         {
             return new PatchRequest(service, body, blogId, postId);
@@ -3129,35 +3010,26 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchImages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchImages { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxComments { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("publish", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Publish { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("revert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Revert { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
@@ -3178,7 +3050,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3236,12 +3107,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Publishes a post.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual PublishRequest Publish(string blogId, string postId)
         {
             return new PublishRequest(service, blogId, postId);
@@ -3258,19 +3128,14 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("publishDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PublishDate { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "publish";
@@ -3285,7 +3150,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3311,12 +3175,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Reverts a published or scheduled post to draft state.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual RevertRequest Revert(string blogId, string postId)
         {
             return new RevertRequest(service, blogId, postId);
@@ -3333,15 +3196,11 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "revert";
@@ -3356,7 +3215,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3374,12 +3232,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Searches for posts matching given query terms in the specified blog.</summary>
-        /// <param name="blogId"></param>
-        /// <param name="q"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="q"><c>null</c></param>
         public virtual SearchRequest Search(string blogId, string q)
         {
             return new SearchRequest(service, blogId, q);
@@ -3396,34 +3253,32 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBodies", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBodies { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
 
-
             public enum OrderByEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
                 ORDERBYUNSPECIFIED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                 PUBLISHED,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
                 UPDATED,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
@@ -3438,7 +3293,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3472,13 +3326,12 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Updates a post by blog id and post id.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="blogId"></param>
-        /// <param name="postId"></param>
+        /// <param name="blogId"><c>null</c></param>
+        /// <param name="postId"><c>null</c></param>
         public virtual UpdateRequest Update(Google.Apis.Blogger.v3.Data.Post body, string blogId, string postId)
         {
             return new UpdateRequest(service, body, blogId, postId);
@@ -3496,35 +3349,26 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("blogId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string BlogId { get; private set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("postId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PostId { get; private set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("fetchBody", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchBody { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("fetchImages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> FetchImages { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("maxComments", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxComments { get; set; }
-
 
             [Google.Apis.Util.RequestParameterAttribute("publish", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Publish { get; set; }
 
-
             [Google.Apis.Util.RequestParameterAttribute("revert", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Revert { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Blogger.v3.Data.Post Body { get; set; }
@@ -3545,7 +3389,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("blogId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "blogId",
@@ -3603,7 +3446,6 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -3619,12 +3461,10 @@ namespace Google.Apis.Blogger.v3
         public UsersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
         /// <summary>Gets one user by user_id.</summary>
-        /// <param name="userId"></param>
+        /// <param name="userId"><c>null</c></param>
         public virtual GetRequest Get(string userId)
         {
             return new GetRequest(service, userId);
@@ -3640,11 +3480,8 @@ namespace Google.Apis.Blogger.v3
                 InitParameters();
             }
 
-
-
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -3659,7 +3496,6 @@ namespace Google.Apis.Blogger.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "userId",
@@ -3669,14 +3505,11 @@ namespace Google.Apis.Blogger.v3
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Blogger.v3.Data
-{    
-
+{
     public class Blog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The JSON custom meta-data for the Blog.</summary>
@@ -3733,7 +3566,6 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The locale this Blog is set to.</summary>
         public class LocaleData
@@ -3749,8 +3581,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The language variant this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("variant")]
             public virtual string Variant { get; set; }
-
-        }    
+        }
 
         /// <summary>The container of pages in this blog.</summary>
         public class PagesData
@@ -3762,8 +3593,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The count of pages in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
             public virtual System.Nullable<int> TotalItems { get; set; }
-
-        }    
+        }
 
         /// <summary>The container of posts in this blog.</summary>
         public class PostsData
@@ -3779,9 +3609,8 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The count of posts in this blog.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
             public virtual System.Nullable<int> TotalItems { get; set; }
-
         }
-    }    
+    }
 
     public class BlogList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3799,7 +3628,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BlogPerUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3829,7 +3658,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BlogUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3847,7 +3676,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3897,7 +3726,6 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The author of this Comment.</summary>
         public class AuthorData
@@ -3918,17 +3746,14 @@ namespace Google.Apis.Blogger.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
 
-            
-
             /// <summary>The creator's avatar.</summary>
             public class ImageData
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
                 public virtual string Url { get; set; }
-
             }
-        }    
+        }
 
         /// <summary>Data about the blog containing this comment.</summary>
         public class BlogData
@@ -3936,8 +3761,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The identifier of the blog containing this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
-
-        }    
+        }
 
         /// <summary>Data about the comment this is in reply to.</summary>
         public class InReplyToData
@@ -3945,8 +3769,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The identified of the parent of this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
-
-        }    
+        }
 
         /// <summary>Data about the post containing this comment.</summary>
         public class PostData
@@ -3954,9 +3777,8 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The identifier of the post containing this comment.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
-
         }
-    }    
+    }
 
     public class CommentList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3979,8 +3801,7 @@ namespace Google.Apis.Blogger.v3.Data
         /// <summary>Pagination token to fetch the previous page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
         public virtual string PrevPageToken { get; set; }
-
-    }    
+    }
 
     public class Page : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4032,8 +3853,6 @@ namespace Google.Apis.Blogger.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
-        
-
         /// <summary>The author of this Page.</summary>
         public class AuthorData
         {
@@ -4053,17 +3872,14 @@ namespace Google.Apis.Blogger.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
 
-            
-
             /// <summary>The creator's avatar.</summary>
             public class ImageData
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
                 public virtual string Url { get; set; }
-
             }
-        }    
+        }
 
         /// <summary>Data about the blog containing this Page.</summary>
         public class BlogData
@@ -4071,9 +3887,8 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The identifier of the blog containing this page.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
-
         }
-    }    
+    }
 
     public class PageList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4092,8 +3907,7 @@ namespace Google.Apis.Blogger.v3.Data
         /// <summary>Pagination token to fetch the next page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-    }    
+    }
 
     public class Pageviews : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4111,8 +3925,8 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>The container of posts in this blog.</summary>
         public class CountsData
         {
             /// <summary>Count of page views for the given time range.</summary>
@@ -4122,9 +3936,8 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>Time range the given count applies to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("timeRange")]
             public virtual string TimeRange { get; set; }
-
         }
-    }    
+    }
 
     public class Post : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4204,8 +4017,6 @@ namespace Google.Apis.Blogger.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
-        
-
         /// <summary>The author of this Post.</summary>
         public class AuthorData
         {
@@ -4225,17 +4036,14 @@ namespace Google.Apis.Blogger.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
 
-            
-
             /// <summary>The creator's avatar.</summary>
             public class ImageData
             {
                 /// <summary>The creator's avatar URL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("url")]
                 public virtual string Url { get; set; }
-
             }
-        }    
+        }
 
         /// <summary>Data about the blog containing this Post.</summary>
         public class BlogData
@@ -4243,15 +4051,14 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The identifier of the Blog that contains this Post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
+        }
 
-        }    
-
+        /// <summary>Display image for the Post.</summary>
         public class ImagesData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("url")]
             public virtual string Url { get; set; }
-
-        }    
+        }
 
         /// <summary>The location for geotagged posts.</summary>
         public class LocationData
@@ -4271,8 +4078,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>Location's viewport span. Can be used when rendering a map preview.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("span")]
             public virtual string Span { get; set; }
-
-        }    
+        }
 
         /// <summary>The container of comments on this Post.</summary>
         public class RepliesData
@@ -4288,9 +4094,8 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The count of comments on this post.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
             public virtual System.Nullable<long> TotalItems { get; set; }
-
         }
-    }    
+    }
 
     public class PostList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4313,8 +4118,7 @@ namespace Google.Apis.Blogger.v3.Data
         /// <summary>Pagination token to fetch the previous page, if one exists.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prevPageToken")]
         public virtual string PrevPageToken { get; set; }
-
-    }    
+    }
 
     public class PostPerUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4340,7 +4144,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PostUserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4358,7 +4162,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PostUserInfosList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4376,7 +4180,7 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4418,7 +4222,6 @@ namespace Google.Apis.Blogger.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>The container of blogs for this user.</summary>
         public class BlogsData
@@ -4426,8 +4229,7 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The URL of the Blogs for this user.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
             public virtual string SelfLink { get; set; }
-
-        }    
+        }
 
         /// <summary>This user's locale</summary>
         public class LocaleData
@@ -4443,7 +4245,6 @@ namespace Google.Apis.Blogger.v3.Data
             /// <summary>The language variant this blog is authored in.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("variant")]
             public virtual string Variant { get; set; }
-
         }
     }
 }

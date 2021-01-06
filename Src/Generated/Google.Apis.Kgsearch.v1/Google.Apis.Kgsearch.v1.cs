@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.Kgsearch.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Entities resource.</summary>
         public virtual EntitiesResource Entities { get; }
     }
@@ -83,6 +84,7 @@ namespace Google.Apis.Kgsearch.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -102,9 +104,11 @@ namespace Google.Apis.Kgsearch.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -118,8 +122,10 @@ namespace Google.Apis.Kgsearch.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -131,8 +137,10 @@ namespace Google.Apis.Kgsearch.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -148,7 +156,6 @@ namespace Google.Apis.Kgsearch.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -252,19 +259,21 @@ namespace Google.Apis.Kgsearch.v1
         public EntitiesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Searches Knowledge Graph for entities that match the constraints. A list of matched entities will
-        /// be returned in response, which will be in JSON-LD format and compatible with http://schema.org</summary>
+        /// <summary>
+        /// Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be
+        /// returned in response, which will be in JSON-LD format and compatible with http://schema.org
+        /// </summary>
         public virtual SearchRequest Search()
         {
             return new SearchRequest(service);
         }
 
-        /// <summary>Searches Knowledge Graph for entities that match the constraints. A list of matched entities will
-        /// be returned in response, which will be in JSON-LD format and compatible with http://schema.org</summary>
+        /// <summary>
+        /// Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be
+        /// returned in response, which will be in JSON-LD format and compatible with http://schema.org
+        /// </summary>
         public class SearchRequest : KgsearchBaseServiceRequest<Google.Apis.Kgsearch.v1.Data.SearchResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -273,9 +282,10 @@ namespace Google.Apis.Kgsearch.v1
                 InitParameters();
             }
 
-
-            /// <summary>The list of entity id to be used for search instead of query string. To specify multiple ids in
-            /// the HTTP request, repeat the parameter in the URL as in ...?ids=A=B</summary>
+            /// <summary>
+            /// The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP
+            /// request, repeat the parameter in the URL as in ...?ids=A&amp;amp;ids=B
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
 
@@ -299,12 +309,12 @@ namespace Google.Apis.Kgsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
-            /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
-            /// http://schema.org/Person). If multiple types are specified, returned entities will contain one or more
-            /// of these types.</summary>
+            /// <summary>
+            /// Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If
+            /// multiple types are specified, returned entities will contain one or more of these types.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "search";
@@ -319,7 +329,6 @@ namespace Google.Apis.Kgsearch.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ids",
@@ -377,20 +386,21 @@ namespace Google.Apis.Kgsearch.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Kgsearch.v1.Data
-{    
-
-    /// <summary>Response message includes the context and a list of matching results which contain the detail of
-    /// associated entities.</summary>
+{
+    /// <summary>
+    /// Response message includes the context and a list of matching results which contain the detail of associated
+    /// entities.
+    /// </summary>
     public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld
-        /// /#context-definitions.</summary>
+        /// <summary>
+        /// The local context applicable for the response. See more details at
+        /// http://www.w3.org/TR/json-ld/#context-definitions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("@context")]
         public virtual object Context { get; set; }
 

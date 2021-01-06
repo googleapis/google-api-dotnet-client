@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -60,22 +65,20 @@ namespace Google.Apis.PostmasterTools.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Gmail Postmaster Tools API.</summary>
         public class Scope
         {
-            /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
-            /// Tools</summary>
+            /// <summary>
+            /// See email traffic metrics for the domains you have registered in Gmail Postmaster Tools
+            /// </summary>
             public static string PostmasterReadonly = "https://www.googleapis.com/auth/postmaster.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Gmail Postmaster Tools API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See email traffic metrics for the domains you have registered in Gmail Postmaster
-            /// Tools</summary>
+            /// <summary>
+            /// See email traffic metrics for the domains you have registered in Gmail Postmaster Tools
+            /// </summary>
             public const string PostmasterReadonly = "https://www.googleapis.com/auth/postmaster.readonly";
-
         }
-
-
 
         /// <summary>Gets the Domains resource.</summary>
         public virtual DomainsResource Domains { get; }
@@ -99,6 +102,7 @@ namespace Google.Apis.PostmasterTools.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -118,9 +122,11 @@ namespace Google.Apis.PostmasterTools.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -134,8 +140,10 @@ namespace Google.Apis.PostmasterTools.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -147,8 +155,10 @@ namespace Google.Apis.PostmasterTools.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -164,7 +174,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -269,7 +278,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
         {
             this.service = service;
             TrafficStats = new TrafficStatsResource(service);
-
         }
 
         /// <summary>Gets the TrafficStats resource.</summary>
@@ -287,21 +295,25 @@ namespace Google.Apis.PostmasterTools.v1beta1
             public TrafficStatsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does
-            /// not have permission to access TrafficStats for the domain.</summary>
-            /// <param name="name">The resource name of the traffic statistics to get. E.g.,
-            /// domains/mymail.mydomain.com/trafficStats/20160807.</param>
+            /// <summary>
+            /// Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have
+            /// permission to access TrafficStats for the domain.
+            /// </summary>
+            /// <param name="name">
+            /// The resource name of the traffic statistics to get. E.g.,
+            /// domains/mymail.mydomain.com/trafficStats/20160807.
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does
-            /// not have permission to access TrafficStats for the domain.</summary>
+            /// <summary>
+            /// Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have
+            /// permission to access TrafficStats for the domain.
+            /// </summary>
             public class GetRequest : PostmasterToolsBaseServiceRequest<Google.Apis.PostmasterTools.v1beta1.Data.TrafficStats>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -311,12 +323,12 @@ namespace Google.Apis.PostmasterTools.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>The resource name of the traffic statistics to get. E.g.,
-                /// domains/mymail.mydomain.com/trafficStats/20160807.</summary>
+                /// <summary>
+                /// The resource name of the traffic statistics to get. E.g.,
+                /// domains/mymail.mydomain.com/trafficStats/20160807.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -331,7 +343,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -341,20 +352,25 @@ namespace Google.Apis.PostmasterTools.v1beta1
                         Pattern = @"^domains/[^/]+/trafficStats/[^/]+$",
                     });
                 }
-
             }
 
-            /// <summary>List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have
-            /// permission to access TrafficStats for the domain.</summary>
-            /// <param name="parent">The resource name of the domain whose traffic statistics we'd like to list. It should have the
-            /// form `domains/{domain_name}`, where domain_name is the fully qualified domain name.</param>
+            /// <summary>
+            /// List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have
+            /// permission to access TrafficStats for the domain.
+            /// </summary>
+            /// <param name="parent">
+            /// The resource name of the domain whose traffic statistics we'd like to list. It should have the form
+            /// `domains/{domain_name}`, where domain_name is the fully qualified domain name.
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have
-            /// permission to access TrafficStats for the domain.</summary>
+            /// <summary>
+            /// List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have
+            /// permission to access TrafficStats for the domain.
+            /// </summary>
             public class ListRequest : PostmasterToolsBaseServiceRequest<Google.Apis.PostmasterTools.v1beta1.Data.ListTrafficStatsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -364,19 +380,23 @@ namespace Google.Apis.PostmasterTools.v1beta1
                     InitParameters();
                 }
 
-
-                /// <summary>The resource name of the domain whose traffic statistics we'd like to list. It should have
-                /// the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.</summary>
+                /// <summary>
+                /// The resource name of the domain whose traffic statistics we'd like to list. It should have the form
+                /// `domains/{domain_name}`, where domain_name is the fully qualified domain name.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-                /// year by itself or a year and month where the day isn't significant.</summary>
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endDate.day", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> EndDateDay { get; set; }
 
-                /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-                /// day.</summary>
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endDate.month", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> EndDateMonth { get; set; }
 
@@ -384,31 +404,37 @@ namespace Google.Apis.PostmasterTools.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("endDate.year", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> EndDateYear { get; set; }
 
-                /// <summary>Requested page size. Server may return fewer TrafficStats than requested. If unspecified,
-                /// server will pick an appropriate default.</summary>
+                /// <summary>
+                /// Requested page size. Server may return fewer TrafficStats than requested. If unspecified, server
+                /// will pick an appropriate default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token value returned from a previous List request, if any. This is the value
-                /// of ListTrafficStatsResponse.next_page_token returned from the previous call to `ListTrafficStats`
-                /// method.</summary>
+                /// <summary>
+                /// The next_page_token value returned from a previous List request, if any. This is the value of
+                /// ListTrafficStatsResponse.next_page_token returned from the previous call to `ListTrafficStats`
+                /// method.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a
-                /// year by itself or a year and month where the day isn't significant.</summary>
+                /// <summary>
+                /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
+                /// itself or a year and month where the day isn't significant.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startDate.day", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartDateDay { get; set; }
 
-                /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and
-                /// day.</summary>
+                /// <summary>
+                /// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startDate.month", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartDateMonth { get; set; }
 
                 /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startDate.year", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> StartDateYear { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -423,7 +449,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
@@ -497,21 +522,24 @@ namespace Google.Apis.PostmasterTools.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
 
-        /// <summary>Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not
-        /// exist.</summary>
-        /// <param name="name">The resource name of the domain. It should have the form `domains/{domain_name}`, where
-        /// domain_name is the fully qualified domain name.</param>
+        /// <summary>
+        /// Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.
+        /// </summary>
+        /// <param name="name">
+        /// The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the
+        /// fully qualified domain name.
+        /// </param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not
-        /// exist.</summary>
+        /// <summary>
+        /// Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.
+        /// </summary>
         public class GetRequest : PostmasterToolsBaseServiceRequest<Google.Apis.PostmasterTools.v1beta1.Data.Domain>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -521,12 +549,12 @@ namespace Google.Apis.PostmasterTools.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>The resource name of the domain. It should have the form `domains/{domain_name}`, where
-            /// domain_name is the fully qualified domain name.</summary>
+            /// <summary>
+            /// The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is
+            /// the fully qualified domain name.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -541,7 +569,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -551,20 +578,23 @@ namespace Google.Apis.PostmasterTools.v1beta1
                     Pattern = @"^domains/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Lists the domains that have been registered by the client. The order of domains in the response is
+        /// <summary>
+        /// Lists the domains that have been registered by the client. The order of domains in the response is
         /// unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this
-        /// list.</summary>
+        /// list.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists the domains that have been registered by the client. The order of domains in the response is
+        /// <summary>
+        /// Lists the domains that have been registered by the client. The order of domains in the response is
         /// unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this
-        /// list.</summary>
+        /// list.
+        /// </summary>
         public class ListRequest : PostmasterToolsBaseServiceRequest<Google.Apis.PostmasterTools.v1beta1.Data.ListDomainsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -573,17 +603,19 @@ namespace Google.Apis.PostmasterTools.v1beta1
                 InitParameters();
             }
 
-
-            /// <summary>Requested page size. Server may return fewer domains than requested. If unspecified, server
-            /// will pick an appropriate default.</summary>
+            /// <summary>
+            /// Requested page size. Server may return fewer domains than requested. If unspecified, server will pick an
+            /// appropriate default.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The next_page_token value returned from a previous List request, if any. This is the value of
-            /// ListDomainsResponse.next_page_token returned from the previous call to `ListDomains` method.</summary>
+            /// <summary>
+            /// The next_page_token value returned from a previous List request, if any. This is the value of
+            /// ListDomainsResponse.next_page_token returned from the previous call to `ListDomains` method.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -598,7 +630,6 @@ namespace Google.Apis.PostmasterTools.v1beta1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -616,14 +647,11 @@ namespace Google.Apis.PostmasterTools.v1beta1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.PostmasterTools.v1beta1.Data
-{    
-
+{
     /// <summary>Metric on a particular delivery error type.</summary>
     public class DeliveryError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -641,7 +669,7 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A registered domain resource in the Postmaster API.</summary>
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
@@ -650,8 +678,10 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where
-        /// domain_name is the fully qualified domain name (i.e., mymail.mydomain.com).</summary>
+        /// <summary>
+        /// The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where domain_name is
+        /// the fully qualified domain name (i.e., mymail.mydomain.com).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -661,7 +691,7 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>[Feedback loop](https://support.google.com/mail/answer/6254652) identifier information.</summary>
     public class FeedbackLoop : Google.Apis.Requests.IDirectResponseSchema
@@ -670,26 +700,32 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The ratio of user marked spam messages with the identifier vs the total number of inboxed messages
-        /// with that identifier.</summary>
+        /// <summary>
+        /// The ratio of user marked spam messages with the identifier vs the total number of inboxed messages with that
+        /// identifier.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spamRatio")]
         public virtual System.Nullable<double> SpamRatio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>IP Reputation information for a set of IPs in a specific reputation category.</summary>
     public class IpReputation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total number of unique IPs in this reputation category. This metric only pertains to traffic that
-        /// passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// Total number of unique IPs in this reputation category. This metric only pertains to traffic that passed
+        /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipCount")]
         public virtual System.Nullable<long> IpCount { get; set; }
 
-        /// <summary>Total number of unique IPs in this reputation category. This metric only pertains to traffic that
-        /// passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). Deprecated to be complied with
-        /// ApiLinter for Quantities. Use ip_count instead.</summary>
+        /// <summary>
+        /// Total number of unique IPs in this reputation category. This metric only pertains to traffic that passed
+        /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). Deprecated to be complied with ApiLinter for
+        /// Quantities. Use ip_count instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numIps")]
         public virtual System.Nullable<long> NumIps { get; set; }
 
@@ -703,7 +739,7 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListDomains.</summary>
     public class ListDomainsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -712,20 +748,22 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<Domain> Domains { get; set; }
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for ListTrafficStats.</summary>
     public class ListTrafficStatsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -735,24 +773,30 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Email traffic statistics pertaining to a specific date.</summary>
     public class TrafficStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Delivery errors for the domain. This metric only pertains to traffic that passed
-        /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// Delivery errors for the domain. This metric only pertains to traffic that passed
+        /// [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryErrors")]
         public virtual System.Collections.Generic.IList<DeliveryError> DeliveryErrors { get; set; }
 
-        /// <summary>The ratio of mail that successfully authenticated with DKIM vs. all mail that attempted to
-        /// authenticate with [DKIM](http://www.dkim.org/). Spoofed mail is excluded.</summary>
+        /// <summary>
+        /// The ratio of mail that successfully authenticated with DKIM vs. all mail that attempted to authenticate with
+        /// [DKIM](http://www.dkim.org/). Spoofed mail is excluded.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dkimSuccessRatio")]
         public virtual System.Nullable<double> DkimSuccessRatio { get; set; }
 
-        /// <summary>The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks vs all mail received
-        /// from the domain that successfully authenticated with either of [SPF](http://www.openspf.org/) or
-        /// [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks vs all mail received from the
+        /// domain that successfully authenticated with either of [SPF](http://www.openspf.org/) or
+        /// [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmarcSuccessRatio")]
         public virtual System.Nullable<double> DmarcSuccessRatio { get; set; }
 
@@ -760,22 +804,27 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainReputation")]
         public virtual string DomainReputation { get; set; }
 
-        /// <summary>The ratio of incoming mail (to Gmail), that passed secure transport (TLS) vs all mail received from
-        /// that domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or
-        /// [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// The ratio of incoming mail (to Gmail), that passed secure transport (TLS) vs all mail received from that
+        /// domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or
+        /// [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inboundEncryptionRatio")]
         public virtual System.Nullable<double> InboundEncryptionRatio { get; set; }
 
-        /// <summary>Reputation information pertaining to the IP addresses of the email servers for the domain. There is
-        /// exactly one entry for each reputation category except REPUTATION_CATEGORY_UNSPECIFIED.</summary>
+        /// <summary>
+        /// Reputation information pertaining to the IP addresses of the email servers for the domain. There is exactly
+        /// one entry for each reputation category except REPUTATION_CATEGORY_UNSPECIFIED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipReputations")]
         public virtual System.Collections.Generic.IList<IpReputation> IpReputations { get; set; }
 
-        /// <summary>The resource name of the traffic statistics. Traffic statistic names have the form
+        /// <summary>
+        /// The resource name of the traffic statistics. Traffic statistic names have the form
         /// `domains/{domain}/trafficStats/{date}`, where domain_name is the fully qualified domain name (i.e.,
         /// mymail.mydomain.com) of the domain this traffic statistics pertains to and date is the date in yyyymmdd
-        /// format that these statistics corresponds to. For example:
-        /// domains/mymail.mydomain.com/trafficStats/20160807</summary>
+        /// format that these statistics corresponds to. For example: domains/mymail.mydomain.com/trafficStats/20160807
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -783,19 +832,24 @@ namespace Google.Apis.PostmasterTools.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outboundEncryptionRatio")]
         public virtual System.Nullable<double> OutboundEncryptionRatio { get; set; }
 
-        /// <summary>Spammy [Feedback loop identifiers] (https://support.google.com/mail/answer/6254652) with their
-        /// individual spam rates. This metric only pertains to traffic that is authenticated by
-        /// [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// Spammy [Feedback loop identifiers] (https://support.google.com/mail/answer/6254652) with their individual
+        /// spam rates. This metric only pertains to traffic that is authenticated by [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spammyFeedbackLoops")]
         public virtual System.Collections.Generic.IList<FeedbackLoop> SpammyFeedbackLoops { get; set; }
 
-        /// <summary>The ratio of mail that successfully authenticated with SPF vs. all mail that attempted to
-        /// authenticate with [SPF](http://www.openspf.org/). Spoofed mail is excluded.</summary>
+        /// <summary>
+        /// The ratio of mail that successfully authenticated with SPF vs. all mail that attempted to authenticate with
+        /// [SPF](http://www.openspf.org/). Spoofed mail is excluded.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spfSuccessRatio")]
         public virtual System.Nullable<double> SpfSuccessRatio { get; set; }
 
-        /// <summary>The ratio of user-report spam vs. email that was sent to the inbox. This metric only pertains to
-        /// emails authenticated by [DKIM](http://www.dkim.org/).</summary>
+        /// <summary>
+        /// The ratio of user-report spam vs. email that was sent to the inbox. This metric only pertains to emails
+        /// authenticated by [DKIM](http://www.dkim.org/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userReportedSpamRatio")]
         public virtual System.Nullable<double> UserReportedSpamRatio { get; set; }
 

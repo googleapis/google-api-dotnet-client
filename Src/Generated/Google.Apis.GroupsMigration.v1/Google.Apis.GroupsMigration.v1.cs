@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.GroupsMigration.v1
         {
             /// <summary>Manage messages in groups on your domain</summary>
             public static string AppsGroupsMigration = "https://www.googleapis.com/auth/apps.groups.migration";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Groups Migration API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.GroupsMigration.v1
         {
             /// <summary>Manage messages in groups on your domain</summary>
             public const string AppsGroupsMigration = "https://www.googleapis.com/auth/apps.groups.migration";
-
         }
-
-
 
         /// <summary>Gets the Archive resource.</summary>
         public virtual ArchiveResource Archive { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.GroupsMigration.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.GroupsMigration.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.GroupsMigration.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.GroupsMigration.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.GroupsMigration.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -266,9 +273,7 @@ namespace Google.Apis.GroupsMigration.v1
         public ArchiveResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Inserts a new mail into the archive of the Google group.</summary>
         /// <param name="groupId">The group ID</param>
@@ -287,11 +292,9 @@ namespace Google.Apis.GroupsMigration.v1
                 InitParameters();
             }
 
-
             /// <summary>The group ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "insert";
@@ -306,7 +309,6 @@ namespace Google.Apis.GroupsMigration.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("groupId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "groupId",
@@ -316,28 +318,26 @@ namespace Google.Apis.GroupsMigration.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Inserts a new mail into the archive of the Google group.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
-        /// <item><description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-        /// seekable, then it will be read from its current position.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-        /// upload is completed.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for closing the <paramref name="stream"/>.
-        /// </description></item>
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
         /// </list>
         /// </remarks>
-
         /// <param name="groupId">The group ID</param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -349,7 +349,6 @@ namespace Google.Apis.GroupsMigration.v1
         /// <summary>Insert media upload which supports resumable upload.</summary>
         public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<string, Google.Apis.GroupsMigration.v1.Data.Groups>
         {
-
             /// <summary>V1 error format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
@@ -360,6 +359,7 @@ namespace Google.Apis.GroupsMigration.v1
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
                 Value1,
+
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
                 Value2,
@@ -379,9 +379,11 @@ namespace Google.Apis.GroupsMigration.v1
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
                 Json,
+
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
                 Media,
+
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
                 Proto,
@@ -395,8 +397,10 @@ namespace Google.Apis.GroupsMigration.v1
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fields { get; set; }
 
-            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Key { get; set; }
 
@@ -408,8 +412,10 @@ namespace Google.Apis.GroupsMigration.v1
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-            /// assigned to a user, but should not exceed 40 characters.</summary>
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
@@ -421,7 +427,6 @@ namespace Google.Apis.GroupsMigration.v1
             [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UploadProtocol { get; set; }
 
-
             /// <summary>The group ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupId { get; private set; }
@@ -430,18 +435,19 @@ namespace Google.Apis.GroupsMigration.v1
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, string groupId, System.IO.Stream stream, string contentType)
@@ -452,10 +458,8 @@ namespace Google.Apis.GroupsMigration.v1
         }
     }
 }
-
 namespace Google.Apis.GroupsMigration.v1.Data
-{    
-
+{
     /// <summary>JSON response template for groups migration API.</summary>
     public class Groups : Google.Apis.Requests.IDirectResponseSchema
     {

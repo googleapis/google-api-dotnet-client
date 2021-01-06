@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -66,7 +71,6 @@ namespace Google.Apis.GamesManagement.v1management
         {
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public static string Games = "https://www.googleapis.com/auth/games";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Management.</summary>
@@ -74,10 +78,7 @@ namespace Google.Apis.GamesManagement.v1management
         {
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
-
         }
-
-
 
         /// <summary>Gets the Achievements resource.</summary>
         public virtual AchievementsResource Achievements { get; }
@@ -113,6 +114,7 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -132,9 +134,11 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -148,8 +152,10 @@ namespace Google.Apis.GamesManagement.v1management
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -161,8 +167,10 @@ namespace Google.Apis.GamesManagement.v1management
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -178,7 +186,6 @@ namespace Google.Apis.GamesManagement.v1management
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -282,20 +289,22 @@ namespace Google.Apis.GamesManagement.v1management
         public AchievementsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Resets the achievement with the given ID for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets the achievement with the given ID for the currently authenticated player. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual ResetRequest Reset(string achievementId)
         {
             return new ResetRequest(service, achievementId);
         }
 
-        /// <summary>Resets the achievement with the given ID for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets the achievement with the given ID for the currently authenticated player. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.AchievementResetResponse>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -305,11 +314,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
@@ -324,7 +331,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -334,18 +340,21 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets all achievements for the currently authenticated player for your application. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all achievements for the currently authenticated player for your application. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public virtual ResetAllRequest ResetAll()
         {
             return new ResetAllRequest(service);
         }
 
-        /// <summary>Resets all achievements for the currently authenticated player for your application. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all achievements for the currently authenticated player for your application. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetAllRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.AchievementResetAllResponse>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
@@ -353,8 +362,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
@@ -369,20 +376,22 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets all draft achievements for all players. This method is only available to user accounts for
-        /// your developer console.</summary>
+        /// <summary>
+        /// Resets all draft achievements for all players. This method is only available to user accounts for your
+        /// developer console.
+        /// </summary>
         public virtual ResetAllForAllPlayersRequest ResetAllForAllPlayers()
         {
             return new ResetAllForAllPlayersRequest(service);
         }
 
-        /// <summary>Resets all draft achievements for all players. This method is only available to user accounts for
-        /// your developer console.</summary>
+        /// <summary>
+        /// Resets all draft achievements for all players. This method is only available to user accounts for your
+        /// developer console.
+        /// </summary>
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
@@ -390,8 +399,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
@@ -406,21 +413,23 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets the achievement with the given ID for all players. This method is only available to user
-        /// accounts for your developer console. Only draft achievements can be reset.</summary>
+        /// <summary>
+        /// Resets the achievement with the given ID for all players. This method is only available to user accounts for
+        /// your developer console. Only draft achievements can be reset.
+        /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
         public virtual ResetForAllPlayersRequest ResetForAllPlayers(string achievementId)
         {
             return new ResetForAllPlayersRequest(service, achievementId);
         }
 
-        /// <summary>Resets the achievement with the given ID for all players. This method is only available to user
-        /// accounts for your developer console. Only draft achievements can be reset.</summary>
+        /// <summary>
+        /// Resets the achievement with the given ID for all players. This method is only available to user accounts for
+        /// your developer console. Only draft achievements can be reset.
+        /// </summary>
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
@@ -430,11 +439,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the achievement used by this method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
@@ -449,7 +456,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("achievementId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "achievementId",
@@ -459,19 +465,22 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets achievements with the given IDs for all players. This method is only available to user
-        /// accounts for your developer console. Only draft achievements may be reset.</summary>
+        /// <summary>
+        /// Resets achievements with the given IDs for all players. This method is only available to user accounts for
+        /// your developer console. Only draft achievements may be reset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ResetMultipleForAllPlayersRequest ResetMultipleForAllPlayers(Google.Apis.GamesManagement.v1management.Data.AchievementResetMultipleForAllRequest body)
         {
             return new ResetMultipleForAllPlayersRequest(service, body);
         }
 
-        /// <summary>Resets achievements with the given IDs for all players. This method is only available to user
-        /// accounts for your developer console. Only draft achievements may be reset.</summary>
+        /// <summary>
+        /// Resets achievements with the given IDs for all players. This method is only available to user accounts for
+        /// your developer console. Only draft achievements may be reset.
+        /// </summary>
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
@@ -480,8 +489,6 @@ namespace Google.Apis.GamesManagement.v1management
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.AchievementResetMultipleForAllRequest Body { get; set; }
@@ -502,9 +509,7 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -520,20 +525,22 @@ namespace Google.Apis.GamesManagement.v1management
         public ApplicationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Get the list of players hidden from the given application. This method is only available to user
-        /// accounts for your developer console.</summary>
+        /// <summary>
+        /// Get the list of players hidden from the given application. This method is only available to user accounts
+        /// for your developer console.
+        /// </summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
         public virtual ListHiddenRequest ListHidden(string applicationId)
         {
             return new ListHiddenRequest(service, applicationId);
         }
 
-        /// <summary>Get the list of players hidden from the given application. This method is only available to user
-        /// accounts for your developer console.</summary>
+        /// <summary>
+        /// Get the list of players hidden from the given application. This method is only available to user accounts
+        /// for your developer console.
+        /// </summary>
         public class ListHiddenRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.HiddenPlayerList>
         {
             /// <summary>Constructs a new ListHidden request.</summary>
@@ -543,21 +550,20 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
 
-            /// <summary>The maximum number of player resources to return in the response, used for paging. For any
-            /// response, the actual number of player resources returned may be less than the specified
-            /// `maxResults`.</summary>
+            /// <summary>
+            /// The maximum number of player resources to return in the response, used for paging. For any response, the
+            /// actual number of player resources returned may be less than the specified `maxResults`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "listHidden";
@@ -572,7 +578,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -598,7 +603,6 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -614,20 +618,22 @@ namespace Google.Apis.GamesManagement.v1management
         public EventsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Resets all player progress on the event with the given ID for the currently authenticated player.
-        /// This method is only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all player progress on the event with the given ID for the currently authenticated player. This
+        /// method is only accessible to whitelisted tester accounts for your application.
+        /// </summary>
         /// <param name="eventId">The ID of the event.</param>
         public virtual ResetRequest Reset(string eventId)
         {
             return new ResetRequest(service, eventId);
         }
 
-        /// <summary>Resets all player progress on the event with the given ID for the currently authenticated player.
-        /// This method is only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all player progress on the event with the given ID for the currently authenticated player. This
+        /// method is only accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -637,11 +643,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the event.</summary>
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
@@ -656,7 +660,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "eventId",
@@ -666,18 +669,21 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets all player progress on all events for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all player progress on all events for the currently authenticated player. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public virtual ResetAllRequest ResetAll()
         {
             return new ResetAllRequest(service);
         }
 
-        /// <summary>Resets all player progress on all events for the currently authenticated player. This method is
-        /// only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all player progress on all events for the currently authenticated player. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetAllRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
@@ -685,8 +691,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
@@ -701,20 +705,22 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets all draft events for all players. This method is only available to user accounts for your
-        /// developer console.</summary>
+        /// <summary>
+        /// Resets all draft events for all players. This method is only available to user accounts for your developer
+        /// console.
+        /// </summary>
         public virtual ResetAllForAllPlayersRequest ResetAllForAllPlayers()
         {
             return new ResetAllForAllPlayersRequest(service);
         }
 
-        /// <summary>Resets all draft events for all players. This method is only available to user accounts for your
-        /// developer console.</summary>
+        /// <summary>
+        /// Resets all draft events for all players. This method is only available to user accounts for your developer
+        /// console.
+        /// </summary>
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
@@ -722,8 +728,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
@@ -738,21 +742,23 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets the event with the given ID for all players. This method is only available to user accounts
-        /// for your developer console. Only draft events can be reset.</summary>
+        /// <summary>
+        /// Resets the event with the given ID for all players. This method is only available to user accounts for your
+        /// developer console. Only draft events can be reset.
+        /// </summary>
         /// <param name="eventId">The ID of the event.</param>
         public virtual ResetForAllPlayersRequest ResetForAllPlayers(string eventId)
         {
             return new ResetForAllPlayersRequest(service, eventId);
         }
 
-        /// <summary>Resets the event with the given ID for all players. This method is only available to user accounts
-        /// for your developer console. Only draft events can be reset.</summary>
+        /// <summary>
+        /// Resets the event with the given ID for all players. This method is only available to user accounts for your
+        /// developer console. Only draft events can be reset.
+        /// </summary>
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
@@ -762,11 +768,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the event.</summary>
             [Google.Apis.Util.RequestParameterAttribute("eventId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EventId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
@@ -781,7 +785,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("eventId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "eventId",
@@ -791,19 +794,22 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets events with the given IDs for all players. This method is only available to user accounts
-        /// for your developer console. Only draft events may be reset.</summary>
+        /// <summary>
+        /// Resets events with the given IDs for all players. This method is only available to user accounts for your
+        /// developer console. Only draft events may be reset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ResetMultipleForAllPlayersRequest ResetMultipleForAllPlayers(Google.Apis.GamesManagement.v1management.Data.EventsResetMultipleForAllRequest body)
         {
             return new ResetMultipleForAllPlayersRequest(service, body);
         }
 
-        /// <summary>Resets events with the given IDs for all players. This method is only available to user accounts
-        /// for your developer console. Only draft events may be reset.</summary>
+        /// <summary>
+        /// Resets events with the given IDs for all players. This method is only available to user accounts for your
+        /// developer console. Only draft events may be reset.
+        /// </summary>
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
@@ -812,8 +818,6 @@ namespace Google.Apis.GamesManagement.v1management
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.EventsResetMultipleForAllRequest Body { get; set; }
@@ -834,9 +838,7 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 
@@ -852,22 +854,25 @@ namespace Google.Apis.GamesManagement.v1management
         public PlayersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Hide the given player's leaderboard scores from the given application. This method is only
-        /// available to user accounts for your developer console.</summary>
+        /// <summary>
+        /// Hide the given player's leaderboard scores from the given application. This method is only available to user
+        /// accounts for your developer console.
+        /// </summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
-        /// <param
-        /// name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's ID.</param>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
         public virtual HideRequest Hide(string applicationId, string playerId)
         {
             return new HideRequest(service, applicationId, playerId);
         }
 
-        /// <summary>Hide the given player's leaderboard scores from the given application. This method is only
-        /// available to user accounts for your developer console.</summary>
+        /// <summary>
+        /// Hide the given player's leaderboard scores from the given application. This method is only available to user
+        /// accounts for your developer console.
+        /// </summary>
         public class HideRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Hide request.</summary>
@@ -878,7 +883,6 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
@@ -886,7 +890,6 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "hide";
@@ -901,7 +904,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -919,21 +921,25 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Unhide the given player's leaderboard scores from the given application. This method is only
-        /// available to user accounts for your developer console.</summary>
+        /// <summary>
+        /// Unhide the given player's leaderboard scores from the given application. This method is only available to
+        /// user accounts for your developer console.
+        /// </summary>
         /// <param name="applicationId">The application ID from the Google Play developer console.</param>
-        /// <param
-        /// name="playerId">A player ID. A value of `me` may be used in place of the authenticated player's ID.</param>
+        /// <param name="playerId">
+        /// A player ID. A value of `me` may be used in place of the authenticated player's ID.
+        /// </param>
         public virtual UnhideRequest Unhide(string applicationId, string playerId)
         {
             return new UnhideRequest(service, applicationId, playerId);
         }
 
-        /// <summary>Unhide the given player's leaderboard scores from the given application. This method is only
-        /// available to user accounts for your developer console.</summary>
+        /// <summary>
+        /// Unhide the given player's leaderboard scores from the given application. This method is only available to
+        /// user accounts for your developer console.
+        /// </summary>
         public class UnhideRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Unhide request.</summary>
@@ -944,7 +950,6 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The application ID from the Google Play developer console.</summary>
             [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ApplicationId { get; private set; }
@@ -952,7 +957,6 @@ namespace Google.Apis.GamesManagement.v1management
             /// <summary>A player ID. A value of `me` may be used in place of the authenticated player's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("playerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PlayerId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "unhide";
@@ -967,7 +971,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("applicationId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "applicationId",
@@ -985,7 +988,6 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1001,20 +1003,22 @@ namespace Google.Apis.GamesManagement.v1management
         public ScoresResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Resets scores for the leaderboard with the given ID for the currently authenticated player. This
-        /// method is only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is
+        /// only accessible to whitelisted tester accounts for your application.
+        /// </summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual ResetRequest Reset(string leaderboardId)
         {
             return new ResetRequest(service, leaderboardId);
         }
 
-        /// <summary>Resets scores for the leaderboard with the given ID for the currently authenticated player. This
-        /// method is only accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is
+        /// only accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.PlayerScoreResetResponse>
         {
             /// <summary>Constructs a new Reset request.</summary>
@@ -1024,11 +1028,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "reset";
@@ -1043,7 +1045,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -1053,18 +1054,21 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets all scores for all leaderboards for the currently authenticated players. This method is only
-        /// accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all scores for all leaderboards for the currently authenticated players. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public virtual ResetAllRequest ResetAll()
         {
             return new ResetAllRequest(service);
         }
 
-        /// <summary>Resets all scores for all leaderboards for the currently authenticated players. This method is only
-        /// accessible to whitelisted tester accounts for your application.</summary>
+        /// <summary>
+        /// Resets all scores for all leaderboards for the currently authenticated players. This method is only
+        /// accessible to whitelisted tester accounts for your application.
+        /// </summary>
         public class ResetAllRequest : GamesManagementBaseServiceRequest<Google.Apis.GamesManagement.v1management.Data.PlayerScoreResetAllResponse>
         {
             /// <summary>Constructs a new ResetAll request.</summary>
@@ -1072,8 +1076,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAll";
@@ -1088,20 +1090,22 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets scores for all draft leaderboards for all players. This method is only available to user
-        /// accounts for your developer console.</summary>
+        /// <summary>
+        /// Resets scores for all draft leaderboards for all players. This method is only available to user accounts for
+        /// your developer console.
+        /// </summary>
         public virtual ResetAllForAllPlayersRequest ResetAllForAllPlayers()
         {
             return new ResetAllForAllPlayersRequest(service);
         }
 
-        /// <summary>Resets scores for all draft leaderboards for all players. This method is only available to user
-        /// accounts for your developer console.</summary>
+        /// <summary>
+        /// Resets scores for all draft leaderboards for all players. This method is only available to user accounts for
+        /// your developer console.
+        /// </summary>
         public class ResetAllForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetAllForAllPlayers request.</summary>
@@ -1109,8 +1113,6 @@ namespace Google.Apis.GamesManagement.v1management
             {
                 InitParameters();
             }
-
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetAllForAllPlayers";
@@ -1125,21 +1127,23 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Resets scores for the leaderboard with the given ID for all players. This method is only available
-        /// to user accounts for your developer console. Only draft leaderboards can be reset.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboard with the given ID for all players. This method is only available to user
+        /// accounts for your developer console. Only draft leaderboards can be reset.
+        /// </summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         public virtual ResetForAllPlayersRequest ResetForAllPlayers(string leaderboardId)
         {
             return new ResetForAllPlayersRequest(service, leaderboardId);
         }
 
-        /// <summary>Resets scores for the leaderboard with the given ID for all players. This method is only available
-        /// to user accounts for your developer console. Only draft leaderboards can be reset.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboard with the given ID for all players. This method is only available to user
+        /// accounts for your developer console. Only draft leaderboards can be reset.
+        /// </summary>
         public class ResetForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetForAllPlayers request.</summary>
@@ -1149,11 +1153,9 @@ namespace Google.Apis.GamesManagement.v1management
                 InitParameters();
             }
 
-
             /// <summary>The ID of the leaderboard.</summary>
             [Google.Apis.Util.RequestParameterAttribute("leaderboardId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string LeaderboardId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "resetForAllPlayers";
@@ -1168,7 +1170,6 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("leaderboardId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "leaderboardId",
@@ -1178,19 +1179,22 @@ namespace Google.Apis.GamesManagement.v1management
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Resets scores for the leaderboards with the given IDs for all players. This method is only
-        /// available to user accounts for your developer console. Only draft leaderboards may be reset.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboards with the given IDs for all players. This method is only available to user
+        /// accounts for your developer console. Only draft leaderboards may be reset.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ResetMultipleForAllPlayersRequest ResetMultipleForAllPlayers(Google.Apis.GamesManagement.v1management.Data.ScoresResetMultipleForAllRequest body)
         {
             return new ResetMultipleForAllPlayersRequest(service, body);
         }
 
-        /// <summary>Resets scores for the leaderboards with the given IDs for all players. This method is only
-        /// available to user accounts for your developer console. Only draft leaderboards may be reset.</summary>
+        /// <summary>
+        /// Resets scores for the leaderboards with the given IDs for all players. This method is only available to user
+        /// accounts for your developer console. Only draft leaderboards may be reset.
+        /// </summary>
         public class ResetMultipleForAllPlayersRequest : GamesManagementBaseServiceRequest<string>
         {
             /// <summary>Constructs a new ResetMultipleForAllPlayers request.</summary>
@@ -1199,8 +1203,6 @@ namespace Google.Apis.GamesManagement.v1management
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.GamesManagement.v1management.Data.ScoresResetMultipleForAllRequest Body { get; set; }
@@ -1221,21 +1223,19 @@ namespace Google.Apis.GamesManagement.v1management
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.GamesManagement.v1management.Data
-{    
-
+{
     /// <summary>Achievement reset all response.</summary>
     public class AchievementResetAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#achievementResetAllResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#achievementResetAllResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1245,7 +1245,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class AchievementResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1253,21 +1253,25 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("achievement_ids")]
         public virtual System.Collections.Generic.IList<string> AchievementIds { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#achievementResetMultipleForAllRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#achievementResetMultipleForAllRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An achievement reset response.</summary>
     public class AchievementResetResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The current state of the achievement. This is the same as the initial state of the achievement.
-        /// Possible values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. -
-        /// "`UNLOCKED`" - Achievement is unlocked. </summary>
+        /// <summary>
+        /// The current state of the achievement. This is the same as the initial state of the achievement. Possible
+        /// values are: - "`HIDDEN`"- Achievement is hidden. - "`REVEALED`" - Achievement is revealed. - "`UNLOCKED`" -
+        /// Achievement is unlocked.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
@@ -1275,8 +1279,10 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
         public virtual string DefinitionId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#achievementResetResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#achievementResetResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1286,7 +1292,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Multiple events reset all request.</summary>
     public class EventsResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -1295,14 +1301,16 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("event_ids")]
         public virtual System.Collections.Generic.IList<string> EventIds { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#eventsResetMultipleForAllRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#eventsResetMultipleForAllRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>1P/3P metadata about the player's experience.</summary>
     public class GamesPlayerExperienceInfoResource : Google.Apis.Requests.IDirectResponseSchema
@@ -1319,14 +1327,16 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastLevelUpTimestampMillis")]
         public virtual System.Nullable<long> LastLevelUpTimestampMillis { get; set; }
 
-        /// <summary>The next level of the player. If the current level is the maximum level, this should be same as the
-        /// current level.</summary>
+        /// <summary>
+        /// The next level of the player. If the current level is the maximum level, this should be same as the current
+        /// level.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextLevel")]
         public virtual GamesPlayerLevelResource NextLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>1P/3P metadata about a user's level.</summary>
     public class GamesPlayerLevelResource : Google.Apis.Requests.IDirectResponseSchema
@@ -1345,7 +1355,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The HiddenPlayer resource.</summary>
     public class HiddenPlayer : Google.Apis.Requests.IDirectResponseSchema
@@ -1354,8 +1364,10 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenTimeMillis")]
         public virtual System.Nullable<long> HiddenTimeMillis { get; set; }
 
-        /// <summary>Output only. Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#hiddenPlayer`.</summary>
+        /// <summary>
+        /// Output only. Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#hiddenPlayer`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1365,7 +1377,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of hidden players.</summary>
     public class HiddenPlayerList : Google.Apis.Requests.IDirectResponseSchema
@@ -1374,8 +1386,10 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<HiddenPlayer> Items { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#hiddenPlayerList`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#hiddenPlayerList`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1385,7 +1399,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Player resource.</summary>
     public class Player : Google.Apis.Requests.IDirectResponseSchema
@@ -1410,19 +1424,24 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experienceInfo")]
         public virtual GamesPlayerExperienceInfoResource ExperienceInfo { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#player`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#player`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>An object representation of the individual components of the player's name. For some players, these
-        /// fields may not be present.</summary>
+        /// <summary>
+        /// An object representation of the individual components of the player's name. For some players, these fields
+        /// may not be present.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual NameData Name { get; set; }
 
-        /// <summary>The player ID that was used for this player the first time they signed into the game in question.
-        /// This is only populated for calls to player.get for the requesting player, only if the player ID has
-        /// subsequently changed, and only to clients that support remapping player IDs.</summary>
+        /// <summary>
+        /// The player ID that was used for this player the first time they signed into the game in question. This is
+        /// only populated for calls to player.get for the requesting player, only if the player ID has subsequently
+        /// changed, and only to clients that support remapping player IDs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalPlayerId")]
         public virtual string OriginalPlayerId { get; set; }
 
@@ -1430,8 +1449,9 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("playerId")]
         public virtual string PlayerId { get; set; }
 
-        /// <summary>The player's profile settings. Controls whether or not the player's profile is visible to other
-        /// players.</summary>
+        /// <summary>
+        /// The player's profile settings. Controls whether or not the player's profile is visible to other players.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileSettings")]
         public virtual ProfileSettings ProfileSettings { get; set; }
 
@@ -1441,10 +1461,11 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>An object representation of the individual components of the player's name. For some players, these
-        /// fields may not be present.</summary>
+        /// <summary>
+        /// An object representation of the individual components of the player's name. For some players, these fields
+        /// may not be present.
+        /// </summary>
         public class NameData
         {
             /// <summary>The family name of this player. In some places, this is known as the last name.</summary>
@@ -1454,15 +1475,16 @@ namespace Google.Apis.GamesManagement.v1management.Data
             /// <summary>The given name of this player. In some places, this is known as the first name.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
             public virtual string GivenName { get; set; }
-
         }
-    }    
+    }
 
     /// <summary>A list of leaderboard reset resources.</summary>
     public class PlayerScoreResetAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#playerScoreResetAllResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#playerScoreResetAllResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1472,7 +1494,7 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A list of reset leaderboard entry resources.</summary>
     public class PlayerScoreResetResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1481,25 +1503,31 @@ namespace Google.Apis.GamesManagement.v1management.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definitionId")]
         public virtual string DefinitionId { get; set; }
 
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#playerScoreResetResponse`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#playerScoreResetResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The time spans of the updated score. Possible values are: - "`ALL_TIME`" - The score is an all-time
-        /// score. - "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a daily score. </summary>
+        /// <summary>
+        /// The time spans of the updated score. Possible values are: - "`ALL_TIME`" - The score is an all-time score. -
+        /// "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a daily score.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetScoreTimeSpans")]
         public virtual System.Collections.Generic.IList<string> ResetScoreTimeSpans { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Profile settings</summary>
     public class ProfileSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#profileSettings`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#profileSettings`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -1508,12 +1536,14 @@ namespace Google.Apis.GamesManagement.v1management.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ScoresResetMultipleForAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uniquely identifies the type of this resource. Value is always the fixed string
-        /// `gamesManagement#scoresResetMultipleForAllRequest`.</summary>
+        /// <summary>
+        /// Uniquely identifies the type of this resource. Value is always the fixed string
+        /// `gamesManagement#scoresResetMultipleForAllRequest`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

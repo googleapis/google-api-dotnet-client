@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -58,10 +63,6 @@ namespace Google.Apis.PolyService.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Assets resource.</summary>
         public virtual AssetsResource Assets { get; }
 
@@ -87,6 +88,7 @@ namespace Google.Apis.PolyService.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -106,9 +108,11 @@ namespace Google.Apis.PolyService.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -122,8 +126,10 @@ namespace Google.Apis.PolyService.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -135,8 +141,10 @@ namespace Google.Apis.PolyService.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -152,7 +160,6 @@ namespace Google.Apis.PolyService.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -256,20 +263,22 @@ namespace Google.Apis.PolyService.v1
         public AssetsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Returns detailed information about an asset given its name. PRIVATE assets are returned only if the
-        /// currently authenticated user (via OAuth token) is the author of the asset.</summary>
+        /// <summary>
+        /// Returns detailed information about an asset given its name. PRIVATE assets are returned only if the
+        /// currently authenticated user (via OAuth token) is the author of the asset.
+        /// </summary>
         /// <param name="name">Required. An asset's name in the form `assets/{ASSET_ID}`.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Returns detailed information about an asset given its name. PRIVATE assets are returned only if the
-        /// currently authenticated user (via OAuth token) is the author of the asset.</summary>
+        /// <summary>
+        /// Returns detailed information about an asset given its name. PRIVATE assets are returned only if the
+        /// currently authenticated user (via OAuth token) is the author of the asset.
+        /// </summary>
         public class GetRequest : PolyServiceBaseServiceRequest<Google.Apis.PolyService.v1.Data.Asset>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -279,11 +288,9 @@ namespace Google.Apis.PolyService.v1
                 InitParameters();
             }
 
-
             /// <summary>Required. An asset's name in the form `assets/{ASSET_ID}`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -298,7 +305,6 @@ namespace Google.Apis.PolyService.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
                     Name = "name",
@@ -308,18 +314,21 @@ namespace Google.Apis.PolyService.v1
                     Pattern = @"^assets/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Lists all public, remixable assets. These are assets with an access level of PUBLIC and published
-        /// under the CC-By license.</summary>
+        /// <summary>
+        /// Lists all public, remixable assets. These are assets with an access level of PUBLIC and published under the
+        /// CC-By license.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all public, remixable assets. These are assets with an access level of PUBLIC and published
-        /// under the CC-By license.</summary>
+        /// <summary>
+        /// Lists all public, remixable assets. These are assets with an access level of PUBLIC and published under the
+        /// CC-By license.
+        /// </summary>
         public class ListRequest : PolyServiceBaseServiceRequest<Google.Apis.PolyService.v1.Data.ListAssetsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -328,9 +337,10 @@ namespace Google.Apis.PolyService.v1
                 InitParameters();
             }
 
-
-            /// <summary>Filter assets based on the specified category. Supported values are: `animals`, `architecture`,
-            /// `art`, `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.</summary>
+            /// <summary>
+            /// Filter assets based on the specified category. Supported values are: `animals`, `architecture`, `art`,
+            /// `food`, `nature`, `objects`, `people`, `scenes`, `technology`, and `transport`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Category { get; set; }
 
@@ -338,55 +348,69 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("curated", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Curated { get; set; }
 
-            /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
-            /// `GLTF2`, `OBJ`, `TILT`.</summary>
+            /// <summary>
+            /// Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`,
+            /// `OBJ`, `TILT`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Format { get; set; }
 
-            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
-            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
+            /// <summary>
+            /// One or more search terms to be matched against all text that Poly has indexed for assets, which includes
+            /// display_name, description, and tags. Multiple keywords should be separated by spaces.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Keywords { get; set; }
 
-            /// <summary>Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example,
-            /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
+            /// <summary>
+            /// Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example, a request
+            /// for MEDIUM assets also includes SIMPLE assets.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxComplexity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<MaxComplexityEnum> MaxComplexity { get; set; }
 
-            /// <summary>Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example,
-            /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
+            /// <summary>
+            /// Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example, a request
+            /// for MEDIUM assets also includes SIMPLE assets.
+            /// </summary>
             public enum MaxComplexityEnum
             {
                 /// <summary>No complexity specified. This is equivalent to omitting the filter.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEXITY_UNSPECIFIED")]
                 COMPLEXITYUNSPECIFIED,
+
                 /// <summary>Highly-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEX")]
                 COMPLEX,
+
                 /// <summary>Averagely-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                 MEDIUM,
+
                 /// <summary>Simple.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE")]
                 SIMPLE,
             }
 
-            /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
-            /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
+            /// <summary>
+            /// Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`,
+            /// which ranks assets based on a combination of popularity and other features.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
-            /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults
-            /// to `20`.</summary>
+            /// <summary>
+            /// The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to `20`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
-            /// pages. To get the next page, submit the same request specifying the value from
-            /// next_page_token.</summary>
+            /// <summary>
+            /// Specifies a continuation token from a previous search whose results were split into multiple pages. To
+            /// get the next page, submit the same request specifying the value from next_page_token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -401,7 +425,6 @@ namespace Google.Apis.PolyService.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("category", new Google.Apis.Discovery.Parameter
                 {
                     Name = "category",
@@ -467,7 +490,6 @@ namespace Google.Apis.PolyService.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -485,7 +507,6 @@ namespace Google.Apis.PolyService.v1
             this.service = service;
             Assets = new AssetsResource(service);
             Likedassets = new LikedassetsResource(service);
-
         }
 
         /// <summary>Gets the Assets resource.</summary>
@@ -503,23 +524,27 @@ namespace Google.Apis.PolyService.v1
             public AssetsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Lists assets authored by the given user. Only the value 'me', representing the currently-
-            /// authenticated user, is supported. May include assets with an access level of PRIVATE or UNLISTED and
-            /// assets which are All Rights Reserved for the currently-authenticated user.</summary>
-            /// <param name="name">A valid user id. Currently, only the special value 'me', representing the currently-authenticated
-            /// user is supported. To use 'me', you must pass an OAuth token with the request.</param>
+            /// <summary>
+            /// Lists assets authored by the given user. Only the value 'me', representing the currently-authenticated
+            /// user, is supported. May include assets with an access level of PRIVATE or UNLISTED and assets which are
+            /// All Rights Reserved for the currently-authenticated user.
+            /// </summary>
+            /// <param name="name">
+            /// A valid user id. Currently, only the special value 'me', representing the currently-authenticated user
+            /// is supported. To use 'me', you must pass an OAuth token with the request.
+            /// </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists assets authored by the given user. Only the value 'me', representing the currently-
-            /// authenticated user, is supported. May include assets with an access level of PRIVATE or UNLISTED and
-            /// assets which are All Rights Reserved for the currently-authenticated user.</summary>
+            /// <summary>
+            /// Lists assets authored by the given user. Only the value 'me', representing the currently-authenticated
+            /// user, is supported. May include assets with an access level of PRIVATE or UNLISTED and assets which are
+            /// All Rights Reserved for the currently-authenticated user.
+            /// </summary>
             public class ListRequest : PolyServiceBaseServiceRequest<Google.Apis.PolyService.v1.Data.ListUserAssetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -529,55 +554,66 @@ namespace Google.Apis.PolyService.v1
                     InitParameters();
                 }
 
-
-                /// <summary>A valid user id. Currently, only the special value 'me', representing the currently-
-                /// authenticated user is supported. To use 'me', you must pass an OAuth token with the
-                /// request.</summary>
+                /// <summary>
+                /// A valid user id. Currently, only the special value 'me', representing the currently-authenticated
+                /// user is supported. To use 'me', you must pass an OAuth token with the request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
+                /// <summary>
+                /// Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
+                /// `GLTF2`, `OBJ`, and `TILT`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Format { get; set; }
 
-                /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`.
-                /// Defaults to `BEST`, which ranks assets based on a combination of popularity and other
-                /// features.</summary>
+                /// <summary>
+                /// Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults to
+                /// `BEST`, which ranks assets based on a combination of popularity and other features.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
-                /// Defaults to `20`.</summary>
+                /// <summary>
+                /// The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to
+                /// `20`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Specifies a continuation token from a previous search whose results were split into
-                /// multiple pages. To get the next page, submit the same request specifying the value from
-                /// next_page_token.</summary>
+                /// <summary>
+                /// Specifies a continuation token from a previous search whose results were split into multiple pages.
+                /// To get the next page, submit the same request specifying the value from next_page_token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
-                /// returns all assets.</summary>
+                /// <summary>
+                /// The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which returns all
+                /// assets.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<VisibilityEnum> Visibility { get; set; }
 
-                /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
-                /// returns all assets.</summary>
+                /// <summary>
+                /// The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which returns all
+                /// assets.
+                /// </summary>
                 public enum VisibilityEnum
                 {
                     /// <summary>No visibility specified. Returns all assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("VISIBILITY_UNSPECIFIED")]
                     VISIBILITYUNSPECIFIED,
+
                     /// <summary>Returns only published assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
                     PUBLISHED,
+
                     /// <summary>Returns only private assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PRIVATE")]
                     PRIVATE__,
                 }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -592,7 +628,6 @@ namespace Google.Apis.PolyService.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -642,9 +677,9 @@ namespace Google.Apis.PolyService.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
+
         /// <summary>Gets the Likedassets resource.</summary>
         public virtual LikedassetsResource Likedassets { get; }
 
@@ -660,21 +695,25 @@ namespace Google.Apis.PolyService.v1
             public LikedassetsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-
             }
 
-
-            /// <summary>Lists assets that the user has liked. Only the value 'me', representing the currently-
-            /// authenticated user, is supported. May include assets with an access level of UNLISTED.</summary>
-            /// <param name="name">A valid user id. Currently, only the special value 'me', representing the currently-authenticated
-            /// user is supported. To use 'me', you must pass an OAuth token with the request.</param>
+            /// <summary>
+            /// Lists assets that the user has liked. Only the value 'me', representing the currently-authenticated
+            /// user, is supported. May include assets with an access level of UNLISTED.
+            /// </summary>
+            /// <param name="name">
+            /// A valid user id. Currently, only the special value 'me', representing the currently-authenticated user
+            /// is supported. To use 'me', you must pass an OAuth token with the request.
+            /// </param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists assets that the user has liked. Only the value 'me', representing the currently-
-            /// authenticated user, is supported. May include assets with an access level of UNLISTED.</summary>
+            /// <summary>
+            /// Lists assets that the user has liked. Only the value 'me', representing the currently-authenticated
+            /// user, is supported. May include assets with an access level of UNLISTED.
+            /// </summary>
             public class ListRequest : PolyServiceBaseServiceRequest<Google.Apis.PolyService.v1.Data.ListLikedAssetsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -684,35 +723,40 @@ namespace Google.Apis.PolyService.v1
                     InitParameters();
                 }
 
-
-                /// <summary>A valid user id. Currently, only the special value 'me', representing the currently-
-                /// authenticated user is supported. To use 'me', you must pass an OAuth token with the
-                /// request.</summary>
+                /// <summary>
+                /// A valid user id. Currently, only the special value 'me', representing the currently-authenticated
+                /// user is supported. To use 'me', you must pass an OAuth token with the request.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, `TILT`.</summary>
+                /// <summary>
+                /// Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`, `GLTF`,
+                /// `GLTF2`, `OBJ`, `TILT`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Format { get; set; }
 
-                /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`,
-                /// 'LIKED_TIME'. Defaults to `LIKED_TIME`, which ranks assets based on how recently they were
-                /// liked.</summary>
+                /// <summary>
+                /// Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'.
+                /// Defaults to `LIKED_TIME`, which ranks assets based on how recently they were liked.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
-                /// Defaults to `20`.</summary>
+                /// <summary>
+                /// The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults to
+                /// `20`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Specifies a continuation token from a previous search whose results were split into
-                /// multiple pages. To get the next page, submit the same request specifying the value from
-                /// next_page_token.</summary>
+                /// <summary>
+                /// Specifies a continuation token from a previous search whose results were split into multiple pages.
+                /// To get the next page, submit the same request specifying the value from next_page_token.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -727,7 +771,6 @@ namespace Google.Apis.PolyService.v1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -769,27 +812,30 @@ namespace Google.Apis.PolyService.v1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.PolyService.v1.Data
-{    
-
-    /// <summary>Represents and describes an asset in the Poly library. An asset is a 3D model or scene created using
-    /// [Tilt Brush](//www.tiltbrush.com), [Blocks](//vr.google.com/blocks/), or any 3D program that produces a file
-    /// that can be upload to Poly.</summary>
+{
+    /// <summary>
+    /// Represents and describes an asset in the Poly library. An asset is a 3D model or scene created using [Tilt
+    /// Brush](//www.tiltbrush.com), [Blocks](//vr.google.com/blocks/), or any 3D program that produces a file that can
+    /// be upload to Poly.
+    /// </summary>
     public class Asset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The author's publicly visible name. Use this name when giving credit to the author. For more
-        /// information, see [Licensing](/poly/discover/licensing).</summary>
+        /// <summary>
+        /// The author's publicly visible name. Use this name when giving credit to the author. For more information,
+        /// see [Licensing](/poly/discover/licensing).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
         public virtual string AuthorName { get; set; }
 
-        /// <summary>For published assets, the time when the asset was published. For unpublished assets, the time when
-        /// the asset was created.</summary>
+        /// <summary>
+        /// For published assets, the time when the asset was published. For unpublished assets, the time when the asset
+        /// was created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
@@ -813,9 +859,11 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("license")]
         public virtual string License { get; set; }
 
-        /// <summary>Application-defined opaque metadata for this asset. This field is only returned when querying for
-        /// the signed-in user's own assets, not for public assets. This string is limited to 1K chars. It is up to the
-        /// creator of the asset to define the format for this string (for example, JSON).</summary>
+        /// <summary>
+        /// Application-defined opaque metadata for this asset. This field is only returned when querying for the
+        /// signed-in user's own assets, not for public assets. This string is limited to 1K chars. It is up to the
+        /// creator of the asset to define the format for this string (for example, JSON).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual string Metadata { get; set; }
 
@@ -823,8 +871,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Hints for displaying the asset. Note that these parameters are not immutable; the author of an
-        /// asset may change them post-publication.</summary>
+        /// <summary>
+        /// Hints for displaying the asset. Note that these parameters are not immutable; the author of an asset may
+        /// change them post-publication.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presentationParams")]
         public virtual PresentationParams PresentationParams { get; set; }
 
@@ -836,8 +886,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnail")]
         public virtual File Thumbnail { get; set; }
 
-        /// <summary>The time when the asset was last modified. For published assets, whose contents are immutable, the
-        /// update time changes only when metadata properties, such as visibility, are updated.</summary>
+        /// <summary>
+        /// The time when the asset was last modified. For published assets, whose contents are immutable, the update
+        /// time changes only when metadata properties, such as visibility, are updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -847,7 +899,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A message generated by the asset import process.</summary>
     public class AssetImportMessage : Google.Apis.Requests.IDirectResponseSchema
@@ -870,18 +922,22 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a file in Poly, which can be a root, resource, or thumbnail file.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The MIME content-type, such as `image/png`. For more information, see [MIME
-        /// types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).</summary>
+        /// <summary>
+        /// The MIME content-type, such as `image/png`. For more information, see [MIME
+        /// types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
-        /// <summary>The path of the resource file relative to the root file. For root or thumbnail files, this is just
-        /// the filename.</summary>
+        /// <summary>
+        /// The path of the resource file relative to the root file. For root or thumbnail files, this is just the
+        /// filename.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
         public virtual string RelativePath { get; set; }
 
@@ -891,45 +947,54 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The same asset can be represented in different formats, for example, a [WaveFront
+    /// <summary>
+    /// The same asset can be represented in different formats, for example, a [WaveFront
     /// .obj](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with its corresponding .mtl file or a [Khronos
     /// glTF](//www.khronos.org/gltf) file with its corresponding .glb binary data. A format refers to a specific
-    /// representation of an asset and contains all information needed to retrieve and describe this
-    /// representation.</summary>
+    /// representation of an asset and contains all information needed to retrieve and describe this representation.
+    /// </summary>
     public class Format : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Complexity stats about this representation of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatComplexity")]
         public virtual FormatComplexity FormatComplexity { get; set; }
 
-        /// <summary>A short string that identifies the format type of this representation. Possible values are: `FBX`,
-        /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
+        /// <summary>
+        /// A short string that identifies the format type of this representation. Possible values are: `FBX`, `GLTF`,
+        /// `GLTF2`, `OBJ`, and `TILT`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatType")]
         public virtual string FormatType { get; set; }
 
-        /// <summary>A list of dependencies of the root element. May include, but is not limited to, materials,
-        /// textures, and shader programs.</summary>
+        /// <summary>
+        /// A list of dependencies of the root element. May include, but is not limited to, materials, textures, and
+        /// shader programs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<File> Resources { get; set; }
 
-        /// <summary>The root of the file hierarchy. This will always be populated. For some format_types - such as
-        /// `TILT`, which are self-contained - this is all of the data. Other types - such as `OBJ` - often reference
-        /// other data elements. These are contained in the resources field.</summary>
+        /// <summary>
+        /// The root of the file hierarchy. This will always be populated. For some format_types - such as `TILT`, which
+        /// are self-contained - this is all of the data. Other types - such as `OBJ` - often reference other data
+        /// elements. These are contained in the resources field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("root")]
         public virtual File Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information on the complexity of this Format.</summary>
     public class FormatComplexity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A non-negative integer that represents the level of detail (LOD) of this format relative to other
-        /// formats of the same asset with the same format_type. This hint allows you to sort formats from the most-
-        /// detailed (0) to least-detailed (integers greater than 0).</summary>
+        /// <summary>
+        /// A non-negative integer that represents the level of detail (LOD) of this format relative to other formats of
+        /// the same asset with the same format_type. This hint allows you to sort formats from the most-detailed (0) to
+        /// least-detailed (integers greater than 0).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lodHint")]
         public virtual System.Nullable<int> LodHint { get; set; }
 
@@ -939,7 +1004,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A message resulting from reading an image file.</summary>
     public class ImageError : Google.Apis.Requests.IDirectResponseSchema
@@ -954,7 +1019,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message from a request to list.</summary>
     public class ListAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -963,8 +1028,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
-        /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
-        /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
+        /// <summary>
+        /// The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To
+        /// get the next page, submit the same request specifying this value as the page_token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -974,7 +1041,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message from a request to list.</summary>
     public class ListLikedAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -983,8 +1050,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
-        /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
-        /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
+        /// <summary>
+        /// The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To
+        /// get the next page, submit the same request specifying this value as the page_token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -994,13 +1063,15 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A response message from a request to list.</summary>
     public class ListUserAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The continuation token for retrieving the next page. If empty, indicates that there are no more
-        /// pages. To get the next page, submit the same request specifying this value as the page_token.</summary>
+        /// <summary>
+        /// The continuation token for retrieving the next page. If empty, indicates that there are no more pages. To
+        /// get the next page, submit the same request specifying this value as the page_token.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -1014,7 +1085,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Details of an error resulting from parsing an OBJ file</summary>
     public class ObjParseError : Google.Apis.Requests.IDirectResponseSchema
@@ -1031,8 +1102,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
 
-        /// <summary>The text of the line. Note that this may be truncated if the line was very long. This may not
-        /// include the error if it occurs after line truncation.</summary>
+        /// <summary>
+        /// The text of the line. Note that this may be truncated if the line was very long. This may not include the
+        /// error if it occurs after line truncation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("line")]
         public virtual string Line { get; set; }
 
@@ -1046,41 +1119,48 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Hints for displaying the asset, based on information available when the asset was uploaded.</summary>
     public class PresentationParams : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A background color which could be used for displaying the 3D asset in a 'thumbnail' or 'palette'
-        /// style view. Authors have the option to set this background color when publishing or editing their asset.
-        /// This is represented as a six-digit hexademical triplet specifying the RGB components of the background
-        /// color, e.g. #FF0000 for Red.</summary>
+        /// <summary>
+        /// A background color which could be used for displaying the 3D asset in a 'thumbnail' or 'palette' style view.
+        /// Authors have the option to set this background color when publishing or editing their asset. This is
+        /// represented as a six-digit hexademical triplet specifying the RGB components of the background color, e.g.
+        /// #FF0000 for Red.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual string BackgroundColor { get; set; }
 
-        /// <summary>The materials' diffuse/albedo color. This does not apply to vertex colors or texture
-        /// maps.</summary>
+        /// <summary>
+        /// The materials' diffuse/albedo color. This does not apply to vertex colors or texture maps.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorSpace")]
         public virtual string ColorSpace { get; set; }
 
-        /// <summary>A rotation that should be applied to the object root to make it upright. More precisely, this
-        /// quaternion transforms from "object space" (the space in which the object is defined) to "presentation
-        /// space", a coordinate system where +Y is up, +X is right, -Z is forward. For example, if the object is the
-        /// Eiffel Tower, in its local coordinate system the object might be laid out such that the base of the tower is
-        /// on the YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a
+        /// <summary>
+        /// A rotation that should be applied to the object root to make it upright. More precisely, this quaternion
+        /// transforms from "object space" (the space in which the object is defined) to "presentation space", a
+        /// coordinate system where +Y is up, +X is right, -Z is forward. For example, if the object is the Eiffel
+        /// Tower, in its local coordinate system the object might be laid out such that the base of the tower is on the
+        /// YZ plane and the tip of the tower is towards positive X. In this case this quaternion would specify a
         /// rotation (of 90 degrees about the Z axis) such that in the presentation space the base of the tower is
         /// aligned with the XZ plane, and the tip of the tower lies towards +Y. This rotation is unrelated to the
         /// object's pose in the web preview, which is just a camera position setting and is *not* reflected in this
-        /// rotation. Please note: this is applicable only to the gLTF.</summary>
+        /// rotation. Please note: this is applicable only to the gLTF.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orientingRotation")]
         public virtual Quaternion OrientingRotation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the response you see "w: 1" and
-    /// nothing else this is the default value of [0, 0, 0, 1] where x,y, and z are 0.</summary>
+    /// <summary>
+    /// A [Quaternion](//en.wikipedia.org/wiki/Quaternion). Please note: if in the response you see "w: 1" and nothing
+    /// else this is the default value of [0, 0, 0, 1] where x,y, and z are 0.
+    /// </summary>
     public class Quaternion : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The scalar component.</summary>
@@ -1101,7 +1181,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Info about the sources of this asset (i.e. assets that were remixed to create this asset).</summary>
     public class RemixInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -1112,14 +1192,17 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A response message from a request to startImport. This is returned in the response field of the
-    /// Operation.</summary>
+    /// <summary>
+    /// A response message from a request to startImport. This is returned in the response field of the Operation.
+    /// </summary>
     public class StartAssetImportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of newly created asset. If this is empty when the operation is complete it means the import
-        /// failed. Please refer to the assetImportMessages field to understand what went wrong.</summary>
+        /// <summary>
+        /// The id of newly created asset. If this is empty when the operation is complete it means the import failed.
+        /// Please refer to the assetImportMessages field to understand what went wrong.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
         public virtual string AssetId { get; set; }
 
@@ -1127,8 +1210,10 @@ namespace Google.Apis.PolyService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetImportId")]
         public virtual string AssetImportId { get; set; }
 
-        /// <summary>The message from the asset import. This will contain any warnings (or - in the case of failure -
-        /// errors) that occurred during import.</summary>
+        /// <summary>
+        /// The message from the asset import. This will contain any warnings (or - in the case of failure - errors)
+        /// that occurred during import.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetImportMessages")]
         public virtual System.Collections.Generic.IList<AssetImportMessage> AssetImportMessages { get; set; }
 
@@ -1138,7 +1223,7 @@ namespace Google.Apis.PolyService.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Data about the user's asset.</summary>
     public class UserAsset : Google.Apis.Requests.IDirectResponseSchema

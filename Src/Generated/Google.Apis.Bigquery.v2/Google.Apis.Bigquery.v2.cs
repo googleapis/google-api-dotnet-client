@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -90,7 +95,6 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>Manage your data in Google Cloud Storage</summary>
             public static string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery API.</summary>
@@ -119,10 +123,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>Manage your data in Google Cloud Storage</summary>
             public const string DevstorageReadWrite = "https://www.googleapis.com/auth/devstorage.read_write";
-
         }
-
-
 
         /// <summary>Gets the Datasets resource.</summary>
         public virtual DatasetsResource Datasets { get; }
@@ -173,8 +174,10 @@ namespace Google.Apis.Bigquery.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -186,8 +189,9 @@ namespace Google.Apis.Bigquery.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-        /// characters.</summary>
+        /// <summary>
+        /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -199,7 +203,6 @@ namespace Google.Apis.Bigquery.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
             {
                 Name = "alt",
@@ -271,24 +274,25 @@ namespace Google.Apis.Bigquery.v2
         public DatasetsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must
-        /// delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can
-        /// create another dataset with the same name.</summary>
+        /// <summary>
+        /// Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all
+        /// its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create
+        /// another dataset with the same name.
+        /// </summary>
         /// <param name="projectId">Project ID of the dataset being deleted</param>
-        /// <param name="datasetId">Dataset ID
-        /// of dataset being deleted</param>
+        /// <param name="datasetId">Dataset ID of dataset being deleted</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId)
         {
             return new DeleteRequest(service, projectId, datasetId);
         }
 
-        /// <summary>Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must
-        /// delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can
-        /// create another dataset with the same name.</summary>
+        /// <summary>
+        /// Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all
+        /// its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create
+        /// another dataset with the same name.
+        /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -299,7 +303,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the dataset being deleted</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -308,11 +311,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>If True, delete all the tables in the dataset. If False and the dataset contains tables, the
-            /// request will fail. Default is False</summary>
+            /// <summary>
+            /// If True, delete all the tables in the dataset. If False and the dataset contains tables, the request
+            /// will fail. Default is False
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("deleteContents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DeleteContents { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -327,7 +331,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -353,13 +356,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Returns the dataset specified by datasetID.</summary>
         /// <param name="projectId">Project ID of the requested dataset</param>
-        /// <param name="datasetId">Dataset ID of
-        /// the requested dataset</param>
+        /// <param name="datasetId">Dataset ID of the requested dataset</param>
         public virtual GetRequest Get(string projectId, string datasetId)
         {
             return new GetRequest(service, projectId, datasetId);
@@ -376,7 +377,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the requested dataset</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -384,7 +384,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Dataset ID of the requested dataset</summary>
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -399,7 +398,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -417,7 +415,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Creates a new empty dataset.</summary>
@@ -439,11 +436,9 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the new dataset</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
@@ -464,7 +459,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -474,19 +468,20 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Lists all datasets in the specified project to which you have been granted the READER dataset
-        /// role.</summary>
+        /// <summary>
+        /// Lists all datasets in the specified project to which you have been granted the READER dataset role.
+        /// </summary>
         /// <param name="projectId">Project ID of the datasets to be listed</param>
         public virtual ListRequest List(string projectId)
         {
             return new ListRequest(service, projectId);
         }
 
-        /// <summary>Lists all datasets in the specified project to which you have been granted the READER dataset
-        /// role.</summary>
+        /// <summary>
+        /// Lists all datasets in the specified project to which you have been granted the READER dataset role.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.DatasetList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -496,7 +491,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the datasets to be listed</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -505,9 +499,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("all", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> All { get; set; }
 
-            /// <summary>An expression for filtering the results of the request by label. The syntax is "labels.[:]".
-            /// Multiple filters can be ANDed together by connecting with a space. Example: "labels.department:receiving
-            /// labels.active". See Filtering datasets using labels for details.</summary>
+            /// <summary>
+            /// An expression for filtering the results of the request by label. The syntax is
+            /// "labels.&amp;lt;name&amp;gt;[:&amp;lt;value&amp;gt;]". Multiple filters can be ANDed together by
+            /// connecting with a space. Example: "labels.department:receiving labels.active". See Filtering datasets
+            /// using labels for details.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -518,7 +515,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -533,7 +529,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -575,24 +570,26 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Updates information in an existing dataset. The update method replaces the entire dataset resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted dataset resource. This
-        /// method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
+        /// the patch method only replaces fields that are provided in the submitted dataset resource. This method
+        /// supports patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the dataset being updated</param>
-        /// <param name="datasetId">Dataset ID
-        /// of the dataset being updated</param>
+        /// <param name="datasetId">Dataset ID of the dataset being updated</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
         {
             return new PatchRequest(service, body, projectId, datasetId);
         }
 
-        /// <summary>Updates information in an existing dataset. The update method replaces the entire dataset resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted dataset resource. This
-        /// method supports patch semantics.</summary>
+        /// <summary>
+        /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
+        /// the patch method only replaces fields that are provided in the submitted dataset resource. This method
+        /// supports patch semantics.
+        /// </summary>
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -604,7 +601,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the dataset being updated</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -612,7 +608,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Dataset ID of the dataset being updated</summary>
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
@@ -633,7 +628,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -651,22 +645,24 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Updates information in an existing dataset. The update method replaces the entire dataset resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted dataset resource.</summary>
+        /// <summary>
+        /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
+        /// the patch method only replaces fields that are provided in the submitted dataset resource.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the dataset being updated</param>
-        /// <param name="datasetId">Dataset ID
-        /// of the dataset being updated</param>
+        /// <param name="datasetId">Dataset ID of the dataset being updated</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Dataset body, string projectId, string datasetId)
         {
             return new UpdateRequest(service, body, projectId, datasetId);
         }
 
-        /// <summary>Updates information in an existing dataset. The update method replaces the entire dataset resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted dataset resource.</summary>
+        /// <summary>
+        /// Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas
+        /// the patch method only replaces fields that are provided in the submitted dataset resource.
+        /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Dataset>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -678,7 +674,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the dataset being updated</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -686,7 +681,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Dataset ID of the dataset being updated</summary>
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Dataset Body { get; set; }
@@ -707,7 +701,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -725,7 +718,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -741,24 +733,23 @@ namespace Google.Apis.Bigquery.v2
         public JobsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Requests that a job be cancelled. This call will return immediately, and the client will need to
-        /// poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur
-        /// costs.</summary>
+        /// <summary>
+        /// Requests that a job be cancelled. This call will return immediately, and the client will need to poll for
+        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+        /// </summary>
         /// <param name="projectId">[Required] Project ID of the job to cancel</param>
-        /// <param name="jobId">[Required]
-        /// Job ID of the job to cancel</param>
+        /// <param name="jobId">[Required] Job ID of the job to cancel</param>
         public virtual CancelRequest Cancel(string projectId, string jobId)
         {
             return new CancelRequest(service, projectId, jobId);
         }
 
-        /// <summary>Requests that a job be cancelled. This call will return immediately, and the client will need to
-        /// poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur
-        /// costs.</summary>
+        /// <summary>
+        /// Requests that a job be cancelled. This call will return immediately, and the client will need to poll for
+        /// the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+        /// </summary>
         public class CancelRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -769,7 +760,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>[Required] Project ID of the job to cancel</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -778,11 +768,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>The geographic location of the job. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            /// <summary>
+            /// The geographic location of the job. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "cancel";
@@ -797,7 +788,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -823,21 +813,23 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Returns information about a specific job. Job information is available for a six month period after
-        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.</summary>
+        /// <summary>
+        /// Returns information about a specific job. Job information is available for a six month period after
+        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+        /// </summary>
         /// <param name="projectId">[Required] Project ID of the requested job</param>
-        /// <param name="jobId">[Required]
-        /// Job ID of the requested job</param>
+        /// <param name="jobId">[Required] Job ID of the requested job</param>
         public virtual GetRequest Get(string projectId, string jobId)
         {
             return new GetRequest(service, projectId, jobId);
         }
 
-        /// <summary>Returns information about a specific job. Job information is available for a six month period after
-        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.</summary>
+        /// <summary>
+        /// Returns information about a specific job. Job information is available for a six month period after
+        /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Job>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -848,7 +840,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>[Required] Project ID of the requested job</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -857,11 +848,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>The geographic location of the job. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            /// <summary>
+            /// The geographic location of the job. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -876,7 +868,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -902,13 +893,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves the results of a query job.</summary>
         /// <param name="projectId">[Required] Project ID of the query job</param>
-        /// <param name="jobId">[Required] Job ID
-        /// of the query job</param>
+        /// <param name="jobId">[Required] Job ID of the query job</param>
         public virtual GetQueryResultsRequest GetQueryResults(string projectId, string jobId)
         {
             return new GetQueryResultsRequest(service, projectId, jobId);
@@ -925,7 +914,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>[Required] Project ID of the query job</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -934,8 +922,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobId { get; private set; }
 
-            /// <summary>The geographic location where the job should run. Required except for US and EU. See details at
-            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+            /// <summary>
+            /// The geographic location where the job should run. Required except for US and EU. See details at
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Location { get; set; }
 
@@ -951,12 +941,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> StartIndex { get; set; }
 
-            /// <summary>How long to wait for the query to complete, in milliseconds, before returning. Default is 10
-            /// seconds. If the timeout passes before the job completes, the 'jobComplete' field in the response will be
-            /// false</summary>
+            /// <summary>
+            /// How long to wait for the query to complete, in milliseconds, before returning. Default is 10 seconds. If
+            /// the timeout passes before the job completes, the 'jobComplete' field in the response will be false
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("timeoutMs", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> TimeoutMs { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getQueryResults";
@@ -971,7 +961,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1029,7 +1018,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Starts a new asynchronous job. Requires the Can View project role.</summary>
@@ -1051,11 +1039,9 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the project that will be billed for the job</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Job Body { get; set; }
@@ -1076,7 +1062,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1086,25 +1071,24 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Starts a new asynchronous job. Requires the Can View project role.</summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
         /// <list type="bullet">
-        /// <item><description>
-        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-        /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-        /// seekable, then it will be read from its current position.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-        /// upload is completed.
-        /// </description></item>
-        /// <item><description>
-        /// Caller is responsible for closing the <paramref name="stream"/>.
-        /// </description></item>
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
         /// </list>
         /// </remarks>
         /// <param name="body">The body of the request.</param>
@@ -1119,7 +1103,6 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>Insert media upload which supports resumable upload.</summary>
         public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.Bigquery.v2.Data.Job, Google.Apis.Bigquery.v2.Data.Job>
         {
-
             /// <summary>Data format for the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<AltEnum> Alt { get; set; }
@@ -1136,8 +1119,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Fields { get; set; }
 
-            /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and
-            /// reports. Required unless you provide an OAuth 2.0 token.</summary>
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Key { get; set; }
 
@@ -1149,15 +1134,15 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-            /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
-            /// characters.</summary>
+            /// <summary>
+            /// An opaque string that represents a user for quota purposes. Must not exceed 40 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string QuotaUser { get; set; }
 
             /// <summary>Deprecated. Please use quotaUser instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserIp { get; set; }
-
 
             /// <summary>Project ID of the project that will be billed for the job</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -1167,18 +1152,19 @@ namespace Google.Apis.Bigquery.v2
             /// <remarks>
             /// Considerations regarding <paramref name="stream"/>:
             /// <list type="bullet">
-            /// <item><description>
-            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to
-            /// <c>0</c> before reading commences. If <paramref name="stream"/> is not
-            /// seekable, then it will be read from its current position.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the
-            /// upload is completed.
-            /// </description></item>
-            /// <item><description>
-            /// Caller is responsible for closing the <paramref name="stream"/>.
-            /// </description></item>
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
             /// </list>
             /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.Job body, string projectId, System.IO.Stream stream, string contentType)
@@ -1189,18 +1175,22 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Lists all jobs that you started in the specified project. Job information is available for a six
-        /// month period after creation. The job list is sorted in reverse chronological order, by job creation time.
-        /// Requires the Can View project role, or the Is Owner project role if you set the allUsers property.</summary>
+        /// <summary>
+        /// Lists all jobs that you started in the specified project. Job information is available for a six month
+        /// period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires
+        /// the Can View project role, or the Is Owner project role if you set the allUsers property.
+        /// </summary>
         /// <param name="projectId">Project ID of the jobs to list</param>
         public virtual ListRequest List(string projectId)
         {
             return new ListRequest(service, projectId);
         }
 
-        /// <summary>Lists all jobs that you started in the specified project. Job information is available for a six
-        /// month period after creation. The job list is sorted in reverse chronological order, by job creation time.
-        /// Requires the Can View project role, or the Is Owner project role if you set the allUsers property.</summary>
+        /// <summary>
+        /// Lists all jobs that you started in the specified project. Job information is available for a six month
+        /// period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires
+        /// the Can View project role, or the Is Owner project role if you set the allUsers property.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.JobList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1210,7 +1200,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the jobs to list</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1219,8 +1208,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AllUsers { get; set; }
 
-            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created before or at this timestamp are returned</summary>
+            /// <summary>
+            /// Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created before
+            /// or at this timestamp are returned
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
 
@@ -1228,8 +1219,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
-            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
-            /// created after or at this timestamp are returned</summary>
+            /// <summary>
+            /// Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created after
+            /// or at this timestamp are returned
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> MinCreationTime { get; set; }
 
@@ -1237,8 +1230,10 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have
-            /// no parent</summary>
+            /// <summary>
+            /// If set, retrieves only jobs whose parent is this job. Otherwise, retrieves only jobs which have no
+            /// parent
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parentJobId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ParentJobId { get; set; }
 
@@ -1252,6 +1247,7 @@ namespace Google.Apis.Bigquery.v2
                 /// <summary>Includes all job data</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
                 Full,
+
                 /// <summary>Does not include the job configuration</summary>
                 [Google.Apis.Util.StringValueAttribute("minimal")]
                 Minimal,
@@ -1267,14 +1263,15 @@ namespace Google.Apis.Bigquery.v2
                 /// <summary>Finished jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("done")]
                 Done,
+
                 /// <summary>Pending jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("pending")]
                 Pending,
+
                 /// <summary>Running jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("running")]
                 Running,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1289,7 +1286,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1363,11 +1359,12 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a
-        /// specified timeout.</summary>
+        /// <summary>
+        /// Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified
+        /// timeout.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the project billed for the query</param>
         public virtual QueryRequest Query(Google.Apis.Bigquery.v2.Data.QueryRequest body, string projectId)
@@ -1375,8 +1372,10 @@ namespace Google.Apis.Bigquery.v2
             return new QueryRequest(service, body, projectId);
         }
 
-        /// <summary>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a
-        /// specified timeout.</summary>
+        /// <summary>
+        /// Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified
+        /// timeout.
+        /// </summary>
         public class QueryRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.QueryResponse>
         {
             /// <summary>Constructs a new Query request.</summary>
@@ -1387,11 +1386,9 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the project billed for the query</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.QueryRequest Body { get; set; }
@@ -1412,7 +1409,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1422,7 +1418,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1438,16 +1433,12 @@ namespace Google.Apis.Bigquery.v2
         public ModelsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Deletes the model specified by modelId from the dataset.</summary>
         /// <param name="projectId">Required. Project ID of the model to delete.</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the model to delete.</param>
-        /// <param name="modelId">Required. Model
-        /// ID of the model to delete.</param>
+        /// <param name="datasetId">Required. Dataset ID of the model to delete.</param>
+        /// <param name="modelId">Required. Model ID of the model to delete.</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string modelId)
         {
             return new DeleteRequest(service, projectId, datasetId, modelId);
@@ -1465,7 +1456,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the model to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1477,7 +1467,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Model ID of the model to delete.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ModelId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1492,7 +1481,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1518,15 +1506,12 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Gets the specified model resource by model ID.</summary>
         /// <param name="projectId">Required. Project ID of the requested model.</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the requested model.</param>
-        /// <param name="modelId">Required. Model
-        /// ID of the requested model.</param>
+        /// <param name="datasetId">Required. Dataset ID of the requested model.</param>
+        /// <param name="modelId">Required. Model ID of the requested model.</param>
         public virtual GetRequest Get(string projectId, string datasetId, string modelId)
         {
             return new GetRequest(service, projectId, datasetId, modelId);
@@ -1544,7 +1529,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the requested model.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1556,7 +1540,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Model ID of the requested model.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ModelId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1571,7 +1554,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1597,13 +1579,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lists all models in the specified dataset. Requires the READER dataset role.</summary>
         /// <param name="projectId">Required. Project ID of the models to list.</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the models to list.</param>
+        /// <param name="datasetId">Required. Dataset ID of the models to list.</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
             return new ListRequest(service, projectId, datasetId);
@@ -1620,7 +1600,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the models to list.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1629,15 +1608,16 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>The maximum number of results to return in a single response page. Leverage the page tokens to
-            /// iterate through the entire collection.</summary>
+            /// <summary>
+            /// The maximum number of results to return in a single response page. Leverage the page tokens to iterate
+            /// through the entire collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
             /// <summary>Page token, returned by a previous call to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1652,7 +1632,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1686,16 +1665,13 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Patch specific fields in the specified model.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the model to patch.</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the model to patch.</param>
-        /// <param name="modelId">Required. Model
-        /// ID of the model to patch.</param>
+        /// <param name="datasetId">Required. Dataset ID of the model to patch.</param>
+        /// <param name="modelId">Required. Model ID of the model to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Model body, string projectId, string datasetId, string modelId)
         {
             return new PatchRequest(service, body, projectId, datasetId, modelId);
@@ -1714,7 +1690,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the model to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1726,7 +1701,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Model ID of the model to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("modelId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ModelId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Model Body { get; set; }
@@ -1747,7 +1721,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1773,7 +1746,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
     }
 
@@ -1789,20 +1761,22 @@ namespace Google.Apis.Bigquery.v2
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Returns the email address of the service account for your project used for interactions with Google
-        /// Cloud KMS.</summary>
+        /// <summary>
+        /// Returns the email address of the service account for your project used for interactions with Google Cloud
+        /// KMS.
+        /// </summary>
         /// <param name="projectId">Project ID for which the service account is requested.</param>
         public virtual GetServiceAccountRequest GetServiceAccount(string projectId)
         {
             return new GetServiceAccountRequest(service, projectId);
         }
 
-        /// <summary>Returns the email address of the service account for your project used for interactions with Google
-        /// Cloud KMS.</summary>
+        /// <summary>
+        /// Returns the email address of the service account for your project used for interactions with Google Cloud
+        /// KMS.
+        /// </summary>
         public class GetServiceAccountRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetServiceAccountResponse>
         {
             /// <summary>Constructs a new GetServiceAccount request.</summary>
@@ -1812,11 +1786,9 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID for which the service account is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getServiceAccount";
@@ -1831,7 +1803,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1841,7 +1812,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all projects to which you have been granted any project role.</summary>
@@ -1859,7 +1829,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -1867,7 +1836,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1882,7 +1850,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
@@ -1900,7 +1867,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1916,16 +1882,12 @@ namespace Google.Apis.Bigquery.v2
         public RoutinesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Deletes the routine specified by routineId from the dataset.</summary>
         /// <param name="projectId">Required. Project ID of the routine to delete</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the routine to delete</param>
-        /// <param name="routineId">Required.
-        /// Routine ID of the routine to delete</param>
+        /// <param name="datasetId">Required. Dataset ID of the routine to delete</param>
+        /// <param name="routineId">Required. Routine ID of the routine to delete</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string routineId)
         {
             return new DeleteRequest(service, projectId, datasetId, routineId);
@@ -1943,7 +1905,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the routine to delete</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -1955,7 +1916,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Routine ID of the routine to delete</summary>
             [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoutineId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1970,7 +1930,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -1996,15 +1955,12 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Gets the specified routine resource by routine ID.</summary>
         /// <param name="projectId">Required. Project ID of the requested routine</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the requested routine</param>
-        /// <param name="routineId">Required.
-        /// Routine ID of the requested routine</param>
+        /// <param name="datasetId">Required. Dataset ID of the requested routine</param>
+        /// <param name="routineId">Required. Routine ID of the requested routine</param>
         public virtual GetRequest Get(string projectId, string datasetId, string routineId)
         {
             return new GetRequest(service, projectId, datasetId, routineId);
@@ -2022,7 +1978,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the requested routine</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2035,11 +1990,12 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoutineId { get; private set; }
 
-            /// <summary>If set, only the Routine fields in the field mask are returned in the response. If unset, all
-            /// Routine fields are returned.</summary>
+            /// <summary>
+            /// If set, only the Routine fields in the field mask are returned in the response. If unset, all Routine
+            /// fields are returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2054,7 +2010,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2088,14 +2043,12 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Creates a new routine in the dataset.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the new routine</param>
-        /// <param name="datasetId">Required.
-        /// Dataset ID of the new routine</param>
+        /// <param name="datasetId">Required. Dataset ID of the new routine</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId)
         {
             return new InsertRequest(service, body, projectId, datasetId);
@@ -2113,7 +2066,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the new routine</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2121,7 +2073,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Dataset ID of the new routine</summary>
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
@@ -2142,7 +2093,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2160,13 +2110,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Lists all routines in the specified dataset. Requires the READER dataset role.</summary>
         /// <param name="projectId">Required. Project ID of the routines to list</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the routines to list</param>
+        /// <param name="datasetId">Required. Dataset ID of the routines to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
             return new ListRequest(service, projectId, datasetId);
@@ -2183,7 +2131,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the routines to list</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2192,14 +2139,17 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
 
-            /// <summary>If set, then only the Routines matching this filter are returned. The current supported form is
-            /// either "routine_type:" or "routineType:", where is a RoutineType enum. Example:
-            /// "routineType:SCALAR_FUNCTION".</summary>
+            /// <summary>
+            /// If set, then only the Routines matching this filter are returned. The current supported form is either
+            /// "routine_type:" or "routineType:", where is a RoutineType enum. Example: "routineType:SCALAR_FUNCTION".
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The maximum number of results to return in a single response page. Leverage the page tokens to
-            /// iterate through the entire collection.</summary>
+            /// <summary>
+            /// The maximum number of results to return in a single response page. Leverage the page tokens to iterate
+            /// through the entire collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2207,13 +2157,13 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>If set, then only the Routine fields in the field mask, as well as project_id, dataset_id and
+            /// <summary>
+            /// If set, then only the Routine fields in the field mask, as well as project_id, dataset_id and
             /// routine_id, are returned in the response. If unset, then the following Routine fields are returned:
-            /// etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and
-            /// language.</summary>
+            /// etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and language.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2228,7 +2178,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2278,24 +2227,23 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Updates information in an existing routine. The update method replaces the entire Routine
-        /// resource.</summary>
+        /// <summary>
+        /// Updates information in an existing routine. The update method replaces the entire Routine resource.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the routine to update</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of the routine to update</param>
-        /// <param name="routineId">Required.
-        /// Routine ID of the routine to update</param>
+        /// <param name="datasetId">Required. Dataset ID of the routine to update</param>
+        /// <param name="routineId">Required. Routine ID of the routine to update</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Routine body, string projectId, string datasetId, string routineId)
         {
             return new UpdateRequest(service, body, projectId, datasetId, routineId);
         }
 
-        /// <summary>Updates information in an existing routine. The update method replaces the entire Routine
-        /// resource.</summary>
+        /// <summary>
+        /// Updates information in an existing routine. The update method replaces the entire Routine resource.
+        /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Routine>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2308,7 +2256,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the routine to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2320,7 +2267,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Required. Routine ID of the routine to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("routineId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RoutineId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Routine Body { get; set; }
@@ -2341,7 +2287,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2367,7 +2312,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^[^/]+$",
                 });
             }
-
         }
     }
 
@@ -2383,16 +2327,12 @@ namespace Google.Apis.Bigquery.v2
         public RowAccessPoliciesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Lists all row access policies on the specified table.</summary>
         /// <param name="projectId">Required. Project ID of the row access policies to list.</param>
-        /// <param
-        /// name="datasetId">Required. Dataset ID of row access policies to list.</param>
-        /// <param
-        /// name="tableId">Required. Table ID of the table to list row access policies.</param>
+        /// <param name="datasetId">Required. Dataset ID of row access policies to list.</param>
+        /// <param name="tableId">Required. Table ID of the table to list row access policies.</param>
         public virtual ListRequest List(string projectId, string datasetId, string tableId)
         {
             return new ListRequest(service, projectId, datasetId, tableId);
@@ -2410,7 +2350,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Required. Project ID of the row access policies to list.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2423,15 +2362,16 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
 
-            /// <summary>The maximum number of results to return in a single response page. Leverage the page tokens to
-            /// iterate through the entire collection.</summary>
+            /// <summary>
+            /// The maximum number of results to return in a single response page. Leverage the page tokens to iterate
+            /// through the entire collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>Page token, returned by a previous call, to request the next page of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2446,7 +2386,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2488,7 +2427,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2504,24 +2442,25 @@ namespace Google.Apis.Bigquery.v2
         public TabledataResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Streams data into BigQuery one record at a time without needing to run a load job. Requires the
-        /// WRITER dataset role.</summary>
+        /// <summary>
+        /// Streams data into BigQuery one record at a time without needing to run a load job. Requires the WRITER
+        /// dataset role.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the destination table.</param>
-        /// <param name="datasetId">Dataset ID of
-        /// the destination table.</param>
+        /// <param name="datasetId">Dataset ID of the destination table.</param>
         /// <param name="tableId">Table ID of the destination table.</param>
         public virtual InsertAllRequest InsertAll(Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest body, string projectId, string datasetId, string tableId)
         {
             return new InsertAllRequest(service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Streams data into BigQuery one record at a time without needing to run a load job. Requires the
-        /// WRITER dataset role.</summary>
+        /// <summary>
+        /// Streams data into BigQuery one record at a time without needing to run a load job. Requires the WRITER
+        /// dataset role.
+        /// </summary>
         public class InsertAllRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TableDataInsertAllResponse>
         {
             /// <summary>Constructs a new InsertAll request.</summary>
@@ -2534,7 +2473,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the destination table.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -2546,7 +2484,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Table ID of the destination table.</summary>
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.TableDataInsertAllRequest Body { get; set; }
@@ -2567,7 +2504,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2593,13 +2529,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Retrieves table data from a specified set of rows. Requires the READER dataset role.</summary>
         /// <param name="projectId">Project ID of the table to read</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// table to read</param>
+        /// <param name="datasetId">Dataset ID of the table to read</param>
         /// <param name="tableId">Table ID of the table to read</param>
         public virtual ListRequest List(string projectId, string datasetId, string tableId)
         {
@@ -2617,7 +2551,6 @@ namespace Google.Apis.Bigquery.v2
                 TableId = tableId;
                 InitParameters();
             }
-
 
             /// <summary>Project ID of the table to read</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2647,7 +2580,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> StartIndex { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -2661,7 +2593,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2719,7 +2650,6 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2735,23 +2665,24 @@ namespace Google.Apis.Bigquery.v2
         public TablesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Deletes the table specified by tableId from the dataset. If the table contains data, all the data
-        /// will be deleted.</summary>
+        /// <summary>
+        /// Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be
+        /// deleted.
+        /// </summary>
         /// <param name="projectId">Project ID of the table to delete</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// table to delete</param>
+        /// <param name="datasetId">Dataset ID of the table to delete</param>
         /// <param name="tableId">Table ID of the table to delete</param>
         public virtual DeleteRequest Delete(string projectId, string datasetId, string tableId)
         {
             return new DeleteRequest(service, projectId, datasetId, tableId);
         }
 
-        /// <summary>Deletes the table specified by tableId from the dataset. If the table contains data, all the data
-        /// will be deleted.</summary>
+        /// <summary>
+        /// Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be
+        /// deleted.
+        /// </summary>
         public class DeleteRequest : BigqueryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2762,7 +2693,6 @@ namespace Google.Apis.Bigquery.v2
                 TableId = tableId;
                 InitParameters();
             }
-
 
             /// <summary>Project ID of the table to delete</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2775,7 +2705,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Table ID of the table to delete</summary>
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -2790,7 +2719,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2816,22 +2744,24 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Gets the specified table resource by table ID. This method does not return the data in the table,
-        /// it only returns the table resource, which describes the structure of this table.</summary>
+        /// <summary>
+        /// Gets the specified table resource by table ID. This method does not return the data in the table, it only
+        /// returns the table resource, which describes the structure of this table.
+        /// </summary>
         /// <param name="projectId">Project ID of the requested table</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// requested table</param>
+        /// <param name="datasetId">Dataset ID of the requested table</param>
         /// <param name="tableId">Table ID of the requested table</param>
         public virtual GetRequest Get(string projectId, string datasetId, string tableId)
         {
             return new GetRequest(service, projectId, datasetId, tableId);
         }
 
-        /// <summary>Gets the specified table resource by table ID. This method does not return the data in the table,
-        /// it only returns the table resource, which describes the structure of this table.</summary>
+        /// <summary>
+        /// Gets the specified table resource by table ID. This method does not return the data in the table, it only
+        /// returns the table resource, which describes the structure of this table.
+        /// </summary>
         public class GetRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2842,7 +2772,6 @@ namespace Google.Apis.Bigquery.v2
                 TableId = tableId;
                 InitParameters();
             }
-
 
             /// <summary>Project ID of the requested table</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -2860,7 +2789,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("selectedFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SelectedFields { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -2874,7 +2802,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -2908,21 +2835,26 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-        /// does not have a policy set.</summary>
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-        /// documentation for the appropriate value for this field.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
         {
             return new GetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists and
-        /// does not have a policy set.</summary>
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
         public class GetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2933,12 +2865,12 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
-            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
-            /// for the appropriate value for this field.</summary>
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest Body { get; set; }
@@ -2959,7 +2891,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                 {
                     Name = "resource",
@@ -2969,14 +2900,12 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
                 });
             }
-
         }
 
         /// <summary>Creates a new, empty table in the dataset.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the new table</param>
-        /// <param name="datasetId">Dataset ID of the new
-        /// table</param>
+        /// <param name="datasetId">Dataset ID of the new table</param>
         public virtual InsertRequest Insert(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId)
         {
             return new InsertRequest(service, body, projectId, datasetId);
@@ -2994,7 +2923,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the new table</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -3002,7 +2930,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Dataset ID of the new table</summary>
             [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DatasetId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
@@ -3023,7 +2950,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -3041,13 +2967,11 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Lists all tables in the specified dataset. Requires the READER dataset role.</summary>
         /// <param name="projectId">Project ID of the tables to list</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// tables to list</param>
+        /// <param name="datasetId">Dataset ID of the tables to list</param>
         public virtual ListRequest List(string projectId, string datasetId)
         {
             return new ListRequest(service, projectId, datasetId);
@@ -3063,7 +2987,6 @@ namespace Google.Apis.Bigquery.v2
                 DatasetId = datasetId;
                 InitParameters();
             }
-
 
             /// <summary>Project ID of the tables to list</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
@@ -3081,7 +3004,6 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -3095,7 +3017,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -3129,25 +3050,27 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Updates information in an existing table. The update method replaces the entire table resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted table resource. This method
-        /// supports patch semantics.</summary>
+        /// <summary>
+        /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
+        /// patch method only replaces fields that are provided in the submitted table resource. This method supports
+        /// patch semantics.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the table to update</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// table to update</param>
+        /// <param name="datasetId">Dataset ID of the table to update</param>
         /// <param name="tableId">Table ID of the table to update</param>
         public virtual PatchRequest Patch(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
         {
             return new PatchRequest(service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Updates information in an existing table. The update method replaces the entire table resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted table resource. This method
-        /// supports patch semantics.</summary>
+        /// <summary>
+        /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
+        /// patch method only replaces fields that are provided in the submitted table resource. This method supports
+        /// patch semantics.
+        /// </summary>
         public class PatchRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3160,7 +3083,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the table to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -3172,7 +3094,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Table ID of the table to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
@@ -3193,7 +3114,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -3219,21 +3139,26 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-        /// documentation for the appropriate value for this field.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
         {
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.</summary>
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
         public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -3244,12 +3169,12 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
-            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
-            /// for the appropriate value for this field.</summary>
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
@@ -3270,7 +3195,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                 {
                     Name = "resource",
@@ -3280,25 +3204,30 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
-        /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-        /// be used for building permission-aware UIs and command-line tools, not for authorization checking. This
-        /// operation may "fail open" without warning.</summary>
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-        /// documentation for the appropriate value for this field.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
+        /// the appropriate value for this field.
+        /// </param>
         public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
         {
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not exist,
-        /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-        /// be used for building permission-aware UIs and command-line tools, not for authorization checking. This
-        /// operation may "fail open" without warning.</summary>
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
         public class TestIamPermissionsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -3309,12 +3238,12 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
-            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
-            /// documentation for the appropriate value for this field.</summary>
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Resource { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest Body { get; set; }
@@ -3335,7 +3264,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                 {
                     Name = "resource",
@@ -3345,23 +3273,25 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+$",
                 });
             }
-
         }
 
-        /// <summary>Updates information in an existing table. The update method replaces the entire table resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted table resource.</summary>
+        /// <summary>
+        /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
+        /// patch method only replaces fields that are provided in the submitted table resource.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Project ID of the table to update</param>
-        /// <param name="datasetId">Dataset ID of the
-        /// table to update</param>
+        /// <param name="datasetId">Dataset ID of the table to update</param>
         /// <param name="tableId">Table ID of the table to update</param>
         public virtual UpdateRequest Update(Google.Apis.Bigquery.v2.Data.Table body, string projectId, string datasetId, string tableId)
         {
             return new UpdateRequest(service, body, projectId, datasetId, tableId);
         }
 
-        /// <summary>Updates information in an existing table. The update method replaces the entire table resource,
-        /// whereas the patch method only replaces fields that are provided in the submitted table resource.</summary>
+        /// <summary>
+        /// Updates information in an existing table. The update method replaces the entire table resource, whereas the
+        /// patch method only replaces fields that are provided in the submitted table resource.
+        /// </summary>
         public class UpdateRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Table>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3374,7 +3304,6 @@ namespace Google.Apis.Bigquery.v2
                 InitParameters();
             }
 
-
             /// <summary>Project ID of the table to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProjectId { get; private set; }
@@ -3386,7 +3315,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Table ID of the table to update</summary>
             [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TableId { get; private set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Bigquery.v2.Data.Table Body { get; set; }
@@ -3407,7 +3335,6 @@ namespace Google.Apis.Bigquery.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
@@ -3433,27 +3360,29 @@ namespace Google.Apis.Bigquery.v2
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Bigquery.v2.Data
-{    
-
-    /// <summary>Aggregate metrics for classification/classifier models. For multi-class models, the metrics are either
+{
+    /// <summary>
+    /// Aggregate metrics for classification/classifier models. For multi-class models, the metrics are either
     /// macro-averaged or micro-averaged. When macro-averaged, the metrics are calculated for each label and then an
     /// unweighted average is taken of those values. When micro-averaged, the metric is calculated globally by counting
-    /// the total number of correctly predicted rows.</summary>
+    /// the total number of correctly predicted rows.
+    /// </summary>
     public class AggregateClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Accuracy is the fraction of predictions given the correct label. For multiclass this is a micro-
-        /// averaged metric.</summary>
+        /// <summary>
+        /// Accuracy is the fraction of predictions given the correct label. For multiclass this is a micro-averaged
+        /// metric.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
         public virtual System.Nullable<double> Accuracy { get; set; }
 
-        /// <summary>The F1 score is an average of recall and precision. For multiclass this is a macro-averaged
-        /// metric.</summary>
+        /// <summary>
+        /// The F1 score is an average of recall and precision. For multiclass this is a macro-averaged metric.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
         public virtual System.Nullable<double> F1Score { get; set; }
 
@@ -3461,13 +3390,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logLoss")]
         public virtual System.Nullable<double> LogLoss { get; set; }
 
-        /// <summary>Precision is the fraction of actual positive predictions that had positive actual labels. For
-        /// multiclass this is a macro-averaged metric treating each class as a binary classifier.</summary>
+        /// <summary>
+        /// Precision is the fraction of actual positive predictions that had positive actual labels. For multiclass
+        /// this is a macro-averaged metric treating each class as a binary classifier.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precision")]
         public virtual System.Nullable<double> Precision { get; set; }
 
-        /// <summary>Recall is the fraction of actual positive labels that were given a positive prediction. For
-        /// multiclass this is a macro-averaged metric.</summary>
+        /// <summary>
+        /// Recall is the fraction of actual positive labels that were given a positive prediction. For multiclass this
+        /// is a macro-averaged metric.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
         public virtual System.Nullable<double> Recall { get; set; }
 
@@ -3475,14 +3408,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rocAuc")]
         public virtual System.Nullable<double> RocAuc { get; set; }
 
-        /// <summary>Threshold at which the metrics are computed. For binary classification models this is the positive
-        /// class threshold. For multi-class classfication models this is the confidence threshold.</summary>
+        /// <summary>
+        /// Threshold at which the metrics are computed. For binary classification models this is the positive class
+        /// threshold. For multi-class classfication models this is the confidence threshold.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Input/output argument of a function or a stored procedure.</summary>
     public class Argument : Google.Apis.Requests.IDirectResponseSchema
@@ -3495,8 +3430,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual StandardSqlDataType DataType { get; set; }
 
-        /// <summary>Optional. Specifies whether the argument is input or output. Can be set for procedures
-        /// only.</summary>
+        /// <summary>
+        /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
@@ -3506,7 +3442,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Arima coefficients.</summary>
     public class ArimaCoefficients : Google.Apis.Requests.IDirectResponseSchema
@@ -3525,7 +3461,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>ARIMA model fitting metrics.</summary>
     public class ArimaFittingMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -3544,7 +3480,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Model evaluation metrics for ARIMA forecasting models.</summary>
     public class ArimaForecastingMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -3553,8 +3489,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arimaFittingMetrics")]
         public virtual System.Collections.Generic.IList<ArimaFittingMetrics> ArimaFittingMetrics { get; set; }
 
-        /// <summary>Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale
-        /// case.</summary>
+        /// <summary>
+        /// Repeated as there can be many metric sets (one for each model) in auto-arima and the large-scale case.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaSingleModelForecastingMetrics")]
         public virtual System.Collections.Generic.IList<ArimaSingleModelForecastingMetrics> ArimaSingleModelForecastingMetrics { get; set; }
 
@@ -3576,7 +3513,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Arima model information.</summary>
     public class ArimaModelInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -3607,7 +3544,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Arima order, can be used for both non-seasonal and seasonal parts.</summary>
     public class ArimaOrder : Google.Apis.Requests.IDirectResponseSchema
@@ -3626,14 +3563,18 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>(Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use
-    /// model-specific iteration results.</summary>
+    /// <summary>
+    /// (Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use
+    /// model-specific iteration results.
+    /// </summary>
     public class ArimaResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This message is repeated because there are multiple arima models fitted in auto-arima. For non-
-        /// auto-arima model, its size is one.</summary>
+        /// <summary>
+        /// This message is repeated because there are multiple arima models fitted in auto-arima. For non-auto-arima
+        /// model, its size is one.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arimaModelInfo")]
         public virtual System.Collections.Generic.IList<ArimaModelInfo> ArimaModelInfo { get; set; }
 
@@ -3643,7 +3584,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Model evaluation metrics for a single ARIMA forecasting model.</summary>
     public class ArimaSingleModelForecastingMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -3670,42 +3611,48 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
-    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
-    /// AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two
-    /// AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the
-    /// exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: {
-    /// "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ",
-    /// "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ]
-    /// }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, {
-    /// "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this
-    /// policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ
-    /// logging, and aliya@example.com from DATA_WRITE logging.</summary>
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
+    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    /// </summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
 
-        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
-        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ {
-    /// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ
-    /// logging.</summary>
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
     public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
-        /// format of Binding.members.</summary>
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
         public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
 
@@ -3715,82 +3662,98 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BigQueryModelTraining : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only, Beta] Index of current ML training iteration. Updated during create model query job
-        /// to show job progress.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Index of current ML training iteration. Updated during create model query job to show
+        /// job progress.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentIteration")]
         public virtual System.Nullable<int> CurrentIteration { get; set; }
 
-        /// <summary>[Output-only, Beta] Expected number of iterations for the create model query job specified as
-        /// num_iterations in the input query. The actual total number of iterations may be less than this number due to
-        /// early stop.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Expected number of iterations for the create model query job specified as num_iterations
+        /// in the input query. The actual total number of iterations may be less than this number due to early stop.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedTotalIterations")]
         public virtual System.Nullable<long> ExpectedTotalIterations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BigtableColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are:
-        /// TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// <summary>
+        /// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT -
+        /// indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
         /// Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the
-        /// setting at this level takes precedence if 'encoding' is set at both levels.</summary>
+        /// setting at this level takes precedence if 'encoding' is set at both levels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>[Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match
+        /// <summary>
+        /// [Optional] If the qualifier is not a valid BigQuery field identifier i.e. does not match
         /// [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field
-        /// name in queries.</summary>
+        /// name in queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
 
-        /// <summary>[Optional] If this is set, only the latest version of value in this column are exposed.
-        /// 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes
-        /// precedence if 'onlyReadLatest' is set at both levels.</summary>
+        /// <summary>
+        /// [Optional] If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can
+        /// also be set at the column family level. However, the setting at this level takes precedence if
+        /// 'onlyReadLatest' is set at both levels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
         public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
 
-        /// <summary>[Required] Qualifier of the column. Columns in the parent column family that has this exact
-        /// qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the
-        /// qualifier_string field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column
-        /// field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field
-        /// identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as
-        /// field_name.</summary>
+        /// <summary>
+        /// [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are
+        /// exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string
+        /// field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the
+        /// same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does
+        /// not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as field_name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualifierEncoded")]
         public virtual string QualifierEncoded { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("qualifierString")]
         public virtual string QualifierString { get; set; }
 
-        /// <summary>[Optional] The type to convert the value in cells of this column. The values are expected to be
-        /// encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
-        /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be
-        /// set at the column family level. However, the setting at this level takes precedence if 'type' is set at both
-        /// levels.</summary>
+        /// <summary>
+        /// [Optional] The type to convert the value in cells of this column. The values are expected to be encoded
+        /// using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are
+        /// allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set
+        /// at the column family level. However, the setting at this level takes precedence if 'type' is set at both
+        /// levels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BigtableColumnFamily : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Lists of columns that should be exposed as individual fields as opposed to a list of
-        /// (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as
-        /// .. Other columns can be accessed as a list through .Column field.</summary>
+        /// <summary>
+        /// [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column
+        /// name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other
+        /// columns can be accessed as a list through .Column field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; }
 
-        /// <summary>[Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are:
-        /// TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// <summary>
+        /// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT -
+        /// indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
         /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
-        /// 'columns' and specifying an encoding for it.</summary>
+        /// 'columns' and specifying an encoding for it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
@@ -3798,48 +3761,57 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("familyId")]
         public virtual string FamilyId { get; set; }
 
-        /// <summary>[Optional] If this is set only the latest version of value are exposed for all columns in this
-        /// column family. This can be overridden for a specific column by listing that column in 'columns' and
-        /// specifying a different setting for that column.</summary>
+        /// <summary>
+        /// [Optional] If this is set only the latest version of value are exposed for all columns in this column
+        /// family. This can be overridden for a specific column by listing that column in 'columns' and specifying a
+        /// different setting for that column.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyReadLatest")]
         public virtual System.Nullable<bool> OnlyReadLatest { get; set; }
 
-        /// <summary>[Optional] The type to convert the value in cells of this column family. The values are expected to
-        /// be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
+        /// <summary>
+        /// [Optional] The type to convert the value in cells of this column family. The values are expected to be
+        /// encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types
         /// are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be
-        /// overridden for a specific column by listing that column in 'columns' and specifying a type for it.</summary>
+        /// overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BigtableOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] List of column families to expose in the table schema along with their types. This list
-        /// restricts the column families that can be referenced in queries and specifies their value types. You can use
-        /// this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all
-        /// column families are present in the table schema and their values are read as BYTES. During a query only the
-        /// column families referenced in that query are read from Bigtable.</summary>
+        /// <summary>
+        /// [Optional] List of column families to expose in the table schema along with their types. This list restricts
+        /// the column families that can be referenced in queries and specifies their value types. You can use this list
+        /// to do type conversions - see the 'type' field for more details. If you leave this list empty, all column
+        /// families are present in the table schema and their values are read as BYTES. During a query only the column
+        /// families referenced in that query are read from Bigtable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnFamilies")]
         public virtual System.Collections.Generic.IList<BigtableColumnFamily> ColumnFamilies { get; set; }
 
-        /// <summary>[Optional] If field is true, then the column families that are not specified in columnFamilies list
-        /// are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is
-        /// false.</summary>
+        /// <summary>
+        /// [Optional] If field is true, then the column families that are not specified in columnFamilies list are not
+        /// exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnspecifiedColumnFamilies")]
         public virtual System.Nullable<bool> IgnoreUnspecifiedColumnFamilies { get; set; }
 
-        /// <summary>[Optional] If field is true, then the rowkey column families will be read and converted to string.
-        /// Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary.
-        /// The default value is false.</summary>
+        /// <summary>
+        /// [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise
+        /// they are read with BYTES type values and users need to manually cast them with CAST if necessary. The
+        /// default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRowkeyAsString")]
         public virtual System.Nullable<bool> ReadRowkeyAsString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Evaluation metrics for binary classification/classifier models.</summary>
     public class BinaryClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -3862,7 +3834,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Confusion matrix for binary classification models.</summary>
     public class BinaryConfusionMatrix : Google.Apis.Requests.IDirectResponseSchema
@@ -3905,7 +3877,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
@@ -3913,44 +3885,49 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
         public virtual string BindingId { get; set; }
 
-        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
-        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
-        /// apply to the current request. However, a different role binding might grant the same role to one or more of
-        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
-        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
-        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
         /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
         /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example, `my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
-        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
-        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
-        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
-        /// example, `google.com` or `example.com`. </summary>
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
-        /// `roles/owner`.</summary>
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BqmlIterationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3958,30 +3935,37 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
         public virtual System.Nullable<long> DurationMs { get; set; }
 
-        /// <summary>[Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss
-        /// is used for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as
-        /// no_split or auto_split with input data size less than 500 rows.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Eval loss computed on the eval data at the end of the iteration. The eval loss is used
+        /// for early stopping to avoid overfitting. No eval loss if eval_split_method option is specified as no_split
+        /// or auto_split with input data size less than 500 rows.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evalLoss")]
         public virtual System.Nullable<double> EvalLoss { get; set; }
 
-        /// <summary>[Output-only, Beta] Index of the ML training iteration, starting from zero for each training
-        /// run.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
-        /// <summary>[Output-only, Beta] Learning rate used for this iteration, it varies for different training
-        /// iterations if learn_rate_strategy option is not constant.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if
+        /// learn_rate_strategy option is not constant.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
         public virtual System.Nullable<double> LearnRate { get; set; }
 
-        /// <summary>[Output-only, Beta] Training loss computed on the training data at the end of the iteration. The
-        /// training loss function is defined by model type.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training
+        /// loss function is defined by model type.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
         public virtual System.Nullable<double> TrainingLoss { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class BqmlTrainingRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4001,27 +3985,32 @@ namespace Google.Apis.Bigquery.v2.Data
             set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>[Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in
-        /// progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully
-        /// completed. CANCELLED: Training run cancelled by the user.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress.
+        /// FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed.
+        /// CANCELLED: Training run cancelled by the user.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
-        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
-        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
-        /// query will be copied from the previous training run.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent
+        /// training runs. Default values are explicitly stored for options not specified in the input query of the
+        /// first training run. For subsequent training runs, any option not explicitly specified in the input query
+        /// will be copied from the previous training run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptionsData TrainingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>[Output-only, Beta] Training options used by this training run. These options are mutable for
-        /// subsequent training runs. Default values are explicitly stored for options not specified in the input query
-        /// of the first training run. For subsequent training runs, any option not explicitly specified in the input
-        /// query will be copied from the previous training run.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent
+        /// training runs. Default values are explicitly stored for options not specified in the input query of the
+        /// first training run. For subsequent training runs, any option not explicitly specified in the input query
+        /// will be copied from the previous training run.
+        /// </summary>
         public class TrainingOptionsData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
@@ -4050,22 +4039,23 @@ namespace Google.Apis.Bigquery.v2.Data
 
             [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
             public virtual System.Nullable<bool> WarmStart { get; set; }
-
         }
-    }    
+    }
 
     /// <summary>Representative value of a categorical feature.</summary>
     public class CategoricalValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Counts of all categories for the categorical feature. If there are more than ten categories, we
-        /// return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate
-        /// counts of remaining categories.</summary>
+        /// <summary>
+        /// Counts of all categories for the categorical feature. If there are more than ten categories, we return top
+        /// ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate counts of
+        /// remaining categories.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryCounts")]
         public virtual System.Collections.Generic.IList<CategoryCount> CategoryCounts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the count of a single category within the cluster.</summary>
     public class CategoryCount : Google.Apis.Requests.IDirectResponseSchema
@@ -4080,7 +4070,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Message containing the information about one cluster.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
@@ -4099,7 +4089,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a single cluster for clustering model.</summary>
     public class ClusterInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -4118,19 +4108,21 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Clustering : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated,
-        /// simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you
-        /// specify is important. The order of the specified columns determines the sort order of the data.</summary>
+        /// <summary>
+        /// [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type
+        /// fields are supported. When you cluster a table using multiple columns, the order of columns you specify is
+        /// important. The order of the specified columns determines the sort order of the data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<string> Fields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Evaluation metrics for clustering models.</summary>
     public class ClusteringMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -4149,7 +4141,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Confusion matrix for multi-class classification models.</summary>
     public class ConfusionMatrix : Google.Apis.Requests.IDirectResponseSchema
@@ -4164,7 +4156,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ConnectionProperty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4178,60 +4170,73 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class CsvOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If
-        /// true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing
-        /// columns are treated as bad records, and if there are too many bad records, an invalid error is returned in
-        /// the job result. The default value is false.</summary>
+        /// <summary>
+        /// [Optional] Indicates if BigQuery should accept rows that are missing trailing optional columns. If true,
+        /// BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are
+        /// treated as bad records, and if there are too many bad records, an invalid error is returned in the job
+        /// result. The default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowJaggedRows")]
         public virtual System.Nullable<bool> AllowJaggedRows { get; set; }
 
-        /// <summary>[Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters
-        /// in a CSV file. The default value is false.</summary>
+        /// <summary>
+        /// [Optional] Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV
+        /// file. The default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowQuotedNewlines")]
         public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; }
 
-        /// <summary>[Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The
-        /// default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values
-        /// of the quote and fieldDelimiter properties.</summary>
+        /// <summary>
+        /// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default
+        /// value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the
+        /// quote and fieldDelimiter properties.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>[Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1
-        /// encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state.
-        /// BigQuery also supports the escape sequence "\t" to specify a tab separator. The default value is a comma
-        /// (',').</summary>
+        /// <summary>
+        /// [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and
+        /// then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also
+        /// supports the escape sequence "\t" to specify a tab separator. The default value is a comma (',').
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
-        /// <summary>[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the
-        /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its
-        /// raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections,
-        /// set the property value to an empty string. If your data contains quoted newline characters, you must also
-        /// set the allowQuotedNewlines property to true.</summary>
+        /// <summary>
+        /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to
+        /// ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary
+        /// state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the
+        /// property value to an empty string. If your data contains quoted newline characters, you must also set the
+        /// allowQuotedNewlines property to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; }
 
-        /// <summary>[Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the
-        /// data. The default value is 0. This property is useful if you have header rows in the file that should be
-        /// skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect
-        /// tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data
-        /// is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no
-        /// headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips
-        /// N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise
-        /// row N is used to extract column names for the detected schema.</summary>
+        /// <summary>
+        /// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The
+        /// default value is 0. This property is useful if you have header rows in the file that should be skipped. When
+        /// autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect
+        /// headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting
+        /// from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should
+        /// be read starting from the first row. * skipLeadingRows = N &amp;gt; 0 - Autodetect skips N-1 rows and tries
+        /// to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to
+        /// extract column names for the detected schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Data split result. This contains references to the training and evaluation data tables that were used
-    /// to train the model.</summary>
+    /// <summary>
+    /// Data split result. This contains references to the training and evaluation data tables that were used to train
+    /// the model.
+    /// </summary>
     public class DataSplitResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Table reference of the evaluation data after split.</summary>
@@ -4244,16 +4249,18 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] An array of objects that define dataset access for one or more entities. You can set
-        /// this property when inserting or updating a dataset in order to control who is allowed to access the data. If
+        /// <summary>
+        /// [Optional] An array of objects that define dataset access for one or more entities. You can set this
+        /// property when inserting or updating a dataset in order to control who is allowed to access the data. If
         /// unspecified at dataset creation time, BigQuery adds default dataset access for the following entities:
         /// access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role:
         /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
-        /// access.role: OWNER;</summary>
+        /// access.role: OWNER;
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual System.Collections.Generic.IList<AccessData> Access { get; set; }
 
@@ -4268,25 +4275,28 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEncryptionConfiguration")]
         public virtual EncryptionConfiguration DefaultEncryptionConfiguration { get; set; }
 
-        /// <summary>[Optional] The default partition expiration for all partitioned tables in the dataset, in
-        /// milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an
-        /// expirationMs property in the timePartitioning settings set to this value, and changing the value will only
-        /// affect new tables, not existing ones. The storage in a partition will have an expiration time of its
-        /// partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for
-        /// partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for
-        /// any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or
-        /// updating a partitioned table, that value takes precedence over the default partition expiration time
-        /// indicated by this property.</summary>
+        /// <summary>
+        /// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once
+        /// this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property
+        /// in the timePartitioning settings set to this value, and changing the value will only affect new tables, not
+        /// existing ones. The storage in a partition will have an expiration time of its partition time plus this
+        /// value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one
+        /// of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If
+        /// you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that
+        /// value takes precedence over the default partition expiration time indicated by this property.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPartitionExpirationMs")]
         public virtual System.Nullable<long> DefaultPartitionExpirationMs { get; set; }
 
-        /// <summary>[Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is
-        /// 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will
-        /// have an expirationTime property set to the creation time plus the value in this property, and changing the
-        /// value will only affect new tables, not existing ones. When the expirationTime for a given table is reached,
-        /// that table will be deleted automatically. If a table's expirationTime is modified or removed before the
-        /// table expires, or if you provide an explicit expirationTime when creating a table, that value takes
-        /// precedence over the default expiration time indicated by this property.</summary>
+        /// <summary>
+        /// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000
+        /// milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an
+        /// expirationTime property set to the creation time plus the value in this property, and changing the value
+        /// will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that
+        /// table will be deleted automatically. If a table's expirationTime is modified or removed before the table
+        /// expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence
+        /// over the default expiration time indicated by this property.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultTableExpirationMs")]
         public virtual System.Nullable<long> DefaultTableExpirationMs { get; set; }
 
@@ -4302,9 +4312,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
 
-        /// <summary>[Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The
-        /// dataset name without the project name is given in the datasetId field. When creating a new dataset, leave
-        /// this field blank, and instead specify the datasetId field.</summary>
+        /// <summary>
+        /// [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset
+        /// name without the project name is given in the datasetId field. When creating a new dataset, leave this field
+        /// blank, and instead specify the datasetId field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4312,19 +4324,25 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The labels associated with this dataset. You can use these to organize and group your datasets. You
-        /// can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for
-        /// more information.</summary>
+        /// <summary>
+        /// The labels associated with this dataset. You can use these to organize and group your datasets. You can set
+        /// this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more
+        /// information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>[Output-only] The date when this dataset or any of its tables was last modified, in milliseconds
-        /// since the epoch.</summary>
+        /// <summary>
+        /// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the
+        /// epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        /// <summary>The geographic location where the dataset should reside. The default value is US. See details at
-        /// https://cloud.google.com/bigquery/docs/locations.</summary>
+        /// <summary>
+        /// The geographic location where the dataset should reside. The default value is US. See details at
+        /// https://cloud.google.com/bigquery/docs/locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -4332,78 +4350,103 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
         public virtual System.Nullable<bool> SatisfiesPZS { get; set; }
 
-        /// <summary>[Output-only] A URL that can be used to access the resource again. You can use this URL in Get or
-        /// Update requests to the resource.</summary>
+        /// <summary>
+        /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update
+        /// requests to the resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        
-
+        /// <summary>
+        /// [Optional] An array of objects that define dataset access for one or more entities. You can set this
+        /// property when inserting or updating a dataset in order to control who is allowed to access the data. If
+        /// unspecified at dataset creation time, BigQuery adds default dataset access for the following entities:
+        /// access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role:
+        /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
+        /// access.role: OWNER;
+        /// </summary>
         public class AccessData
         {
-            /// <summary>[Pick one] A domain to grant access to. Any users signed in with the domain specified will be
-            /// granted the specified access. Example: "example.com". Maps to IAM policy member
-            /// "domain:DOMAIN".</summary>
+            /// <summary>
+            /// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted
+            /// the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("domain")]
             public virtual string Domain { get; set; }
 
-            /// <summary>[Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member
-            /// "group:GROUP".</summary>
+            /// <summary>
+            /// [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member
+            /// "group:GROUP".
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("groupByEmail")]
             public virtual string GroupByEmail { get; set; }
 
-            /// <summary>[Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group,
-            /// domain, or special group.</summary>
+            /// <summary>
+            /// [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or
+            /// special group.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("iamMember")]
             public virtual string IamMember { get; set; }
 
-            /// <summary>[Required] An IAM role ID that should be granted to the user, group, or domain specified in
-            /// this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER
+            /// <summary>
+            /// [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access
+            /// entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER
             /// roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above
             /// formats, but will return only the legacy format. For example, if you set this field to
-            /// "roles/bigquery.dataOwner", it will be returned back as "OWNER".</summary>
+            /// "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
 
-            /// <summary>[Pick one] A routine from a different dataset to grant access to. Queries executed against that
-            /// routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now.
-            /// The role field is not required when this field is set. If that routine is updated by any user, access to
-            /// the routine needs to be granted again via an update operation.</summary>
+            /// <summary>
+            /// [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine
+            /// will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role
+            /// field is not required when this field is set. If that routine is updated by any user, access to the
+            /// routine needs to be granted again via an update operation.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("routine")]
             public virtual RoutineReference Routine { get; set; }
 
-            /// <summary>[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners
-            /// of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of
-            /// the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named
-            /// IAM members.</summary>
+            /// <summary>
+            /// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the
+            /// enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the
+            /// enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM
+            /// members.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("specialGroup")]
             public virtual string SpecialGroup { get; set; }
 
-            /// <summary>[Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps
-            /// to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".</summary>
+            /// <summary>
+            /// [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM
+            /// policy member "user:EMAIL" or "serviceAccount:EMAIL".
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("userByEmail")]
             public virtual string UserByEmail { get; set; }
 
-            /// <summary>[Pick one] A view from a different dataset to grant access to. Queries executed against that
-            /// view will have read access to tables in this dataset. The role field is not required when this field is
-            /// set. If that view is updated by any user, access to the view needs to be granted again via an update
-            /// operation.</summary>
+            /// <summary>
+            /// [Pick one] A view from a different dataset to grant access to. Queries executed against that view will
+            /// have read access to tables in this dataset. The role field is not required when this field is set. If
+            /// that view is updated by any user, access to the view needs to be granted again via an update operation.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
             public virtual TableReference View { get; set; }
-
         }
-    }    
+    }
 
     public class DatasetList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of the dataset resources in the project. Each resource contains basic information. For
-        /// full information about a particular dataset resource, use the Datasets: get method. This property is omitted
-        /// when there are no datasets in the project.</summary>
+        /// <summary>
+        /// An array of the dataset resources in the project. Each resource contains basic information. For full
+        /// information about a particular dataset resource, use the Datasets: get method. This property is omitted when
+        /// there are no datasets in the project.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
         public virtual System.Collections.Generic.IList<DatasetsData> Datasets { get; set; }
 
-        /// <summary>A hash value of the results page. You can use this property to determine if the page has changed
-        /// since the last request.</summary>
+        /// <summary>
+        /// A hash value of the results page. You can use this property to determine if the page has changed since the
+        /// last request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
@@ -4411,17 +4454,24 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>A token that can be used to request the next results page. This property is omitted on the final
-        /// results page.</summary>
+        /// <summary>
+        /// A token that can be used to request the next results page. This property is omitted on the final results
+        /// page.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        
-
+        /// <summary>
+        /// An array of the dataset resources in the project. Each resource contains basic information. For full
+        /// information about a particular dataset resource, use the Datasets: get method. This property is omitted when
+        /// there are no datasets in the project.
+        /// </summary>
         public class DatasetsData
         {
-            /// <summary>The dataset reference. Use this property to access specific parts of the dataset's ID, such as
-            /// project ID or dataset ID.</summary>
+            /// <summary>
+            /// The dataset reference. Use this property to access specific parts of the dataset's ID, such as project
+            /// ID or dataset ID.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("datasetReference")]
             public virtual DatasetReference DatasetReference { get; set; }
 
@@ -4437,22 +4487,24 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; }
 
-            /// <summary>The labels associated with this dataset. You can use these to organize and group your
-            /// datasets.</summary>
+            /// <summary>
+            /// The labels associated with this dataset. You can use these to organize and group your datasets.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
             public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
             /// <summary>The geographic location where the data resides.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("location")]
             public virtual string Location { get; set; }
-
         }
-    }    
+    }
 
     public class DatasetReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] A unique ID for this dataset, without the project name. The ID must contain only letters
-        /// (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.</summary>
+        /// <summary>
+        /// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z,
+        /// A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
@@ -4462,43 +4514,50 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DestinationTableProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The description for the destination table. This will only be used if the destination
-        /// table is newly created. If the table already exists and a value different than the current description is
-        /// provided, the job will fail.</summary>
+        /// <summary>
+        /// [Optional] The description for the destination table. This will only be used if the destination table is
+        /// newly created. If the table already exists and a value different than the current description is provided,
+        /// the job will fail.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>[Optional] The friendly name for the destination table. This will only be used if the destination
-        /// table is newly created. If the table already exists and a value different than the current friendly name is
-        /// provided, the job will fail.</summary>
+        /// <summary>
+        /// [Optional] The friendly name for the destination table. This will only be used if the destination table is
+        /// newly created. If the table already exists and a value different than the current friendly name is provided,
+        /// the job will fail.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
 
-        /// <summary>[Optional] The labels associated with this table. You can use these to organize and group your
-        /// tables. This will only be used if the destination table is newly created. If the table already exists and
-        /// labels are different than the current labels are provided, the job will fail.</summary>
+        /// <summary>
+        /// [Optional] The labels associated with this table. You can use these to organize and group your tables. This
+        /// will only be used if the destination table is newly created. If the table already exists and labels are
+        /// different than the current labels are provided, the job will fail.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
-        /// table. The BigQuery Service Account associated with your project requires access to this encryption
-        /// key.</summary>
+        /// <summary>
+        /// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+        /// The BigQuery Service Account associated with your project requires access to this encryption key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single entry in the confusion matrix.</summary>
     public class Entry : Google.Apis.Requests.IDirectResponseSchema
@@ -4507,14 +4566,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemCount")]
         public virtual System.Nullable<long> ItemCount { get; set; }
 
-        /// <summary>The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number
-        /// of items under the confidence threshold.</summary>
+        /// <summary>
+        /// The predicted label. For confidence_threshold &amp;gt; 0, we will also add an entry indicating the number of
+        /// items under the confidence threshold.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictedLabel")]
         public virtual string PredictedLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ErrorProto : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4536,10 +4597,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Evaluation metrics of a model. These are either computed on all training data or just the eval data
-    /// based on whether eval data was used during training. These are not present for imported models.</summary>
+    /// <summary>
+    /// Evaluation metrics of a model. These are either computed on all training data or just the eval data based on
+    /// whether eval data was used during training. These are not present for imported models.
+    /// </summary>
     public class EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Populated for ARIMA models.</summary>
@@ -4568,7 +4631,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ExplainQueryStage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4694,7 +4757,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ExplainQueryStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4708,7 +4771,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Explanation for a single feature.</summary>
     public class Explanation : Google.Apis.Requests.IDirectResponseSchema
@@ -4717,30 +4780,36 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attribution")]
         public virtual System.Nullable<double> Attribution { get; set; }
 
-        /// <summary>Full name of the feature. For non-numerical features, will be formatted like .. Overall size of
-        /// feature name will always be truncated to first 120 characters.</summary>
+        /// <summary>
+        /// Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name
+        /// will always be truncated to first 120 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
         public virtual string FeatureName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
-    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
     /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
     /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
-    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
-    /// within an expression are determined by the service that evaluates it. See the service documentation for
-    /// additional information.</summary>
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
-        /// when hovered over it in a UI.</summary>
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4748,24 +4817,29 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ExternalDataConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Try to detect schema and format options automatically. Any option specified explicitly will be
-        /// honored.</summary>
+        /// <summary>
+        /// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; }
 
@@ -4773,9 +4847,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
         public virtual BigtableOptions BigtableOptions { get; set; }
 
-        /// <summary>[Optional] The compression type of the data source. Possible values include GZIP and NONE. The
-        /// default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and
-        /// Avro formats.</summary>
+        /// <summary>
+        /// [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value
+        /// is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; }
 
@@ -4795,46 +4870,54 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
         public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
-        /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
-        /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
-        /// records, and if there are too many bad records, an invalid error is returned in the job result. The default
-        /// value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing
-        /// columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored.
-        /// Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.</summary>
+        /// <summary>
+        /// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If
+        /// true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if
+        /// there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        /// The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON:
+        /// Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud
+        /// Datastore backups: This setting is ignored. Avro: This setting is ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
-        /// <summary>[Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the
-        /// number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid
-        /// for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This
-        /// setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.</summary>
+        /// <summary>
+        /// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of
+        /// bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV,
+        /// JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is
+        /// ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; }
 
-        /// <summary>[Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is
-        /// disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.</summary>
+        /// <summary>
+        /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for
+        /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
-        /// <summary>[Required] The data format. For CSV files, specify "CSV". For Google sheets, specify
-        /// "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify
-        /// "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable,
-        /// specify "BIGTABLE".</summary>
+        /// <summary>
+        /// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For
+        /// newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud
+        /// Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
-        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
-        /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
-        /// limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI
-        /// can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-        /// Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not
-        /// allowed.</summary>
+        /// <summary>
+        /// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs:
+        /// Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits
+        /// related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+        /// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google
+        /// Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Representative value of a single feature within the cluster.</summary>
     public class FeatureValue : Google.Apis.Requests.IDirectResponseSchema
@@ -4853,7 +4936,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -4864,22 +4947,24 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Encapsulates settings provided to GetIamPolicy.</summary>
     public class GetPolicyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
-        /// specifying an invalid value will be rejected. Requests for policies with any conditional bindings must
-        /// specify version 3. Policies without any conditional bindings may specify any valid value or leave the field
-        /// unset. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests specifying an
+        /// invalid value will be rejected. Requests for policies with any conditional bindings must specify version 3.
+        /// Policies without any conditional bindings may specify any valid value or leave the field unset. To learn
+        /// which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedPolicyVersion")]
         public virtual System.Nullable<int> RequestedPolicyVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GetQueryResultsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4887,9 +4972,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
-        /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
-        /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
-        /// that the job has completed or was unsuccessful.</summary>
+        /// <summary>
+        /// [Output-only] The first errors or warnings encountered during the running of the job. The final message
+        /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
+        /// job has completed or was unsuccessful.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
@@ -4897,15 +4984,19 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Whether the query has completed or not. If rows or totalRows are present, this will always be true.
-        /// If this is false, totalRows will not be available.</summary>
+        /// <summary>
+        /// Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this
+        /// is false, totalRows will not be available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobComplete")]
         public virtual System.Nullable<bool> JobComplete { get; set; }
 
-        /// <summary>Reference to the BigQuery Job that was created to run the query. This field will be present even if
-        /// the original request timed out, in which case GetQueryResults can be used to read the results once the query
-        /// has completed. Since this API only returns the first page of results, subsequent pages can be fetched via
-        /// the same mechanism (GetQueryResults).</summary>
+        /// <summary>
+        /// Reference to the BigQuery Job that was created to run the query. This field will be present even if the
+        /// original request timed out, in which case GetQueryResults can be used to read the results once the query has
+        /// completed. Since this API only returns the first page of results, subsequent pages can be fetched via the
+        /// same mechanism (GetQueryResults).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
         public virtual JobReference JobReference { get; set; }
 
@@ -4913,8 +5004,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>
+        /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
+        /// or DELETE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
@@ -4922,9 +5015,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
-        /// <summary>An object with as many results as can be contained within the maximum permitted reply size. To get
-        /// any additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only
-        /// when the query completes successfully.</summary>
+        /// <summary>
+        /// An object with as many results as can be contained within the maximum permitted reply size. To get any
+        /// additional rows, you can call GetQueryResults and specify the jobReference returned above. Present only when
+        /// the query completes successfully.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; }
 
@@ -4936,12 +5031,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
-        /// <summary>The total number of rows in the complete query result set, which can be more than the number of
-        /// rows in this single page of results. Present only when the query completes successfully.</summary>
+        /// <summary>
+        /// The total number of rows in the complete query result set, which can be more than the number of rows in this
+        /// single page of results. Present only when the query completes successfully.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<ulong> TotalRows { get; set; }
-
-    }    
+    }
 
     public class GetServiceAccountResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4955,77 +5051,90 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Global explanations containing the top most important features after training.</summary>
     public class GlobalExplanation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Class label for this set of global explanations. Will be empty/null for binary logistic and linear
-        /// regression models. Sorted alphabetically in descending order.</summary>
+        /// <summary>
+        /// Class label for this set of global explanations. Will be empty/null for binary logistic and linear
+        /// regression models. Sorted alphabetically in descending order.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classLabel")]
         public virtual string ClassLabel { get; set; }
 
-        /// <summary>A list of the top global explanations. Sorted by absolute value of attribution in descending
-        /// order.</summary>
+        /// <summary>
+        /// A list of the top global explanations. Sorted by absolute value of attribution in descending order.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanations")]
         public virtual System.Collections.Generic.IList<Explanation> Explanations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class GoogleSheetsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Range of a sheet to query from. Only used when non-empty. Typical format:
-        /// sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20</summary>
+        /// <summary>
+        /// [Optional] Range of a sheet to query from. Only used when non-empty. Typical format:
+        /// sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("range")]
         public virtual string Range { get; set; }
 
-        /// <summary>[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data.
-        /// The default value is 0. This property is useful if you have header rows that should be skipped. When
-        /// autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect
-        /// headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting
-        /// from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should
-        /// be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to
+        /// <summary>
+        /// [Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The
+        /// default value is 0. This property is useful if you have header rows that should be skipped. When autodetect
+        /// is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the
+        /// first row. If they are not detected, the row is read as data. Otherwise data is read starting from the
+        /// second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read
+        /// starting from the first row. * skipLeadingRows = N &amp;gt; 0 - Autodetect skips N-1 rows and tries to
         /// detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to
-        /// extract column names for the detected schema.</summary>
+        /// extract column names for the detected schema.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<long> SkipLeadingRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class HivePartitioningOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] When set, what mode of hive partitioning to use when reading data. The following modes
-        /// are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically
-        /// infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is
-        /// encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive
-        /// partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV,
-        /// JSON, ORC and Parquet.</summary>
+        /// <summary>
+        /// [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are
+        /// supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer
+        /// partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in
+        /// the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an
+        /// unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and
+        /// Parquet.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>[Optional] If set to true, queries over this table require a partition filter that can be used for
-        /// partition elimination to be specified. Note that this field should only be true when creating a permanent
-        /// external table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter
-        /// explicitly set to true will fail.</summary>
+        /// <summary>
+        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition
+        /// elimination to be specified. Note that this field should only be true when creating a permanent external
+        /// table or querying a temporary external table. Hive-partitioned loads with requirePartitionFilter explicitly
+        /// set to true will fail.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
-        /// <summary>[Optional] When hive partition detection is requested, a common prefix for all source uris should
-        /// be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider
+        /// <summary>
+        /// [Optional] When hive partition detection is requested, a common prefix for all source uris should be
+        /// supplied. The prefix must end immediately before the partition key encoding begins. For example, consider
         /// files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
         /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with
         /// either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or
-        /// gs://bucket/path_to_table/ (trailing slash does not matter).</summary>
+        /// gs://bucket/path_to_table/ (trailing slash does not matter).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUriPrefix")]
         public virtual string SourceUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a single iteration of the training run.</summary>
     public class IterationResult : Google.Apis.Requests.IDirectResponseSchema
@@ -5059,7 +5168,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5087,21 +5196,23 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>[Output-only] Information about the job, including starting time and ending time of the
-        /// job.</summary>
+        /// <summary>
+        /// [Output-only] Information about the job, including starting time and ending time of the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
         public virtual JobStatistics Statistics { get; set; }
 
-        /// <summary>[Output-only] The status of this job. Examine this value when polling an asynchronous job to see if
-        /// the job is complete.</summary>
+        /// <summary>
+        /// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job
+        /// is complete.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual JobStatus Status { get; set; }
 
         /// <summary>[Output-only] Email address of the user who ran the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user_email")]
         public virtual string UserEmail { get; set; }
-
-    }    
+    }
 
     public class JobCancelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5115,7 +5226,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5123,9 +5234,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("copy")]
         public virtual JobConfigurationTableCopy Copy { get; set; }
 
-        /// <summary>[Optional] If set, don't actually run this job. A valid query will return a mostly empty response
-        /// with some processing statistics, while an invalid query will return the same error it would if it wasn't a
-        /// dry run. Behavior of non-query jobs is undefined.</summary>
+        /// <summary>
+        /// [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some
+        /// processing statistics, while an invalid query will return the same error it would if it wasn't a dry run.
+        /// Behavior of non-query jobs is undefined.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
         public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -5133,8 +5246,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extract")]
         public virtual JobConfigurationExtract Extract { get; set; }
 
-        /// <summary>[Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to
-        /// terminate the job.</summary>
+        /// <summary>
+        /// [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate
+        /// the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
         public virtual System.Nullable<long> JobTimeoutMs { get; set; }
 
@@ -5142,10 +5257,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobType")]
         public virtual string JobType { get; set; }
 
-        /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
-        /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// <summary>
+        /// The labels associated with this job. You can use these to organize and group your jobs. Label keys and
+        /// values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
-        /// start with a letter and each label in the list must have a different key.</summary>
+        /// start with a letter and each label in the list must have a different key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -5159,40 +5276,51 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobConfigurationExtract : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE,
-        /// SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable
-        /// when extracting models.</summary>
+        /// <summary>
+        /// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY,
+        /// and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when
+        /// extracting models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; }
 
-        /// <summary>[Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET
-        /// or AVRO for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is
-        /// CSV. Tables with nested or repeated fields cannot be exported as CSV. The default value for models is
-        /// ML_TF_SAVED_MODEL.</summary>
+        /// <summary>
+        /// [Optional] The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO
+        /// for tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default value for tables is CSV.
+        /// Tables with nested or repeated fields cannot be exported as CSV. The default value for models is
+        /// ML_TF_SAVED_MODEL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationFormat")]
         public virtual string DestinationFormat { get; set; }
 
-        /// <summary>[Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-
-        /// qualified Google Cloud Storage URI where the extracted table should be written.</summary>
+        /// <summary>
+        /// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified
+        /// Google Cloud Storage URI where the extracted table should be written.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUri")]
         public virtual string DestinationUri { get; set; }
 
-        /// <summary>[Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be
-        /// written.</summary>
+        /// <summary>
+        /// [Pick one] A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUris")]
         public virtual System.Collections.Generic.IList<string> DestinationUris { get; set; }
 
-        /// <summary>[Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable
-        /// when extracting models.</summary>
+        /// <summary>
+        /// [Optional] Delimiter to use between fields in the exported data. Default is ','. Not applicable when
+        /// extracting models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
-        /// <summary>[Optional] Whether to print out a header row in the results. Default is true. Not applicable when
-        /// extracting models.</summary>
+        /// <summary>
+        /// [Optional] Whether to print out a header row in the results. Default is true. Not applicable when extracting
+        /// models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printHeader")]
         public virtual System.Nullable<bool> PrintHeader { get; set; }
 
@@ -5204,60 +5332,73 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
         public virtual TableReference SourceTable { get; set; }
 
-        /// <summary>[Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting
+        /// <summary>
+        /// [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting
         /// applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros),
-        /// instead of only using their raw types (avro-long). Not applicable when extracting models.</summary>
+        /// instead of only using their raw types (avro-long). Not applicable when extracting models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobConfigurationLoad : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Accept rows that are missing trailing optional columns. The missing values are treated
-        /// as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too
-        /// many bad records, an invalid error is returned in the job result. The default value is false. Only
-        /// applicable to CSV, ignored for other formats.</summary>
+        /// <summary>
+        /// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls.
+        /// If false, records with missing trailing columns are treated as bad records, and if there are too many bad
+        /// records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV,
+        /// ignored for other formats.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowJaggedRows")]
         public virtual System.Nullable<bool> AllowJaggedRows { get; set; }
 
-        /// <summary>Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV
-        /// file. The default value is false.</summary>
+        /// <summary>
+        /// Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The
+        /// default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowQuotedNewlines")]
         public virtual System.Nullable<bool> AllowQuotedNewlines { get; set; }
 
-        /// <summary>[Optional] Indicates if we should automatically infer the options and schema for CSV and JSON
-        /// sources.</summary>
+        /// <summary>
+        /// [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
         public virtual System.Nullable<bool> Autodetect { get; set; }
 
-        /// <summary>[Beta] Clustering specification for the destination table. Must be specified with time-based
-        /// partitioning, data in the table will be first partitioned and subsequently clustered.</summary>
+        /// <summary>
+        /// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning,
+        /// data in the table will be first partitioned and subsequently clustered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; }
 
-        /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
-        /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
-        /// table must already exist. If it does not, a 'notFound' error is returned in the job result. The default
-        /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
-        /// completion.</summary>
+        /// <summary>
+        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported:
+        /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must
+        /// already exist. If it does not, a 'notFound' error is returned in the job result. The default value is
+        /// CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; }
 
-        /// <summary>[Trusted Tester] Defines the list of possible SQL data types to which the source decimal values are
+        /// <summary>
+        /// [Trusted Tester] Defines the list of possible SQL data types to which the source decimal values are
         /// converted. This list and the precision and the scale parameters of the decimal field determine the target
         /// type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and
         /// if it supports the precision and the scale. STRING supports all precision and scale values. If none of the
         /// listed types supports the precision and the scale, the type supporting the widest range in the specified
         /// list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
         /// For example: suppose decimal_target_type = ["NUMERIC", "BIGNUMERIC"]. Then if (precision,scale) is: * (38,9)
-        /// -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC
-        /// cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds
-        /// supported range). For duplicated types in this field, only one will be considered and the rest will be
-        /// ignored. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same
-        /// as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.</summary>
+        /// -&amp;gt; NUMERIC; * (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10)
+        /// -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -&amp;gt; BIGNUMERIC; * (77,38)
+        /// -&amp;gt; BIGNUMERIC (error if value exeeds supported range). For duplicated types in this field, only one
+        /// will be considered and the rest will be ignored. The order of the types in this field is ignored. For
+        /// example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
+        /// precedence over BIGNUMERIC.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decimalTargetTypes")]
         public virtual System.Collections.Generic.IList<string> DecimalTargetTypes { get; set; }
 
@@ -5273,17 +5414,21 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTableProperties")]
         public virtual DestinationTableProperties DestinationTableProperties { get; set; }
 
-        /// <summary>[Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The
-        /// default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values
-        /// of the quote and fieldDelimiter properties.</summary>
+        /// <summary>
+        /// [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default
+        /// value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the
+        /// quote and fieldDelimiter properties.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
-        /// <summary>[Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte
+        /// <summary>
+        /// [Optional] The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte
         /// character. To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         /// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in
         /// its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator. The
-        /// default value is a comma (',').</summary>
+        /// default value is a comma (',').
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
@@ -5291,55 +5436,71 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
         public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
-        /// <summary>[Optional] Indicates if BigQuery should allow extra values that are not represented in the table
-        /// schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad
-        /// records, and if there are too many bad records, an invalid error is returned in the job result. The default
-        /// value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing
-        /// columns JSON: Named values that don't match any column names</summary>
+        /// <summary>
+        /// [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If
+        /// true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if
+        /// there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        /// The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON:
+        /// Named values that don't match any column names
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
-        /// <summary>[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the
-        /// number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid
-        /// for CSV and JSON. The default value is 0, which requires that all records are valid.</summary>
+        /// <summary>
+        /// [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of
+        /// bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV
+        /// and JSON. The default value is 0, which requires that all records are valid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; }
 
-        /// <summary>[Optional] Specifies a string that represents a null value in a CSV file. For example, if you
-        /// specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the
-        /// empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is
-        /// present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the
-        /// empty string as an empty value.</summary>
+        /// <summary>
+        /// [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N",
+        /// BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If
+        /// you set this property to a custom value, BigQuery throws an error if an empty string is present for all data
+        /// types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an
+        /// empty value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; }
 
-        /// <summary>If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into
-        /// BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties.
-        /// If no properties are specified, BigQuery loads all properties. If any named property isn't found in the
-        /// Cloud Datastore backup, an invalid error is returned in the job result.</summary>
+        /// <summary>
+        /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a
+        /// Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties
+        /// are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore
+        /// backup, an invalid error is returned in the job result.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectionFields")]
         public virtual System.Collections.Generic.IList<string> ProjectionFields { get; set; }
 
-        /// <summary>[Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the
-        /// string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its
-        /// raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections,
-        /// set the property value to an empty string. If your data contains quoted newline characters, you must also
-        /// set the allowQuotedNewlines property to true.</summary>
+        /// <summary>
+        /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to
+        /// ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary
+        /// state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the
+        /// property value to an empty string. If your data contains quoted newline characters, you must also set the
+        /// allowQuotedNewlines property to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; }
 
-        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; }
 
-        /// <summary>[Optional] The schema for the destination table. The schema can be omitted if the destination table
-        /// already exists, or if you're loading data from Google Cloud Datastore.</summary>
+        /// <summary>
+        /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already
+        /// exists, or if you're loading data from Google Cloud Datastore.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
-        /// <summary>[Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For
-        /// example, "foo:STRING, bar:INTEGER, baz:FLOAT".</summary>
+        /// <summary>
+        /// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example,
+        /// "foo:STRING, bar:INTEGER, baz:FLOAT".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInline")]
         public virtual string SchemaInline { get; set; }
 
@@ -5347,72 +5508,87 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInlineFormat")]
         public virtual string SchemaInlineFormat { get; set; }
 
-        /// <summary>Allows the schema of the destination table to be updated as a side effect of the load job if a
-        /// schema is autodetected or supplied in the job configuration. Schema update options are supported in two
-        /// cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
-        /// table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will
-        /// always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow
-        /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
-        /// original schema to nullable.</summary>
+        /// <summary>
+        /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is
+        /// autodetected or supplied in the job configuration. Schema update options are supported in two cases: when
+        /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a
+        /// partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always
+        /// overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding
+        /// a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
+        /// schema to nullable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
 
-        /// <summary>[Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the
-        /// data. The default value is 0. This property is useful if you have header rows in the file that should be
-        /// skipped.</summary>
+        /// <summary>
+        /// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The
+        /// default value is 0. This property is useful if you have header rows in the file that should be skipped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipLeadingRows")]
         public virtual System.Nullable<int> SkipLeadingRows { get; set; }
 
-        /// <summary>[Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups,
-        /// specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify
-        /// "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.</summary>
+        /// <summary>
+        /// [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify
+        /// "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO".
+        /// For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
 
-        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
-        /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
-        /// limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI
-        /// can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-        /// Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not
-        /// allowed.</summary>
+        /// <summary>
+        /// [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs:
+        /// Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits
+        /// related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
+        /// specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google
+        /// Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
 
-        /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// Time-based partitioning specification for the destination table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; }
 
-        /// <summary>[Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types
-        /// into their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie.
-        /// INTEGER).</summary>
+        /// <summary>
+        /// [Optional] If sourceFormat is set to "AVRO", indicates whether to enable interpreting logical types into
+        /// their corresponding types (ie. TIMESTAMP), instead of only using their raw types (ie. INTEGER).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useAvroLogicalTypes")]
         public virtual System.Nullable<bool> UseAvroLogicalTypes { get; set; }
 
-        /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
-        /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
+        /// <summary>
+        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values
+        /// are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
         /// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table
         /// already exists and contains data, a 'duplicate' error is returned in the job result. The default value is
         /// WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        /// Creation, truncation and append actions occur as one atomic update upon job completion.</summary>
+        /// Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobConfigurationQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large
-        /// result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL
-        /// queries, this flag is ignored and large results are always allowed. However, you must still set
-        /// destinationTable when result size exceeds the allowed maximum response size.</summary>
+        /// <summary>
+        /// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result
+        /// tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this
+        /// flag is ignored and large results are always allowed. However, you must still set destinationTable when
+        /// result size exceeds the allowed maximum response size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowLargeResults")]
         public virtual System.Nullable<bool> AllowLargeResults { get; set; }
 
-        /// <summary>[Beta] Clustering specification for the destination table. Must be specified with time-based
-        /// partitioning, data in the table will be first partitioned and subsequently clustered.</summary>
+        /// <summary>
+        /// [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning,
+        /// data in the table will be first partitioned and subsequently clustered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; }
 
@@ -5420,16 +5596,19 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
-        /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
-        /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
-        /// table must already exist. If it does not, a 'notFound' error is returned in the job result. The default
-        /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
-        /// completion.</summary>
+        /// <summary>
+        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported:
+        /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must
+        /// already exist. If it does not, a 'notFound' error is returned in the job result. The default value is
+        /// CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; }
 
-        /// <summary>[Optional] Specifies the default dataset to use for unqualified table names in the query. Note that
-        /// this does not alter behavior of unqualified dataset names.</summary>
+        /// <summary>
+        /// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this
+        /// does not alter behavior of unqualified dataset names.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; }
 
@@ -5437,31 +5616,40 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
 
-        /// <summary>[Optional] Describes the table where the query results should be stored. If not present, a new
-        /// table will be created to store the results. This property must be set for large results that exceed the
-        /// maximum response size.</summary>
+        /// <summary>
+        /// [Optional] Describes the table where the query results should be stored. If not present, a new table will be
+        /// created to store the results. This property must be set for large results that exceed the maximum response
+        /// size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; }
 
-        /// <summary>[Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in
-        /// the query results. allowLargeResults must be true if this is set to false. For standard SQL queries, this
-        /// flag is ignored and results are never flattened.</summary>
+        /// <summary>
+        /// [Optional] If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query
+        /// results. allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is
+        /// ignored and results are never flattened.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flattenResults")]
         public virtual System.Nullable<bool> FlattenResults { get; set; }
 
-        /// <summary>[Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier
-        /// will fail (without incurring a charge). If unspecified, this will be set to your project default.</summary>
+        /// <summary>
+        /// [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail
+        /// (without incurring a charge). If unspecified, this will be set to your project default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBillingTier")]
         public virtual System.Nullable<int> MaximumBillingTier { get; set; }
 
-        /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
-        /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
-        /// default.</summary>
+        /// <summary>
+        /// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will
+        /// fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
         public virtual System.Nullable<long> MaximumBytesBilled { get; set; }
 
-        /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
-        /// named (@myparam) query parameters in this query.</summary>
+        /// <summary>
+        /// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named
+        /// (@myparam) query parameters in this query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; }
 
@@ -5469,13 +5657,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
         public virtual System.Nullable<bool> PreserveNulls { get; set; }
 
-        /// <summary>[Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The
-        /// default value is INTERACTIVE.</summary>
+        /// <summary>
+        /// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default
+        /// value is INTERACTIVE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
-        /// <summary>[Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the
-        /// query uses legacy SQL or standard SQL.</summary>
+        /// <summary>
+        /// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses
+        /// legacy SQL or standard SQL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
@@ -5483,41 +5675,53 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
 
-        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; }
 
-        /// <summary>Allows the schema of the destination table to be updated as a side effect of the query job. Schema
-        /// update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+        /// <summary>
+        /// Allows the schema of the destination table to be updated as a side effect of the query job. Schema update
+        /// options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
         /// WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For
         /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are
         /// specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
-        /// relaxing a required field in the original schema to nullable.</summary>
+        /// relaxing a required field in the original schema to nullable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; }
 
-        /// <summary>[Optional] If querying an external data source outside of BigQuery, describes the data format,
-        /// location and other properties of the data source. By defining these properties, the data source can then be
-        /// queried as if it were a standard BigQuery table.</summary>
+        /// <summary>
+        /// [Optional] If querying an external data source outside of BigQuery, describes the data format, location and
+        /// other properties of the data source. By defining these properties, the data source can then be queried as if
+        /// it were a standard BigQuery table.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string, ExternalDataConfiguration> TableDefinitions { get; set; }
 
-        /// <summary>Time-based partitioning specification for the destination table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// Time-based partitioning specification for the destination table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; }
 
-        /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
-        /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
-        /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
-        /// if flattenResults is false.</summary>
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to
+        /// false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+        /// useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults
+        /// is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
-        /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
-        /// cache that will be flushed whenever tables in the query are modified. Moreover, the query cache is only
-        /// available when a query does not have a destination table specified. The default value is true.</summary>
+        /// <summary>
+        /// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that
+        /// will be flushed whenever tables in the query are modified. Moreover, the query cache is only available when
+        /// a query does not have a destination table specified. The default value is true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
         public virtual System.Nullable<bool> UseQueryCache { get; set; }
 
@@ -5525,27 +5729,30 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedFunctionResources")]
         public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; }
 
-        /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
-        /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and
-        /// uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data
-        /// to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in
-        /// the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able
-        /// to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon
-        /// job completion.</summary>
+        /// <summary>
+        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values
+        /// are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and uses the
+        /// schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data to the
+        /// table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the
+        /// job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to
+        /// complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job
+        /// completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobConfigurationTableCopy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Specifies whether the job is allowed to create new tables. The following values are
-        /// supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The
-        /// table must already exist. If it does not, a 'notFound' error is returned in the job result. The default
-        /// value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job
-        /// completion.</summary>
+        /// <summary>
+        /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported:
+        /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must
+        /// already exist. If it does not, a 'notFound' error is returned in the job result. The default value is
+        /// CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; }
 
@@ -5553,8 +5760,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; }
 
-        /// <summary>[Optional] The time when the destination table expires. Expired tables will be deleted and their
-        /// storage reclaimed.</summary>
+        /// <summary>
+        /// [Optional] The time when the destination table expires. Expired tables will be deleted and their storage
+        /// reclaimed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationExpirationTime")]
         public virtual object DestinationExpirationTime { get; set; }
 
@@ -5574,18 +5783,20 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTables")]
         public virtual System.Collections.Generic.IList<TableReference> SourceTables { get; set; }
 
-        /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
-        /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
+        /// <summary>
+        /// [Optional] Specifies the action that occurs if the destination table already exists. The following values
+        /// are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
         /// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table
         /// already exists and contains data, a 'duplicate' error is returned in the job result. The default value is
         /// WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        /// Creation, truncation and append actions occur as one atomic update upon job completion.</summary>
+        /// Creation, truncation and append actions occur as one atomic update upon job completion.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5605,8 +5816,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        
-
+        /// <summary>List of jobs that were requested.</summary>
         public class JobsData
         {
             /// <summary>[Full-projection-only] Specifies the job configuration.</summary>
@@ -5629,13 +5839,16 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; }
 
-            /// <summary>Running state of the job. When the state is DONE, errorResult can be checked to determine
-            /// whether the job succeeded or failed.</summary>
+            /// <summary>
+            /// Running state of the job. When the state is DONE, errorResult can be checked to determine whether the
+            /// job succeeded or failed.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("state")]
             public virtual string State { get; set; }
 
-            /// <summary>[Output-only] Information about the job, including starting time and ending time of the
-            /// job.</summary>
+            /// <summary>
+            /// [Output-only] Information about the job, including starting time and ending time of the job.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("statistics")]
             public virtual JobStatistics Statistics { get; set; }
 
@@ -5646,19 +5859,22 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[Full-projection-only] Email address of the user who ran the job.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("user_email")]
             public virtual string UserEmail { get; set; }
-
         }
-    }    
+    }
 
     public class JobReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9),
-        /// underscores (_), or dashes (-). The maximum length is 1,024 characters.</summary>
+        /// <summary>
+        /// [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
+        /// or dashes (-). The maximum length is 1,024 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
 
-        /// <summary>The geographic location of the job. See details at
-        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+        /// <summary>
+        /// The geographic location of the job. See details at
+        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -5668,21 +5884,25 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.</summary>
+        /// <summary>[TrustedTester] [Output-only] Job progress (0.0 -&gt; 1.0) for LOAD and EXTRACT jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionRatio")]
         public virtual System.Nullable<double> CompletionRatio { get; set; }
 
-        /// <summary>[Output-only] Creation time of this job, in milliseconds since the epoch. This field will be
-        /// present on all jobs.</summary>
+        /// <summary>
+        /// [Output-only] Creation time of this job, in milliseconds since the epoch. This field will be present on all
+        /// jobs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
 
-        /// <summary>[Output-only] End time of this job, in milliseconds since the epoch. This field will be present
-        /// whenever a job is in the DONE state.</summary>
+        /// <summary>
+        /// [Output-only] End time of this job, in milliseconds since the epoch. This field will be present whenever a
+        /// job is in the DONE state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; }
 
@@ -5714,14 +5934,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
         public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; }
 
-        /// <summary>[Output-only] Name of the primary reservation assigned to this job. Note that this could be
-        /// different than reservations reported in the reservation usage field if parent reservations were used to
-        /// execute this job.</summary>
+        /// <summary>
+        /// [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than
+        /// reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservation_id")]
         public virtual string ReservationId { get; set; }
 
-        /// <summary>[Output-only] [Preview] Statistics for row-level security. Present only for query and extract
-        /// jobs.</summary>
+        /// <summary>
+        /// [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLevelSecurityStatistics")]
         public virtual RowLevelSecurityStatistics RowLevelSecurityStatistics { get; set; }
 
@@ -5729,8 +5951,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scriptStatistics")]
         public virtual ScriptStatistics ScriptStatistics { get; set; }
 
-        /// <summary>[Output-only] Start time of this job, in milliseconds since the epoch. This field will be present
-        /// when the job transitions from the PENDING state to either RUNNING or DONE.</summary>
+        /// <summary>
+        /// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the
+        /// job transitions from the PENDING state to either RUNNING or DONE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; }
 
@@ -5742,15 +5966,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
         public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
-        /// <summary>[Output-only] [Alpha] Information of the multi-statement transaction if this job is part of
-        /// one.</summary>
+        /// <summary>
+        /// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionInfoTemplate")]
         public virtual TransactionInfo TransactionInfoTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         public class ReservationUsageData
         {
             /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
@@ -5760,9 +5985,8 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
             public virtual System.Nullable<long> SlotMs { get; set; }
-
         }
-    }    
+    }
 
     public class JobStatistics2 : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5774,17 +5998,20 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
-        /// <summary>[Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only
-        /// for DROP ALL ROW ACCESS POLICIES queries.</summary>
+        /// <summary>
+        /// [Output-only] [Preview] The number of row access policies affected by a DDL statement. Present only for DROP
+        /// ALL ROW ACCESS POLICIES queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlAffectedRowAccessPolicyCount")]
         public virtual System.Nullable<long> DdlAffectedRowAccessPolicyCount { get; set; }
 
-        /// <summary>The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible
-        /// values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op.
-        /// Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP
-        /// TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case:
-        /// the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL
-        /// target.</summary>
+        /// <summary>
+        /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new
+        /// values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example
+        /// cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF
+        /// EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query
+        /// is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; }
 
@@ -5792,13 +6019,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRoutine")]
         public virtual RoutineReference DdlTargetRoutine { get; set; }
 
-        /// <summary>[Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS
-        /// POLICY queries.</summary>
+        /// <summary>
+        /// [Output-only] [Preview] The DDL target row access policy. Present only for CREATE/DROP ROW ACCESS POLICY
+        /// queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRowAccessPolicy")]
         public virtual RowAccessPolicyReference DdlTargetRowAccessPolicy { get; set; }
 
-        /// <summary>[Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS
-        /// POLICIES queries.</summary>
+        /// <summary>
+        /// [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
+        /// queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; }
 
@@ -5818,8 +6049,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelTrainingExpectedTotalIteration")]
         public virtual System.Nullable<long> ModelTrainingExpectedTotalIteration { get; set; }
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>
+        /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
+        /// or DELETE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
@@ -5827,13 +6060,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
         public virtual System.Collections.Generic.IList<ExplainQueryStage> QueryPlan { get; set; }
 
-        /// <summary>[Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the
-        /// job.</summary>
+        /// <summary>
+        /// [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedRoutines")]
         public virtual System.Collections.Generic.IList<RoutineReference> ReferencedRoutines { get; set; }
 
-        /// <summary>[Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not
-        /// have a complete list.</summary>
+        /// <summary>
+        /// [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a
+        /// complete list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedTables")]
         public virtual System.Collections.Generic.IList<TableReference> ReferencedTables { get; set; }
 
@@ -5841,23 +6077,27 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservationUsage")]
         public virtual System.Collections.Generic.IList<ReservationUsageData> ReservationUsage { get; set; }
 
-        /// <summary>[Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL
-        /// queries.</summary>
+        /// <summary>
+        /// [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
-        /// <summary>The type of query statement, if valid. Possible values (new values might be added in the future):
-        /// "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference
-        /// /standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see
-        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE
+        /// <summary>
+        /// The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT":
+        /// SELECT query. "INSERT": INSERT query; see
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE
         /// query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-        /// "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
-        /// language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS
+        /// "DELETE": DELETE query; see
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE
+        /// query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
+        /// "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS
         /// 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS
         /// SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without
         /// AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR
         /// REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE
-        /// query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.</summary>
+        /// query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; }
 
@@ -5873,15 +6113,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
-        /// <summary>[Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the
-        /// accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE:
-        /// estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND:
-        /// estimate is upper bound of what the query would cost.</summary>
+        /// <summary>
+        /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of
+        /// the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is
+        /// precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper
+        /// bound of what the query would cost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessedAccuracy")]
         public virtual string TotalBytesProcessedAccuracy { get; set; }
 
-        /// <summary>[Output-only] Total number of partitions processed from all partitioned tables referenced in the
-        /// job.</summary>
+        /// <summary>
+        /// [Output-only] Total number of partitions processed from all partitioned tables referenced in the job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
         public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; }
 
@@ -5889,15 +6132,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
         public virtual System.Nullable<long> TotalSlotMs { get; set; }
 
-        /// <summary>Standard SQL only: list of undeclared query parameters detected during a dry run
-        /// validation.</summary>
+        /// <summary>
+        /// Standard SQL only: list of undeclared query parameters detected during a dry run validation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>[Output-only] Job resource usage breakdown by reservation.</summary>
         public class ReservationUsageData
         {
             /// <summary>[Output-only] Reservation name or "unreserved" for on-demand resources usage.</summary>
@@ -5907,15 +6151,16 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[Output-only] Slot-milliseconds the job spent in the given reservation.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("slotMs")]
             public virtual System.Nullable<long> SlotMs { get; set; }
-
         }
-    }    
+    }
 
     public class JobStatistics3 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] The number of bad records encountered. Note that if the job has failed because of
-        /// more bad records encountered than the maximum allowed in the load job configuration, then this number can be
-        /// less than the total number of bad records present in the input data.</summary>
+        /// <summary>
+        /// [Output-only] The number of bad records encountered. Note that if the job has failed because of more bad
+        /// records encountered than the maximum allowed in the load job configuration, then this number can be less
+        /// than the total number of bad records present in the input data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("badRecords")]
         public virtual System.Nullable<long> BadRecords { get; set; }
 
@@ -5927,47 +6172,58 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputFiles")]
         public virtual System.Nullable<long> InputFiles { get; set; }
 
-        /// <summary>[Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state,
-        /// this value may change.</summary>
+        /// <summary>
+        /// [Output-only] Size of the loaded data in bytes. Note that while a load job is in the running state, this
+        /// value may change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputBytes")]
         public virtual System.Nullable<long> OutputBytes { get; set; }
 
-        /// <summary>[Output-only] Number of rows imported in a load job. Note that while an import job is in the
-        /// running state, this value may change.</summary>
+        /// <summary>
+        /// [Output-only] Number of rows imported in a load job. Note that while an import job is in the running state,
+        /// this value may change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputRows")]
         public virtual System.Nullable<long> OutputRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobStatistics4 : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] Number of files per destination URI or URI pattern specified in the extract
-        /// configuration. These values will be in the same order as the URIs specified in the 'destinationUris'
-        /// field.</summary>
+        /// <summary>
+        /// [Output-only] Number of files per destination URI or URI pattern specified in the extract configuration.
+        /// These values will be in the same order as the URIs specified in the 'destinationUris' field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationUriFileCounts")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> DestinationUriFileCounts { get; set; }
 
-        /// <summary>[Output-only] Number of user bytes extracted into the result. This is the byte count as computed by
-        /// BigQuery for billing purposes.</summary>
+        /// <summary>
+        /// [Output-only] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery
+        /// for billing purposes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputBytes")]
         public virtual System.Nullable<long> InputBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] Final error result of the job. If present, indicates that the job has completed and
-        /// was unsuccessful.</summary>
+        /// <summary>
+        /// [Output-only] Final error result of the job. If present, indicates that the job has completed and was
+        /// unsuccessful.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorResult")]
         public virtual ErrorProto ErrorResult { get; set; }
 
-        /// <summary>[Output-only] The first errors encountered during the running of the job. The final message
-        /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
-        /// job has completed or was unsuccessful.</summary>
+        /// <summary>
+        /// [Output-only] The first errors encountered during the running of the job. The final message includes the
+        /// number of errors that caused the process to stop. Errors here do not necessarily mean that the job has
+        /// completed or was unsuccessful.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
@@ -5977,12 +6233,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Models in the requested dataset. Only the following fields are populated: model_reference,
-        /// model_type, creation_time, last_modified_time and labels.</summary>
+        /// <summary>
+        /// Models in the requested dataset. Only the following fields are populated: model_reference, model_type,
+        /// creation_time, last_modified_time and labels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
         public virtual System.Collections.Generic.IList<Model> Models { get; set; }
 
@@ -5992,7 +6250,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ListRoutinesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6000,15 +6258,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Routines in the requested dataset. Unless read_mask is set in the request, only the following
-        /// fields are populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time,
-        /// last_modified_time, and language.</summary>
+        /// <summary>
+        /// Routines in the requested dataset. Unless read_mask is set in the request, only the following fields are
+        /// populated: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and
+        /// language.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routines")]
         public virtual System.Collections.Generic.IList<Routine> Routines { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for the ListRowAccessPolicies method.</summary>
     public class ListRowAccessPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -6023,30 +6283,38 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>BigQuery-specific metadata about a location. This will be set on
-    /// google.cloud.location.Location.metadata in Cloud Location API responses.</summary>
+    /// <summary>
+    /// BigQuery-specific metadata about a location. This will be set on google.cloud.location.Location.metadata in
+    /// Cloud Location API responses.
+    /// </summary>
     public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers
-        /// that need the legacy “US” and “EU” locations.</summary>
+        /// <summary>
+        /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location. This is for any API consumers that
+        /// need the legacy “US” and “EU” locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyLocationId")]
         public virtual string LegacyLocationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class MaterializedViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is
-        /// updated. The default value is "true".</summary>
+        /// <summary>
+        /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated.
+        /// The default value is "true".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRefresh")]
         public virtual System.Nullable<bool> EnableRefresh { get; set; }
 
-        /// <summary>[Output-only] [TrustedTester] The time when this materialized view was last modified, in
-        /// milliseconds since the epoch.</summary>
+        /// <summary>
+        /// [Output-only] [TrustedTester] The time when this materialized view was last modified, in milliseconds since
+        /// the epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
         public virtual System.Nullable<long> LastRefreshTime { get; set; }
 
@@ -6054,14 +6322,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
-        /// <summary>[Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed.
-        /// The default value is "1800000" (30 minutes).</summary>
+        /// <summary>
+        /// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The
+        /// default value is "1800000" (30 minutes).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshIntervalMs")]
         public virtual System.Nullable<long> RefreshIntervalMs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Model : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6073,9 +6343,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Custom encryption configuration (e.g., Cloud KMS keys). This shows the encryption configuration of
-        /// the model data while stored in BigQuery storage. This field can be used with PatchModel to update encryption
-        /// key for an already encrypted model.</summary>
+        /// <summary>
+        /// Custom encryption configuration (e.g., Cloud KMS keys). This shows the encryption configuration of the model
+        /// data while stored in BigQuery storage. This field can be used with PatchModel to update encryption key for
+        /// an already encrypted model.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
@@ -6083,10 +6355,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. The time when this model expires, in milliseconds since the epoch. If not present, the
-        /// model will persist indefinitely. Expired models will be deleted and their storage reclaimed. The
+        /// <summary>
+        /// Optional. The time when this model expires, in milliseconds since the epoch. If not present, the model will
+        /// persist indefinitely. Expired models will be deleted and their storage reclaimed. The
         /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
-        /// on newly created models.</summary>
+        /// on newly created models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; }
 
@@ -6098,15 +6372,19 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
 
-        /// <summary>Output only. Label columns that were used to train this model. The output of the model will have a
-        /// "predicted_" prefix to these columns.</summary>
+        /// <summary>
+        /// Output only. Label columns that were used to train this model. The output of the model will have a
+        /// "predicted_" prefix to these columns.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelColumns")]
         public virtual System.Collections.Generic.IList<StandardSqlField> LabelColumns { get; set; }
 
-        /// <summary>The labels associated with this model. You can use these to organize and group your models. Label
-        /// keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// <summary>
+        /// The labels associated with this model. You can use these to organize and group your models. Label keys and
+        /// values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
-        /// start with a letter and each label in the list must have a different key.</summary>
+        /// start with a letter and each label in the list must have a different key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -6114,8 +6392,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        /// <summary>Output only. The geographic location where the model resides. This value is inherited from the
-        /// dataset.</summary>
+        /// <summary>
+        /// Output only. The geographic location where the model resides. This value is inherited from the dataset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -6130,30 +6409,32 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
-
-    }    
+    }
 
     public class ModelDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only, Beta] Model options used for the first training run. These options are immutable for
-        /// subsequent training runs. Default values are used for any options not specified in the input
-        /// query.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Model options used for the first training run. These options are immutable for
+        /// subsequent training runs. Default values are used for any options not specified in the input query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelOptions")]
         public virtual ModelOptionsData ModelOptions { get; set; }
 
-        /// <summary>[Output-only, Beta] Information about ml training runs, each training run comprises of multiple
-        /// iterations and there may be multiple training runs for the model if warm start is used or if a user decides
-        /// to continue a previously cancelled query.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations
+        /// and there may be multiple training runs for the model if warm start is used or if a user decides to continue
+        /// a previously cancelled query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<BqmlTrainingRun> TrainingRuns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
-        /// <summary>[Output-only, Beta] Model options used for the first training run. These options are immutable for
-        /// subsequent training runs. Default values are used for any options not specified in the input
-        /// query.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Model options used for the first training run. These options are immutable for
+        /// subsequent training runs. Default values are used for any options not specified in the input query.
+        /// </summary>
         public class ModelOptionsData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -6164,9 +6445,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
             [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
             public virtual string ModelType { get; set; }
-
         }
-    }    
+    }
 
     public class ModelReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6174,8 +6454,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
-        /// <summary>[Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.</summary>
+        /// <summary>
+        /// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+        /// (_). The maximum length is 1,024 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
 
@@ -6185,7 +6467,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Evaluation metrics for multi-class classification/classifier models.</summary>
     public class MultiClassClassificationMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -6200,65 +6482,71 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
-    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
-    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
-    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
-    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
-    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
-    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
-    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
-    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
-    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
-    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
-    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
-    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
-    /// 3 For a description of IAM and its features, see the [IAM
-    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
+    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
+    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
+    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
+    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
+    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
+    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
 
-        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
-        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        /// <summary>
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
         /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.</summary>
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
-        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
-        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
-        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
-        /// Removing any role binding, with or without a condition, from a policy that includes conditions
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
-        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
-        /// resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-
-    }    
+    }
 
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6282,8 +6570,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; }
 
-        
-
+        /// <summary>Projects to which you have at least READ access.</summary>
         public class ProjectsData
         {
             /// <summary>A descriptive name for this project.</summary>
@@ -6305,25 +6592,26 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>A unique reference to this project.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("projectReference")]
             public virtual ProjectReference ProjectReference { get; set; }
-
         }
-    }    
+    }
 
     public class ProjectReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] ID of the project. Can be either the numeric ID or the assigned ID of the
-        /// project.</summary>
+        /// <summary>
+        /// [Required] ID of the project. Can be either the numeric ID or the assigned ID of the project.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class QueryParameter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] If unset, this is a positional parameter. Otherwise, should be unique within a
-        /// query.</summary>
+        /// <summary>
+        /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6337,7 +6625,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class QueryParameterType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6355,8 +6643,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>[Optional] The types of the fields of this struct, in order, if this is a struct.</summary>
         public class StructTypesData
         {
             /// <summary>[Optional] Human-oriented description of the field.</summary>
@@ -6370,9 +6658,8 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[Required] The type of this field.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual QueryParameterType Type { get; set; }
-
         }
-    }    
+    }
 
     public class QueryParameterValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6390,7 +6677,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6398,15 +6685,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProperties")]
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
-        /// <summary>[Optional] Specifies the default datasetId and projectId to assume for any unqualified table names
-        /// in the query. If not set, all table names in the query string must be qualified in the format
-        /// 'datasetId.tableId'.</summary>
+        /// <summary>
+        /// [Optional] Specifies the default datasetId and projectId to assume for any unqualified table names in the
+        /// query. If not set, all table names in the query string must be qualified in the format 'datasetId.tableId'.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; }
 
-        /// <summary>[Optional] If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery
-        /// returns statistics about the job such as how many bytes would be processed. If the query is invalid, an
-        /// error returns. The default value is false.</summary>
+        /// <summary>
+        /// [Optional] If set to true, BigQuery doesn't run the job. Instead, if the query is valid, BigQuery returns
+        /// statistics about the job such as how many bytes would be processed. If the query is invalid, an error
+        /// returns. The default value is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
         public virtual System.Nullable<bool> DryRun { get; set; }
 
@@ -6414,33 +6704,42 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The labels associated with this job. You can use these to organize and group your jobs. Label keys
-        /// and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// <summary>
+        /// The labels associated with this job. You can use these to organize and group your jobs. Label keys and
+        /// values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
-        /// start with a letter and each label in the list must have a different key.</summary>
+        /// start with a letter and each label in the list must have a different key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The geographic location where the job should run. See details at
-        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.</summary>
+        /// <summary>
+        /// The geographic location where the job should run. See details at
+        /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>[Optional] The maximum number of rows of data to return per page of results. Setting this flag to a
-        /// small value such as 1000 and then paging through results might improve reliability when the query result set
-        /// is large. In addition to this limit, responses are also limited to 10 MB. By default, there is no maximum
-        /// row count, and only the byte limit applies.</summary>
+        /// <summary>
+        /// [Optional] The maximum number of rows of data to return per page of results. Setting this flag to a small
+        /// value such as 1000 and then paging through results might improve reliability when the query result set is
+        /// large. In addition to this limit, responses are also limited to 10 MB. By default, there is no maximum row
+        /// count, and only the byte limit applies.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<long> MaxResults { get; set; }
 
-        /// <summary>[Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this
-        /// limit will fail (without incurring a charge). If unspecified, this will be set to your project
-        /// default.</summary>
+        /// <summary>
+        /// [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will
+        /// fail (without incurring a charge). If unspecified, this will be set to your project default.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesBilled")]
         public virtual System.Nullable<long> MaximumBytesBilled { get; set; }
 
-        /// <summary>Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use
-        /// named (@myparam) query parameters in this query.</summary>
+        /// <summary>
+        /// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named
+        /// (@myparam) query parameters in this query.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterMode")]
         public virtual string ParameterMode { get; set; }
 
@@ -6448,8 +6747,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preserveNulls")]
         public virtual System.Nullable<bool> PreserveNulls { get; set; }
 
-        /// <summary>[Required] A query string, following the BigQuery query syntax, of the query to execute. Example:
-        /// "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".</summary>
+        /// <summary>
+        /// [Required] A query string, following the BigQuery query syntax, of the query to execute. Example: "SELECT
+        /// count(f1) FROM [myProjectId:myDatasetId.myTableId]".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
@@ -6457,46 +6758,54 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
 
-        /// <summary>A unique user provided identifier to ensure idempotent behavior for queries. Note that this is
-        /// different from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36
-        /// ASCII characters. A UUID is recommended. 2. Read only queries can ignore this token since they are
-        /// nullipotent by definition. 3. For the purposes of idempotency ensured by the request_id, a request is
-        /// considered duplicate of another only if they have the same request_id and are actually duplicates. When
-        /// determining whether a request is a duplicate of the previous request, all parameters in the request that may
-        /// affect the behavior are considered. For example, query, connection_properties, query_parameters,
-        /// use_legacy_sql are parameters that affect the result and are considered when determining whether a request
-        /// is a duplicate, but properties like timeout_ms don't affect the result and are thus not considered. Dry run
-        /// query requests are never considered duplicate of another request. 4. When a duplicate mutating query request
-        /// is detected, it returns: a. the results of the mutation if it completes successfully within the timeout. b.
-        /// the running operation if it is still in progress at the end of the timeout. 5. Its lifetime is limited to 15
-        /// minutes. In other words, if two requests are sent with the same request_id, but more than 15 minutes apart,
-        /// idempotency is not guaranteed.</summary>
+        /// <summary>
+        /// A unique user provided identifier to ensure idempotent behavior for queries. Note that this is different
+        /// from the job_id. It has the following properties: 1. It is case-sensitive, limited to up to 36 ASCII
+        /// characters. A UUID is recommended. 2. Read only queries can ignore this token since they are nullipotent by
+        /// definition. 3. For the purposes of idempotency ensured by the request_id, a request is considered duplicate
+        /// of another only if they have the same request_id and are actually duplicates. When determining whether a
+        /// request is a duplicate of the previous request, all parameters in the request that may affect the behavior
+        /// are considered. For example, query, connection_properties, query_parameters, use_legacy_sql are parameters
+        /// that affect the result and are considered when determining whether a request is a duplicate, but properties
+        /// like timeout_ms don't affect the result and are thus not considered. Dry run query requests are never
+        /// considered duplicate of another request. 4. When a duplicate mutating query request is detected, it returns:
+        /// a. the results of the mutation if it completes successfully within the timeout. b. the running operation if
+        /// it is still in progress at the end of the timeout. 5. Its lifetime is limited to 15 minutes. In other words,
+        /// if two requests are sent with the same request_id, but more than 15 minutes apart, idempotency is not
+        /// guaranteed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
 
-        /// <summary>[Optional] How long to wait for the query to complete, in milliseconds, before the request times
-        /// out and returns. Note that this is only a timeout for the request, not the query. If the query takes longer
-        /// to run than the timeout value, the call returns without any results and with the 'jobComplete' flag set to
-        /// false. You can call GetQueryResults() to wait for the query to complete and read the results. The default
-        /// value is 10000 milliseconds (10 seconds).</summary>
+        /// <summary>
+        /// [Optional] How long to wait for the query to complete, in milliseconds, before the request times out and
+        /// returns. Note that this is only a timeout for the request, not the query. If the query takes longer to run
+        /// than the timeout value, the call returns without any results and with the 'jobComplete' flag set to false.
+        /// You can call GetQueryResults() to wait for the query to complete and read the results. The default value is
+        /// 10000 milliseconds (10 seconds).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutMs")]
         public virtual System.Nullable<long> TimeoutMs { get; set; }
 
-        /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
-        /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
-        /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
-        /// if flattenResults is false.</summary>
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to
+        /// false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+        /// useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults
+        /// is false.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
 
-        /// <summary>[Optional] Whether to look for the result in the query cache. The query cache is a best-effort
-        /// cache that will be flushed whenever tables in the query are modified. The default value is true.</summary>
+        /// <summary>
+        /// [Optional] Whether to look for the result in the query cache. The query cache is a best-effort cache that
+        /// will be flushed whenever tables in the query are modified. The default value is true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useQueryCache")]
         public virtual System.Nullable<bool> UseQueryCache { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class QueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6504,21 +6813,27 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
-        /// <summary>[Output-only] The first errors or warnings encountered during the running of the job. The final
-        /// message includes the number of errors that caused the process to stop. Errors here do not necessarily mean
-        /// that the job has completed or was unsuccessful.</summary>
+        /// <summary>
+        /// [Output-only] The first errors or warnings encountered during the running of the job. The final message
+        /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
+        /// job has completed or was unsuccessful.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ErrorProto> Errors { get; set; }
 
-        /// <summary>Whether the query has completed or not. If rows or totalRows are present, this will always be true.
-        /// If this is false, totalRows will not be available.</summary>
+        /// <summary>
+        /// Whether the query has completed or not. If rows or totalRows are present, this will always be true. If this
+        /// is false, totalRows will not be available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobComplete")]
         public virtual System.Nullable<bool> JobComplete { get; set; }
 
-        /// <summary>Reference to the Job that was created to run the query. This field will be present even if the
-        /// original request timed out, in which case GetQueryResults can be used to read the results once the query has
+        /// <summary>
+        /// Reference to the Job that was created to run the query. This field will be present even if the original
+        /// request timed out, in which case GetQueryResults can be used to read the results once the query has
         /// completed. Since this API only returns the first page of results, subsequent pages can be fetched via the
-        /// same mechanism (GetQueryResults).</summary>
+        /// same mechanism (GetQueryResults).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobReference")]
         public virtual JobReference JobReference { get; set; }
 
@@ -6526,8 +6841,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
-        /// INSERT, UPDATE or DELETE.</summary>
+        /// <summary>
+        /// [Output-only] The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE
+        /// or DELETE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
         public virtual System.Nullable<long> NumDmlAffectedRows { get; set; }
 
@@ -6535,8 +6852,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
-        /// <summary>An object with as many results as can be contained within the maximum permitted reply size. To get
-        /// any additional rows, you can call GetQueryResults and specify the jobReference returned above.</summary>
+        /// <summary>
+        /// An object with as many results as can be contained within the maximum permitted reply size. To get any
+        /// additional rows, you can call GetQueryResults and specify the jobReference returned above.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<TableRow> Rows { get; set; }
 
@@ -6544,24 +6863,30 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
-        /// <summary>The total number of bytes processed for this query. If this query was a dry run, this is the number
-        /// of bytes that would be processed if the query were run.</summary>
+        /// <summary>
+        /// The total number of bytes processed for this query. If this query was a dry run, this is the number of bytes
+        /// that would be processed if the query were run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; }
 
-        /// <summary>The total number of rows in the complete query result set, which can be more than the number of
-        /// rows in this single page of results.</summary>
+        /// <summary>
+        /// The total number of rows in the complete query result set, which can be more than the number of rows in this
+        /// single page of results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<ulong> TotalRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class QueryTimelineSample : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total number of units currently being processed by workers. This does not correspond directly to
-        /// slot usage. This is the largest value observed since the last sample.</summary>
+        /// <summary>
+        /// Total number of units currently being processed by workers. This does not correspond directly to slot usage.
+        /// This is the largest value observed since the last sample.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeUnits")]
         public virtual System.Nullable<long> ActiveUnits { get; set; }
 
@@ -6583,12 +6908,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RangePartitioning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level
-        /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.</summary>
+        /// <summary>
+        /// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level
+        /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
@@ -6598,7 +6925,6 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>[TrustedTester] [Required] Defines the ranges for range partitioning.</summary>
         public class RangeData
@@ -6614,37 +6940,44 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>[TrustedTester] [Required] The start of range partitioning, inclusive.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("start")]
             public virtual System.Nullable<long> Start { get; set; }
-
         }
-    }    
+    }
 
     /// <summary>Evaluation metrics used by weighted-ALS models specified by feedback_type=implicit.</summary>
     public class RankingMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Determines the goodness of a ranking by computing the percentile rank from the predicted confidence
-        /// and dividing it by the original rank.</summary>
+        /// <summary>
+        /// Determines the goodness of a ranking by computing the percentile rank from the predicted confidence and
+        /// dividing it by the original rank.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageRank")]
         public virtual System.Nullable<double> AverageRank { get; set; }
 
-        /// <summary>Calculates a precision per user for all the items by ranking them and then averages all the
-        /// precisions across all the users.</summary>
+        /// <summary>
+        /// Calculates a precision per user for all the items by ranking them and then averages all the precisions
+        /// across all the users.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanAveragePrecision")]
         public virtual System.Nullable<double> MeanAveragePrecision { get; set; }
 
-        /// <summary>Similar to the mean squared error computed in regression and explicit recommendation models except
-        /// instead of computing the rating directly, the output from evaluate is computed against a preference which is
-        /// 1 or 0 depending on if the rating exists or not.</summary>
+        /// <summary>
+        /// Similar to the mean squared error computed in regression and explicit recommendation models except instead
+        /// of computing the rating directly, the output from evaluate is computed against a preference which is 1 or 0
+        /// depending on if the rating exists or not.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meanSquaredError")]
         public virtual System.Nullable<double> MeanSquaredError { get; set; }
 
-        /// <summary>A metric to determine the goodness of a ranking calculated from the predicted confidence by
-        /// comparing it to an ideal rank measured by the original ratings.</summary>
+        /// <summary>
+        /// A metric to determine the goodness of a ranking calculated from the predicted confidence by comparing it to
+        /// an ideal rank measured by the original ratings.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normalizedDiscountedCumulativeGain")]
         public virtual System.Nullable<double> NormalizedDiscountedCumulativeGain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Evaluation metrics for regression and explicit feedback type matrix factorization models.</summary>
     public class RegressionMetrics : Google.Apis.Requests.IDirectResponseSchema
@@ -6671,7 +7004,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A user-defined function or a stored procedure.</summary>
     public class Routine : Google.Apis.Requests.IDirectResponseSchema
@@ -6684,13 +7017,15 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
 
-        /// <summary>Required. The body of the routine. For functions, this is the expression in the AS clause. If
-        /// language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function
-        /// created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n",
-        /// y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If
-        /// language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with
-        /// the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
-        /// definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.</summary>
+        /// <summary>
+        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL,
+        /// it is the substring inside (but excluding) the parentheses. For example, for the function created with the
+        /// following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The
+        /// definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is
+        /// the evaluated string in the AS clause. For example, for the function created with the following statement:
+        /// `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n`
+        /// Note that both \n are replaced with linebreaks.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definitionBody")]
         public virtual string DefinitionBody { get; set; }
 
@@ -6706,8 +7041,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT
-        /// libraries.</summary>
+        /// <summary>
+        /// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importedLibraries")]
         public virtual System.Collections.Generic.IList<string> ImportedLibraries { get; set; }
 
@@ -6715,12 +7051,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
-        /// <summary>Output only. The time when this routine was last modified, in milliseconds since the
-        /// epoch.</summary>
+        /// <summary>
+        /// Output only. The time when this routine was last modified, in milliseconds since the epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        /// <summary>Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
+        /// <summary>
+        /// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
         /// definition_body at query time in each query that references this routine. If present, then the evaluated
         /// result will be cast to the specified returned type at query time. For example, for the functions created
         /// with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` *
@@ -6728,8 +7066,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is
         /// absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by
         /// `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment`
-        /// is automatically changed to INT64 at query time, while the return type of `Decrement` remains
-        /// FLOAT64.</summary>
+        /// is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnType")]
         public virtual StandardSqlDataType ReturnType { get; set; }
 
@@ -6740,8 +7078,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Required. The type of routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineType")]
         public virtual string RoutineType { get; set; }
-
-    }    
+    }
 
     public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6753,14 +7090,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>[Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 256 characters.</summary>
+        /// <summary>
+        /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+        /// (_). The maximum length is 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineId")]
         public virtual string RoutineId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A single row in the confusion matrix.</summary>
     public class Row : Google.Apis.Requests.IDirectResponseSchema
@@ -6775,14 +7114,17 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents access on a subset of rows on the specified table, defined by its filter predicate. Access
-    /// to the subset of rows is controlled by its IAM policy.</summary>
+    /// <summary>
+    /// Represents access on a subset of rows on the specified table, defined by its filter predicate. Access to the
+    /// subset of rows is controlled by its IAM policy.
+    /// </summary>
     public class RowAccessPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The time when this row access policy was created, in milliseconds since the
-        /// epoch.</summary>
+        /// <summary>
+        /// Output only. The time when this row access policy was created, in milliseconds since the epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; }
 
@@ -6790,23 +7132,25 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Required. A SQL boolean expression that represents the rows defined by this row access policy,
-        /// similar to the boolean expression in a WHERE clause of a SELECT query on a table. References to other
-        /// tables, routines, and temporary functions are not supported. Examples: region="EU" date_field =
-        /// CAST('2019-9-27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0</summary>
+        /// <summary>
+        /// Required. A SQL boolean expression that represents the rows defined by this row access policy, similar to
+        /// the boolean expression in a WHERE clause of a SELECT query on a table. References to other tables, routines,
+        /// and temporary functions are not supported. Examples: region="EU" date_field = CAST('2019-9-27' as DATE)
+        /// nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterPredicate")]
         public virtual string FilterPredicate { get; set; }
 
-        /// <summary>Output only. The time when this row access policy was last modified, in milliseconds since the
-        /// epoch.</summary>
+        /// <summary>
+        /// Output only. The time when this row access policy was last modified, in milliseconds since the epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual object LastModifiedTime { get; set; }
 
         /// <summary>Required. Reference describing the ID of this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowAccessPolicyReference")]
         public virtual RowAccessPolicyReference RowAccessPolicyReference { get; set; }
-
-    }    
+    }
 
     public class RowAccessPolicyReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6814,8 +7158,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
-        /// <summary>[Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers
-        /// (0-9), or underscores (_). The maximum length is 256 characters.</summary>
+        /// <summary>
+        /// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 256 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
         public virtual string PolicyId { get; set; }
 
@@ -6829,7 +7175,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RowLevelSecurityStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6839,7 +7185,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ScriptStackFrame : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6869,7 +7215,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ScriptStatistics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6877,33 +7223,38 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationKind")]
         public virtual string EvaluationKind { get; set; }
 
-        /// <summary>Stack trace showing the line/column/procedure name of each frame on the stack at the point where
-        /// the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.</summary>
+        /// <summary>
+        /// Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current
+        /// evaluation happened. The leaf frame is first, the primary script is last. Never empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
-        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
-        /// might reject them.</summary>
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// reject them.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
-        /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: `paths: "bindings,
-        /// etag"`</summary>
+        /// <summary>
+        /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be
+        /// modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class SnapshotDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6925,11 +7276,13 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY:
-    /// {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x",
-    /// type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}</summary>
+    /// <summary>
+    /// The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY:
+    /// {type_kind="ARRAY", array_element_type="STRING"} STRUCT&amp;gt;: {type_kind="STRUCT", struct_type={fields=[
+    /// {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+    /// </summary>
     public class StandardSqlDataType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The type of the array's elements, if type_kind = "ARRAY".</summary>
@@ -6940,14 +7293,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
         public virtual StandardSqlStructType StructType { get; set; }
 
-        /// <summary>Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64",
-        /// "DATE", "ARRAY").</summary>
+        /// <summary>
+        /// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE",
+        /// "ARRAY").
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeKind")]
         public virtual string TypeKind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A field or a column.</summary>
     public class StandardSqlField : Google.Apis.Requests.IDirectResponseSchema
@@ -6956,15 +7311,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION
-        /// statement can omit the return type; in this case the output parameter does not have this "type"
-        /// field).</summary>
+        /// <summary>
+        /// Optional. The type of this parameter. Absent if not explicitly specified (e.g., CREATE FUNCTION statement
+        /// can omit the return type; in this case the output parameter does not have this "type" field).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual StandardSqlDataType Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class StandardSqlStructType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6973,33 +7329,39 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Streamingbuffer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output-only] A lower-bound estimate of the number of bytes currently in the streaming
-        /// buffer.</summary>
+        /// <summary>
+        /// [Output-only] A lower-bound estimate of the number of bytes currently in the streaming buffer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytes")]
         public virtual System.Nullable<ulong> EstimatedBytes { get; set; }
 
-        /// <summary>[Output-only] A lower-bound estimate of the number of rows currently in the streaming
-        /// buffer.</summary>
+        /// <summary>
+        /// [Output-only] A lower-bound estimate of the number of rows currently in the streaming buffer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedRows")]
         public virtual System.Nullable<ulong> EstimatedRows { get; set; }
 
-        /// <summary>[Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds
-        /// since the epoch, if the streaming buffer is available.</summary>
+        /// <summary>
+        /// [Output-only] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the
+        /// epoch, if the streaming buffer is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldestEntryTime")]
         public virtual System.Nullable<ulong> OldestEntryTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Beta] Clustering specification for the table. Must be specified with partitioning, data in the
-        /// table will be first partitioned and subsequently clustered.</summary>
+        /// <summary>
+        /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will
+        /// be first partitioned and subsequently clustered.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; }
 
@@ -7015,22 +7377,27 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
-        /// <summary>[Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications
-        /// to the resource when attempting an update. Not guaranteed to change when the table contents or the fields
-        /// numRows, numBytes, numLongTermBytes or lastModifiedTime change.</summary>
+        /// <summary>
+        /// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the
+        /// resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows,
+        /// numBytes, numLongTermBytes or lastModifiedTime change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present, the
-        /// table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The
+        /// <summary>
+        /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will
+        /// persist indefinitely. Expired tables will be deleted and their storage reclaimed. The
         /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
-        /// on newly created tables.</summary>
+        /// on newly created tables.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; }
 
-        /// <summary>[Optional] Describes the data format, location, and other properties of a table stored outside of
-        /// BigQuery. By defining these properties, the data source can then be queried as if it were a standard
-        /// BigQuery table.</summary>
+        /// <summary>
+        /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery.
+        /// By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDataConfiguration")]
         public virtual ExternalDataConfiguration ExternalDataConfiguration { get; set; }
 
@@ -7046,20 +7413,24 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The labels associated with this table. You can use these to organize and group your tables. Label
-        /// keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
+        /// <summary>
+        /// The labels associated with this table. You can use these to organize and group your tables. Label keys and
+        /// values can be no longer than 63 characters, can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. Label values are optional. Label keys must
-        /// start with a letter and each label in the list must have a different key.</summary>
+        /// start with a letter and each label in the list must have a different key.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>[Output-only] The time when this table was last modified, in milliseconds since the
-        /// epoch.</summary>
+        /// <summary>
+        /// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<ulong> LastModifiedTime { get; set; }
 
-        /// <summary>[Output-only] The geographic location where the table resides. This value is inherited from the
-        /// dataset.</summary>
+        /// <summary>
+        /// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -7067,13 +7438,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
         public virtual MaterializedViewDefinition MaterializedView { get; set; }
 
-        /// <summary>[Output-only, Beta] Present iff this table represents a ML model. Describes the training
-        /// information for the model, and it is required to run 'PREDICT' queries.</summary>
+        /// <summary>
+        /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the
+        /// model, and it is required to run 'PREDICT' queries.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual ModelDefinition Model { get; set; }
 
-        /// <summary>[Output-only] The size of this table in bytes, excluding any data in the streaming
-        /// buffer.</summary>
+        /// <summary>
+        /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numBytes")]
         public virtual System.Nullable<long> NumBytes { get; set; }
 
@@ -7081,23 +7455,30 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
         public virtual System.Nullable<long> NumLongTermBytes { get; set; }
 
-        /// <summary>[Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the
-        /// streaming buffer. This includes compression and storage used for time travel.</summary>
+        /// <summary>
+        /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming
+        /// buffer. This includes compression and storage used for time travel.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPhysicalBytes")]
         public virtual System.Nullable<long> NumPhysicalBytes { get; set; }
 
-        /// <summary>[Output-only] The number of rows of data in this table, excluding any data in the streaming
-        /// buffer.</summary>
+        /// <summary>
+        /// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; }
 
-        /// <summary>[TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and
+        /// rangePartitioning should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; }
 
-        /// <summary>[Optional] If set to true, queries over this table require a partition filter that can be used for
-        /// partition elimination to be specified.</summary>
+        /// <summary>
+        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition
+        /// elimination to be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
@@ -7113,9 +7494,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotDefinition")]
         public virtual SnapshotDefinition SnapshotDefinition { get; set; }
 
-        /// <summary>[Output-only] Contains information regarding this table's streaming buffer, if one is present. This
-        /// field will be absent if the table is not being streamed to or if there is no data in the streaming
-        /// buffer.</summary>
+        /// <summary>
+        /// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field
+        /// will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingBuffer")]
         public virtual Streamingbuffer StreamingBuffer { get; set; }
 
@@ -7123,24 +7505,27 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual TableReference TableReference { get; set; }
 
-        /// <summary>Time-based partitioning specification for this table. Only one of timePartitioning and
-        /// rangePartitioning should be specified.</summary>
+        /// <summary>
+        /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning
+        /// should be specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; }
 
-        /// <summary>[Output-only] Describes the table type. The following values are supported: TABLE: A normal
-        /// BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that
-        /// is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
-        /// EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage.
-        /// The default value is TABLE.</summary>
+        /// <summary>
+        /// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table.
+        /// VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of
+        /// another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table
+        /// that references data stored in an external storage system, such as Google Cloud Storage. The default value
+        /// is TABLE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>[Optional] The view definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual ViewDefinition View { get; set; }
-
-    }    
+    }
 
     public class TableCell : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7149,12 +7534,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TableDataInsertAllRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Accept rows that contain values that do not match the schema. The unknown values are
-        /// ignored. Default is false, which treats unknown values as errors.</summary>
+        /// <summary>
+        /// [Optional] Accept rows that contain values that do not match the schema. The unknown values are ignored.
+        /// Default is false, which treats unknown values as errors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
 
@@ -7166,36 +7553,44 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<RowsData> Rows { get; set; }
 
-        /// <summary>[Optional] Insert all valid rows of a request, even if invalid rows exist. The default value is
-        /// false, which causes the entire request to fail if any invalid rows exist.</summary>
+        /// <summary>
+        /// [Optional] Insert all valid rows of a request, even if invalid rows exist. The default value is false, which
+        /// causes the entire request to fail if any invalid rows exist.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipInvalidRows")]
         public virtual System.Nullable<bool> SkipInvalidRows { get; set; }
 
-        /// <summary>If specified, treats the destination table as a base template, and inserts the rows into an
-        /// instance table named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table,
-        /// using the schema of the base template table. See https://cloud.google.com/bigquery/streaming-data-into-
-        /// bigquery#template-tables for considerations when working with templates tables.</summary>
+        /// <summary>
+        /// If specified, treats the destination table as a base template, and inserts the rows into an instance table
+        /// named "{destination}{templateSuffix}". BigQuery will manage creation of the instance table, using the schema
+        /// of the base template table. See
+        /// https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables for considerations when
+        /// working with templates tables.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateSuffix")]
         public virtual string TemplateSuffix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>The rows to insert.</summary>
         public class RowsData
         {
-            /// <summary>[Optional] A unique ID for each row. BigQuery uses this property to detect duplicate insertion
-            /// requests on a best-effort basis.</summary>
+            /// <summary>
+            /// [Optional] A unique ID for each row. BigQuery uses this property to detect duplicate insertion requests
+            /// on a best-effort basis.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
             public virtual string InsertId { get; set; }
 
-            /// <summary>[Required] A JSON object that contains a row of data. The object's properties and values must
-            /// match the destination table's schema.</summary>
+            /// <summary>
+            /// [Required] A JSON object that contains a row of data. The object's properties and values must match the
+            /// destination table's schema.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("json")]
             public virtual System.Collections.Generic.IDictionary<string, object> Json { get; set; }
-
         }
-    }    
+    }
 
     public class TableDataInsertAllResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7209,8 +7604,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
+        /// <summary>An array of errors for rows that were not inserted.</summary>
         public class InsertErrorsData
         {
             /// <summary>Error information for the row indicated by the index property.</summary>
@@ -7220,9 +7615,8 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>The index of the row that error applies to.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("index")]
             public virtual System.Nullable<long> Index { get; set; }
-
         }
-    }    
+    }
 
     public class TableDataList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7234,8 +7628,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>A token used for paging results. Providing this token instead of the startIndex parameter can help
-        /// you retrieve stable results when an underlying table is changing.</summary>
+        /// <summary>
+        /// A token used for paging results. Providing this token instead of the startIndex parameter can help you
+        /// retrieve stable results when an underlying table is changing.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
@@ -7246,8 +7642,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The total number of rows in the complete table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<long> TotalRows { get; set; }
-
-    }    
+    }
 
     public class TableFieldSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7263,49 +7658,55 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
-        /// <summary>[Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default
-        /// value is NULLABLE.</summary>
+        /// <summary>
+        /// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is
+        /// NULLABLE.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
-        /// <summary>[Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.</summary>
+        /// <summary>
+        /// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_),
+        /// and must start with a letter or underscore. The maximum length is 128 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("policyTags")]
         public virtual PolicyTagsData PolicyTags { get; set; }
 
-        /// <summary>[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as
-        /// INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME,
-        /// RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as
-        /// RECORD).</summary>
+        /// <summary>
+        /// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
+        /// FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD
+        /// (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-        
 
         /// <summary>[Optional] The categories attached to this field, used for field-level access control.</summary>
         public class CategoriesData
         {
-            /// <summary>A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most
-            /// 5 categories are allowed.</summary>
+            /// <summary>
+            /// A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5
+            /// categories are allowed.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
             public virtual System.Collections.Generic.IList<string> Names { get; set; }
-
-        }    
+        }
 
         public class PolicyTagsData
         {
-            /// <summary>A list of category resource names. For example,
-            /// "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.</summary>
+            /// <summary>
+            /// A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At
+            /// most 1 policy tag is allowed.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
             public virtual System.Collections.Generic.IList<string> Names { get; set; }
-
         }
-    }    
+    }
 
     public class TableList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7329,8 +7730,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; }
 
-        
-
+        /// <summary>Tables in the requested dataset.</summary>
         public class TablesData
         {
             /// <summary>[Beta] Clustering specification for this table, if configured.</summary>
@@ -7341,9 +7741,10 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
             public virtual System.Nullable<long> CreationTime { get; set; }
 
-            /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present,
-            /// the table will persist indefinitely. Expired tables will be deleted and their storage
-            /// reclaimed.</summary>
+            /// <summary>
+            /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table
+            /// will persist indefinitely. Expired tables will be deleted and their storage reclaimed.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
             public virtual System.Nullable<long> ExpirationTime { get; set; }
 
@@ -7359,8 +7760,9 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("kind")]
             public virtual string Kind { get; set; }
 
-            /// <summary>The labels associated with this table. You can use these to organize and group your
-            /// tables.</summary>
+            /// <summary>
+            /// The labels associated with this table. You can use these to organize and group your tables.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("labels")]
             public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -7384,18 +7786,15 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
             public virtual ViewData View { get; set; }
 
-            
-
             /// <summary>Additional details for a view.</summary>
             public class ViewData
             {
                 /// <summary>True if view is defined in legacy SQL dialect, false if in standard SQL.</summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
                 public virtual System.Nullable<bool> UseLegacySql { get; set; }
-
             }
         }
-    }    
+    }
 
     public class TableReference : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7407,14 +7806,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>[Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
-        /// underscores (_). The maximum length is 1,024 characters.</summary>
+        /// <summary>
+        /// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+        /// (_). The maximum length is 1,024 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TableRow : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7424,7 +7825,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TableSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7434,20 +7835,22 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed. For more information see [IAM
-        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        /// <summary>
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -7458,34 +7861,39 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TimePartitioning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] Number of milliseconds for which to keep the storage for partitions in the table. The
-        /// storage in a partition will have an expiration time of its partition time plus this value.</summary>
+        /// <summary>
+        /// [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in
+        /// a partition will have an expiration time of its partition time plus this value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationMs")]
         public virtual System.Nullable<long> ExpirationMs { get; set; }
 
-        /// <summary>[Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either
+        /// <summary>
+        /// [Beta] [Optional] If not set, the table is partitioned by pseudo column, referenced via either
         /// '_PARTITIONTIME' as TIMESTAMP type, or '_PARTITIONDATE' as DATE type. If field is specified, the table is
         /// instead partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be
-        /// NULLABLE or REQUIRED.</summary>
+        /// NULLABLE or REQUIRED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
         public virtual System.Nullable<bool> RequirePartitionFilter { get; set; }
 
-        /// <summary>[Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition
-        /// per day, hour, month, and year, respectively. When the type is not specified, the default behavior is
-        /// DAY.</summary>
+        /// <summary>
+        /// [Required] The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day,
+        /// hour, month, and year, respectively. When the type is not specified, the default behavior is DAY.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7505,17 +7913,21 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataFrequency")]
         public virtual string DataFrequency { get; set; }
 
-        /// <summary>The column to split data with. This column won't be used as a feature. 1. When data_split_method is
-        /// CUSTOM, the corresponding column should be boolean. The rows with true value tag are eval data, and the
-        /// false are training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from
-        /// smallest to largest) in the corresponding column are used as training data, and the rest are eval data. It
-        /// respects the order in Orderable data types: https://cloud.google.com/bigquery/docs/reference/standard-sql
-        /// /data-types#data-type-properties</summary>
+        /// <summary>
+        /// The column to split data with. This column won't be used as a feature. 1. When data_split_method is CUSTOM,
+        /// the corresponding column should be boolean. The rows with true value tag are eval data, and the false are
+        /// training data. 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION rows (from smallest to
+        /// largest) in the corresponding column are used as training data, and the rest are eval data. It respects the
+        /// order in Orderable data types:
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitColumn")]
         public virtual string DataSplitColumn { get; set; }
 
-        /// <summary>The fraction of evaluation data over the whole input data. The rest of data will be used as
-        /// training data. The format should be double. Accurate to two decimal places. Default value is 0.2.</summary>
+        /// <summary>
+        /// The fraction of evaluation data over the whole input data. The rest of data will be used as training data.
+        /// The format should be double. Accurate to two decimal places. Default value is 0.2.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitEvalFraction")]
         public virtual System.Nullable<double> DataSplitEvalFraction { get; set; }
 
@@ -7531,8 +7943,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dropout")]
         public virtual System.Nullable<double> Dropout { get; set; }
 
-        /// <summary>Whether to stop early when the loss doesn't improve significantly any more (compared to
-        /// min_relative_progress). Used only for iterative training algorithms.</summary>
+        /// <summary>
+        /// Whether to stop early when the loss doesn't improve significantly any more (compared to
+        /// min_relative_progress). Used only for iterative training algorithms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("earlyStop")]
         public virtual System.Nullable<bool> EarlyStop { get; set; }
 
@@ -7544,8 +7958,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; }
 
-        /// <summary>The geographical region based on which the holidays are considered in time series modeling. If a
-        /// valid value is specified, then holiday effects modeling is enabled.</summary>
+        /// <summary>
+        /// The geographical region based on which the holidays are considered in time series modeling. If a valid value
+        /// is specified, then holiday effects modeling is enabled.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holidayRegion")]
         public virtual string HolidayRegion { get; set; }
 
@@ -7569,8 +7985,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemColumn")]
         public virtual string ItemColumn { get; set; }
 
-        /// <summary>The column used to provide the initial centroids for kmeans algorithm when
-        /// kmeans_initialization_method is CUSTOM.</summary>
+        /// <summary>
+        /// The column used to provide the initial centroids for kmeans algorithm when kmeans_initialization_method is
+        /// CUSTOM.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmeansInitializationColumn")]
         public virtual string KmeansInitializationColumn { get; set; }
 
@@ -7586,8 +8004,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("l2Regularization")]
         public virtual System.Nullable<double> L2Regularization { get; set; }
 
-        /// <summary>Weights associated with each label class, for rebalancing the training data. Only applicable for
-        /// classification models.</summary>
+        /// <summary>
+        /// Weights associated with each label class, for rebalancing the training data. Only applicable for
+        /// classification models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelClassWeights")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> LabelClassWeights { get; set; }
 
@@ -7603,8 +8023,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lossType")]
         public virtual string LossType { get; set; }
 
-        /// <summary>The maximum number of iterations in training. Used only for iterative training
-        /// algorithms.</summary>
+        /// <summary>
+        /// The maximum number of iterations in training. Used only for iterative training algorithms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
         public virtual System.Nullable<long> MaxIterations { get; set; }
 
@@ -7612,8 +8033,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxTreeDepth")]
         public virtual System.Nullable<long> MaxTreeDepth { get; set; }
 
-        /// <summary>When early_stop is true, stops training when accuracy improvement is less than
-        /// 'min_relative_progress'. Used only for iterative training algorithms.</summary>
+        /// <summary>
+        /// When early_stop is true, stops training when accuracy improvement is less than 'min_relative_progress'. Used
+        /// only for iterative training algorithms.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minRelativeProgress")]
         public virtual System.Nullable<double> MinRelativeProgress { get; set; }
 
@@ -7621,13 +8044,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minSplitLoss")]
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
 
-        /// <summary>[Beta] Google Cloud Storage URI from which the model was imported. Only applicable for imported
-        /// models.</summary>
+        /// <summary>
+        /// [Beta] Google Cloud Storage URI from which the model was imported. Only applicable for imported models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelUri")]
         public virtual string ModelUri { get; set; }
 
-        /// <summary>A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the
-        /// AR order, the degree of differencing, and the MA order.</summary>
+        /// <summary>
+        /// A specification of the non-seasonal part of the ARIMA model: the three components (p, d, q) are the AR
+        /// order, the degree of differencing, and the MA order.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
         public virtual ArimaOrder NonSeasonalOrder { get; set; }
 
@@ -7643,14 +8069,16 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
         public virtual string OptimizationStrategy { get; set; }
 
-        /// <summary>Whether to preserve the input structs in output feature names. Suppose there is a struct A with
-        /// field b. When false (default), the output feature name is A_b. When true, the output feature name is
-        /// A.b.</summary>
+        /// <summary>
+        /// Whether to preserve the input structs in output feature names. Suppose there is a struct A with field b.
+        /// When false (default), the output feature name is A_b. When true, the output feature name is A.b.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preserveInputStructs")]
         public virtual System.Nullable<bool> PreserveInputStructs { get; set; }
 
-        /// <summary>Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree
-        /// models.</summary>
+        /// <summary>
+        /// Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree models.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subsample")]
         public virtual System.Nullable<double> Subsample { get; set; }
 
@@ -7658,8 +8086,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDataColumn")]
         public virtual string TimeSeriesDataColumn { get; set; }
 
-        /// <summary>The id column that will be used to indicate different time series to forecast in
-        /// parallel.</summary>
+        /// <summary>
+        /// The id column that will be used to indicate different time series to forecast in parallel.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumn")]
         public virtual string TimeSeriesIdColumn { get; set; }
 
@@ -7681,7 +8110,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a single training query run for the model.</summary>
     public class TrainingRun : Google.Apis.Requests.IDirectResponseSchema
@@ -7694,12 +8123,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
         public virtual EvaluationMetrics EvaluationMetrics { get; set; }
 
-        /// <summary>Global explanations for important features of the model. For multi-class models, there is one entry
-        /// for each label class. For other models, there is only one entry in the list.</summary>
+        /// <summary>
+        /// Global explanations for important features of the model. For multi-class models, there is one entry for each
+        /// label class. For other models, there is only one entry in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalExplanations")]
         public virtual System.Collections.Generic.IList<GlobalExplanation> GlobalExplanations { get; set; }
 
-        /// <summary>Output of each iteration run, results.size() <= max_iterations.</summary>
+        /// <summary>Output of each iteration run, results.size() &lt;= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; }
 
@@ -7707,14 +8138,15 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>Options that were used for this training run, includes user specified and default options that were
-        /// used.</summary>
+        /// <summary>
+        /// Options that were used for this training run, includes user specified and default options that were used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOptions")]
         public virtual TrainingOptions TrainingOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class TransactionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7724,16 +8156,20 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of
-    /// Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define
-    /// UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference
-    /// /standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions</summary>
+    /// <summary>
+    /// This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard
+    /// SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF
+    /// resources. For additional information on migrating, see:
+    /// https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
+    /// </summary>
     public class UserDefinedFunctionResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a
-        /// inline code resource is equivalent to providing a URI for a file containing the same code.</summary>
+        /// <summary>
+        /// [Pick one] An inline resource that contains code for a user-defined function (UDF). Providing a inline code
+        /// resource is equivalent to providing a URI for a file containing the same code.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineCode")]
         public virtual string InlineCode { get; set; }
 
@@ -7743,7 +8179,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7751,9 +8187,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
-        /// <summary>Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to
-        /// false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries
-        /// and views that reference this view must use the same flag value.</summary>
+        /// <summary>
+        /// Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false,
+        /// the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
+        /// views that reference this view must use the same flag value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; }
 

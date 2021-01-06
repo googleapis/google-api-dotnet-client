@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Artifact Registry API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -103,6 +104,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -122,9 +124,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -138,8 +142,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -151,8 +157,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -168,7 +176,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -273,7 +280,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -293,7 +299,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 this.service = service;
                 Operations = new OperationsResource(service);
                 Repositories = new RepositoriesResource(service);
-
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -311,20 +316,22 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 public class GetRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -334,11 +341,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the operation resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -353,7 +358,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -363,29 +367,32 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -394,7 +401,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         Name = name;
                         InitParameters();
                     }
-
 
                     /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -412,7 +418,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -426,7 +431,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -460,9 +464,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Repositories resource.</summary>
             public virtual RepositoriesResource Repositories { get; }
 
@@ -480,7 +484,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     this.service = service;
                     Files = new FilesResource(service);
                     Packages = new PackagesResource(service);
-
                 }
 
                 /// <summary>Gets the Files resource.</summary>
@@ -498,9 +501,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     public FilesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-
                     }
-
 
                     /// <summary>Gets a file.</summary>
                     /// <param name="name">The name of the file to retrieve.</param>
@@ -519,11 +520,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-
                         /// <summary>The name of the file to retrieve.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -538,7 +537,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -548,7 +546,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/files/.*$",
                             });
                         }
-
                     }
 
                     /// <summary>Lists files.</summary>
@@ -568,17 +565,18 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-
                         /// <summary>The name of the parent resource whose files will be listed.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>An expression for filtering the results of the request. Filter rules are case
-                        /// insensitive. The fields eligible for filtering are: * `name` * `owner` An example of using a
-                        /// filter: * `name="projects/p1/locations/us-central1/repositories/repo1/files/a/b"` --> Files
-                        /// with an ID starting with "a/b/". * `owner="projects/p1/locations/us-
-                        /// central1/repositories/repo1/packages/pkg1/versions/1.0"` --> Files owned by the version
-                        /// `1.0` in package `pkg1`.</summary>
+                        /// <summary>
+                        /// An expression for filtering the results of the request. Filter rules are case insensitive.
+                        /// The fields eligible for filtering are: * `name` * `owner` An example of using a filter: *
+                        /// `name="projects/p1/locations/us-central1/repositories/repo1/files/a/b/*"` --&amp;gt; Files
+                        /// with an ID starting with "a/b/". *
+                        /// `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
+                        /// --&amp;gt; Files owned by the version `1.0` in package `pkg1`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -589,7 +587,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -604,7 +601,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -638,9 +634,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
+
                 /// <summary>Gets the Packages resource.</summary>
                 public virtual PackagesResource Packages { get; }
 
@@ -658,7 +654,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         this.service = service;
                         Tags = new TagsResource(service);
                         Versions = new VersionsResource(service);
-
                     }
 
                     /// <summary>Gets the Tags resource.</summary>
@@ -676,9 +671,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         public TagsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-
                         }
-
 
                         /// <summary>Creates a tag.</summary>
                         /// <param name="body">The body of the request.</param>
@@ -699,7 +692,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the parent resource where the tag will be created.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -707,7 +699,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             /// <summary>The tag id to use for this repository.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string TagId { get; set; }
-
 
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.ArtifactRegistry.v1beta1.Data.Tag Body { get; set; }
@@ -728,7 +719,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "parent",
@@ -746,7 +736,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
 
                         /// <summary>Deletes a tag.</summary>
@@ -766,11 +755,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the tag to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
@@ -785,7 +772,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -795,7 +781,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/tags/[^/]+$",
                                 });
                             }
-
                         }
 
                         /// <summary>Gets a tag.</summary>
@@ -815,11 +800,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the tag to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
@@ -834,7 +817,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -844,7 +826,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/tags/[^/]+$",
                                 });
                             }
-
                         }
 
                         /// <summary>Lists tags.</summary>
@@ -864,16 +845,17 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the parent resource whose tags will be listed.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>An expression for filtering the results of the request. Filter rules are case
+                            /// <summary>
+                            /// An expression for filtering the results of the request. Filter rules are case
                             /// insensitive. The fields eligible for filtering are: * `version` An example of using a
-                            /// filter: * `version="projects/p1/locations/us-
-                            /// central1/repositories/repo1/packages/pkg1/versions/1.0"` --> Tags that are applied to
-                            /// the version `1.0` in package `pkg1`.</summary>
+                            /// filter: *
+                            /// `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
+                            /// --&amp;gt; Tags that are applied to the version `1.0` in package `pkg1`.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
@@ -881,11 +863,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>The next_page_token value returned from a previous list request, if
-                            /// any.</summary>
+                            /// <summary>
+                            /// The next_page_token value returned from a previous list request, if any.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -900,7 +882,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "parent",
@@ -934,13 +915,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
 
                         /// <summary>Updates a tag.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The name of the tag, for example: "projects/p1/locations/us-
-                        /// central1/repositories/repo1/packages/pkg1/tags/tag1".</param>
+                        /// <param name="name">
+                        /// The name of the tag, for example:
+                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+                        /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1beta1.Data.Tag body, string name)
                         {
                             return new PatchRequest(service, body, name);
@@ -957,18 +939,19 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
-                            /// <summary>The name of the tag, for example: "projects/p1/locations/us-
-                            /// central1/repositories/repo1/packages/pkg1/tags/tag1".</summary>
+                            /// <summary>
+                            /// The name of the tag, for example:
+                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>The update mask applies to the resource. For the `FieldMask` definition, see
-                            /// https://developers.google.com/protocol-
-                            /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                            /// <summary>
+                            /// The update mask applies to the resource. For the `FieldMask` definition, see
+                            /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
-
 
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.ArtifactRegistry.v1beta1.Data.Tag Body { get; set; }
@@ -989,7 +972,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -1007,9 +989,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
                     }
+
                     /// <summary>Gets the Versions resource.</summary>
                     public virtual VersionsResource Versions { get; }
 
@@ -1025,20 +1007,22 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         public VersionsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
-
                         }
 
-
-                        /// <summary>Deletes a version and all of its content. The returned operation will complete once
-                        /// the version has been deleted.</summary>
+                        /// <summary>
+                        /// Deletes a version and all of its content. The returned operation will complete once the
+                        /// version has been deleted.
+                        /// </summary>
                         /// <param name="name">The name of the version to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>Deletes a version and all of its content. The returned operation will complete once
-                        /// the version has been deleted.</summary>
+                        /// <summary>
+                        /// Deletes a version and all of its content. The returned operation will complete once the
+                        /// version has been deleted.
+                        /// </summary>
                         public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.Operation>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -1048,16 +1032,16 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the version to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
-                            /// <summary>By default, a version that is tagged may not be deleted. If force=true, the
-                            /// version and any tags pointing to the version are deleted.</summary>
+                            /// <summary>
+                            /// By default, a version that is tagged may not be deleted. If force=true, the version and
+                            /// any tags pointing to the version are deleted.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> Force { get; set; }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "delete";
@@ -1072,7 +1056,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -1090,7 +1073,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
 
                         /// <summary>Gets a version</summary>
@@ -1110,7 +1092,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the version to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1122,19 +1103,22 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             /// <summary>The view that should be returned in the response.</summary>
                             public enum ViewEnum
                             {
-                                /// <summary>The default / unset value. The API will default to the BASIC
-                                /// view.</summary>
+                                /// <summary>
+                                /// The default / unset value. The API will default to the BASIC view.
+                                /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("VERSION_VIEW_UNSPECIFIED")]
                                 VERSIONVIEWUNSPECIFIED,
-                                /// <summary>Includes basic information about the version, but not any related
-                                /// tags.</summary>
+
+                                /// <summary>
+                                /// Includes basic information about the version, but not any related tags.
+                                /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC,
+
                                 /// <summary>Include everything.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
                             }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "get";
@@ -1149,7 +1133,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "name",
@@ -1167,7 +1150,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
 
                         /// <summary>Lists versions.</summary>
@@ -1187,7 +1169,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 InitParameters();
                             }
 
-
                             /// <summary>The name of the parent resource whose versions will be listed.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1200,8 +1181,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>The next_page_token value returned from a previous list request, if
-                            /// any.</summary>
+                            /// <summary>
+                            /// The next_page_token value returned from a previous list request, if any.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -1212,19 +1194,22 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             /// <summary>The view that should be returned in the response.</summary>
                             public enum ViewEnum
                             {
-                                /// <summary>The default / unset value. The API will default to the BASIC
-                                /// view.</summary>
+                                /// <summary>
+                                /// The default / unset value. The API will default to the BASIC view.
+                                /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("VERSION_VIEW_UNSPECIFIED")]
                                 VERSIONVIEWUNSPECIFIED,
-                                /// <summary>Includes basic information about the version, but not any related
-                                /// tags.</summary>
+
+                                /// <summary>
+                                /// Includes basic information about the version, but not any related tags.
+                                /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                                 BASIC,
+
                                 /// <summary>Include everything.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL,
                             }
-
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -1239,7 +1224,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             protected override void InitParameters()
                             {
                                 base.InitParameters();
-
                                 RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "parent",
@@ -1281,20 +1265,23 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                     Pattern = null,
                                 });
                             }
-
                         }
                     }
 
-                    /// <summary>Deletes a package and all of its versions and tags. The returned operation will
-                    /// complete once the package has been deleted.</summary>
+                    /// <summary>
+                    /// Deletes a package and all of its versions and tags. The returned operation will complete once
+                    /// the package has been deleted.
+                    /// </summary>
                     /// <param name="name">The name of the package to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a package and all of its versions and tags. The returned operation will
-                    /// complete once the package has been deleted.</summary>
+                    /// <summary>
+                    /// Deletes a package and all of its versions and tags. The returned operation will complete once
+                    /// the package has been deleted.
+                    /// </summary>
                     public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -1304,11 +1291,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-
                         /// <summary>The name of the package to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "delete";
@@ -1323,7 +1308,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -1333,7 +1317,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Gets a package.</summary>
@@ -1353,11 +1336,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-
                         /// <summary>The name of the package to retrieve.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
@@ -1372,7 +1353,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "name",
@@ -1382,7 +1362,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$",
                             });
                         }
-
                     }
 
                     /// <summary>Lists packages.</summary>
@@ -1402,7 +1381,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             InitParameters();
                         }
 
-
                         /// <summary>The name of the parent resource whose packages will be listed.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1414,7 +1392,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
 
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
@@ -1429,7 +1406,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
@@ -1455,12 +1431,13 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                                 Pattern = null,
                             });
                         }
-
                     }
                 }
 
-                /// <summary>Creates a repository. The returned Operation will finish once the repository has been
-                /// created. Its response will be the created Repository.</summary>
+                /// <summary>
+                /// Creates a repository. The returned Operation will finish once the repository has been created. Its
+                /// response will be the created Repository.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The name of the parent resource where the repository will be created.</param>
                 public virtual CreateRequest Create(Google.Apis.ArtifactRegistry.v1beta1.Data.Repository body, string parent)
@@ -1468,8 +1445,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a repository. The returned Operation will finish once the repository has been
-                /// created. Its response will be the created Repository.</summary>
+                /// <summary>
+                /// Creates a repository. The returned Operation will finish once the repository has been created. Its
+                /// response will be the created Repository.
+                /// </summary>
                 public class CreateRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1480,7 +1459,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the parent resource where the repository will be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1488,7 +1466,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     /// <summary>The repository id to use for this repository.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("repositoryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RepositoryId { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ArtifactRegistry.v1beta1.Data.Repository Body { get; set; }
@@ -1509,7 +1486,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1527,21 +1503,24 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
-                /// <summary>Deletes a repository and all of its contents. The returned Operation will finish once the
-                /// repository has been deleted. It will not have any Operation metadata and will return a
-                /// google.protobuf.Empty response.</summary>
+                /// <summary>
+                /// Deletes a repository and all of its contents. The returned Operation will finish once the repository
+                /// has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty
+                /// response.
+                /// </summary>
                 /// <param name="name">The name of the repository to delete.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a repository and all of its contents. The returned Operation will finish once the
-                /// repository has been deleted. It will not have any Operation metadata and will return a
-                /// google.protobuf.Empty response.</summary>
+                /// <summary>
+                /// Deletes a repository and all of its contents. The returned Operation will finish once the repository
+                /// has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty
+                /// response.
+                /// </summary>
                 public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1551,11 +1530,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the repository to delete.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -1570,7 +1547,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1580,7 +1556,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Gets a repository.</summary>
@@ -1600,11 +1575,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the repository to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -1619,7 +1592,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1629,12 +1601,13 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Gets the IAM policy for a given resource.</summary>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
                 public virtual GetIamPolicyRequest GetIamPolicy(string resource)
                 {
                     return new GetIamPolicyRequest(service, resource);
@@ -1650,21 +1623,23 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
 
-                    /// <summary>Optional. The policy format version to be returned. Valid values are 0, 1, and 3.
-                    /// Requests specifying an invalid value will be rejected. Requests for policies with any
-                    /// conditional bindings must specify version 3. Policies without any conditional bindings may
-                    /// specify any valid value or leave the field unset. To learn which resources support conditions in
-                    /// their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions
-                    /// /resource-policies).</summary>
+                    /// <summary>
+                    /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                    /// specifying an invalid value will be rejected. Requests for policies with any conditional
+                    /// bindings must specify version 3. Policies without any conditional bindings may specify any valid
+                    /// value or leave the field unset. To learn which resources support conditions in their IAM
+                    /// policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "getIamPolicy";
@@ -1679,7 +1654,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
@@ -1697,7 +1671,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Lists repositories.</summary>
@@ -1717,7 +1690,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the parent resource whose repositories will be listed.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1729,7 +1701,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -1744,7 +1715,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -1770,13 +1740,13 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates a repository.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The name of the repository, for example: "projects/p1/locations/us-
-                /// central1/repositories/repo1".</param>
+                /// <param name="name">
+                /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1beta1.Data.Repository body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1793,18 +1763,18 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The name of the repository, for example: "projects/p1/locations/us-
-                    /// central1/repositories/repo1".</summary>
+                    /// <summary>
+                    /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-
-                    /// buffers/docs/reference/google.protobuf#fieldmask</summary>
+                    /// <summary>
+                    /// The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ArtifactRegistry.v1beta1.Data.Repository Body { get; set; }
@@ -1825,7 +1795,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1843,13 +1812,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Updates the IAM policy for a given resource.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
-                /// documentation for the appropriate value for this field.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
+                /// the appropriate value for this field.
+                /// </param>
                 public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ArtifactRegistry.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(service, body, resource);
@@ -1866,12 +1836,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
-                    /// documentation for the appropriate value for this field.</summary>
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ArtifactRegistry.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
@@ -1892,7 +1862,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
@@ -1902,13 +1871,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Tests if the caller has a list of permissions on a resource.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
-                /// documentation for the appropriate value for this field.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.
+                /// </param>
                 public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ArtifactRegistry.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(service, body, resource);
@@ -1925,12 +1895,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
-                    /// operation documentation for the appropriate value for this field.</summary>
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Resource { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.ArtifactRegistry.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
@@ -1951,7 +1921,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
@@ -1961,7 +1930,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                         });
                     }
-
                 }
             }
 
@@ -1982,11 +1950,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>Resource name for the location.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
@@ -2001,7 +1967,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2011,7 +1976,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         Pattern = @"^projects/[^/]+/locations/[^/]+$",
                     });
                 }
-
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
@@ -2031,7 +1995,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                     InitParameters();
                 }
 
-
                 /// <summary>The resource that owns the locations collection, if applicable.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2048,7 +2011,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2062,7 +2024,6 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -2096,82 +2057,90 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                         Pattern = null,
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.ArtifactRegistry.v1beta1.Data
-{    
-
+{
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. If the condition evaluates to `true`, then this
-        /// binding applies to the current request. If the condition evaluates to `false`, then this binding does not
-        /// apply to the current request. However, a different role binding might grant the same role to one or more of
-        /// the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
 
-        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
-        /// following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or
-        /// without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is
-        /// authenticated with a Google account or a service account. * `user:{emailid}`: An email address that
-        /// represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An
-        /// email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
-        /// `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. *
+        /// <summary>
+        /// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific
+        /// Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+        /// represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`:
+        /// An email address that represents a Google group. For example, `admins@example.com`. *
         /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
         /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
         /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
-        /// service account that has been recently deleted. For example, `my-other-
-        /// app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value
-        /// reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. *
-        /// `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google
-        /// group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the
-        /// group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the
-        /// binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For
-        /// example, `google.com` or `example.com`. </summary>
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that
+        /// domain. For example, `google.com` or `example.com`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
-        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or
-        /// `roles/owner`.</summary>
+        /// <summary>
+        /// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like
-    /// expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.
-    /// Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
-    /// expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description:
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
     /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
     /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
-    /// visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation):
-    /// title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New
-    /// message received at ' + string(document.create_time)" The exact variables and functions that may be referenced
-    /// within an expression are determined by the service that evaluates it. See the service documentation for
-    /// additional information.</summary>
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
     public class Expr : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Description of the expression. This is a longer text which describes the expression, e.g.
-        /// when hovered over it in a UI.</summary>
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2179,19 +2148,23 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
 
-        /// <summary>Optional. String indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. Title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Files store content that is potentially associated with Packages or Versions.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
@@ -2204,8 +2177,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hashes")]
         public virtual System.Collections.Generic.IList<Hash> Hashes { get; set; }
 
-        /// <summary>The name of the file, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/files/a/b/c.txt".</summary>
+        /// <summary>
+        /// The name of the file, for example: "projects/p1/locations/us-central1/repositories/repo1/files/a/b/c.txt".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2223,7 +2197,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A hash of file content.</summary>
     public class Hash : Google.Apis.Requests.IDirectResponseSchema
@@ -2238,7 +2212,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from listing files.</summary>
     public class ListFilesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2247,14 +2221,15 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<File> Files { get; set; }
 
-        /// <summary>The token to retrieve the next page of files, or empty if there are no more files to
-        /// return.</summary>
+        /// <summary>
+        /// The token to retrieve the next page of files, or empty if there are no more files to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2269,7 +2244,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2284,13 +2259,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from listing packages.</summary>
     public class ListPackagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The token to retrieve the next page of packages, or empty if there are no more packages to
-        /// return.</summary>
+        /// <summary>
+        /// The token to retrieve the next page of packages, or empty if there are no more packages to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2300,13 +2276,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from listing repositories.</summary>
     public class ListRepositoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The token to retrieve the next page of repositories, or empty if there are no more repositories to
-        /// return.</summary>
+        /// <summary>
+        /// The token to retrieve the next page of repositories, or empty if there are no more repositories to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2316,13 +2293,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from listing tags.</summary>
     public class ListTagsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The token to retrieve the next page of tags, or empty if there are no more tags to
-        /// return.</summary>
+        /// <summary>
+        /// The token to retrieve the next page of tags, or empty if there are no more tags to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2332,13 +2310,14 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response from listing versions.</summary>
     public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The token to retrieve the next page of versions, or empty if there are no more versions to
-        /// return.</summary>
+        /// <summary>
+        /// The token to retrieve the next page of versions, or empty if there are no more versions to return.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2348,7 +2327,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
@@ -2357,8 +2336,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-
-        /// east1"}</summary>
+        /// <summary>
+        /// Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -2370,20 +2350,24 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
-        /// /example-project/locations/us-east1"`</summary>
+        /// <summary>
+        /// Resource name for the location, which may vary between implementations. For example:
+        /// `"projects/example-project/locations/us-east1"`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -2391,29 +2375,34 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Packages are named collections of versions.</summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
@@ -2426,73 +2415,81 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The name of the package, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/packages/pkg1".</summary>
+        /// <summary>
+        /// The name of the package, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The time when the package was last updated. This includes publishing a new version of the
-        /// package.</summary>
+        /// <summary>
+        /// The time when the package was last updated. This includes publishing a new version of the package.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud
-    /// resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`.
-    /// Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a
-    /// named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some
-    /// types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that
-    /// allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on
-    /// attributes of the request, the resource, or both. To learn which resources support conditions in their IAM
-    /// policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON
-    /// example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [
-    /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-
-    /// id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [
-    /// "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access
-    /// after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
-    /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com -
-    /// group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-    /// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role:
-    /// roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access
-    /// after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version:
-    /// 3 For a description of IAM and its features, see the [IAM
-    /// documentation](https://cloud.google.com/iam/docs/).</summary>
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can
+    /// be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of
+    /// permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google
+    /// Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to
+    /// a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of
+    /// the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the
+    /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines
-        /// how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.</summary>
+        /// <summary>
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and
+        /// when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
         /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
         /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
         /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
         /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
         /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
-        /// conditions in the version `3` policy are lost.</summary>
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an
-        /// invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`.
-        /// This requirement applies to the following operations: * Getting a policy that includes a conditional role
-        /// binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy *
-        /// Removing any role binding, with or without a condition, from a policy that includes conditions
-        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call
-        /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version
-        /// `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any
-        /// conditions, operations on that policy may specify any valid version or leave the field unset. To learn which
-        /// resources support conditions in their IAM policies, see the [IAM
-        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).</summary>
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-
-    }    
+    }
 
     /// <summary>A Repository for storing artifacts with a specific format.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
@@ -2509,20 +2506,25 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
-        /// <summary>The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the
-        /// contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys
-        /// /my-key`. This value may not be changed after the Repository has been created.</summary>
+        /// <summary>
+        /// The Cloud KMS resource name of the customer managed encryption key that’s used to encrypt the contents of
+        /// the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        /// This value may not be changed after the Repository has been created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
-        /// <summary>Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values
-        /// may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain
-        /// lowercase letters, numeric characters, underscores, and dashes.</summary>
+        /// <summary>
+        /// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no
+        /// longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase
+        /// letters, numeric characters, underscores, and dashes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The name of the repository, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1".</summary>
+        /// <summary>
+        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2532,76 +2534,89 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
-        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
-        /// might reject them.</summary>
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects) might
+        /// reject them.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Tags point to a version and represent an alternative name that can be used to access the
-    /// version.</summary>
+    /// <summary>
+    /// Tags point to a version and represent an alternative name that can be used to access the version.
+    /// </summary>
     public class Tag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the tag, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/packages/pkg1/tags/tag1".</summary>
+        /// <summary>
+        /// The name of the tag, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The name of the version the tag refers to, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"</summary>
+        /// <summary>
+        /// The name of the version the tag refers to, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
-        /// 'storage.*') are not allowed. For more information see [IAM
-        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        /// <summary>
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or 'storage.*')
+        /// are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2612,10 +2627,12 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The body of a version resource. A version resource represents a collection of components, such as files
-    /// and other data. This may correspond to a version in many package management schemes.</summary>
+    /// <summary>
+    /// The body of a version resource. A version resource represents a collection of components, such as files and
+    /// other data. This may correspond to a version in many package management schemes.
+    /// </summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time when the version was created.</summary>
@@ -2626,13 +2643,16 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The name of the version, for example: "projects/p1/locations/us-
-        /// central1/repositories/repo1/packages/pkg1/versions/art1".</summary>
+        /// <summary>
+        /// The name of the version, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. A list of related tags. Will contain up to 100 tags that reference this
-        /// version.</summary>
+        /// <summary>
+        /// Output only. A list of related tags. Will contain up to 100 tags that reference this version.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedTags")]
         public virtual System.Collections.Generic.IList<Tag> RelatedTags { get; set; }
 

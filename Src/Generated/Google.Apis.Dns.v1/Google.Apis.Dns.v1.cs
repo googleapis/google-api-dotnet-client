@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -77,7 +82,6 @@ namespace Google.Apis.Dns.v1
 
             /// <summary>View and manage your DNS records hosted by Google Cloud DNS</summary>
             public static string NdevClouddnsReadwrite = "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud DNS API.</summary>
@@ -94,10 +98,7 @@ namespace Google.Apis.Dns.v1
 
             /// <summary>View and manage your DNS records hosted by Google Cloud DNS</summary>
             public const string NdevClouddnsReadwrite = "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
-
         }
-
-
 
         /// <summary>Gets the Changes resource.</summary>
         public virtual ChangesResource Changes { get; }
@@ -139,6 +140,7 @@ namespace Google.Apis.Dns.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -158,9 +160,11 @@ namespace Google.Apis.Dns.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -174,8 +178,10 @@ namespace Google.Apis.Dns.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -187,8 +193,10 @@ namespace Google.Apis.Dns.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -204,7 +212,6 @@ namespace Google.Apis.Dns.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -308,16 +315,14 @@ namespace Google.Apis.Dns.v1
         public ChangesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Atomically update the ResourceRecordSet collection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.Change body, string project, string managedZone)
         {
             return new CreateRequest(service, body, project, managedZone);
@@ -335,21 +340,22 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Change Body { get; set; }
@@ -370,7 +376,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -396,16 +401,16 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Fetch the representation of an existing Change.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
-        /// <param name="changeId">The identifier of the requested change, from a previous
-        /// ResourceRecordSetsChangeResponse.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
+        /// <param name="changeId">
+        /// The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse.
+        /// </param>
         public virtual GetRequest Get(string project, string managedZone, string changeId)
         {
             return new GetRequest(service, project, managedZone, changeId);
@@ -423,26 +428,28 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>The identifier of the requested change, from a previous
-            /// ResourceRecordSetsChangeResponse.</summary>
+            /// <summary>
+            /// The identifier of the requested change, from a previous ResourceRecordSetsChangeResponse.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("changeId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ChangeId { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -457,7 +464,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -491,14 +497,13 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Enumerate Changes to a ResourceRecordSet collection.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -515,23 +520,27 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -542,6 +551,7 @@ namespace Google.Apis.Dns.v1
             /// <summary>Sorting criterion. The only supported value is change sequence.</summary>
             public enum SortByEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("changeSequence")]
                 ChangeSequence,
             }
@@ -549,7 +559,6 @@ namespace Google.Apis.Dns.v1
             /// <summary>Sorting order direction: 'ascending' or 'descending'.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SortOrder { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -564,7 +573,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -614,7 +622,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -630,15 +637,13 @@ namespace Google.Apis.Dns.v1
         public DnsKeysResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Fetch the representation of an existing DnsKey.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         /// <param name="dnsKeyId">The identifier of the requested DnsKey.</param>
         public virtual GetRequest Get(string project, string managedZone, string dnsKeyId)
         {
@@ -657,13 +662,13 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
@@ -671,16 +676,19 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("dnsKeyId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DnsKeyId { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
 
-            /// <summary>An optional comma-separated list of digest types to compute and display for key signing keys.
-            /// If omitted, the recommended digest type will be computed and displayed.</summary>
+            /// <summary>
+            /// An optional comma-separated list of digest types to compute and display for key signing keys. If
+            /// omitted, the recommended digest type will be computed and displayed.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("digestType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DigestType { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -695,7 +703,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -737,14 +744,13 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Enumerate DnsKeys to a ResourceRecordSet collection.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -761,31 +767,36 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>An optional comma-separated list of digest types to compute and display for key signing keys.
-            /// If omitted, the recommended digest type will be computed and displayed.</summary>
+            /// <summary>
+            /// An optional comma-separated list of digest types to compute and display for key signing keys. If
+            /// omitted, the recommended digest type will be computed and displayed.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("digestType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DigestType { get; set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -800,7 +811,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -842,7 +852,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -858,16 +867,12 @@ namespace Google.Apis.Dns.v1
         public ManagedZoneOperationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Fetch the representation of an existing Operation.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request.</param>
-        /// <param
-        /// name="operation">Identifies the operation addressed by this request.</param>
+        /// <param name="managedZone">Identifies the managed zone addressed by this request.</param>
+        /// <param name="operation">Identifies the operation addressed by this request.</param>
         public virtual GetRequest Get(string project, string managedZone, string operation)
         {
             return new GetRequest(service, project, managedZone, operation);
@@ -885,7 +890,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -898,11 +902,12 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -917,7 +922,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -951,13 +955,11 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Enumerate Operations for the given ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request.</param>
+        /// <param name="managedZone">Identifies the managed zone addressed by this request.</param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -974,7 +976,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -983,13 +984,17 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1000,12 +1005,14 @@ namespace Google.Apis.Dns.v1
             /// <summary>Sorting criterion. The only supported values are START_TIME and ID.</summary>
             public enum SortByEnum
             {
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("startTime")]
                 StartTime,
+
+                /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("id")]
                 Id,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1020,7 +1027,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1062,7 +1068,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1078,9 +1083,7 @@ namespace Google.Apis.Dns.v1
         public ManagedZonesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Create a new ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
@@ -1101,16 +1104,16 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
@@ -1131,7 +1134,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1149,14 +1151,13 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Delete a previously created ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual DeleteRequest Delete(string project, string managedZone)
         {
             return new DeleteRequest(service, project, managedZone);
@@ -1173,21 +1174,22 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1202,7 +1204,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1228,14 +1229,13 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Fetch the representation of an existing ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual GetRequest Get(string project, string managedZone)
         {
             return new GetRequest(service, project, managedZone);
@@ -1252,21 +1252,22 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1281,7 +1282,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1307,7 +1307,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Enumerate ManagedZones that have been created but not yet deleted.</summary>
@@ -1327,7 +1326,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1336,16 +1334,19 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("dnsName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DnsName { get; set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1360,7 +1361,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1394,15 +1394,14 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Apply a partial update to an existing ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
             return new PatchRequest(service, body, project, managedZone);
@@ -1420,21 +1419,22 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
@@ -1455,7 +1455,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1481,15 +1480,14 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update an existing ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.ManagedZone body, string project, string managedZone)
         {
             return new UpdateRequest(service, body, project, managedZone);
@@ -1507,21 +1505,22 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.ManagedZone Body { get; set; }
@@ -1542,7 +1541,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1568,7 +1566,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -1584,9 +1581,7 @@ namespace Google.Apis.Dns.v1
         public PoliciesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Create a new Policy</summary>
         /// <param name="body">The body of the request.</param>
@@ -1607,16 +1602,16 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
@@ -1637,7 +1632,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1655,21 +1649,21 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
-        /// <summary>Delete a previously created Policy. Will fail if the policy is still being referenced by a
-        /// network.</summary>
+        /// <summary>
+        /// Delete a previously created Policy. Will fail if the policy is still being referenced by a network.
+        /// </summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param name="policy">User
-        /// given friendly name of the policy addressed by this request.</param>
+        /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual DeleteRequest Delete(string project, string policy)
         {
             return new DeleteRequest(service, project, policy);
         }
 
-        /// <summary>Delete a previously created Policy. Will fail if the policy is still being referenced by a
-        /// network.</summary>
+        /// <summary>
+        /// Delete a previously created Policy. Will fail if the policy is still being referenced by a network.
+        /// </summary>
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1680,7 +1674,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1689,11 +1682,12 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("policy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Policy { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "delete";
@@ -1708,7 +1702,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1734,13 +1727,11 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Fetch the representation of an existing Policy.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param name="policy">User
-        /// given friendly name of the policy addressed by this request.</param>
+        /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual GetRequest Get(string project, string policy)
         {
             return new GetRequest(service, project, policy);
@@ -1757,7 +1748,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1766,11 +1756,12 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("policy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Policy { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -1785,7 +1776,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1811,7 +1801,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Enumerate all Policies associated with a project.</summary>
@@ -1831,21 +1820,23 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -1860,7 +1851,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1886,14 +1876,12 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Apply a partial update to an existing Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param name="policy">User
-        /// given friendly name of the policy addressed by this request.</param>
+        /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
         {
             return new PatchRequest(service, body, project, policy);
@@ -1911,7 +1899,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -1920,11 +1907,12 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("policy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Policy { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
@@ -1945,7 +1933,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -1971,14 +1958,12 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Update an existing Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param name="policy">User
-        /// given friendly name of the policy addressed by this request.</param>
+        /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual UpdateRequest Update(Google.Apis.Dns.v1.Data.Policy body, string project, string policy)
         {
             return new UpdateRequest(service, body, project, policy);
@@ -1996,7 +1981,6 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
@@ -2005,11 +1989,12 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("policy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Policy { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Dns.v1.Data.Policy Body { get; set; }
@@ -2030,7 +2015,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -2056,7 +2040,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2072,9 +2055,7 @@ namespace Google.Apis.Dns.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Fetch the representation of an existing Project.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
@@ -2093,16 +2074,16 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>For mutating operation requests only. An optional identifier specified by the client. Must be
-            /// unique for operation resources in the Operations collection.</summary>
+            /// <summary>
+            /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for
+            /// operation resources in the Operations collection.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientOperationId { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
@@ -2117,7 +2098,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -2135,7 +2115,6 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 
@@ -2151,15 +2130,13 @@ namespace Google.Apis.Dns.v1
         public ResourceRecordSetsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Enumerate ResourceRecordSets that have been created but not yet deleted.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
-        /// <param
-        /// name="managedZone">Identifies the managed zone addressed by this request. Can be the managed zone name or
-        /// ID.</param>
+        /// <param name="managedZone">
+        /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+        /// </param>
         public virtual ListRequest List(string project, string managedZone)
         {
             return new ListRequest(service, project, managedZone);
@@ -2176,18 +2153,20 @@ namespace Google.Apis.Dns.v1
                 InitParameters();
             }
 
-
             /// <summary>Identifies the project addressed by this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Identifies the managed zone addressed by this request. Can be the managed zone name or
-            /// ID.</summary>
+            /// <summary>
+            /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>Optional. Maximum number of results to be returned. If unspecified, the server will decide how
-            /// many results to return.</summary>
+            /// <summary>
+            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
+            /// results to return.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -2195,16 +2174,19 @@ namespace Google.Apis.Dns.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
-            /// <summary>Optional. A tag returned by a previous list request that was truncated. Use this parameter to
-            /// continue a previous list request.</summary>
+            /// <summary>
+            /// Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a
+            /// previous list request.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Restricts the list to return only records of this type. If present, the "name" parameter must
-            /// also be present.</summary>
+            /// <summary>
+            /// Restricts the list to return only records of this type. If present, the "name" parameter must also be
+            /// present.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Type { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -2219,7 +2201,6 @@ namespace Google.Apis.Dns.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                 {
                     Name = "project",
@@ -2269,19 +2250,18 @@ namespace Google.Apis.Dns.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Dns.v1.Data
-{    
-
-    /// <summary>A Change represents a set of ResourceRecordSet additions and deletions applied atomically to a
-    /// ManagedZone. ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the
-    /// Changes collection. In turn the Changes collection also records the past modifications to the ResourceRecordSets
-    /// in a ManagedZone. The current state of the ManagedZone is the sum effect of applying all Change elements in the
-    /// Changes collection in sequence.</summary>
+{
+    /// <summary>
+    /// A Change represents a set of ResourceRecordSet additions and deletions applied atomically to a ManagedZone.
+    /// ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the Changes collection.
+    /// In turn the Changes collection also records the past modifications to the ResourceRecordSets in a ManagedZone.
+    /// The current state of the ManagedZone is the sum effect of applying all Change elements in the Changes collection
+    /// in sequence.
+    /// </summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Which ResourceRecordSets to add?</summary>
@@ -2303,19 +2283,22 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The time that this operation was started by the server (output only). This is in RFC3339 text
-        /// format.</summary>
+        /// <summary>
+        /// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; }
 
-        /// <summary>Status of the operation (output only). A status of "done" means that the request to update the
-        /// authoritative servers has been sent but the servers might not be updated yet.</summary>
+        /// <summary>
+        /// Status of the operation (output only). A status of "done" means that the request to update the authoritative
+        /// servers has been sent but the servers might not be updated yet.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to a request to enumerate Changes to a ResourceRecordSets collection.</summary>
     public class ChangesListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2331,39 +2314,47 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// "snapshot" of collections larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
+        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
+        /// if the contents of the collection change between the first and last paginated list request, the set of all
+        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a "snapshot"
+        /// of collections larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A DNSSEC key pair.</summary>
     public class DnsKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation
-        /// time.</summary>
+        /// <summary>
+        /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
         public virtual string Algorithm { get; set; }
 
-        /// <summary>The time that this resource was created in the control plane. This is in RFC3339 text format.
-        /// Output only.</summary>
+        /// <summary>
+        /// The time that this resource was created in the control plane. This is in RFC3339 text format. Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; }
 
-        /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
-        /// convenience. Has no effect on the resource's function.</summary>
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no
+        /// effect on the resource's function.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are
-        /// needed to construct a DS record that points at this DNS key. Output only.</summary>
+        /// <summary>
+        /// Cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to
+        /// construct a DS record that points at this DNS key. Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digests")]
         public virtual System.Collections.Generic.IList<DnsKeyDigest> Digests { get; set; }
 
@@ -2371,8 +2362,10 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be
-        /// present as DNSKEY Resource Records for the use of resolvers validating existing signatures.</summary>
+        /// <summary>
+        /// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present
+        /// as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
         public virtual System.Nullable<bool> IsActive { get; set; }
 
@@ -2380,11 +2373,13 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
         public virtual System.Nullable<long> KeyLength { get; set; }
 
-        /// <summary>The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this
-        /// DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In
-        /// particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child
-        /// ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified
-        /// in RFC4034 Appendix B. Output only.</summary>
+        /// <summary>
+        /// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key
+        /// tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the
+        /// key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag
+        /// is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+        /// Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyTag")]
         public virtual System.Nullable<int> KeyTag { get; set; }
 
@@ -2395,16 +2390,18 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
 
-        /// <summary>One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag
-        /// set and, when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure
-        /// Entry Point flag will be cleared and this key will be used to sign only resource record sets of other types.
-        /// Immutable after creation time.</summary>
+        /// <summary>
+        /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and,
+        /// when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry
+        /// Point flag will be cleared and this key will be used to sign only resource record sets of other types.
+        /// Immutable after creation time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class DnsKeyDigest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2418,10 +2415,12 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as
-    /// default when adding a new DnsKey.</summary>
+    /// <summary>
+    /// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when
+    /// adding a new DnsKey.
+    /// </summary>
     public class DnsKeySpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>String mnemonic specifying the DNSSEC algorithm of this key.</summary>
@@ -2432,10 +2431,12 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
         public virtual System.Nullable<long> KeyLength { get; set; }
 
-        /// <summary>Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys
-        /// have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of
-        /// type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all
-        /// other types of resource record sets.</summary>
+        /// <summary>
+        /// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the
+        /// Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY.
+        /// Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of
+        /// resource record sets.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
         public virtual string KeyType { get; set; }
 
@@ -2444,7 +2445,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response to a request to enumerate DnsKeys in a ManagedZone.</summary>
     public class DnsKeysListResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2460,30 +2461,37 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// "snapshot" of collections larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
+        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
+        /// if the contents of the collection change between the first and last paginated list request, the set of all
+        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a "snapshot"
+        /// of collections larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a
-    /// resource that represents a DNS zone hosted by the Cloud DNS service.</summary>
+    /// <summary>
+    /// A zone is a subtree of the DNS namespace under one administrative responsibility. A ManagedZone is a resource
+    /// that represents a DNS zone hosted by the Cloud DNS service.
+    /// </summary>
     public class ManagedZone : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time that this resource was created on the server. This is in RFC3339 text format. Output
-        /// only.</summary>
+        /// <summary>
+        /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTime { get; set; }
 
-        /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
-        /// convenience. Has no effect on the managed zone's function.</summary>
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no
+        /// effect on the managed zone's function.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -2495,8 +2503,10 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnssecConfig")]
         public virtual ManagedZoneDnsSecConfig DnssecConfig { get; set; }
 
-        /// <summary>The presence for this field indicates that outbound forwarding is enabled for this zone. The value
-        /// of this field contains the set of destinations to forward to.</summary>
+        /// <summary>
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this
+        /// field contains the set of destinations to forward to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingConfig")]
         public virtual ManagedZoneForwardingConfig ForwardingConfig { get; set; }
 
@@ -2511,64 +2521,82 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-63
-        /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,
-        /// digits or dashes.</summary>
+        /// <summary>
+        /// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters
+        /// long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or
+        /// dashes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name
-        /// servers that all host the same ManagedZones. Most users will leave this field unset.</summary>
+        /// <summary>
+        /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers
+        /// that all host the same ManagedZones. Most users will leave this field unset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServerSet")]
         public virtual string NameServerSet { get; set; }
 
-        /// <summary>Delegate your managed_zone to these virtual name servers; defined by the server (output
-        /// only)</summary>
+        /// <summary>
+        /// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; }
 
-        /// <summary>The presence of this field indicates that DNS Peering is enabled for this zone. The value of this
-        /// field contains the network to peer with.</summary>
+        /// <summary>
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field
+        /// contains the network to peer with.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeringConfig")]
         public virtual ManagedZonePeeringConfig PeeringConfig { get; set; }
 
-        /// <summary>For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible
-        /// from.</summary>
+        /// <summary>
+        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateVisibilityConfig")]
         public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; }
 
-        /// <summary>The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will
-        /// resolve reverse lookup queries using automatically configured records for VPC resources. This only applies
-        /// to networks listed under private_visibility_config.</summary>
+        /// <summary>
+        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve
+        /// reverse lookup queries using automatically configured records for VPC resources. This only applies to
+        /// networks listed under private_visibility_config.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reverseLookupConfig")]
         public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; }
 
-        /// <summary>This field links to the associated service directory namespace. This field should not be set for
-        /// public zones or forwarding zones.</summary>
+        /// <summary>
+        /// This field links to the associated service directory namespace. This field should not be set for public
+        /// zones or forwarding zones.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
         public virtual ManagedZoneServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
 
-        /// <summary>The zone's visibility: public zones are exposed to the Internet, while private zones are visible
-        /// only to Virtual Private Cloud resources.</summary>
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to
+        /// Virtual Private Cloud resources.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneDnsSecConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while
-        /// the state is OFF.</summary>
+        /// <summary>
+        /// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the
+        /// state is OFF.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultKeySpecs")]
         public virtual System.Collections.Generic.IList<DnsKeySpec> DefaultKeySpecs { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while
-        /// the state is OFF.</summary>
+        /// <summary>
+        /// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state
+        /// is OFF.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonExistence")]
         public virtual string NonExistence { get; set; }
 
@@ -2578,28 +2606,31 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneForwardingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of target name servers to forward to. Cloud DNS will select the best available name server if
-        /// more than one target is given.</summary>
+        /// <summary>
+        /// List of target name servers to forward to. Cloud DNS will select the best available name server if more than
+        /// one target is given.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServers")]
         public virtual System.Collections.Generic.IList<ManagedZoneForwardingConfigNameServerTarget> TargetNameServers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneForwardingConfigNameServerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make
-        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go
-        /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
-        /// target.</summary>
+        /// <summary>
+        /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding
+        /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
+        /// Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
 
@@ -2612,7 +2643,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneOperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2622,12 +2653,14 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// consistent snapshot of a collection larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
+        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
+        /// contents of the collection change between the first and last paginated list request, the set of all elements
+        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
+        /// of a collection larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2637,7 +2670,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZonePeeringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2650,27 +2683,31 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZonePeeringConfigTargetNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates
-        /// that the peering connection is active. The producer network can deactivate a zone. The zone is automatically
-        /// deactivated if the producer network that the zone targeted is deleted. Output only.</summary>
+        /// <summary>
+        /// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the
+        /// peering connection is active. The producer network can deactivate a zone. The zone is automatically
+        /// deactivated if the producer network that the zone targeted is deleted. Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivateTime")]
         public virtual string DeactivateTime { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The fully qualified URL of the VPC network to forward queries to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
+        /// <summary>
+        /// The fully qualified URL of the VPC network to forward queries to. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZonePrivateVisibilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2683,21 +2720,23 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZonePrivateVisibilityConfigNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The fully qualified URL of the VPC network to bind to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
+        /// <summary>
+        /// The fully qualified URL of the VPC network to bind to. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneReverseLookupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2706,7 +2745,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Contains information about Service Directory-backed zones.</summary>
     public class ManagedZoneServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -2720,27 +2759,30 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZoneServiceDirectoryConfigNamespace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The time that the namespace backing this zone was deleted, empty string if it still exists. This is
-        /// in RFC3339 text format. Output only.</summary>
+        /// <summary>
+        /// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in
+        /// RFC3339 text format. Output only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
         public virtual string DeletionTime { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The fully qualified URL of the namespace associated with the zone. This should be formatted like ht
-        /// tps://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}</sum
-        /// mary>
+        /// <summary>
+        /// The fully qualified URL of the namespace associated with the zone. This should be formatted like
+        /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceUrl")]
         public virtual string NamespaceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ManagedZonesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2755,45 +2797,54 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
         public virtual System.Collections.Generic.IList<ManagedZone> ManagedZones { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// consistent snapshot of a collection larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
+        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
+        /// contents of the collection change between the first and last paginated list request, the set of all elements
+        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
+        /// of a collection larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>An operation represents a successful mutation performed on a Cloud DNS resource. Operations provide: -
-    /// An audit log of server resource mutations. - A way to recover/retry API calls in the case where the response is
-    /// never received by the caller. Use the caller specified client_operation_id.</summary>
+    /// <summary>
+    /// An operation represents a successful mutation performed on a Cloud DNS resource. Operations provide: - An audit
+    /// log of server resource mutations. - A way to recover/retry API calls in the case where the response is never
+    /// received by the caller. Use the caller specified client_operation_id.
+    /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only populated if the operation targeted a DnsKey (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeyContext")]
         public virtual OperationDnsKeyContext DnsKeyContext { get; set; }
 
-        /// <summary>Unique identifier for the resource. This is the client_operation_id if the client specified it when
-        /// the mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long
-        /// and match the regular expression [-a-z0-9]? (output only)</summary>
+        /// <summary>
+        /// Unique identifier for the resource. This is the client_operation_id if the client specified it when the
+        /// mutation was initiated, otherwise, it is generated by the server. The name must be 1-63 characters long and
+        /// match the regular expression [-a-z0-9]? (output only)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The time that this operation was started by the server. This is in RFC3339 text format (output
-        /// only).</summary>
+        /// <summary>
+        /// The time that this operation was started by the server. This is in RFC3339 text format (output only).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTime { get; set; }
 
-        /// <summary>Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only). A status
-        /// of "DONE" means that the request to update the authoritative servers has been sent, but the servers might
-        /// not be updated yet.</summary>
+        /// <summary>
+        /// Status of the operation. Can be one of the following: "PENDING" or "DONE" (output only). A status of "DONE"
+        /// means that the request to update the authoritative servers has been sent, but the servers might not be
+        /// updated yet.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -2801,8 +2852,10 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>User who requested the operation, for example: user@example.com. cloud-dns-system for operations
-        /// automatically done by the system. (output only)</summary>
+        /// <summary>
+        /// User who requested the operation, for example: user@example.com. cloud-dns-system for operations
+        /// automatically done by the system. (output only)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; }
 
@@ -2812,7 +2865,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class OperationDnsKeyContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2826,7 +2879,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class OperationManagedZoneContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2840,7 +2893,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2851,12 +2904,14 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your page token.
-        /// In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// consistent snapshot of a collection larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
+        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
+        /// contents of the collection change between the first and last paginated list request, the set of all elements
+        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
+        /// of a collection larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -2866,7 +2921,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PoliciesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2878,7 +2933,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PoliciesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2890,30 +2945,38 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A policy is a collection of DNS rules applied to one or more Virtual Private Cloud resources.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Sets an alternative name server for the associated networks. When specified, all DNS queries are
-        /// forwarded to a name server that you choose. Names such as .internal are not available when an alternative
-        /// name server is specified.</summary>
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded
+        /// to a name server that you choose. Names such as .internal are not available when an alternative name server
+        /// is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternativeNameServerConfig")]
         public virtual PolicyAlternativeNameServerConfig AlternativeNameServerConfig { get; set; }
 
-        /// <summary>A mutable string of at most 1024 characters associated with this resource for the user's
-        /// convenience. Has no effect on the policy's function.</summary>
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no
+        /// effect on the policy's function.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
+        /// <summary>
+        /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
         /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
-        /// bound to this policy.</summary>
+        /// bound to this policy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
         public virtual System.Nullable<bool> EnableInboundForwarding { get; set; }
 
-        /// <summary>Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging
-        /// if not set.</summary>
+        /// <summary>
+        /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not
+        /// set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
         public virtual System.Nullable<bool> EnableLogging { get; set; }
 
@@ -2934,29 +2997,32 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PolicyAlternativeNameServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Sets an alternative name server for the associated networks. When specified, all DNS queries are
-        /// forwarded to a name server that you choose. Names such as .internal are not available when an alternative
-        /// name server is specified.</summary>
+        /// <summary>
+        /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded
+        /// to a name server that you choose. Names such as .internal are not available when an alternative name server
+        /// is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServers")]
         public virtual System.Collections.Generic.IList<PolicyAlternativeNameServerConfigTargetNameServer> TargetNameServers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PolicyAlternativeNameServerConfigTargetNameServer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make
-        /// forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go
-        /// to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this
-        /// target.</summary>
+        /// <summary>
+        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding
+        /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
+        /// Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
 
@@ -2969,24 +3035,28 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class PolicyNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The fully qualified URL of the VPC network to bind to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}</summary>
+        /// <summary>
+        /// The fully qualified URL of the VPC network to bind to. This should be formatted like
+        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A project resource. The project is a top level container for resources including Cloud DNS
-    /// ManagedZones. Projects can be created only in the APIs console.</summary>
+    /// <summary>
+    /// A project resource. The project is a top level container for resources including Cloud DNS ManagedZones.
+    /// Projects can be created only in the APIs console.
+    /// </summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>User assigned unique identifier for the resource (output only).</summary>
@@ -3006,7 +3076,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Limits associated with a Project.</summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
@@ -3076,10 +3146,12 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the
-    /// response varying based on configured properties such as geolocation or by weighted random selection.</summary>
+    /// <summary>
+    /// A RRSetRoutingPolicy represents ResourceRecordSet data that will be returned dynamically with the response
+    /// varying based on configured properties such as geolocation or by weighted random selection.
+    /// </summary>
     public class RRSetRoutingPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("geoPolicy")]
@@ -3093,19 +3165,23 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RRSetRoutingPolicyGeoPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the health check for the primary target for a geo location returns an unhealthy status, the
-        /// failover target is returned instead. This failover configuration is not mandatory. If a failover is not
-        /// provided, the primary target won't be healthchecked - we'll return the primarily configured rrdata
-        /// irrespective of whether it is healthy or not.</summary>
+        /// <summary>
+        /// If the health check for the primary target for a geo location returns an unhealthy status, the failover
+        /// target is returned instead. This failover configuration is not mandatory. If a failover is not provided, the
+        /// primary target won't be healthchecked - we'll return the primarily configured rrdata irrespective of whether
+        /// it is healthy or not.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failovers")]
         public virtual System.Collections.Generic.IList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> Failovers { get; set; }
 
-        /// <summary>The primary geo routing configuration. If there are multiple items with the same location, an error
-        /// is returned instead.</summary>
+        /// <summary>
+        /// The primary geo routing configuration. If there are multiple items with the same location, an error is
+        /// returned instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> Items { get; set; }
 
@@ -3114,15 +3190,17 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RRSetRoutingPolicyGeoPolicyGeoPolicyItem : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The geo-location granularity is a GCP region. This location string should correspond to a GCP
-        /// region. e.g "us-east1", "southamerica-east1", "asia-east1", etc.</summary>
+        /// <summary>
+        /// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g
+        /// "us-east1", "southamerica-east1", "asia-east1", etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
@@ -3135,7 +3213,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RRSetRoutingPolicyWrrPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3147,7 +3225,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class RRSetRoutingPolicyWrrPolicyWrrPolicyItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3161,15 +3239,17 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
 
-        /// <summary>The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are
+        /// <summary>
+        /// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are
         /// configured, the probability of returning an rrset is proportional to its weight relative to the sum of
-        /// weights configured for all items. This weight should be a decimal in the range [0,1].</summary>
+        /// weights configured for all items. This weight should be a decimal in the range [0,1].
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<double> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A unit of data that will be returned by the DNS servers.</summary>
     public class ResourceRecordSet : Google.Apis.Requests.IDirectResponseSchema
@@ -3181,9 +3261,11 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Configures dynamic query responses based on geo location of querying user or a weighted round robin
-        /// based routing policy. A ResourceRecordSet should only have either rrdata (static) or
-        /// routing_policy(dynamic). An error is returned otherwise.</summary>
+        /// <summary>
+        /// Configures dynamic query responses based on geo location of querying user or a weighted round robin based
+        /// routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy(dynamic). An
+        /// error is returned otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingPolicy")]
         public virtual RRSetRoutingPolicy RoutingPolicy { get; set; }
 
@@ -3205,7 +3287,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     public class ResourceRecordSetsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3216,12 +3298,14 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The presence of this field indicates that there exist more results following your last page of
-        /// results in pagination order. To fetch them, make another list request using this value as your pagination
-        /// token. In this way you can retrieve the complete contents of even very large collections one page at a time.
-        /// However, if the contents of the collection change between the first and last paginated list request, the set
-        /// of all elements returned will be an inconsistent view of the collection. There is no way to retrieve a
-        /// consistent snapshot of a collection larger than the maximum page size.</summary>
+        /// <summary>
+        /// The presence of this field indicates that there exist more results following your last page of results in
+        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
+        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
+        /// if the contents of the collection change between the first and last paginated list request, the set of all
+        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent
+        /// snapshot of a collection larger than the maximum page size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -3231,13 +3315,15 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Elements common to every response.</summary>
     public class ResponseHeader : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For mutating operation requests that completed successfully. This is the client_operation_id if the
-        /// client specified it, otherwise it is generated by the server (output only).</summary>
+        /// <summary>
+        /// For mutating operation requests that completed successfully. This is the client_operation_id if the client
+        /// specified it, otherwise it is generated by the server (output only).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
 

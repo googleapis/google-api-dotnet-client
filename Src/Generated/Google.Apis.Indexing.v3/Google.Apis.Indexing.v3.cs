@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.Indexing.v3
         {
             /// <summary>Submit data to Google for indexing</summary>
             public static string Indexing = "https://www.googleapis.com/auth/indexing";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Indexing API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.Indexing.v3
         {
             /// <summary>Submit data to Google for indexing</summary>
             public const string Indexing = "https://www.googleapis.com/auth/indexing";
-
         }
-
-
 
         /// <summary>Gets the UrlNotifications resource.</summary>
         public virtual UrlNotificationsResource UrlNotifications { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.Indexing.v3
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.Indexing.v3
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.Indexing.v3
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.Indexing.v3
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.Indexing.v3
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -266,21 +273,21 @@ namespace Google.Apis.Indexing.v3
         public UrlNotificationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Gets metadata about a Web Document. This method can _only_ be used to query URLs that were
-        /// previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via
-        /// this API.</summary>
+        /// <summary>
+        /// Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen
+        /// in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.
+        /// </summary>
         public virtual GetMetadataRequest GetMetadata()
         {
             return new GetMetadataRequest(service);
         }
 
-        /// <summary>Gets metadata about a Web Document. This method can _only_ be used to query URLs that were
-        /// previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via
-        /// this API.</summary>
+        /// <summary>
+        /// Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen
+        /// in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.
+        /// </summary>
         public class GetMetadataRequest : IndexingBaseServiceRequest<Google.Apis.Indexing.v3.Data.UrlNotificationMetadata>
         {
             /// <summary>Constructs a new GetMetadata request.</summary>
@@ -289,11 +296,9 @@ namespace Google.Apis.Indexing.v3
                 InitParameters();
             }
 
-
             /// <summary>URL that is being queried.</summary>
             [Google.Apis.Util.RequestParameterAttribute("url", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Url { get; set; }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getMetadata";
@@ -308,7 +313,6 @@ namespace Google.Apis.Indexing.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("url", new Google.Apis.Discovery.Parameter
                 {
                     Name = "url",
@@ -318,7 +322,6 @@ namespace Google.Apis.Indexing.v3
                     Pattern = null,
                 });
             }
-
         }
 
         /// <summary>Notifies that a URL has been updated or deleted.</summary>
@@ -337,8 +340,6 @@ namespace Google.Apis.Indexing.v3
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Indexing.v3.Data.UrlNotification Body { get; set; }
@@ -359,16 +360,12 @@ namespace Google.Apis.Indexing.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.Indexing.v3.Data
-{    
-
+{
     /// <summary>Output for PublishUrlNotification</summary>
     public class PublishUrlNotificationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -378,14 +375,18 @@ namespace Google.Apis.Indexing.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>`UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life
-    /// cycle of a Web Document.</summary>
+    /// <summary>
+    /// `UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a
+    /// Web Document.
+    /// </summary>
     public class UrlNotification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at
-        /// the request time.</summary>
+        /// <summary>
+        /// Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request
+        /// time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyTime")]
         public virtual object NotifyTime { get; set; }
 
@@ -393,14 +394,16 @@ namespace Google.Apis.Indexing.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The object of this notification. The URL must be owned by the publisher of this notification and,
-        /// in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google.</summary>
+        /// <summary>
+        /// The object of this notification. The URL must be owned by the publisher of this notification and, in case of
+        /// `URL_UPDATED` notifications, it _must_ be crawlable by Google.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Summary of the most recent Indexing API notifications successfully received, for a given URL.</summary>
     public class UrlNotificationMetadata : Google.Apis.Requests.IDirectResponseSchema

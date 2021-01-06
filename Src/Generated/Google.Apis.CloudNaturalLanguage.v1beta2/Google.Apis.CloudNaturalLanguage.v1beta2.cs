@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
 
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Natural Language API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
 
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Documents resource.</summary>
         public virtual DocumentsResource Documents { get; }
@@ -103,6 +104,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -122,9 +124,11 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -138,8 +142,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -151,8 +157,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -168,7 +176,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -272,20 +279,22 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         public DocumentsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
-
-        /// <summary>Finds named entities (currently proper names and common nouns) in the text along with entity types,
-        /// salience, mentions for each entity, and other properties.</summary>
+        /// <summary>
+        /// Finds named entities (currently proper names and common nouns) in the text along with entity types,
+        /// salience, mentions for each entity, and other properties.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeEntitiesRequest AnalyzeEntities(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest body)
         {
             return new AnalyzeEntitiesRequest(service, body);
         }
 
-        /// <summary>Finds named entities (currently proper names and common nouns) in the text along with entity types,
-        /// salience, mentions for each entity, and other properties.</summary>
+        /// <summary>
+        /// Finds named entities (currently proper names and common nouns) in the text along with entity types,
+        /// salience, mentions for each entity, and other properties.
+        /// </summary>
         public class AnalyzeEntitiesRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesResponse>
         {
             /// <summary>Constructs a new AnalyzeEntities request.</summary>
@@ -294,8 +303,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitiesRequest Body { get; set; }
@@ -316,21 +323,23 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each
-        /// entity and its mentions.</summary>
+        /// <summary>
+        /// Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity
+        /// and its mentions.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeEntitySentimentRequest AnalyzeEntitySentiment(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest body)
         {
             return new AnalyzeEntitySentimentRequest(service, body);
         }
 
-        /// <summary>Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each
-        /// entity and its mentions.</summary>
+        /// <summary>
+        /// Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity
+        /// and its mentions.
+        /// </summary>
         public class AnalyzeEntitySentimentRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentResponse>
         {
             /// <summary>Constructs a new AnalyzeEntitySentiment request.</summary>
@@ -339,8 +348,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeEntitySentimentRequest Body { get; set; }
@@ -361,9 +368,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Analyzes the sentiment of the provided text.</summary>
@@ -382,8 +387,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSentimentRequest Body { get; set; }
@@ -404,21 +407,23 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part
-        /// of speech tags, dependency trees, and other properties.</summary>
+        /// <summary>
+        /// Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech
+        /// tags, dependency trees, and other properties.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeSyntaxRequest AnalyzeSyntax(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest body)
         {
             return new AnalyzeSyntaxRequest(service, body);
         }
 
-        /// <summary>Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part
-        /// of speech tags, dependency trees, and other properties.</summary>
+        /// <summary>
+        /// Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech
+        /// tags, dependency trees, and other properties.
+        /// </summary>
         public class AnalyzeSyntaxRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxResponse>
         {
             /// <summary>Constructs a new AnalyzeSyntax request.</summary>
@@ -427,8 +432,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnalyzeSyntaxRequest Body { get; set; }
@@ -449,21 +452,21 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
-        /// <summary>A convenience method that provides all syntax, sentiment, entity, and classification features in
-        /// one call.</summary>
+        /// <summary>
+        /// A convenience method that provides all syntax, sentiment, entity, and classification features in one call.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnnotateTextRequest AnnotateText(Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest body)
         {
             return new AnnotateTextRequest(service, body);
         }
 
-        /// <summary>A convenience method that provides all syntax, sentiment, entity, and classification features in
-        /// one call.</summary>
+        /// <summary>
+        /// A convenience method that provides all syntax, sentiment, entity, and classification features in one call.
+        /// </summary>
         public class AnnotateTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextResponse>
         {
             /// <summary>Constructs a new AnnotateText request.</summary>
@@ -472,8 +475,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.AnnotateTextRequest Body { get; set; }
@@ -494,9 +495,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
 
         /// <summary>Classifies a document into categories.</summary>
@@ -515,8 +514,6 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudNaturalLanguage.v1beta2.Data.ClassifyTextRequest Body { get; set; }
@@ -537,16 +534,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
-{    
-
+{
     /// <summary>The entity analysis request message.</summary>
     public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -560,7 +553,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The entity analysis response message.</summary>
     public class AnalyzeEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -569,14 +562,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
-        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        /// <summary>
+        /// The language of the text, which will be the same as the language specified in the request or, if not
+        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The entity-level sentiment analysis request message.</summary>
     public class AnalyzeEntitySentimentRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -591,7 +586,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The entity-level sentiment analysis response message.</summary>
     public class AnalyzeEntitySentimentResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -600,14 +595,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
-        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        /// <summary>
+        /// The language of the text, which will be the same as the language specified in the request or, if not
+        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The sentiment analysis request message.</summary>
     public class AnalyzeSentimentRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -616,14 +613,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual Document Document { get; set; }
 
-        /// <summary>The encoding type used by the API to calculate sentence offsets for the sentence
-        /// sentiment.</summary>
+        /// <summary>
+        /// The encoding type used by the API to calculate sentence offsets for the sentence sentiment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
         public virtual string EncodingType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The sentiment analysis response message.</summary>
     public class AnalyzeSentimentResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -632,8 +630,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSentiment")]
         public virtual Sentiment DocumentSentiment { get; set; }
 
-        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        /// <summary>
+        /// The language of the text, which will be the same as the language specified in the request or, if not
+        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -643,7 +643,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The syntax analysis request message.</summary>
     public class AnalyzeSyntaxRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -658,13 +658,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The syntax analysis response message.</summary>
     public class AnalyzeSyntaxResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        /// <summary>
+        /// The language of the text, which will be the same as the language specified in the request or, if not
+        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
@@ -678,10 +680,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The request message for the text annotation API, which can perform multiple analysis types (sentiment,
-    /// entities, and syntax) in one call.</summary>
+    /// <summary>
+    /// The request message for the text annotation API, which can perform multiple analysis types (sentiment, entities,
+    /// and syntax) in one call.
+    /// </summary>
     public class AnnotateTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Input document.</summary>
@@ -698,7 +702,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The text annotations response message.</summary>
     public class AnnotateTextResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -707,51 +711,64 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<ClassificationCategory> Categories { get; set; }
 
-        /// <summary>The overall sentiment for the document. Populated if the user enables
-        /// AnnotateTextRequest.Features.extract_document_sentiment.</summary>
+        /// <summary>
+        /// The overall sentiment for the document. Populated if the user enables
+        /// AnnotateTextRequest.Features.extract_document_sentiment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSentiment")]
         public virtual Sentiment DocumentSentiment { get; set; }
 
-        /// <summary>Entities, along with their semantic information, in the input document. Populated if the user
-        /// enables AnnotateTextRequest.Features.extract_entities.</summary>
+        /// <summary>
+        /// Entities, along with their semantic information, in the input document. Populated if the user enables
+        /// AnnotateTextRequest.Features.extract_entities.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
-        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
-        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        /// <summary>
+        /// The language of the text, which will be the same as the language specified in the request or, if not
+        /// specified, the automatically-detected language. See Document.language field for more details.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
-        /// <summary>Sentences in the input document. Populated if the user enables
-        /// AnnotateTextRequest.Features.extract_syntax.</summary>
+        /// <summary>
+        /// Sentences in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentences")]
         public virtual System.Collections.Generic.IList<Sentence> Sentences { get; set; }
 
-        /// <summary>Tokens, along with their syntactic information, in the input document. Populated if the user
-        /// enables AnnotateTextRequest.Features.extract_syntax.</summary>
+        /// <summary>
+        /// Tokens, along with their syntactic information, in the input document. Populated if the user enables
+        /// AnnotateTextRequest.Features.extract_syntax.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
         public virtual System.Collections.Generic.IList<Token> Tokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a category returned from the text classifier.</summary>
     public class ClassificationCategory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The classifier's confidence of the category. Number represents how certain the classifier is that
-        /// this category represents the given text.</summary>
+        /// <summary>
+        /// The classifier's confidence of the category. Number represents how certain the classifier is that this
+        /// category represents the given text.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
-        /// <summary>The name of the category representing the document, from the [predefined
-        /// taxonomy](https://cloud.google.com/natural-language/docs/categories).</summary>
+        /// <summary>
+        /// The name of the category representing the document, from the [predefined
+        /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The document classification request message.</summary>
     public class ClassifyTextRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -762,7 +779,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The document classification response message.</summary>
     public class ClassifyTextResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -773,14 +790,16 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents dependency parse tree information for a token.</summary>
     public class DependencyEdge : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Represents the head of this token in the dependency tree. This is the index of the token which has
-        /// an arc going to this token. The index is the position of the token in the array of tokens returned by the
-        /// API method. If this token is a root token, then the `head_token_index` is its own index.</summary>
+        /// <summary>
+        /// Represents the head of this token in the dependency tree. This is the index of the token which has an arc
+        /// going to this token. The index is the position of the token in the array of tokens returned by the API
+        /// method. If this token is a root token, then the `head_token_index` is its own index.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headTokenIndex")]
         public virtual System.Nullable<int> HeadTokenIndex { get; set; }
 
@@ -790,62 +809,77 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>################################################################ # Represents the input to API
-    /// methods.</summary>
+    /// <summary>
+    /// ################################################################ # Represents the input to API methods.
+    /// </summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates how detected boilerplate(e.g. advertisements, copyright declarations, banners) should be
-        /// handled for this document. If not specified, boilerplate will be treated the same as content.</summary>
+        /// <summary>
+        /// Indicates how detected boilerplate(e.g. advertisements, copyright declarations, banners) should be handled
+        /// for this document. If not specified, boilerplate will be treated the same as content.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boilerplateHandling")]
         public virtual string BoilerplateHandling { get; set; }
 
-        /// <summary>The content of the input in string format. Cloud audit logging exempt since it is based on user
-        /// data.</summary>
+        /// <summary>
+        /// The content of the input in string format. Cloud audit logging exempt since it is based on user data.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>The Google Cloud Storage URI where the file content is located. This URI must be of the form:
+        /// <summary>
+        /// The Google Cloud Storage URI where the file content is located. This URI must be of the form:
         /// gs://bucket_name/object_name. For more details, see https://cloud.google.com/storage/docs/reference-uris.
-        /// NOTE: Cloud Storage object versioning is not supported.</summary>
+        /// NOTE: Cloud Storage object versioning is not supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsContentUri")]
         public virtual string GcsContentUri { get; set; }
 
-        /// <summary>The language of the document (if not specified, the language is automatically detected). Both ISO
-        /// and BCP-47 language codes are accepted. [Language Support](https://cloud.google.com/natural-
-        /// language/docs/languages) lists currently supported languages for each API method. If the language (either
-        /// specified by the caller or automatically detected) is not supported by the called API method, an
-        /// `INVALID_ARGUMENT` error is returned.</summary>
+        /// <summary>
+        /// The language of the document (if not specified, the language is automatically detected). Both ISO and BCP-47
+        /// language codes are accepted. [Language Support](https://cloud.google.com/natural-language/docs/languages)
+        /// lists currently supported languages for each API method. If the language (either specified by the caller or
+        /// automatically detected) is not supported by the called API method, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
-        /// <summary>The web URI where the document comes from. This URI is not used for fetching the content, but as a
-        /// hint for analyzing the document.</summary>
+        /// <summary>
+        /// The web URI where the document comes from. This URI is not used for fetching the content, but as a hint for
+        /// analyzing the document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referenceWebUri")]
         public virtual string ReferenceWebUri { get; set; }
 
-        /// <summary>Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an `INVALID_ARGUMENT`
-        /// error.</summary>
+        /// <summary>
+        /// Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an `INVALID_ARGUMENT` error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a phrase in the text that is a known entity, such as a person, an organization, or location.
-    /// The API associates information, such as salience and mentions, with entities.</summary>
+    /// <summary>
+    /// Represents a phrase in the text that is a known entity, such as a person, an organization, or location. The API
+    /// associates information, such as salience and mentions, with entities.
+    /// </summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The mentions of this entity in the input document. The API currently supports proper noun
-        /// mentions.</summary>
+        /// <summary>
+        /// The mentions of this entity in the input document. The API currently supports proper noun mentions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentions")]
         public virtual System.Collections.Generic.IList<EntityMention> Mentions { get; set; }
 
-        /// <summary>Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
+        /// <summary>
+        /// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
         /// (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with
-        /// other entity types, see the Type table below.</summary>
+        /// other entity types, see the Type table below.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
@@ -853,15 +887,18 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The salience score associated with the entity in the [0, 1.0] range. The salience score for an
-        /// entity provides information about the importance or centrality of that entity to the entire document text.
-        /// Scores closer to 0 are less salient, while scores closer to 1.0 are highly salient.</summary>
+        /// <summary>
+        /// The salience score associated with the entity in the [0, 1.0] range. The salience score for an entity
+        /// provides information about the importance or centrality of that entity to the entire document text. Scores
+        /// closer to 0 are less salient, while scores closer to 1.0 are highly salient.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("salience")]
         public virtual System.Nullable<float> Salience { get; set; }
 
-        /// <summary>For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the aggregate sentiment expressed for this entity in the provided
-        /// document.</summary>
+        /// <summary>
+        /// For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to
+        /// true, this field will contain the aggregate sentiment expressed for this entity in the provided document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
 
@@ -871,15 +908,18 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a mention for an entity in the text. Currently, proper noun mentions are
-    /// supported.</summary>
+    /// <summary>
+    /// Represents a mention for an entity in the text. Currently, proper noun mentions are supported.
+    /// </summary>
     public class EntityMention : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is
-        /// set to true, this field will contain the sentiment expressed for this mention of the entity in the provided
-        /// document.</summary>
+        /// <summary>
+        /// For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is set to
+        /// true, this field will contain the sentiment expressed for this mention of the entity in the provided
+        /// document.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
 
@@ -893,15 +933,18 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>All available features for sentiment, syntax, and semantic analysis. Setting each one to true will
-    /// enable that specific analysis for the input. Next ID: 10</summary>
+    /// <summary>
+    /// All available features for sentiment, syntax, and semantic analysis. Setting each one to true will enable that
+    /// specific analysis for the input. Next ID: 10
+    /// </summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Classify the full document into categories. If this is true, the API will use the default model
-        /// which classifies into a [predefined taxonomy](https://cloud.google.com/natural-
-        /// language/docs/categories).</summary>
+        /// <summary>
+        /// Classify the full document into categories. If this is true, the API will use the default model which
+        /// classifies into a [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifyText")]
         public virtual System.Nullable<bool> ClassifyText { get; set; }
 
@@ -923,7 +966,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents part of speech information for a token.</summary>
     public class PartOfSpeech : Google.Apis.Requests.IDirectResponseSchema
@@ -978,13 +1021,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a sentence in the input document.</summary>
     public class Sentence : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set
-        /// to true, this field will contain the sentiment for the sentence.</summary>
+        /// <summary>
+        /// For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true,
+        /// this field will contain the sentiment for the sentence.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
         public virtual Sentiment Sentiment { get; set; }
 
@@ -994,13 +1039,15 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the feeling associated with the entire text or entities in the text. Next ID: 6</summary>
     public class Sentiment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment
-        /// regardless of score (positive or negative).</summary>
+        /// <summary>
+        /// A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment
+        /// regardless of score (positive or negative).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
         public virtual System.Nullable<float> Magnitude { get; set; }
 
@@ -1010,38 +1057,44 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents an output piece of text.</summary>
     public class TextSpan : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The API calculates the beginning offset of the content in the original document according to the
-        /// EncodingType specified in the API request.</summary>
+        /// <summary>
+        /// The API calculates the beginning offset of the content in the original document according to the
+        /// EncodingType specified in the API request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
         public virtual System.Nullable<int> BeginOffset { get; set; }
 
@@ -1051,7 +1104,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents the smallest syntactic building block of the text.</summary>
     public class Token : Google.Apis.Requests.IDirectResponseSchema

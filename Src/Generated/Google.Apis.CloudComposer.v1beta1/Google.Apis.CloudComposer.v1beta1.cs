@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -62,7 +67,6 @@ namespace Google.Apis.CloudComposer.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Composer API.</summary>
@@ -70,10 +74,7 @@ namespace Google.Apis.CloudComposer.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -97,6 +98,7 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -116,9 +118,11 @@ namespace Google.Apis.CloudComposer.v1beta1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -132,8 +136,10 @@ namespace Google.Apis.CloudComposer.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -145,8 +151,10 @@ namespace Google.Apis.CloudComposer.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -162,7 +170,6 @@ namespace Google.Apis.CloudComposer.v1beta1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -267,7 +274,6 @@ namespace Google.Apis.CloudComposer.v1beta1
         {
             this.service = service;
             Locations = new LocationsResource(service);
-
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -288,7 +294,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                 Environments = new EnvironmentsResource(service);
                 ImageVersions = new ImageVersionsResource(service);
                 Operations = new OperationsResource(service);
-
             }
 
             /// <summary>Gets the Environments resource.</summary>
@@ -306,13 +311,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                 public EnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Create a new environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent must be of the form "projects/{projectId}/locations/{locationId}".</param>
+                /// <param name="parent">
+                /// The parent must be of the form "projects/{projectId}/locations/{locationId}".
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudComposer.v1beta1.Data.Environment body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -329,11 +334,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The parent must be of the form "projects/{projectId}/locations/{locationId}".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudComposer.v1beta1.Data.Environment Body { get; set; }
@@ -354,7 +357,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -364,12 +366,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Delete an environment.</summary>
-                /// <param name="name">The environment to delete, in the form:
-                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
+                /// <param name="name">
+                /// The environment to delete, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -385,12 +388,12 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The environment to delete, in the form:
-                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+                    /// <summary>
+                    /// The environment to delete, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -405,7 +408,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -415,12 +417,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>Get an existing environment.</summary>
-                /// <param name="name">The resource name of the environment to get, in the form:
-                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
+                /// <param name="name">
+                /// The resource name of the environment to get, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -436,12 +439,12 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The resource name of the environment to get, in the form:
-                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+                    /// <summary>
+                    /// The resource name of the environment to get, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -456,7 +459,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -466,12 +468,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
                         });
                     }
-
                 }
 
                 /// <summary>List environments.</summary>
-                /// <param name="parent">List environments in the given project and location, in the form:
-                /// "projects/{projectId}/locations/{locationId}"</param>
+                /// <param name="parent">
+                /// List environments in the given project and location, in the form:
+                /// "projects/{projectId}/locations/{locationId}"
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -487,9 +490,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>List environments in the given project and location, in the form:
-                    /// "projects/{projectId}/locations/{locationId}"</summary>
+                    /// <summary>
+                    /// List environments in the given project and location, in the form:
+                    /// "projects/{projectId}/locations/{locationId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -500,7 +504,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
@@ -515,7 +518,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -541,13 +543,14 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Update an environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The relative resource name of the environment to update, in the form:
-                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
+                /// <param name="name">
+                /// The relative resource name of the environment to update, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudComposer.v1beta1.Data.Environment body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -564,24 +567,26 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The relative resource name of the environment to update, in the form:
-                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+                    /// <summary>
+                    /// The relative resource name of the environment to update, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required. A comma-separated list of paths, relative to `Environment`, of fields to
-                    /// update. For example, to set the version of scikit-learn to install in the environment to 0.19.0
-                    /// and to remove an existing installation of argparse, the `updateMask` parameter would include the
+                    /// <summary>
+                    /// Required. A comma-separated list of paths, relative to `Environment`, of fields to update. For
+                    /// example, to set the version of scikit-learn to install in the environment to 0.19.0 and to
+                    /// remove an existing installation of argparse, the `updateMask` parameter would include the
                     /// following two `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and
                     /// "config.softwareConfig.pypiPackages.argparse". The included patch environment would specify the
-                    /// scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{ "scikit-
-                    /// learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages other than
-                    /// scikit-learn and argparse will be unaffected. Only one update type may be included in a single
-                    /// request's `updateMask`. For example, one cannot update both the PyPI packages and labels in the
-                    /// same request. However, it is possible to update multiple members of a map field simultaneously
-                    /// in the same request. For example, to set the labels "label1" and "label2" while clearing
-                    /// "label3" (assuming it already exists), one can provide the paths "labels.label1",
+                    /// scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{
+                    /// "scikit-learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages
+                    /// other than scikit-learn and argparse will be unaffected. Only one update type may be included in
+                    /// a single request's `updateMask`. For example, one cannot update both the PyPI packages and
+                    /// labels in the same request. However, it is possible to update multiple members of a map field
+                    /// simultaneously in the same request. For example, to set the labels "label1" and "label2" while
+                    /// clearing "label3" (assuming it already exists), one can provide the paths "labels.label1",
                     /// "labels.label2", and "labels.label3" and populate the patch environment as follows: { "labels":{
                     /// "label1":"new-label1-value" "label2":"new-label2-value" } } Note that in the above example, any
                     /// existing labels that are not included in the `updateMask` will be unaffected. It is also
@@ -628,10 +633,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// config.webServerConfig.machineType * Machine type on which Airflow web server is running. It has
                     /// to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. *
                     /// config.maintenanceWindow * Maintenance window during which Cloud Composer components may be
-                    /// under maintenance.</summary>
+                    /// under maintenance.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudComposer.v1beta1.Data.Environment Body { get; set; }
@@ -652,7 +657,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -670,13 +674,14 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
 
                 /// <summary>Restart Airflow web server.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name of the environment to restart the web server for, in the form:
-                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
+                /// <param name="name">
+                /// The resource name of the environment to restart the web server for, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
                 public virtual RestartWebServerRequest RestartWebServer(Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest body, string name)
                 {
                     return new RestartWebServerRequest(service, body, name);
@@ -693,12 +698,12 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>The resource name of the environment to restart the web server for, in the form:
-                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
+                    /// <summary>
+                    /// The resource name of the environment to restart the web server for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudComposer.v1beta1.Data.RestartWebServerRequest Body { get; set; }
@@ -719,7 +724,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -729,9 +733,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the ImageVersions resource.</summary>
             public virtual ImageVersionsResource ImageVersions { get; }
 
@@ -747,13 +751,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                 public ImageVersionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
                 /// <summary>List ImageVersions for provided location.</summary>
-                /// <param name="parent">List ImageVersions in the given project and location, in the form:
-                /// "projects/{projectId}/locations/{locationId}"</param>
+                /// <param name="parent">
+                /// List ImageVersions in the given project and location, in the form:
+                /// "projects/{projectId}/locations/{locationId}"
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -769,9 +773,10 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
-                    /// <summary>List ImageVersions in the given project and location, in the form:
-                    /// "projects/{projectId}/locations/{locationId}"</summary>
+                    /// <summary>
+                    /// List ImageVersions in the given project and location, in the form:
+                    /// "projects/{projectId}/locations/{locationId}"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -787,7 +792,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -801,7 +805,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
                             Name = "parent",
@@ -835,9 +838,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -853,22 +856,24 @@ namespace Google.Apis.CloudComposer.v1beta1
                 public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
 
-
-                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
-                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
-                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
-                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
-                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
                 public class DeleteRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -878,11 +883,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the operation resource to be deleted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
@@ -897,7 +900,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -907,19 +909,22 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
-                /// operation result at intervals as recommended by the API service.</summary>
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
                 public class GetRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -929,11 +934,9 @@ namespace Google.Apis.CloudComposer.v1beta1
                         InitParameters();
                     }
 
-
                     /// <summary>The name of the operation resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
@@ -948,7 +951,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -958,29 +960,32 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                         });
                     }
-
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
                 }
 
-                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to
-                /// override the binding to use different resource name schemes, such as `users/operations`. To override
-                /// the binding, API services can add a binding such as `"/v1/{name=users}/operations"` to their service
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the
+                /// binding to use different resource name schemes, such as `users/*/operations`. To override the
+                /// binding, API services can add a binding such as `"/v1/{name=users/*}/operations"` to their service
                 /// configuration. For backwards compatibility, the default name includes the operations collection id,
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
-                /// collection id.</summary>
+                /// collection id.
+                /// </summary>
                 public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -989,7 +994,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                         Name = name;
                         InitParameters();
                     }
-
 
                     /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1007,7 +1011,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -1021,7 +1024,6 @@ namespace Google.Apis.CloudComposer.v1beta1
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -1055,16 +1057,13 @@ namespace Google.Apis.CloudComposer.v1beta1
                             Pattern = null,
                         });
                     }
-
                 }
             }
         }
     }
 }
-
 namespace Google.Apis.CloudComposer.v1beta1.Data
-{    
-
+{
     /// <summary>Allowed IP range with user-provided description.</summary>
     public class AllowedIpRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1072,40 +1071,47 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples:
+        /// <summary>
+        /// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples:
         /// `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range
         /// prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`.
-        /// Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.</summary>
+        /// Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2,
-        /// db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be
-        /// used.</summary>
+        /// <summary>
+        /// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2,
+        /// db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are
-    /// either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can
-    /// represent one of the following: * A full date, with non-zero year, month, and day values * A month and day
-    /// value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and
-    /// month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
-    /// `google.protobuf.Timestamp`.</summary>
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
     public class Date : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by
-        /// itself or a year and month where the day isn't significant.</summary>
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
@@ -1119,29 +1125,33 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The encryption options for the Composer environment and its dependencies.</summary>
     public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot
-        /// be updated. If not specified, Google-managed key will be used.</summary>
+        /// <summary>
+        /// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be
+        /// updated. If not specified, Google-managed key will be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An environment for running orchestration tasks.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
@@ -1154,17 +1164,20 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Optional. User-defined labels for this environment. The labels map can contain no more than 64
-        /// entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must
-        /// conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both
-        /// keys and values are additionally constrained to be <= 128 bytes in size.</summary>
+        /// <summary>
+        /// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries.
+        /// Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform
+        /// to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and
+        /// values are additionally constrained to be &amp;lt;= 128 bytes in size.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>The resource name of the environment, in the form:
+        /// <summary>
+        /// The resource name of the environment, in the form:
         /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a
-        /// lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a
-        /// hyphen.</summary>
+        /// lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1176,37 +1189,44 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
-        /// <summary>Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value
-        /// is generated when the environment is created.</summary>
+        /// <summary>
+        /// Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is
+        /// generated when the environment is created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
         public virtual string Uuid { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Configuration information for an environment.</summary>
     public class EnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web
-        /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).</summary>
+        /// <summary>
+        /// Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web
+        /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowUri")]
         public virtual string AirflowUri { get; set; }
 
-        /// <summary>Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage
-        /// objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object
-        /// name prefixes. DAG objects for this environment reside in a simulated directory with the given
-        /// prefix.</summary>
+        /// <summary>
+        /// Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects
+        /// reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name
+        /// prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagGcsPrefix")]
         public virtual string DagGcsPrefix { get; set; }
 
-        /// <summary>Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow
-        /// software.</summary>
+        /// <summary>
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
         public virtual DatabaseConfig DatabaseConfig { get; set; }
 
-        /// <summary>Optional. The encryption options for the Composer environment and its dependencies. Cannot be
-        /// updated.</summary>
+        /// <summary>
+        /// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
 
@@ -1214,12 +1234,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; }
 
-        /// <summary>Optional. The maintenance window is the period when Cloud Composer components may undergo
-        /// maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods.
-        /// The system will not be under maintenance for every occurrence of this window, but when maintenance is
-        /// planned, it will be scheduled during the window. The maintenance window period must encompass at least 12
-        /// hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value
-        /// is omitted, Cloud Composer components may be subject to maintenance at any time.</summary>
+        /// <summary>
+        /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is
+        /// defined so that maintenance is not executed during peak hours or critical time periods. The system will not
+        /// be under maintenance for every occurrence of this window, but when maintenance is planned, it will be
+        /// scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This
+        /// may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud
+        /// Composer components may be subject to maintenance at any time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
 
@@ -1227,8 +1249,9 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
 
-        /// <summary>The number of nodes in the Kubernetes Engine cluster that will be used to run this
-        /// environment.</summary>
+        /// <summary>
+        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
@@ -1244,56 +1267,67 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webServerConfig")]
         public virtual WebServerConfig WebServerConfig { get; set; }
 
-        /// <summary>Optional. The network-level access control policy for the Airflow web server. If unspecified, no
-        /// network-level access restrictions will be applied.</summary>
+        /// <summary>
+        /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no
+        /// network-level access restrictions will be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
         public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Configuration for controlling how IPs are allocated in the GKE cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is
+        /// <summary>
+        /// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is
         /// applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default
         /// size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
         /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
-        /// use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.</summary>
+        /// use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
         public virtual string ClusterIpv4CidrBlock { get; set; }
 
-        /// <summary>Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify
-        /// either `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable
-        /// only when `use_ip_aliases` is true.</summary>
+        /// <summary>
+        /// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either
+        /// `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when
+        /// `use_ip_aliases` is true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
         public virtual string ClusterSecondaryRangeName { get; set; }
 
-        /// <summary>Optional. The IP address range of the services IP addresses in this cluster. This field is
-        /// applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default
-        /// size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
+        /// <summary>
+        /// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only
+        /// when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to
+        /// /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
         /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
-        /// use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.</summary>
+        /// use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
         public virtual string ServicesIpv4CidrBlock { get; set; }
 
-        /// <summary>Optional. The name of the services' secondary range used to allocate IP addresses to the cluster.
-        /// Specify either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is
-        /// applicable only when `use_ip_aliases` is true.</summary>
+        /// <summary>
+        /// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify
+        /// either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable
+        /// only when `use_ip_aliases` is true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; }
 
-        /// <summary>Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is
-        /// created.</summary>
+        /// <summary>
+        /// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
         public virtual System.Nullable<bool> UseIpAliases { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Image Version information</summary>
     public class ImageVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -1306,8 +1340,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersionId")]
         public virtual string ImageVersionId { get; set; }
 
-        /// <summary>Whether this is the default ImageVersion used by Composer during environment creation if no input
-        /// ImageVersion is specified.</summary>
+        /// <summary>
+        /// Whether this is the default ImageVersion used by Composer during environment creation if no input
+        /// ImageVersion is specified.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; }
 
@@ -1325,7 +1361,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The environments in a project and location.</summary>
     public class ListEnvironmentsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1340,7 +1376,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The ImageVersions in a project and location.</summary>
     public class ListImageVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1355,7 +1391,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1370,21 +1406,27 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The configuration settings for Cloud Composer maintenance window. The following example: {
+    /// <summary>
+    /// The configuration settings for Cloud Composer maintenance window. The following example: {
     /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }
-    /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.</summary>
+    /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
+    /// </summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Maintenance window end time. It is used only to calculate the duration of the maintenance
-        /// window. The value for end_time must be in the future, relative to `start_time`.</summary>
+        /// <summary>
+        /// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window.
+        /// The value for end_time must be in the future, relative to `start_time`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>Required. Maintenance window recurrence. Format is a subset of
+        /// <summary>
+        /// Required. Maintenance window recurrence. Format is a subset of
         /// [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are
-        /// `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.</summary>
+        /// `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
         public virtual string Recurrence { get; set; }
 
@@ -1394,14 +1436,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The configuration information for the Kubernetes Engine nodes running the Apache Airflow
-    /// software.</summary>
+    /// <summary>
+    /// The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
+    /// </summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to
-        /// 100GB. Cannot be updated.</summary>
+        /// <summary>
+        /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB.
+        /// Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
 
@@ -1409,82 +1454,100 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAllocationPolicy")]
         public virtual IPAllocationPolicy IpAllocationPolicy { get; set; }
 
-        /// <summary>Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to
-        /// run the Apache Airflow software, specified as a [relative resource
+        /// <summary>
+        /// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the
+        /// Apache Airflow software, specified as a [relative resource
         /// name](/apis/design/resource_names#relative_resource_name). For example:
         /// "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project
         /// and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must
         /// belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine
         /// region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one
         /// field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified
-        /// field will be propagated to the unspecified field.</summary>
+        /// field will be propagated to the unspecified field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster
-        /// instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For
-        /// example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong
-        /// to the enclosing environment's project and location. If both this field and `nodeConfig.location` are
-        /// specified, this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service
-        /// will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate
-        /// that choice to both fields. If exactly one of this field and `nodeConfig.location` is specified, the
-        /// location information from the specified field will be propagated to the unspecified field. The
-        /// `machineTypeId` must not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this
-        /// field is unspecified, the `machineTypeId` defaults to "n1-standard-1".</summary>
+        /// <summary>
+        /// Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster instances,
+        /// specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
+        /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The `machineType` must belong to the
+        /// enclosing environment's project and location. If both this field and `nodeConfig.location` are specified,
+        /// this `machineType` must belong to the `nodeConfig.location`; if both are unspecified, the service will pick
+        /// a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice
+        /// to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location
+        /// information from the specified field will be propagated to the unspecified field. The `machineTypeId` must
+        /// not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified,
+        /// the `machineTypeId` defaults to "n1-standard-1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be
-        /// between 8 and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values
-        /// of this field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and
-        /// to the default "Maximum Pods per Node" value which is used for newly created node pools if their value is
-        /// not explicitly set during node pool creation. For more information, see [Optimizing IP address allocation]
-        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated.</summary>
+        /// <summary>
+        /// Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be between 8
+        /// and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values of this
+        /// field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and to the
+        /// default "Maximum Pods per Node" value which is used for newly created node pools if their value is not
+        /// explicitly set during node pool creation. For more information, see [Optimizing IP address allocation]
+        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
         public virtual System.Nullable<int> MaxPodsPerNode { get; set; }
 
-        /// <summary>Optional. The Compute Engine network to be used for machine communications, specified as a
-        /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
+        /// <summary>
+        /// Optional. The Compute Engine network to be used for machine communications, specified as a [relative
+        /// resource name](/apis/design/resource_names#relative_resource_name). For example:
         /// "projects/{projectId}/global/networks/{networkId}". If unspecified, the default network in the environment's
         /// project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
         /// `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork
-        /// requirements, see `nodeConfig.subnetwork`.</summary>
+        /// requirements, see `nodeConfig.subnetwork`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is
-        /// empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.</summary>
+        /// <summary>
+        /// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty,
+        /// defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
 
-        /// <summary>Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service
-        /// account is not specified, the "default" Compute Engine service account is used. Cannot be updated.</summary>
+        /// <summary>
+        /// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not
+        /// specified, the "default" Compute Engine service account is used. Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications, specified as a
-        /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
+        /// <summary>
+        /// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative
+        /// resource name](/apis/design/resource_names#relative_resource_name). For example:
         /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided,
         /// `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's
-        /// project and location.</summary>
+        /// project and location.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid
-        /// sources or targets for network firewalls. Each tag within the list must comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.</summary>
+        /// <summary>
+        /// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or
+        /// targets for network firewalls. Each tag within the list must comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
 
@@ -1492,29 +1555,34 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
-        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
-        /// returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should be a resource name ending with
-        /// `operations/{unique_id}`.</summary>
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
-        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Metadata describing an operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -1523,8 +1591,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. The time when the operation terminated, regardless of its success. This field is unset
-        /// if the operation is still ongoing.</summary>
+        /// <summary>
+        /// Output only. The time when the operation terminated, regardless of its success. This field is unset if the
+        /// operation is still ongoing.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -1532,8 +1602,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }
 
-        /// <summary>Output only. The resource being operated on, as a [relative resource name](
-        /// /apis/design/resource_names#relative_resource_name).</summary>
+        /// <summary>
+        /// Output only. The resource being operated on, as a [relative resource name](
+        /// /apis/design/resource_names#relative_resource_name).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
@@ -1547,7 +1619,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Configuration options for the private GKE cluster in a Cloud Composer environment.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1556,42 +1628,52 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
-        /// <summary>Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the
-        /// default value of '172.16.0.0/23' is used.</summary>
+        /// <summary>
+        /// Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default
+        /// value of '172.16.0.0/23' is used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
         public virtual string MasterIpv4CidrBlock { get; set; }
 
-        /// <summary>Output only. The IP range in CIDR notation to use for the hosted master network. This range is used
-        /// for assigning internal IP addresses to the cluster master or set of masters and to the internal load
-        /// balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's
-        /// network.</summary>
+        /// <summary>
+        /// Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for
+        /// assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer
+        /// virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4ReservedRange")]
         public virtual string MasterIpv4ReservedRange { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The configuration information for configuring a Private IP Cloud Composer environment.</summary>
     public class PrivateEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL.
-        /// Needs to be disjoint from web_server_ipv4_cidr_block</summary>
+        /// <summary>
+        /// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be
+        /// disjoint from web_server_ipv4_cidr_block
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlIpv4CidrBlock")]
         public virtual string CloudSqlIpv4CidrBlock { get; set; }
 
-        /// <summary>Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to
-        /// true, `IPAllocationPolicy.use_ip_aliases` must be set to true.</summary>
+        /// <summary>
+        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true,
+        /// `IPAllocationPolicy.use_ip_aliases` must be set to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; }
 
-        /// <summary>Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer
-        /// environment.</summary>
+        /// <summary>
+        /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
         public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
 
-        /// <summary>Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint
-        /// from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.</summary>
+        /// <summary>
+        /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from
+        /// private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerIpv4CidrBlock")]
         public virtual string WebServerIpv4CidrBlock { get; set; }
 
@@ -1601,107 +1683,123 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Restart Airflow web server.</summary>
     public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Specifies the selection and configuration of software inside the environment.</summary>
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Apache Airflow configuration properties to override. Property keys contain the section
-        /// and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names
-        /// must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The
-        /// property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and
-        /// property names must not contain a period ("."). Apache Airflow configuration property names must be written
-        /// in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and
-        /// can be written in any lower/upper case format. Certain Apache Airflow configuration property values are
-        /// [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.</summary>
+        /// <summary>
+        /// Optional. Apache Airflow configuration properties to override. Property keys contain the section and
+        /// property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must
+        /// not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property
+        /// name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property
+        /// names must not contain a period ("."). Apache Airflow configuration property names must be written in
+        /// [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can
+        /// be written in any lower/upper case format. Certain Apache Airflow configuration property values are
+        /// [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, string> AirflowConfigOverrides { get; set; }
 
-        /// <summary>Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and
-        /// webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot
-        /// specify Apache Airflow software configuration overrides (they cannot match the regular expression
+        /// <summary>
+        /// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver
+        /// processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify
+        /// Apache Airflow software configuration overrides (they cannot match the regular expression
         /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: *
         /// `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` *
         /// `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` *
-        /// `SQL_USER`</summary>
+        /// `SQL_USER`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> EnvVariables { get; set; }
 
-        /// <summary>The version of the software running in the environment. This encapsulates both the version of Cloud
-        /// Composer functionality and the version of Apache Airflow. It must match the regular expression
+        /// <summary>
+        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+        /// functionality and the version of Apache Airflow. It must match the regular expression
         /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
         /// server also checks if the provided version is supported and denies the request for an unsupported version.
         /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the
         /// patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided
         /// instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version
         /// and stores that version number in the same field. The portion of the image version that follows *airflow-*
-        /// is an official Apache Airflow repository [release name](https://github.com/apache/incubator-
-        /// airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).</summary>
+        /// is an official Apache Airflow repository [release
+        /// name](https://github.com/apache/incubator-airflow/releases). See also [Version
+        /// List](/composer/docs/concepts/versioning/composer-versions).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; }
 
-        /// <summary>Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys
-        /// refer to the lowercase package name such as "numpy" and values are the lowercase extras and version
-        /// specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without
-        /// pinning it to a version specifier, use the empty string as the value.</summary>
+        /// <summary>
+        /// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the
+        /// lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as
+        /// "==1.12.0", "[devel,gcp_api]", or "[devel]&amp;gt;=1.8.2, &amp;lt;1.9.2". To specify a package without
+        /// pinning it to a version specifier, use the empty string as the value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pypiPackages")]
         public virtual System.Collections.Generic.IDictionary<string, string> PypiPackages { get; set; }
 
-        /// <summary>Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and
-        /// webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be
-        /// updated.</summary>
+        /// <summary>
+        /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver
+        /// processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The configuration settings for the Airflow web server App Engine instance.</summary>
     public class WebServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Machine type on which Airflow web server is running. It has to be one of:
-        /// composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified,
-        /// composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server
-        /// parameters were manually changed to a non-standard values.</summary>
+        /// <summary>
+        /// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+        /// composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used.
+        /// Value custom is returned only in response, if Airflow web server parameters were manually changed to a
+        /// non-standard values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Network-level access control policy for the Airflow web server.</summary>
     public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema

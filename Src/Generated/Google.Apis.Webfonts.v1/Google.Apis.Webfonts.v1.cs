@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -57,10 +62,6 @@ namespace Google.Apis.Webfonts.v1
         public override string BatchPath => "batch";
         #endif
 
-
-
-
-
         /// <summary>Gets the Webfonts resource.</summary>
         public virtual WebfontsResource Webfonts { get; }
     }
@@ -83,6 +84,7 @@ namespace Google.Apis.Webfonts.v1
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -102,9 +104,11 @@ namespace Google.Apis.Webfonts.v1
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -118,8 +122,10 @@ namespace Google.Apis.Webfonts.v1
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -131,8 +137,10 @@ namespace Google.Apis.Webfonts.v1
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -148,7 +156,6 @@ namespace Google.Apis.Webfonts.v1
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -252,9 +259,7 @@ namespace Google.Apis.Webfonts.v1
         public WebfontsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Retrieves the list of fonts currently served by the Google Fonts Developer API.</summary>
         public virtual ListRequest List()
@@ -271,7 +276,6 @@ namespace Google.Apis.Webfonts.v1
                 InitParameters();
             }
 
-
             /// <summary>Enables sorting of the list.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sort", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SortEnum> Sort { get; set; }
@@ -282,23 +286,27 @@ namespace Google.Apis.Webfonts.v1
                 /// <summary>No sorting specified, use the default sorting method.</summary>
                 [Google.Apis.Util.StringValueAttribute("SORT_UNDEFINED")]
                 SORTUNDEFINED,
+
                 /// <summary>Sort alphabetically</summary>
                 [Google.Apis.Util.StringValueAttribute("ALPHA")]
                 ALPHA,
+
                 /// <summary>Sort by date added</summary>
                 [Google.Apis.Util.StringValueAttribute("DATE")]
                 DATE,
+
                 /// <summary>Sort by popularity</summary>
                 [Google.Apis.Util.StringValueAttribute("POPULARITY")]
                 POPULARITY,
+
                 /// <summary>Sort by number of styles</summary>
                 [Google.Apis.Util.StringValueAttribute("STYLE")]
                 STYLE,
+
                 /// <summary>Sort by trending</summary>
                 [Google.Apis.Util.StringValueAttribute("TRENDING")]
                 TRENDING,
             }
-
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -313,7 +321,6 @@ namespace Google.Apis.Webfonts.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-
                 RequestParameters.Add("sort", new Google.Apis.Discovery.Parameter
                 {
                     Name = "sort",
@@ -323,14 +330,11 @@ namespace Google.Apis.Webfonts.v1
                     Pattern = null,
                 });
             }
-
         }
     }
 }
-
 namespace Google.Apis.Webfonts.v1.Data
-{    
-
+{
     /// <summary>Metadata describing a family of fonts.</summary>
     public class Webfont : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -342,8 +346,9 @@ namespace Google.Apis.Webfonts.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; }
 
-        /// <summary>The font files (with all supported scripts) for each one of the available variants, as a key :
-        /// value map.</summary>
+        /// <summary>
+        /// The font files (with all supported scripts) for each one of the available variants, as a key : value map.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IDictionary<string, string> Files { get; set; }
 
@@ -369,7 +374,7 @@ namespace Google.Apis.Webfonts.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response containing the list of fonts currently served by the Google Fonts API.</summary>
     public class WebfontList : Google.Apis.Requests.IDirectResponseSchema

@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.CloudTrace.v2
 
             /// <summary>Write Trace data for a project or application</summary>
             public static string TraceAppend = "https://www.googleapis.com/auth/trace.append";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Trace API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.CloudTrace.v2
 
             /// <summary>Write Trace data for a project or application</summary>
             public const string TraceAppend = "https://www.googleapis.com/auth/trace.append";
-
         }
-
-
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -103,6 +104,7 @@ namespace Google.Apis.CloudTrace.v2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -122,9 +124,11 @@ namespace Google.Apis.CloudTrace.v2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -138,8 +142,10 @@ namespace Google.Apis.CloudTrace.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -151,8 +157,10 @@ namespace Google.Apis.CloudTrace.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -168,7 +176,6 @@ namespace Google.Apis.CloudTrace.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -273,7 +280,6 @@ namespace Google.Apis.CloudTrace.v2
         {
             this.service = service;
             Traces = new TracesResource(service);
-
         }
 
         /// <summary>Gets the Traces resource.</summary>
@@ -292,7 +298,6 @@ namespace Google.Apis.CloudTrace.v2
             {
                 this.service = service;
                 Spans = new SpansResource(service);
-
             }
 
             /// <summary>Gets the Spans resource.</summary>
@@ -310,16 +315,17 @@ namespace Google.Apis.CloudTrace.v2
                 public SpansResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-
                 }
-
 
                 /// <summary>Creates a new span.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The resource name of the span in the following format:
-                /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project; it is a
-                /// 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span within a trace; it
-                /// is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero.</param>
+                /// <param name="name">
+                /// Required. The resource name of the span in the following format:
+                /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a
+                /// project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique
+                /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array.
+                /// It should not be zero.
+                /// </param>
                 public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
                     return new CreateSpanRequest(service, body, name);
@@ -336,15 +342,15 @@ namespace Google.Apis.CloudTrace.v2
                         InitParameters();
                     }
 
-
-                    /// <summary>Required. The resource name of the span in the following format:
+                    /// <summary>
+                    /// Required. The resource name of the span in the following format:
                     /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within
                     /// a project; it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique
                     /// identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
-                    /// array. It should not be zero.</summary>
+                    /// array. It should not be zero.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudTrace.v2.Data.Span Body { get; set; }
@@ -365,7 +371,6 @@ namespace Google.Apis.CloudTrace.v2
                     protected override void InitParameters()
                     {
                         base.InitParameters();
-
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
@@ -375,14 +380,14 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = @"^projects/[^/]+/traces/[^/]+/spans/[^/]+$",
                         });
                     }
-
                 }
             }
 
             /// <summary>Sends new spans to new or existing traces. You cannot update existing spans.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The name of the project where the spans belong. The format is
-            /// `projects/[PROJECT_ID]`.</param>
+            /// <param name="name">
+            /// Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`.
+            /// </param>
             public virtual BatchWriteRequest BatchWrite(Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest body, string name)
             {
                 return new BatchWriteRequest(service, body, name);
@@ -399,12 +404,11 @@ namespace Google.Apis.CloudTrace.v2
                     InitParameters();
                 }
 
-
-                /// <summary>Required. The name of the project where the spans belong. The format is
-                /// `projects/[PROJECT_ID]`.</summary>
+                /// <summary>
+                /// Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest Body { get; set; }
@@ -425,7 +429,6 @@ namespace Google.Apis.CloudTrace.v2
                 protected override void InitParameters()
                 {
                     base.InitParameters();
-
                     RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -435,15 +438,12 @@ namespace Google.Apis.CloudTrace.v2
                         Pattern = @"^projects/[^/]+$",
                     });
                 }
-
             }
         }
     }
 }
-
 namespace Google.Apis.CloudTrace.v2.Data
-{    
-
+{
     /// <summary>Text annotation with a set of attributes.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -451,14 +451,15 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
-        /// <summary>A user-supplied message describing the event. The maximum length for the description is 256
-        /// bytes.</summary>
+        /// <summary>
+        /// A user-supplied message describing the event. The maximum length for the description is 256 bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual TruncatableString Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.</summary>
     public class AttributeValue : Google.Apis.Requests.IDirectResponseSchema
@@ -477,53 +478,61 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A set of attributes, each in the format `[KEY]:[VALUE]`.</summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
-        /// up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example:
-        /// "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
-        /// "abc.com/myattribute": { "bool_value": false }</summary>
+        /// <summary>
+        /// The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
+        /// bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example: "/instance_id": {
+        /// "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
+        /// "abc.com/myattribute": { "bool_value": false }
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string, AttributeValue> AttributeMap { get; set; }
 
-        /// <summary>The number of attributes that were discarded. Attributes can be discarded because their keys are
-        /// too long or because there are too many attributes. If this value is 0 then all attributes are
-        /// valid.</summary>
+        /// <summary>
+        /// The number of attributes that were discarded. Attributes can be discarded because their keys are too long or
+        /// because there are too many attributes. If this value is 0 then all attributes are valid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAttributesCount")]
         public virtual System.Nullable<int> DroppedAttributesCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request message for the `BatchWriteSpans` method.</summary>
     public class BatchWriteSpansRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A list of new spans. The span names must not match existing spans, or the results are
-        /// undefined.</summary>
+        /// <summary>
+        /// Required. A list of new spans. The span names must not match existing spans, or the results are undefined.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<Span> Spans { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
-    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty
-    /// JSON object `{}`.</summary>
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
+    /// object `{}`.
+    /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A pointer from the current span to another span in the same trace or in a different trace. For example,
-    /// this can be used in batching operations, where a single batch handler processes multiple requests from different
-    /// traces or when the handler receives a request from a different project.</summary>
+    /// <summary>
+    /// A pointer from the current span to another span in the same trace or in a different trace. For example, this can
+    /// be used in batching operations, where a single batch handler processes multiple requests from different traces
+    /// or when the handler receives a request from a different project.
+    /// </summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of attributes on the link. You have have up to 32 attributes per link.</summary>
@@ -544,14 +553,17 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A collection of links, which are references from this span to a span in the same or different
-    /// trace.</summary>
+    /// <summary>
+    /// A collection of links, which are references from this span to a span in the same or different trace.
+    /// </summary>
     public class Links : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of dropped links after the maximum size was enforced. If this value is 0, then no links
-        /// were dropped.</summary>
+        /// <summary>
+        /// The number of dropped links after the maximum size was enforced. If this value is 0, then no links were
+        /// dropped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedLinksCount")]
         public virtual System.Nullable<int> DroppedLinksCount { get; set; }
 
@@ -561,18 +573,21 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An event describing a message sent/received between Spans.</summary>
     public class MessageEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of compressed bytes sent or received. If missing assumed to be the same size as
-        /// uncompressed.</summary>
+        /// <summary>
+        /// The number of compressed bytes sent or received. If missing assumed to be the same size as uncompressed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compressedSizeBytes")]
         public virtual System.Nullable<long> CompressedSizeBytes { get; set; }
 
-        /// <summary>An identifier for the MessageEvent's message that can be used to match SENT and RECEIVED
-        /// MessageEvents. It is recommended to be unique within a Span.</summary>
+        /// <summary>
+        /// An identifier for the MessageEvent's message that can be used to match SENT and RECEIVED MessageEvents. It
+        /// is recommended to be unique within a Span.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
 
@@ -586,7 +601,7 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Binary module.</summary>
     public class Module : Google.Apis.Requests.IDirectResponseSchema
@@ -595,41 +610,49 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual TruncatableString BuildId { get; set; }
 
-        /// <summary>For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up
-        /// to 256 bytes).</summary>
+        /// <summary>
+        /// For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256
+        /// bytes).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
         public virtual TruncatableString ModuleValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a
-    /// trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-
-    /// operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be
-    /// contiguous—there may be gaps or overlaps between spans in a trace.</summary>
+    /// <summary>
+    /// A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace
+    /// contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A
+    /// trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there may be gaps
+    /// or overlaps between spans in a trace.
+    /// </summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of attributes on the span. You can have up to 32 attributes per span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; }
 
-        /// <summary>Optional. The number of child spans that were generated while this span was active. If set, allows
-        /// implementation to detect missing child spans.</summary>
+        /// <summary>
+        /// Optional. The number of child spans that were generated while this span was active. If set, allows
+        /// implementation to detect missing child spans.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
         public virtual System.Nullable<int> ChildSpanCount { get; set; }
 
-        /// <summary>Required. A description of the span's operation (up to 128 bytes). Trace displays the description
-        /// in the Google Cloud Platform Console. For example, the display name can be a qualified method name or a file
-        /// name and a line number where the operation is called. A best practice is to use the same display name within
-        /// an application and at the same call point. This makes it easier to correlate spans in different
-        /// traces.</summary>
+        /// <summary>
+        /// Required. A description of the span's operation (up to 128 bytes). Trace displays the description in the
+        /// Google Cloud Platform Console. For example, the display name can be a qualified method name or a file name
+        /// and a line number where the operation is called. A best practice is to use the same display name within an
+        /// application and at the same call point. This makes it easier to correlate spans in different traces.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; }
 
-        /// <summary>Required. The end time of the span. On the client side, this is the time kept by the local machine
-        /// where the span execution ends. On the server side, this is the time when the server application handler
-        /// stops running.</summary>
+        /// <summary>
+        /// Required. The end time of the span. On the client side, this is the time kept by the local machine where the
+        /// span execution ends. On the server side, this is the time when the server application handler stops running.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
@@ -637,21 +660,25 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual Links Links { get; set; }
 
-        /// <summary>Required. The resource name of the span in the following format:
+        /// <summary>
+        /// Required. The resource name of the span in the following format:
         /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;
         /// it is a 32-character hexadecimal encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
-        /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be
-        /// zero.</summary>
+        /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be
-        /// empty.</summary>
+        /// <summary>
+        /// The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual string ParentSpanId { get; set; }
 
-        /// <summary>Optional. Set this parameter to indicate whether this span is in the same process as its parent. If
-        /// you do not set this parameter, Trace is unable to take advantage of this helpful information.</summary>
+        /// <summary>
+        /// Optional. Set this parameter to indicate whether this span is in the same process as its parent. If you do
+        /// not set this parameter, Trace is unable to take advantage of this helpful information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; }
 
@@ -659,9 +686,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 
-        /// <summary>Optional. Distinguishes between spans generated in a particular context. For example, two spans
-        /// with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC
-        /// call.</summary>
+        /// <summary>
+        /// Optional. Distinguishes between spans generated in a particular context. For example, two spans with the
+        /// same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanKind")]
         public virtual string SpanKind { get; set; }
 
@@ -669,9 +697,11 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; }
 
-        /// <summary>Required. The start time of the span. On the client side, this is the time kept by the local
-        /// machine where the span execution starts. On the server side, this is the time when the server's application
-        /// handler starts running.</summary>
+        /// <summary>
+        /// Required. The start time of the span. On the client side, this is the time kept by the local machine where
+        /// the span execution starts. On the server side, this is the time when the server's application handler starts
+        /// running.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
@@ -685,13 +715,15 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a single stack frame in a stack trace.</summary>
     public class StackFrame : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The column number where the function call appears, if available. This is important in JavaScript
-        /// because of its anonymous functions.</summary>
+        /// <summary>
+        /// The column number where the function call appears, if available. This is important in JavaScript because of
+        /// its anonymous functions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnNumber")]
         public virtual System.Nullable<long> ColumnNumber { get; set; }
 
@@ -699,8 +731,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual TruncatableString FileName { get; set; }
 
-        /// <summary>The fully-qualified name that uniquely identifies the function or method that is active in this
-        /// frame (up to 1024 bytes).</summary>
+        /// <summary>
+        /// The fully-qualified name that uniquely identifies the function or method that is active in this frame (up to
+        /// 1024 bytes).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual TruncatableString FunctionName { get; set; }
 
@@ -712,9 +746,11 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loadModule")]
         public virtual Module LoadModule { get; set; }
 
-        /// <summary>An un-mangled function name, if `function_name` is
+        /// <summary>
+        /// An un-mangled function name, if `function_name` is
         /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be fully-qualified (up to 1024
-        /// bytes).</summary>
+        /// bytes).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFunctionName")]
         public virtual TruncatableString OriginalFunctionName { get; set; }
 
@@ -724,13 +760,15 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A collection of stack frames, which can be truncated.</summary>
     public class StackFrames : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of stack frames that were dropped because there were too many stack frames. If this
-        /// value is 0, then no stack frames were dropped.</summary>
+        /// <summary>
+        /// The number of stack frames that were dropped because there were too many stack frames. If this value is 0,
+        /// then no stack frames were dropped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedFramesCount")]
         public virtual System.Nullable<int> DroppedFramesCount { get; set; }
 
@@ -740,7 +778,7 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A call stack appearing in a trace.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
@@ -749,41 +787,47 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual StackFrames StackFrames { get; set; }
 
-        /// <summary>The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace.
-        /// Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain
-        /// both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request
-        /// can refer to that stack trace by only setting `stackTraceHashId`.</summary>
+        /// <summary>
+        /// The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often
+        /// multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both
+        /// the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can
+        /// refer to that stack trace by only setting `stackTraceHashId`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraceHashId")]
         public virtual System.Nullable<long> StackTraceHashId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
-    /// message contains three pieces of data: error code, error message, and error details. You can find out more about
-    /// this error model and how to work with it in the [API Design
-    /// Guide](https://cloud.google.com/apis/design/errors).</summary>
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; }
 
-        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
-        /// use.</summary>
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
 
-        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
-        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A time-stamped annotation or message event in the Span.</summary>
     public class TimeEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -802,19 +846,25 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of
-    /// either user-supplied key:value pairs, or details of a message sent/received between Spans.</summary>
+    /// <summary>
+    /// A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of either
+    /// user-supplied key:value pairs, or details of a message sent/received between Spans.
+    /// </summary>
     public class TimeEvents : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of dropped annotations in all the included time events. If the value is 0, then no
-        /// annotations were dropped.</summary>
+        /// <summary>
+        /// The number of dropped annotations in all the included time events. If the value is 0, then no annotations
+        /// were dropped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAnnotationsCount")]
         public virtual System.Nullable<int> DroppedAnnotationsCount { get; set; }
 
-        /// <summary>The number of dropped message events in all the included time events. If the value is 0, then no
-        /// message events were dropped.</summary>
+        /// <summary>
+        /// The number of dropped message events in all the included time events. If the value is 0, then no message
+        /// events were dropped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedMessageEventsCount")]
         public virtual System.Nullable<int> DroppedMessageEventsCount { get; set; }
 
@@ -824,20 +874,23 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents a string that might be shortened to a specified length.</summary>
     public class TruncatableString : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of bytes removed from the original string. If this value is 0, then the string was not
-        /// shortened.</summary>
+        /// <summary>
+        /// The number of bytes removed from the original string. If this value is 0, then the string was not shortened.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncatedByteCount")]
         public virtual System.Nullable<int> TruncatedByteCount { get; set; }
 
-        /// <summary>The shortened string. For example, if the original string is 500 bytes long and the limit of the
-        /// string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always
-        /// happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of
-        /// the shortened string might be less than the size limit.</summary>
+        /// <summary>
+        /// The shortened string. For example, if the original string is 500 bytes long and the limit of the string is
+        /// 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a
+        /// UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened
+        /// string might be less than the size limit.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

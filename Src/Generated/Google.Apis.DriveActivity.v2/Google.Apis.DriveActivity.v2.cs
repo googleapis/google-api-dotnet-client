@@ -1,11 +1,16 @@
-// Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
-// the License. You may obtain a copy of the License at
+// Copyright 2021 Google LLC
 //
-// http://www.apache.org/licenses/LICENSE-2.0
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-// Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
-// an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
-// specific language governing permissions and limitations under the License.
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 // Generated code. DO NOT EDIT!
 
@@ -65,7 +70,6 @@ namespace Google.Apis.DriveActivity.v2
 
             /// <summary>View the activity record of files in your Google Drive</summary>
             public static string DriveActivityReadonly = "https://www.googleapis.com/auth/drive.activity.readonly";
-
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Drive Activity API.</summary>
@@ -76,10 +80,7 @@ namespace Google.Apis.DriveActivity.v2
 
             /// <summary>View the activity record of files in your Google Drive</summary>
             public const string DriveActivityReadonly = "https://www.googleapis.com/auth/drive.activity.readonly";
-
         }
-
-
 
         /// <summary>Gets the Activity resource.</summary>
         public virtual ActivityResource Activity { get; }
@@ -103,6 +104,7 @@ namespace Google.Apis.DriveActivity.v2
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
             Value1,
+
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
             Value2,
@@ -122,9 +124,11 @@ namespace Google.Apis.DriveActivity.v2
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
             Json,
+
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
             Media,
+
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
             Proto,
@@ -138,8 +142,10 @@ namespace Google.Apis.DriveActivity.v2
         [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Fields { get; set; }
 
-        /// <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
-        /// Required unless you provide an OAuth 2.0 token.</summary>
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string Key { get; set; }
 
@@ -151,8 +157,10 @@ namespace Google.Apis.DriveActivity.v2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters.</summary>
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
@@ -168,7 +176,6 @@ namespace Google.Apis.DriveActivity.v2
         protected override void InitParameters()
         {
             base.InitParameters();
-
             RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
             {
                 Name = "$.xgafv",
@@ -272,9 +279,7 @@ namespace Google.Apis.DriveActivity.v2
         public ActivityResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
-
 
         /// <summary>Query past activity in Google Drive.</summary>
         /// <param name="body">The body of the request.</param>
@@ -292,8 +297,6 @@ namespace Google.Apis.DriveActivity.v2
                 Body = body;
                 InitParameters();
             }
-
-
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.DriveActivity.v2.Data.QueryDriveActivityRequest Body { get; set; }
@@ -314,16 +317,12 @@ namespace Google.Apis.DriveActivity.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
-
             }
-
         }
     }
 }
-
 namespace Google.Apis.DriveActivity.v2.Data
-{    
-
+{
     /// <summary>Information about the action.</summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -335,8 +334,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual ActionDetail Detail { get; set; }
 
-        /// <summary>The target this action affects (or empty if affecting all targets). This represents the state of
-        /// the target immediately after this action occurred.</summary>
+        /// <summary>
+        /// The target this action affects (or empty if affecting all targets). This represents the state of the target
+        /// immediately after this action occurred.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual Target Target { get; set; }
 
@@ -350,7 +351,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Data describing the type and additional information of an action.</summary>
     public class ActionDetail : Google.Apis.Requests.IDirectResponseSchema
@@ -401,7 +402,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The actor of a Drive activity.</summary>
     public class Actor : Google.Apis.Requests.IDirectResponseSchema
@@ -428,29 +429,30 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Empty message representing an administrator.</summary>
     public class Administrator : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Empty message representing an anonymous user or indicating the authenticated user should be
-    /// anonymized.</summary>
+    /// <summary>
+    /// Empty message representing an anonymous user or indicating the authenticated user should be anonymized.
+    /// </summary>
     public class AnonymousUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Represents any user (including a logged out user).</summary>
     public class Anyone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Activity in applications other than Drive.</summary>
     public class ApplicationReference : Google.Apis.Requests.IDirectResponseSchema
@@ -461,7 +463,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A comment with an assignment.</summary>
     public class Assignment : Google.Apis.Requests.IDirectResponseSchema
@@ -476,7 +478,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A change about comments on an object.</summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
@@ -499,12 +501,14 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>How the individual activities are consolidated. A set of activities may be consolidated into one
-    /// combined activity if they are related in some way, such as one actor performing the same action on multiple
-    /// targets, or multiple actors performing the same action on a single target. The strategy defines the rules for
-    /// which activities are related.</summary>
+    /// <summary>
+    /// How the individual activities are consolidated. A set of activities may be consolidated into one combined
+    /// activity if they are related in some way, such as one actor performing the same action on multiple targets, or
+    /// multiple actors performing the same action on a single target. The strategy defines the rules for which
+    /// activities are related.
+    /// </summary>
     public class ConsolidationStrategy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The individual activities are consolidated using the legacy strategy.</summary>
@@ -517,7 +521,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was created by copying an existing object.</summary>
     public class Copy : Google.Apis.Requests.IDirectResponseSchema
@@ -528,7 +532,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was created.</summary>
     public class Create : Google.Apis.Requests.IDirectResponseSchema
@@ -537,8 +541,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("copy")]
         public virtual Copy Copy { get; set; }
 
-        /// <summary>If present, indicates the object was newly created (e.g. as a blank document), not derived from a
-        /// Drive object or external object.</summary>
+        /// <summary>
+        /// If present, indicates the object was newly created (e.g. as a blank document), not derived from a Drive
+        /// object or external object.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("new")]
         public virtual New New__ { get; set; }
 
@@ -548,7 +554,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A change in the object's data leak prevention status.</summary>
     public class DataLeakPreventionChange : Google.Apis.Requests.IDirectResponseSchema
@@ -559,7 +565,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was deleted.</summary>
     public class Delete : Google.Apis.Requests.IDirectResponseSchema
@@ -570,14 +576,14 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A user whose account has since been deleted.</summary>
     public class DeletedUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a domain.</summary>
     public class Domain : Google.Apis.Requests.IDirectResponseSchema
@@ -592,13 +598,15 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a shared drive.</summary>
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
-        /// assume a specific collection ID for this resource name.</summary>
+        /// <summary>
+        /// The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+        /// specific collection ID for this resource name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -612,13 +620,14 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A single Drive activity comprising one or more Actions by one or more Actors on one or more Targets.
-    /// Some Action groupings occur spontaneously, such as moving an item into a shared folder triggering a permission
-    /// change. Other groupings of related Actions, such as multiple Actors editing one item or moving multiple files
-    /// into a new folder, are controlled by the selection of a ConsolidationStrategy in the
-    /// QueryDriveActivityRequest.</summary>
+    /// <summary>
+    /// A single Drive activity comprising one or more Actions by one or more Actors on one or more Targets. Some Action
+    /// groupings occur spontaneously, such as moving an item into a shared folder triggering a permission change. Other
+    /// groupings of related Actions, such as multiple Actors editing one item or moving multiple files into a new
+    /// folder, are controlled by the selection of a ConsolidationStrategy in the QueryDriveActivityRequest.
+    /// </summary>
     public class DriveActivity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Details on all actions in this activity.</summary>
@@ -629,14 +638,17 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actors")]
         public virtual System.Collections.Generic.IList<Actor> Actors { get; set; }
 
-        /// <summary>Key information about the primary action for this activity. This is either representative, or the
-        /// most important, of all actions in the activity, according to the ConsolidationStrategy in the
-        /// request.</summary>
+        /// <summary>
+        /// Key information about the primary action for this activity. This is either representative, or the most
+        /// important, of all actions in the activity, according to the ConsolidationStrategy in the request.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryActionDetail")]
         public virtual ActionDetail PrimaryActionDetail { get; set; }
 
-        /// <summary>All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the
-        /// state of the target immediately after the actions occurred.</summary>
+        /// <summary>
+        /// All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the state of the
+        /// target immediately after the actions occurred.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
         public virtual System.Collections.Generic.IList<Target> Targets { get; set; }
 
@@ -650,14 +662,14 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Drive item which is a file.</summary>
     public class DriveFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Drive item which is a folder.</summary>
     public class DriveFolder : Google.Apis.Requests.IDirectResponseSchema
@@ -668,7 +680,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A Drive item, such as a file or folder.</summary>
     public class DriveItem : Google.Apis.Requests.IDirectResponseSchema
@@ -689,8 +701,9 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; }
 
-        /// <summary>The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-
-        /// types.</summary>
+        /// <summary>
+        /// The MIME type of the Drive item. See https://developers.google.com/drive/v3/web/mime-types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -708,7 +721,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A lightweight reference to a Drive item, such as a file or folder.</summary>
     public class DriveItemReference : Google.Apis.Requests.IDirectResponseSchema
@@ -739,13 +752,15 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A lightweight reference to a shared drive.</summary>
     public class DriveReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not
-        /// assume a specific collection ID for this resource name.</summary>
+        /// <summary>
+        /// The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+        /// specific collection ID for this resource name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -755,38 +770,44 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An empty message indicating an object was edited.</summary>
     public class Edit : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This item is deprecated; please see `DriveFile` instead.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A comment on a file.</summary>
     public class FileComment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The comment in the discussion thread. This identifier is an opaque string compatible with the Drive
-        /// API; see https://developers.google.com/drive/v3/reference/comments/get</summary>
+        /// <summary>
+        /// The comment in the discussion thread. This identifier is an opaque string compatible with the Drive API; see
+        /// https://developers.google.com/drive/v3/reference/comments/get
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyCommentId")]
         public virtual string LegacyCommentId { get; set; }
 
-        /// <summary>The discussion thread to which the comment was added. This identifier is an opaque string
-        /// compatible with the Drive API and references the first comment in a discussion; see
-        /// https://developers.google.com/drive/v3/reference/comments/get</summary>
+        /// <summary>
+        /// The discussion thread to which the comment was added. This identifier is an opaque string compatible with
+        /// the Drive API and references the first comment in a discussion; see
+        /// https://developers.google.com/drive/v3/reference/comments/get
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legacyDiscussionId")]
         public virtual string LegacyDiscussionId { get; set; }
 
-        /// <summary>The link to the discussion thread containing this comment, for example,
-        /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".</summary>
+        /// <summary>
+        /// The link to the discussion thread containing this comment, for example,
+        /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkToDiscussion")]
         public virtual string LinkToDiscussion { get; set; }
 
@@ -796,7 +817,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This item is deprecated; please see `DriveFolder` instead.</summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
@@ -807,7 +828,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about a group.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
@@ -822,10 +843,12 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>Information about an impersonation, where an admin acts on behalf of an end user. Information about the
-    /// acting admin is not currently available.</summary>
+    /// <summary>
+    /// Information about an impersonation, where an admin acts on behalf of an end user. Information about the acting
+    /// admin is not currently available.
+    /// </summary>
     public class Impersonation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The impersonated user.</summary>
@@ -834,7 +857,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A known user.</summary>
     public class KnownUser : Google.Apis.Requests.IDirectResponseSchema
@@ -843,24 +866,28 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isCurrentUser")]
         public virtual System.Nullable<bool> IsCurrentUser { get; set; }
 
-        /// <summary>The identifier for this user that can be used with the People API to get more information. The
-        /// format is "people/ACCOUNT_ID". See https://developers.google.com/people/.</summary>
+        /// <summary>
+        /// The identifier for this user that can be used with the People API to get more information. The format is
+        /// "people/ACCOUNT_ID". See https://developers.google.com/people/.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personName")]
         public virtual string PersonName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
-    /// <summary>A strategy which consolidates activities using the grouping rules from the legacy V1 Activity API.
-    /// Similar actions occurring within a window of time can be grouped across multiple targets (such as moving a set
-    /// of files at once) or multiple actors (such as several users editing the same item). Grouping rules for this
-    /// strategy are specific to each type of action.</summary>
+    /// <summary>
+    /// A strategy which consolidates activities using the grouping rules from the legacy V1 Activity API. Similar
+    /// actions occurring within a window of time can be grouped across multiple targets (such as moving a set of files
+    /// at once) or multiple actors (such as several users editing the same item). Grouping rules for this strategy are
+    /// specific to each type of action.
+    /// </summary>
     public class Legacy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was moved.</summary>
     public class Move : Google.Apis.Requests.IDirectResponseSchema
@@ -875,21 +902,21 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was created from scratch.</summary>
     public class New : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A strategy which does no consolidation of individual activities.</summary>
     public class NoConsolidation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the owner of a Drive item.</summary>
     public class Owner : Google.Apis.Requests.IDirectResponseSchema
@@ -912,13 +939,15 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The permission setting of an object.</summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, the item can be discovered (e.g. in the user's "Shared with me" collection) without
-        /// needing a link to the item.</summary>
+        /// <summary>
+        /// If true, the item can be discovered (e.g. in the user's "Shared with me" collection) without needing a link
+        /// to the item.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowDiscovery")]
         public virtual System.Nullable<bool> AllowDiscovery { get; set; }
 
@@ -934,8 +963,10 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual Group Group { get; set; }
 
-        /// <summary>Indicates the Google Drive permissions role. The role determines a user's ability to read, write,
-        /// and comment on items.</summary>
+        /// <summary>
+        /// Indicates the Google Drive permissions role. The role determines a user's ability to read, write, and
+        /// comment on items.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
@@ -945,7 +976,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A change of the permission setting on an item.</summary>
     public class PermissionChange : Google.Apis.Requests.IDirectResponseSchema
@@ -960,7 +991,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A regular posted comment.</summary>
     public class Post : Google.Apis.Requests.IDirectResponseSchema
@@ -971,29 +1002,34 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>The request message for querying Drive activity.</summary>
     public class QueryDriveActivityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Return activities for this Drive folder and all children and descendants. The format is
-        /// "items/ITEM_ID".</summary>
+        /// <summary>
+        /// Return activities for this Drive folder and all children and descendants. The format is "items/ITEM_ID".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorName")]
         public virtual string AncestorName { get; set; }
 
-        /// <summary>Details on how to consolidate related actions that make up the activity. If not set, then related
-        /// actions are not consolidated.</summary>
+        /// <summary>
+        /// Details on how to consolidate related actions that make up the activity. If not set, then related actions
+        /// are not consolidated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consolidationStrategy")]
         public virtual ConsolidationStrategy ConsolidationStrategy { get; set; }
 
-        /// <summary>The filtering for items returned from this query request. The format of the filter string is a
-        /// sequence of expressions, joined by an optional "AND", where each expression is of the form "field operator
-        /// value". Supported fields: - time: Uses numerical operators on date values either in terms of milliseconds
-        /// since Jan 1, 1970 or in RFC 3339 format. Examples: - time > 1452409200000 AND time <= 1492812924310 - time
-        /// >= "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has" operator (:) and either a
-        /// singular value or a list of allowed action types enclosed in parentheses. Examples: -
+        /// <summary>
+        /// The filtering for items returned from this query request. The format of the filter string is a sequence of
+        /// expressions, joined by an optional "AND", where each expression is of the form "field operator value".
+        /// Supported fields: - time: Uses numerical operators on date values either in terms of milliseconds since Jan
+        /// 1, 1970 or in RFC 3339 format. Examples: - time &amp;gt; 1452409200000 AND time &amp;lt;= 1492812924310 -
+        /// time &amp;gt;= "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has" operator (:) and
+        /// either a singular value or a list of allowed action types enclosed in parentheses. Examples: -
         /// detail.action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) -
-        /// -detail.action_detail_case:MOVE</summary>
+        /// -detail.action_detail_case:MOVE
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -1001,21 +1037,25 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("itemName")]
         public virtual string ItemName { get; set; }
 
-        /// <summary>The miminum number of activities desired in the response; the server will attempt to return at
-        /// least this quanitity. The server may also return fewer activities if it has a partial response ready before
-        /// the request times out. If not set, a default value is used.</summary>
+        /// <summary>
+        /// The miminum number of activities desired in the response; the server will attempt to return at least this
+        /// quanitity. The server may also return fewer activities if it has a partial response ready before the request
+        /// times out. If not set, a default value is used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>The token identifying which page of results to return. Set this to the next_page_token value
-        /// returned from a previous query to obtain the following page of results. If not set, the first page of
-        /// results will be returned.</summary>
+        /// <summary>
+        /// The token identifying which page of results to return. Set this to the next_page_token value returned from a
+        /// previous query to obtain the following page of results. If not set, the first page of results will be
+        /// returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Response message for querying Drive activity.</summary>
     public class QueryDriveActivityResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -1024,14 +1064,15 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activities")]
         public virtual System.Collections.Generic.IList<DriveActivity> Activities { get; set; }
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was renamed.</summary>
     public class Rename : Google.Apis.Requests.IDirectResponseSchema
@@ -1046,7 +1087,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A deleted object was restored.</summary>
     public class Restore : Google.Apis.Requests.IDirectResponseSchema
@@ -1057,7 +1098,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about restriction policy changes to a feature.</summary>
     public class RestrictionChange : Google.Apis.Requests.IDirectResponseSchema
@@ -1072,7 +1113,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about settings changes.</summary>
     public class SettingsChange : Google.Apis.Requests.IDirectResponseSchema
@@ -1083,7 +1124,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A suggestion.</summary>
     public class Suggestion : Google.Apis.Requests.IDirectResponseSchema
@@ -1094,7 +1135,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Event triggered by system operations instead of end users.</summary>
     public class SystemEvent : Google.Apis.Requests.IDirectResponseSchema
@@ -1105,7 +1146,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about the target of activity.</summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
@@ -1128,7 +1169,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A lightweight reference to the target of activity.</summary>
     public class TargetReference : Google.Apis.Requests.IDirectResponseSchema
@@ -1147,7 +1188,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This item is deprecated; please see `Drive` instead.</summary>
     public class TeamDrive : Google.Apis.Requests.IDirectResponseSchema
@@ -1166,7 +1207,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>This item is deprecated; please see `DriveReference` instead.</summary>
     public class TeamDriveReference : Google.Apis.Requests.IDirectResponseSchema
@@ -1181,7 +1222,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about time ranges.</summary>
     public class TimeRange : Google.Apis.Requests.IDirectResponseSchema
@@ -1196,21 +1237,21 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>A user about whom nothing is currently known.</summary>
     public class UnknownUser : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>An object was uploaded into Drive.</summary>
     public class Upload : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }    
+    }
 
     /// <summary>Information about an end user.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
