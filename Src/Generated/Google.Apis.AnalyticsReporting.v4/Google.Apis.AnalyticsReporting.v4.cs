@@ -69,7 +69,7 @@ namespace Google.Apis.AnalyticsReporting.v4
             /// <summary>View and manage your Google Analytics data</summary>
             public static string Analytics = "https://www.googleapis.com/auth/analytics";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public static string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
         }
 
@@ -79,7 +79,7 @@ namespace Google.Apis.AnalyticsReporting.v4
             /// <summary>View and manage your Google Analytics data</summary>
             public const string Analytics = "https://www.googleapis.com/auth/analytics";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public const string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
         }
 

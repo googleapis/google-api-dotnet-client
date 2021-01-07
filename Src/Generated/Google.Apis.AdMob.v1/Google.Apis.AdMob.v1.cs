@@ -495,7 +495,7 @@ namespace Google.Apis.AdMob.v1
         }
 
         /// <summary>
-        /// Lists the AdMob publisher account accessible with the client credential. Currently, all credentials have
+        /// List the AdMob publisher account accessible with the client credential. Currently, all credentials have
         /// access to at most one AdMob account.
         /// </summary>
         public virtual ListRequest List()
@@ -504,7 +504,7 @@ namespace Google.Apis.AdMob.v1
         }
 
         /// <summary>
-        /// Lists the AdMob publisher account accessible with the client credential. Currently, all credentials have
+        /// List the AdMob publisher account accessible with the client credential. Currently, all credentials have
         /// access to at most one AdMob account.
         /// </summary>
         public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.ListPublisherAccountsResponse>

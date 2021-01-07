@@ -762,17 +762,6 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata that represents a processor version being created.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3CreateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The basic metadata of the long running operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
-        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The long running operation metadata for DeleteLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -864,6 +853,122 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
+    /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
+    /// version. So the processor's behavior (when processing documents) is defined by a default version.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the processor version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The display name of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The resource name of the processor version. Format:
+        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The schema of the processor version. Describes the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDocumentaiUiv1beta3Schema Schema { get; set; }
+
+        /// <summary>The state of the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of the entity. It can be either a value type (such as "text", "numeric", "date" and "address"), or an
+        /// object type which may contain nested entities (such as "document" and "table").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
+        public virtual string BaseType { get; set; }
+
+        /// <summary>Description of the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>
+        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
+        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
+        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> Properties { get; set; }
+
+        /// <summary>Source of this entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Name of the type. It must be unique within the set of same level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata that represents a processor version being created.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The processor version produced by training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersion ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for the undeploy processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -899,6 +1004,122 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>The basic metadata of the long running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The long running operation metadata for batch process method.</summary>
+    public class GoogleCloudDocumentaiV1BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualProcessStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus> IndividualProcessStatuses { get; set; }
+
+        /// <summary>The state of the current batch processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// A message providing more details about the current state of processing. For example, the error message if
+        /// the operation is failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>The last update time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of a each individual document in the batch process.</summary>
+    public class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the operation triggered by the processed document. If the human review process is not triggered,
+        /// this field will be empty. It has the same response type and metadata as the long running operation returned
+        /// by ReviewDocument method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
+        public virtual string HumanReviewOperation { get; set; }
+
+        /// <summary>
+        /// The source of the document, same as the [input_gcs_source] field in the request when the batch process
+        /// started. The batch process is started by take snapshot of that document, since a user can move or change
+        /// that document during the process.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>
+        /// The output_gcs_destination (in the request as 'output_gcs_destination') of the processed document if it was
+        /// successful, otherwise empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputGcsDestination")]
+        public virtual string OutputGcsDestination { get; set; }
+
+        /// <summary>The status of the processing of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for batch process document method.</summary>
+    public class GoogleCloudDocumentaiV1BatchProcessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The common metadata for long running operations.</summary>
+    public class GoogleCloudDocumentaiV1CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>A message providing more details about the current state of processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>The last update time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The long running operation metadata for review document method.</summary>
+    public class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for review document method.</summary>
+    public class GoogleCloudDocumentaiV1ReviewDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual string GcsDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3386,9 +3607,36 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The common metadata for long running operations.</summary>
+    public class GoogleCloudDocumentaiV1beta3CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>A message providing more details about the current state of processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
+
+        /// <summary>The last update time of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for review document method.</summary>
     public class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }

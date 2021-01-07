@@ -2618,8 +2618,8 @@ namespace Google.Apis.DLP.v2
                     /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-                    /// {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED -
-                    /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+                    /// {value}`. * Supported fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED
+                    /// - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
                     /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
                     /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
                     /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
@@ -5532,7 +5532,7 @@ namespace Google.Apis.DLP.v2
                 /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. *
                 /// Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions
                 /// implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported
-                /// fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
+                /// fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` -
                 /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
                 /// quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred
                 /// while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: *
@@ -7836,8 +7836,8 @@ namespace Google.Apis.DLP.v2
                     /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-                    /// {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED -
-                    /// `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
+                    /// {value}`. * Supported fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED
+                    /// - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted
                     /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of
                     /// errors that have occurred while running. * The operator must be `=` or `!=` for status and
                     /// inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY *

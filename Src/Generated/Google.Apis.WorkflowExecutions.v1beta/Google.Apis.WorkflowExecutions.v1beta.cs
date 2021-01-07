@@ -699,7 +699,11 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     /// </summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input parameters of the execution represented as a JSON string. The size limit is 32KB.</summary>
+        /// <summary>
+        /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are
+        /// using the REST API directly to run your workflow, you must escape any JSON string value of `argument`.
+        /// Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argument")]
         public virtual string Argument { get; set; }
 

@@ -63,14 +63,14 @@ namespace Google.Apis.AlertCenter.v1beta1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the G Suite Alert Center API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Workspace Alert Center API.</summary>
         public class Scope
         {
             /// <summary>See and delete your domain's G Suite alerts, and send alert feedback</summary>
             public static string AppsAlerts = "https://www.googleapis.com/auth/apps.alerts";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the G Suite Alert Center API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Workspace Alert Center API.</summary>
         public static class ScopeConstants
         {
             /// <summary>See and delete your domain's G Suite alerts, and send alert feedback</summary>
@@ -329,8 +329,8 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string AlertId { get; private set; }
 
                 /// <summary>
-                /// Optional. The unique identifier of the G Suite organization account of the customer the alert is
-                /// associated with. Inferred from the caller identity if not provided.
+                /// Optional. The unique identifier of the Google Workspace organization account of the customer the
+                /// alert is associated with. Inferred from the caller identity if not provided.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
@@ -405,8 +405,8 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string AlertId { get; private set; }
 
                 /// <summary>
-                /// Optional. The unique identifier of the G Suite organization account of the customer the alert
-                /// feedback are associated with. Inferred from the caller identity if not provided.
+                /// Optional. The unique identifier of the Google Workspace organization account of the customer the
+                /// alert feedback are associated with. Inferred from the caller identity if not provided.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomerId { get; set; }
@@ -568,8 +568,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alert is
-            /// associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
+            /// is associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -632,8 +632,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alert is
-            /// associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
+            /// is associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -698,8 +698,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alert metadata
-            /// is associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
+            /// metadata is associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -752,8 +752,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alerts are
-            /// associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts
+            /// are associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -940,8 +940,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alert settings
-            /// are associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
+            /// settings are associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -988,8 +988,8 @@ namespace Google.Apis.AlertCenter.v1beta1
             }
 
             /// <summary>
-            /// Optional. The unique identifier of the G Suite organization account of the customer the alert settings
-            /// are associated with. Inferred from the caller identity if not provided.
+            /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert
+            /// settings are associated with. Inferred from the caller identity if not provided.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
@@ -1175,7 +1175,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
         /// <summary>
         /// Required. The type of the alert. This is output only after alert is created. For a list of available alert
-        /// types see [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
+        /// types see [Google Workspace Alert types](/admin-sdk/alertcenter/reference/alert-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -1319,7 +1319,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; }
 
         /// <summary>
-        /// Optional. The unique identifier of the G Suite organization account of the customer the alerts are
+        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are
         /// associated with.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
@@ -1352,7 +1352,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> AlertId { get; set; }
 
         /// <summary>
-        /// Optional. The unique identifier of the G Suite organization account of the customer the alerts are
+        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alerts are
         /// associated with.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
@@ -1719,7 +1719,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// Settings for callback notifications. For more details see [G Suite Alert
+    /// Settings for callback notifications. For more details see [Google Workspace Alert
     /// Notification](/admin-sdk/alertcenter/guides/notifications).
     /// </summary>
     public class Notification : Google.Apis.Requests.IDirectResponseSchema
@@ -1982,8 +1982,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     public class UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The unique identifier of the G Suite organization account of the customer the alert is associated
-        /// with. Inferred from the caller identity if not provided.
+        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert is
+        /// associated with. Inferred from the caller identity if not provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual string CustomerId { get; set; }
