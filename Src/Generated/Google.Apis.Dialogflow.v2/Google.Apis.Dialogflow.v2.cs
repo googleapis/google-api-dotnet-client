@@ -8116,9 +8116,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
         /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
-        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
-        /// composite entity property names to property values - Else: parameter value
+        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
+        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
+        /// a composite entity: map from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -8382,9 +8382,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// The collection of parameters associated with the event. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
         /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
-        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
-        /// composite entity property names to property values - Else: parameter value
+        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
+        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
+        /// a composite entity: map from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -9806,9 +9806,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// The collection of extracted parameters. Depending on your protocol or client library language, this is a
         /// map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
         /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        /// entity type is a composite entity: map - Else: string or number, depending on parameter value type -
-        /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
-        /// to property values - Else: parameter value
+        /// entity type is a composite entity: map - Else: depending on parameter value type, could be one of string,
+        /// number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map
+        /// from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -10305,9 +10305,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
         /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
-        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
-        /// composite entity property names to property values - Else: parameter value
+        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
+        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
+        /// a composite entity: map from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -10405,9 +10405,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// The collection of parameters associated with the event. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
         /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: string or number, depending on
-        /// parameter value type - MapValue value: - If parameter's entity type is a composite entity: map from
-        /// composite entity property names to property values - Else: parameter value
+        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
+        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
+        /// a composite entity: map from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -11768,9 +11768,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// The collection of extracted parameters. Depending on your protocol or client library language, this is a
         /// map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
         /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        /// entity type is a composite entity: map - Else: string or number, depending on parameter value type -
-        /// MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names
-        /// to property values - Else: parameter value
+        /// entity type is a composite entity: map - Else: depending on parameter value type, could be one of string,
+        /// number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map
+        /// from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }

@@ -327,7 +327,10 @@ namespace Google.Apis.AdMob.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of ad units to return.</summary>
+                /// <summary>
+                /// The maximum number of ad units to return. If unspecified or 0, at most 1000 ad units will be
+                /// returned. The maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -688,7 +691,7 @@ namespace Google.Apis.AdMob.v1beta
         }
 
         /// <summary>
-        /// Lists the AdMob publisher account accessible with the client credential. Currently, all credentials have
+        /// List the AdMob publisher account accessible with the client credential. Currently, all credentials have
         /// access to at most one AdMob account.
         /// </summary>
         public virtual ListRequest List()
@@ -697,7 +700,7 @@ namespace Google.Apis.AdMob.v1beta
         }
 
         /// <summary>
-        /// Lists the AdMob publisher account accessible with the client credential. Currently, all credentials have
+        /// List the AdMob publisher account accessible with the client credential. Currently, all credentials have
         /// access to at most one AdMob account.
         /// </summary>
         public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListPublisherAccountsResponse>

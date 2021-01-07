@@ -5181,7 +5181,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="part">
         /// The *part* parameter serves two purposes in this operation. It identifies the properties that the write
         /// operation will set as well as the properties that the API response will include. The part properties that
-        /// you can include in the parameter value are id, snippet, cdn, and status.
+        /// you can include in the parameter value are id, snippet, cdn, content_details, and status.
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.YouTube.v3.Data.LiveStream body, Google.Apis.Util.Repeatable<string> part)
         {
@@ -5202,7 +5202,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>
             /// The *part* parameter serves two purposes in this operation. It identifies the properties that the write
             /// operation will set as well as the properties that the API response will include. The part properties
-            /// that you can include in the parameter value are id, snippet, cdn, and status.
+            /// that you can include in the parameter value are id, snippet, cdn, content_details, and status.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }

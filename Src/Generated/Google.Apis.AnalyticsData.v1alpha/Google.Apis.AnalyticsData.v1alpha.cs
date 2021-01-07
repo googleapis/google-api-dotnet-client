@@ -69,7 +69,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>View and manage your Google Analytics data</summary>
             public static string Analytics = "https://www.googleapis.com/auth/analytics";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public static string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
         }
 
@@ -79,7 +79,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
             /// <summary>View and manage your Google Analytics data</summary>
             public const string Analytics = "https://www.googleapis.com/auth/analytics";
 
-            /// <summary>View your Google Analytics data</summary>
+            /// <summary>See and download your Google Analytics data</summary>
             public const string AnalyticsReadonly = "https://www.googleapis.com/auth/analytics.readonly";
         }
 
@@ -764,13 +764,15 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     }
 
     /// <summary>
-    /// Specification of cohorts for a cohort report. Cohort reports can be used for example to create a time series of
-    /// user retention for the cohort. For example, you could select the cohort of users that were acquired in the first
-    /// week of September and follow that cohort for the next six weeks. Selecting the users acquired in the first week
-    /// of September cohort is specified in the `cohort` object. Following that cohort for the next six weeks is
-    /// specified in the `cohortsRange` object. The report response could show a weekly time series where say your app
-    /// has retained 60% of this cohort after three weeks and 25% of this cohort after six weeks. These two percentages
-    /// can be calculated by the metric `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the report.
+    /// The specification of cohorts for a cohort report. Cohort reports create a time series of user retention for the
+    /// cohort. For example, you could select the cohort of users that were acquired in the first week of September and
+    /// follow that cohort for the next six weeks. Selecting the users acquired in the first week of September cohort is
+    /// specified in the `cohort` object. Following that cohort for the next six weeks is specified in the
+    /// `cohortsRange` object. For examples, see [Cohort Report
+    /// Examples](https://developers.google.com/analytics/devguides/reporting/data/v1/advanced#cohort_report_examples).
+    /// The report response could show a weekly time series where say your app has retained 60% of this cohort after
+    /// three weeks and 25% of this cohort after six weeks. These two percentages can be calculated by the metric
+    /// `cohortActiveUsers/cohortTotalUsers` and will be separate rows in the report.
     /// </summary>
     public class CohortSpec : Google.Apis.Requests.IDirectResponseSchema
     {

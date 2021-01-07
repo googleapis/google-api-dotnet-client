@@ -345,7 +345,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the Google Workspace account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 
@@ -515,7 +515,7 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1
                 InitParameters();
             }
 
-            /// <summary>Immutable ID of the Google Apps account.</summary>
+            /// <summary>Immutable ID of the Google Workspace account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerId { get; set; }
 

@@ -221,7 +221,7 @@
    }
   }
  }, 
- "revision": "20201211", 
+ "revision": "20210101", 
  "rootUrl": "https://cloudasset.googleapis.com/", 
  "schemas": {
   "AccessSelector": {

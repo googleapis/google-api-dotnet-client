@@ -1291,6 +1291,13 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservedRanges")]
         public virtual System.Collections.Generic.IList<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange> ReservedRanges { get; set; }
 
+        /// <summary>
+        /// Output only. Indicates whether the VPC Service Controls reference architecture is configured for the
+        /// producer VPC host network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcScReferenceArchitectureEnabled")]
+        public virtual System.Nullable<bool> VpcScReferenceArchitectureEnabled { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
