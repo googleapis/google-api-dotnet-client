@@ -382,7 +382,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     }
                 }
 
-                /// <summary>Deletes a single Date Fusion instance.</summary>
+                /// <summary>Deletes a single Data Fusion instance.</summary>
                 /// <param name="name">
                 /// The instance resource name in the format
                 /// projects/{project}/locations/{location}/instances/{instance}
@@ -392,7 +392,7 @@ namespace Google.Apis.DataFusion.v1beta1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a single Date Fusion instance.</summary>
+                /// <summary>Deletes a single Data Fusion instance.</summary>
                 public class DeleteRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1543,6 +1543,59 @@ namespace Google.Apis.DataFusion.v1beta1
                 }
             }
         }
+
+        /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">The resource on which IAM policy to be removed is attached to.</param>
+        public virtual RemoveIamPolicyRequest RemoveIamPolicy(Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource)
+        {
+            return new RemoveIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
+        public class RemoveIamPolicyRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyResponse>
+        {
+            /// <summary>Constructs a new RemoveIamPolicy request.</summary>
+            public RemoveIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>The resource on which IAM policy to be removed is attached to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "removeIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+resource}:removeIamPolicy";
+
+            /// <summary>Initializes RemoveIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/.*$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.DataFusion.v1beta1.Data
@@ -1612,13 +1665,6 @@ namespace Google.Apis.DataFusion.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
@@ -1842,7 +1888,9 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
-        /// <summary>Name of the zone in which the Data Fusion instance will be created.</summary>
+        /// <summary>
+        /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
 
@@ -2121,6 +2169,20 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Request message for RemoveIamPolicy method.</summary>
+    public class RemoveIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for RemoveIamPolicy method.</summary>
+    public class RemoveIamPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for restarting a Data Fusion instance.</summary>

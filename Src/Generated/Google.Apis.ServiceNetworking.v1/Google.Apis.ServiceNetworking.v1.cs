@@ -4246,12 +4246,20 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual System.Collections.Generic.IList<string> RequestedRanges { get; set; }
 
         /// <summary>
-        /// Optional. DO NOT USE - Under development. The size of the desired secondary ranges for the subnet. Use usual
-        /// CIDR range notation. For example, '30' to find unused x.x.x.x/30 CIDR range. The goal is to determine that
-        /// the allocated ranges have enough free space for all the requested secondary ranges.
+        /// Optional. The size of the desired secondary ranges for the subnet. Use usual CIDR range notation. For
+        /// example, '30' to find unused x.x.x.x/30 CIDR range. The goal is to determine that the allocated ranges have
+        /// enough free space for all the requested secondary ranges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryRangeIpPrefixLengths")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> SecondaryRangeIpPrefixLengths { get; set; }
+
+        /// <summary>
+        /// Optional. List of subnetwork candidates to validate. The required input fields are `name`, `network`, and
+        /// `region`. Subnetworks from this list which exist will be returned in the response with the `ip_cidr_range`,
+        /// `secondary_ip_cider_ranges`, and `outside_allocation` fields set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkCandidates")]
+        public virtual System.Collections.Generic.IList<Subnetwork> SubnetworkCandidates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4672,6 +4680,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outsideAllocation")]
         public virtual System.Nullable<bool> OutsideAllocation { get; set; }
 
+        /// <summary>GCP region where the subnetwork is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>List of secondary IP ranges in this subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryIpRanges")]
         public virtual System.Collections.Generic.IList<SecondaryIpRange> SecondaryIpRanges { get; set; }
@@ -4849,7 +4861,10 @@ namespace Google.Apis.ServiceNetworking.v1.Data
 
         /// <summary>
         /// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of
-        /// the form /; for example 'serviceusage.googleapis.com/billing-enabled'.
+        /// the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service
+        /// requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud".
+        /// Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included
+        /// based on the business needs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirements")]
         public virtual System.Collections.Generic.IList<string> Requirements { get; set; }
@@ -4941,9 +4956,18 @@ namespace Google.Apis.ServiceNetworking.v1.Data
 
     public class ValidateConsumerConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// List of subnetwork candidates from the request which exist with the `ip_cidr_range`,
+        /// `secondary_ip_cider_ranges`, and `outside_allocation` fields set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingSubnetworkCandidates")]
+        public virtual System.Collections.Generic.IList<Subnetwork> ExistingSubnetworkCandidates { get; set; }
+
+        /// <summary>Indicates whether all the requested validations passed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isValid")]
         public virtual System.Nullable<bool> IsValid { get; set; }
 
+        /// <summary>The first validation which failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationError")]
         public virtual string ValidationError { get; set; }
 

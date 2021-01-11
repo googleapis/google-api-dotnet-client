@@ -1895,7 +1895,7 @@
    }
   }
  }, 
- "revision": "20201127", 
+ "revision": "20210105", 
  "rootUrl": "https://spanner.googleapis.com/", 
  "schemas": {
   "Backup": {

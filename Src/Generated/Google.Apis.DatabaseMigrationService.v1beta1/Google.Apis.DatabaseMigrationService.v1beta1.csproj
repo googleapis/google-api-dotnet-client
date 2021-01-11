@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.CloudDatabaseMigrationService.v1beta1 Client Library</Title>
-    <Version>1.49.0.2162</Version>
+    <Title>Google.Apis.DatabaseMigrationService.v1beta1 Client Library</Title>
+    <Version>1.49.0.2189</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

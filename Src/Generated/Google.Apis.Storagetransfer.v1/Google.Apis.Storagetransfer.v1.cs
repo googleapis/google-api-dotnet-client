@@ -996,6 +996,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; }
 
+        /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
+        /// treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1019,6 +1026,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Required. The container to transfer from the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
+
+        /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
+        /// treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
 
         /// <summary>Required. The name of the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageAccount")]
@@ -1147,6 +1161,14 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; }
 
+        /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
+        /// treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name
+        /// Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1173,13 +1195,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a
     /// data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match
     /// the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match
-    /// the MD5 computed from the transferred bytes, the object transfer will fail. For more information, see
-    /// [Generating MD5 hashes] (https://cloud.google.com/storage-transfer/docs/create-url-list#md5-checksum) * Ensure
-    /// that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object
-    /// publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage
-    /// Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to
-    /// return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to
-    /// transfer.
+    /// the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify
+    /// is publicly accessible. For example, in Cloud Storage you can [share an object publicly]
+    /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer
+    /// Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a
+    /// `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
     /// </summary>
     public class HttpData : Google.Apis.Requests.IDirectResponseSchema
     {

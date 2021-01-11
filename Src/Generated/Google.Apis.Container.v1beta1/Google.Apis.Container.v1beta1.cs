@@ -9717,30 +9717,30 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class UpgradeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The current version before the upgrade.</summary>
+        /// <summary>The current version before the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
 
-        /// <summary>Required. The operation associated with this upgrade.</summary>
+        /// <summary>The operation associated with this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
 
-        /// <summary>Required. The time when the operation was started.</summary>
+        /// <summary>The time when the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationStartTime")]
         public virtual object OperationStartTime { get; set; }
 
         /// <summary>
-        /// Optional. Optional relative path to the resource. For example in node pool upgrades, the relative path of
-        /// the node pool.
+        /// Optional relative path to the resource. For example in node pool upgrades, the relative path of the node
+        /// pool.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Required. The resource type that is upgrading.</summary>
+        /// <summary>The resource type that is upgrading.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
-        /// <summary>Required. The target version for the upgrade.</summary>
+        /// <summary>The target version for the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
         public virtual string TargetVersion { get; set; }
 

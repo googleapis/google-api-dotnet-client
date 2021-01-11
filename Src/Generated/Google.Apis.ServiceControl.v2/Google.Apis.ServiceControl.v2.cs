@@ -1043,7 +1043,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>
         /// Annotations is an unstructured key-value map stored with a resource that may be set by external tools to
         /// store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying
-        /// objects. More info: http://kubernetes.io/docs/user-guide/annotations
+        /// objects. More info: https://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -1078,6 +1078,15 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Immutable. The location of the resource. The location encoding is specific to the service provider, and new
+        /// encoding may be introduced as the service evolves. For Google Cloud products, the encoding is what is used
+        /// by Google Cloud APIs, such as `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The semantics of `location`
+        /// is identical to the `cloud.googleapis.com/location` label used by some Google Cloud APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>
         /// The stable identifier (name) of a resource on the `service`. A resource can be logically identified as
