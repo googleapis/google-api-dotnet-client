@@ -230,7 +230,7 @@
    }
   }
  }, 
- "revision": "20201215", 
+ "revision": "20201231", 
  "rootUrl": "https://artifactregistry.googleapis.com/", 
  "schemas": {
   "CancelOperationRequest": {

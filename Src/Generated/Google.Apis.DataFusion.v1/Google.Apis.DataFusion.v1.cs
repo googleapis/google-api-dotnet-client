@@ -1489,6 +1489,10 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
+        /// <summary>The state of the accelerator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1547,13 +1551,6 @@ namespace Google.Apis.DataFusion.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A client-specified ID for this binding. Expected to be globally unique to support the internal
-        /// bindings-by-ID API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
@@ -1960,6 +1957,14 @@ namespace Google.Apis.DataFusion.v1.Data
     /// <summary>Represents the metadata of a long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Map to hold any additonal status info for the operation If there is an accelerator being
+        /// enabled/disabled/deleted, this will be populated with accelerator name as key and status as ENABLING,
+        /// DISABLING or DELETING
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalStatus")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalStatus { get; set; }
+
         /// <summary>API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }

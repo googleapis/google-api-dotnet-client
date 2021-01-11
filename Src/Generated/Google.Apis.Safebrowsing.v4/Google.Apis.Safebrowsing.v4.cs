@@ -761,7 +761,8 @@ namespace Google.Apis.Safebrowsing.v4.Data
 
     /// <summary>
     /// Describes a Safe Browsing API update request. Clients can request updates for multiple lists in a single
-    /// request. NOTE: Field index 2 is unused. NEXT: 5
+    /// request. The server may not respond to all requests, if the server has no updates for that list. NOTE: Field
+    /// index 2 is unused. NEXT: 5
     /// </summary>
     public class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -849,7 +850,10 @@ namespace Google.Apis.Safebrowsing.v4.Data
 
     public class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list updates requested by the clients.</summary>
+        /// <summary>
+        /// The list updates requested by the clients. The number of responses here may be less than the number of
+        /// requests sent by clients. This is the case, for example, if the server has no updates for a particular list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listUpdateResponses")]
         public virtual System.Collections.Generic.IList<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse> ListUpdateResponses { get; set; }
 

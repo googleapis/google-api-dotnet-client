@@ -14,10 +14,10 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
+namespace Google.Apis.DatabaseMigrationService.v1beta1
 {
-    /// <summary>The CloudDatabaseMigrationService Service.</summary>
-    public class CloudDatabaseMigrationServiceService : Google.Apis.Services.BaseClientService
+    /// <summary>The DatabaseMigrationService Service.</summary>
+    public class DatabaseMigrationServiceService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1beta1";
@@ -26,13 +26,13 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public CloudDatabaseMigrationServiceService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        public DatabaseMigrationServiceService() : this(new Google.Apis.Services.BaseClientService.Initializer())
         {
         }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public CloudDatabaseMigrationServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        public DatabaseMigrationServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -80,11 +80,11 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
         public virtual ProjectsResource Projects { get; }
     }
 
-    /// <summary>A base abstract class for CloudDatabaseMigrationService requests.</summary>
-    public abstract class CloudDatabaseMigrationServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    /// <summary>A base abstract class for DatabaseMigrationService requests.</summary>
+    public abstract class DatabaseMigrationServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        /// <summary>Constructs a new CloudDatabaseMigrationServiceBaseServiceRequest instance.</summary>
-        protected CloudDatabaseMigrationServiceBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        /// <summary>Constructs a new DatabaseMigrationServiceBaseServiceRequest instance.</summary>
+        protected DatabaseMigrationServiceBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -166,7 +166,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes CloudDatabaseMigrationService parameter list.</summary>
+        /// <summary>Initializes DatabaseMigrationService parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -318,16 +318,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of connection profiles.
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string parent)
+                public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a new connection profile in a given project and location.</summary>
-                public class CreateRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class CreateRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -352,7 +352,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -411,7 +411,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Deletes a single Database Migration Service connection profile. A connection profile can only be
                 /// deleted if it is not in use by any active migration jobs.
                 /// </summary>
-                public class DeleteRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class DeleteRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -488,7 +488,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 }
 
                 /// <summary>Gets details of a single connection profile.</summary>
-                public class GetRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile>
+                public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -542,7 +542,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
                 /// </summary>
-                public class GetIamPolicyRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Policy>
+                public class GetIamPolicyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
                     public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
@@ -611,7 +611,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 }
 
                 /// <summary>Retrieve a list of all connection profiles in a given project and location.</summary>
-                public class ListRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ListConnectionProfilesResponse>
+                public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.ListConnectionProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -718,16 +718,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// The name of this connection profile resource in the form of
                 /// projects/{project}/locations/{location}/instances/{instance}.
                 /// </param>
-                public virtual PatchRequest Patch(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string name)
+                public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Update the configuration of a single connection profile.</summary>
-                public class PatchRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class PatchRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -758,7 +758,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ConnectionProfile Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.ConnectionProfile Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -812,7 +812,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
                 /// the appropriate value for this field.
                 /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource)
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(service, body, resource);
                 }
@@ -821,10 +821,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
-                public class SetIamPolicyRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Policy>
+                public class SetIamPolicyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -839,7 +839,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -879,7 +879,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.
                 /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource)
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
@@ -890,10 +890,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
                 /// checking. This operation may "fail open" without warning.
                 /// </summary>
-                public class TestIamPermissionsRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsResponse>
+                public class TestIamPermissionsRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -908,7 +908,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -958,16 +958,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <summary>Creates a new migration job in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent, which owns this collection of migration jobs.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob body, string parent)
+                public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates a new migration job in a given project and location.</summary>
-                public class CreateRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class CreateRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -992,7 +992,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1045,7 +1045,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 }
 
                 /// <summary>Deletes a single migration job.</summary>
-                public class DeleteRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class DeleteRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1117,16 +1117,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <summary>Generate a SSH configuration script to configure the reverse SSH connectivity.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="migrationJob">Name of the migration job resource to generate the SSH script.</param>
-                public virtual GenerateSshScriptRequest GenerateSshScript(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest body, string migrationJob)
+                public virtual GenerateSshScriptRequest GenerateSshScript(Google.Apis.DatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest body, string migrationJob)
                 {
                     return new GenerateSshScriptRequest(service, body, migrationJob);
                 }
 
                 /// <summary>Generate a SSH configuration script to configure the reverse SSH connectivity.</summary>
-                public class GenerateSshScriptRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SshScript>
+                public class GenerateSshScriptRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.SshScript>
                 {
                     /// <summary>Constructs a new GenerateSshScript request.</summary>
-                    public GenerateSshScriptRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest body, string migrationJob) : base(service)
+                    public GenerateSshScriptRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest body, string migrationJob) : base(service)
                     {
                         MigrationJob = migrationJob;
                         Body = body;
@@ -1138,7 +1138,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string MigrationJob { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.GenerateSshScriptRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1175,7 +1175,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 }
 
                 /// <summary>Gets details of a single migration job.</summary>
-                public class GetRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob>
+                public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -1229,7 +1229,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
                 /// </summary>
-                public class GetIamPolicyRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Policy>
+                public class GetIamPolicyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
                     public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
@@ -1296,7 +1296,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 }
 
                 /// <summary>Lists migration jobs in a given project and location.</summary>
-                public class ListRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ListMigrationJobsResponse>
+                public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.ListMigrationJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -1407,16 +1407,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// The name (URI) of this migration job resource, in the form of:
                 /// projects/{project}/locations/{location}/instances/{instance}.
                 /// </param>
-                public virtual PatchRequest Patch(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob body, string name)
+                public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Updates the parameters of a single migration job.</summary>
-                public class PatchRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class PatchRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1447,7 +1447,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.MigrationJob Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.MigrationJob Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1498,7 +1498,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to promote.</param>
-                public virtual PromoteRequest Promote(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest body, string name)
+                public virtual PromoteRequest Promote(Google.Apis.DatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest body, string name)
                 {
                     return new PromoteRequest(service, body, name);
                 }
@@ -1507,10 +1507,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Promote a migration job, stopping replication to the destination and promoting the destination to be
                 /// a standalone database.
                 /// </summary>
-                public class PromoteRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class PromoteRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Promote request.</summary>
-                    public PromoteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest body, string name) : base(service)
+                    public PromoteRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1522,7 +1522,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.PromoteMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1557,7 +1557,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to restart.</param>
-                public virtual RestartRequest Restart(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest body, string name)
+                public virtual RestartRequest Restart(Google.Apis.DatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest body, string name)
                 {
                     return new RestartRequest(service, body, name);
                 }
@@ -1566,10 +1566,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Restart a stopped or failed migration job, resetting the destination instance to its original state
                 /// and starting the migration process from scratch.
                 /// </summary>
-                public class RestartRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class RestartRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Restart request.</summary>
-                    public RestartRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest body, string name) : base(service)
+                    public RestartRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1581,7 +1581,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.RestartMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1615,7 +1615,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to resume.</param>
-                public virtual ResumeRequest Resume(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest body, string name)
+                public virtual ResumeRequest Resume(Google.Apis.DatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest body, string name)
                 {
                     return new ResumeRequest(service, body, name);
                 }
@@ -1623,10 +1623,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <summary>
                 /// Resume a migration job that is currently stopped and is resumable (was stopped during CDC phase).
                 /// </summary>
-                public class ResumeRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class ResumeRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Resume request.</summary>
-                    public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest body, string name) : base(service)
+                    public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1638,7 +1638,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.ResumeMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1676,7 +1676,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for
                 /// the appropriate value for this field.
                 /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource)
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(service, body, resource);
                 }
@@ -1685,10 +1685,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
-                public class SetIamPolicyRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Policy>
+                public class SetIamPolicyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1703,7 +1703,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1735,16 +1735,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <summary>Start an already created migration job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to start.</param>
-                public virtual StartRequest Start(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest body, string name)
+                public virtual StartRequest Start(Google.Apis.DatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest body, string name)
                 {
                     return new StartRequest(service, body, name);
                 }
 
                 /// <summary>Start an already created migration job.</summary>
-                public class StartRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class StartRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Start request.</summary>
-                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest body, string name) : base(service)
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1756,7 +1756,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.StartMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1788,16 +1788,16 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// <summary>Stops a running migration job.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to stop.</param>
-                public virtual StopRequest Stop(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest body, string name)
+                public virtual StopRequest Stop(Google.Apis.DatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest body, string name)
                 {
                     return new StopRequest(service, body, name);
                 }
 
                 /// <summary>Stops a running migration job.</summary>
-                public class StopRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class StopRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Stop request.</summary>
-                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest body, string name) : base(service)
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1809,7 +1809,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.StopMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1849,7 +1849,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.
                 /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource)
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(service, body, resource);
                 }
@@ -1860,10 +1860,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
                 /// checking. This operation may "fail open" without warning.
                 /// </summary>
-                public class TestIamPermissionsRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsResponse>
+                public class TestIamPermissionsRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -1878,7 +1878,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1913,7 +1913,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Name of the migration job resource to verify.</param>
-                public virtual VerifyRequest Verify(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest body, string name)
+                public virtual VerifyRequest Verify(Google.Apis.DatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest body, string name)
                 {
                     return new VerifyRequest(service, body, name);
                 }
@@ -1922,10 +1922,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Verify a migration job, making sure the destination can reach the source and that all configuration
                 /// and prerequisites are met.
                 /// </summary>
-                public class VerifyRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class VerifyRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Verify request.</summary>
-                    public VerifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest body, string name) : base(service)
+                    public VerifyRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -1937,7 +1937,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.VerifyMigrationJobRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -1994,7 +1994,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
-                public virtual CancelRequest Cancel(Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.CancelOperationRequest body, string name)
+                public virtual CancelRequest Cancel(Google.Apis.DatabaseMigrationService.v1beta1.Data.CancelOperationRequest body, string name)
                 {
                     return new CancelRequest(service, body, name);
                 }
@@ -2007,10 +2007,10 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
                 /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
                 /// </summary>
-                public class CancelRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Empty>
+                public class CancelRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.CancelOperationRequest body, string name) : base(service)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1beta1.Data.CancelOperationRequest body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -2022,7 +2022,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                     public virtual string Name { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.CancelOperationRequest Body { get; set; }
+                    Google.Apis.DatabaseMigrationService.v1beta1.Data.CancelOperationRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -2067,7 +2067,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// the operation result. It does not cancel the operation. If the server doesn't support this method,
                 /// it returns `google.rpc.Code.UNIMPLEMENTED`.
                 /// </summary>
-                public class DeleteRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Empty>
+                public class DeleteRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2118,7 +2118,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
                 /// result at intervals as recommended by the API service.
                 /// </summary>
-                public class GetRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Operation>
+                public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2179,7 +2179,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
                 /// however overriding users must ensure the name binding is the parent resource, without the operations
                 /// collection id.
                 /// </summary>
-                public class ListRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ListOperationsResponse>
+                public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2261,7 +2261,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
             }
 
             /// <summary>Gets information about a location.</summary>
-            public class GetRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.Location>
+            public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2306,7 +2306,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
             }
 
             /// <summary>Lists information about the supported locations for this service.</summary>
-            public class ListRequest : CloudDatabaseMigrationServiceBaseServiceRequest<Google.Apis.CloudDatabaseMigrationService.v1beta1.Data.ListLocationsResponse>
+            public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1beta1.Data.ListLocationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -2381,7 +2381,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1
         }
     }
 }
-namespace Google.Apis.CloudDatabaseMigrationService.v1beta1.Data
+namespace Google.Apis.DatabaseMigrationService.v1beta1.Data
 {
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
@@ -2552,7 +2552,7 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseFlags")]
         public virtual System.Collections.Generic.IDictionary<string, string> DatabaseFlags { get; set; }
 
-        /// <summary>The database engine type and version (such as `MYSQL_5_7` / `POSTGRES_9_6`).</summary>
+        /// <summary>The database engine type and version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
@@ -2586,9 +2586,8 @@ namespace Google.Apis.CloudDatabaseMigrationService.v1beta1.Data
         public virtual System.Nullable<long> StorageAutoResizeLimit { get; set; }
 
         /// <summary>
-        /// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or
-        /// `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance
-        /// Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
+        /// The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more
+        /// information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }

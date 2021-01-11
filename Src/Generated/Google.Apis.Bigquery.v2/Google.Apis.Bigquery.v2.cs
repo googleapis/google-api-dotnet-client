@@ -2329,6 +2329,71 @@ namespace Google.Apis.Bigquery.v2
             this.service = service;
         }
 
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
+        public class GetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Lists all row access policies on the specified table.</summary>
         /// <param name="projectId">Required. Project ID of the row access policies to list.</param>
         /// <param name="datasetId">Required. Dataset ID of row access policies to list.</param>
@@ -2425,6 +2490,140 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
+        public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
+        /// the appropriate value for this field.
+        /// </param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
+        /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
+        /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
+        /// "fail open" without warning.
+        /// </summary>
+        public class TestIamPermissionsRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.TestIamPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
                 });
             }
         }
@@ -3882,9 +4081,6 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
@@ -4127,7 +4323,7 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Evaluation metrics for clustering models.</summary>
     public class ClusteringMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Beta] Information for all clusters.</summary>
+        /// <summary>Information for all clusters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
 
@@ -4866,7 +5062,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
         public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; }
 
-        /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
+        /// <summary>[Optional] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
         public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
@@ -5385,19 +5581,19 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string CreateDisposition { get; set; }
 
         /// <summary>
-        /// [Trusted Tester] Defines the list of possible SQL data types to which the source decimal values are
-        /// converted. This list and the precision and the scale parameters of the decimal field determine the target
-        /// type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and
-        /// if it supports the precision and the scale. STRING supports all precision and scale values. If none of the
-        /// listed types supports the precision and the scale, the type supporting the widest range in the specified
-        /// list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
-        /// For example: suppose decimal_target_type = ["NUMERIC", "BIGNUMERIC"]. Then if (precision,scale) is: * (38,9)
-        /// -&amp;gt; NUMERIC; * (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10)
-        /// -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -&amp;gt; BIGNUMERIC; * (77,38)
-        /// -&amp;gt; BIGNUMERIC (error if value exeeds supported range). For duplicated types in this field, only one
-        /// will be considered and the rest will be ignored. The order of the types in this field is ignored. For
-        /// example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes
-        /// precedence over BIGNUMERIC.
+        /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and
+        /// the precision and the scale parameters of the decimal field determine the target type. In the order of
+        /// NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in
+        /// the specified list and if it supports the precision and the scale. STRING supports all precision and scale
+        /// values. If none of the listed types supports the precision and the scale, the type supporting the widest
+        /// range in the specified list is picked, and if a value exceeds the supported range when reading the data, an
+        /// error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If
+        /// (precision,scale) is: * (38,9) -&amp;gt; NUMERIC; * (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30
+        /// integer digits); * (38,10) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38)
+        /// -&amp;gt; BIGNUMERIC; * (77,38) -&amp;gt; BIGNUMERIC (error if value exeeds supported range). This field
+        /// cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC",
+        /// "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+        /// Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decimalTargetTypes")]
         public virtual System.Collections.Generic.IList<string> DecimalTargetTypes { get; set; }
@@ -5432,7 +5628,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
-        /// <summary>[Optional, Trusted Tester] Options to configure hive partitioning support.</summary>
+        /// <summary>[Optional] Options to configure hive partitioning support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hivePartitioningOptions")]
         public virtual HivePartitioningOptions HivePartitioningOptions { get; set; }
 
@@ -5445,6 +5641,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
+
+        /// <summary>
+        /// [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a
+        /// JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is
+        /// newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonExtension")]
+        public virtual string JsonExtension { get; set; }
 
         /// <summary>
         /// [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of
@@ -6998,7 +7202,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("medianAbsoluteError")]
         public virtual System.Nullable<double> MedianAbsoluteError { get; set; }
 
-        /// <summary>R^2 score.</summary>
+        /// <summary>R^2 score. This corresponds to r2_score in ML.EVALUATE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rSquared")]
         public virtual System.Nullable<double> RSquared { get; set; }
 
@@ -7677,8 +7881,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
-        /// FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD
-        /// (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
+        /// FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME,
+        /// DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as
+        /// RECORD).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -7895,6 +8100,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options used in model training.</summary>
     public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether to enable auto ARIMA or not.</summary>
@@ -8045,7 +8251,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
 
         /// <summary>
-        /// [Beta] Google Cloud Storage URI from which the model was imported. Only applicable for imported models.
+        /// Google Cloud Storage URI from which the model was imported. Only applicable for imported models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelUri")]
         public virtual string ModelUri { get; set; }
