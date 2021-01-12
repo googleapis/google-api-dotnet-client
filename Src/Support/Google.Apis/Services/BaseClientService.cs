@@ -120,7 +120,13 @@ namespace Google.Apis.Services
             /// may add their own version here.
             /// </summary>
             public VersionHeaderBuilder VersionHeaderBuilder { get; }
-            
+
+            /// <summary>
+            /// Determines whether request parameters are validated (client-side) by default.
+            /// Defaults to true. This can be overridden on a per-request basis using <see cref="ClientServiceRequest{TResponse}.ValidateParameters"/>.
+            /// </summary>
+            public bool ValidateParameters { get; set; } = true;
+
             /// <summary>Constructs a new initializer with default values.</summary>
             public Initializer()
             {
@@ -163,6 +169,7 @@ namespace Google.Apis.Services
             ApiKey = initializer.ApiKey;
             ApplicationName = initializer.ApplicationName;
             BaseUriOverride = initializer.BaseUri;
+            ValidateParameters = initializer.ValidateParameters;
             if (ApplicationName == null)
             {
                 Logger.Warning("Application name is not set. Please set Initializer.ApplicationName property");
@@ -172,6 +179,12 @@ namespace Google.Apis.Services
             // Create a HTTP client for this service.
             HttpClient = CreateHttpClient(initializer, versionHeader);
         }
+
+        /// <summary>
+        /// Determines whether or not request parameters should be validated client-side.
+        /// This may be overridden on a per-request basis.
+        /// </summary>
+        internal bool ValidateParameters { get; }
 
         /// <summary>
         /// The BaseUri provided in the initializer, which may be null.
