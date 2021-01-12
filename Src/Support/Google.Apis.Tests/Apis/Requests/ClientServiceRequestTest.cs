@@ -1322,5 +1322,83 @@ namespace Google.Apis.Tests.Apis.Requests
             Assert.Equal(expectedRequestUri, requestUri);
         }
 
+        /// <summary>
+        /// Client request which contains validated parameters. Both "optional" and "required"
+        /// have patterns of "valid" (so only a value of "valid" should pass validation).
+        /// </summary>
+        class ClientServiceRequestWithValidatedParameters : TestClientServiceRequest
+        {
+            [RequestParameter("required", RequestParameterType.Query)]
+            public string Required { get; set; }
+
+            [RequestParameter("optional", RequestParameterType.Query)]
+            public string Optional { get; set; }
+
+            public ClientServiceRequestWithValidatedParameters(IClientService service)
+                : base(service, "GET", body: null)
+            {
+                RequestParameters.Add("required", new Parameter
+                {
+                    Name = "required",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    Pattern = "^valid$"
+                });
+                RequestParameters.Add("optional", new Parameter
+                {
+                    Name = "optional",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    Pattern = "^valid$"
+                });
+            }
+        }
+
+        [Theory, CombinatorialData]
+        public void Validation_ValidValues(bool serviceValidation, bool requestValidation,
+            [CombinatorialValues("valid")] string requiredValue, [CombinatorialValues("valid", null)] string optionalValue)
+        {
+            var request = CreateClientServiceRequestWithValidatedParameters(serviceValidation, requestValidation, requiredValue, optionalValue);
+            // We're just checking that this doesn't throw.
+            request.CreateRequest();
+        }
+
+        [Theory]
+        [InlineData(true, null, null, "valid")]
+        [InlineData(true, null, "valid", "invalid")]
+        // Even if we don't validate patterns, a required parameter is still required.
+        [InlineData(true, false, null, "valid")]
+        [InlineData(false, null, null, "valid")]
+        // Request validation overrides service validation
+        [InlineData(false, true, "valid", "invalid")]
+        public void Validation_InvalidValues_Throwing(bool serviceValidation, bool? requestValidation, string requiredValue, string optionalValue)
+        {
+            var request = CreateClientServiceRequestWithValidatedParameters(serviceValidation, requestValidation, requiredValue, optionalValue);
+            Assert.Throws<GoogleApiException>(() => request.CreateRequest());
+        }
+
+        [Theory]
+        [InlineData(false, null, "valid", "invalid")]
+        [InlineData(false, false, "valid", "invalid")]
+        // Request validation overrides service validation
+        [InlineData(true, false, "valid", "invalid")]
+        public void Validation_InvalidValues_Ignored(bool serviceValidation, bool? requestValidation, string requiredValue, string optionalValue)
+        {
+            var request = CreateClientServiceRequestWithValidatedParameters(serviceValidation, requestValidation, requiredValue, optionalValue);
+            // We're just checking that this doesn't throw.
+            request.CreateRequest();
+        }
+
+        private ClientServiceRequestWithValidatedParameters CreateClientServiceRequestWithValidatedParameters(
+            bool serviceValidation, bool? requestValidation, string requiredValue, string optionalValue)
+        {
+            var service = new MockClientService(new BaseClientService.Initializer { ValidateParameters = serviceValidation });
+            return new ClientServiceRequestWithValidatedParameters(service)
+            {
+                ValidateParameters = requestValidation,
+                Required = requiredValue,
+                Optional = optionalValue
+            };
+        }
     }
 }

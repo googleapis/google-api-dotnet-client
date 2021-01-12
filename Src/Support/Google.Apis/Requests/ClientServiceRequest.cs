@@ -117,6 +117,14 @@ namespace Google.Apis.Requests
         /// </summary>
         public Action<HttpRequestMessage> ModifyRequest { get; set; }
 
+        /// <summary>
+        /// Override for service-wide validation configuration in <see cref="BaseClientService.Initializer.ValidateParameters"/>.
+        /// If this is null (the default) then the value from the service initializer is used to determine
+        /// whether or not parameters should be validated client-side. If this is non-null, it overrides
+        /// whatever value is specified in the service.
+        /// </summary>
+        public bool? ValidateParameters { get; set; }
+
         #region IClientServiceRequest Properties
 
         /// <inheritdoc/>
@@ -377,6 +385,8 @@ namespace Google.Apis.Requests
         /// <summary>Adds path and query parameters to the given <c>requestBuilder</c>.</summary>
         private void AddParameters(RequestBuilder requestBuilder, ParameterCollection inputParameters)
         {
+            bool validateParameters = ValidateParameters ?? (Service as BaseClientService)?.ValidateParameters ?? true;
+
             foreach (var parameter in inputParameters)
             {
                 if (!RequestParameters.TryGetValue(parameter.Key, out IParameter parameterDefinition))
@@ -386,7 +396,8 @@ namespace Google.Apis.Requests
                 }
 
                 string value = parameter.Value;
-                if (!ParameterValidator.ValidateParameter(parameterDefinition, value, out string error))
+                if (validateParameters &&
+                    !ParameterValidator.ValidateParameter(parameterDefinition, value, out string error))
                 {
                     throw new GoogleApiException(Service.Name,
                         $"Parameter validation failed for \"{parameterDefinition.Name}\" : {error}");
