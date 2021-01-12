@@ -41,6 +41,9 @@ while [[ $# -gt 0 ]]; do
     --skipdownload)
       SKIPDOWNLOAD=TRUE
       ;;
+    --skiprevert)
+      SKIPREVERT=TRUE
+      ;;
     --skipgenerate)
       SKIPDOWNLOAD=TRUE
       SKIPGENERATE=TRUE
@@ -102,6 +105,31 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   $PYTHON2 -u get_discovery_documents.py --destination_dir $DISCOVERY_DOC_DIR
   # Patch discovery docs
   dotnet run --project $TOOLS_DIR/DiscoveryDocPatcher/DiscoveryDocPatcher.csproj -- $DISCOVERY_DOC_DIR
+  
+  if [[ $SKIPREVERT == "TRUE" ]]
+  then
+    echo "Skipping revision-only check of discovery docs"
+  else
+    # Revert changes that only affect the revision
+    for discovery in $(git status -s -- DiscoveryJson | grep -E '^ M' | cut "-d " -f3)
+    do
+      # All but the last line of grep here is removing extraneous output from git diff.
+      # The last line identifies lines that are just changes to "revision".
+      if [[ ! $(git diff --unified=0 -- $discovery 2>&1 | \
+                grep -v "warning: LF" | \
+                grep -v "original line endings" |
+                grep -v '\-\-\-' | \
+                grep -v '+++' | \
+                grep -v @@ | \
+                grep -v "diff --git" | \
+                grep -v -E '^index' | \
+                grep -v -E '[-+] "revision":' ) ]]
+      then
+        echo "$discovery has only changed revision; reverting"
+        git checkout -q -- $discovery
+      fi   
+    done
+  fi
 fi
 
 if [ -z ${SKIPGENERATE+x} ]; then
