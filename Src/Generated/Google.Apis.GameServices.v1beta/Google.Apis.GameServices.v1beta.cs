@@ -1141,8 +1141,8 @@ namespace Google.Apis.GameServices.v1beta
 
                     /// <summary>
                     /// Required. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
-                    /// /docs/reference/google.protobuf#fieldmask
+                    /// `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1229,8 +1229,8 @@ namespace Google.Apis.GameServices.v1beta
 
                     /// <summary>
                     /// Optional. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
-                    /// /docs/reference/google.protobuf#fieldmask
+                    /// `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1458,8 +1458,8 @@ namespace Google.Apis.GameServices.v1beta
 
                     /// <summary>
                     /// Required. Mask of fields to update. At least one path must be supplied in this field. For the
-                    /// `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
-                    /// /docs/reference/google.protobuf#fieldmask
+                    /// `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2141,8 +2141,8 @@ namespace Google.Apis.GameServices.v1beta
 
                         /// <summary>
                         /// Required. Mask of fields to update. At least one path must be supplied in this field. For
-                        /// the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
-                        /// /docs/reference/google.protobuf#fieldmask
+                        /// the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2374,8 +2374,8 @@ namespace Google.Apis.GameServices.v1beta
 
                         /// <summary>
                         /// Required. Mask of fields to update. At least one path must be supplied in this field. For
-                        /// the `FieldMask` definition, see https: //developers.google.com/protocol-buffers //
-                        /// /docs/reference/google.protobuf#fieldmask
+                        /// the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2740,8 +2740,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see https:
-                    /// //developers.google.com/protocol-buffers // /docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2820,8 +2820,8 @@ namespace Google.Apis.GameServices.v1beta
                     public virtual object PreviewTime { get; set; }
 
                     /// <summary>
-                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see https:
-                    /// //developers.google.com/protocol-buffers // /docs/reference/google.protobuf#fieldmask
+                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3448,6 +3448,14 @@ namespace Google.Apis.GameServices.v1beta.Data
     public class GameServerCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game
+        /// server allocations based on the relative allocation priorites set for each cluster, if the realm is
+        /// configured for multicluster allocation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocationPriority")]
+        public virtual string AllocationPriority { get; set; }
+
+        /// <summary>
         /// The game server cluster connection information. This information is used to manage game server clusters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionInfo")]
@@ -3488,6 +3496,14 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// <summary>Reference to the GKE cluster where the game servers are installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterReference")]
         public virtual GkeClusterReference GkeClusterReference { get; set; }
+
+        /// <summary>
+        /// Reference to a Kubernetes cluster registered through GKE Hub. See
+        /// https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes
+        /// clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeHubClusterReference")]
+        public virtual GkeHubClusterReference GkeHubClusterReference { get; set; }
 
         /// <summary>
         /// Namespace designated on the game server cluster where the Agones game server instances will be created.
@@ -3635,6 +3651,25 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+    /// </summary>
+    public class GkeHubClusterReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full or partial name of a GKE Hub membership, using one of the following forms: *
+        /// `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` *
+        /// `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not
+        /// specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub
+        /// membership.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

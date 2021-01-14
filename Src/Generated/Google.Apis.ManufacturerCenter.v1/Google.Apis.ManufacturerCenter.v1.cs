@@ -710,7 +710,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
 {
     /// <summary>
     /// Attributes of the product. For more information, see https://support.google.com/manufacturers/answer/6124116.
-    /// Next tag: 47
+    /// Next tag: 48
     /// </summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -854,6 +854,12 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productDetail")]
         public virtual System.Collections.Generic.IList<ProductDetail> ProductDetail { get; set; }
+
+        /// <summary>
+        /// The product highlights. For more information, see https://support.google.com/manufacturers/answer/10066942
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productHighlight")]
+        public virtual System.Collections.Generic.IList<string> ProductHighlight { get; set; }
 
         /// <summary>
         /// The name of the group of products related to the product. For more information, see

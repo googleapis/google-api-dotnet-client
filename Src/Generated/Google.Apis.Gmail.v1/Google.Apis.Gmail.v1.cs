@@ -2148,7 +2148,10 @@ namespace Google.Apis.Gmail.v1
             /// <param name="userId">
             /// The user's email address. The special value `me` can be used to indicate the authenticated user.
             /// </param>
-            /// <param name="id">The ID of the message to retrieve.</param>
+            /// <param name="id">
+            /// The ID of the message to retrieve. This ID is usually retrieved using `messages.list`. The ID is also
+            /// contained in the result when a message is inserted (`messages.insert`) or imported (`messages.import`).
+            /// </param>
             public virtual GetRequest Get(string userId, string id)
             {
                 return new GetRequest(service, userId, id);
@@ -2171,7 +2174,11 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserId { get; private set; }
 
-                /// <summary>The ID of the message to retrieve.</summary>
+                /// <summary>
+                /// The ID of the message to retrieve. This ID is usually retrieved using `messages.list`. The ID is
+                /// also contained in the result when a message is inserted (`messages.insert`) or imported
+                /// (`messages.import`).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Id { get; private set; }
 

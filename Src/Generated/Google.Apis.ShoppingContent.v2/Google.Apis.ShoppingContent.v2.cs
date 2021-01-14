@@ -13058,7 +13058,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
-        /// <summary>Google's category of the item (see Google product taxonomy).</summary>
+        /// <summary>
+        /// Google's category of the item (see [Google product
+        /// taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will
+        /// contain the user provided value. There is currently no way to get back the auto assigned google product
+        /// categories through the API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleProductCategory")]
         public virtual string GoogleProductCategory { get; set; }
 

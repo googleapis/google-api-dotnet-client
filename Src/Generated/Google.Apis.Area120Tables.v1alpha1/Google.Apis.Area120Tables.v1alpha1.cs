@@ -386,6 +386,63 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 }
             }
 
+            /// <summary>Deletes multiple rows.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent table shared by all rows being deleted. Format: tables/{table}
+            /// </param>
+            public virtual BatchDeleteRequest BatchDelete(Google.Apis.Area120Tables.v1alpha1.Data.BatchDeleteRowsRequest body, string parent)
+            {
+                return new BatchDeleteRequest(service, body, parent);
+            }
+
+            /// <summary>Deletes multiple rows.</summary>
+            public class BatchDeleteRequest : Area120TablesBaseServiceRequest<Google.Apis.Area120Tables.v1alpha1.Data.Empty>
+            {
+                /// <summary>Constructs a new BatchDelete request.</summary>
+                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Area120Tables.v1alpha1.Data.BatchDeleteRowsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent table shared by all rows being deleted. Format: tables/{table}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Area120Tables.v1alpha1.Data.BatchDeleteRowsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchDelete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha1/{+parent}/rows:batchDelete";
+
+                /// <summary>Initializes BatchDelete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^tables/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Updates multiple rows.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1085,6 +1142,20 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>The created rows.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for TablesService.BatchDeleteRows</summary>
+    public class BatchDeleteRowsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the rows to delete. All rows must belong to the parent table or else the entire batch
+        /// will fail. A maximum of 500 rows can be deleted in a batch. Format: tables/{table}/rows/{row}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

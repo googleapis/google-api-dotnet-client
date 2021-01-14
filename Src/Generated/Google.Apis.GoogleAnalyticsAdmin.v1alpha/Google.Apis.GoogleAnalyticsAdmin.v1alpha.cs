@@ -4118,13 +4118,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>A resource message representing a Google Analytics account.</summary>
     public class GoogleAnalyticsAdminV1alphaAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Country of business. Must be a non-deprecated code for a UN M.49 region.
-        /// https://unicode.org/cldr/charts/latest/supplemental/territory_containment_un_m_49.html
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual string CountryCode { get; set; }
-
         /// <summary>Output only. Time when this account was originally created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4145,6 +4138,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Country of business. Must be a Unicode CLDR region code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
 
         /// <summary>Output only. Time when account payload fields were last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -4461,41 +4458,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Capture events when your visitors view content on your site that has articles or blog posts.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("articlesAndBlogsEnabled")]
-        public virtual System.Nullable<bool> ArticlesAndBlogsEnabled { get; set; }
-
-        /// <summary>
-        /// Capture events when your visitors view content on your site that has structured data (eg, articles, blog
-        /// posts, product details screens, etc.).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentViewsEnabled")]
-        public virtual System.Nullable<bool> ContentViewsEnabled { get; set; }
-
-        /// <summary>
-        /// If enabled, capture a click event each time a visitor clicks a link or element that has data attributes
-        /// beginning with "data-ga".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataTaggedElementClicksEnabled")]
-        public virtual System.Nullable<bool> DataTaggedElementClicksEnabled { get; set; }
-
-        /// <summary>Domains to exclude from measurement. Max length is 1024 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludedDomains")]
-        public virtual string ExcludedDomains { get; set; }
-
-        /// <summary>
         /// If enabled, capture a file download event each time a link is clicked with a common document, compressed
         /// file, application, video, or audio extension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileDownloadsEnabled")]
         public virtual System.Nullable<bool> FileDownloadsEnabled { get; set; }
-
-        /// <summary>
-        /// If enabled, capture a view search results event each time a visitor interacts with a form on your site.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("formInteractionsEnabled")]
-        public virtual System.Nullable<bool> FormInteractionsEnabled { get; set; }
 
         /// <summary>
         /// Output only. Resource name of this Data Stream. Format:
@@ -4518,7 +4485,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageChangesEnabled")]
         public virtual System.Nullable<bool> PageChangesEnabled { get; set; }
 
-        /// <summary>If enabled, capture a page view event each time a page loads.</summary>
+        /// <summary>Output only. If enabled, capture a page view event each time a page loads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageLoadsEnabled")]
         public virtual System.Nullable<bool> PageLoadsEnabled { get; set; }
 
@@ -4528,12 +4495,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageViewsEnabled")]
         public virtual System.Nullable<bool> PageViewsEnabled { get; set; }
-
-        /// <summary>
-        /// Capture events when your visitors view content on your site that has product details screens, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productsAndEcommerceEnabled")]
-        public virtual System.Nullable<bool> ProductsAndEcommerceEnabled { get; set; }
 
         /// <summary>If enabled, capture scroll events each time a visitor gets to the bottom of a page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scrollsEnabled")]
@@ -4562,8 +4523,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual System.Nullable<bool> StreamEnabled { get; set; }
 
         /// <summary>Additional URL query parameters. Max length is 1024 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("urlQueryParameter")]
-        public virtual string UrlQueryParameter { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("uriQueryParameter")]
+        public virtual string UriQueryParameter { get; set; }
 
         /// <summary>
         /// If enabled, capture video play, progress, and complete events as visitors view embedded videos on your site.
@@ -4606,6 +4567,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     /// <summary>Read-only resource with the tag for sending data from a website to a WebDataStream.</summary>
     public class GoogleAnalyticsAdminV1alphaGlobalSiteTag : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Resource name for this GlobalSiteTag resource. Format: properties/{propertyId}/globalSiteTag
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>
         /// Immutable. JavaScript code snippet to be pasted as the first item into the head tag of every webpage to
         /// measure.
@@ -4653,10 +4620,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Immutable. Format: properties/{propertyId}</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; }
 
         /// <summary>Output only. Time when this link was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

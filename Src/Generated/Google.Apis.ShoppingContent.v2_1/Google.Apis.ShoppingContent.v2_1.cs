@@ -37,6 +37,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             Accounts = new AccountsResource(this);
             Accountstatuses = new AccountstatusesResource(this);
             Accounttax = new AccounttaxResource(this);
+            Collections = new CollectionsResource(this);
+            Collectionstatuses = new CollectionstatusesResource(this);
             Csses = new CssesResource(this);
             Datafeeds = new DatafeedsResource(this);
             Datafeedstatuses = new DatafeedstatusesResource(this);
@@ -108,6 +110,12 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Accounttax resource.</summary>
         public virtual AccounttaxResource Accounttax { get; }
+
+        /// <summary>Gets the Collections resource.</summary>
+        public virtual CollectionsResource Collections { get; }
+
+        /// <summary>Gets the Collectionstatuses resource.</summary>
+        public virtual CollectionstatusesResource Collectionstatuses { get; }
 
         /// <summary>Gets the Csses resource.</summary>
         public virtual CssesResource Csses { get; }
@@ -370,6 +378,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         {
             this.service = service;
             Labels = new LabelsResource(service);
+            Returncarrier = new ReturncarrierResource(service);
         }
 
         /// <summary>Gets the Labels resource.</summary>
@@ -637,6 +646,268 @@ namespace Google.Apis.ShoppingContent.v2_1
                     RequestParameters.Add("labelId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "labelId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Returncarrier resource.</summary>
+        public virtual ReturncarrierResource Returncarrier { get; }
+
+        /// <summary>The "returncarrier" collection of methods.</summary>
+        public class ReturncarrierResource
+        {
+            private const string Resource = "returncarrier";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ReturncarrierResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Links return carrier to a merchant account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">
+            /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId)
+            {
+                return new CreateRequest(service, body, accountId);
+            }
+
+            /// <summary>Links return carrier to a merchant account.</summary>
+            public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId) : base(service)
+                {
+                    AccountId = accountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Delete a return carrier in the merchant account.</summary>
+            /// <param name="accountId">
+            /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+            /// </param>
+            /// <param name="carrierAccountId">
+            /// Required. The Google-provided unique carrier ID, used to update the resource.
+            /// </param>
+            public virtual DeleteRequest Delete(long accountId, long carrierAccountId)
+            {
+                return new DeleteRequest(service, accountId, carrierAccountId);
+            }
+
+            /// <summary>Delete a return carrier in the merchant account.</summary>
+            public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long accountId, long carrierAccountId) : base(service)
+                {
+                    AccountId = accountId;
+                    CarrierAccountId = carrierAccountId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Required. The Google-provided unique carrier ID, used to update the resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("carrierAccountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CarrierAccountId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("carrierAccountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "carrierAccountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists available return carriers in the merchant account.</summary>
+            /// <param name="accountId">
+            /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+            /// </param>
+            public virtual ListRequest List(long accountId)
+            {
+                return new ListRequest(service, accountId);
+            }
+
+            /// <summary>Lists available return carriers in the merchant account.</summary>
+            public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListAccountReturnCarrierResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long accountId) : base(service)
+                {
+                    AccountId = accountId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a return carrier in the merchant account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">
+            /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+            /// </param>
+            /// <param name="carrierAccountId">
+            /// Required. The Google-provided unique carrier ID, used to update the resource.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId, long carrierAccountId)
+            {
+                return new PatchRequest(service, body, accountId, carrierAccountId);
+            }
+
+            /// <summary>Updates a return carrier in the merchant account.</summary>
+            public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier body, long accountId, long carrierAccountId) : base(service)
+                {
+                    AccountId = accountId;
+                    CarrierAccountId = carrierAccountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Merchant Center Account Id under which the Return Carrier is to be linked.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Required. The Google-provided unique carrier ID, used to update the resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("carrierAccountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long CarrierAccountId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ShoppingContent.v2_1.Data.AccountReturnCarrier Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("carrierAccountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "carrierAccountId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -1929,6 +2200,468 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "accountId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "collections" collection of methods.</summary>
+    public class CollectionsResource
+    {
+        private const string Resource = "collections";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CollectionsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Uploads a collection to your Merchant Center account. If a collection with the same collectionId already
+        /// exists, this method updates that entry. In each update, the collection is completely replaced by the fields
+        /// in the body of the update request.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Collection body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Uploads a collection to your Merchant Center account. If a collection with the same collectionId already
+        /// exists, this method updates that entry. In each update, the collection is completely replaced by the fields
+        /// in the body of the update request.
+        /// </summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Collection>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Collection body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.Collection Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collections";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes a collection from your Merchant Center account.</summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        /// <param name="collectionId">
+        /// Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection.
+        /// </param>
+        public virtual DeleteRequest Delete(long merchantId, string collectionId)
+        {
+            return new DeleteRequest(service, merchantId, collectionId);
+        }
+
+        /// <summary>Deletes a collection from your Merchant Center account.</summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId, string collectionId) : base(service)
+            {
+                MerchantId = merchantId;
+                CollectionId = collectionId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CollectionId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collections/{collectionId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collectionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a collection from your Merchant Center account.</summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        /// <param name="collectionId">Required. The REST ID of the collection.</param>
+        public virtual GetRequest Get(long merchantId, string collectionId)
+        {
+            return new GetRequest(service, merchantId, collectionId);
+        }
+
+        /// <summary>Retrieves a collection from your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Collection>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string collectionId) : base(service)
+            {
+                MerchantId = merchantId;
+                CollectionId = collectionId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The REST ID of the collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CollectionId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collections/{collectionId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collectionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists the collections in your Merchant Center account. The response might contain fewer items than specified
+        /// by page_size. Rely on next_page_token to determine if there are more items to be requested.
+        /// </summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>
+        /// Lists the collections in your Merchant Center account. The response might contain fewer items than specified
+        /// by page_size. Rely on next_page_token to determine if there are more items to be requested.
+        /// </summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListCollectionsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The maximum number of collections to return in the response, used for paging. Defaults to 50; values
+            /// above 1000 will be coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Token (if provided) to retrieve the subsequent page. All other parameters must match the original call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collections";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "collectionstatuses" collection of methods.</summary>
+    public class CollectionstatusesResource
+    {
+        private const string Resource = "collectionstatuses";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CollectionstatusesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the status of a collection from your Merchant Center account.</summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        /// <param name="collectionId">
+        /// Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection.
+        /// </param>
+        public virtual GetRequest Get(long merchantId, string collectionId)
+        {
+            return new GetRequest(service, merchantId, collectionId);
+        }
+
+        /// <summary>Gets the status of a collection from your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.CollectionStatus>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string collectionId) : base(service)
+            {
+                MerchantId = merchantId;
+                CollectionId = collectionId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CollectionId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collectionstatuses/{collectionId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("collectionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "collectionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists the statuses of the collections in your Merchant Center account.</summary>
+        /// <param name="merchantId">
+        /// Required. The ID of the account that contains the collection. This account cannot be a multi-client account.
+        /// </param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists the statuses of the collections in your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListCollectionStatusesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the account that contains the collection. This account cannot be a multi-client
+            /// account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The maximum number of collection statuses to return in the response, used for paging. Defaults to 50;
+            /// values above 1000 will be coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Token (if provided) to retrieve the subsequent page. All other parameters must match the original call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/collectionstatuses";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -9964,6 +10697,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
         public virtual System.Nullable<bool> AdultContent { get; set; }
 
+        /// <summary>List of automatically created label IDs that are assigned to the account by CSS Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticLabelIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> AutomaticLabelIds { get; set; }
+
         /// <summary>The business information of the account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessInformation")]
         public virtual AccountBusinessInformation BusinessInformation { get; set; }
@@ -9986,7 +10723,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of label IDs that are assigned to the account by CSS.</summary>
+        /// <summary>List of manually created label IDs that are assigned to the account by CSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; }
 
@@ -10172,9 +10909,40 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
         public virtual System.Nullable<long> LabelId { get; set; }
 
+        /// <summary>Output only. The type of this label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelType")]
+        public virtual string LabelType { get; set; }
+
         /// <summary>The display name of this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    ///  The return carrier information. This service is designed for merchants enrolled in the Buy on Google program.
+    /// </summary>
+    public class AccountReturnCarrier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Immutable. The Google-provided unique carrier ID, used to update the resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierAccountId")]
+        public virtual System.Nullable<long> CarrierAccountId { get; set; }
+
+        /// <summary>Name of the carrier account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierAccountName")]
+        public virtual string CarrierAccountName { get; set; }
+
+        /// <summary>Number of the carrier account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierAccountNumber")]
+        public virtual string CarrierAccountNumber { get; set; }
+
+        /// <summary>The carrier code enum. Accepts the values FEDEX or UPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierCode")]
+        public virtual string CarrierCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10636,7 +11404,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; }
 
-        /// <summary>List of provided services.</summary>
+        /// <summary>
+        ///  Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingAdsOther`" -
+        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
 
@@ -10991,6 +11762,197 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The collection message.</summary>
+    public class Collection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. Custom
+        /// label
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
+        public virtual string CustomLabel0 { get; set; }
+
+        /// <summary>
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
+        public virtual string CustomLabel1 { get; set; }
+
+        /// <summary>
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
+        public virtual string CustomLabel2 { get; set; }
+
+        /// <summary>
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
+        public virtual string CustomLabel3 { get; set; }
+
+        /// <summary>
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
+        public virtual string CustomLabel4 { get; set; }
+
+        /// <summary>
+        /// This identifies one or more products associated with the collection. Used as a lookup to the corresponding
+        /// product ID in your product feeds. Provide a maximum of 100 featuredProduct (for collections). Provide up to
+        /// 10 featuredProduct (for Shoppable Images only) with ID and X and Y coordinates. featured_product attribute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featuredProduct")]
+        public virtual System.Collections.Generic.IList<CollectionFeaturedProduct> FeaturedProduct { get; set; }
+
+        /// <summary>Your collection's name. headline attribute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual System.Collections.Generic.IList<string> Headline { get; set; }
+
+        /// <summary>
+        /// Required. The REST ID of the collection. Content API methods that operate on collections take this as their
+        /// collectionId parameter. The REST ID for a collection is of the form collectionId. id attribute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The URL of a collection’s image. image_link attribute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
+        public virtual System.Collections.Generic.IList<string> ImageLink { get; set; }
+
+        /// <summary>
+        /// The language of a collection and the language of any featured products linked to the collection. language
+        /// attribute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>
+        /// A collection’s landing page. URL directly linking to your collection's page on your website. link attribute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; }
+
+        /// <summary>
+        /// A collection’s mobile-optimized landing page when you have a different URL for mobile and desktop traffic.
+        /// mobile_link attribute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
+        public virtual string MobileLink { get; set; }
+
+        /// <summary>product_country attribute</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCountry")]
+        public virtual string ProductCountry { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message for FeaturedProduct. FeaturedProduct</summary>
+    public class CollectionFeaturedProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier for the product item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Required. X-coordinate of the product callout on the Shoppable Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x")]
+        public virtual System.Nullable<float> X { get; set; }
+
+        /// <summary>Required. Y-coordinate of the product callout on the Shoppable Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("y")]
+        public virtual System.Nullable<float> Y { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The collectionstatus message.</summary>
+    public class CollectionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of all issues associated with the collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionLevelIssuses")]
+        public virtual System.Collections.Generic.IList<CollectionStatusItemLevelIssue> CollectionLevelIssuses { get; set; }
+
+        /// <summary>
+        /// Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format:
+        /// Date, time, and offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationDate")]
+        public virtual string CreationDate { get; set; }
+
+        /// <summary>The intended destinations for the collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
+        public virtual System.Collections.Generic.IList<CollectionStatusDestinationStatus> DestinationStatuses { get; set; }
+
+        /// <summary>Required. The ID of the collection for which status is reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)
+        /// format: Date, time, and offset, e.g. "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateDate")]
+        public virtual string LastUpdateDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Destination status message.</summary>
+    public class CollectionStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the destination</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>The status for the specified destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue associated with the collection.</summary>
+    public class CollectionStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; }
+
+        /// <summary>The error code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The destination the issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>A detailed issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>The URL of a web page to help with resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual string Documentation { get; set; }
+
+        /// <summary>Whether the issue can be resolved by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; }
+
+        /// <summary>How this issue affects the serving of the collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servability")]
+        public virtual string Servability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12403,6 +13365,53 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for listing account return carriers.</summary>
+    public class ListAccountReturnCarrierResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all available account return carriers for the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountReturnCarriers")]
+        public virtual System.Collections.Generic.IList<AccountReturnCarrier> AccountReturnCarriers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListCollectionStatuses method.</summary>
+    public class ListCollectionStatusesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The collectionstatuses listed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<CollectionStatus> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListCollections method.</summary>
+    public class ListCollectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The collections listed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<Collection> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16047,7 +17056,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
 
-        /// <summary>Google's category of the item (see Google product taxonomy).</summary>
+        /// <summary>
+        /// Google's category of the item (see [Google product
+        /// taxonomy](https://support.google.com/merchants/answer/1705911)). When querying products, this field will
+        /// contain the user provided value. There is currently no way to get back the auto assigned google product
+        /// categories through the API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleProductCategory")]
         public virtual string GoogleProductCategory { get; set; }
 

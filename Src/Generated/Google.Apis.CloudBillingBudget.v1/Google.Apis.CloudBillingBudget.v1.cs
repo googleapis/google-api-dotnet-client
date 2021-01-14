@@ -835,9 +835,9 @@ namespace Google.Apis.CloudBillingBudget.v1.Data
         public virtual string PubsubTopic { get; set; }
 
         /// <summary>
-        /// Optional. The schema version of the notification sent to `pubsub_topic`. Only "1.0" is accepted. It
-        /// represents the JSON schema as defined in
-        /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format
+        /// Optional. Required when NotificationsRule.pubsub_topic is set. The schema version of the notification sent
+        /// to NotificationsRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in
+        /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaVersion")]
         public virtual string SchemaVersion { get; set; }
