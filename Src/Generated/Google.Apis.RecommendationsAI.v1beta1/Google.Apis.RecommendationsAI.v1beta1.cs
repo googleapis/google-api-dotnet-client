@@ -62,14 +62,14 @@ namespace Google.Apis.RecommendationsAI.v1beta1
         public override string BatchPath => "batch";
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Recommendations AI.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Recommendations AI (Beta).</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Recommendations AI.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Recommendations AI (Beta).</summary>
         public static class ScopeConstants
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

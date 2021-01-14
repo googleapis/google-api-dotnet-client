@@ -5486,8 +5486,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
-        /// the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes
-        /// defined in the page with only condition specified.
+        /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
+        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
+        /// transition route groups with only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
@@ -5871,7 +5872,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the session. This
-        /// field can be used by the webhook to identify a user. Format: `projects//locations//agents//sessions/`.
+        /// field can be used by the webhook to identify a session. Format: `projects//locations//agents//sessions/` or
+        /// `projects//locations//agents//environments//sessions/` if environment is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
@@ -7033,8 +7035,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// A list of transitions for the transition rules of this page. They route the conversation to another page in
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
-        /// the transition route groups. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes
-        /// defined in the page with only condition specified.
+        /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
+        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
+        /// transition route groups with only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
@@ -7418,7 +7421,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Always present for WebhookRequest. Ignored for WebhookResponse. The unique identifier of the session. This
-        /// field can be used by the webhook to identify a user. Format: `projects//locations//agents//sessions/`.
+        /// field can be used by the webhook to identify a session. Format: `projects//locations//agents//sessions/` or
+        /// `projects//locations//agents//environments//sessions/` if environment is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }

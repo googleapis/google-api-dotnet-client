@@ -82,7 +82,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>View your street addresses</summary>
             public static string UserAddressesRead = "https://www.googleapis.com/auth/user.addresses.read";
 
-            /// <summary>View your complete date of birth</summary>
+            /// <summary>See and download your exact date of birth</summary>
             public static string UserBirthdayRead = "https://www.googleapis.com/auth/user.birthday.read";
 
             /// <summary>View your email addresses</summary>
@@ -94,7 +94,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See your education, work history and org info</summary>
             public static string UserOrganizationRead = "https://www.googleapis.com/auth/user.organization.read";
 
-            /// <summary>View your phone numbers</summary>
+            /// <summary>See and download your personal phone numbers</summary>
             public static string UserPhonenumbersRead = "https://www.googleapis.com/auth/user.phonenumbers.read";
 
             /// <summary>View your email address</summary>
@@ -122,7 +122,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>View your street addresses</summary>
             public const string UserAddressesRead = "https://www.googleapis.com/auth/user.addresses.read";
 
-            /// <summary>View your complete date of birth</summary>
+            /// <summary>See and download your exact date of birth</summary>
             public const string UserBirthdayRead = "https://www.googleapis.com/auth/user.birthday.read";
 
             /// <summary>View your email addresses</summary>
@@ -134,7 +134,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See your education, work history and org info</summary>
             public const string UserOrganizationRead = "https://www.googleapis.com/auth/user.organization.read";
 
-            /// <summary>View your phone numbers</summary>
+            /// <summary>See and download your personal phone numbers</summary>
             public const string UserPhonenumbersRead = "https://www.googleapis.com/auth/user.phonenumbers.read";
 
             /// <summary>View your email address</summary>
@@ -2538,8 +2538,7 @@ namespace Google.Apis.PeopleService.v1.Data
 
         /// <summary>
         /// Output only. The list of contact person resource names that are members of the contact group. The field is
-        /// not populated for LIST requests and can only be updated through the
-        /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
+        /// only populated for GET requests and will only return as many members as `maxMembers` in the get request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberResourceNames")]
         public virtual System.Collections.Generic.IList<string> MemberResourceNames { get; set; }

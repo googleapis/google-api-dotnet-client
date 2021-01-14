@@ -1268,7 +1268,6 @@ namespace Google.Apis.Tasks.v1
 }
 namespace Google.Apis.Tasks.v1.Data
 {
-    /// <summary>LINT.IfChange</summary>
     public class Task : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

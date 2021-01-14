@@ -424,11 +424,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     }
                 }
 
-                /// <summary>
-                /// Updates the client state for the device user **Note**: This method is available only to customers
-                /// who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education,
-                /// and Cloud Identity Premium
-                /// </summary>
+                /// <summary>Updates the client state for the device user</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState
@@ -440,11 +436,7 @@ namespace Google.Apis.CloudIdentity.v1beta1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>
-                /// Updates the client state for the device user **Note**: This method is available only to customers
-                /// who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education,
-                /// and Cloud Identity Premium
-                /// </summary>
+                /// <summary>Updates the client state for the device user</summary>
                 public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1257,22 +1249,14 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
 
-        /// <summary>
-        /// Creates a device. Only company-owned device may be created. **Note**: This method is available only to
-        /// customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
-        /// Education, and Cloud Identity Premium
-        /// </summary>
+        /// <summary>Creates a device. Only company-owned device may be created.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.CreateDeviceRequest body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>
-        /// Creates a device. Only company-owned device may be created. **Note**: This method is available only to
-        /// customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for
-        /// Education, and Cloud Identity Premium
-        /// </summary>
+        /// <summary>Creates a device. Only company-owned device may be created.</summary>
         public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -3441,7 +3425,6 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     {
         /// <summary>
         /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported.
-        /// Customers can create up to 100 dynamic groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queries")]
         public virtual System.Collections.Generic.IList<DynamicGroupQuery> Queries { get; set; }

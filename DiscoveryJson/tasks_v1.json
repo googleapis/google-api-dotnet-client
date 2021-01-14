@@ -566,11 +566,10 @@
    }
   }
  }, 
- "revision": "20201231", 
+ "revision": "20210112", 
  "rootUrl": "https://tasks.googleapis.com/", 
  "schemas": {
   "Task": {
-   "description": "LINT.IfChange", 
    "id": "Task", 
    "properties": {
     "completed": {

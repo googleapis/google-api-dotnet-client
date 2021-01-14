@@ -808,6 +808,55 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Check if a notebook instance is healthy.</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual GetInstanceHealthRequest GetInstanceHealth(string name)
+                {
+                    return new GetInstanceHealthRequest(service, name);
+                }
+
+                /// <summary>Check if a notebook instance is healthy.</summary>
+                public class GetInstanceHealthRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.GetInstanceHealthResponse>
+                {
+                    /// <summary>Constructs a new GetInstanceHealth request.</summary>
+                    public GetInstanceHealthRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getInstanceHealth";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:getInstanceHealth";
+
+                    /// <summary>Initializes GetInstanceHealth parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Check if a notebook instance is upgradable.</summary>
                 /// <param name="notebookInstance">
                 /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
@@ -2341,6 +2390,25 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for checking if a notebook instance is healthy.</summary>
+    public class GetInstanceHealthResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Additional information about instance health. Example: healthInfo": {
+        /// "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status": "-1", "jupyterlab_status":
+        /// "-1", "updated": "2020-10-18 09:40:03.573409" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> HealthInfo { get; set; }
+
+        /// <summary>Output only. Runtime health_state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
+        public virtual string HealthState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Guest OS features for boot disk.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2501,6 +2569,22 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified,
+        /// the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are
+        /// defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email
+        /// If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
+
+        /// <summary>
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM features]
+        /// (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
         /// <summary>Output only. The state of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2511,6 +2595,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
         public virtual string Subnet { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
+        /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>Output only. Instance update time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -2903,6 +2994,37 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are
+    /// valid.
+    /// </summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+        /// boot integrity of the instance. The attestation is performed against the integrity policy baseline. This
+        /// baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled
+        /// by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+        /// authentic software by verifying the digital signature of all boot components, and halting the boot process
+        /// if signature verification fails. Disabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>Defines whether the instance has the vTPM enabled. Enabled by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for starting a notebook instance</summary>
     public class StartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2972,8 +3094,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The entry of VM image upgrade history.</summary>
     public class UpgradeHistoryEntry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Action. Rolloback or Upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
         /// <summary>The container image before this instance upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
         public virtual string ContainerImage { get; set; }
@@ -2993,6 +3120,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>The state of this instance upgrade history entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Target VM Image. Format: ainotebooks-vm/project/image-name/name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetImage")]
+        public virtual string TargetImage { get; set; }
 
         /// <summary>The version of the notebook instance before this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

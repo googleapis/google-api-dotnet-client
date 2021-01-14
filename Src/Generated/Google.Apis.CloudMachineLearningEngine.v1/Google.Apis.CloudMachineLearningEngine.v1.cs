@@ -3412,10 +3412,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// traffic to a model stops (and after a cool-down period), nodes will be shut down and no charges will be
         /// incurred until traffic to the model resumes. If `min_nodes` is not specified and AutoScaling is used with a
         /// [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction), `min_nodes` defaults to
-        /// 1. `min_nodes` must be at least 1 for use with a Compute Engine machine type. Note that you cannot use
-        /// AutoScaling if your version uses [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use
-        /// ManualScaling. You can set `min_nodes` when creating the model version, and you can also update `min_nodes`
-        /// for an existing version: update_body.json: { 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH
+        /// 1. `min_nodes` must be at least 1 for use with a Compute Engine machine type. You can set `min_nodes` when
+        /// creating the model version, and you can also update `min_nodes` for an existing version: update_body.json: {
+        /// 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH
         /// https://ml.googleapis.com/v1/{name=projects/*/models/*/versions/*}?update_mask=autoScaling.minNodes -d
         /// @./update_body.json
         /// </summary>
@@ -5406,8 +5405,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>
         /// Automatically scale the number of nodes used to serve the model in response to increases and decreases in
         /// traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start
-        /// seeing increases in latency and 429 response codes. Note that you cannot use AutoScaling if your version
-        /// uses [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify `manual_scaling`.
+        /// seeing increases in latency and 429 response codes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoScaling")]
         public virtual GoogleCloudMlV1AutoScaling AutoScaling { get; set; }
@@ -5489,6 +5487,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The uCAIP model id for the last model migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMigrationModelId")]
+        public virtual string LastMigrationModelId { get; set; }
+
+        /// <summary>Output only. The last time this version was successfully migrated to uCAIP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMigrationTime")]
+        public virtual object LastMigrationTime { get; set; }
 
         /// <summary>Output only. The time the version was last used for prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]

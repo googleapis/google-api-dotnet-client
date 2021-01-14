@@ -7349,8 +7349,8 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>
         /// The sources to use for suggestions. If not specified, the data sources are taken from the current search
-        /// application. NOTE: Suggestions are supported only for third party data sources and people (i.e.
-        /// PredefinedSource.PERSON).
+        /// application. NOTE: Suggestions are only supported for the following sources: * Third-party data sources *
+        /// PredefinedSource.PERSON * PredefinedSource.GOOGLE_DRIVE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceRestrictions")]
         public virtual System.Collections.Generic.IList<DataSourceRestriction> DataSourceRestrictions { get; set; }

@@ -1448,6 +1448,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual string BuildId { get; set; }
 
+        /// <summary>
+        /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this
+        /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are
+        /// the project id and region respectively where the worker pool is defined and {workerPool} is the short name
+        /// of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service
+        /// Agent (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role Cloud Build Custom Workers
+        /// Builder (roles/cloudbuild.customworkers.builder) in the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildWorkerPool")]
+        public virtual string BuildWorkerPool { get; set; }
+
         /// <summary>User-provided description of a function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

@@ -1596,7 +1596,7 @@
       }
     }
   },
-  "revision": "20201231",
+  "revision": "20210111",
   "rootUrl": "https://datalabeling.googleapis.com/",
   "schemas": {
     "GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata": {

@@ -2768,6 +2768,26 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual QueueStats Stats { get; set; }
 
+        /// <summary>
+        /// The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a
+        /// default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of
+        /// whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the
+        /// maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue)
+        /// for these queues. To view the maximum valid duration, see the documentation for Duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskTtl")]
+        public virtual object TaskTtl { get; set; }
+
+        /// <summary>
+        /// The task tombstone time to live (TTL). After a task is deleted or completed, the task's tombstone is
+        /// retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication;
+        /// another task with the same name can't be created until the tombstone has expired. For more information about
+        /// task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a
+        /// default `tombstone_ttl` of 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tombstoneTtl")]
+        public virtual object TombstoneTtl { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
