@@ -108,13 +108,13 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   
   if [[ $SKIPREVERT == "TRUE" ]]
   then
-    echo "Skipping revision-only check of discovery docs"
+    echo "Skipping revision/etag-only check of discovery docs"
   else
     # Revert changes that only affect the revision
     for discovery in $(git status -s -- DiscoveryJson | grep -E '^ M' | cut "-d " -f3)
     do
-      # All but the last line of grep here is removing extraneous output from git diff.
-      # The last line identifies lines that are just changes to "revision".
+      # All but the last lines of grep here are removing extraneous output from git diff.
+      # The last lines identify lines that are just changes to "revision" or "etag".
       if [[ ! $(git diff --unified=0 -- $discovery 2>&1 | \
                 grep -v "warning: LF" | \
                 grep -v "original line endings" |
@@ -123,7 +123,8 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
                 grep -v @@ | \
                 grep -v "diff --git" | \
                 grep -v -E '^index' | \
-                grep -v -E '[-+] "revision":' ) ]]
+                grep -v -E '[-+] "revision":' | \
+                grep -v -E '[-+] "etag":' ) ]]
       then
         echo "$discovery has only changed revision; reverting"
         git checkout -q -- $discovery
