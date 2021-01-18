@@ -1336,11 +1336,11 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 public enum ViewEnum
                 {
                     /// <summary>
@@ -1870,11 +1870,11 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                /// <summary>Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.</summary>
                 public enum ViewEnum
                 {
                     /// <summary>
@@ -3719,11 +3719,15 @@ namespace Google.Apis.Dataflow.v1b3
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                    /// <summary>
+                    /// Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                    /// <summary>Level of information requested in response. Default is `JOB_VIEW_SUMMARY`.</summary>
+                    /// <summary>
+                    /// Deprecated. ListJobs always returns summaries now. Use GetJob for other JobViews.
+                    /// </summary>
                     public enum ViewEnum
                     {
                         /// <summary>
@@ -6432,6 +6436,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
         public virtual System.Nullable<bool> EnableStreamingEngine { get; set; }
 
+        /// <summary>Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexrsGoal")]
+        public virtual string FlexrsGoal { get; set; }
+
         /// <summary>Configuration for VM IPs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual string IpConfiguration { get; set; }
@@ -6742,7 +6750,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines a job to be run by the Cloud Dataflow service.</summary>
+    /// <summary>Defines a job to be run by the Cloud Dataflow service. nextID: 26</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6859,6 +6867,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedState")]
         public virtual string RequestedState { get; set; }
+
+        /// <summary>
+        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in
+        /// any requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stageStates")]
@@ -7132,7 +7147,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
 
-        /// <summary>Users need to set transform_name_mappings Ex:{"oldTransformName":"newTransformName",...}'</summary>
+        /// <summary>
+        /// Use this to pass transform_name_mappings for streaming update jobs.
+        /// Ex:{"oldTransformName":"newTransformName",...}'
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMappings")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMappings { get; set; }
 

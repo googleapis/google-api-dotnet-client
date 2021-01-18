@@ -682,13 +682,17 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
     /// <summary>Error describes why the execution was abnormally terminated.</summary>
     public class Error : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Human readable error context, helpful for debugging purposes.</summary>
+        /// <summary>Human readable stack trace string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual string Context { get; set; }
 
-        /// <summary>Error payload returned by the execution, represented as a JSON string.</summary>
+        /// <summary>Error message and data returned represented as a JSON string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; }
+
+        /// <summary>Stack trace with detailed information of where error was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
+        public virtual StackTrace StackTrace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -761,6 +765,40 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of stack elements (frames) where an error occurred.</summary>
+    public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of Stack elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elements")]
+        public virtual System.Collections.Generic.IList<StackTraceElement> Elements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single stack element (frame) where an error occurred.</summary>
+    public class StackTraceElement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source code column position (of the line) the current instruction was generated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual System.Nullable<long> Column { get; set; }
+
+        /// <summary>The source code line number the current instruction was generated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<long> Line { get; set; }
+
+        /// <summary>The routine where the error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routine")]
+        public virtual string Routine { get; set; }
+
+        /// <summary>The step the error occurred at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

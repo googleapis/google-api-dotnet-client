@@ -399,7 +399,11 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subjectToken")]
         public virtual string SubjectToken { get; set; }
 
-        /// <summary>Required. `urn:ietf:params:oauth:token-type:access_token`.</summary>
+        /// <summary>
+        /// Required. An identifier that indicates the type of the security token in the `subject_token` parameter.
+        /// Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:aws:token-type:aws4_request`,
+        /// and `urn:ietf:params:oauth:token-type:access_token`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectTokenType")]
         public virtual string SubjectTokenType { get; set; }
 
@@ -419,9 +423,9 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         public virtual string AccessToken { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, between the time when the `access_token` was issued and the time when the
-        /// `access_token` will expire. This field is absent when the `subject_token` in the request is a Google-issued,
-        /// short-lived access token. In this case, the `access_token` has the same expiration time as the
+        /// The amount of time, in seconds, between the time when the access token was issued and the time when the
+        /// access token will expire. This field is absent when the `subject_token` in the request is a Google-issued,
+        /// short-lived access token. In this case, the access token has the same expiration time as the
         /// `subject_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
@@ -431,7 +435,7 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issued_token_type")]
         public virtual string IssuedTokenType { get; set; }
 
-        /// <summary>The type of `access_token`. Always has the value `Bearer`.</summary>
+        /// <summary>The type of access token. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }
 

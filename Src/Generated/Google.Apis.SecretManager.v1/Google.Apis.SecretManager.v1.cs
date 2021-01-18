@@ -1929,6 +1929,13 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output,
+        /// regardless of what was sent on input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
         /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8
         /// encoding of maximum 128 bytes, and must conform to the following PCRE regular expression:
         /// `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum
@@ -1948,6 +1955,10 @@ namespace Google.Apis.SecretManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual Replication Replication { get; set; }
+
+        /// <summary>Input only. The TTL for the Secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
