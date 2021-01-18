@@ -3829,6 +3829,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>The region name for REGION_UNREACHABLE warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4308,11 +4312,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The current serving state of the Cloud SQL instance. This can be one of the following.
-        /// *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been
-        /// stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is
-        /// not available, for example due to problems with billing. for example due to problems with billing.
-        /// *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created.
-        /// *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        /// *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running,
+        /// or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with
+        /// billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted.
+        /// *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance.
+        /// *FAILED*: The instance creation failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

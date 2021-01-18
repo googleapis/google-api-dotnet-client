@@ -493,12 +493,12 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>
         /// Creates an upload session to start uploading photo bytes. The method uses the upload URL of the returned
         /// UploadRef to upload the bytes for the Photo. In addition to the photo requirements shown in
-        /// https://support.google.com/maps/answer/7012050?hl=en&amp;amp;ref_topic=6275604, the photo must meet the
-        /// following requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
+        /// https://support.google.com/maps/answer/7012050?ref_topic=6275604, the photo must meet the following
+        /// requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
         /// https://developers.google.com/streetview/spherical-metadata for the required fields. * The pixel size of the
         /// photo must meet the size requirements listed in
-        /// https://support.google.com/maps/answer/7012050?hl=en&amp;amp;ref_topic=6275604, and the photo must be a full
-        /// 360 horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
+        /// https://support.google.com/maps/answer/7012050?ref_topic=6275604, and the photo must be a full 360
+        /// horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
         /// object entry.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -510,12 +510,12 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>
         /// Creates an upload session to start uploading photo bytes. The method uses the upload URL of the returned
         /// UploadRef to upload the bytes for the Photo. In addition to the photo requirements shown in
-        /// https://support.google.com/maps/answer/7012050?hl=en&amp;amp;ref_topic=6275604, the photo must meet the
-        /// following requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
+        /// https://support.google.com/maps/answer/7012050?ref_topic=6275604, the photo must meet the following
+        /// requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See
         /// https://developers.google.com/streetview/spherical-metadata for the required fields. * The pixel size of the
         /// photo must meet the size requirements listed in
-        /// https://support.google.com/maps/answer/7012050?hl=en&amp;amp;ref_topic=6275604, and the photo must be a full
-        /// 360 horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
+        /// https://support.google.com/maps/answer/7012050?ref_topic=6275604, and the photo must be a full 360
+        /// horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo
         /// object entry.
         /// </summary>
         public class StartUploadRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.UploadRef>
@@ -1406,7 +1406,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     public class UploadRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. An upload reference should be unique for each user. It follows the form:
+        /// An upload reference should be unique for each user. It follows the form:
         /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]

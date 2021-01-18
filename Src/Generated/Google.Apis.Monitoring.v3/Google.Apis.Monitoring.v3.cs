@@ -34,6 +34,8 @@ namespace Google.Apis.Monitoring.v3
         /// <param name="initializer">The service initializer.</param>
         public MonitoringService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             Services = new ServicesResource(this);
             UptimeCheckIps = new UptimeCheckIpsResource(this);
@@ -99,6 +101,12 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Publish metric data to your Google Cloud projects</summary>
             public const string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
         }
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -288,6 +296,1958 @@ namespace Google.Apis.Monitoring.v3
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            TimeSeries = new TimeSeriesResource(service);
+        }
+
+        /// <summary>Gets the TimeSeries resource.</summary>
+        public virtual TimeSeriesResource TimeSeries { get; }
+
+        /// <summary>The "timeSeries" collection of methods.</summary>
+        public class TimeSeriesResource
+        {
+            private const string Resource = "timeSeries";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TimeSeriesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <param name="name">
+            /// Required. The project, organization or folder on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+            /// </param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project, organization or folder on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
+                /// the time series into consistent blocks of time. This will be done before the per-series aligner can
+                /// be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than
+                /// ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is
+                /// specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of
+                /// the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting
+                /// policies.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.crossSeriesReducer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationCrossSeriesReducerEnum> AggregationCrossSeriesReducer { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                public enum AggregationCrossSeriesReducerEnum
+                {
+                    /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
+                    REDUCENONE,
+
+                    /// <summary>
+                    /// Reduce by computing the mean value across time series for each alignment period. This reducer is
+                    /// valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the
+                    /// output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
+                    REDUCEMEAN,
+
+                    /// <summary>
+                    /// Reduce by computing the minimum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
+                    REDUCEMIN,
+
+                    /// <summary>
+                    /// Reduce by computing the maximum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
+                    REDUCEMAX,
+
+                    /// <summary>
+                    /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
+                    /// for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the output
+                    /// is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
+                    REDUCESUM,
+
+                    /// <summary>
+                    /// Reduce by computing the standard deviation across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type
+                    /// of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
+                    REDUCESTDDEV,
+
+                    /// <summary>
+                    /// Reduce by computing the number of data points across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and string
+                    /// value_type. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
+                    REDUCECOUNT,
+
+                    /// <summary>
+                    /// Reduce by computing the number of True-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
+                    REDUCECOUNTTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the number of False-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
+                    REDUCECOUNTFALSE,
+
+                    /// <summary>
+                    /// Reduce by computing the ratio of the number of True-valued data points to the total number of
+                    /// data points for each alignment period. This reducer is valid for DELTA and GAUGE metrics of
+                    /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
+                    REDUCEFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
+                    REDUCEPERCENTILE99,
+
+                    /// <summary>
+                    /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
+                    REDUCEPERCENTILE95,
+
+                    /// <summary>
+                    /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
+                    REDUCEPERCENTILE50,
+
+                    /// <summary>
+                    /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
+                    /// across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics
+                    /// of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
+                    REDUCEPERCENTILE05,
+                }
+
+                /// <summary>
+                /// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
+                /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each
+                /// subset contains time series that have the same value for each of the grouping fields. Each
+                /// individual time series is a member of exactly one subset. The cross_series_reducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated
+                /// away. If group_by_fields is not specified and all the time series have the same resource type, then
+                /// the time series are aggregated into a single output time series. If cross_series_reducer is not
+                /// defined, this field is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                public enum AggregationPerSeriesAlignerEnum
+                {
+                    /// <summary>
+                    /// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The
+                    /// value_type of the result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+
+                    /// <summary>
+                    /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
+                    /// and DELTA metrics. If the selected alignment period results in periods with no data, then the
+                    /// aligned value for such a period is created by interpolation. The value_type of the aligned
+                    /// result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+
+                    /// <summary>
+                    /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
+                    /// over time". Think of this aligner as providing the slope of the line that passes through the
+                    /// value at the start and at the end of the alignment_period.This aligner is valid for CUMULATIVE
+                    /// and DELTA metrics with numeric values. If the selected alignment period results in periods with
+                    /// no data, then the aligned value for such a period is created by interpolation. The output is a
+                    /// GAUGE metric with value_type DOUBLE.If, by "rate", you mean "percentage change", see the
+                    /// ALIGN_PERCENT_CHANGE aligner instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+
+                    /// <summary>
+                    /// Align by interpolating between adjacent points around the alignment period boundary. This
+                    /// aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+
+                    /// <summary>
+                    /// Align by moving the most recent data point before the end of the alignment period to the
+                    /// boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The
+                    /// value_type of the aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+
+                    /// <summary>
+                    /// Align the time series by returning the minimum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+
+                    /// <summary>
+                    /// Align the time series by returning the maximum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+
+                    /// <summary>
+                    /// Align the time series by returning the mean value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of the
+                    /// aligned result is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+
+                    /// <summary>
+                    /// Align the time series by returning the sum of the values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric and distribution values. The value_type of the
+                    /// aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+
+                    /// <summary>
+                    /// Align the time series by returning the standard deviation of the values in each alignment
+                    /// period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of
+                    /// the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of True values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of False values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
+                    ALIGNCOUNTFALSE,
+
+                    /// <summary>
+                    /// Align the time series by returning the ratio of the number of True values to the total number of
+                    /// values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values.
+                    /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+
+                    /// <summary>
+                    /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
+                    /// numeric values. This alignment returns ((current - previous)/previous) * 100, where the value of
+                    /// previous is determined based on the alignment_period.If the values of current and previous are
+                    /// both 0, then the returned value is 0. If only previous is 0, the returned value is infinity.A
+                    /// 10-minute moving mean is computed at each point of the alignment period prior to the above
+                    /// calculation to smooth the metric and prevent false positives from very short-lived spikes. The
+                    /// moving mean is only applicable for data whose values are &amp;gt;= 0. Any values &amp;lt; 0 are
+                    /// treated as a missing datapoint, and are ignored. While DELTA metrics are accepted by this
+                    /// alignment, special care should be taken that the values for the metric will always be positive.
+                    /// The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
+                    ALIGNPERCENTCHANGE,
+                }
+
+                /// <summary>
+                /// Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that specifies
+                /// which time series should be returned. The filter must specify a single metric type, and can
+                /// additionally specify metric labels and other information. For example: metric.type =
+                /// "compute.googleapis.com/instance/cpu/usage_time" AND metric.labels.instance_name =
+                /// "my-instance-name"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
+
+                /// <summary>
+                /// Optional. The beginning of the time interval. The default value for the start time is the end time.
+                /// The start time must not be later than the end time.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalStartTime { get; set; }
+
+                /// <summary>
+                /// Unsupported: must be left blank. The points in each time series are currently returned in reverse
+                /// time order (most recent to oldest).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// A positive number that is the maximum number of results to return. If page_size is empty or more
+                /// than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this is
+                /// the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
+                /// TimeSeries returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// If this field is not empty then it must contain the nextPageToken value returned by a previous call
+                /// to this method. Using this field causes the method to return additional results from the previous
+                /// method call.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
+                /// the time series into consistent blocks of time. This will be done before the per-series aligner can
+                /// be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than
+                /// ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is
+                /// specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of
+                /// the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting
+                /// policies.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object SecondaryAggregationAlignmentPeriod { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.crossSeriesReducer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SecondaryAggregationCrossSeriesReducerEnum> SecondaryAggregationCrossSeriesReducer { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                public enum SecondaryAggregationCrossSeriesReducerEnum
+                {
+                    /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
+                    REDUCENONE,
+
+                    /// <summary>
+                    /// Reduce by computing the mean value across time series for each alignment period. This reducer is
+                    /// valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the
+                    /// output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
+                    REDUCEMEAN,
+
+                    /// <summary>
+                    /// Reduce by computing the minimum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
+                    REDUCEMIN,
+
+                    /// <summary>
+                    /// Reduce by computing the maximum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
+                    REDUCEMAX,
+
+                    /// <summary>
+                    /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
+                    /// for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the output
+                    /// is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
+                    REDUCESUM,
+
+                    /// <summary>
+                    /// Reduce by computing the standard deviation across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type
+                    /// of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
+                    REDUCESTDDEV,
+
+                    /// <summary>
+                    /// Reduce by computing the number of data points across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and string
+                    /// value_type. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
+                    REDUCECOUNT,
+
+                    /// <summary>
+                    /// Reduce by computing the number of True-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
+                    REDUCECOUNTTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the number of False-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
+                    REDUCECOUNTFALSE,
+
+                    /// <summary>
+                    /// Reduce by computing the ratio of the number of True-valued data points to the total number of
+                    /// data points for each alignment period. This reducer is valid for DELTA and GAUGE metrics of
+                    /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
+                    REDUCEFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
+                    REDUCEPERCENTILE99,
+
+                    /// <summary>
+                    /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
+                    REDUCEPERCENTILE95,
+
+                    /// <summary>
+                    /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
+                    REDUCEPERCENTILE50,
+
+                    /// <summary>
+                    /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
+                    /// across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics
+                    /// of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
+                    REDUCEPERCENTILE05,
+                }
+
+                /// <summary>
+                /// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
+                /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each
+                /// subset contains time series that have the same value for each of the grouping fields. Each
+                /// individual time series is a member of exactly one subset. The cross_series_reducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated
+                /// away. If group_by_fields is not specified and all the time series have the same resource type, then
+                /// the time series are aggregated into a single output time series. If cross_series_reducer is not
+                /// defined, this field is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> SecondaryAggregationGroupByFields { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SecondaryAggregationPerSeriesAlignerEnum> SecondaryAggregationPerSeriesAligner { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                public enum SecondaryAggregationPerSeriesAlignerEnum
+                {
+                    /// <summary>
+                    /// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The
+                    /// value_type of the result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+
+                    /// <summary>
+                    /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
+                    /// and DELTA metrics. If the selected alignment period results in periods with no data, then the
+                    /// aligned value for such a period is created by interpolation. The value_type of the aligned
+                    /// result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+
+                    /// <summary>
+                    /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
+                    /// over time". Think of this aligner as providing the slope of the line that passes through the
+                    /// value at the start and at the end of the alignment_period.This aligner is valid for CUMULATIVE
+                    /// and DELTA metrics with numeric values. If the selected alignment period results in periods with
+                    /// no data, then the aligned value for such a period is created by interpolation. The output is a
+                    /// GAUGE metric with value_type DOUBLE.If, by "rate", you mean "percentage change", see the
+                    /// ALIGN_PERCENT_CHANGE aligner instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+
+                    /// <summary>
+                    /// Align by interpolating between adjacent points around the alignment period boundary. This
+                    /// aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+
+                    /// <summary>
+                    /// Align by moving the most recent data point before the end of the alignment period to the
+                    /// boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The
+                    /// value_type of the aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+
+                    /// <summary>
+                    /// Align the time series by returning the minimum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+
+                    /// <summary>
+                    /// Align the time series by returning the maximum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+
+                    /// <summary>
+                    /// Align the time series by returning the mean value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of the
+                    /// aligned result is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+
+                    /// <summary>
+                    /// Align the time series by returning the sum of the values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric and distribution values. The value_type of the
+                    /// aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+
+                    /// <summary>
+                    /// Align the time series by returning the standard deviation of the values in each alignment
+                    /// period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of
+                    /// the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of True values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of False values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
+                    ALIGNCOUNTFALSE,
+
+                    /// <summary>
+                    /// Align the time series by returning the ratio of the number of True values to the total number of
+                    /// values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values.
+                    /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+
+                    /// <summary>
+                    /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
+                    /// numeric values. This alignment returns ((current - previous)/previous) * 100, where the value of
+                    /// previous is determined based on the alignment_period.If the values of current and previous are
+                    /// both 0, then the returned value is 0. If only previous is 0, the returned value is infinity.A
+                    /// 10-minute moving mean is computed at each point of the alignment period prior to the above
+                    /// calculation to smooth the metric and prevent false positives from very short-lived spikes. The
+                    /// moving mean is only applicable for data whose values are &amp;gt;= 0. Any values &amp;lt; 0 are
+                    /// treated as a missing datapoint, and are ignored. While DELTA metrics are accepted by this
+                    /// alignment, special care should be taken that the values for the metric will always be positive.
+                    /// The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
+                    ALIGNPERCENTCHANGE,
+                }
+
+                /// <summary>Required. Specifies which information is returned about the time series.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Required. Specifies which information is returned about the time series.</summary>
+                public enum ViewEnum
+                {
+                    /// <summary>
+                    /// Returns the identity of the metric(s), the time series, and the time series data.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+
+                    /// <summary>
+                    /// Returns the identity of the metric and the time series resource, but not the time series data.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("HEADERS")]
+                    HEADERS,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}/timeSeries";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.alignmentPeriod",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.crossSeriesReducer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.groupByFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.perSeriesAligner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interval.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interval.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.alignmentPeriod",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.crossSeriesReducer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.groupByFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.perSeriesAligner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            TimeSeries = new TimeSeriesResource(service);
+        }
+
+        /// <summary>Gets the TimeSeries resource.</summary>
+        public virtual TimeSeriesResource TimeSeries { get; }
+
+        /// <summary>The "timeSeries" collection of methods.</summary>
+        public class TimeSeriesResource
+        {
+            private const string Resource = "timeSeries";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TimeSeriesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            /// <param name="name">
+            /// Required. The project, organization or folder on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+            /// </param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListTimeSeriesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project, organization or folder on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
+                /// the time series into consistent blocks of time. This will be done before the per-series aligner can
+                /// be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than
+                /// ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is
+                /// specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of
+                /// the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting
+                /// policies.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.crossSeriesReducer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationCrossSeriesReducerEnum> AggregationCrossSeriesReducer { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                public enum AggregationCrossSeriesReducerEnum
+                {
+                    /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
+                    REDUCENONE,
+
+                    /// <summary>
+                    /// Reduce by computing the mean value across time series for each alignment period. This reducer is
+                    /// valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the
+                    /// output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
+                    REDUCEMEAN,
+
+                    /// <summary>
+                    /// Reduce by computing the minimum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
+                    REDUCEMIN,
+
+                    /// <summary>
+                    /// Reduce by computing the maximum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
+                    REDUCEMAX,
+
+                    /// <summary>
+                    /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
+                    /// for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the output
+                    /// is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
+                    REDUCESUM,
+
+                    /// <summary>
+                    /// Reduce by computing the standard deviation across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type
+                    /// of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
+                    REDUCESTDDEV,
+
+                    /// <summary>
+                    /// Reduce by computing the number of data points across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and string
+                    /// value_type. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
+                    REDUCECOUNT,
+
+                    /// <summary>
+                    /// Reduce by computing the number of True-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
+                    REDUCECOUNTTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the number of False-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
+                    REDUCECOUNTFALSE,
+
+                    /// <summary>
+                    /// Reduce by computing the ratio of the number of True-valued data points to the total number of
+                    /// data points for each alignment period. This reducer is valid for DELTA and GAUGE metrics of
+                    /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
+                    REDUCEFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
+                    REDUCEPERCENTILE99,
+
+                    /// <summary>
+                    /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
+                    REDUCEPERCENTILE95,
+
+                    /// <summary>
+                    /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
+                    REDUCEPERCENTILE50,
+
+                    /// <summary>
+                    /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
+                    /// across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics
+                    /// of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
+                    REDUCEPERCENTILE05,
+                }
+
+                /// <summary>
+                /// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
+                /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each
+                /// subset contains time series that have the same value for each of the grouping fields. Each
+                /// individual time series is a member of exactly one subset. The cross_series_reducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated
+                /// away. If group_by_fields is not specified and all the time series have the same resource type, then
+                /// the time series are aggregated into a single output time series. If cross_series_reducer is not
+                /// defined, this field is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<AggregationPerSeriesAlignerEnum> AggregationPerSeriesAligner { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                public enum AggregationPerSeriesAlignerEnum
+                {
+                    /// <summary>
+                    /// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The
+                    /// value_type of the result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+
+                    /// <summary>
+                    /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
+                    /// and DELTA metrics. If the selected alignment period results in periods with no data, then the
+                    /// aligned value for such a period is created by interpolation. The value_type of the aligned
+                    /// result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+
+                    /// <summary>
+                    /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
+                    /// over time". Think of this aligner as providing the slope of the line that passes through the
+                    /// value at the start and at the end of the alignment_period.This aligner is valid for CUMULATIVE
+                    /// and DELTA metrics with numeric values. If the selected alignment period results in periods with
+                    /// no data, then the aligned value for such a period is created by interpolation. The output is a
+                    /// GAUGE metric with value_type DOUBLE.If, by "rate", you mean "percentage change", see the
+                    /// ALIGN_PERCENT_CHANGE aligner instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+
+                    /// <summary>
+                    /// Align by interpolating between adjacent points around the alignment period boundary. This
+                    /// aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+
+                    /// <summary>
+                    /// Align by moving the most recent data point before the end of the alignment period to the
+                    /// boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The
+                    /// value_type of the aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+
+                    /// <summary>
+                    /// Align the time series by returning the minimum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+
+                    /// <summary>
+                    /// Align the time series by returning the maximum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+
+                    /// <summary>
+                    /// Align the time series by returning the mean value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of the
+                    /// aligned result is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+
+                    /// <summary>
+                    /// Align the time series by returning the sum of the values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric and distribution values. The value_type of the
+                    /// aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+
+                    /// <summary>
+                    /// Align the time series by returning the standard deviation of the values in each alignment
+                    /// period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of
+                    /// the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of True values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of False values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
+                    ALIGNCOUNTFALSE,
+
+                    /// <summary>
+                    /// Align the time series by returning the ratio of the number of True values to the total number of
+                    /// values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values.
+                    /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+
+                    /// <summary>
+                    /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
+                    /// numeric values. This alignment returns ((current - previous)/previous) * 100, where the value of
+                    /// previous is determined based on the alignment_period.If the values of current and previous are
+                    /// both 0, then the returned value is 0. If only previous is 0, the returned value is infinity.A
+                    /// 10-minute moving mean is computed at each point of the alignment period prior to the above
+                    /// calculation to smooth the metric and prevent false positives from very short-lived spikes. The
+                    /// moving mean is only applicable for data whose values are &amp;gt;= 0. Any values &amp;lt; 0 are
+                    /// treated as a missing datapoint, and are ignored. While DELTA metrics are accepted by this
+                    /// alignment, special care should be taken that the values for the metric will always be positive.
+                    /// The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
+                    ALIGNPERCENTCHANGE,
+                }
+
+                /// <summary>
+                /// Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that specifies
+                /// which time series should be returned. The filter must specify a single metric type, and can
+                /// additionally specify metric labels and other information. For example: metric.type =
+                /// "compute.googleapis.com/instance/cpu/usage_time" AND metric.labels.instance_name =
+                /// "my-instance-name"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
+
+                /// <summary>
+                /// Optional. The beginning of the time interval. The default value for the start time is the end time.
+                /// The start time must not be later than the end time.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalStartTime { get; set; }
+
+                /// <summary>
+                /// Unsupported: must be left blank. The points in each time series are currently returned in reverse
+                /// time order (most recent to oldest).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// A positive number that is the maximum number of results to return. If page_size is empty or more
+                /// than 100,000 results, the effective page_size is 100,000 results. If view is set to FULL, this is
+                /// the maximum number of Points returned. If view is set to HEADERS, this is the maximum number of
+                /// TimeSeries returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// If this field is not empty then it must contain the nextPageToken value returned by a previous call
+                /// to this method. Using this field causes the method to return additional results from the previous
+                /// method call.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all
+                /// the time series into consistent blocks of time. This will be done before the per-series aligner can
+                /// be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than
+                /// ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is
+                /// specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of
+                /// the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting
+                /// policies.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object SecondaryAggregationAlignmentPeriod { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.crossSeriesReducer", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SecondaryAggregationCrossSeriesReducerEnum> SecondaryAggregationCrossSeriesReducer { get; set; }
+
+                /// <summary>
+                /// The reduction operation to be used to combine time series into a single time series, where the value
+                /// of each data point in the resulting series is a function of all the already aligned values in the
+                /// input time series.Not all reducer operations can be applied to all time series. The valid choices
+                /// depend on the metric_kind and the value_type of the original time series. Reduction can yield a time
+                /// series with a different metric_kind or value_type than the input time series.Time series data must
+                /// first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If
+                /// cross_series_reducer is specified, then per_series_aligner must be specified, and must not be
+                /// ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+                /// </summary>
+                public enum SecondaryAggregationCrossSeriesReducerEnum
+                {
+                    /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
+                    REDUCENONE,
+
+                    /// <summary>
+                    /// Reduce by computing the mean value across time series for each alignment period. This reducer is
+                    /// valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type of the
+                    /// output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
+                    REDUCEMEAN,
+
+                    /// <summary>
+                    /// Reduce by computing the minimum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
+                    REDUCEMIN,
+
+                    /// <summary>
+                    /// Reduce by computing the maximum value across time series for each alignment period. This reducer
+                    /// is valid for DELTA and GAUGE metrics with numeric values. The value_type of the output is the
+                    /// same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
+                    REDUCEMAX,
+
+                    /// <summary>
+                    /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
+                    /// for DELTA and GAUGE metrics with numeric and distribution values. The value_type of the output
+                    /// is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
+                    REDUCESUM,
+
+                    /// <summary>
+                    /// Reduce by computing the standard deviation across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics with numeric or distribution values. The value_type
+                    /// of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
+                    REDUCESTDDEV,
+
+                    /// <summary>
+                    /// Reduce by computing the number of data points across time series for each alignment period. This
+                    /// reducer is valid for DELTA and GAUGE metrics of numeric, Boolean, distribution, and string
+                    /// value_type. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
+                    REDUCECOUNT,
+
+                    /// <summary>
+                    /// Reduce by computing the number of True-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
+                    REDUCECOUNTTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the number of False-valued data points across time series for each alignment
+                    /// period. This reducer is valid for DELTA and GAUGE metrics of Boolean value_type. The value_type
+                    /// of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
+                    REDUCECOUNTFALSE,
+
+                    /// <summary>
+                    /// Reduce by computing the ratio of the number of True-valued data points to the total number of
+                    /// data points for each alignment period. This reducer is valid for DELTA and GAUGE metrics of
+                    /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
+                    REDUCEFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
+                    REDUCEPERCENTILE99,
+
+                    /// <summary>
+                    /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
+                    REDUCEPERCENTILE95,
+
+                    /// <summary>
+                    /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
+                    /// points across time series for each alignment period. This reducer is valid for GAUGE and DELTA
+                    /// metrics of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
+                    REDUCEPERCENTILE50,
+
+                    /// <summary>
+                    /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
+                    /// across time series for each alignment period. This reducer is valid for GAUGE and DELTA metrics
+                    /// of numeric and distribution type. The value of the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
+                    REDUCEPERCENTILE05,
+                }
+
+                /// <summary>
+                /// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine
+                /// how the time series are partitioned into subsets prior to applying the aggregation operation. Each
+                /// subset contains time series that have the same value for each of the grouping fields. Each
+                /// individual time series is a member of exactly one subset. The cross_series_reducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated
+                /// away. If group_by_fields is not specified and all the time series have the same resource type, then
+                /// the time series are aggregated into a single output time series. If cross_series_reducer is not
+                /// defined, this field is ignored.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> SecondaryAggregationGroupByFields { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("secondaryAggregation.perSeriesAligner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SecondaryAggregationPerSeriesAlignerEnum> SecondaryAggregationPerSeriesAligner { get; set; }
+
+                /// <summary>
+                /// An Aligner describes how to bring the data points in a single time series into temporal alignment.
+                /// Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be
+                /// mathematically grouped together, resulting in a single data point for each alignment_period with end
+                /// timestamp at the end of the period.Not all alignment operations may be applied to all time series.
+                /// The valid choices depend on the metric_kind and value_type of the original time series. Alignment
+                /// can change the metric_kind or the value_type of the time series.Time series data must be aligned in
+                /// order to perform cross-time series reduction. If cross_series_reducer is specified, then
+                /// per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be
+                /// specified; otherwise, an error is returned.
+                /// </summary>
+                public enum SecondaryAggregationPerSeriesAlignerEnum
+                {
+                    /// <summary>
+                    /// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The
+                    /// value_type of the result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
+                    ALIGNNONE,
+
+                    /// <summary>
+                    /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
+                    /// and DELTA metrics. If the selected alignment period results in periods with no data, then the
+                    /// aligned value for such a period is created by interpolation. The value_type of the aligned
+                    /// result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
+                    ALIGNDELTA,
+
+                    /// <summary>
+                    /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
+                    /// over time". Think of this aligner as providing the slope of the line that passes through the
+                    /// value at the start and at the end of the alignment_period.This aligner is valid for CUMULATIVE
+                    /// and DELTA metrics with numeric values. If the selected alignment period results in periods with
+                    /// no data, then the aligned value for such a period is created by interpolation. The output is a
+                    /// GAUGE metric with value_type DOUBLE.If, by "rate", you mean "percentage change", see the
+                    /// ALIGN_PERCENT_CHANGE aligner instead.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
+                    ALIGNRATE,
+
+                    /// <summary>
+                    /// Align by interpolating between adjacent points around the alignment period boundary. This
+                    /// aligner is valid for GAUGE metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
+                    ALIGNINTERPOLATE,
+
+                    /// <summary>
+                    /// Align by moving the most recent data point before the end of the alignment period to the
+                    /// boundary at the end of the alignment period. This aligner is valid for GAUGE metrics. The
+                    /// value_type of the aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
+                    ALIGNNEXTOLDER,
+
+                    /// <summary>
+                    /// Align the time series by returning the minimum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
+                    ALIGNMIN,
+
+                    /// <summary>
+                    /// Align the time series by returning the maximum value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
+                    ALIGNMAX,
+
+                    /// <summary>
+                    /// Align the time series by returning the mean value in each alignment period. This aligner is
+                    /// valid for GAUGE and DELTA metrics with numeric values. The value_type of the aligned result is
+                    /// DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
+                    ALIGNMEAN,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric or Boolean values. The value_type of the
+                    /// aligned result is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
+                    ALIGNCOUNT,
+
+                    /// <summary>
+                    /// Align the time series by returning the sum of the values in each alignment period. This aligner
+                    /// is valid for GAUGE and DELTA metrics with numeric and distribution values. The value_type of the
+                    /// aligned result is the same as the value_type of the input.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
+                    ALIGNSUM,
+
+                    /// <summary>
+                    /// Align the time series by returning the standard deviation of the values in each alignment
+                    /// period. This aligner is valid for GAUGE and DELTA metrics with numeric values. The value_type of
+                    /// the output is DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
+                    ALIGNSTDDEV,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of True values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
+                    ALIGNCOUNTTRUE,
+
+                    /// <summary>
+                    /// Align the time series by returning the number of False values in each alignment period. This
+                    /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
+                    ALIGNCOUNTFALSE,
+
+                    /// <summary>
+                    /// Align the time series by returning the ratio of the number of True values to the total number of
+                    /// values in each alignment period. This aligner is valid for GAUGE metrics with Boolean values.
+                    /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
+                    ALIGNFRACTIONTRUE,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 99th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
+                    ALIGNPERCENTILE99,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 95th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
+                    ALIGNPERCENTILE95,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 50th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
+                    ALIGNPERCENTILE50,
+
+                    /// <summary>
+                    /// Align the time series by using percentile aggregation
+                    /// (https://en.wikipedia.org/wiki/Percentile). The resulting data point in each alignment period is
+                    /// the 5th percentile of all data points in the period. This aligner is valid for GAUGE and DELTA
+                    /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
+                    ALIGNPERCENTILE05,
+
+                    /// <summary>
+                    /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
+                    /// numeric values. This alignment returns ((current - previous)/previous) * 100, where the value of
+                    /// previous is determined based on the alignment_period.If the values of current and previous are
+                    /// both 0, then the returned value is 0. If only previous is 0, the returned value is infinity.A
+                    /// 10-minute moving mean is computed at each point of the alignment period prior to the above
+                    /// calculation to smooth the metric and prevent false positives from very short-lived spikes. The
+                    /// moving mean is only applicable for data whose values are &amp;gt;= 0. Any values &amp;lt; 0 are
+                    /// treated as a missing datapoint, and are ignored. While DELTA metrics are accepted by this
+                    /// alignment, special care should be taken that the values for the metric will always be positive.
+                    /// The output is a GAUGE metric with value_type DOUBLE.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
+                    ALIGNPERCENTCHANGE,
+                }
+
+                /// <summary>Required. Specifies which information is returned about the time series.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Required. Specifies which information is returned about the time series.</summary>
+                public enum ViewEnum
+                {
+                    /// <summary>
+                    /// Returns the identity of the metric(s), the time series, and the time series data.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+
+                    /// <summary>
+                    /// Returns the identity of the metric and the time series resource, but not the time series data.
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("HEADERS")]
+                    HEADERS,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+name}/timeSeries";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.alignmentPeriod",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.crossSeriesReducer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.groupByFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "aggregation.perSeriesAligner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("interval.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interval.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("interval.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "interval.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.alignmentPeriod",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.crossSeriesReducer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.crossSeriesReducer",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.groupByFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secondaryAggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secondaryAggregation.perSeriesAligner",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -2674,7 +4634,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project, organization or folder on which to execute the request. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -2692,8 +4653,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project, organization or folder on which to execute the request. The format is:
+                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6064,6 +8025,39 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Canonical service scoped to an Istio mesh. Anthos clusters running ASM &amp;gt;= 1.6.8 will have their services
+    /// ingested as this type.
+    /// </summary>
+    public class IstioCanonicalService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the canonical service underlying this service. Corresponds to the
+        /// destination_canonical_service_name metric label in label in Istio metrics
+        /// (https://cloud.google.com/monitoring/api/metrics_istio).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalService")]
+        public virtual string CanonicalService { get; set; }
+
+        /// <summary>
+        /// The namespace of the canonical service underlying this service. Corresponds to the
+        /// destination_canonical_service_namespace metric label in Istio metrics
+        /// (https://cloud.google.com/monitoring/api/metrics_istio).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalServiceNamespace")]
+        public virtual string CanonicalServiceNamespace { get; set; }
+
+        /// <summary>
+        /// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric
+        /// label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meshUid")]
+        public virtual string MeshUid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A description of a label.</summary>
     public class LabelDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7274,6 +9268,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Name used for UI elements listing this Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here
+        /// (https://istio.io/latest/docs/reference/config/metrics/)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("istioCanonicalService")]
+        public virtual IstioCanonicalService IstioCanonicalService { get; set; }
 
         /// <summary>Type used for Istio services scoped to an Istio mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meshIstio")]

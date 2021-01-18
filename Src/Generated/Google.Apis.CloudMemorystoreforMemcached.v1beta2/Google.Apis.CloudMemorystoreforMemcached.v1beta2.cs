@@ -1517,6 +1517,15 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutManagementPolicy")]
         public virtual string RolloutManagementPolicy { get; set; }
 
+        /// <summary>
+        /// schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule.
+        /// It's normally the initial schedule start time plus a week. If the reschedule type is next window, simply
+        /// take this value as start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
+        /// go beyond this deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
+        public virtual object ScheduleDeadlineTime { get; set; }
+
         /// <summary>The scheduled start time for the maintenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }

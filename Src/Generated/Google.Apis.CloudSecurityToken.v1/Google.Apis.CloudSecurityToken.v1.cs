@@ -307,6 +307,14 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     public class GoogleIdentityStsV1ExchangeTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The full resource name of the identity provider; for example:
+        /// `//iam.googleapis.com/projects//workloadIdentityPools//providers/`. Required when exchanging an external
+        /// credential for a Google access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>
         /// Required. The grant type. Must be `urn:ietf:params:oauth:grant-type:token-exchange`, which indicates a token
         /// exchange.
         /// </summary>
@@ -326,6 +334,13 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }
+
+        /// <summary>
+        /// The OAuth 2.0 scopes to include on the resulting access token, formatted as a list of space-delimited,
+        /// case-sensitive strings. Required when exchanging an external credential for a Google access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
 
         /// <summary>
         /// Required. The input token. You can use a Google-issued OAuth 2.0 access token with this field to obtain an
@@ -354,9 +369,9 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual string AccessToken { get; set; }
 
         /// <summary>
-        /// The amount of time, in seconds, between the time when the `access_token` was issued and the time when the
-        /// `access_token` will expire. This field is absent when the `subject_token` in the request is a Google-issued,
-        /// short-lived access token. In this case, the `access_token` has the same expiration time as the
+        /// The amount of time, in seconds, between the time when the access token was issued and the time when the
+        /// access token will expire. This field is absent when the `subject_token` in the request is a Google-issued,
+        /// short-lived access token. In this case, the access token has the same expiration time as the
         /// `subject_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expires_in")]
@@ -366,7 +381,7 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issued_token_type")]
         public virtual string IssuedTokenType { get; set; }
 
-        /// <summary>The type of `access_token`. Always has the value `Bearer`.</summary>
+        /// <summary>The type of access token. Always has the value `Bearer`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token_type")]
         public virtual string TokenType { get; set; }
 
