@@ -186,11 +186,13 @@ namespace Google.Apis.Tests.Apis.Services
                                 ""reason"": ""required"",
                                 ""message"": ""Required"",
                                 ""locationType"": ""parameter"",
-                                ""location"": ""resource.longUrl""
+                                ""location"": ""resource.longUrl"",
+                                ""customIndividual"": ""Custom individual error info""
                             }
                         ],
                         ""code"": 400,
-                        ""message"": ""Required""
+                        ""message"": ""Required"",
+                        ""custom"": ""Custom error info""
                     }
                 }";
 
@@ -203,6 +205,8 @@ namespace Google.Apis.Tests.Apis.Services
                 Assert.Equal(400, error.Code);
                 Assert.Equal("Required", error.Message);
                 Assert.Equal(1, error.Errors.Count);
+                Assert.NotNull(error.ErrorResponseContent);
+                Assert.Equal(ErrorResponse, error.ErrorResponseContent);
             }
         }
 

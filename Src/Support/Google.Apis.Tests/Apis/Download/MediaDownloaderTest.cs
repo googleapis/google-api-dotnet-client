@@ -473,6 +473,8 @@ namespace Google.Apis.Tests.Apis.Download
                 // Just a smattering of checks - if these two pass, it's surely okay.
                 Assert.Equal(BadRequestError.Code, exception.Error.Code);
                 Assert.Equal(BadRequestError.Errors[0].Message, exception.Error.Errors[0].Message);
+                Assert.NotNull(exception.Error.ErrorResponseContent);
+                Assert.Contains(BadRequestError.Errors[0].Message, exception.Error.ErrorResponseContent);
             }
         }
 

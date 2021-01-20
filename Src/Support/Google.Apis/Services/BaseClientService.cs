@@ -363,6 +363,7 @@ namespace Google.Apis.Services
                     HttpStatusCode = response.StatusCode
                 };
             }
+            error.ErrorResponseContent = responseText;
             return error;
         }
 
