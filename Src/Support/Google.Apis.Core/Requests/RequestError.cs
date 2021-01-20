@@ -55,6 +55,16 @@ namespace Google.Apis.Requests
         public string Message { get; set; }
 
         /// <summary>
+        /// The full content of the error response that
+        /// this instance was created from.
+        /// </summary>
+        /// <remarks>
+        /// The response may contain custom information that is not represented
+        /// by any of the properties in <see cref="RequestError"/>.
+        /// </remarks>
+        public string ErrorResponseContent { get; set; }
+
+        /// <summary>
         /// Returns a string summary of this error
         /// </summary>
         /// <returns>A string summary of this error</returns>

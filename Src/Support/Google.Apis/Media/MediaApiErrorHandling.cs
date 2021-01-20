@@ -52,7 +52,7 @@ namespace Google.Apis.Media
             HttpResponseMessage response)
         {
             // If we can't even read the response, let that exception bubble up, just as it would have done
-            // if the error had been occurred when sending the request.
+            // if the error had occurred when sending the request.
             string responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             RequestError parsedError = null;
             string message = responseText;
@@ -62,6 +62,7 @@ namespace Google.Apis.Media
                 if (parsedResponse != null && parsedResponse.Error != null)
                 {
                     parsedError = parsedResponse.Error;
+                    parsedError.ErrorResponseContent = responseText;
                     message = parsedError.ToString();
                 }
             }

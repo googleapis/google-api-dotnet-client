@@ -200,10 +200,12 @@ Content-Length: 202
     ""domain"": ""global"",
     ""reason"": ""notFound"",
     ""message"": ""Not Found"",
+    ""customIndividual"": ""Custom individual error info""
    }
   ],
   ""code"": 404,
-  ""message"": ""Not Found""
+  ""message"": ""Not Found"",
+  ""custom"": ""Custom error info""
  }
 }");
             bool successful2ndResponse;
@@ -317,6 +319,9 @@ Content-Length: 202
                     Assert.Equal(1, reqError.Errors.Count);
                     Assert.Equal(404, reqError.Code);
                     Assert.Equal("Not Found", reqError.Message);
+                    Assert.NotNull(reqError.ErrorResponseContent);
+                    Assert.Contains("Custom individual error info", reqError.ErrorResponseContent);
+                    Assert.Contains("Custom error info", reqError.ErrorResponseContent);
                 }
                 httpMessage = tuple.Item3; // HTTP message
                 Assert.Equal("application/json", httpMessage.Content.Headers.ContentType.MediaType);
