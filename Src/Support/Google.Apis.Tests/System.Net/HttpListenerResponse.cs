@@ -47,7 +47,7 @@ namespace System.Net
     }
 }
 
-#elif NET452 || NET46 || NETCOREAPP2_0
+#elif NET452 || NET46 || NETCOREAPP2_0 || NETCOREAPP3_1
 // Nothing required
 #else
 #error Unsupported platform
