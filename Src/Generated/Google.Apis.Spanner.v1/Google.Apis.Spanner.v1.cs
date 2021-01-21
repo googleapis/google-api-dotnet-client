@@ -4219,6 +4219,13 @@ namespace Google.Apis.Spanner.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
+                /// Deadline used while retrieving metadata for instances. Instances whose metadata cannot be retrieved
+                /// within this deadline will be added to unreachable in ListInstancesResponse.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("instanceDeadline", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object InstanceDeadline { get; set; }
+
+                /// <summary>
                 /// Number of instances to be returned in the response. If 0 or less, defaults to the server's maximum
                 /// allowed page size.
                 /// </summary>
@@ -4255,6 +4262,14 @@ namespace Google.Apis.Spanner.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("instanceDeadline", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instanceDeadline",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5476,6 +5491,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of unreachable instances. It includes the names of instances whose metadata could not be retrieved
+        /// within instance_deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

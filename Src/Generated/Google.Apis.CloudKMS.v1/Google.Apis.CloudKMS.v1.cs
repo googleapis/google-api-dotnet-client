@@ -2874,6 +2874,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
 
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in decryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
         /// <summary>
         /// Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was
         /// received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of
@@ -2926,6 +2930,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used for signing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>The created signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
@@ -3321,6 +3329,14 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
 
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in decryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>Whether the Decryption was performed using the primary key version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedPrimary")]
+        public virtual System.Nullable<bool> UsedPrimary { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3429,6 +3445,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>
         /// Integrity verification field. A flag indicating whether EncryptRequest.additional_authenticated_data_crc32c
@@ -3909,6 +3929,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pemCrc32c")]
         public virtual System.Nullable<long> PemCrc32c { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion public key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

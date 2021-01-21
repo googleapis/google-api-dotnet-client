@@ -9541,7 +9541,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual Errors Errors { get; set; }
 
-        /// <summary>The the list of accessible GMB accounts.</summary>
+        /// <summary>The list of accessible GMB accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual GmbAccounts GmbAccounts { get; set; }
 
@@ -12966,7 +12966,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual string Color { get; set; }
 
-        /// <summary>Condition or state of the item. Acceptable values are: - "`local`" - "`online`" </summary>
+        /// <summary>
+        /// Condition or state of the item. Acceptable values are: - "`new`" - "`refurbished`" - "`used`"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
 

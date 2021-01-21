@@ -1407,7 +1407,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 this.service = service;
             }
 
-            /// <summary>Creates an android app stream with the specified location and attributes.</summary>
+            /// <summary>
+            /// Creates an Android app stream with the specified location and attributes. Note that an Android app
+            /// stream must be linked to a Firebase app to receive traffic. To create a working app stream, make sure
+            /// your property is linked to a Firebase project. Then, use the Firebase API to create a Firebase app,
+            /// which will also create an appropriate data stream in Analytics (may take up to 24 hours).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource where this android app data stream will be created. Format: properties/123
@@ -1417,7 +1422,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an android app stream with the specified location and attributes.</summary>
+            /// <summary>
+            /// Creates an Android app stream with the specified location and attributes. Note that an Android app
+            /// stream must be linked to a Firebase app to receive traffic. To create a working app stream, make sure
+            /// your property is linked to a Firebase project. Then, use the Firebase API to create a Firebase app,
+            /// which will also create an appropriate data stream in Analytics (may take up to 24 hours).
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAndroidAppDataStream>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2288,7 +2298,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 this.service = service;
             }
 
-            /// <summary>Creates an iOS app data stream with the specified location and attributes.</summary>
+            /// <summary>
+            /// Creates an iOS app stream with the specified location and attributes. Note that an iOS app stream must
+            /// be linked to a Firebase app to receive traffic. To create a working app stream, make sure your property
+            /// is linked to a Firebase project. Then, use the Firebase API to create a Firebase app, which will also
+            /// create an appropriate data stream in Analytics (may take up to 24 hours).
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent resource where this ios app data stream will be created. Format: properties/123
@@ -2298,7 +2313,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an iOS app data stream with the specified location and attributes.</summary>
+            /// <summary>
+            /// Creates an iOS app stream with the specified location and attributes. Note that an iOS app stream must
+            /// be linked to a Firebase app to receive traffic. To create a working app stream, make sure your property
+            /// is linked to a Firebase project. Then, use the Firebase API to create a Firebase app, which will also
+            /// create an appropriate data stream in Analytics (may take up to 24 hours).
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaIosAppDataStream>
             {
                 /// <summary>Constructs a new Create request.</summary>

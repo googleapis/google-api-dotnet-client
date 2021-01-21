@@ -891,7 +891,8 @@ namespace Google.Apis.Fitness.v1
                 /// <summary>
                 /// Adds data points to a dataset. The dataset need not be previously created. All points within the
                 /// given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong
-                /// to more than one dataset. This method does not use patch semantics.
+                /// to more than one dataset. This method does not use patch semantics: the data points provided are
+                /// merely inserted, with no existing data replaced.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="userId">
@@ -899,11 +900,7 @@ namespace Google.Apis.Fitness.v1
                 /// supported at this time.
                 /// </param>
                 /// <param name="dataSourceId">The data stream ID of the data source that created the dataset.</param>
-                /// <param name="datasetId">
-                /// Dataset identifier that is a composite of the minimum data point start time and maximum data point
-                /// end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
-                /// where startTime and endTime are 64 bit integers.
-                /// </param>
+                /// <param name="datasetId">This field is not used, and can be safely omitted.</param>
                 public virtual PatchRequest Patch(Google.Apis.Fitness.v1.Data.Dataset body, string userId, string dataSourceId, string datasetId)
                 {
                     return new PatchRequest(service, body, userId, dataSourceId, datasetId);
@@ -912,7 +909,8 @@ namespace Google.Apis.Fitness.v1
                 /// <summary>
                 /// Adds data points to a dataset. The dataset need not be previously created. All points within the
                 /// given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong
-                /// to more than one dataset. This method does not use patch semantics.
+                /// to more than one dataset. This method does not use patch semantics: the data points provided are
+                /// merely inserted, with no existing data replaced.
                 /// </summary>
                 public class PatchRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.Dataset>
                 {
@@ -937,11 +935,7 @@ namespace Google.Apis.Fitness.v1
                     [Google.Apis.Util.RequestParameterAttribute("dataSourceId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DataSourceId { get; private set; }
 
-                    /// <summary>
-                    /// Dataset identifier that is a composite of the minimum data point start time and maximum data
-                    /// point end time represented as nanoseconds from the epoch. The ID is formatted like:
-                    /// "startTime-endTime" where startTime and endTime are 64 bit integers.
-                    /// </summary>
+                    /// <summary>This field is not used, and can be safely omitted.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DatasetId { get; private set; }
 

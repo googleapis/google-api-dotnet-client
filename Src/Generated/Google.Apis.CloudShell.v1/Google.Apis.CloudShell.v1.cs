@@ -912,7 +912,8 @@ namespace Google.Apis.CloudShell.v1.Data
         /// <summary>
         /// Key that should be added to the environment. Supported formats are `ssh-dss` (see RFC4253), `ssh-rsa` (see
         /// RFC4253), `ecdsa-sha2-nistp256` (see RFC5656), `ecdsa-sha2-nistp384` (see RFC5656) and `ecdsa-sha2-nistp521`
-        /// (see RFC5656). It should be structured as , where part is encoded with Base64.
+        /// (see RFC5656). It should be structured as &amp;lt;format&amp;gt; &amp;lt;content&amp;gt;, where
+        /// &amp;lt;content&amp;gt; part is encoded with Base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }

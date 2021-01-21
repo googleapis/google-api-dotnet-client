@@ -295,6 +295,14 @@ namespace Google.Apis.SemanticTile.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
+            /// Flag indicating whether the returned tile will always contain 2.5D footprints for structures. If
+            /// enabled_modeled_volumes is set, this will mean that structures will have both their 3D models and 2.5D
+            /// footprints returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeBuildingFootprints", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AlwaysIncludeBuildingFootprints { get; set; }
+
+            /// <summary>
             /// API client name and version. For example, the SDK calling the API. The exact format is up to the client.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientInfo.apiClient", Google.Apis.Util.RequestParameterType.Query)]
@@ -458,6 +466,14 @@ namespace Google.Apis.SemanticTile.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^featuretiles/[^/]+$",
+                });
+                RequestParameters.Add("alwaysIncludeBuildingFootprints", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "alwaysIncludeBuildingFootprints",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("clientInfo.apiClient", new Google.Apis.Discovery.Parameter
                 {
@@ -1119,7 +1135,11 @@ namespace Google.Apis.SemanticTile.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("areas")]
         public virtual System.Collections.Generic.IList<Area> Areas { get; set; }
 
-        /// <summary>The extruded areas present in this geometry.</summary>
+        /// <summary>
+        /// The extruded areas present in this geometry. Not populated if modeled_volumes are included in this geometry
+        /// unless always_include_building_footprints is set in GetFeatureTileRequest, in which case the client should
+        /// decide which (extruded areas or modeled volumes) should be used (they should not be rendered together).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extrudedAreas")]
         public virtual System.Collections.Generic.IList<ExtrudedArea> ExtrudedAreas { get; set; }
 
@@ -1127,7 +1147,10 @@ namespace Google.Apis.SemanticTile.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lines")]
         public virtual System.Collections.Generic.IList<Line> Lines { get; set; }
 
-        /// <summary>The modeled volumes present in this geometry.</summary>
+        /// <summary>
+        /// The modeled volumes present in this geometry. Not populated unless enable_modeled_volumes has been set in
+        /// GetFeatureTileRequest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modeledVolumes")]
         public virtual System.Collections.Generic.IList<ModeledVolume> ModeledVolumes { get; set; }
 

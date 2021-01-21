@@ -548,9 +548,18 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; }
 
-        /// <summary>The form factor the emulation should use.</summary>
+        /// <summary>
+        /// The form factor the emulation should use. This field is deprecated, form_factor should be used instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emulatedFormFactor")]
         public virtual string EmulatedFormFactor { get; set; }
+
+        /// <summary>
+        /// How Lighthouse should interpret this run in regards to scoring performance metrics and skipping mobile-only
+        /// tests in desktop.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formFactor")]
+        public virtual string FormFactor { get; set; }
 
         /// <summary>The locale setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locale")]
