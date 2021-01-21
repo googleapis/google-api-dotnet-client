@@ -340,7 +340,9 @@ namespace Google.Apis.Services
         {
             if (response?.Content == null)
             {
-                throw new GoogleApiException(Name, "response or response content unexpectedly null.");
+                var ex = new GoogleApiException(Name, "response or response content unexpectedly null.");
+                ex.HttpStatusCode = response?.StatusCode ?? ex.HttpStatusCode;
+                throw ex;
             }
             // If we can't even read the response, let that exception bubble up.
             var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
