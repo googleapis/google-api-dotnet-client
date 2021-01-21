@@ -56,14 +56,17 @@ namespace Google.Apis.Http
             // - Compression requested but not supported by HttpClientHandler (easy; just GzipDeflateHandler on top of an interceptor on top of HttpClientHandler)
             // - Compression requested and HttpClientHandler (complex: create two different handlers and decide which to use on a per-request basis)
 
-            var clientHandler = CreateAndConfigureClientHandler();
+            var clientHandler = CreateClientHandler();
+            var httpClientHandler = GetHttpClientHandler(clientHandler);
+            
+            ConfigureClientHandler(httpClientHandler);
 
             if (!args.GZipEnabled)
             {
                 // Simple: nothing will be decompressing content, so we can just intercept the original handler.
                 return new StreamInterceptionHandler(clientHandler);
             }
-            else if (!clientHandler.SupportsAutomaticDecompression)
+            else if (!httpClientHandler.SupportsAutomaticDecompression)
             {
                 // Simple: we have to create our own decompression handler anyway, so there's still just a single chain.
                 var interceptionHandler = new StreamInterceptionHandler(clientHandler);
@@ -73,7 +76,7 @@ namespace Google.Apis.Http
             {
                 // Complex: we want to use a simple handler with no interception but with built-in decompression
                 // for requests that wouldn't perform interception anyway, and a longer chain for interception cases.
-                clientHandler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                httpClientHandler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
 
                 return new TwoWayDelegatingHandler(
                     // Normal handler (with built-in decompression) when there's no interception.
@@ -88,18 +91,61 @@ namespace Google.Apis.Http
         /// <summary>
         /// Creates a simple client handler with redirection and compression disabled.
         /// </summary>
-        private HttpClientHandler CreateAndConfigureClientHandler()
+        private HttpMessageHandler CreateAndConfigureClientHandler()
         {
             var handler = CreateClientHandler();
-            if (handler.SupportsRedirectConfiguration)
-            {
-                handler.AllowAutoRedirect = false;
-            }
-            if (handler.SupportsAutomaticDecompression)
-            {
-                handler.AutomaticDecompression = DecompressionMethods.None;
-            }
+
+            ConfigureClientHandler(GetHttpClientHandler(handler));
+
             return handler;
+        }
+
+        /// <summary>
+        /// Configure a simple client handler with redirection and compression disabled.
+        /// </summary>
+        private void ConfigureClientHandler(HttpClientHandler httpClientHandler)
+        {
+            if (httpClientHandler.SupportsRedirectConfiguration)
+            {
+                httpClientHandler.AllowAutoRedirect = false;
+            }
+
+            if (httpClientHandler.SupportsAutomaticDecompression)
+            {
+                httpClientHandler.AutomaticDecompression = DecompressionMethods.None;
+            }
+        }
+
+        private HttpClientHandler GetHttpClientHandler(HttpMessageHandler httpMessageHandler)
+        {
+            if (httpMessageHandler is HttpClientHandler httpClientHandler)
+            {
+                return httpClientHandler;
+            }
+
+            if (httpMessageHandler is DelegatingHandler delegatingHandler)
+            {
+                HttpMessageHandler targetHttpMessageHandler = null;
+                while (targetHttpMessageHandler == null)
+                {
+                    var innerHandler = delegatingHandler.InnerHandler;
+                    if (innerHandler is DelegatingHandler innerDelegatingHandler)
+                    {
+                        delegatingHandler = innerDelegatingHandler;
+                    }
+                    else
+                    {
+                        targetHttpMessageHandler = innerHandler;
+                    }
+                }
+
+                if (targetHttpMessageHandler is HttpClientHandler delegatedHttpClientHandler)
+                {
+                    return delegatedHttpClientHandler;
+                }
+            }
+
+            throw new UnableToResolveHttpClientHandlerException(httpMessageHandler);
         }
 
         /// <summary>
@@ -123,7 +169,7 @@ namespace Google.Apis.Http
         /// </description></item>
         /// </list>
         /// </remarks>
-        /// <returns>A suitable <see cref="HttpClientHandler"/>.</returns>
-        protected virtual HttpClientHandler CreateClientHandler() => new HttpClientHandler();
+        /// <returns>A suitable <see cref="HttpMessageHandler"/>.</returns>
+        protected virtual HttpMessageHandler CreateClientHandler() => new HttpClientHandler();
     }
 }
