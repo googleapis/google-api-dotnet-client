@@ -928,32 +928,22 @@ namespace Google.Apis.Tests.Apis.Http
             configurableHanlder.NumTries = 1;
 
             // test invalid values
-            try
+            var numTries = new[]
             {
-                configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries + 1;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
+                ConfigurableMessageHandler.MaxAllowedNumTries + 1,
+                0,
+                -2,
+            };
+
+            foreach (var numTry in numTries)
             {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => configurableHanlder.NumTries = numTry);
+
+#if NETCOREAPP3_1
                 Assert.Contains("Parameter 'NumTries'", ex.Message);
-            }
-            try
-            {
-                configurableHanlder.NumTries = 0;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Assert.Contains("Parameter 'NumTries'", ex.Message);
-            }
-            try
-            {
-                configurableHanlder.NumTries = -2;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Assert.Contains("Parameter 'NumTries'", ex.Message);
+#else
+                Assert.Contains("Parameter name: NumTries", ex.Message);
+#endif
             }
         }
 
