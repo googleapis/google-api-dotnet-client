@@ -19,10 +19,12 @@ using Google.Apis.Requests;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -443,6 +445,139 @@ hello world
             {
                 var batch = new BatchRequest(service);
                 Assert.Equal("https://www.googleapis.com/batch", batch.BatchUrl);
+            }
+        }
+
+        class BatchEndpointErrorMessageHandler : CountableMessageHandler
+        {
+            private readonly string _responseContent;
+
+            public BatchEndpointErrorMessageHandler(string responseContent) => _responseContent = responseContent;
+
+            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken) => 
+                Task.FromResult(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.BadRequest,
+                    ReasonPhrase = "Bad Request",
+                    Content = _responseContent == null ? null : new StringContent(_responseContent, Encoding.UTF8, "application/jsong")
+                });
+        }
+
+        [Fact]
+        public async Task BatchEndpointErrorJsonContent()
+        {
+            string jsonErrorContent = NormalizeLineEndings(@"
+{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Failed to parse batch request, error: Failed in parsing HTTP headers: invalid content\n. Received batch body: "",
+    ""errors"": [
+      {
+        ""message"": ""Failed to parse batch request, error: Failed in parsing HTTP headers: invalid content\n. Received batch body: "",
+        ""domain"": ""global"",
+        ""reason"": ""badRequest""
+      }
+    ],
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}");
+
+            using (var service = new MockClientService( new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(new BatchEndpointErrorMessageHandler(jsonErrorContent))
+            }, "http://sample.com"))
+            {
+                var batchRequest = new BatchRequest(service);
+                var request = new TestClientServiceRequest(service, new MockRequest
+                {
+                    ETag = "\"100\"",
+                    Name = "Name1"
+                });
+                
+                batchRequest.Queue<MockResponse>( request, (c, e, i, m) =>
+                    Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+
+                HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
+
+                Assert.Contains("400", outerException.Message);
+                Assert.Contains("Bad Request", outerException.Message);
+
+                GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
+
+                Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
+                Assert.NotNull(innerException.Error);
+
+                RequestError requestError = innerException.Error;
+                Assert.Equal(jsonErrorContent, requestError.ErrorResponseContent);
+                Assert.Equal(400, requestError.Code);
+
+                SingleError singleError = Assert.Single(requestError.Errors);
+                Assert.Equal("global", singleError.Domain);
+                Assert.Equal("badRequest", singleError.Reason);
+            }
+        }
+
+        [Fact]
+        public async Task BatchEndpointErrorNonJsonContent()
+        {
+            string nonJsonContent = "Invalid JSON";
+            using (var service = new MockClientService( new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(new BatchEndpointErrorMessageHandler(nonJsonContent))
+            }, "http://sample.com"))
+            {
+                var batchRequest = new BatchRequest(service);
+                var request = new TestClientServiceRequest(service, new MockRequest
+                {
+                    ETag = "\"100\"",
+                    Name = "Name1"
+                });
+
+                batchRequest.Queue<MockResponse>(request, (c, e, i, m) =>
+                   Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+
+                HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
+
+                Assert.Contains("400", outerException.Message);
+                Assert.Contains("Bad Request", outerException.Message);
+
+                GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
+
+                Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
+                Assert.Null(innerException.Error);
+                Assert.Equal(nonJsonContent, innerException.Message);
+
+                Assert.IsAssignableFrom<JsonException>(innerException.InnerException);
+            }
+        }
+
+        [Fact]
+        public async Task BatchEndpointErrorNullContent()
+        {
+            using (var service = new MockClientService( new BaseClientService.Initializer()
+            {
+                HttpClientFactory = new MockHttpClientFactory(new BatchEndpointErrorMessageHandler(null))
+            }, "http://sample.com"))
+            {
+                var batchRequest = new BatchRequest(service);
+                var request = new TestClientServiceRequest(service, new MockRequest
+                {
+                    ETag = "\"100\"",
+                    Name = "Name1"
+                });
+
+                batchRequest.Queue<MockResponse>(request, (c, e, i, m) =>
+                   Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+
+                HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
+
+                Assert.Contains("400", outerException.Message);
+                Assert.Contains("Bad Request", outerException.Message);
+
+                GoogleApiException innerException = Assert.IsType<GoogleApiException>(outerException.InnerException);
+                Assert.Equal(HttpStatusCode.BadRequest, innerException.HttpStatusCode);
+                Assert.Null(innerException.Error);
+                Assert.Contains("unexpectedly null", innerException.Message);
             }
         }
 

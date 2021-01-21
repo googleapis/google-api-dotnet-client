@@ -179,7 +179,8 @@ namespace Google.Apis.Requests
             var result = await httpClient.PostAsync(new Uri(batchUrl), outerContent, cancellationToken)
                 .ConfigureAwait(false);
 
-            result.EnsureSuccessStatusCode();
+            // Will throw as meaningful an exception as possible if there was an error.
+            await EnsureSuccessAsync(result).ConfigureAwait(false);
 
             // Get the boundary separator.
             const string boundaryKey = "boundary=";
@@ -225,6 +226,55 @@ namespace Google.Apis.Requests
 
                 requestIndex++;
                 fullContent = fullContent.Substring(endIndex);
+            }
+        }
+
+        private async Task EnsureSuccessAsync(HttpResponseMessage result)
+        {
+            if (!result.IsSuccessStatusCode)
+            {
+                Exception innerException = null;
+                try
+                {
+                    // Try to parse the error from the current response.
+                    RequestError error = await service.DeserializeError(result).ConfigureAwait(false);
+                    // If we were able to get an error object, wrap it in a GoogleApiException
+                    // and throw that to use as the inner exception.
+                    if (error != null)
+                    {
+                        // We throw here instead of simply creating a new GoogleApiException
+                        // so as to get the StackTrace.
+                        throw new GoogleApiException(service.Name, error.ToString())
+                        {
+                            Error = error,
+                            HttpStatusCode = result.StatusCode
+                        };
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // If for any reason we couldn't parse the error,
+                    // or if we did parse it and threw it wrapped in a GoogleApiException,
+                    // let's keep the exception so we can use it as the inner exception
+                    // of the final HttpRequestException
+                    innerException = ex;
+                }
+
+                try
+                {
+                    // Now that we may have more error detail, let's call EnsureSuccessStatusCode.
+                    // We don't want to introduce breaking changes for users that relied on
+                    // HttpRequestException before, and importantly on its message format which is the only
+                    // way they could access the HttpStatusCode.
+                    result.EnsureSuccessStatusCode();
+                }
+                // If innerException is null that means that our attempt to obtain error information
+                // couldn't parse a RequestError but also didn't throw. So we really don't have any
+                // more information to add. We don't need to do anything.
+                catch (HttpRequestException original) when (innerException != null)
+                {
+                    throw new HttpRequestException(original.Message, innerException);
+                }
             }
         }
 
