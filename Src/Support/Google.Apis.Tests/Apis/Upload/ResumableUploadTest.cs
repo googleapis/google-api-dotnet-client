@@ -147,6 +147,11 @@ namespace Google.Apis.Tests.Apis.Upload
                         _httpListener.Close();
                         _httpListener = null;
                     }
+                    catch (HttpListenerException e) when (e.Message == "Address already in use")
+                    {
+                        _httpListener.Close();
+                        _httpListener = null;
+                    }
                 } while (_httpListener == null);
                 _httpTask = RunServer();
             }

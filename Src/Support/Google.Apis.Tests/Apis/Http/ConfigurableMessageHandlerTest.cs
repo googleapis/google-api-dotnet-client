@@ -935,7 +935,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.Contains("Parameter name: NumTries", ex.Message);
+                Assert.Contains("Parameter 'NumTries'", ex.Message);
             }
             try
             {
@@ -944,7 +944,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.Contains("Parameter name: NumTries", ex.Message);
+                Assert.Contains("Parameter 'NumTries'", ex.Message);
             }
             try
             {
@@ -953,7 +953,7 @@ namespace Google.Apis.Tests.Apis.Http
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Assert.Contains("Parameter name: NumTries", ex.Message);
+                Assert.Contains("Parameter 'NumTries'", ex.Message);
             }
         }
 
