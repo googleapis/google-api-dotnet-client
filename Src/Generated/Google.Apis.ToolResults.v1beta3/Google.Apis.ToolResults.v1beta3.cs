@@ -4461,6 +4461,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A warning that there were issues in logcat collection.</summary>
+    public class LogcatCollectionError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>One dimension of the matrix of different runs of a step.</summary>
     public class MatrixDimensionDefinition : Google.Apis.Requests.IDirectResponseSchema
     {

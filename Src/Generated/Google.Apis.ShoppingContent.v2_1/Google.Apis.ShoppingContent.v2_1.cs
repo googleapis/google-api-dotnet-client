@@ -10685,10 +10685,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// List of linked Ads accounts that are active or pending approval. To create a new link request, add a new
-        /// link with status `active` to the list. It will remain in a `pending` state until approved or rejected either
-        /// in the Ads interface or through the AdWords API. To delete an active link, or to cancel a link request,
-        /// remove it from the list.
+        /// Linked Ads accounts that are active or pending approval. To create a new link request, add a new link with
+        /// status `active` to the list. It will remain in a `pending` state until approved or rejected either in the
+        /// Ads interface or through the AdWords API. To delete an active link, or to cancel a link request, remove it
+        /// from the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsLinks")]
         public virtual System.Collections.Generic.IList<AccountAdsLink> AdsLinks { get; set; }
@@ -10697,7 +10697,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
         public virtual System.Nullable<bool> AdultContent { get; set; }
 
-        /// <summary>List of automatically created label IDs that are assigned to the account by CSS Center.</summary>
+        /// <summary>Automatically created label IDs that are assigned to the account by CSS Center.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticLabelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<ulong>> AutomaticLabelIds { get; set; }
 
@@ -10723,7 +10723,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>List of manually created label IDs that are assigned to the account by CSS.</summary>
+        /// <summary>Manually created label IDs that are assigned to the account by CSS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<ulong>> LabelIds { get; set; }
 
@@ -10746,9 +10746,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string WebsiteUrl { get; set; }
 
         /// <summary>
-        /// List of linked YouTube channels that are active or pending approval. To create a new link request, add a new
-        /// link with status `active` to the list. It will remain in a `pending` state until approved or rejected in the
-        /// YT Creator Studio interface. To delete an active link, or to cancel a link request, remove it from the list.
+        /// Linked YouTube channels that are active or pending approval. To create a new link request, add a new link
+        /// with status `active` to the list. It will remain in a `pending` state until approved or rejected in the YT
+        /// Creator Studio interface. To delete an active link, or to cancel a link request, remove it from the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelLinks")]
         public virtual System.Collections.Generic.IList<AccountYouTubeChannelLink> YoutubeChannelLinks { get; set; }

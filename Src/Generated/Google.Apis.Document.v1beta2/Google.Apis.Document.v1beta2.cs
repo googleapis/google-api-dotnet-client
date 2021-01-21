@@ -1042,13 +1042,9 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>The status of a each individual document in the batch process.</summary>
     public class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The name of the operation triggered by the processed document. If the human review process is not triggered,
-        /// this field will be empty. It has the same response type and metadata as the long running operation returned
-        /// by ReviewDocument method.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
-        public virtual string HumanReviewOperation { get; set; }
+        /// <summary>The status of human review on the processed document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewStatus")]
+        public virtual GoogleCloudDocumentaiV1HumanReviewStatus HumanReviewStatus { get; set; }
 
         /// <summary>
         /// The source of the document, same as the [input_gcs_source] field in the request when the batch process
@@ -1098,6 +1094,29 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of human review on a processed document.</summary>
+    public class GoogleCloudDocumentaiV1HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the operation triggered by the processed document. Non-empty only when the [state] is
+        /// [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
+        /// returned by [ReviewDocument] method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
+        public virtual string HumanReviewOperation { get; set; }
+
+        /// <summary>The state of human review on the processing request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>A message providing more details about the human review state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3572,10 +3591,14 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>
         /// The name of the operation triggered by the processed document. If the human review process is not triggered,
         /// this field will be empty. It has the same response type and metadata as the long running operation returned
-        /// by ReviewDocument method.
+        /// by ReviewDocument method. .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }
+
+        /// <summary>The status of human review on the processed document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewStatus")]
+        public virtual GoogleCloudDocumentaiV1beta3HumanReviewStatus HumanReviewStatus { get; set; }
 
         /// <summary>
         /// The source of the document, same as the [input_gcs_source] field in the request when the batch process
@@ -3625,6 +3648,29 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of human review on a processed document.</summary>
+    public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the operation triggered by the processed document. Non-empty only when the [state] is
+        /// [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
+        /// returned by [ReviewDocument] method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
+        public virtual string HumanReviewOperation { get; set; }
+
+        /// <summary>The state of human review on the processing request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>A message providing more details about the human review state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

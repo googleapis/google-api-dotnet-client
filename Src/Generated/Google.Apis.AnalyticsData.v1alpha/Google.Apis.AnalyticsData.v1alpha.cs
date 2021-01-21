@@ -1458,9 +1458,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual QuotaStatus TokensPerDay { get; set; }
 
         /// <summary>
-        /// Standard Analytics Properties can use up to 5,000 tokens per day; Analytics 360 Properties can use 50,000
-        /// tokens per day. An API request consumes a single number of tokens, and that number is deducted from both the
-        /// hourly and daily quotas.
+        /// Standard Analytics Properties can use up to 5,000 tokens per hour; Analytics 360 Properties can use 50,000
+        /// tokens per hour. An API request consumes a single number of tokens, and that number is deducted from both
+        /// the hourly and daily quotas.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokensPerHour")]
         public virtual QuotaStatus TokensPerHour { get; set; }

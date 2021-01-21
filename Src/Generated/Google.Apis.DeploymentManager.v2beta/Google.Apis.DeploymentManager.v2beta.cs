@@ -3793,6 +3793,14 @@ namespace Google.Apis.DeploymentManager.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual string Layout { get; set; }
 
+        /// <summary>Output only. The computed size of the fully expanded manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestSizeBytes")]
+        public virtual System.Nullable<long> ManifestSizeBytes { get; set; }
+
+        /// <summary>Output only. The size limit for expanded manifests in the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestSizeLimitBytes")]
+        public virtual System.Nullable<long> ManifestSizeLimitBytes { get; set; }
+
         /// <summary>Output only. The name of the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

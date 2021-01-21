@@ -5006,8 +5006,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter
-        /// content will be replaced to parameter name in both request and response. The default value is false.
+        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
+        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
+        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -5377,8 +5379,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter
-        /// content will be replaced to parameter id in both request and response. The default value is false.
+        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
+        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
+        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -6555,8 +6559,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter
-        /// content will be replaced to parameter name in both request and response. The default value is false.
+        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
+        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
+        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -6926,8 +6932,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content is logged in text and audio. If it is set to true, the parameter
-        /// content will be replaced to parameter id in both request and response. The default value is false.
+        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
+        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
+        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
+        /// enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
