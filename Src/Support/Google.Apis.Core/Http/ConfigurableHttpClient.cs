@@ -19,8 +19,8 @@ using System.Net.Http;
 namespace Google.Apis.Http
 {
     /// <summary>
-    /// Configurable HTTP client inherits from <see cref="System.Net.Http.HttpClient"/> and contains a reference to 
-    /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
+    /// Configurable HTTP client inherits from <see cref="HttpClient"/> and contains a reference to 
+    /// <see cref="ConfigurableMessageHandler"/>.
     /// </summary>
     public class ConfigurableHttpClient : HttpClient
     {
@@ -28,8 +28,20 @@ namespace Google.Apis.Http
         public ConfigurableMessageHandler MessageHandler { get; private set; }
 
         /// <summary>Constructs a new HTTP client.</summary>
+        /// <remarks>This is equivalent to calling <code>ConfigurableHttpClient(handler, true)</code></remarks>
         public ConfigurableHttpClient(ConfigurableMessageHandler handler)
-            : base(handler)
+            : this(handler, true)
+        {
+        }
+
+        /// <summary>
+        /// Constructs a new HTTP client.
+        /// </summary>
+        /// <param name="handler">The handler for this client to use.</param>
+        /// <param name="disposeHandler">Whether the created <see cref="ConfigurableHttpClient"/>
+        /// should dispose of the internal message handler or not when it iself is disposed.</param>
+        public ConfigurableHttpClient(ConfigurableMessageHandler handler, bool disposeHandler)
+            : base (handler, disposeHandler)
         {
             MessageHandler = handler;
             DefaultRequestHeaders.ExpectContinue = false;
