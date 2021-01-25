@@ -1542,58 +1542,58 @@ namespace Google.Apis.DataFusion.v1beta1
                     });
                 }
             }
-        }
 
-        /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">The resource on which IAM policy to be removed is attached to.</param>
-        public virtual RemoveIamPolicyRequest RemoveIamPolicy(Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource)
-        {
-            return new RemoveIamPolicyRequest(service, body, resource);
-        }
-
-        /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
-        public class RemoveIamPolicyRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyResponse>
-        {
-            /// <summary>Constructs a new RemoveIamPolicy request.</summary>
-            public RemoveIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource) : base(service)
+            /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resource">The resource on which IAM policy to be removed is attached to.</param>
+            public virtual RemoveIamPolicyRequest RemoveIamPolicy(Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource)
             {
-                Resource = resource;
-                Body = body;
-                InitParameters();
+                return new RemoveIamPolicyRequest(service, body, resource);
             }
 
-            /// <summary>The resource on which IAM policy to be removed is attached to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "removeIamPolicy";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1beta1/{+resource}:removeIamPolicy";
-
-            /// <summary>Initializes RemoveIamPolicy parameter list.</summary>
-            protected override void InitParameters()
+            /// <summary>Remove IAM policy that is currently set on the given resource.</summary>
+            public class RemoveIamPolicyRequest : DataFusionBaseServiceRequest<Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyResponse>
             {
-                base.InitParameters();
-                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                /// <summary>Constructs a new RemoveIamPolicy request.</summary>
+                public RemoveIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest body, string resource) : base(service)
                 {
-                    Name = "resource",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/.*$",
-                });
+                    Resource = resource;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>The resource on which IAM policy to be removed is attached to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Resource { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DataFusion.v1beta1.Data.RemoveIamPolicyRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "removeIamPolicy";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+resource}:removeIamPolicy";
+
+                /// <summary>Initializes RemoveIamPolicy parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/.*$",
+                    });
+                }
             }
         }
     }

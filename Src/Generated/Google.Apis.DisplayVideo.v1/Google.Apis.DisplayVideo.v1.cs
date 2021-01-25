@@ -7952,17 +7952,22 @@ namespace Google.Apis.DisplayVideo.v1
             /// Allows filtering by advertiser properties. Supported syntax: * Filter expressions are made up of one or
             /// more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
             /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The
-            /// operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` - `displayName` - `entityStatus`
-            /// Examples: * All active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of
-            /// this field should be no more than 500 characters.
+            /// operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (&amp;gt;=)` or `LESS THAN OR EQUAL TO
+            /// (&amp;lt;=)`. * The operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` - `displayName`
+            /// - `entityStatus` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: * All
+            /// active advertisers under a partner: `entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an
+            /// update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+            /// `updateTime&amp;lt;="2020-11-04T18:54:47Z"` * All advertisers with an update time greater than or equal
+            /// to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime&amp;gt;="2020-11-04T18:54:47Z"` The length
+            /// of this field should be no more than 500 characters.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The
-            /// default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be
-            /// added to the field name. For example, `displayName desc`.
+            /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` *
+            /// `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix
+            /// "desc" should be added to the field name. For example, `displayName desc`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -17288,6 +17293,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderId")]
         public virtual System.Nullable<long> InsertionOrderId { get; set; }
 
+        /// <summary>
+        /// The type of insertion order. If this field is unspecified in creation, the value defaults to `RTB`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertionOrderType")]
+        public virtual string InsertionOrderType { get; set; }
+
         /// <summary>Additional integration details of the insertion order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integrationDetails")]
         public virtual IntegrationDetails IntegrationDetails { get; set; }
@@ -17815,6 +17826,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Immutable. The type of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemType")]
         public virtual string LineItemType { get; set; }
+
+        /// <summary>
+        /// The mobile app promoted by the line item. This is applicable only when line_item_type is either
+        /// `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileApp")]
+        public virtual MobileApp MobileApp { get; set; }
 
         /// <summary>Output only. The resource name of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -18512,6 +18530,33 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Whether or not to include DV360 data in CM360 data transfer reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dv360ToCmDataSharingEnabled")]
         public virtual System.Nullable<bool> Dv360ToCmDataSharingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A mobile app promoted by a mobile app install line item.</summary>
+    public class MobileApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ID of the app provided by the platform store. Android apps are identified by the bundle ID
+        /// used by Android's Play store, such as `com.google.android.gm`. iOS apps are identified by a nine-digit app
+        /// ID used by Apple's App store, such as `422689480`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Output only. The app name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The app platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>Output only. The app publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

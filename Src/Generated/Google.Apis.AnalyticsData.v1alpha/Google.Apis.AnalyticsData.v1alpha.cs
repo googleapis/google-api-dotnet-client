@@ -715,7 +715,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
     /// <summary>
     /// Defines a cohort selection criteria. A cohort is a group of users who share a common characteristic. For
-    /// example, users with the same `firstTouchDate` belong to the same cohort.
+    /// example, users with the same `firstSessionDate` belong to the same cohort.
     /// </summary>
     public class Cohort : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -734,7 +734,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
         public virtual DateRange DateRange { get; set; }
 
-        /// <summary>Dimension used by the cohort. Required and only supports `firstTouchDate`.</summary>
+        /// <summary>Dimension used by the cohort. Required and only supports `firstSessionDate`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
         public virtual string Dimension { get; set; }
 

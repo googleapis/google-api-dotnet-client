@@ -66,7 +66,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Resource Manager API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -76,7 +76,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Resource Manager API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>

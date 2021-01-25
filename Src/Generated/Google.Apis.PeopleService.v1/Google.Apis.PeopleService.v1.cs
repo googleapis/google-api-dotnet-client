@@ -451,6 +451,14 @@ namespace Google.Apis.PeopleService.v1
             }
 
             /// <summary>
+            /// Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`,
+            /// `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData *
+            /// groupType * memberCount * metadata * name
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object GroupFields { get; set; }
+
+            /// <summary>
             /// Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set,
             /// which will return zero members.
             /// </summary>
@@ -474,6 +482,14 @@ namespace Google.Apis.PeopleService.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("groupFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("maxMembers", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxMembers",
@@ -621,6 +637,14 @@ namespace Google.Apis.PeopleService.v1
             public virtual string ResourceName { get; private set; }
 
             /// <summary>
+            /// Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`,
+            /// `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData *
+            /// groupType * memberCount * metadata * name
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object GroupFields { get; set; }
+
+            /// <summary>
             /// Optional. Specifies the maximum number of members to return. Defaults to 0 if not set, which will return
             /// zero members.
             /// </summary>
@@ -647,6 +671,14 @@ namespace Google.Apis.PeopleService.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^contactGroups/[^/]+$",
+                });
+                RequestParameters.Add("groupFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("maxMembers", new Google.Apis.Discovery.Parameter
                 {
@@ -677,6 +709,14 @@ namespace Google.Apis.PeopleService.v1
             {
                 InitParameters();
             }
+
+            /// <summary>
+            /// Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`,
+            /// `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData *
+            /// groupType * memberCount * metadata * name
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object GroupFields { get; set; }
 
             /// <summary>
             /// Optional. The maximum number of resources to return. Valid values are between 1 and 1000, inclusive.
@@ -712,6 +752,14 @@ namespace Google.Apis.PeopleService.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("groupFields", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "groupFields",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -2511,6 +2559,10 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A contact group.</summary>
     public class ContactGroup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The group's client data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientData")]
+        public virtual System.Collections.Generic.IList<GroupClientData> ClientData { get; set; }
+
         /// <summary>
         /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache
         /// validation.
@@ -2680,6 +2732,14 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Required. The contact group to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
         public virtual ContactGroup ContactGroup { get; set; }
+
+        /// <summary>
+        /// Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`,
+        /// `groupType`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * metadata *
+        /// name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readGroupFields")]
+        public virtual object ReadGroupFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2915,6 +2975,24 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The response for each requested resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
         public virtual System.Collections.Generic.IList<PersonResponse> Responses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Arbitrary client data that is populated by clients. Duplicate keys and values are allowed.
+    /// LINT.IfChange(GroupClientData)
+    /// </summary>
+    public class GroupClientData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The client specified key of the client data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The client specified value of the client data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3986,6 +4064,22 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Required. The contact group to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
         public virtual ContactGroup ContactGroup { get; set; }
+
+        /// <summary>
+        /// Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`,
+        /// `groupType`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount
+        /// * metadata * name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readGroupFields")]
+        public virtual object ReadGroupFields { get; set; }
+
+        /// <summary>
+        /// Optional. A field mask to restrict which fields on the group are updated. Multiple fields can be specified
+        /// by separating them with commas. Defaults to `name` if not set or set to empty. Updated fields are replaced.
+        /// Valid values are: * clientData * name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateGroupFields")]
+        public virtual object UpdateGroupFields { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

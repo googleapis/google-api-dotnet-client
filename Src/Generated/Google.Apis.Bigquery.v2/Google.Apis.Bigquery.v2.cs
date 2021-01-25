@@ -4742,6 +4742,17 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Model evaluation metrics for dimensionality reduction models.</summary>
+    public class DimensionalityReductionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total percentage of variance explained by the selected principal components.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExplainedVarianceRatio")]
+        public virtual System.Nullable<double> TotalExplainedVarianceRatio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4812,6 +4823,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Populated for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusteringMetrics")]
         public virtual ClusteringMetrics ClusteringMetrics { get; set; }
+
+        /// <summary>
+        /// Evaluation metrics when the model is a dimensionality reduction model, which currently includes PCA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionalityReductionMetrics")]
+        public virtual DimensionalityReductionMetrics DimensionalityReductionMetrics { get; set; }
 
         /// <summary>Populated for multi-class classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
@@ -5357,6 +5374,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Learn rate used for this iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
         public virtual System.Nullable<double> LearnRate { get; set; }
+
+        /// <summary>The information of the principal components.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalComponentInfos")]
+        public virtual System.Collections.Generic.IList<PrincipalComponentInfo> PrincipalComponentInfos { get; set; }
 
         /// <summary>Loss computed on the training data at the end of iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
@@ -6750,6 +6771,35 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// Principal component infos, used only for eigen decomposition based models, e.g., PCA. Ordered by
+    /// explained_variance in the descending order.
+    /// </summary>
+    public class PrincipalComponentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance
+        /// ratio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cumulativeExplainedVarianceRatio")]
+        public virtual System.Nullable<double> CumulativeExplainedVarianceRatio { get; set; }
+
+        /// <summary>Explained variance by this principal component, which is simply the eigenvalue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainedVariance")]
+        public virtual System.Nullable<double> ExplainedVariance { get; set; }
+
+        /// <summary>Explained_variance over the total explained variance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainedVarianceRatio")]
+        public virtual System.Nullable<double> ExplainedVarianceRatio { get; set; }
+
+        /// <summary>Id of the principal component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalComponentId")]
+        public virtual System.Nullable<long> PrincipalComponentId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
