@@ -36,7 +36,6 @@ namespace DiscoveryDocPatcher
                 // I've let a comment on the script as well.
                 // PatchDirectory(discoveryDocPath);
 
-                PatchDataLabeling(discoveryDocPath);
                 return 0;
             }
             catch (Exception e)
@@ -81,23 +80,6 @@ namespace DiscoveryDocPatcher
             patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
             patcher.SaveWithBackup();
 
-        }
-
-        static void PatchDataLabeling(string rootPath)
-        {
-            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "datalabeling_v1beta1.json")));
-            if (patcher is null)
-            {
-                return;
-            }
-            // This just increases the length of one parameter description by adding spaces
-            // so that text wrapping doens't interfere with EOL markers when generating.
-            patcher.Replace(
-                "resources.projects.resources.datasets.resources.annotatedDatasets.resources.feedbackThreads.resources.feedbackMessages.methods.get.parameters.name.description",
-                "'Required. Name of the feedback. Format: &projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}&.'",
-                "'Required.   Name of the feedback.   Format:   &projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}&.'");
-
-            patcher.SaveWithBackup();
         }
 
         static T IfFileExists<T>(Func<T> fn)
