@@ -5871,8 +5871,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
         /// <summary>
-        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid
-        /// State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk
+        /// Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk
+        /// Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskType")]
         public virtual string BootDiskType { get; set; }
@@ -6048,7 +6049,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
 
-        /// <summary>Optional. Shielded Instance Config for clusters using shielded VMs.</summary>
+        /// <summary>
+        /// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs
+        /// (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
@@ -6749,7 +6753,7 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this
         /// threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see
-        /// JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        /// JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleDeleteTtl")]
         public virtual object IdleDeleteTtl { get; set; }
@@ -7360,7 +7364,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Shielded Instance Config for clusters using shielded VMs.</summary>
+    /// <summary>
+    /// Shielded Instance Config for clusters using Compute Engine Shielded VMs
+    /// (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+    /// </summary>
     public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Defines whether instances have integrity monitoring enabled.</summary>
