@@ -377,6 +377,63 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                     }
                 }
 
+                /// <summary>Updates software on the selected nodes of the Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="instance">
+                /// Required. Resource name of the Memcached instance for which software update should be applied.
+                /// </param>
+                public virtual ApplySoftwareUpdateRequest ApplySoftwareUpdate(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ApplySoftwareUpdateRequest body, string instance)
+                {
+                    return new ApplySoftwareUpdateRequest(service, body, instance);
+                }
+
+                /// <summary>Updates software on the selected nodes of the Instance.</summary>
+                public class ApplySoftwareUpdateRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new ApplySoftwareUpdate request.</summary>
+                    public ApplySoftwareUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ApplySoftwareUpdateRequest body, string instance) : base(service)
+                    {
+                        Instance = instance;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Memcached instance for which software update should be applied.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Instance { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.ApplySoftwareUpdateRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "applySoftwareUpdate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta2/{+instance}:applySoftwareUpdate";
+
+                    /// <summary>Initializes ApplySoftwareUpdate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates a new Instance in a given location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1244,6 +1301,26 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for ApplySoftwareUpdate.</summary>
+    public class ApplySoftwareUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to apply the update to all nodes. If set to true, will explicitly restrict users from specifying any
+        /// nodes, and apply software update to all nodes (where applicable) within the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyAll")]
+        public virtual System.Nullable<bool> ApplyAll { get; set; }
+
+        /// <summary>
+        /// Nodes to which we should apply the update to. Note all the selected nodes are updated in parallel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIds")]
+        public virtual System.Collections.Generic.IList<string> NodeIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1782,6 +1859,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. Returns true if there is an update waiting to be applied</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAvailable")]
+        public virtual System.Nullable<bool> UpdateAvailable { get; set; }
+
         /// <summary>Output only. The time the instance was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -2007,6 +2088,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. Returns true if there is an update waiting to be applied</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateAvailable")]
+        public virtual System.Nullable<bool> UpdateAvailable { get; set; }
+
         /// <summary>Output only. Location (GCP Zone) for the Memcached node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
@@ -2068,6 +2153,45 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of a long-running operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>Output only. Time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Time when the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

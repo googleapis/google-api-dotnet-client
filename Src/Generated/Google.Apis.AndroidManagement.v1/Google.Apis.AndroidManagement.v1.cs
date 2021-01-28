@@ -2842,7 +2842,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string AllowPersonalUsage { get; set; }
 
         /// <summary>
-        /// The length of time the enrollment token is valid, ranging from 1 minute to 30 days. If not specified, the
+        /// The length of time the enrollment token is valid, ranging from 1 minute to 90 days. If not specified, the
         /// default duration is 1 hour.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
@@ -3402,6 +3402,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Alphabetic name of current registered operator. For example, Vodafone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkOperatorName")]
         public virtual string NetworkOperatorName { get; set; }
+
+        /// <summary>
+        /// Provides telephony information associated with each SIM card on the device. Only supported on fully managed
+        /// devices starting from Android API level 23 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyInfos")]
+        public virtual System.Collections.Generic.IList<TelephonyInfo> TelephonyInfos { get; set; }
 
         /// <summary>Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddress")]
@@ -4557,6 +4564,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The status of an update: whether an update exists and what type it is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateStatus")]
         public virtual string UpdateStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Telephony information associated with a given SIM card on the device. Only supported on fully managed devices
+    /// starting from Android API level 23 and above.
+    /// </summary>
+    public class TelephonyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The carrier name associated with this SIM card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierName")]
+        public virtual string CarrierName { get; set; }
+
+        /// <summary>The phone number associated with this SIM card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

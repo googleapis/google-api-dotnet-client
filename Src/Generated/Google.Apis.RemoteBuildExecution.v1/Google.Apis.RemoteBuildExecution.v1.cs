@@ -2118,8 +2118,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// multiple expressions, you can separate expression using `AND` and `OR` operators, using parentheses to
         /// specify precedence. If neither operator is specified, `AND` is assumed. Examples: Include only pools with
         /// more than 100 reserved workers: `(worker_count &amp;gt; 100) (worker_config.reserved = true)` Include only
-        /// pools with a certain label or machines of the n1-standard family: `worker_config.labels.key1 : * OR
-        /// worker_config.machine_type: n1-standard`
+        /// pools with a certain label or machines of the e2-standard family: `worker_config.labels.key1 : * OR
+        /// worker_config.machine_type: e2-standard`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -2228,7 +2228,7 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Machine type of the worker, such as `n1-standard-2`. See
+        /// Required. Machine type of the worker, such as `e2-standard-2`. See
         /// https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that
         /// `f1-micro` and `g1-small` are not yet supported.
         /// </summary>

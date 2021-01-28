@@ -2530,6 +2530,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
 
+        /// <summary>The source from which the information in this Detail was obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
         /// <summary>
         /// The time this information was last changed at the source. This is an upstream timestamp from the underlying
         /// information source - e.g. Ubuntu security tracker.
@@ -3909,6 +3913,15 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>Used to correct mistakes in the version numbering scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("epoch")]
         public virtual System.Nullable<int> Epoch { get; set; }
+
+        /// <summary>
+        /// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to
+        /// specify version ranges; instead we have fields that specify start version and end versions. At times this is
+        /// insufficient - we also need to specify whether the version is included in the range or is excluded from the
+        /// range. This boolean is expected to be set to true when the version is included in a range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inclusive")]
+        public virtual System.Nullable<bool> Inclusive { get; set; }
 
         /// <summary>Required. Distinguishes between sentinel MIN/MAX versions and normal versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

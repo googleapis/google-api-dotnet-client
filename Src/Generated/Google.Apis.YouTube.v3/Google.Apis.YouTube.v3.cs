@@ -10292,9 +10292,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
 
-        /// <summary>The date and time that the video was uploaded. The value is specified in ISO 8601 format.</summary>
+        /// <summary>The date and time that the video was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// A map of thumbnail images associated with the resource that is primarily associated with the activity. For
@@ -10419,11 +10427,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
-        /// <summary>
-        /// The date and time when the caption track was last updated. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time when the caption track was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdated")]
-        public virtual string LastUpdated { get; set; }
+        public virtual string LastUpdatedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> LastUpdated
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The name of the caption track. The name is intended to be visible to the user as an option during playback.
@@ -10670,12 +10684,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentOwner")]
         public virtual string ContentOwner { get; set; }
 
-        /// <summary>
-        /// The date and time of when the channel was linked to the content owner. The value is specified in ISO 8601
-        /// format.
-        /// </summary>
+        /// <summary>The date and time when the channel was linked to the content owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeLinked")]
-        public virtual string TimeLinked { get; set; }
+        public virtual string TimeLinkedRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeLinkedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> TimeLinked
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeLinkedRaw);
+            set => TimeLinkedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11040,12 +11059,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
         public virtual ChannelLocalization Localized { get; set; }
 
-        /// <summary>
-        /// The date and time that the channel was created. The value is specified in &amp;lt; a
-        /// href="//www.w3.org/TR/NOTE-datetime"&amp;gt;ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the channel was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// A map of thumbnail images associated with the channel. For each object in the map, the key is the name of
@@ -11261,11 +11285,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
         public virtual string ParentId { get; set; }
 
-        /// <summary>
-        /// The date and time when the comment was orignally published. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time when the comment was originally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The comment's text. The format is either plain text or HTML dependent on what has been requested. Even the
@@ -11282,9 +11312,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textOriginal")]
         public virtual string TextOriginal { get; set; }
 
-        /// <summary>The date and time when was last updated . The value is specified in ISO 8601 format.</summary>
+        /// <summary>The date and time when the comment was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedAt")]
-        public virtual string UpdatedAt { get; set; }
+        public virtual string UpdatedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> UpdatedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedAtRaw);
+            set => UpdatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The ID of the video the comment refers to, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
@@ -12252,7 +12290,17 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>The date and time that the live stream referenced by boundStreamId was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundStreamLastUpdateTimeMs")]
-        public virtual string BoundStreamLastUpdateTimeMs { get; set; }
+        public virtual string BoundStreamLastUpdateTimeMsRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTime"/> representation of <see cref="BoundStreamLastUpdateTimeMsRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> BoundStreamLastUpdateTimeMs
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(BoundStreamLastUpdateTimeMsRaw);
+            set => BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         [Newtonsoft.Json.JsonPropertyAttribute("closedCaptionsType")]
         public virtual string ClosedCaptionsType { get; set; }
@@ -12354,6 +12402,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startWithSlate")]
         public virtual System.Nullable<bool> StartWithSlate { get; set; }
 
+        /// <summary>The 3D stereo layout of this broadcast. This defaults to mono.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stereoLayout")]
+        public virtual string StereoLayout { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12409,17 +12461,33 @@ namespace Google.Apis.YouTube.v3.Data
     {
         /// <summary>
         /// The date and time that the broadcast actually ended. This information is only available once the broadcast's
-        /// state is complete. The value is specified in ISO 8601 format.
+        /// state is complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
-        public virtual string ActualEndTime { get; set; }
+        public virtual string ActualEndTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ActualEndTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The date and time that the broadcast actually started. This information is only available once the
-        /// broadcast's state is live. The value is specified in ISO 8601 format.
+        /// broadcast's state is live.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
-        public virtual string ActualStartTime { get; set; }
+        public virtual string ActualStartTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ActualStartTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The ID that YouTube uses to uniquely identify the channel that is publishing the broadcast.
@@ -12442,24 +12510,41 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("liveChatId")]
         public virtual string LiveChatId { get; set; }
 
-        /// <summary>
-        /// The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified
-        /// in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the broadcast was added to YouTube's live broadcast schedule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
 
-        /// <summary>
-        /// The date and time that the broadcast is scheduled to end. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The date and time that the broadcast is scheduled to start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
-        public virtual string ScheduledEndTime { get; set; }
+        public virtual string ScheduledEndTimeRaw { get; set; }
 
-        /// <summary>
-        /// The date and time that the broadcast is scheduled to start. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ScheduledEndTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The date and time that the broadcast is scheduled to end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
-        public virtual string ScheduledStartTime { get; set; }
+        public virtual string ScheduledStartTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ScheduledStartTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// A map of thumbnail images associated with the broadcast. For each nested object in this object, the key is
@@ -12701,11 +12786,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>
-        /// The date and time when the underlying stream went offline. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time when the underlying stream went offline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offlineAt")]
-        public virtual string OfflineAt { get; set; }
+        public virtual string OfflineAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="OfflineAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> OfflineAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(OfflineAtRaw);
+            set => OfflineAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>General pagination information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
@@ -12768,11 +12859,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetractedDetails")]
         public virtual LiveChatMessageRetractedDetails MessageRetractedDetails { get; set; }
 
-        /// <summary>
-        /// The date and time when the message was orignally published. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time when the message was orignally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>Details about the Super Chat event, this is only set if the type is 'superChatEvent'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superChatDetails")]
@@ -13135,9 +13232,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDefaultStream")]
         public virtual System.Nullable<bool> IsDefaultStream { get; set; }
 
-        /// <summary>The date and time that the stream was created. The value is specified in ISO 8601 format.</summary>
+        /// <summary>The date and time that the stream was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The stream's title. The value must be between 1 and 128 characters long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -13578,11 +13683,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
         public virtual string VideoId { get; set; }
 
-        /// <summary>
-        /// The date and time that the video was published to YouTube. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the video was published to YouTube.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPublishedAt")]
-        public virtual string VideoPublishedAt { get; set; }
+        public virtual string VideoPublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="VideoPublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> VideoPublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(VideoPublishedAtRaw);
+            set => VideoPublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13665,11 +13776,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual System.Nullable<long> Position { get; set; }
 
-        /// <summary>
-        /// The date and time that the item was added to the playlist. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the item was added to the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The id object contains information that can be used to uniquely identify the resource that is included in
@@ -13798,11 +13915,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
         public virtual PlaylistLocalization Localized { get; set; }
 
-        /// <summary>
-        /// The date and time that the playlist was created. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the playlist was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>Keyword tags associated with the playlist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -13997,12 +14120,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("liveBroadcastContent")]
         public virtual string LiveBroadcastContent { get; set; }
 
-        /// <summary>
-        /// The creation date and time of the resource that the search result identifies. The value is specified in ISO
-        /// 8601 format.
-        /// </summary>
+        /// <summary>The creation date and time of the resource that the search result identifies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// A map of thumbnail images associated with the search result. For each object in the map, the key is the name
@@ -14135,11 +14263,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// The date and time that the subscription was created. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary>The date and time that the subscription was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The id object contains information about the channel that the user subscribed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
@@ -14261,9 +14395,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commentText")]
         public virtual string CommentText { get; set; }
 
-        /// <summary>The date and time when the event occurred. The value is specified in ISO 8601 format.</summary>
+        /// <summary>The date and time when the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
-        public virtual string CreatedAt { get; set; }
+        public virtual string CreatedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> CreatedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedAtRaw);
+            set => CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The currency in which the purchase was made. ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currency")]
@@ -15115,18 +15257,32 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ActiveLiveChatId { get; set; }
 
         /// <summary>
-        /// The time that the broadcast actually ended. The value is specified in ISO 8601 format. This value will not
-        /// be available until the broadcast is over.
+        /// The time that the broadcast actually ended. This value will not be available until the broadcast is over.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
-        public virtual string ActualEndTime { get; set; }
+        public virtual string ActualEndTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ActualEndTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
-        /// The time that the broadcast actually started. The value is specified in ISO 8601 format. This value will not
-        /// be available until the broadcast begins.
+        /// The time that the broadcast actually started. This value will not be available until the broadcast begins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
-        public virtual string ActualStartTime { get; set; }
+        public virtual string ActualStartTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ActualStartTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// The number of viewers currently watching the broadcast. The property and its value will be present if the
@@ -15139,17 +15295,31 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual System.Nullable<ulong> ConcurrentViewers { get; set; }
 
         /// <summary>
-        /// The time that the broadcast is scheduled to end. The value is specified in ISO 8601 format. If the value is
-        /// empty or the property is not present, then the broadcast is scheduled to continue indefinitely.
+        /// The time that the broadcast is scheduled to end. If the value is empty or the property is not present, then
+        /// the broadcast is scheduled to contiue indefinitely.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
-        public virtual string ScheduledEndTime { get; set; }
+        public virtual string ScheduledEndTimeRaw { get; set; }
 
-        /// <summary>
-        /// The time that the broadcast is scheduled to begin. The value is specified in ISO 8601 format.
-        /// </summary>
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ScheduledEndTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The time that the broadcast is scheduled to begin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
-        public virtual string ScheduledStartTime { get; set; }
+        public virtual string ScheduledStartTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> ScheduledStartTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15357,12 +15527,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationDescription")]
         public virtual string LocationDescription { get; set; }
 
-        /// <summary>
-        /// The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ)
-        /// format.
-        /// </summary>
+        /// <summary>The date and time when the video was recorded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDate")]
-        public virtual string RecordingDate { get; set; }
+        public virtual string RecordingDateRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RecordingDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> RecordingDate
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(RecordingDateRaw);
+            set => RecordingDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15411,9 +15586,17 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localized")]
         public virtual VideoLocalization Localized { get; set; }
 
-        /// <summary>The date and time that the video was uploaded. The value is specified in ISO 8601 format.</summary>
+        /// <summary>The date and time when the video was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual string PublishedAt { get; set; }
+        public virtual string PublishedAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishedAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>A list of keyword tags associated with the video. Tags may contain spaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -15503,10 +15686,18 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>
         /// The date and time when the video is scheduled to publish. It can be set only if the privacy status of the
-        /// video is private. The value is specified in ISO 8601 format.
+        /// video is private..
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishAt")]
-        public virtual string PublishAt { get; set; }
+        public virtual string PublishAtRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.Nullable<System.DateTime> PublishAt
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishAtRaw);
+            set => PublishAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
 
         /// <summary>
         /// This value explains why YouTube rejected an uploaded video. This property is only present if the

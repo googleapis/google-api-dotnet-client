@@ -7932,9 +7932,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 this.service = service;
             }
 
-            /// <summary>
-            /// Lists the metrics report for a given Repricing product. Reports of the last 3 days may not be complete.
-            /// </summary>
+            /// <summary>Lists the metrics report for a given Repricing product.</summary>
             /// <param name="merchantId">Required. Id of the merchant who owns the Repricing rule.</param>
             /// <param name="productId">
             /// Required. Id of the Repricing product. Also known as the
@@ -7945,9 +7943,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 return new ListRequest(service, merchantId, productId);
             }
 
-            /// <summary>
-            /// Lists the metrics report for a given Repricing product. Reports of the last 3 days may not be complete.
-            /// </summary>
+            /// <summary>Lists the metrics report for a given Repricing product.</summary>
             public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRepricingProductReportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7971,7 +7967,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
                 /// <summary>
                 /// Gets Repricing reports on and before this date in the merchant's timezone. You can only retrieve
-                /// data up to 3 days ago (default) or earlier. Format is YYYY-MM-DD.
+                /// data up to 7 days ago (default) or earlier. Format is YYYY-MM-DD.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string EndDate { get; set; }
@@ -7999,7 +7995,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
                 /// <summary>
                 /// Gets Repricing reports on and after this date in the merchant's timezone, up to one year ago. Do not
-                /// use a start date later than 3 days ago (default). Format is YYYY-MM-DD.
+                /// use a start date later than 7 days ago (default). Format is YYYY-MM-DD.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string StartDate { get; set; }
@@ -8918,9 +8914,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 this.service = service;
             }
 
-            /// <summary>
-            /// Lists the metrics report for a given Repricing rule. Reports of the last 3 days may not be complete.
-            /// </summary>
+            /// <summary>Lists the metrics report for a given Repricing rule.</summary>
             /// <param name="merchantId">Required. Id of the merchant who owns the Repricing rule.</param>
             /// <param name="ruleId">Required. Id of the Repricing rule.</param>
             public virtual ListRequest List(long merchantId, string ruleId)
@@ -8928,9 +8922,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 return new ListRequest(service, merchantId, ruleId);
             }
 
-            /// <summary>
-            /// Lists the metrics report for a given Repricing rule. Reports of the last 3 days may not be complete.
-            /// </summary>
+            /// <summary>Lists the metrics report for a given Repricing rule.</summary>
             public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListRepricingRuleReportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -8951,7 +8943,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
                 /// <summary>
                 /// Gets Repricing reports on and before this date in the merchant's timezone. You can only retrieve
-                /// data up to 3 days ago (default) or earlier. Format: YYYY-MM-DD.
+                /// data up to 7 days ago (default) or earlier. Format: YYYY-MM-DD.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("endDate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string EndDate { get; set; }
@@ -8974,7 +8966,7 @@ namespace Google.Apis.ShoppingContent.v2_1
 
                 /// <summary>
                 /// Gets Repricing reports on and after this date in the merchant's timezone, up to one year ago. Do not
-                /// use a start date later than 3 days ago (default). Format: YYYY-MM-DD.
+                /// use a start date later than 7 days ago (default). Format: YYYY-MM-DD.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("startDate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string StartDate { get; set; }

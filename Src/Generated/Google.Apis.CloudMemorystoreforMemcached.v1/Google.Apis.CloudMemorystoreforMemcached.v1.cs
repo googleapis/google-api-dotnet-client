@@ -291,7 +291,523 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the Instances resource.</summary>
+            public virtual InstancesResource Instances { get; }
+
+            /// <summary>The "instances" collection of methods.</summary>
+            public class InstancesResource
+            {
+                private const string Resource = "instances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// ApplyParameters will restart the set of specified nodes in order to update them to the current set
+                /// of parameters for the Memcached Instance.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the Memcached instance for which parameter group updates should be
+                /// applied.
+                /// </param>
+                public virtual ApplyParametersRequest ApplyParameters(Google.Apis.CloudMemorystoreforMemcached.v1.Data.ApplyParametersRequest body, string name)
+                {
+                    return new ApplyParametersRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// ApplyParameters will restart the set of specified nodes in order to update them to the current set
+                /// of parameters for the Memcached Instance.
+                /// </summary>
+                public class ApplyParametersRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ApplyParameters request.</summary>
+                    public ApplyParametersRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1.Data.ApplyParametersRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Memcached instance for which parameter group updates should be
+                    /// applied.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1.Data.ApplyParametersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "applyParameters";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:applyParameters";
+
+                    /// <summary>Initializes ApplyParameters parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a new Instance in a given location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the instance location using the form:
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Instance in a given location.</summary>
+                public class CreateRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance location using the form:
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The logical name of the Memcached instance in the user project with the following
+                    /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
+                    /// letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be
+                    /// unique within the user project / location If any of the above are not met, will raise an invalid
+                    /// argument error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/instances";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("instanceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instanceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Instance.</summary>
+                /// <param name="name">
+                /// Required. Memcached instance resource name in the format:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers
+                /// to a GCP region
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single Instance.</summary>
+                public class DeleteRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Memcached instance resource name in the format:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Instance.</summary>
+                /// <param name="name">
+                /// Required. Memcached instance resource name in the format:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers
+                /// to a GCP region
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single Instance.</summary>
+                public class GetRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Memcached instance resource name in the format:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Instances in a given location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the instance location using the form:
+                /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Instances in a given location.</summary>
+                public class ListRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.ListInstancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance location using the form:
+                    /// `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// List filter. For example, exclude all Memcached instances with name as my-instance by specifying
+                    /// "name != my-instance".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of items to return. If not specified, a default value of 1000 will be used by
+                    /// the service. Regardless of the page_size value, the response may include a partial list and a
+                    /// caller should only rely on response's next_page_token to determine if there are more instances
+                    /// left to be queried.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/instances";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing Instance in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Unique name of the resource in this scope including project and location using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances
+                /// are managed and addressed at regional level so location_id here refers to a GCP region; however,
+                /// users may choose which zones Memcached nodes within an instances should be provisioned in. Refer to
+                /// [zones] field for more details.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an existing Instance in a given project and location.</summary>
+                public class PatchRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Unique name of the resource in this scope including project and location using the
+                    /// form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached
+                    /// instances are managed and addressed at regional level so location_id here refers to a GCP
+                    /// region; however, users may choose which zones Memcached nodes within an instances should be
+                    /// provisioned in. Refer to [zones] field for more details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Mask of fields to update. * `displayName`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the defined Memcached Parameters for an existing Instance. This method only stages the
+                /// parameters, it must be followed by ApplyParameters to apply the parameters to nodes of the Memcached
+                /// Instance.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the Memcached instance for which the parameters should be updated.
+                /// </param>
+                public virtual UpdateParametersRequest UpdateParameters(Google.Apis.CloudMemorystoreforMemcached.v1.Data.UpdateParametersRequest body, string name)
+                {
+                    return new UpdateParametersRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the defined Memcached Parameters for an existing Instance. This method only stages the
+                /// parameters, it must be followed by ApplyParameters to apply the parameters to nodes of the Memcached
+                /// Instance.
+                /// </summary>
+                public class UpdateParametersRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateParameters request.</summary>
+                    public UpdateParametersRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1.Data.UpdateParametersRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Memcached instance for which the parameters should be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1.Data.UpdateParametersRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateParameters";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:updateParameters";
+
+                    /// <summary>Initializes UpdateParameters parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -710,6 +1226,24 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
 }
 namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
 {
+    /// <summary>Request for ApplyParameters.</summary>
+    public class ApplyParametersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to apply instance-level parameter group to all nodes. If set to true, will explicitly restrict users
+        /// from specifying any nodes, and apply parameter group updates to all nodes within the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyAll")]
+        public virtual System.Nullable<bool> ApplyAll { get; set; }
+
+        /// <summary>Nodes to which we should apply the instance-level parameter group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIds")]
+        public virtual System.Collections.Generic.IList<string> NodeIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -802,6 +1336,45 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of a long-running operation.</summary>
+    public class GoogleCloudMemcacheV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>Output only. Time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Time when the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1115,6 +1688,141 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which
+        /// the instance is connected. If left unspecified, the `default` network will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetwork")]
+        public virtual string AuthorizedNetwork { get; set; }
+
+        /// <summary>Output only. The time the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Endpoint for Discovery API</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoint")]
+        public virtual string DiscoveryEndpoint { get; set; }
+
+        /// <summary>
+        /// User provided name for the instance only used for display purposes. Cannot be more than 80 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>List of messages that describe current statuses of memcached instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceMessages")]
+        public virtual System.Collections.Generic.IList<InstanceMessage> InstanceMessages { get; set; }
+
+        /// <summary>
+        /// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more
+        /// details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The full version of memcached server running on this instance. System automatically determines
+        /// the full memcached version for an instance based on the input MemcacheVersion. The full version format will
+        /// be "memcached-1.5.16".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheFullVersion")]
+        public virtual string MemcacheFullVersion { get; set; }
+
+        /// <summary>Output only. List of Memcached nodes. Refer to [Node] message for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheNodes")]
+        public virtual System.Collections.Generic.IList<Node> MemcacheNodes { get; set; }
+
+        /// <summary>
+        /// The major version of Memcached software. If not provided, latest supported version will be used. Currently
+        /// the latest supported major version is MEMCACHE_1_5. The minor version will be automatically determined by
+        /// our system based on the latest supported minor version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheVersion")]
+        public virtual string MemcacheVersion { get; set; }
+
+        /// <summary>
+        /// Required. Unique name of the resource in this scope including project and location using the form:
+        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are
+        /// managed and addressed at regional level so location_id here refers to a GCP region; however, users may
+        /// choose which zones Memcached nodes within an instances should be provisioned in. Refer to [zones] field for
+        /// more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Configuration for Memcached nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
+        public virtual NodeConfig NodeConfig { get; set; }
+
+        /// <summary>Required. Number of nodes in the Memcached instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>Optional: User defined parameters to apply to the memcached process on each node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual MemcacheParameters Parameters { get; set; }
+
+        /// <summary>Output only. The state of this Memcached instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The time the instance was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across
+        /// these zones. If not provided, the service will by default create nodes in all zones in the region for the
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class InstanceMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A code that correspond to one type of user-facing message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Message on memcached instance which will be exposed to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListInstances.</summary>
+    public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of Memcached instances in the project in the specified location, or across all locations. If the
+        /// `location_id` in the parent field of the request is "-", all regions available to the project are queried,
+        /// and the results aggregated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1248,6 +1956,75 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// <summary>Weekly cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyCycle")]
         public virtual WeeklyCycle WeeklyCycle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class MemcacheParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the
+        /// parameters associated with the instance differ from the parameters associated with the nodes and any action
+        /// needs to be taken to apply parameters on nodes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>User defined set of parameters to use in the memcached process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Node : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Hostname or IP address of the Memcached node used by the clients to connect to the Memcached
+        /// server on this node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier of the Memcached node. The node id does not include project or location like the
+        /// Memcached instance name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual string NodeId { get; set; }
+
+        /// <summary>User defined parameters currently applied to the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual MemcacheParameters Parameters { get; set; }
+
+        /// <summary>Output only. The port number of the Memcached server on this node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Output only. Current state of the Memcached node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Location (GCP Zone) for the Memcached node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a Memcached Node.</summary>
+    public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Number of cpus per Memcached node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
+        public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>Required. Memory size in MiB for each Memcached node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memorySizeMb")]
+        public virtual System.Nullable<int> MemorySizeMb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1410,6 +2187,21 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
         public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for UpdateParameters.</summary>
+    public class UpdateParametersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parameters to apply to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual MemcacheParameters Parameters { get; set; }
+
+        /// <summary>Required. Mask of fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

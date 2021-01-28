@@ -1447,7 +1447,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results. Set to empty if there are no remaining results.
+        /// Token to retrieve the next page of results. It expires 72 hours after the page token for the first page is
+        /// generated. Set to empty if there are no remaining results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

@@ -3256,6 +3256,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
 
+        /// <summary>The source from which the information in this Detail was obtained.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4462,6 +4466,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Used to correct mistakes in the version numbering scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("epoch")]
         public virtual System.Nullable<int> Epoch { get; set; }
+
+        /// <summary>
+        /// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is
+        /// 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inclusive")]
+        public virtual System.Nullable<bool> Inclusive { get; set; }
 
         /// <summary>
         /// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other

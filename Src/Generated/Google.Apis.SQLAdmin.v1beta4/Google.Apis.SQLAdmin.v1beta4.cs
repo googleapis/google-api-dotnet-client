@@ -73,7 +73,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud SQL Admin API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -83,7 +83,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud SQL Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -3991,7 +3991,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>The type of this run; can be either "AUTOMATED" or "ON_DEMAND".</summary>
+        /// <summary>
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is
+        /// ignored, when specified for insert requests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -5720,6 +5723,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>SslCerts create ephemeral certificate request.</summary>
     public class SslCertsCreateEphemeralRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Access token to include in the signed certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
+        public virtual string AccessToken { get; set; }
+
         /// <summary>PEM encoded public key to include in the signed certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("public_key")]
         public virtual string PublicKey { get; set; }

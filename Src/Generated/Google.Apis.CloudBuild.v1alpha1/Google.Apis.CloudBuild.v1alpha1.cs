@@ -800,6 +800,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
         public virtual Artifacts Artifacts { get; set; }
 
+        /// <summary>Secrets and secret environment variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableSecrets")]
+        public virtual Secrets AvailableSecrets { get; set; }
+
         /// <summary>
         /// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// </summary>
@@ -867,7 +871,11 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual Results Results { get; set; }
 
-        /// <summary>Secrets to decrypt using Cloud Key Management Service.</summary>
+        /// <summary>
+        /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for
+        /// managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from
+        /// Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
         public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; }
 
@@ -1211,6 +1219,31 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt
+    /// the value.
+    /// </summary>
+    public class InlineSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map of environment variable name to its encrypted value. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size.
+        /// There can be at most 100 secret values across all of a build's secrets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envMap")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvMap { get; set; }
+
+        /// <summary>
+        /// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format:
+        /// projects/*/locations/*/keyRings/*/cryptoKeys/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing existing `WorkerPools`.</summary>
     public class ListWorkerPoolsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1541,7 +1574,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
 
     /// <summary>
     /// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt
-    /// the value.
+    /// the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For
+    /// instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
     /// </summary>
     public class Secret : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1556,6 +1590,39 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IDictionary<string, string> SecretEnv { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pairs a secret environment variable with a SecretVersion in Secret Manager.</summary>
+    public class SecretManagerSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Environment variable name to associate with the secret. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual string Env { get; set; }
+
+        /// <summary>Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Secrets and secret environment variables.</summary>
+    public class Secrets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Secrets encrypted with KMS key and the associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual System.Collections.Generic.IList<InlineSecret> Inline { get; set; }
+
+        /// <summary>Secrets in Secret Manager and associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManager")]
+        public virtual System.Collections.Generic.IList<SecretManagerSecret> SecretManager { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
