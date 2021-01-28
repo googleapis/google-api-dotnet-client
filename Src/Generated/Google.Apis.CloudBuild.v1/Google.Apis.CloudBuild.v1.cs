@@ -1829,6 +1829,91 @@ namespace Google.Apis.CloudBuild.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a
+            /// specific trigger.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">Project in which the specified trigger lives</param>
+            /// <param name="trigger">Name of the trigger to run the payload against</param>
+            public virtual WebhookRequest Webhook(Google.Apis.CloudBuild.v1.Data.HttpBody body, string projectId, string trigger)
+            {
+                return new WebhookRequest(service, body, projectId, trigger);
+            }
+
+            /// <summary>
+            /// ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a
+            /// specific trigger.
+            /// </summary>
+            public class WebhookRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ReceiveTriggerWebhookResponse>
+            {
+                /// <summary>Constructs a new Webhook request.</summary>
+                public WebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.HttpBody body, string projectId, string trigger) : base(service)
+                {
+                    ProjectId = projectId;
+                    Trigger = trigger;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Project in which the specified trigger lives</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>Name of the trigger to run the payload against</summary>
+                [Google.Apis.Util.RequestParameterAttribute("trigger", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Trigger { get; private set; }
+
+                /// <summary>Secret token used for authorization if an OAuth token isn't provided.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("secret", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Secret { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.HttpBody Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "webhook";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/projects/{projectId}/triggers/{trigger}:webhook";
+
+                /// <summary>Initializes Webhook parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("trigger", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "trigger",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("secret", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "secret",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 }
@@ -1922,6 +2007,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
         public virtual Artifacts Artifacts { get; set; }
 
+        /// <summary>Secrets and secret environment variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableSecrets")]
+        public virtual Secrets AvailableSecrets { get; set; }
+
         /// <summary>
         /// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// </summary>
@@ -1989,7 +2078,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual Results Results { get; set; }
 
-        /// <summary>Secrets to decrypt using Cloud Key Management Service.</summary>
+        /// <summary>
+        /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for
+        /// managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from
+        /// Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
         public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; }
 
@@ -2473,6 +2566,64 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
+    /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
+    /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
+    /// which is convenient if one wants to extract parameters from either the URL or HTTP template into the request
+    /// fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id.
+    /// string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service
+    /// ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc
+    /// UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service
+    /// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc
+    /// UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes
+    /// how the request and response bodies are handled, all other features will continue to work unchanged.
+    /// </summary>
+    public class HttpBody : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The HTTP Content-Type header value specifying the content type of the body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; }
+
+        /// <summary>The HTTP request/response body as raw binary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Application specific response metadata. Must be set in the first response for streaming APIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt
+    /// the value.
+    /// </summary>
+    public class InlineSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map of environment variable name to its encrypted value. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size.
+        /// There can be at most 100 secret values across all of a build's secrets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envMap")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvMap { get; set; }
+
+        /// <summary>
+        /// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format:
+        /// projects/*/locations/*/keyRings/*/cryptoKeys/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing existing `BuildTriggers`.</summary>
     public class ListBuildTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2726,6 +2877,15 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ReceiveTriggerWebhookResponse [Experimental] is the response object for the ReceiveTriggerWebhook method.
+    /// </summary>
+    public class ReceiveTriggerWebhookResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2871,7 +3031,8 @@ namespace Google.Apis.CloudBuild.v1.Data
 
     /// <summary>
     /// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt
-    /// the value.
+    /// the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For
+    /// instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
     /// </summary>
     public class Secret : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2886,6 +3047,39 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IDictionary<string, string> SecretEnv { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pairs a secret environment variable with a SecretVersion in Secret Manager.</summary>
+    public class SecretManagerSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Environment variable name to associate with the secret. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual string Env { get; set; }
+
+        /// <summary>Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Secrets and secret environment variables.</summary>
+    public class Secrets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Secrets encrypted with KMS key and the associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual System.Collections.Generic.IList<InlineSecret> Inline { get; set; }
+
+        /// <summary>Secrets in Secret Manager and associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManager")]
+        public virtual System.Collections.Generic.IList<SecretManagerSecret> SecretManager { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

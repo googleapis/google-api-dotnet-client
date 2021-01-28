@@ -309,10 +309,239 @@ namespace Google.Apis.CloudHealthcare.v1
                 public DatasetsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ConsentStores = new ConsentStoresResource(service);
                     DicomStores = new DicomStoresResource(service);
                     FhirStores = new FhirStoresResource(service);
                     Hl7V2Stores = new Hl7V2StoresResource(service);
                     Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the ConsentStores resource.</summary>
+                public virtual ConsentStoresResource ConsentStores { get; }
+
+                /// <summary>The "consentStores" collection of methods.</summary>
+                public class ConsentStoresResource
+                {
+                    private const string Resource = "consentStores";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ConsentStoresResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The policy format version to be returned. Valid values are 0, 1, and 3. Requests
+                        /// specifying an invalid value will be rejected. Requests for policies with any conditional
+                        /// bindings must specify version 3. Policies without any conditional bindings may specify any
+                        /// valid value or leave the field unset. To learn which resources support conditions in their
+                        /// IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See the operation documentation
+                    /// for the appropriate value for this field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See the operation
+                        /// documentation for the appropriate value for this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/consentStores/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the DicomStores resource.</summary>
@@ -3851,20 +4080,21 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// semantics described in the FHIR Search specification
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
-                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports three methods of
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of
                         /// search defined by the specification: * `GET [base]?[parameters]` to search across all
                         /// resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. *
-                        /// `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as
-                        /// the `GET` method. The `GET` methods do not support compartment searches. The `POST` method
-                        /// does not support `application/x-www-form-urlencoded` search parameters. On success, the
-                        /// response body will contain a JSON-encoded representation of a `Bundle` resource of type
-                        /// `searchset`, containing the results of the search. Errors generated by the FHIR store will
-                        /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
-                        /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead. The server's capability statement, retrieved through
-                        /// capabilities, indicates what search parameters are supported on each FHIR resource. A list
-                        /// of all search parameters defined by the specification can be found in the FHIR Search
-                        /// Parameter Registry
+                        /// `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the
+                        /// `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an
+                        /// alternate form having the same semantics as the `GET` method for the specified type. The
+                        /// `GET` and `POST` methods do not support compartment searches. The `POST` method does not
+                        /// support `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// will contain a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store will contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search
                         /// parameters for DSTU2 can be found on each resource's definition page. Supported search
@@ -3897,20 +4127,21 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// semantics described in the FHIR Search specification
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
-                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports three methods of
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of
                         /// search defined by the specification: * `GET [base]?[parameters]` to search across all
                         /// resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. *
-                        /// `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as
-                        /// the `GET` method. The `GET` methods do not support compartment searches. The `POST` method
-                        /// does not support `application/x-www-form-urlencoded` search parameters. On success, the
-                        /// response body will contain a JSON-encoded representation of a `Bundle` resource of type
-                        /// `searchset`, containing the results of the search. Errors generated by the FHIR store will
-                        /// contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If
-                        /// the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error
-                        /// might be returned instead. The server's capability statement, retrieved through
-                        /// capabilities, indicates what search parameters are supported on each FHIR resource. A list
-                        /// of all search parameters defined by the specification can be found in the FHIR Search
-                        /// Parameter Registry
+                        /// `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the
+                        /// `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an
+                        /// alternate form having the same semantics as the `GET` method for the specified type. The
+                        /// `GET` and `POST` methods do not support compartment searches. The `POST` method does not
+                        /// support `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// will contain a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store will contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
                         /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search
                         /// parameters for DSTU2 can be found on each resource's definition page. Supported search
@@ -3972,20 +4203,181 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
+                        /// Searches for resources in the given FHIR store according to criteria specified as query
+                        /// parameters. Implements the FHIR standard search interaction
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search
+                        /// semantics described in the FHIR Search specification
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of
+                        /// search defined by the specification: * `GET [base]?[parameters]` to search across all
+                        /// resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. *
+                        /// `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the
+                        /// `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an
+                        /// alternate form having the same semantics as the `GET` method for the specified type. The
+                        /// `GET` and `POST` methods do not support compartment searches. The `POST` method does not
+                        /// support `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// will contain a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store will contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
+                        /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search
+                        /// parameters for DSTU2 can be found on each resource's definition page. Supported search
+                        /// modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`,
+                        /// `:[type]`, `:not`, and `:recurse`. Supported search result parameters: `_sort`, `_count`,
+                        /// `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum
+                        /// number of search results returned defaults to 100, which can be overridden by the `_count`
+                        /// parameter up to a maximum limit of 1000. If there are additional results, the returned
+                        /// `Bundle` will contain pagination links. Resources with a total size larger than 5MB or a
+                        /// field count larger than 50,000 might not be fully searchable as the server might trim its
+                        /// generated search index in those cases. Note: FHIR resources are indexed asynchronously, so
+                        /// there might be a slight delay between the time a resource is created or changes and when the
+                        /// change is reflected in search results. For samples and detailed information, see [Searching
+                        /// for FHIR resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
+                        /// features](/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
+                        /// <param name="resourceType">
+                        /// The FHIR resource type to search, such as Patient or Observation. For a complete list, see
+                        /// the FHIR Resource Index
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+                        /// </param>
+                        public virtual SearchTypeRequest SearchType(Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent, string resourceType)
+                        {
+                            return new SearchTypeRequest(service, body, parent, resourceType);
+                        }
+
+                        /// <summary>
+                        /// Searches for resources in the given FHIR store according to criteria specified as query
+                        /// parameters. Implements the FHIR standard search interaction
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using the search
+                        /// semantics described in the FHIR Search specification
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
+                        /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports four methods of
+                        /// search defined by the specification: * `GET [base]?[parameters]` to search across all
+                        /// resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. *
+                        /// `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the
+                        /// `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an
+                        /// alternate form having the same semantics as the `GET` method for the specified type. The
+                        /// `GET` and `POST` methods do not support compartment searches. The `POST` method does not
+                        /// support `application/x-www-form-urlencoded` search parameters. On success, the response body
+                        /// will contain a JSON-encoded representation of a `Bundle` resource of type `searchset`,
+                        /// containing the results of the search. Errors generated by the FHIR store will contain a
+                        /// JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request
+                        /// cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be
+                        /// returned instead. The server's capability statement, retrieved through capabilities,
+                        /// indicates what search parameters are supported on each FHIR resource. A list of all search
+                        /// parameters defined by the specification can be found in the FHIR Search Parameter Registry
+                        /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
+                        /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)). FHIR search
+                        /// parameters for DSTU2 can be found on each resource's definition page. Supported search
+                        /// modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`,
+                        /// `:[type]`, `:not`, and `:recurse`. Supported search result parameters: `_sort`, `_count`,
+                        /// `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum
+                        /// number of search results returned defaults to 100, which can be overridden by the `_count`
+                        /// parameter up to a maximum limit of 1000. If there are additional results, the returned
+                        /// `Bundle` will contain pagination links. Resources with a total size larger than 5MB or a
+                        /// field count larger than 50,000 might not be fully searchable as the server might trim its
+                        /// generated search index in those cases. Note: FHIR resources are indexed asynchronously, so
+                        /// there might be a slight delay between the time a resource is created or changes and when the
+                        /// change is reflected in search results. For samples and detailed information, see [Searching
+                        /// for FHIR resources](/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search
+                        /// features](/healthcare/docs/how-tos/fhir-advanced-search).
+                        /// </summary>
+                        public class SearchTypeRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
+                        {
+                            /// <summary>Constructs a new SearchType request.</summary>
+                            public SearchTypeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent, string resourceType) : base(service)
+                            {
+                                Parent = parent;
+                                ResourceType = resourceType;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Name of the FHIR store to retrieve resources from.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The FHIR resource type to search, such as Patient or Observation. For a complete list,
+                            /// see the FHIR Resource Index
+                            /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+                            /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+                            /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resourceType", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ResourceType { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "search-type";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/fhir/{resourceType}/_search";
+
+                            /// <summary>Initializes SearchType parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                                });
+                                RequestParameters.Add("resourceType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resourceType",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Updates the entire contents of a resource. Implements the FHIR standard update interaction
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#update),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#update),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)). If the specified
                         /// resource does not exist and the FHIR store has enable_update_create set, creates the
-                        /// resource with the client-specified ID. The request body must contain a JSON-encoded FHIR
-                        /// resource, and the request headers must contain `Content-Type: application/fhir+json`. The
-                        /// resource must contain an `id` element having an identical value to the ID in the REST path
-                        /// of the request. On success, the response body will contain a JSON-encoded representation of
-                        /// the updated resource, including the server-assigned version ID. Errors generated by the FHIR
-                        /// store will contain a JSON-encoded `OperationOutcome` resource describing the reason for the
-                        /// error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP
-                        /// error might be returned instead. For samples that show how to call `update`, see [Updating a
-                        /// FHIR resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+                        /// resource with the client-specified ID. It is strongly advised not to include or encode any
+                        /// sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are
+                        /// part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
+                        /// Those IDs can also be contained in reference fields within other resources. The request body
+                        /// must contain a JSON-encoded FHIR resource, and the request headers must contain
+                        /// `Content-Type: application/fhir+json`. The resource must contain an `id` element having an
+                        /// identical value to the ID in the REST path of the request. On success, the response body
+                        /// will contain a JSON-encoded representation of the updated resource, including the
+                        /// server-assigned version ID. Errors generated by the FHIR store will contain a JSON-encoded
+                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
+                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
+                        /// For samples that show how to call `update`, see [Updating a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">The name of the resource to update.</param>
@@ -4000,15 +4392,19 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#update),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)). If the specified
                         /// resource does not exist and the FHIR store has enable_update_create set, creates the
-                        /// resource with the client-specified ID. The request body must contain a JSON-encoded FHIR
-                        /// resource, and the request headers must contain `Content-Type: application/fhir+json`. The
-                        /// resource must contain an `id` element having an identical value to the ID in the REST path
-                        /// of the request. On success, the response body will contain a JSON-encoded representation of
-                        /// the updated resource, including the server-assigned version ID. Errors generated by the FHIR
-                        /// store will contain a JSON-encoded `OperationOutcome` resource describing the reason for the
-                        /// error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP
-                        /// error might be returned instead. For samples that show how to call `update`, see [Updating a
-                        /// FHIR resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+                        /// resource with the client-specified ID. It is strongly advised not to include or encode any
+                        /// sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are
+                        /// part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
+                        /// Those IDs can also be contained in reference fields within other resources. The request body
+                        /// must contain a JSON-encoded FHIR resource, and the request headers must contain
+                        /// `Content-Type: application/fhir+json`. The resource must contain an `id` element having an
+                        /// identical value to the ID in the REST path of the request. On success, the response body
+                        /// will contain a JSON-encoded representation of the updated resource, including the
+                        /// server-assigned version ID. Errors generated by the FHIR store will contain a JSON-encoded
+                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
+                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
+                        /// For samples that show how to call `update`, see [Updating a FHIR
+                        /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.HttpBody>
                         {
@@ -4507,39 +4903,43 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// data into an empty FHIR store that is not being used by other clients. In cases where this
                     /// method is not appropriate, consider using ExecuteBundle to load data. Every resource in the
                     /// input must contain a client-supplied ID. Each resource is stored using the supplied ID
-                    /// regardless of the enable_update_create setting on the FHIR store. The import process does not
-                    /// enforce referential integrity, regardless of the disable_referential_integrity setting on the
-                    /// FHIR store. This allows the import of resources with arbitrary interdependencies without
-                    /// considering grouping or ordering, but if the input data contains invalid references or if some
-                    /// resources fail to be imported, the FHIR store might be left in a state that violates referential
-                    /// integrity. The import process does not trigger Pub/Sub notification or BigQuery streaming
-                    /// update, regardless of how those are configured on the FHIR store. If a resource with the
-                    /// specified ID already exists, the most recent version of the resource is overwritten without
-                    /// creating a new historical version, regardless of the disable_resource_versioning setting on the
-                    /// FHIR store. If transient failures occur during the import, it's possible that successfully
-                    /// imported resources will be overwritten more than once. The import operation is idempotent unless
-                    /// the input data contains multiple valid resources with the same ID but different contents. In
-                    /// that case, after the import completes, the store contains exactly one resource with that ID but
-                    /// there is no ordering guarantee on which version of the contents it will have. The operation
-                    /// result counters do not count duplicate IDs as an error and count one success for each resource
-                    /// in the input, which might result in a success count larger than the number of resources in the
-                    /// FHIR store. This often occurs when importing data organized in bundles produced by
-                    /// Patient-everything where each bundle contains its own copy of a resource such as Practitioner
-                    /// that might be referred to by many patients. If some resources fail to import, for example due to
-                    /// parsing errors, successfully imported resources are not rolled back. The location and format of
-                    /// the input data is specified by the parameters in ImportResourcesRequest. Note that if no format
-                    /// is specified, this method assumes the `BUNDLE` format. When using the `BUNDLE` format this
-                    /// method ignores the `Bundle.type` field, except that `history` bundles are rejected, and does not
-                    /// apply any of the bundle processing semantics for batch or transaction bundles. Unlike in
-                    /// ExecuteBundle, transaction bundles are not executed as a single transaction and bundle-internal
-                    /// references are not rewritten. The bundle is treated as a collection of resources to be written
-                    /// as provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this
-                    /// allows the import of `searchset` bundles produced by a FHIR search or Patient-everything
-                    /// operation. This method returns an Operation that can be used to track the status of the import
-                    /// by calling GetOperation. Immediate fatal errors appear in the error field, errors are also
-                    /// logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when
-                    /// the operation finishes, a detailed response of type ImportResourcesResponse is returned in the
-                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// regardless of the enable_update_create setting on the FHIR store. It is strongly advised not to
+                    /// include or encode any sensitive data such as patient identifiers in client-specified resource
+                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+                    /// notifications. Those IDs can also be contained in reference fields within other resources. The
+                    /// import process does not enforce referential integrity, regardless of the
+                    /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
+                    /// with arbitrary interdependencies without considering grouping or ordering, but if the input data
+                    /// contains invalid references or if some resources fail to be imported, the FHIR store might be
+                    /// left in a state that violates referential integrity. The import process does not trigger Pub/Sub
+                    /// notification or BigQuery streaming update, regardless of how those are configured on the FHIR
+                    /// store. If a resource with the specified ID already exists, the most recent version of the
+                    /// resource is overwritten without creating a new historical version, regardless of the
+                    /// disable_resource_versioning setting on the FHIR store. If transient failures occur during the
+                    /// import, it's possible that successfully imported resources will be overwritten more than once.
+                    /// The import operation is idempotent unless the input data contains multiple valid resources with
+                    /// the same ID but different contents. In that case, after the import completes, the store contains
+                    /// exactly one resource with that ID but there is no ordering guarantee on which version of the
+                    /// contents it will have. The operation result counters do not count duplicate IDs as an error and
+                    /// count one success for each resource in the input, which might result in a success count larger
+                    /// than the number of resources in the FHIR store. This often occurs when importing data organized
+                    /// in bundles produced by Patient-everything where each bundle contains its own copy of a resource
+                    /// such as Practitioner that might be referred to by many patients. If some resources fail to
+                    /// import, for example due to parsing errors, successfully imported resources are not rolled back.
+                    /// The location and format of the input data is specified by the parameters in
+                    /// ImportResourcesRequest. Note that if no format is specified, this method assumes the `BUNDLE`
+                    /// format. When using the `BUNDLE` format this method ignores the `Bundle.type` field, except that
+                    /// `history` bundles are rejected, and does not apply any of the bundle processing semantics for
+                    /// batch or transaction bundles. Unlike in ExecuteBundle, transaction bundles are not executed as a
+                    /// single transaction and bundle-internal references are not rewritten. The bundle is treated as a
+                    /// collection of resources to be written as provided in `Bundle.entry.resource`, ignoring
+                    /// `Bundle.entry.request`. As an example, this allows the import of `searchset` bundles produced by
+                    /// a FHIR search or Patient-everything operation. This method returns an Operation that can be used
+                    /// to track the status of the import by calling GetOperation. Immediate fatal errors appear in the
+                    /// error field, errors are also logged to Cloud Logging (see [Viewing
+                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed
+                    /// response of type ImportResourcesResponse is returned in the response field. The metadata field
+                    /// type for this operation is OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -4558,39 +4958,43 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// data into an empty FHIR store that is not being used by other clients. In cases where this
                     /// method is not appropriate, consider using ExecuteBundle to load data. Every resource in the
                     /// input must contain a client-supplied ID. Each resource is stored using the supplied ID
-                    /// regardless of the enable_update_create setting on the FHIR store. The import process does not
-                    /// enforce referential integrity, regardless of the disable_referential_integrity setting on the
-                    /// FHIR store. This allows the import of resources with arbitrary interdependencies without
-                    /// considering grouping or ordering, but if the input data contains invalid references or if some
-                    /// resources fail to be imported, the FHIR store might be left in a state that violates referential
-                    /// integrity. The import process does not trigger Pub/Sub notification or BigQuery streaming
-                    /// update, regardless of how those are configured on the FHIR store. If a resource with the
-                    /// specified ID already exists, the most recent version of the resource is overwritten without
-                    /// creating a new historical version, regardless of the disable_resource_versioning setting on the
-                    /// FHIR store. If transient failures occur during the import, it's possible that successfully
-                    /// imported resources will be overwritten more than once. The import operation is idempotent unless
-                    /// the input data contains multiple valid resources with the same ID but different contents. In
-                    /// that case, after the import completes, the store contains exactly one resource with that ID but
-                    /// there is no ordering guarantee on which version of the contents it will have. The operation
-                    /// result counters do not count duplicate IDs as an error and count one success for each resource
-                    /// in the input, which might result in a success count larger than the number of resources in the
-                    /// FHIR store. This often occurs when importing data organized in bundles produced by
-                    /// Patient-everything where each bundle contains its own copy of a resource such as Practitioner
-                    /// that might be referred to by many patients. If some resources fail to import, for example due to
-                    /// parsing errors, successfully imported resources are not rolled back. The location and format of
-                    /// the input data is specified by the parameters in ImportResourcesRequest. Note that if no format
-                    /// is specified, this method assumes the `BUNDLE` format. When using the `BUNDLE` format this
-                    /// method ignores the `Bundle.type` field, except that `history` bundles are rejected, and does not
-                    /// apply any of the bundle processing semantics for batch or transaction bundles. Unlike in
-                    /// ExecuteBundle, transaction bundles are not executed as a single transaction and bundle-internal
-                    /// references are not rewritten. The bundle is treated as a collection of resources to be written
-                    /// as provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this
-                    /// allows the import of `searchset` bundles produced by a FHIR search or Patient-everything
-                    /// operation. This method returns an Operation that can be used to track the status of the import
-                    /// by calling GetOperation. Immediate fatal errors appear in the error field, errors are also
-                    /// logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). Otherwise, when
-                    /// the operation finishes, a detailed response of type ImportResourcesResponse is returned in the
-                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// regardless of the enable_update_create setting on the FHIR store. It is strongly advised not to
+                    /// include or encode any sensitive data such as patient identifiers in client-specified resource
+                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+                    /// notifications. Those IDs can also be contained in reference fields within other resources. The
+                    /// import process does not enforce referential integrity, regardless of the
+                    /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
+                    /// with arbitrary interdependencies without considering grouping or ordering, but if the input data
+                    /// contains invalid references or if some resources fail to be imported, the FHIR store might be
+                    /// left in a state that violates referential integrity. The import process does not trigger Pub/Sub
+                    /// notification or BigQuery streaming update, regardless of how those are configured on the FHIR
+                    /// store. If a resource with the specified ID already exists, the most recent version of the
+                    /// resource is overwritten without creating a new historical version, regardless of the
+                    /// disable_resource_versioning setting on the FHIR store. If transient failures occur during the
+                    /// import, it's possible that successfully imported resources will be overwritten more than once.
+                    /// The import operation is idempotent unless the input data contains multiple valid resources with
+                    /// the same ID but different contents. In that case, after the import completes, the store contains
+                    /// exactly one resource with that ID but there is no ordering guarantee on which version of the
+                    /// contents it will have. The operation result counters do not count duplicate IDs as an error and
+                    /// count one success for each resource in the input, which might result in a success count larger
+                    /// than the number of resources in the FHIR store. This often occurs when importing data organized
+                    /// in bundles produced by Patient-everything where each bundle contains its own copy of a resource
+                    /// such as Practitioner that might be referred to by many patients. If some resources fail to
+                    /// import, for example due to parsing errors, successfully imported resources are not rolled back.
+                    /// The location and format of the input data is specified by the parameters in
+                    /// ImportResourcesRequest. Note that if no format is specified, this method assumes the `BUNDLE`
+                    /// format. When using the `BUNDLE` format this method ignores the `Bundle.type` field, except that
+                    /// `history` bundles are rejected, and does not apply any of the bundle processing semantics for
+                    /// batch or transaction bundles. Unlike in ExecuteBundle, transaction bundles are not executed as a
+                    /// single transaction and bundle-internal references are not rewritten. The bundle is treated as a
+                    /// collection of resources to be written as provided in `Bundle.entry.resource`, ignoring
+                    /// `Bundle.entry.request`. As an example, this allows the import of `searchset` bundles produced by
+                    /// a FHIR search or Patient-everything operation. This method returns an Operation that can be used
+                    /// to track the status of the import by calling GetOperation. Immediate fatal errors appear in the
+                    /// error field, errors are also logged to Cloud Logging (see [Viewing
+                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed
+                    /// response of type ImportResourcesResponse is returned in the response field. The metadata field
+                    /// type for this operation is OperationMetadata.
                     /// </summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {
@@ -7582,9 +7986,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).
         /// This determines if the client can use an Update operation to create a new resource with a client-specified
         /// ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent
-        /// resource return errors. Be careful with the audit logs if client-specified resource IDs contain sensitive
-        /// data such as patient identifiers, those IDs are part of the FHIR resource path recorded in Cloud audit logs
-        /// and Cloud Pub/Sub notifications.
+        /// resource return errors. It is strongly advised not to include or encode any sensitive data such as patient
+        /// identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud
+        /// audit logs and Cloud Pub/Sub notifications. Those IDs can also be contained in reference fields within other
+        /// resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
         public virtual System.Nullable<bool> EnableUpdateCreate { get; set; }
@@ -7765,7 +8170,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
         /// <summary>
         /// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written.
-        /// If the flag is not set and the destination dataset contains tables, the export call returns an error.
+        /// If the flag is not set and the destination dataset contains tables, the export call returns an error. If
+        /// `write_disposition` is specified, this parameter is ignored. force=false is equivalent to
+        /// write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
@@ -7773,6 +8180,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The configuration for the exported BigQuery schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaConfig")]
         public virtual SchemaConfig SchemaConfig { get; set; }
+
+        /// <summary>
+        /// Determines whether existing tables in the destination dataset are overwritten or appended to. If a
+        /// write_disposition is specified, the `force` parameter is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
+        public virtual string WriteDisposition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

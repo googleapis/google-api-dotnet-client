@@ -999,6 +999,99 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluation result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3Evaluation Evaluation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An evaluation of a ProcessorVersion's performance.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3Evaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metrics for all the entities in aggregate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allEntitiesMetrics")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics AllEntitiesMetrics { get; set; }
+
+        /// <summary>The time that the evaluation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Metrics across confidence levels, for different entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics> EntityMetrics { get; set; }
+
+        /// <summary>
+        /// The resource name of the evaluation. Format:
+        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluations metrics, at a specific confidence level.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevel")]
+        public virtual System.Nullable<float> ConfidenceLevel { get; set; }
+
+        /// <summary>The metrics at the specific confidence level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics Metrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The calculated f1 score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>The calculated precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>The calculated recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics across multiple confidence levels.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metrics across confidence levels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevelMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics> ConfidenceLevelMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
     /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version

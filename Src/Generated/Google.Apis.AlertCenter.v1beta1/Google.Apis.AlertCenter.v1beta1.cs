@@ -1592,6 +1592,13 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// A header to display above the incident message. Typcially used to attach a localized notice on the timeline
+        /// for followup comms translations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
         /// <summary>A one-line incident description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }

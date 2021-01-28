@@ -1065,8 +1065,9 @@ namespace Google.Apis.CloudFilestore.v1
                 }
 
                 /// <summary>
-                /// Restores an existing instance's file share from a backup. The instance's file share capacity will be
-                /// set to the backup's capacity or the minimum capacity of the tier, whichever is larger.
+                /// Restores an existing instance's file share from a backup. The capacity of the instance needs to be
+                /// equal to or larger than the capacity of the backup (and also equal to or larger than the minimum
+                /// capacity of the tier).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1079,8 +1080,9 @@ namespace Google.Apis.CloudFilestore.v1
                 }
 
                 /// <summary>
-                /// Restores an existing instance's file share from a backup. The instance's file share capacity will be
-                /// set to the backup's capacity or the minimum capacity of the tier, whichever is larger.
+                /// Restores an existing instance's file share from a backup. The capacity of the instance needs to be
+                /// equal to or larger than the capacity of the backup (and also equal to or larger than the minimum
+                /// capacity of the tier).
                 /// </summary>
                 public class RestoreRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
                 {

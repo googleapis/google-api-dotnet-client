@@ -5315,9 +5315,8 @@ namespace Google.Apis.Dialogflow.v3
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Required. The mask to specify which fields should be updated. Only a test case's metadata
-                        /// and replayed_conversation_turns may be updated. The original test_case_conversation_turns
-                        /// may not be updated.
+                        /// Required. The mask to specify which fields should be updated. The `creationTime` and
+                        /// `lastTestResult` cannot be updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }

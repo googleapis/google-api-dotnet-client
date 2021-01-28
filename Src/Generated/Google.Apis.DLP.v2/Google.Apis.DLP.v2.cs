@@ -525,819 +525,7 @@ namespace Google.Apis.DLP.v2
         public OrganizationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            DeidentifyTemplates = new DeidentifyTemplatesResource(service);
-            InspectTemplates = new InspectTemplatesResource(service);
             Locations = new LocationsResource(service);
-            StoredInfoTypes = new StoredInfoTypesResource(service);
-        }
-
-        /// <summary>Gets the DeidentifyTemplates resource.</summary>
-        public virtual DeidentifyTemplatesResource DeidentifyTemplates { get; }
-
-        /// <summary>The "deidentifyTemplates" collection of methods.</summary>
-        public class DeidentifyTemplatesResource
-        {
-            private const string Resource = "deidentifyTemplates";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public DeidentifyTemplatesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/deidentifyTemplates";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and deidentify template to be deleted, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
-            /// projects/project-id/deidentifyTemplates/432452342.
-            /// </param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
-            /// </summary>
-            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "delete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/deidentifyTemplates/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and deidentify template to be read, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
-            /// projects/project-id/deidentifyTemplates/432452342.
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/deidentifyTemplates/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-            /// </summary>
-            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Deprecated. This field has no effect.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
-                /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/deidentifyTemplates";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                    RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Required. Resource name of organization and deidentify template to be updated, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
-            /// projects/project-id/deidentifyTemplates/432452342.
-            /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
-            /// </summary>
-            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/deidentifyTemplates/[^/]+$",
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the InspectTemplates resource.</summary>
-        public virtual InspectTemplatesResource InspectTemplates { get; }
-
-        /// <summary>The "inspectTemplates" collection of methods.</summary>
-        public class InspectTemplatesResource
-        {
-            private const string Resource = "inspectTemplates";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public InspectTemplatesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images,
-            /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/inspectTemplates";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
-            /// </param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "delete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/inspectTemplates/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and inspectTemplate to be read, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/inspectTemplates/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Deprecated. This field has no effect.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
-                /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
-                /// to time the template was created. - `update_time`: corresponds to time the template was last
-                /// updated. - `name`: corresponds to template's name. - `display_name`: corresponds to template's
-                /// display name.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/inspectTemplates";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                    RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Required. Resource name of organization and inspectTemplate to be updated, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
-            /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-            /// </summary>
-            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/inspectTemplates/[^/]+$",
-                    });
-                }
-            }
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -1355,423 +543,8 @@ namespace Google.Apis.DLP.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DlpJobs = new DlpJobsResource(service);
-                InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
-                StoredInfoTypes = new StoredInfoTypesResource(service);
-            }
-
-            /// <summary>Gets the DeidentifyTemplates resource.</summary>
-            public virtual DeidentifyTemplatesResource DeidentifyTemplates { get; }
-
-            /// <summary>The "deidentifyTemplates" collection of methods.</summary>
-            public class DeidentifyTemplatesResource
-            {
-                private const string Resource = "deidentifyTemplates";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public DeidentifyTemplatesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
-                /// </summary>
-                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/deidentifyTemplates";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
-                    /// projects/project-id/deidentifyTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and deidentify template to be read, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
-                    /// projects/project-id/deidentifyTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
-                /// </summary>
-                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Deprecated. This field has no effect.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LocationId { get; set; }
-
-                    /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListDeidentifyTemplates`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/deidentifyTemplates";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
-                /// projects/project-id/deidentifyTemplates/432452342.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
-                /// </summary>
-                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of organization and deidentify template to be updated, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
-                    /// projects/project-id/deidentifyTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the DlpJobs resource.</summary>
@@ -1964,410 +737,6 @@ namespace Google.Apis.DLP.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-            }
-
-            /// <summary>Gets the InspectTemplates resource.</summary>
-            public virtual InspectTemplatesResource InspectTemplates { get; }
-
-            /// <summary>The "inspectTemplates" collection of methods.</summary>
-            public class InspectTemplatesResource
-            {
-                private const string Resource = "inspectTemplates";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public InspectTemplatesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/inspectTemplates";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
-                    /// projects/project-id/inspectTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
-                    /// projects/project-id/inspectTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Deprecated. This field has no effect.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LocationId { get; set; }
-
-                    /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the template was created. - `update_time`: corresponds to
-                    /// time the template was last updated. - `name`: corresponds to template's name. - `display_name`:
-                    /// corresponds to template's display name.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListInspectTemplates`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/inspectTemplates";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
-                /// projects/project-id/inspectTemplates/432452342.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
-                /// </summary>
-                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
-                    /// projects/project-id/inspectTemplates/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$",
                         });
                     }
                 }
@@ -2784,827 +1153,6 @@ namespace Google.Apis.DLP.v2
                     }
                 }
             }
-
-            /// <summary>Gets the StoredInfoTypes resource.</summary>
-            public virtual StoredInfoTypesResource StoredInfoTypes { get; }
-
-            /// <summary>The "storedInfoTypes" collection of methods.</summary>
-            public class StoredInfoTypesResource
-            {
-                private const string Resource = "storedInfoTypes";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public StoredInfoTypesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-                /// </summary>
-                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/storedInfoTypes";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
-                    /// projects/project-id/storedInfoTypes/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                /// <param name="name">
-                /// Required. Resource name of the organization and storedInfoType to be read, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the organization and storedInfoType to be read, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
-                    /// projects/project-id/storedInfoTypes/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                /// <param name="parent">
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
-                /// </summary>
-                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Deprecated. This field has no effect.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LocationId { get; set; }
-
-                    /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                    /// case-insensitive, default sorting order is ascending, redundant space characters are
-                    /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
-                    /// `create_time`: corresponds to time the most recent version of the resource was created. -
-                    /// `state`: corresponds to the state of the resource. - `name`: corresponds to resource name. -
-                    /// `display_name`: corresponds to info type's display name.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>
-                    /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/storedInfoTypes";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Resource name of organization and storedInfoType to be updated, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>
-                /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
-                /// </summary>
-                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of organization and storedInfoType to be updated, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
-                    /// projects/project-id/storedInfoTypes/432452342.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$",
-                        });
-                    }
-                }
-            }
-        }
-
-        /// <summary>Gets the StoredInfoTypes resource.</summary>
-        public virtual StoredInfoTypesResource StoredInfoTypes { get; }
-
-        /// <summary>The "storedInfoTypes" collection of methods.</summary>
-        public class StoredInfoTypesResource
-        {
-            private const string Resource = "storedInfoTypes";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public StoredInfoTypesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/storedInfoTypes";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
-            /// </param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
-            /// </summary>
-            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "delete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            /// <param name="name">
-            /// Required. Resource name of the organization and storedInfoType to be read, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the organization and storedInfoType to be read, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            /// <param name="parent">
-            /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
-            /// </summary>
-            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Deprecated. This field has no effect.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("locationId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string LocationId { get; set; }
-
-                /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
-                /// case-insensitive, default sorting order is ascending, redundant space characters are insignificant.
-                /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
-                /// corresponds to time the most recent version of the resource was created. - `state`: corresponds to
-                /// the state of the resource. - `name`: corresponds to resource name. - `display_name`: corresponds to
-                /// info type's display name.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>
-                /// Size of the page, can be limited by server. If zero server returns a page of max size 100.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// Page token to continue retrieval. Comes from previous call to `ListStoredInfoTypes`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+parent}/storedInfoTypes";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+$",
-                    });
-                    RequestParameters.Add("locationId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "locationId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Required. Resource name of organization and storedInfoType to be updated, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
-            /// </param>
-            public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>
-            /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
-            /// </summary>
-            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of organization and storedInfoType to be updated, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
-                /// projects/project-id/storedInfoTypes/432452342.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v2/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^organizations/[^/]+/storedInfoTypes/[^/]+$",
-                    });
-                }
-            }
         }
     }
 
@@ -3906,10 +1454,8 @@ namespace Google.Apis.DLP.v2
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
@@ -3936,10 +1482,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3980,8 +1524,7 @@ namespace Google.Apis.DLP.v2
             /// more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and deidentify template to be deleted, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
+            /// Required. Resource name of the deidentify template to be deleted, for example
             /// projects/project-id/deidentifyTemplates/432452342.
             /// </param>
             public virtual DeleteRequest Delete(string name)
@@ -4003,8 +1546,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of the deidentify template to be deleted, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4038,8 +1580,7 @@ namespace Google.Apis.DLP.v2
             /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and deidentify template to be read, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
+            /// Required. Resource name of the deidentify template to be read, for example
             /// projects/project-id/deidentifyTemplates/432452342.
             /// </param>
             public virtual GetRequest Get(string name)
@@ -4060,8 +1601,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of the deidentify template to be read, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4096,13 +1636,11 @@ namespace Google.Apis.DLP.v2
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
+            /// (project) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -4124,13 +1662,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4225,8 +1761,7 @@ namespace Google.Apis.DLP.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Resource name of organization and deidentify template to be updated, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342` or
+            /// Required. Resource name of deidentify template to be updated, for example
             /// projects/project-id/deidentifyTemplates/432452342.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
@@ -4249,8 +1784,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of deidentify template to be updated, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4850,10 +2384,8 @@ namespace Google.Apis.DLP.v2
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
@@ -4880,10 +2412,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4923,8 +2453,8 @@ namespace Google.Apis.DLP.v2
             /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
+            /// Required. Resource name of the inspectTemplate to be deleted, for example
+            /// projects/project-id/inspectTemplates/432452342.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -4944,8 +2474,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of the inspectTemplate to be deleted, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4979,8 +2508,8 @@ namespace Google.Apis.DLP.v2
             /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and inspectTemplate to be read, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
+            /// Required. Resource name of the inspectTemplate to be read, for example
+            /// projects/project-id/inspectTemplates/432452342.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -5000,8 +2529,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of the inspectTemplate to be read, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5039,10 +2567,8 @@ namespace Google.Apis.DLP.v2
             /// (project or organization) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -5067,10 +2593,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -5164,8 +2688,8 @@ namespace Google.Apis.DLP.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Resource name of organization and inspectTemplate to be updated, for example
-            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.
+            /// Required. Resource name of inspectTemplate to be updated, for example
+            /// projects/project-id/inspectTemplates/432452342.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
             {
@@ -5186,8 +2710,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of inspectTemplate to be updated, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6006,10 +3529,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
@@ -6036,9 +3557,7 @@ namespace Google.Apis.DLP.v2
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -6080,8 +3599,7 @@ namespace Google.Apis.DLP.v2
                 /// more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of the deidentify template to be deleted, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -6103,8 +3621,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and deidentify template to be deleted, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
+                    /// Required. Resource name of the deidentify template to be deleted, for example
                     /// projects/project-id/deidentifyTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6139,8 +3656,7 @@ namespace Google.Apis.DLP.v2
                 /// more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of the deidentify template to be read, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -6162,8 +3678,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and deidentify template to be read, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
+                    /// Required. Resource name of the deidentify template to be read, for example
                     /// projects/project-id/deidentifyTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6199,13 +3714,11 @@ namespace Google.Apis.DLP.v2
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -6228,12 +3741,10 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
+                    /// request (project) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -6329,8 +3840,7 @@ namespace Google.Apis.DLP.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342` or
+                /// Required. Resource name of deidentify template to be updated, for example
                 /// projects/project-id/deidentifyTemplates/432452342.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest body, string name)
@@ -6353,8 +3863,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of organization and deidentify template to be updated, for example
-                    /// `organizations/433245324/deidentifyTemplates/432452342` or
+                    /// Required. Resource name of deidentify template to be updated, for example
                     /// projects/project-id/deidentifyTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7084,10 +4593,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
@@ -7114,9 +4621,7 @@ namespace Google.Apis.DLP.v2
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -7157,8 +4662,7 @@ namespace Google.Apis.DLP.v2
                 /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of the inspectTemplate to be deleted, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -7179,8 +4683,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
+                    /// Required. Resource name of the inspectTemplate to be deleted, for example
                     /// projects/project-id/inspectTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7214,8 +4717,7 @@ namespace Google.Apis.DLP.v2
                 /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of the inspectTemplate to be read, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -7236,8 +4738,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and inspectTemplate to be read, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
+                    /// Required. Resource name of the inspectTemplate to be read, for example
                     /// projects/project-id/inspectTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7275,10 +4776,8 @@ namespace Google.Apis.DLP.v2
                 /// request (project or organization) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -7303,9 +4802,7 @@ namespace Google.Apis.DLP.v2
                     /// request (project or organization) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -7400,8 +4897,7 @@ namespace Google.Apis.DLP.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342` or
+                /// Required. Resource name of inspectTemplate to be updated, for example
                 /// projects/project-id/inspectTemplates/432452342.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateInspectTemplateRequest body, string name)
@@ -7423,8 +4919,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of organization and inspectTemplate to be updated, for example
-                    /// `organizations/433245324/inspectTemplates/432452342` or
+                    /// Required. Resource name of inspectTemplate to be updated, for example
                     /// projects/project-id/inspectTemplates/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8027,13 +5522,11 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
@@ -8057,12 +5550,10 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
+                    /// request (project) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -8104,8 +5595,7 @@ namespace Google.Apis.DLP.v2
                 /// more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of the storedInfoType to be deleted, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -8127,8 +5617,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
+                    /// Required. Resource name of the storedInfoType to be deleted, for example
                     /// projects/project-id/storedInfoTypes/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8163,8 +5652,7 @@ namespace Google.Apis.DLP.v2
                 /// more.
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the organization and storedInfoType to be read, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of the storedInfoType to be read, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -8186,8 +5674,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization and storedInfoType to be read, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
+                    /// Required. Resource name of the storedInfoType to be read, for example
                     /// projects/project-id/storedInfoTypes/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8223,13 +5710,11 @@ namespace Google.Apis.DLP.v2
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -8252,12 +5737,10 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                    /// request (project or organization) and whether you have [specified a processing
+                    /// request (project) and whether you have [specified a processing
                     /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                     /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
+                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
                     /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
                     /// for processing data: parent=projects/example-project/locations/europe-west3
                     /// </summary>
@@ -8354,8 +5837,7 @@ namespace Google.Apis.DLP.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Resource name of organization and storedInfoType to be updated, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of storedInfoType to be updated, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
@@ -8379,8 +5861,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of organization and storedInfoType to be updated, for example
-                    /// `organizations/433245324/storedInfoTypes/432452342` or
+                    /// Required. Resource name of storedInfoType to be updated, for example
                     /// projects/project-id/storedInfoTypes/432452342.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8442,13 +5923,11 @@ namespace Google.Apis.DLP.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
+            /// (project) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
@@ -8472,13 +5951,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8519,8 +5996,8 @@ namespace Google.Apis.DLP.v2
             /// more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
+            /// Required. Resource name of the storedInfoType to be deleted, for example
+            /// projects/project-id/storedInfoTypes/432452342.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -8541,8 +6018,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and storedInfoType to be deleted, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of the storedInfoType to be deleted, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8576,8 +6052,8 @@ namespace Google.Apis.DLP.v2
             /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the organization and storedInfoType to be read, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
+            /// Required. Resource name of the storedInfoType to be read, for example
+            /// projects/project-id/storedInfoTypes/432452342.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -8597,8 +6073,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of the organization and storedInfoType to be read, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of the storedInfoType to be read, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8633,13 +6108,11 @@ namespace Google.Apis.DLP.v2
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
-            /// (project or organization) and whether you have [specified a processing
+            /// (project) and whether you have [specified a processing
             /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
             /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
-            /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
-            /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
-            /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
+            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
+            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
             /// parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
@@ -8661,13 +6134,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
-                /// request (project or organization) and whether you have [specified a processing
+                /// request (project) and whether you have [specified a processing
                 /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
                 /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
+                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
                 /// processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8763,8 +6234,8 @@ namespace Google.Apis.DLP.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. Resource name of organization and storedInfoType to be updated, for example
-            /// `organizations/433245324/storedInfoTypes/432452342` or projects/project-id/storedInfoTypes/432452342.
+            /// Required. Resource name of storedInfoType to be updated, for example
+            /// projects/project-id/storedInfoTypes/432452342.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest body, string name)
             {
@@ -8787,8 +6258,7 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Required. Resource name of organization and storedInfoType to be updated, for example
-                /// `organizations/433245324/storedInfoTypes/432452342` or
+                /// Required. Resource name of storedInfoType to be updated, for example
                 /// projects/project-id/storedInfoTypes/432452342.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9262,6 +6732,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of
         /// the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        /// Cannot be set if de-identification is requested.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
         public virtual System.Nullable<long> BytesLimitPerFile { get; set; }
@@ -9269,7 +6740,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded
         /// down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
-        /// bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        /// bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification
+        /// is requested.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFilePercent")]
         public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; }
@@ -10080,8 +7552,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Output only. The template name. The template will have one of the following formats:
-        /// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
-        /// `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+        /// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10534,7 +8005,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration to control the number of findings returned.</summary>
+    /// <summary>
+    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    /// </summary>
     public class GooglePrivacyDlpV2FindingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration of findings limit given for specified infoTypes.</summary>
@@ -11124,8 +8597,7 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Output only. The template name. The template will have one of the following formats:
-        /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-        /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+        /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -12497,7 +9969,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Schedule for triggeredJobs.</summary>
+    /// <summary>Schedule for inspect job triggers.</summary>
     public class GooglePrivacyDlpV2Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

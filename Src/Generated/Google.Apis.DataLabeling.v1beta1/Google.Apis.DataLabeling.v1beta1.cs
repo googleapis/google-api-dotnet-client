@@ -1086,7 +1086,7 @@ namespace Google.Apis.DataLabeling.v1beta1
 
                         /// <summary>Get a FeedbackMessage object.</summary>
                         /// <param name="name">
-                        /// Required.   Name of the feedback.   Format:
+                        /// Required. Name of the feedback. Format:
                         /// 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'.
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -1105,7 +1105,7 @@ namespace Google.Apis.DataLabeling.v1beta1
                             }
 
                             /// <summary>
-                            /// Required.   Name of the feedback.   Format:
+                            /// Required. Name of the feedback. Format:
                             /// 'projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessages/{feedback_message_id}'.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]

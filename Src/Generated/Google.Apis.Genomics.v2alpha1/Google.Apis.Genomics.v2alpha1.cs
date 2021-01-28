@@ -941,6 +941,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual object Deadline { get; set; }
 
+        /// <summary>Feature configuration for the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Features { get; set; }
+
         /// <summary>The metadata that describes the operation assigned to the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
