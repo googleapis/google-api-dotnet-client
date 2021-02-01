@@ -1800,15 +1800,17 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     public class Pubsub : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event
-        /// delivery. The value must be in the form of `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        /// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for
+        /// the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
         public virtual string Subscription { get; set; }
 
         /// <summary>
-        /// The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-        /// The value must be in the form of `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`.
+        /// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event
+        /// delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of
+        /// the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be
+        /// deleted by Eventarc at trigger deletion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
@@ -1897,9 +1899,7 @@ namespace Google.Apis.Eventarc.v1beta1.Data
     /// <summary>Represents the transport intermediaries created for the trigger in order to deliver events.</summary>
     public class Transport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The Pub/Sub topic and subscription that maybe created by Eventarc as delivery intermediary.
-        /// </summary>
+        /// <summary>The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
         public virtual Pubsub Pubsub { get; set; }
 
@@ -1953,9 +1953,9 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         public virtual string ServiceAccount { get; set; }
 
         /// <summary>
-        /// Output only. In order to deliver messages, Eventarc may configure other GCP products as transport
-        /// intermediary. This field returns a reference to that transport intermediary. This information can be used
-        /// for debugging purposes.
+        /// Output only. In order to deliver messages, Eventarc may use other GCP products as transport intermediary.
+        /// This field contains a reference to that transport intermediary. This information can be used for debugging
+        /// purposes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transport")]
         public virtual Transport Transport { get; set; }

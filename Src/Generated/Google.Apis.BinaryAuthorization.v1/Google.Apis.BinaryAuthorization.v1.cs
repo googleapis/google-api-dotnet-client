@@ -1631,6 +1631,27 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string GlobalPolicyEvaluationMode { get; set; }
 
         /// <summary>
+        /// Optional. Per-istio-service-identity admission rules. Istio service identity spec format: spiffe:///ns//sa/
+        /// or /ns//sa/ e.g. spiffe://example.com/ns/test-ns/sa/default
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("istioServiceIdentityAdmissionRules")]
+        public virtual System.Collections.Generic.IDictionary<string, AdmissionRule> IstioServiceIdentityAdmissionRules { get; set; }
+
+        /// <summary>
+        /// Optional. Per-kubernetes-namespace admission rules. K8s namespace spec format: [a-z.-]+, e.g.
+        /// 'some-namespace'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesNamespaceAdmissionRules")]
+        public virtual System.Collections.Generic.IDictionary<string, AdmissionRule> KubernetesNamespaceAdmissionRules { get; set; }
+
+        /// <summary>
+        /// Optional. Per-kubernetes-service-account admission rules. Service account spec format:
+        /// `namespace:serviceaccount`. e.g. 'test-ns:default'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesServiceAccountAdmissionRules")]
+        public virtual System.Collections.Generic.IDictionary<string, AdmissionRule> KubernetesServiceAccountAdmissionRules { get; set; }
+
+        /// <summary>
         /// Output only. The resource name, in the format `projects/*/policy`. There is at most one policy per project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
