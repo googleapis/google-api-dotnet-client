@@ -7618,6 +7618,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
         public virtual RetentionPolicyData RetentionPolicy { get; set; }
 
+        /// <summary>Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPZS")]
+        public virtual System.Nullable<bool> SatisfiesPZS { get; set; }
+
         /// <summary>The URI of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }

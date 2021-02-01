@@ -1791,21 +1791,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains additional info about the report operation.</summary>
-    public class ReportInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Operation.operation_id value from the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; }
-
-        /// <summary>Quota usage info when processing the `Operation`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quotaInfo")]
-        public virtual QuotaInfo QuotaInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for the Report method.</summary>
     public class ReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1844,15 +1829,6 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportErrors")]
         public virtual System.Collections.Generic.IList<ReportError> ReportErrors { get; set; }
-
-        /// <summary>
-        /// Quota usage for each quota release `Operation` request. Fully or partially failed quota release request may
-        /// or may not be present in `report_quota_info`. For example, a failed quota release request will have the
-        /// current quota usage info when precise quota library returns the info. A deadline exceeded quota request will
-        /// not have quota usage info. If there is no quota release request, report_quota_info will be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportInfos")]
-        public virtual System.Collections.Generic.IList<ReportInfo> ReportInfos { get; set; }
 
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]

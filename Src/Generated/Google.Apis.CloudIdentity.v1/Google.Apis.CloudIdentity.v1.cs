@@ -3180,6 +3180,63 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Dynamic group metadata like queries and status.</summary>
+    public class DynamicGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Memberships will be the union of all queries. Only one entry with USER resource is currently supported.
+        /// Customers can create up to 100 dynamic groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
+        public virtual System.Collections.Generic.IList<DynamicGroupQuery> Queries { get; set; }
+
+        /// <summary>Output only. Status of the dynamic group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual DynamicGroupStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a query on a resource.</summary>
+    public class DynamicGroupQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Query that determines the memberships of the dynamic group. Examples: All users with at least one
+        /// `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')`
+        /// All users with at least one location that has `area` of `foo` and `building_id` of `bar`.
+        /// `user.locations.exists(loc, loc.area=='foo' &amp;amp;&amp;amp; loc.building_id=='bar')`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Resource type for the Dynamic Group Query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The current status of a dynamic group along with timestamp.</summary>
+    public class DynamicGroupStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the dynamic group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>
+        /// The latest time at which the dynamic group is guaranteed to be in the given status. If status is
+        /// `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is
+        /// `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusTime")]
+        public virtual object StatusTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with
     /// an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique;
@@ -3203,6 +3260,17 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The `MembershipRole` expiry details.</summary>
+    public class ExpiryDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time at which the `MembershipRole` will expire.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3798,6 +3866,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Dynamic group metadata like queries and status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicGroupMetadata")]
+        public virtual DynamicGroupMetadata DynamicGroupMetadata { get; set; }
+
         /// <summary>Required. Immutable. The `EntityKey` of the `Group`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKey")]
         public virtual EntityKey GroupKey { get; set; }
@@ -4024,6 +4096,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// </summary>
     public class MembershipRole : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER`
+        /// `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryDetail")]
+        public virtual ExpiryDetail ExpiryDetail { get; set; }
+
         /// <summary>The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4050,6 +4129,13 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeRoles")]
         public virtual System.Collections.Generic.IList<string> RemoveRoles { get; set; }
+
+        /// <summary>
+        /// The `MembershipRole`s to be updated. Updating roles in the same request as adding or removing roles is not
+        /// supported. Must not be set if either `add_roles` or `remove_roles` is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateRolesParams")]
+        public virtual System.Collections.Generic.IList<UpdateMembershipRolesParams> UpdateRolesParams { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4196,6 +4282,48 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of an update to a `MembershipRole`.</summary>
+    public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified names of fields to update. May only contain the field `expiry_detail`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; }
+
+        /// <summary>
+        /// The `MembershipRole`s to be updated. Only `MEMBER` `MembershipRole` can currently be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipRole")]
+        public virtual MembershipRole MembershipRole { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UserInvitation to join a Google Workspace organization.</summary>
+    public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of invitation emails sent to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mailsSentCount")]
+        public virtual System.Nullable<long> MailsSentCount { get; set; }
+
+        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>State of the `UserInvitation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Time when the `UserInvitation` was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

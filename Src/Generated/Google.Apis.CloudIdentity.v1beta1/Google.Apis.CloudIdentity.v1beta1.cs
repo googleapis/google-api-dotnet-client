@@ -4481,6 +4481,29 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>UserInvitation to join a Google Workspace organization.</summary>
+    public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of invitation emails sent to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mailsSentCount")]
+        public virtual System.Nullable<long> MailsSentCount { get; set; }
+
+        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>State of the `UserInvitation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Time when the `UserInvitation` was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for wiping all data on the device.</summary>
     public class WipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {

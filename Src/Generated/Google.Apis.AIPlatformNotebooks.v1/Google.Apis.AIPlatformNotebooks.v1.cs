@@ -292,8 +292,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1
             {
                 this.service = service;
                 Environments = new EnvironmentsResource(service);
+                Executions = new ExecutionsResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+                Schedules = new SchedulesResource(service);
             }
 
             /// <summary>Gets the Environments resource.</summary>
@@ -531,6 +533,282 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Executions resource.</summary>
+            public virtual ExecutionsResource Executions { get; }
+
+            /// <summary>The "executions" collection of methods.</summary>
+            public class ExecutionsResource
+            {
+                private const string Resource = "executions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ExecutionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Execution body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                public class CreateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.Execution body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-defined unique ID of this execution.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ExecutionId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.Execution Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/executions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("executionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "executionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes execution</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes execution</summary>
+                public class DeleteRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/executions/{execution_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/executions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of executions</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{execution_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of executions</summary>
+                public class GetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Execution>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{execution_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/executions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists executions in a given project and location</summary>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists executions in a given project and location</summary>
+                public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.ListExecutionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter applied to resulting executions.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Sort by field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Maximum return size of the list call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A previous returned page token that can be used to continue listing from the last result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/executions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -1986,6 +2264,339 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 }
             }
 
+            /// <summary>Gets the Schedules resource.</summary>
+            public virtual SchedulesResource Schedules { get; }
+
+            /// <summary>The "schedules" collection of methods.</summary>
+            public class SchedulesResource
+            {
+                private const string Resource = "schedules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SchedulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Schedule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Scheduled Notebook in a given project and location.</summary>
+                public class CreateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.Schedule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-defined unique ID of this schedule.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("scheduleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ScheduleId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.Schedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schedules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("scheduleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scheduleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes schedule and all underlying jobs</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes schedule and all underlying jobs</summary>
+                public class DeleteRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of schedule</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of schedule</summary>
+                public class GetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Schedule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists schedules in a given project and location.</summary>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists schedules in a given project and location.</summary>
+                public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.ListSchedulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Filter applied to resulting schedules.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Field to order results by.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Maximum return size of the list call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A previous returned page token that can be used to continue listing from the last result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/schedules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Triggers execution of an existing schedule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                /// </param>
+                public virtual TriggerRequest Trigger(Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest body, string name)
+                {
+                    return new TriggerRequest(service, body, name);
+                }
+
+                /// <summary>Triggers execution of an existing schedule.</summary>
+                public class TriggerRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Trigger request.</summary>
+                    public TriggerRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.TriggerScheduleRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "trigger";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:trigger";
+
+                    /// <summary>Initializes Trigger parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/schedules/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -2346,6 +2957,120 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of a single executed notebook.</summary>
+    public class Execution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time the Execution was instantiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>A brief description of this execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>execute metadata including name, hardware spec, region, labels, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTemplate")]
+        public virtual ExecutionTemplate ExecutionTemplate { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the execute. Format:
+        /// `projects/{project_id}/locations/{location}/execution/{execution_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output notebook file generated by this execution</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputNotebookFile")]
+        public virtual string OutputNotebookFile { get; set; }
+
+        /// <summary>Output only. State of the underlying AI Platform job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Time the Execution was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The description a notebook execution workload.</summary>
+    public class ExecutionTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration (count and accelerator type) for hardware running notebook execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
+        public virtual SchedulerAcceleratorConfig AcceleratorConfig { get; set; }
+
+        /// <summary>
+        /// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can
+        /// be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImageUri")]
+        public virtual string ContainerImageUri { get; set; }
+
+        /// <summary>
+        /// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format:
+        /// gs://{project_id}/{folder}/{notebook_file_name} Ex:
+        /// gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputNotebookFile")]
+        public virtual string InputNotebookFile { get; set; }
+
+        /// <summary>
+        /// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is
+        /// an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index
+        /// between various types of executions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Specifies the type of virtual machine to use for your training job's master worker. You must specify this
+        /// field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this
+        /// field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` -
+        /// `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` -
+        /// `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` -
+        /// `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: -
+        /// `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` -
+        /// `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` -
+        /// `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for
+        /// training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for
+        /// training with TPU.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterType")]
+        public virtual string MasterType { get; set; }
+
+        /// <summary>
+        /// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format:
+        /// gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputNotebookFolder")]
+        public virtual string OutputNotebookFolder { get; set; }
+
+        /// <summary>
+        /// Parameters to be overridden in the notebook during execution. Ref
+        /// https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the
+        /// input notebook and pass them here in an YAML file. Ex:
+        /// gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paramsYamlFile")]
+        public virtual string ParamsYamlFile { get; set; }
+
+        /// <summary>Required. Scale tier of the hardware used for notebook execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
+        public virtual string ScaleTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
@@ -2662,6 +3387,31 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for listing scheduled notebook executions</summary>
+    public class ListExecutionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of returned instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executions")]
+        public virtual System.Collections.Generic.IList<Execution> Executions { get; set; }
+
+        /// <summary>
+        /// Page token that can be used to continue listing from the last result in the next list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Executions IDs that could not be reached. For example,
+        /// ['projects/{project_id}/location/{location}/executions/imagenet_test1',
+        /// 'projects/{project_id}/location/{location}/executions/classifier_train1'].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for listing notebook instances.</summary>
     public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2711,6 +3461,31 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for listing scheduled notebook job.</summary>
+    public class ListSchedulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Page token that can be used to continue listing from the last result in the next list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of returned instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedules")]
+        public virtual System.Collections.Generic.IList<Schedule> Schedules { get; set; }
+
+        /// <summary>
+        /// Schedules that could not be reached. For example,
+        /// ['projects/{project_id}/location/{location}/schedules/monthly_digest',
+        /// 'projects/{project_id}/location/{location}/schedules/weekly_sentiment'].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2936,6 +3711,81 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of a schedule.</summary>
+    public class Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Time the schedule was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of
+        /// week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
+        public virtual string CronSchedule { get; set; }
+
+        /// <summary>A brief description of this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’,
+        /// and underscores ‘_’.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Notebook Execution Template corresponding to this schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTemplate")]
+        public virtual ExecutionTemplate ExecutionTemplate { get; set; }
+
+        /// <summary>
+        /// Output only. The name of this schedule. Format:
+        /// `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database.
+        /// TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include
+        /// a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz.
+        /// For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as
+        /// GMT).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>Output only. TIme the schedule was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check
+    /// GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+    /// </summary>
+    public class SchedulerAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of cores of this accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<long> CoreCount { get; set; }
+
+        /// <summary>Type of this accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3090,6 +3940,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for created scheduled notebooks</summary>
+    public class TriggerScheduleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
