@@ -9262,6 +9262,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of
         /// the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        /// Cannot be set if de-identification is requested.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
         public virtual System.Nullable<long> BytesLimitPerFile { get; set; }
@@ -9269,7 +9270,8 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded
         /// down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of
-        /// bytes_limit_per_file and bytes_limit_per_file_percent can be specified.
+        /// bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification
+        /// is requested.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFilePercent")]
         public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; }
@@ -10534,7 +10536,9 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration to control the number of findings returned.</summary>
+    /// <summary>
+    /// Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
+    /// </summary>
     public class GooglePrivacyDlpV2FindingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration of findings limit given for specified infoTypes.</summary>
@@ -12497,7 +12501,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Schedule for triggeredJobs.</summary>
+    /// <summary>Schedule for inspect job triggers.</summary>
     public class GooglePrivacyDlpV2Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

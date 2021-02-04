@@ -3533,8 +3533,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     {
         /// <summary>
         /// Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted to the
-        /// Service Consumer Management service account. At least one binding must have the role `roles/owner`. Among
-        /// the list of members for `roles/owner`, at least one of them must be either the `user` or `group` type.
+        /// Service Consumer Management service account. At least one binding must have the role `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBindings")]
         public virtual System.Collections.Generic.IList<PolicyBinding> PolicyBindings { get; set; }

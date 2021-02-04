@@ -946,6 +946,25 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An aggregate of the statistics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics AggregateMetrics { get; set; }
+
+        /// <summary>The resource name of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
     /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
@@ -960,6 +979,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>The display name of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The most recently invoked evaluation for the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationReference LatestEvaluation { get; set; }
 
         /// <summary>
         /// The resource name of the processor version. Format:

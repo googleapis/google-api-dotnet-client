@@ -77,7 +77,7 @@ namespace Google.Apis.Drive.v3
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
-            /// <summary>View and manage its own configuration data in your Google Drive</summary>
+            /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public static string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
             /// <summary>
@@ -107,7 +107,7 @@ namespace Google.Apis.Drive.v3
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
             public const string Drive = "https://www.googleapis.com/auth/drive";
 
-            /// <summary>View and manage its own configuration data in your Google Drive</summary>
+            /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public const string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
             /// <summary>

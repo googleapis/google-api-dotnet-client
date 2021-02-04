@@ -425,12 +425,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Creates a new release which makes the content of the specified version actively display on the
+                    /// Creates a new release, which makes the content of the specified version actively display on the
                     /// appropriate URL(s).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                     {
@@ -438,7 +438,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Creates a new release which makes the content of the specified version actively display on the
+                    /// Creates a new release, which makes the content of the specified version actively display on the
                     /// appropriate URL(s).
                     /// </summary>
                     public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
@@ -452,14 +452,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The site that the release belongs to, in the format: sites/ site-name
+                        /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
-                        /// site-name in this version identifier must match the site-name in the `parent` parameter.
+                        ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID
+                        /// The SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter.
                         /// This query parameter must be empty if the `type` field in the request body is
                         /// `SITE_DISABLE`.
                         /// </summary>
@@ -506,7 +506,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>Lists the releases that have been created on the specified site.</summary>
                     /// <param name="parent">
-                    /// Required. The parent for which to list files, in the format: sites/site-name
+                    /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -524,16 +524,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The parent for which to list files, in the format: sites/site-name
+                        /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The page size to return. Defaults to 100.</summary>
+                        /// <summary>
+                        /// The maximum number of releases to return. The service may return a lower number if fewer
+                        /// releases exist than this maximum number. If unspecified, defaults to 100.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>The next_page_token from a previous request, if provided.</summary>
+                        /// <summary>
+                        /// A token from a previous call to `ListReleases` that tells the server where to resume
+                        /// listing.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1201,12 +1207,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Creates a new release which makes the content of the specified version actively display on the
+                /// Creates a new release, which makes the content of the specified version actively display on the
                 /// appropriate URL(s).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The site that the release belongs to, in the format: sites/ site-name
+                /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
@@ -1214,7 +1220,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Creates a new release which makes the content of the specified version actively display on the
+                /// Creates a new release, which makes the content of the specified version actively display on the
                 /// appropriate URL(s).
                 /// </summary>
                 public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
@@ -1228,14 +1234,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
-                    /// site-name in this version identifier must match the site-name in the `parent` parameter. This
+                    ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
+                    /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This
                     /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
@@ -1281,7 +1287,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Lists the releases that have been created on the specified site.</summary>
                 /// <param name="parent">
-                /// Required. The parent for which to list files, in the format: sites/site-name
+                /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1298,15 +1304,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
+                    /// <summary>
+                    /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The page size to return. Defaults to 100.</summary>
+                    /// <summary>
+                    /// The maximum number of releases to return. The service may return a lower number if fewer
+                    /// releases exist than this maximum number. If unspecified, defaults to 100.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The next_page_token from a previous request, if provided.</summary>
+                    /// <summary>
+                    /// A token from a previous call to `ListReleases` that tells the server where to resume listing.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1388,7 +1401,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
                     /// <param name="parent">
-                    /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                    /// Required. The version for which to list files, in the format: sites/
+                    /// SITE_NAME/versions/VERSION_ID
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1406,27 +1420,31 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                        /// Required. The version for which to list files, in the format: sites/
+                        /// SITE_NAME/versions/VERSION_ID
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The page size to return. Defaults to 1000.</summary>
+                        /// <summary>
+                        /// The maximum number of version files to return. The service may return a lower number if
+                        /// fewer version files exist than this maximum number. If unspecified, defaults to 1000.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The next_page_token from a previous request, if provided. This will be the encoded version
-                        /// of a firebase.hosting.proto.metadata.ListFilesPageToken.
+                        /// A token from a previous call to `ListVersionFiles` that tells the server where to resume
+                        /// listing.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>The type of files in the version that should be listed.</summary>
+                        /// <summary> The type of files that should be listed for the specified version.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-                        /// <summary>The type of files in the version that should be listed.</summary>
+                        /// <summary> The type of files that should be listed for the specified version.</summary>
                         public enum StatusEnum
                         {
                             /// <summary>The default status; should not be intentionally used.</summary>
@@ -1555,17 +1573,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
                 }
 
-                /// <summary>Creates a new version for a site.</summary>
+                /// <summary>Creates a new version for the specified site.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent to create the version for, in the format: sites/ site-name
+                /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new version for a site.</summary>
+                /// <summary>Creates a new version for the specified site.</summary>
                 public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1577,7 +1595,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent to create the version for, in the format: sites/ site-name
+                    /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1644,7 +1662,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Deletes the specified version.</summary>
                 /// <param name="name">
-                /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+                /// Required. The name of the version to be deleted, in the format: sites/ SITE_NAME/versions/VERSION_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1663,7 +1681,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The name of the version to be deleted, in the format: sites/
-                    /// site-name/versions/versionID
+                    /// SITE_NAME/versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1790,16 +1808,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Updates the specified metadata for a version. Note that this method will fail with
+                ///  Updates the specified metadata for the specified version. This method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
-                /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.
+                /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete)
+                /// to set the status of a version to `DELETED`.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
-                /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
-                /// endpoint.
+                /// The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID This name
+                /// is provided in the response body when you call [`CreateVersion`](sites.versions/create).
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
                 {
@@ -1807,10 +1824,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Updates the specified metadata for a version. Note that this method will fail with
+                ///  Updates the specified metadata for the specified version. This method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
-                /// version is currently from a `CREATED` status to a `FINALIZED` status. Use
-                /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version to `DELETED`.
+                /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete)
+                /// to set the status of a version to `DELETED`.
                 /// </summary>
                 public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
                 {
@@ -1823,9 +1840,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This
-                    /// name is provided in the response body when you call the
-                    /// [`CreateVersion`](../sites.versions/create) endpoint.
+                    /// The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID This
+                    /// name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1876,17 +1892,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
                 }
 
-                /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
+                /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
                 /// </param>
                 public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
                 {
                     return new PopulateFilesRequest(service, body, parent);
                 }
 
-                /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
+                /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
                 public class PopulateFilesRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesResponse>
                 {
                     /// <summary>Constructs a new PopulateFiles request.</summary>
@@ -1898,7 +1914,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                    /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2112,12 +2128,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Creates a new release which makes the content of the specified version actively display on the
+                /// Creates a new release, which makes the content of the specified version actively display on the
                 /// appropriate URL(s).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The site that the release belongs to, in the format: sites/ site-name
+                /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
@@ -2125,7 +2141,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Creates a new release which makes the content of the specified version actively display on the
+                /// Creates a new release, which makes the content of the specified version actively display on the
                 /// appropriate URL(s).
                 /// </summary>
                 public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
@@ -2139,14 +2155,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The site that the release belongs to, in the format: sites/ site-name
+                    /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
-                    /// site-name in this version identifier must match the site-name in the `parent` parameter. This
+                    ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
+                    /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This
                     /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
@@ -2192,7 +2208,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Lists the releases that have been created on the specified site.</summary>
                 /// <param name="parent">
-                /// Required. The parent for which to list files, in the format: sites/site-name
+                /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2209,15 +2225,22 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
+                    /// <summary>
+                    /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The page size to return. Defaults to 100.</summary>
+                    /// <summary>
+                    /// The maximum number of releases to return. The service may return a lower number if fewer
+                    /// releases exist than this maximum number. If unspecified, defaults to 100.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The next_page_token from a previous request, if provided.</summary>
+                    /// <summary>
+                    /// A token from a previous call to `ListReleases` that tells the server where to resume listing.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -2875,12 +2898,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            /// Creates a new release which makes the content of the specified version actively display on the
+            /// Creates a new release, which makes the content of the specified version actively display on the
             /// appropriate URL(s).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The site that the release belongs to, in the format: sites/ site-name
+            /// Required. The site to which the release belongs, in the format: sites/ SITE_NAME
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
             {
@@ -2888,7 +2911,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            /// Creates a new release which makes the content of the specified version actively display on the
+            /// Creates a new release, which makes the content of the specified version actively display on the
             /// appropriate URL(s).
             /// </summary>
             public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Release>
@@ -2901,13 +2924,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The site that the release belongs to, in the format: sites/ site-name</summary>
+                /// <summary>Required. The site to which the release belongs, in the format: sites/ SITE_NAME</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The unique identifier for a version, in the format: /sites/site-name /versions/versionID The
-                /// site-name in this version identifier must match the site-name in the `parent` parameter. This query
+                ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
+                /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This query
                 /// parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
@@ -2953,7 +2976,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>Lists the releases that have been created on the specified site.</summary>
             /// <param name="parent">
-            /// Required. The parent for which to list files, in the format: sites/site-name
+            /// Required. The site for which to list releases, in the format: sites/ SITE_NAME
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2970,15 +2993,20 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent for which to list files, in the format: sites/site-name</summary>
+                /// <summary>Required. The site for which to list releases, in the format: sites/ SITE_NAME</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The page size to return. Defaults to 100.</summary>
+                /// <summary>
+                /// The maximum number of releases to return. The service may return a lower number if fewer releases
+                /// exist than this maximum number. If unspecified, defaults to 100.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The next_page_token from a previous request, if provided.</summary>
+                /// <summary>
+                /// A token from a previous call to `ListReleases` that tells the server where to resume listing.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -3060,7 +3088,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
                 /// <param name="parent">
-                /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                /// Required. The version for which to list files, in the format: sites/ SITE_NAME/versions/VERSION_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3078,27 +3106,31 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The parent to list files for, in the format: sites/site-name /versions/versionID
+                    /// Required. The version for which to list files, in the format: sites/
+                    /// SITE_NAME/versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The page size to return. Defaults to 1000.</summary>
+                    /// <summary>
+                    /// The maximum number of version files to return. The service may return a lower number if fewer
+                    /// version files exist than this maximum number. If unspecified, defaults to 1000.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The next_page_token from a previous request, if provided. This will be the encoded version of a
-                    /// firebase.hosting.proto.metadata.ListFilesPageToken.
+                    /// A token from a previous call to `ListVersionFiles` that tells the server where to resume
+                    /// listing.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>The type of files in the version that should be listed.</summary>
+                    /// <summary> The type of files that should be listed for the specified version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatusEnum> Status { get; set; }
 
-                    /// <summary>The type of files in the version that should be listed.</summary>
+                    /// <summary> The type of files that should be listed for the specified version.</summary>
                     public enum StatusEnum
                     {
                         /// <summary>The default status; should not be intentionally used.</summary>
@@ -3222,17 +3254,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Creates a new version for a site.</summary>
+            /// <summary>Creates a new version for the specified site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent to create the version for, in the format: sites/ site-name
+            /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a new version for a site.</summary>
+            /// <summary>Creates a new version for the specified site.</summary>
             public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -3243,7 +3275,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent to create the version for, in the format: sites/ site-name</summary>
+                /// <summary>
+                /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3309,7 +3343,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>Deletes the specified version.</summary>
             /// <param name="name">
-            /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+            /// Required. The name of the version to be deleted, in the format: sites/ SITE_NAME/versions/VERSION_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -3327,7 +3361,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The name of the version to be deleted, in the format: sites/ site-name/versions/versionID
+                /// Required. The name of the version to be deleted, in the format: sites/ SITE_NAME/versions/VERSION_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3452,15 +3486,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            /// Updates the specified metadata for a version. Note that this method will fail with `FAILED_PRECONDITION`
-            /// in the event of an invalid state transition. The only valid transition for a version is currently from a
-            /// `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
-            /// status of a version to `DELETED`.
+            ///  Updates the specified metadata for the specified version. This method will fail with
+            /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
+            /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete) to
+            /// set the status of a version to `DELETED`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
-            /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create) endpoint.
+            /// The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID This name is
+            /// provided in the response body when you call [`CreateVersion`](sites.versions/create).
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
             {
@@ -3468,10 +3502,10 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            /// Updates the specified metadata for a version. Note that this method will fail with `FAILED_PRECONDITION`
-            /// in the event of an invalid state transition. The only valid transition for a version is currently from a
-            /// `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](../sites.versions/delete) to set the
-            /// status of a version to `DELETED`.
+            ///  Updates the specified metadata for the specified version. This method will fail with
+            /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
+            /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete) to
+            /// set the status of a version to `DELETED`.
             /// </summary>
             public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Version>
             {
@@ -3484,9 +3518,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
-                /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create)
-                /// endpoint.
+                /// The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID This name
+                /// is provided in the response body when you call [`CreateVersion`](sites.versions/create).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3537,17 +3570,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
+            /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+            /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
             /// </param>
             public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
             {
                 return new PopulateFilesRequest(service, body, parent);
             }
 
-            /// <summary>Adds content files to a version. Each file must be under 2 GB.</summary>
+            /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
             public class PopulateFilesRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesResponse>
             {
                 /// <summary>Constructs a new PopulateFiles request.</summary>
@@ -3559,7 +3592,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The version to add files to, in the format: sites/site-name /versions/versionID
+                /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3990,14 +4023,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A [`header`](/docs/hosting/full-config#headers) is an object that specifies a URL pattern that, if matched to
-    /// the request URL path, triggers Hosting to apply the specified custom response headers.
+    /// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if
+    /// matched to the request URL path, triggers Hosting to apply the specified custom response headers.
     /// </summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
-        /// path.
+        /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
@@ -4064,8 +4097,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     public class ListReleasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If there are additional releases remaining beyond the ones in this response, then supply this token in the
-        /// next [`list`](../sites.versions.files/list) call to continue with the next set of releases.
+        /// The pagination token, if more results exist beyond the ones in this response. Include this token in your
+        /// next call to `ListReleases`. Page tokens are short-lived and should not be stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4080,11 +4113,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
     public class ListVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list path/hashes in the specified version.</summary>
+        /// <summary> The list of paths to the hashes of the files in the specified version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<VersionFile> Files { get; set; }
 
-        /// <summary>The pagination token, if more results exist.</summary>
+        /// <summary>
+        /// The pagination token, if more results exist beyond the ones in this response. Include this token in your
+        /// next call to `ListVersionFiles`. Page tokens are short-lived and should not be stored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -4160,13 +4196,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request to populate a Version's Files.</summary>
     public class PopulateVersionFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A set of file paths to the hashes corresponding to assets that should be added to the version. Note that a
-        /// file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then
-        /// taking the SHA256 hash of the newly compressed file.
+        /// A set of file paths to the hashes corresponding to assets that should be added to the version. A file path
+        /// to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then taking
+        /// the SHA256 hash of the newly compressed file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IDictionary<string, string> Files { get; set; }
@@ -4177,15 +4212,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
     public class PopulateVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The content hashes of the specified files that need to be uploaded to the specified endpoint.
-        /// </summary>
+        /// <summary>The content hashes of the specified files that need to be uploaded to the specified URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadRequiredHashes")]
         public virtual System.Collections.Generic.IList<string> UploadRequiredHashes { get; set; }
 
         /// <summary>
         /// The URL to which the files should be uploaded, in the format:
-        /// "https://upload-firebasehosting.googleapis.com/upload/sites/site-name /versions/versionID/files". Perform a
+        /// "https://upload-firebasehosting.googleapis.com/upload/sites/SITE_NAME /versions/VERSION_ID/files" Perform a
         /// multipart `POST` of the Gzipped file contents to the URL using a forward slash and the hash of the file
         /// appended to the end.
         /// </summary>
@@ -4218,14 +4251,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL pattern that, if matched to the
-    /// request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+    /// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if
+    /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
     /// </summary>
     public class Redirect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
-        /// path.
+        /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
@@ -4254,8 +4287,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at
-    /// a particular time.
+    ///  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public
+    /// at a particular time.
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4266,8 +4299,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string Message { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier for the release, in the format: sites/ site-name/releases/releaseID This
-        /// name is provided in the response body when you call the [`CreateRelease`](sites.releases/create) endpoint.
+        /// Output only. The unique identifier for the release, in the format: sites/ SITE_NAME/releases/RELEASE_ID This
+        /// name is provided in the response body when you call [`CreateRelease`](sites.releases/create).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4296,8 +4329,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL pattern that, if matched to the request
-    /// URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+    /// A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if
+    /// matched to the request URL path, triggers Hosting to respond as if the service were given the specified
+    /// destination URL.
     /// </summary>
     public class Rewrite : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4310,8 +4344,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string Function { get; set; }
 
         /// <summary>
-        /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching) to match against the request URL
-        /// path.
+        /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to
+        /// match against the request URL path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("glob")]
         public virtual string Glob { get; set; }
@@ -4336,7 +4370,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// The configuration for how incoming requests to a site should be routed and processed before serving content. The
     /// URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the
     /// applicable configuration according to a specific [priority
-    /// order](/docs/hosting/full-config#hosting_priority_order).
+    /// order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
     /// </summary>
     public class ServingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4433,14 +4467,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A `Version` is the collection of configuration and [static files](sites.versions.files) that determine how a
-    /// site is displayed.
+    /// A `Version` is a configuration and a collection of static files which determine how a site is displayed.
     /// </summary>
     public class Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The configuration for the behavior of the site. This configuration exists in the
-        /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
+        /// [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ServingConfig Config { get; set; }
@@ -4481,8 +4514,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The unique identifier for a version, in the format: sites/site-name /versions/versionID This name is
-        /// provided in the response body when you call the [`CreateVersion`](../sites.versions/create) endpoint.
+        /// The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID This name is
+        /// provided in the response body when you call [`CreateVersion`](sites.versions/create).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4496,12 +4529,12 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual PreviewConfig Preview { get; set; }
 
         /// <summary>
-        /// The deploy status of a version. For a successful deploy, call the [`CreateVersion`](sites.versions/create)
-        /// endpoint to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles)
-        /// to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you
-        /// leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the
-        /// version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling the
-        /// [`DeleteVersion`](sites.versions/delete) endpoint.
+        /// The deploy status of a version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to
+        /// make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the
+        /// version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave
+        /// the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as
+        /// `ABANDONED`. You can also change the status of a version to `DELETED` by calling
+        /// [`DeleteVersion`](sites.versions/delete).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }

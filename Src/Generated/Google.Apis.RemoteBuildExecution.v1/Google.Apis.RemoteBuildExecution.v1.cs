@@ -1713,6 +1713,12 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     public class GoogleDevtoolsRemotebuildbotCommandDurations : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The time spent waiting for Container Manager to assign an asynchronous container for execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmWaitForAssignment")]
+        public virtual object CmWaitForAssignment { get; set; }
+
+        /// <summary>
         /// The time spent preparing the command to be run in a Docker container (includes pulling the Docker image, if
         /// necessary).
         /// </summary>
@@ -1791,6 +1797,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// <summary>The number of warnings reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWarnings")]
         public virtual System.Nullable<ulong> NumWarnings { get; set; }
+
+        /// <summary>Indicates whether an asynchronous container was used for execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedAsyncContainer")]
+        public virtual System.Nullable<bool> UsedAsyncContainer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

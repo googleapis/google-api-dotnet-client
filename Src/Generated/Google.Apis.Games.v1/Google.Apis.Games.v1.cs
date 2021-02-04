@@ -4554,7 +4554,7 @@ namespace Google.Apis.Games.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>The MIME type of the image.</summary>
+        /// <summary>Output only. The MIME type of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 

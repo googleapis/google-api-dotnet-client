@@ -891,7 +891,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
 
         /// <summary>
         /// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left
-        /// coordinate of the overlay object.
+        /// coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left
+        /// corner of the overlay animation in the top-left corner of the output video.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xy")]
         public virtual NormalizedCoordinate Xy { get; set; }
@@ -909,7 +910,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
 
         /// <summary>
         /// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left
-        /// coordinate of the overlay object.
+        /// coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left
+        /// corner of the overlay animation in the top-left corner of the output video.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xy")]
         public virtual NormalizedCoordinate Xy { get; set; }
@@ -1237,7 +1239,7 @@ namespace Google.Apis.Transcoder.v1beta1.Data
     /// <summary>Overlaid jpeg image.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Target image opacity. Valid values: `1` (solid, default), `0` (transparent).</summary>
+        /// <summary>Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
         public virtual System.Nullable<double> Alpha { get; set; }
 
@@ -1273,8 +1275,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual PreprocessingConfig PreprocessingConfig { get; set; }
 
         /// <summary>
-        /// URI of the media. It must be stored in Cloud Storage. Example `gs://bucket/inputs/file.mp4`. If empty the
-        /// value will be populated from `Job.input_uri`.
+        /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for
+        /// example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -1314,8 +1316,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
 
         /// <summary>
         /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or
-        /// `JobTemplate.config.inputs` when using template. URI of the media. It must be stored in Cloud Storage. For
-        /// example, `gs://bucket/inputs/file.mp4`.
+        /// `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in
+        /// duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; }
@@ -1572,6 +1574,45 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// [Output only] Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>[Output only] The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>[Output only] The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>[Output only] Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The origin URI.</summary>
     public class OriginUri : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1701,7 +1742,11 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("individualSegments")]
         public virtual System.Nullable<bool> IndividualSegments { get; set; }
 
-        /// <summary>Duration of the segments in seconds. The default is `"6.0s"`.</summary>
+        /// <summary>
+        /// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater
+        /// than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by
+        /// [`gopDuration`](#videostream).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentDuration")]
         public virtual object SegmentDuration { get; set; }
 
@@ -1896,17 +1941,21 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will
         /// default to the input frame rate if larger than the input frame rate. The API will generate an output FPS
         /// that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the
-        /// computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): | | (30) |
+        /// computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ``` | | (30) |
         /// (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 |
         /// 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | |
         /// 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20
         /// | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 |
-        /// 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 |
+        /// 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 | ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<double> FrameRate { get; set; }
 
-        /// <summary>Select the GOP size based on the specified duration. The default is `"3s"`.</summary>
+        /// <summary>
+        /// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be
+        /// less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must
+        /// be divisible by `gopDuration`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gopDuration")]
         public virtual object GopDuration { get; set; }
 

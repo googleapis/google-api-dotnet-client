@@ -1092,6 +1092,25 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An aggregate of the statistics for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics AggregateMetrics { get; set; }
+
+        /// <summary>The resource name of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
+        public virtual string Evaluation { get; set; }
+
+        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
     /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
@@ -1106,6 +1125,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The display name of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The most recently invoked evaluation for the processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationReference LatestEvaluation { get; set; }
 
         /// <summary>
         /// The resource name of the processor version. Format:
@@ -3651,9 +3674,17 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Request message for batch process document method.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The overall output config for batch process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentOutputConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentOutputConfig DocumentOutputConfig { get; set; }
+
         /// <summary>The input config for each single document in the batch process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig> InputConfigs { get; set; }
+
+        /// <summary>The input documents for batch process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig InputDocuments { get; set; }
 
         /// <summary>The overall output config for batch process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
@@ -3945,6 +3976,28 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Subject entity id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectId")]
         public virtual string SubjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config that controls the output of documents. All documents will be written as a JSON file.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output config to write the results to Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig GcsOutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration used when outputting documents.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage uri (a directory) of the output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4697,6 +4750,14 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
 
+        /// <summary>An inline document proto.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
+        public virtual GoogleCloudDocumentaiV1beta3Document InlineDocument { get; set; }
+
+        /// <summary>A raw document content (bytes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawDocument")]
+        public virtual GoogleCloudDocumentaiV1beta3RawDocument RawDocument { get; set; }
+
         /// <summary>Whether Human Review feature should be skipped for this request. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
@@ -4723,6 +4784,21 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The status of human review on the processed document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewStatus")]
         public virtual GoogleCloudDocumentaiV1beta3HumanReviewStatus HumanReviewStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Payload message of raw document content (bytes).</summary>
+    public class GoogleCloudDocumentaiV1beta3RawDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inline document content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>An IANA MIME type (RFC6838) indicating the nature and format of the [content].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4764,6 +4840,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The document that needs human review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
+
+        /// <summary>An inline document proto.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
+        public virtual GoogleCloudDocumentaiV1beta3Document InlineDocument { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

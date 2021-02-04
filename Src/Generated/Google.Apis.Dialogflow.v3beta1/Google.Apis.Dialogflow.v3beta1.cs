@@ -754,7 +754,465 @@ namespace Google.Apis.Dialogflow.v3beta1
                     public EnvironmentsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Experiments = new ExperimentsResource(service);
                         Sessions = new SessionsResource(service);
+                    }
+
+                    /// <summary>Gets the Experiments resource.</summary>
+                    public virtual ExperimentsResource Experiments { get; }
+
+                    /// <summary>The "experiments" collection of methods.</summary>
+                    public class ExperimentsResource
+                    {
+                        private const string Resource = "experiments";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ExperimentsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates an Experiment in the specified Environment.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The Agent to create an Environment for. Format:
+                        /// `projects//locations//agents//environments/`.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates an Experiment in the specified Environment.</summary>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The Agent to create an Environment for. Format:
+                            /// `projects//locations//agents//environments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/experiments";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes the specified Experiment.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the Environment to delete. Format:
+                        /// `projects//locations//agents//environments//experiments/`.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified Experiment.</summary>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the Environment to delete. Format:
+                            /// `projects//locations//agents//environments//experiments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/experiments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Retrieves the specified Experiment.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the Environment. Format:
+                        /// `projects//locations//agents//environments//experiments/`.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Retrieves the specified Experiment.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the Environment. Format:
+                            /// `projects//locations//agents//environments//experiments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/experiments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Returns the list of all experiments in the specified Environment.</summary>
+                        /// <param name="parent">
+                        /// Required. The Environment to list all environments for. Format:
+                        /// `projects//locations//agents//environments/`.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Returns the list of all experiments in the specified Environment.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListExperimentsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The Environment to list all environments for. Format:
+                            /// `projects//locations//agents//environments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of items to return in a single page. By default 20 and at most 100.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from a previous list request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/experiments";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the specified Experiment.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// The name of the experiment. Format:
+                        /// projects//locations//agents//environments//experiments/..
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the specified Experiment.</summary>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// The name of the experiment. Format:
+                            /// projects//locations//agents//environments//experiments/..
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Required. The mask to control which fields get updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/experiments/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Starts the specified Experiment. This rpc only changes the state of experiment from PENDING
+                        /// to RUNNING.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. Resource name of the experiment to start. Format:
+                        /// `projects//locations//agents//environments//experiments/`.
+                        /// </param>
+                        public virtual StartRequest Start(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StartExperimentRequest body, string name)
+                        {
+                            return new StartRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Starts the specified Experiment. This rpc only changes the state of experiment from PENDING
+                        /// to RUNNING.
+                        /// </summary>
+                        public class StartRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment>
+                        {
+                            /// <summary>Constructs a new Start request.</summary>
+                            public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StartExperimentRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the experiment to start. Format:
+                            /// `projects//locations//agents//environments//experiments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StartExperimentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "start";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}:start";
+
+                            /// <summary>Initializes Start parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/experiments/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Stops the specified Experiment. This rpc only changes the state of experiment from RUNNING
+                        /// to DONE.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. Resource name of the experiment to stop. Format:
+                        /// `projects//locations//agents//environments//experiments/`.
+                        /// </param>
+                        public virtual StopRequest Stop(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StopExperimentRequest body, string name)
+                        {
+                            return new StopRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Stops the specified Experiment. This rpc only changes the state of experiment from RUNNING
+                        /// to DONE.
+                        /// </summary>
+                        public class StopRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment>
+                        {
+                            /// <summary>Constructs a new Stop request.</summary>
+                            public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StopExperimentRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the experiment to stop. Format:
+                            /// `projects//locations//agents//environments//experiments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1StopExperimentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "stop";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}:stop";
+
+                            /// <summary>Initializes Stop parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/experiments/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Sessions resource.</summary>
@@ -7412,10 +7870,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -7785,10 +8242,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -7897,8 +8353,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
-        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
-        /// transition route groups with only condition specified.
+        /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
+        /// in the page with only condition specified. * TransitionRoutes defined in the transition route groups with
+        /// only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
@@ -8364,9 +8821,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ConversationTurn> ConversationTurns { get; set; }
 
-        /// <summary>
-        /// Optional. Environment where the test was run. If not set, it indicates the draft environment.
-        /// </summary>
+        /// <summary>Environment where the test was run. If not set, it indicates the draft environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -8568,6 +9023,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents intent information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The confidence of the matched intent. Values range from 0.0 (completely uncertain) to 1.0 (completely
+        /// certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Always present. The display name of the last matched intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Always present. The unique identifier of the last matched intent. Format:
         /// `projects//locations//agents//intents/`.
@@ -9073,6 +9539,14 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page
+        /// parameters and intent parameters referring to the entity type will be replaced by parameter name during
+        /// logging.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redact")]
+        public virtual System.Nullable<bool> Redact { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9207,6 +9681,182 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Name of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual string Event__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an experiment in an environment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1Experiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation time of this experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The definition of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definition")]
+        public virtual GoogleCloudDialogflowCxV3beta1ExperimentDefinition Definition { get; set; }
+
+        /// <summary>The human-readable description of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>End time of this experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Maximum number of days to run the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentLength")]
+        public virtual object ExperimentLength { get; set; }
+
+        /// <summary>Last update time of this experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>
+        /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Inference result of the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual GoogleCloudDialogflowCxV3beta1ExperimentResult Result { get; set; }
+
+        /// <summary>Start time of this experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>
+        /// The current state of the experiment. Transition triggered by Expriments.StartExperiment:
+        /// PENDING-&amp;gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&amp;gt;CANCELLED or
+        /// RUNNING-&amp;gt;CANCELLED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The history of updates to the experiment variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantsHistory")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1VariantsHistory> VariantsHistory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Definition of the experiment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExperimentDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition defines which subset of sessions are selected for this experiment. If not specified, all
+        /// sessions are eligible. E.g. "query_input.language_code=en" See the [conditions
+        /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The flow versions as the variants of this experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionVariants")]
+        public virtual GoogleCloudDialogflowCxV3beta1VersionVariants VersionVariants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The inference result which includes an objective metric to optimize and the confidence interval.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ExperimentResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The last time the experiment's stats data was updated. Will have default value if stats have never been
+        /// computed for this experiment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>Version variants and metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics> VersionMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within
+        /// this interval.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevel")]
+        public virtual System.Nullable<double> ConfidenceLevel { get; set; }
+
+        /// <summary>Lower bound of the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerBound")]
+        public virtual System.Nullable<double> LowerBound { get; set; }
+
+        /// <summary>The percent change between an experiment metric's value and the value for its control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
+        public virtual System.Nullable<double> Ratio { get; set; }
+
+        /// <summary>Upper bound of the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
+        public virtual System.Nullable<double> UpperBound { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metric and corresponding confidence intervals.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The probability that the treatment is better than all other treatments in the experiment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceInterval")]
+        public virtual GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval ConfidenceInterval { get; set; }
+
+        /// <summary>Count value of a metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<double> Count { get; set; }
+
+        /// <summary>Count-based metric type. Only one of type or count_type is specified in each Metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countType")]
+        public virtual string CountType { get; set; }
+
+        /// <summary>Ratio value of a metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
+        public virtual System.Nullable<double> Ratio { get; set; }
+
+        /// <summary>Ratio-based metric type. Only one of type or count_type is specified in each Metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version variant and associated metrics.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The metrics and corresponding confidence intervals in the inference result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetric> Metrics { get; set; }
+
+        /// <summary>Number of sessions that were allocated to this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionCount")]
+        public virtual System.Nullable<int> SessionCount { get; set; }
+
+        /// <summary>The name of the flow Version. Format: `projects//locations//agents//flows//versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9418,10 +10068,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -9895,10 +10544,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -10003,6 +10651,27 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Environment> Environments { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Experiments.ListExperiments.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListExperimentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of experiments. There will be a maximum number of items returned based on the page_size field in
+        /// the request. The list may in some cases be empty or contain fewer entries than page_size even if this isn't
+        /// the last page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1Experiment> Experiments { get; set; }
 
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.
@@ -10453,8 +11122,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
-        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
-        /// transition route groups with only condition specified.
+        /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
+        /// in the page with only condition specified. * TransitionRoutes defined in the transition route groups with
+        /// only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
@@ -11186,6 +11856,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Experiments.StartExperiment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1StartExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Experiments.StopExperiment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1StopExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of how speech should be synthesized.</summary>
     public class GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11302,9 +11986,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ConversationTurn> ConversationTurns { get; set; }
 
-        /// <summary>
-        /// Optional. Environment where the test was run. If not set, it indicates the draft environment.
-        /// </summary>
+        /// <summary>Environment where the test was run. If not set, it indicates the draft environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -11601,6 +12283,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The history of variants update.</summary>
+    public class GoogleCloudDialogflowCxV3beta1VariantsHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Update time of the variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The flow versions as the variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionVariants")]
+        public virtual GoogleCloudDialogflowCxV3beta1VersionVariants VersionVariants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a version of a flow.</summary>
     public class GoogleCloudDialogflowCxV3beta1Version : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11635,6 +12332,39 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of flow version variants.</summary>
+    public class GoogleCloudDialogflowCxV3beta1VersionVariants : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of flow version variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant> Variants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single flow version with specified traffic allocation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the variant is for the control group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isControlGroup")]
+        public virtual System.Nullable<bool> IsControlGroup { get; set; }
+
+        /// <summary>
+        /// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single
+        /// flow must sum up to 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficAllocation")]
+        public virtual System.Nullable<float> TrafficAllocation { get; set; }
+
+        /// <summary>The name of the flow version. Format: `projects//locations//agents//flows//versions/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11778,6 +12508,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents intent information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The confidence of the matched intent. Values range from 0.0 (completely uncertain) to 1.0 (completely
+        /// certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Always present. The display name of the last matched intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Always present. The unique identifier of the last matched intent. Format:
         /// `projects//locations//agents//intents/`.

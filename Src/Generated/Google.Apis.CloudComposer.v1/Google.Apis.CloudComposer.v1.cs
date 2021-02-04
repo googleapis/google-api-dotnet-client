@@ -1070,6 +1070,20 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The encryption options for the Cloud Composer environment and its dependencies.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be
+        /// updated. If not specified, Google-managed key will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An environment for running orchestration tasks.</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1140,6 +1154,12 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
         public virtual DatabaseConfig DatabaseConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>Output only. The Kubernetes Engine cluster used to run this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
@@ -1356,10 +1376,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>
         /// Optional. The Compute Engine network to be used for machine communications, specified as a [relative
         /// resource name](/apis/design/resource_names#relative_resource_name). For example:
-        /// "projects/{projectId}/global/networks/{networkId}". [Shared VPC](/vpc/docs/shared-vpc) is not currently
-        /// supported. The network must belong to the environment's project. If unspecified, the "default" network ID in
-        /// the environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is
-        /// provided, `nodeConfig.subnetwork` must also be provided.
+        /// "projects/{projectId}/global/networks/{networkId}". If unspecified, the "default" network ID in the
+        /// environment's project is used. If a [Custom Subnet Network](/vpc/docs/vpc#vpc_networks_and_subnets) is
+        /// provided, `nodeConfig.subnetwork` must also be provided. For [Shared VPC](/vpc/docs/shared-vpc) subnetwork
+        /// requirements, see `nodeConfig.subnetwork`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }

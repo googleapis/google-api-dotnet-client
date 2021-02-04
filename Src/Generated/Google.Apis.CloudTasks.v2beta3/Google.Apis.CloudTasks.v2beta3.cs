@@ -940,9 +940,8 @@ namespace Google.Apis.CloudTasks.v2beta3
 
                     /// <summary>
                     /// Optional. Read mask is used for a more granular control over what the API returns. If the mask
-                    /// is not present all fields will be returned except [Queue.stats], if the mask is set to "*" all
-                    /// fields including [Queue.stats] will be returned, otherwise only the fields explicitly specified
-                    /// in the mask will be returned.
+                    /// is not present all fields will be returned except [Queue.stats]. [Queue.stats] will be returned
+                    /// only if it was explicitly specified in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
@@ -1102,10 +1101,9 @@ namespace Google.Apis.CloudTasks.v2beta3
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Optional. Read mask is used for a more granular control on the queues that the API returns. If
-                    /// the mask is not present all fields will be returned except [Queue.stats], if the mask is set to
-                    /// "*" all fields including [Queue.stats] will be returned, otherwise only the fields explicitly
-                    /// specified in the mask will be returned.
+                    /// Optional. Read mask is used for a more granular control over what the API returns. If the mask
+                    /// is not present all fields will be returned except [Queue.stats]. [Queue.stats] will be returned
+                    /// only if it was explicitly specified in the mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
