@@ -5006,10 +5006,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -5379,10 +5378,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -5491,8 +5489,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
-        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
-        /// transition route groups with only condition specified.
+        /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
+        /// in the page with only condition specified. * TransitionRoutes defined in the transition route groups with
+        /// only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
@@ -5958,9 +5957,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ConversationTurn> ConversationTurns { get; set; }
 
-        /// <summary>
-        /// Optional. Environment where the test was run. If not set, it indicates the draft environment.
-        /// </summary>
+        /// <summary>Environment where the test was run. If not set, it indicates the draft environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -6162,6 +6159,17 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents intent information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The confidence of the matched intent. Values range from 0.0 (completely uncertain) to 1.0 (completely
+        /// certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Always present. The display name of the last matched intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Always present. The unique identifier of the last matched intent. Format:
         /// `projects//locations//agents//intents/`.
@@ -6559,10 +6567,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -6932,10 +6939,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Nullable<bool> IsList { get; set; }
 
         /// <summary>
-        /// Indicates whether the parameter content should be redacted in text and audio. If the flag is set to true,
-        /// the parameter content will be replaced by parameter name in both request and response. Note: the parameter
-        /// content is subject to redaction if either parameter level redaction or entity type level redaction is
-        /// enabled.
+        /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter
+        /// content will be replaced by parameter name during logging. Note: the parameter content is subject to
+        /// redaction if either parameter level redaction or entity type level redaction is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redact")]
         public virtual System.Nullable<bool> Redact { get; set; }
@@ -7044,8 +7050,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the
         /// following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in
         /// the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified.
-        /// * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the
-        /// transition route groups with only condition specified.
+        /// * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined
+        /// in the page with only condition specified. * TransitionRoutes defined in the transition route groups with
+        /// only condition specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TransitionRoute> TransitionRoutes { get; set; }
@@ -7511,9 +7518,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationTurns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ConversationTurn> ConversationTurns { get; set; }
 
-        /// <summary>
-        /// Optional. Environment where the test was run. If not set, it indicates the draft environment.
-        /// </summary>
+        /// <summary>Environment where the test was run. If not set, it indicates the draft environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
@@ -7715,6 +7720,17 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents intent information communicated to the webhook.</summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The confidence of the matched intent. Values range from 0.0 (completely uncertain) to 1.0 (completely
+        /// certain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>Always present. The display name of the last matched intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>
         /// Always present. The unique identifier of the last matched intent. Format:
         /// `projects//locations//agents//intents/`.

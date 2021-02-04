@@ -19069,18 +19069,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>
         /// The goal amount, in micros of the advertiser's currency. Applicable when performance_goal_type is one of: *
         /// `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` *
-        /// `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_VCPM` For example 1500000 represents 1.5 standard
-        /// units of the currency.
+        /// `PERFORMANCE_GOAL_TYPE_CPIAVC` For example 1500000 represents 1.5 standard units of the currency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalAmountMicros")]
         public virtual System.Nullable<long> PerformanceGoalAmountMicros { get; set; }
 
         /// <summary>
         /// The decimal representation of the goal percentage in micros. Applicable when performance_goal_type is one
-        /// of: * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` * `PERFORMANCE_GOAL_TYPE_CVR_CLICKS`
-        /// * `PERFORMANCE_GOAL_TYPE_CVR_IMPRESSIONS` * `PERFORMANCE_GOAL_TYPE_VTR` *
-        /// `PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE` * `PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE` For example,
-        /// 70000 represents 7% (decimal 0.07).
+        /// of: * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` For example, 70000 represents 7%
+        /// (decimal 0.07).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceGoalPercentageMicros")]
         public virtual System.Nullable<long> PerformanceGoalPercentageMicros { get; set; }

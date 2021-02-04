@@ -1158,6 +1158,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
         public virtual System.Nullable<int> TargetSdkVersion { get; set; }
 
+        /// <summary>Permissions declared to be used by the application</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usesPermission")]
+        public virtual System.Collections.Generic.IList<string> UsesPermission { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

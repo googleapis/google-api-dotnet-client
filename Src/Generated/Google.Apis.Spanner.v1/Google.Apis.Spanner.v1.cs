@@ -4533,8 +4533,8 @@ namespace Google.Apis.Spanner.v1.Data
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The backup will contain an externally consistent copy of the database at the timestamp
-        /// specified by `create_time`. `create_time` is approximately the time the CreateBackup request is received.
+        /// Output only. The time the CreateBackup request is received. If the request does not specify `version_time`,
+        /// the `version_time` of the backup will be equivalent to the `create_time`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4583,6 +4583,14 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// The backup will contain an externally consistent copy of the database at the timestamp specified by
+        /// `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time`
+        /// of the backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionTime")]
+        public virtual object VersionTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4594,16 +4602,21 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
         public virtual string Backup { get; set; }
 
-        /// <summary>
-        /// The backup contains an externally consistent copy of `source_database` at the timestamp specified by
-        /// `create_time`.
-        /// </summary>
+        /// <summary>The time the CreateBackup request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>Name of the database the backup was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDatabase")]
         public virtual string SourceDatabase { get; set; }
+
+        /// <summary>
+        /// The backup contains an externally consistent copy of `source_database` at the timestamp specified by
+        /// `version_time`. If the CreateBackup request did not specify `version_time`, the `version_time` of the backup
+        /// is equivalent to the `create_time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionTime")]
+        public virtual object VersionTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4737,6 +4750,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
         /// <summary>
+        /// If `true`, then statistics related to the transaction will be included in the CommitResponse. Default value
+        /// is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnCommitStats")]
+        public virtual System.Nullable<bool> ReturnCommitStats { get; set; }
+
+        /// <summary>
         /// Execute mutations in a temporary transaction. Note that unlike commit of a previously-started transaction,
         /// commit with a temporary transaction is non-idempotent. That is, if the `CommitRequest` is sent to Cloud
         /// Spanner more than once (for instance, due to retries in the application, or in the transport library), it is
@@ -4757,9 +4777,34 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The response for Commit.</summary>
     public class CommitResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The statistics about this Commit. Not returned by default. For more information, see
+        /// CommitRequest.return_commit_stats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitStats")]
+        public virtual CommitStats CommitStats { get; set; }
+
         /// <summary>The Cloud Spanner timestamp at which the transaction committed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamp")]
         public virtual object CommitTimestamp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional statistics about a commit.</summary>
+    public class CommitStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The total number of mutations for the transaction. Knowing the `mutation_count` value can help you maximize
+        /// the number of mutations in a transaction and minimize the number of API round trips. You can also monitor
+        /// this value to prevent transactions from exceeding the system
+        /// [limit](http://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If
+        /// the number of mutations exceeds the limit, the server returns
+        /// [INVALID_ARGUMENT](http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationCount")]
+        public virtual System.Nullable<long> MutationCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4894,6 +4939,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. Earliest timestamp at which older versions of the data can be read.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestVersionTime")]
+        public virtual object EarliestVersionTime { get; set; }
+
         /// <summary>
         /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as
         /// specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the
@@ -4911,6 +4960,14 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Output only. The current database state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The period in which Cloud Spanner retains all versions of data for the database. This is same
+        /// as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if
+        /// not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionRetentionPeriod")]
+        public virtual string VersionRetentionPeriod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

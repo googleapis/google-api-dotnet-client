@@ -4909,6 +4909,13 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
+        /// specified.  - "outOfOffice" - An out-of-office event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
         /// <summary>Extended properties of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedProperties")]
         public virtual ExtendedPropertiesData ExtendedProperties { get; set; }

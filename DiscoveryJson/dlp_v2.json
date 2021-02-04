@@ -3367,7 +3367,7 @@
    }
   }
  }, 
- "revision": "20210109", 
+ "revision": "20210131", 
  "rootUrl": "https://dlp.googleapis.com/", 
  "schemas": {
   "GooglePrivacyDlpV2Action": {
@@ -3813,12 +3813,12 @@
    "id": "GooglePrivacyDlpV2CloudStorageOptions", 
    "properties": {
     "bytesLimitPerFile": {
-     "description": "Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.", 
+     "description": "Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.", 
      "format": "int64", 
      "type": "string"
     }, 
     "bytesLimitPerFilePercent": {
-     "description": "Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified.", 
+     "description": "Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.", 
      "format": "int32", 
      "type": "integer"
     }, 
@@ -4979,7 +4979,7 @@
    "type": "object"
   }, 
   "GooglePrivacyDlpV2FindingLimits": {
-   "description": "Configuration to control the number of findings returned.", 
+   "description": "Configuration to control the number of findings returned. Cannot be set if de-identification is requested.", 
    "id": "GooglePrivacyDlpV2FindingLimits", 
    "properties": {
     "maxFindingsPerInfoType": {
@@ -6814,7 +6814,7 @@
    "type": "object"
   }, 
   "GooglePrivacyDlpV2Schedule": {
-   "description": "Schedule for triggeredJobs.", 
+   "description": "Schedule for inspect job triggers.", 
    "id": "GooglePrivacyDlpV2Schedule", 
    "properties": {
     "recurrencePeriodDuration": {

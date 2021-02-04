@@ -710,7 +710,6 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
 {
     /// <summary>
     /// Attributes of the product. For more information, see https://support.google.com/manufacturers/answer/6124116.
-    /// Next tag: 48
     /// </summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {

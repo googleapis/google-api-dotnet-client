@@ -74,13 +74,13 @@ namespace Google.Apis.Classroom.v1
             /// <summary>View announcements in Google Classroom</summary>
             public static string ClassroomAnnouncementsReadonly = "https://www.googleapis.com/auth/classroom.announcements.readonly";
 
-            /// <summary>Manage your Google Classroom classes</summary>
+            /// <summary>See, edit, create, and permanently delete your Google Classroom classes</summary>
             public static string ClassroomCourses = "https://www.googleapis.com/auth/classroom.courses";
 
             /// <summary>View your Google Classroom classes</summary>
             public static string ClassroomCoursesReadonly = "https://www.googleapis.com/auth/classroom.courses.readonly";
 
-            /// <summary>Manage your course work and view your grades in Google Classroom</summary>
+            /// <summary>See, create and edit coursework items including assignments, questions, and grades</summary>
             public static string ClassroomCourseworkMe = "https://www.googleapis.com/auth/classroom.coursework.me";
 
             /// <summary>View your course work and grades in Google Classroom</summary>
@@ -151,13 +151,13 @@ namespace Google.Apis.Classroom.v1
             /// <summary>View announcements in Google Classroom</summary>
             public const string ClassroomAnnouncementsReadonly = "https://www.googleapis.com/auth/classroom.announcements.readonly";
 
-            /// <summary>Manage your Google Classroom classes</summary>
+            /// <summary>See, edit, create, and permanently delete your Google Classroom classes</summary>
             public const string ClassroomCourses = "https://www.googleapis.com/auth/classroom.courses";
 
             /// <summary>View your Google Classroom classes</summary>
             public const string ClassroomCoursesReadonly = "https://www.googleapis.com/auth/classroom.courses.readonly";
 
-            /// <summary>Manage your course work and view your grades in Google Classroom</summary>
+            /// <summary>See, create and edit coursework items including assignments, questions, and grades</summary>
             public const string ClassroomCourseworkMe = "https://www.googleapis.com/auth/classroom.coursework.me";
 
             /// <summary>View your course work and grades in Google Classroom</summary>

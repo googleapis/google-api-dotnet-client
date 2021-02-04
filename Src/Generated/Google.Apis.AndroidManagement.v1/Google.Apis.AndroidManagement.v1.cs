@@ -1787,6 +1787,13 @@ namespace Google.Apis.AndroidManagement.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// This feature is not generally available yet. Whether the managed Google Play Agreement is presented and
+            /// agreed.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("agreementAccepted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AgreementAccepted { get; set; }
+
             /// <summary>The enterprise token appended to the callback URL.</summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
@@ -1818,6 +1825,14 @@ namespace Google.Apis.AndroidManagement.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("agreementAccepted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "agreementAccepted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("enterpriseToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "enterpriseToken",
@@ -1841,6 +1856,57 @@ namespace Google.Apis.AndroidManagement.v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>This feature is not generally available yet. Deletes an enterprise.</summary>
+        /// <param name="name">
+        /// This feature is not generally available yet. The name of the enterprise in the form
+        /// enterprises/{enterpriseId}.
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>This feature is not generally available yet. Deletes an enterprise.</summary>
+        public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// This feature is not generally available yet. The name of the enterprise in the form
+            /// enterprises/{enterpriseId}.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^enterprises/[^/]+$",
                 });
             }
         }
@@ -1886,6 +1952,121 @@ namespace Google.Apis.AndroidManagement.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^enterprises/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial
+        /// views are returned.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial
+        /// views are returned.
+        /// </summary>
+        public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListEnterprisesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// This feature is not generally available yet. The requested page size. The actual page size may be fixed
+            /// to a min or max value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// This feature is not generally available yet. A token identifying a page of results returned by the
+            /// server.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Required. This feature is not generally available yet. The ID of the Cloud project of the EMM the
+            /// enterprises belongs to.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
+            /// <summary>
+            /// This feature is not generally available yet. View that specify that partial response should be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// This feature is not generally available yet. View that specify that partial response should be returned.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>
+                /// This feature is not generally available yet. The API will default to the BASIC view for the List
+                /// method.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("ENTERPRISE_VIEW_UNSPECIFIED")]
+                ENTERPRISEVIEWUNSPECIFIED,
+
+                /// <summary>
+                /// This feature is not generally available yet. Includes name and enterprise_display_name fields.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/enterprises";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -2192,7 +2373,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleTrackIds")]
         public virtual System.Collections.Generic.IList<string> AccessibleTrackIds { get; set; }
 
-        /// <summary>This feature is not generally available.</summary>
+        /// <summary>This feature is not generally available yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
         public virtual string AutoUpdateMode { get; set; }
 
@@ -2492,6 +2673,48 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageNamesToDisable")]
         public virtual System.Collections.Generic.IList<string> PackageNamesToDisable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contact details for LaForge enterprises.</summary>
+    public class ContactInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Email address for a point of contact, which will be used to send important announcements related to managed
+        /// Google Play.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; }
+
+        /// <summary>The email of the data protection officer. The email is validated but not verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionOfficerEmail")]
+        public virtual string DataProtectionOfficerEmail { get; set; }
+
+        /// <summary>The name of the data protection officer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionOfficerName")]
+        public virtual string DataProtectionOfficerName { get; set; }
+
+        /// <summary>
+        /// The phone number of the data protection officer The phone number is validated but not verified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataProtectionOfficerPhone")]
+        public virtual string DataProtectionOfficerPhone { get; set; }
+
+        /// <summary>The email of the EU representative. The email is validated but not verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euRepresentativeEmail")]
+        public virtual string EuRepresentativeEmail { get; set; }
+
+        /// <summary>The name of the EU representative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euRepresentativeName")]
+        public virtual string EuRepresentativeName { get; set; }
+
+        /// <summary>
+        /// The phone number of the EU representative. The phone number is validated but not verified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("euRepresentativePhone")]
+        public virtual string EuRepresentativePhone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2910,6 +3133,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoApprovalEnabled")]
         public virtual System.Nullable<bool> AppAutoApprovalEnabled { get; set; }
 
+        /// <summary>
+        /// This feature is not generally available yet. The enterprise contact info of an EMM owned enterprise
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactInfo")]
+        public virtual ContactInfo ContactInfo { get; set; }
+
         /// <summary>The types of Google Pub/Sub notifications enabled for the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledNotificationTypes")]
         public virtual System.Collections.Generic.IList<string> EnabledNotificationTypes { get; set; }
@@ -3223,6 +3452,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; }
 
         /// <summary>If there are more results, a token to retrieve next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This feature is not generally available yet. Response to a request to list enterprises.</summary>
+    public class ListEnterprisesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This feature is not generally available yet. The list of enterprises.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterprises")]
+        public virtual System.Collections.Generic.IList<Enterprise> Enterprises { get; set; }
+
+        /// <summary>
+        /// This feature is not generally available yet. If there are more results, a token to retrieve next page of
+        /// results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
