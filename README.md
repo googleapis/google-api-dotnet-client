@@ -60,7 +60,7 @@ To make it easier for you to develop with the Google APIs using the Google API c
 
 # API-specific Libraries
 
-The generator that produces the source code for API-specific libraries is in `ClientGenerator/`. The most recently generated code is available in `Src/Generated/`, and the discovery documents from which that code was generated are in `DiscoveryJson/`.
+The generator that produces the source code for API-specific libraries is in https://github.com/googleapis/gapic-generator-csharp. The most recently generated code is available in `Src/Generated/`, and the discovery documents from which that code was generated are in `DiscoveryJson/`.
 
 # Support Forums
 

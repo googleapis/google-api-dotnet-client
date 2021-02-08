@@ -27,11 +27,6 @@ CODE_GENERATION_DIR=$(pwd)/Src/Generated
 # Directory containing tools used during the build.
 TOOLS_DIR=$(pwd)/Src/Tools
 
-# Which generator to use - "python" (in this repo) or "csharp"
-# (from https://github.com/googleapis/gapic-generator-csharp).
-# This can be forced using --use_csharp_generator or --use_python_generator
-GENERATOR_TYPE=csharp
-
 # Forces sourcelink to work during the build.
 export CI=true
 
@@ -79,12 +74,6 @@ while [[ $# -gt 0 ]]; do
       SKIPGENERATE=TRUE
       SKIPBUILD=TRUE
       ;;
-    --use_csharp_generator)
-      GENERATOR_TYPE=csharp
-      ;;
-    --use_python_generator)
-      GENERATOR_TYPE=python
-      ;;
     *)
       echo ERROR: Invalid argument to BuildGenerated.sh: \'$key\'
       exit 1
@@ -92,10 +81,7 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-if [[ $GENERATOR_TYPE == "csharp" ]]
-then
-  install_csharp_generator
-fi
+install_csharp_generator
 
 if [ -z ${SKIPDOWNLOAD+x} ]; then
   # Delete all discovery docs
@@ -148,15 +134,7 @@ if [ -z ${SKIPGENERATE+x} ]; then
         ;;
       *)
         echo Generating: \'$name\'
-        if [[ $GENERATOR_TYPE == "python" ]]
-        then
-          $PYTHON2 -uR $(pwd)/ClientGenerator/src/googleapis/codegen/generate_library.py --input="$jsonfile" --language=csharp --output_dir="$CODE_GENERATION_DIR"
-        elif [[ $GENERATOR_TYPE == "csharp" ]]
-        then
-          run_csharp_generator "$jsonfile" "$CODE_GENERATION_DIR"
-        else
-          echo "Unknown generator type $GENERATOR_TYPE"
-        fi
+        run_csharp_generator "$jsonfile" "$CODE_GENERATION_DIR"
         if [[ -f $(pwd)/PostGeneration/$name.sh ]]
         then
           echo "Running post-generation step for $name"
