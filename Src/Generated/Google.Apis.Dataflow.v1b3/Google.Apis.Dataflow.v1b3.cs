@@ -6269,6 +6269,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceKmsKeyName")]
         public virtual string ServiceKmsKeyName { get; set; }
 
+        /// <summary>Output only. The shuffle mode used for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleMode")]
+        public virtual string ShuffleMode { get; set; }
+
         /// <summary>
         /// The prefix of the resources the system should use for temporary storage. The system will append the suffix
         /// "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting
@@ -8258,6 +8262,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>A docker container image that resides in Google Container Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
         public virtual string ContainerImage { get; set; }
+
+        /// <summary>
+        /// Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentId")]
+        public virtual string EnvironmentId { get; set; }
 
         /// <summary>
         /// If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If

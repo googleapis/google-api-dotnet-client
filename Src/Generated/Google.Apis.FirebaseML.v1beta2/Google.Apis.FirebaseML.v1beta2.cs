@@ -408,6 +408,63 @@ namespace Google.Apis.FirebaseML.v1beta2
                 }
             }
 
+            /// <summary>
+            /// Gets Download information for a model. This is meant for downloading model resources onto devices. It
+            /// gives very limited information about the model.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the model to download. The name must have the form
+            /// `projects/{project}/models/{model}`
+            /// </param>
+            public virtual DownloadRequest Download(string name)
+            {
+                return new DownloadRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets Download information for a model. This is meant for downloading model resources onto devices. It
+            /// gives very limited information about the model.
+            /// </summary>
+            public class DownloadRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v1beta2.Data.DownloadModelResponse>
+            {
+                /// <summary>Constructs a new Download request.</summary>
+                public DownloadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the model to download. The name must have the form
+                /// `projects/{project}/models/{model}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "download";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta2/{+name}:download";
+
+                /// <summary>Initializes Download parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/models/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets a model resource.</summary>
             /// <param name="name">
             /// Required. The name of the model to get. The name must have the form
@@ -690,6 +747,32 @@ namespace Google.Apis.FirebaseML.v1beta2
 }
 namespace Google.Apis.FirebaseML.v1beta2.Data
 {
+    /// <summary>The response for downloading a model to device.</summary>
+    public class DownloadModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A download URI for the model/zip file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
+        public virtual string DownloadUri { get; set; }
+
+        /// <summary>
+        /// Output only. The time that the download URI link expires. If the link has expired, the REST call must be
+        /// repeated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>Output only. The format of the model being downloaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelFormat")]
+        public virtual string ModelFormat { get; set; }
+
+        /// <summary>Output only. The size of the file(s), if this information is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc

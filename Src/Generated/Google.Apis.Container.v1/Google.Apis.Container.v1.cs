@@ -6634,6 +6634,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
 
+        /// <summary>Notification configuration of the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
+        public virtual NotificationConfig NotificationConfig { get; set; }
+
         /// <summary>Configuration for private cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
         public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
@@ -6850,6 +6854,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeVersion")]
         public virtual string DesiredNodeVersion { get; set; }
+
+        /// <summary>The desired notification configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNotificationConfig")]
+        public virtual NotificationConfig DesiredNotificationConfig { get; set; }
 
         /// <summary>The desired private cluster configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
@@ -8041,6 +8049,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>NotificationConfig is the configuration of notifications.</summary>
+    public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Notification config for Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsub")]
+        public virtual PubSub Pubsub { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// This operation resource represents operations that may have happened or are happening on the cluster. All fields
     /// are output only.
@@ -8198,6 +8217,24 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Whenever master is accessible globally or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pub/Sub specific notification config.</summary>
+    public class PubSub : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable notifications for Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is
+        /// `projects/{project}/topics/{topic}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
