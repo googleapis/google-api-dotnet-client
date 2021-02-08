@@ -24,8 +24,9 @@ install_csharp_generator() {
 # Expected arguments:
 # - Discovery doc
 # - Output directory (a subdirectory will be created under this)
+# - Features file
 run_csharp_generator() {
   dotnet run --no-build -c Release \
     -p $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest \
-    -- "$1" "$2"
+    -- "$1" "$2" "$3"
 }
