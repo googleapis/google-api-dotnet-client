@@ -1,5 +1,0 @@
-include CHANGES LICENSE README setup.py ez_setup.py MANIFEST.in
-include *.sh
-recursive-include src *
-
-
