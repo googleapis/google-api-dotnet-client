@@ -763,8 +763,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string Permission { get; set; }
 
         /// <summary>
-        /// The resource being accessed, as a REST-style string. For example:
-        /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
+        /// The resource being accessed, as a REST-style or cloud resource string. For example:
+        /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or projects/PROJECTID/datasets/DATASETID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
@@ -787,6 +787,10 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>Describes attributes about the operation being executed by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual AttributeContext Attributes { get; set; }
+
+        /// <summary>Optional. Contains a comma-separated list of flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
+        public virtual string Flags { get; set; }
 
         /// <summary>Describes the resources and the policies applied to each resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]

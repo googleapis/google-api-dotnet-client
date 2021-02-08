@@ -3003,8 +3003,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// separate different hierarchies. If '&amp;gt;' is part of the category name, please replace it with other
         /// character(s). Category pages include special pages such as sales or promotions. For instance, a special sale
         /// page may have the category hierarchy: "pageCategories" : ["Sales &amp;gt; 2017 Black Friday Deals"].
-        /// Required for `category-page-view` events. Other event types should not set this field. Otherwise, an
-        /// INVALID_ARGUMENT error is returned.
+        /// Required for `category-page-view` events. At least one of search_query or page_categories is required for
+        /// `search` events. Other event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
         public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
@@ -3046,9 +3047,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The user's search query. The value must be a UTF-8 encoded string with a length limit of 5,000 characters.
-        /// Otherwise, an INVALID_ARGUMENT error is returned. At least one of search_query or filter is required for
-        /// `search` events. Other event types should not set this field. Otherwise, an INVALID_ARGUMENT error is
-        /// returned.
+        /// Otherwise, an INVALID_ARGUMENT error is returned. At least one of search_query or page_categories is
+        /// required for `search` events. Other event types should not set this field. Otherwise, an INVALID_ARGUMENT
+        /// error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQuery")]
         public virtual string SearchQuery { get; set; }

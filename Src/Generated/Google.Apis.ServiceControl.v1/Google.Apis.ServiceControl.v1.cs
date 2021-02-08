@@ -839,8 +839,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string Permission { get; set; }
 
         /// <summary>
-        /// The resource being accessed, as a REST-style string. For example:
-        /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID
+        /// The resource being accessed, as a REST-style or cloud resource string. For example:
+        /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or projects/PROJECTID/datasets/DATASETID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }

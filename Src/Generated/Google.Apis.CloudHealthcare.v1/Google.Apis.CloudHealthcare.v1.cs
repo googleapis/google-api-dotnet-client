@@ -8807,7 +8807,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> AllowNullHeader { get; set; }
 
         /// <summary>
-        /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator.
+        /// Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the
+        /// HL7 version 2 specification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentTerminator")]
         public virtual string SegmentTerminator { get; set; }

@@ -35,6 +35,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
         public BinaryAuthorizationService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            Systempolicy = new SystempolicyResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -78,6 +79,9 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the Systempolicy resource.</summary>
+        public virtual SystempolicyResource Systempolicy { get; }
     }
 
     /// <summary>A base abstract class for BinaryAuthorization requests.</summary>
@@ -1220,6 +1224,72 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/policy$",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "systempolicy" collection of methods.</summary>
+    public class SystempolicyResource
+    {
+        private const string Resource = "systempolicy";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public SystempolicyResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets the current system policy in the specified location.</summary>
+        /// <param name="name">
+        /// Required. The resource name, in the format `locations/*/policy`. Note that the system policy is not
+        /// associated with a project.
+        /// </param>
+        public virtual GetPolicyRequest GetPolicy(string name)
+        {
+            return new GetPolicyRequest(service, name);
+        }
+
+        /// <summary>Gets the current system policy in the specified location.</summary>
+        public class GetPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1beta1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetPolicy request.</summary>
+            public GetPolicyRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name, in the format `locations/*/policy`. Note that the system policy is not
+            /// associated with a project.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes GetPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^locations/[^/]+/policy$",
                 });
             }
         }
