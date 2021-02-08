@@ -38,5 +38,9 @@
     "Google.Apis.Translate.v2": "Google.Cloud.Translation.V2",	
     "Google.Apis.CloudVideoIntelligence.v1": "Google.Cloud.VideoIntelligence.V1",	
     "Google.Apis.Vision.v1": "Google.Cloud.Vision.V1"	
-  }	
+  },
+
+  "majorVersion_comment": "Defines the major version for packages that need to override the one in releaseVersion",
+  "majorVersionOverrideMap": {
+  }
 }
