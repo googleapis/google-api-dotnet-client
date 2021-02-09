@@ -3995,7 +3995,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addUserDisabled")]
         public virtual System.Nullable<bool> AddUserDisabled { get; set; }
 
-        /// <summary>Whether adjusting the master volume is disabled.</summary>
+        /// <summary>Whether adjusting the master volume is disabled. Also mutes the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustVolumeDisabled")]
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; }
 

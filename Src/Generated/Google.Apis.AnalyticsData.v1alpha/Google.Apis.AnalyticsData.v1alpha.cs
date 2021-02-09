@@ -1330,8 +1330,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> FieldNames { get; set; }
 
         /// <summary>
-        /// The number of rows to return in this pivot. If unspecified, 10 rows are returned. If -1, all rows are
-        /// returned.
+        /// The number of rows to return in this pivot. If the `limit` parameter is unspecified, up to 10,000 rows are
+        /// returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1377,8 +1377,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<PivotDimensionHeader> PivotDimensionHeaders { get; set; }
 
         /// <summary>
-        /// The cardinality of the pivot as if offset = 0 and limit = -1. The total number of rows for this pivot's
-        /// fields regardless of how the parameters offset and limit are specified in the request.
+        /// The cardinality of the pivot. The total number of rows for this pivot's fields regardless of how the
+        /// parameters `offset` and `limit` are specified in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; }
@@ -1676,7 +1676,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>
-        /// The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are returned.
+        /// The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API
+        /// returns a maximum of 100,000 rows per request, no matter how many you ask for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1814,9 +1815,8 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Nullable<bool> KeepEmptyRows { get; set; }
 
         /// <summary>
-        /// The number of rows to return. If unspecified, 10 rows are returned. If -1, all rows are returned. To learn
-        /// more about this pagination parameter, see
-        /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+        /// The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API
+        /// returns a maximum of 100,000 rows per request, no matter how many you ask for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1839,11 +1839,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
-        /// <summary>
-        /// The row count of the start row. The first row is counted as row 0. To learn more about this pagination
-        /// parameter, see
-        /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
-        /// </summary>
+        /// <summary>The row count of the start row. The first row is counted as row 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<long> Offset { get; set; }
 
