@@ -12085,7 +12085,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
 
-        /// <summary>The quantity to return and refund.</summary>
+        /// <summary>The quantity to return and refund. Quantity is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 

@@ -2302,9 +2302,11 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>
                     /// Optional. A unique id used to identify the request. If the server receives two
-                    /// CreateClusterRequest requests with the same id, then the second request will be ignored and the
-                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
-                    /// recommended to always set this value to a UUID
+                    /// CreateClusterRequest
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s
+                    /// with the same id, then the second request will be ignored and the first
+                    /// google.longrunning.Operation created and stored in the backend is returned.It is recommended to
+                    /// always set this value to a UUID
                     /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
                     /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
                     /// characters.
@@ -2410,9 +2412,11 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>
                     /// Optional. A unique id used to identify the request. If the server receives two
-                    /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
-                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
-                    /// recommended to always set this value to a UUID
+                    /// DeleteClusterRequest
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.DeleteClusterRequest)s
+                    /// with the same id, then the second request will be ignored and the first
+                    /// google.longrunning.Operation created and stored in the backend is returned.It is recommended to
+                    /// always set this value to a UUID
                     /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
                     /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
                     /// characters.
@@ -2973,9 +2977,11 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>
                     /// Optional. A unique id used to identify the request. If the server receives two
-                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
-                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
-                    /// recommended to always set this value to a UUID
+                    /// UpdateClusterRequest
+                    /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s
+                    /// with the same id, then the second request will be ignored and the first
+                    /// google.longrunning.Operation created and stored in the backend is returned.It is recommended to
+                    /// always set this value to a UUID
                     /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
                     /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
                     /// characters.
@@ -3130,6 +3136,172 @@ namespace Google.Apis.Dataproc.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Starts a cluster in a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
+                /// </param>
+                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual StartRequest Start(Google.Apis.Dataproc.v1.Data.StartClusterRequest body, string projectId, string region, string clusterName)
+                {
+                    return new StartRequest(service, body, projectId, region, clusterName);
+                }
+
+                /// <summary>Starts a cluster in a project.</summary>
+                public class StartRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.StartClusterRequest body, string projectId, string region, string clusterName) : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        ClusterName = clusterName;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.StartClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Stops a cluster in a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">
+                /// Required. The ID of the Google Cloud Platform project the cluster belongs to.
+                /// </param>
+                /// <param name="region">Required. The Dataproc region in which to handle the request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual StopRequest Stop(Google.Apis.Dataproc.v1.Data.StopClusterRequest body, string projectId, string region, string clusterName)
+                {
+                    return new StopRequest(service, body, projectId, region, clusterName);
+                }
+
+                /// <summary>Stops a cluster in a project.</summary>
+                public class StopRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.StopClusterRequest body, string projectId, string region, string clusterName) : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        ClusterName = clusterName;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.StopClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("region", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "region",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clusterName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clusterName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5666,6 +5838,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual InstanceGroupConfig MasterConfig { get; set; }
 
+        /// <summary>Optional. Metastore configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreConfig")]
+        public virtual MetastoreConfig MetastoreConfig { get; set; }
+
         /// <summary>
         /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
         /// </summary>
@@ -6911,6 +7087,20 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies a Metastore configuration.</summary>
+    public class MetastoreConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource name of an existing Dataproc Metastore service.Example:
+        /// projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocMetastoreService")]
+        public virtual string DataprocMetastoreService { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7557,6 +7747,31 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to start a cluster.</summary>
+    public class StartClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the
+        /// specified UUID does not exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; }
+
+        /// <summary>
+        /// Optional. A unique id used to identify the request. If the server receives two StartClusterRequest
+        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StartClusterRequest)s
+        /// with the same id, then the second request will be ignored and the first google.longrunning.Operation created
+        /// and stored in the backend is returned.Recommendation: Set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The Status type defines a logical error model that is suitable for different programming environments, including
     /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
@@ -7586,6 +7801,31 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to stop a cluster.</summary>
+    public class StopClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the
+        /// specified UUID does not exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
+        public virtual string ClusterUuid { get; set; }
+
+        /// <summary>
+        /// Optional. A unique id used to identify the request. If the server receives two StopClusterRequest
+        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.StopClusterRequest)s
+        /// with the same id, then the second request will be ignored and the first google.longrunning.Operation created
+        /// and stored in the backend is returned.Recommendation: Set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to submit a job.</summary>
     public class SubmitJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7594,7 +7834,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual Job Job { get; set; }
 
         /// <summary>
-        /// Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest requests
+        /// Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest
+        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s
         /// with the same id, then the second request will be ignored and the first Job created and stored in the
         /// backend is returned.It is recommended to always set this value to a UUID
         /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z),

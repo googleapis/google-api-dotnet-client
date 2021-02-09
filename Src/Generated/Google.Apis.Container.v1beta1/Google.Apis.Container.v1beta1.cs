@@ -9713,6 +9713,33 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
+    /// UpgradeAvailableEvent is a notification sent to customers when a new available version is released.
+    /// </summary>
+    public class UpgradeAvailableEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The release channel of the version. If empty, it means a non-channel release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseChannel")]
+        public virtual ReleaseChannel ReleaseChannel { get; set; }
+
+        /// <summary>
+        /// Optional. Optional relative path to the resource. For example, the relative path of the node pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The resource type of the release version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The release version available for upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// UpgradeEvent is a notification sent to customers by the cluster server when a resource is upgrading.
     /// </summary>
     public class UpgradeEvent : Google.Apis.Requests.IDirectResponseSchema

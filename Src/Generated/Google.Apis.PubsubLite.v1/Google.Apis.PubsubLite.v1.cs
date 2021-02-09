@@ -1375,6 +1375,69 @@ namespace Google.Apis.PubsubLite.v1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Compute the head cursor for the partition. The head cursor’s offset is guaranteed to be before
+                    /// or equal to all messages which have not yet been acknowledged to be published, and greater than
+                    /// the offset of any message whose publish has already been acknowledged. It is 0 if there have
+                    /// never been messages on the partition.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="topic">Required. The topic for which we should compute the head cursor.</param>
+                    public virtual ComputeHeadCursorRequest ComputeHeadCursor(Google.Apis.PubsubLite.v1.Data.ComputeHeadCursorRequest body, string topic)
+                    {
+                        return new ComputeHeadCursorRequest(service, body, topic);
+                    }
+
+                    /// <summary>
+                    /// Compute the head cursor for the partition. The head cursor’s offset is guaranteed to be before
+                    /// or equal to all messages which have not yet been acknowledged to be published, and greater than
+                    /// the offset of any message whose publish has already been acknowledged. It is 0 if there have
+                    /// never been messages on the partition.
+                    /// </summary>
+                    public class ComputeHeadCursorRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.ComputeHeadCursorResponse>
+                    {
+                        /// <summary>Constructs a new ComputeHeadCursor request.</summary>
+                        public ComputeHeadCursorRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.ComputeHeadCursorRequest body, string topic) : base(service)
+                        {
+                            Topic = topic;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The topic for which we should compute the head cursor.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Topic { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.ComputeHeadCursorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "computeHeadCursor";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/topicStats/{+topic}:computeHeadCursor";
+
+                        /// <summary>Initializes ComputeHeadCursor parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("topic", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "topic",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/topics/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Compute statistics about a range of messages in a given topic and partition.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="topic">Required. The topic for which we should compute message stats.</param>
@@ -1444,6 +1507,28 @@ namespace Google.Apis.PubsubLite.v1.Data
         /// <summary>Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeMibPerSec")]
         public virtual System.Nullable<int> SubscribeMibPerSec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compute the current head cursor for a partition.</summary>
+    public class ComputeHeadCursorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The partition for which we should compute the head cursor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partition")]
+        public virtual System.Nullable<long> Partition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing the head cursor for the requested topic and partition.</summary>
+    public class ComputeHeadCursorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The head cursor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headCursor")]
+        public virtual Cursor HeadCursor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

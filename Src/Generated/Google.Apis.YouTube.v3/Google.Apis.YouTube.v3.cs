@@ -13587,7 +13587,7 @@ namespace Google.Apis.YouTube.v3.Data
 
     /// <summary>
     /// Basic details about a playlist, including title, description and thumbnails. Basic details of a YouTube Playlist
-    /// item provided by the author. Next ID: 13
+    /// item provided by the author. Next ID: 15
     /// </summary>
     public class PlaylistItemSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13645,6 +13645,14 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The item's title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>Channel id for the channel this video belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoOwnerChannelId")]
+        public virtual string VideoOwnerChannelId { get; set; }
+
+        /// <summary>Channel title for the channel this video belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoOwnerChannelTitle")]
+        public virtual string VideoOwnerChannelTitle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
