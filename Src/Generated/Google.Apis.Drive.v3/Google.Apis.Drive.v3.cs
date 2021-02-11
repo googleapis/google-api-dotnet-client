@@ -88,7 +88,7 @@ namespace Google.Apis.Drive.v3
             /// <summary>View and manage metadata of files in your Google Drive</summary>
             public static string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
 
-            /// <summary>View metadata for files in your Google Drive</summary>
+            /// <summary>See information about your Google Drive files</summary>
             public static string DriveMetadataReadonly = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
             /// <summary>View the photos, videos and albums in your Google Photos</summary>
@@ -118,7 +118,7 @@ namespace Google.Apis.Drive.v3
             /// <summary>View and manage metadata of files in your Google Drive</summary>
             public const string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
 
-            /// <summary>View metadata for files in your Google Drive</summary>
+            /// <summary>See information about your Google Drive files</summary>
             public const string DriveMetadataReadonly = "https://www.googleapis.com/auth/drive.metadata.readonly";
 
             /// <summary>View the photos, videos and albums in your Google Photos</summary>

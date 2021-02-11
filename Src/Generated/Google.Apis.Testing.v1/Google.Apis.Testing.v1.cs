@@ -1838,8 +1838,15 @@ namespace Google.Apis.Testing.v1.Data
     public class ProvidedSoftwareCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A string representing the current version of Android Test Orchestrator that is provided by
-        /// TestExecutionService. Example: "1.0.2 beta".
+        /// A string representing the current version of AndroidX Test Orchestrator that is used in the environment. The
+        /// package is available at https://maven.google.com/web/index.html#androidx.test:orchestrator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidxOrchestratorVersion")]
+        public virtual string AndroidxOrchestratorVersion { get; set; }
+
+        /// <summary>
+        /// A string representing the current version of Android Test Orchestrator that is used in the environment. The
+        /// package is available at https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orchestratorVersion")]
         public virtual string OrchestratorVersion { get; set; }

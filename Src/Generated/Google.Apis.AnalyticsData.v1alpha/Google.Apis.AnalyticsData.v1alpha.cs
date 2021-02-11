@@ -1052,14 +1052,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inListFilter")]
         public virtual InListFilter InListFilter { get; set; }
 
-        /// <summary>
-        /// A filter for null values. If True, a null dimension value is matched by this filter. Null filter is commonly
-        /// used inside a NOT filter expression. For example, a NOT expression of a null filter removes rows when a
-        /// dimension is null.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nullFilter")]
-        public virtual System.Nullable<bool> NullFilter { get; set; }
-
         /// <summary>A filter for numeric or date values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericFilter")]
         public virtual NumericFilter NumericFilter { get; set; }
@@ -1331,7 +1323,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
         /// <summary>
         /// The number of rows to return in this pivot. If the `limit` parameter is unspecified, up to 10,000 rows are
-        /// returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for.
+        /// returned. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 100,000.
+        /// For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is
+        /// `1,000,000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
