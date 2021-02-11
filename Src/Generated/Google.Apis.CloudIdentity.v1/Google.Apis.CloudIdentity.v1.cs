@@ -4306,14 +4306,18 @@ namespace Google.Apis.CloudIdentity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>UserInvitation to join a Google Workspace organization.</summary>
+    /// <summary>
+    /// The `UserInvitation` resource represents an email sent to an unmanaged user account (an email address that
+    /// shares the domain of the Google Workspace customer but is not managed by it yet), inviting them to join the
+    /// customer’s domain. If the user accepts the `UserInvitation`, the account will become a managed account.
+    /// </summary>
     public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Number of invitation emails sent to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailsSentCount")]
         public virtual System.Nullable<long> MailsSentCount { get; set; }
 
-        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`</summary>
+        /// <summary>Shall be of the form `customers/{customer}/userinvitations/{user_email_address}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

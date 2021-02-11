@@ -1530,6 +1530,14 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
         public virtual Pipeline Pipeline { get; set; }
 
+        /// <summary>
+        /// The name of an existing Pub/Sub topic. The server will publish messages to this topic whenever the status of
+        /// the operation changes. The Genomics Service Agent account must have publisher permissions to the specified
+        /// topic or notifications will not be sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubTopic")]
+        public virtual string PubSubTopic { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

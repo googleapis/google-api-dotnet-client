@@ -8915,6 +8915,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productSearchParams")]
         public virtual ProductSearchParams ProductSearchParams { get; set; }
 
+        /// <summary>Parameters for text detection and document text detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textDetectionParams")]
+        public virtual TextDetectionParams TextDetectionParams { get; set; }
+
         /// <summary>Parameters for web detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webDetectionParams")]
         public virtual WebDetectionParams WebDetectionParams { get; set; }
@@ -9858,6 +9862,22 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>UTF-8 text detected on the pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters for text detections. This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features.
+    /// </summary>
+    public class TextDetectionParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// By default, Cloud Vision API only includes confidence score for DOCUMENT_TEXT_DETECTION result. Set the flag
+        /// to true to include confidence score for TEXT_DETECTION as well.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTextDetectionConfidenceScore")]
+        public virtual System.Nullable<bool> EnableTextDetectionConfidenceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

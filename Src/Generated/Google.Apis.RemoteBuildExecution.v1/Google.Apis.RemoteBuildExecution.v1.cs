@@ -1775,6 +1775,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// </summary>
     public class GoogleDevtoolsRemotebuildbotCommandEvents : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates if and how Container Manager is being used for task execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmUsage")]
+        public virtual string CmUsage { get; set; }
+
         /// <summary>
         /// Indicates whether we are using a cached Docker image (true) or had to pull the Docker image (false) for this
         /// command.

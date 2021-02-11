@@ -2775,6 +2775,15 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerQuotaLimits")]
         public virtual System.Collections.Generic.IList<ConsumerQuotaLimit> ConsumerQuotaLimits { get; set; }
 
+        /// <summary>
+        /// The quota limits targeting the descendant containers of the consumer in request. If the consumer in request
+        /// is of type `organizations` or `folders`, the field will list per-project limits in the metric; if the
+        /// consumer in request is of type `project`, the field will be empty. The `quota_buckets` field of each
+        /// descendant consumer quota limit will not be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descendantConsumerQuotaLimits")]
+        public virtual System.Collections.Generic.IList<ConsumerQuotaLimit> DescendantConsumerQuotaLimits { get; set; }
+
         /// <summary>The display name of the metric. An example name would be: "CPUs"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

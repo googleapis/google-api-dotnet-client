@@ -4024,6 +4024,13 @@ namespace Google.Apis.DeploymentManager.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// [Output Only] An ID that represents a group of operations, such as when a group of operations results from a
+        /// `bulkInsert` API request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationGroupId")]
+        public virtual string OperationGroupId { get; set; }
+
         /// <summary>[Output Only] The type of operation, such as `insert`, `update`, or `delete`, and so on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; }

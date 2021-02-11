@@ -11763,8 +11763,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class Collection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. Custom
-        /// label
+        /// Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. [Custom
+        /// label](https://support.google.com/merchants/answer/9674217)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
         public virtual string CustomLabel0 { get; set; }
@@ -11796,47 +11796,54 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// This identifies one or more products associated with the collection. Used as a lookup to the corresponding
         /// product ID in your product feeds. Provide a maximum of 100 featuredProduct (for collections). Provide up to
-        /// 10 featuredProduct (for Shoppable Images only) with ID and X and Y coordinates. featured_product attribute
+        /// 10 featuredProduct (for Shoppable Images only) with ID and X and Y coordinates. [featured_product
+        /// attribute](https://support.google.com/merchants/answer/9703736)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featuredProduct")]
         public virtual System.Collections.Generic.IList<CollectionFeaturedProduct> FeaturedProduct { get; set; }
 
-        /// <summary>Your collection's name. headline attribute</summary>
+        /// <summary>
+        /// Your collection's name. [headline attribute](https://support.google.com/merchants/answer/9673580)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headline")]
         public virtual System.Collections.Generic.IList<string> Headline { get; set; }
 
         /// <summary>
         /// Required. The REST ID of the collection. Content API methods that operate on collections take this as their
-        /// collectionId parameter. The REST ID for a collection is of the form collectionId. id attribute
+        /// collectionId parameter. The REST ID for a collection is of the form collectionId. [id
+        /// attribute](https://support.google.com/merchants/answer/9649290)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The URL of a collection’s image. image_link attribute</summary>
+        /// <summary>
+        /// The URL of a collection’s image. [image_link attribute](https://support.google.com/merchants/answer/9703236)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
         public virtual System.Collections.Generic.IList<string> ImageLink { get; set; }
 
         /// <summary>
-        /// The language of a collection and the language of any featured products linked to the collection. language
-        /// attribute
+        /// The language of a collection and the language of any featured products linked to the collection. [language
+        /// attribute](https://support.google.com/merchants/answer/9673781)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
 
         /// <summary>
-        /// A collection’s landing page. URL directly linking to your collection's page on your website. link attribute
+        /// A collection’s landing page. URL directly linking to your collection's page on your website. [link
+        /// attribute](https://support.google.com/merchants/answer/9673983)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
 
         /// <summary>
         /// A collection’s mobile-optimized landing page when you have a different URL for mobile and desktop traffic.
-        /// mobile_link attribute
+        /// [mobile_link attribute](https://support.google.com/merchants/answer/9646123)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; }
 
-        /// <summary>product_country attribute</summary>
+        /// <summary>[product_country attribute](https://support.google.com/merchants/answer/9674155)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productCountry")]
         public virtual string ProductCountry { get; set; }
 
@@ -11844,7 +11851,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The message for FeaturedProduct. FeaturedProduct</summary>
+    /// <summary>
+    /// The message for FeaturedProduct. [FeaturedProduct](https://support.google.com/merchants/answer/9703736)
+    /// </summary>
     public class CollectionFeaturedProduct : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The unique identifier for the product item.</summary>

@@ -1808,7 +1808,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                ///  Updates the specified metadata for the specified version. This method will fail with
+                /// Updates the specified metadata for the specified version. This method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
                 /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete)
                 /// to set the status of a version to `DELETED`.
@@ -1824,7 +1824,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                ///  Updates the specified metadata for the specified version. This method will fail with
+                /// Updates the specified metadata for the specified version. This method will fail with
                 /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
                 /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete)
                 /// to set the status of a version to `DELETED`.
@@ -3486,7 +3486,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            ///  Updates the specified metadata for the specified version. This method will fail with
+            /// Updates the specified metadata for the specified version. This method will fail with
             /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
             /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete) to
             /// set the status of a version to `DELETED`.
@@ -3502,7 +3502,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>
-            ///  Updates the specified metadata for the specified version. This method will fail with
+            /// Updates the specified metadata for the specified version. This method will fail with
             /// `FAILED_PRECONDITION` in the event of an invalid state transition. The only valid transition for a
             /// version is currently from a `CREATED` status to a `FINALIZED` status. Use [`DeleteVersion`](delete) to
             /// set the status of a version to `DELETED`.
@@ -4287,8 +4287,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    ///  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public
-    /// at a particular time.
+    /// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at
+    /// a particular time.
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
