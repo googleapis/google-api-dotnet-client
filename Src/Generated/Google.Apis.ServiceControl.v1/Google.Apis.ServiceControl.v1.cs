@@ -1912,7 +1912,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
-        /// <summary>The timestamp when the `destination` service receives the first byte of the request.</summary>
+        /// <summary>The timestamp when the `destination` service receives the last byte of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; }
 

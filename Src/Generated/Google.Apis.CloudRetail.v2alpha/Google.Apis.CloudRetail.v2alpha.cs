@@ -507,7 +507,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not exist, a
                         /// NOT_FOUND error is returned. The Product to delete can neither be a Product.Type.COLLECTION
                         /// Product member nor a Product.Type.PRIMARY Product with more than one variants. Otherwise, an
-                        /// INVALID_ARGUMENT error is returned.
+                        /// INVALID_ARGUMENT error is returned. All inventory information for the named Product will be
+                        /// deleted.
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -531,7 +532,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                             /// not it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not
                             /// exist, a NOT_FOUND error is returned. The Product to delete can neither be a
                             /// Product.Type.COLLECTION Product member nor a Product.Type.PRIMARY Product with more than
-                            /// one variants. Otherwise, an INVALID_ARGUMENT error is returned.
+                            /// one variants. Otherwise, an INVALID_ARGUMENT error is returned. All inventory
+                            /// information for the named Product will be deleted.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2619,7 +2621,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableQuantity")]
         public virtual System.Nullable<int> AvailableQuantity { get; set; }
 
-        /// <summary>The timestamp when this Product becomes available recommendation and search.</summary>
+        /// <summary>The timestamp when this Product becomes available for recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableTime")]
         public virtual object AvailableTime { get; set; }
 
@@ -2661,7 +2663,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Product images for the product. A maximum of 300 images are allowed. Google Merchant Center property
+        /// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300
+        /// images are allowed. Google Merchant Center property
         /// [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property
         /// [Product.image](https://schema.org/image).
         /// </summary>

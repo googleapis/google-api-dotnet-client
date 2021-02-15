@@ -1816,7 +1816,7 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     public class ConfigureContactSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of contact notices that the caller acknowledges. The notices required here depend on the values
+        /// The list of contact notices that the caller acknowledges. The notices needed here depend on the values
         /// specified in `contact_settings`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactNotices")]
@@ -2495,7 +2495,7 @@ namespace Google.Apis.CloudDomains.v1alpha2.Data
     public class RegisterDomainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of contact notices that the caller acknowledges. The notices required here depend on the values
+        /// The list of contact notices that the caller acknowledges. The notices needed here depend on the values
         /// specified in `registration.contact_settings`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactNotices")]

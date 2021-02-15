@@ -4564,6 +4564,14 @@ namespace Google.Apis.Bigquery.v2.Data
         public class AccessData
         {
             /// <summary>
+            /// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this
+            /// dataset. Only views are supported for now. The role field is not required when this field is set. If
+            /// that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+            public virtual DatasetAccessEntry Dataset { get; set; }
+
+            /// <summary>
             /// [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted
             /// the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
             /// </summary>
@@ -4626,6 +4634,30 @@ namespace Google.Apis.Bigquery.v2.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("view")]
             public virtual TableReference View { get; set; }
+        }
+    }
+
+    public class DatasetAccessEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Required] The dataset this entry applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
+        public virtual DatasetReference Dataset { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("target_types")]
+        public virtual System.Collections.Generic.IList<TargetTypesData> TargetTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        public class TargetTypesData
+        {
+            /// <summary>
+            /// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported,
+            /// but additional target types may be added in the future. Possible values: VIEWS: This entry applies to
+            /// all views in the dataset.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+            public virtual string TargetType { get; set; }
         }
     }
 

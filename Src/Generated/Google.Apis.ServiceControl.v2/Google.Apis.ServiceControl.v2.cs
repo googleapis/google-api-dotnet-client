@@ -978,7 +978,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
-        /// <summary>The timestamp when the `destination` service receives the first byte of the request.</summary>
+        /// <summary>The timestamp when the `destination` service receives the last byte of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; }
 
@@ -1185,6 +1185,14 @@ namespace Google.Apis.ServiceControl.v2.Data
     /// </summary>
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The length of time it takes the backend service to fully respond to a request. Measured from when the
+        /// destination service starts to send the request to the backend until when the destination service receives
+        /// the complete response from the backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendLatency")]
+        public virtual object BackendLatency { get; set; }
+
         /// <summary>The HTTP response status code, such as `200` and `404`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<long> Code { get; set; }
@@ -1200,7 +1208,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
-        /// <summary>The timestamp when the `destination` service generates the first byte of the response.</summary>
+        /// <summary>The timestamp when the `destination` service sends the last byte of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; }
 

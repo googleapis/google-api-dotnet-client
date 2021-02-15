@@ -7420,6 +7420,22 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters that can be configured on Linux nodes.</summary>
+    public class LinuxNodeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
+        /// parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default
+        /// net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem
+        /// net.ipv4.tcp_tw_reuse
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sysctls")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Sysctls { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ListClustersResponse is the result of ListClustersRequest.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7755,6 +7771,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
 
+        /// <summary>Node kubelet configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
+        public virtual NodeKubeletConfig KubeletConfig { get; set; }
+
         /// <summary>
         /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to
         /// any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied
@@ -7764,6 +7784,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Parameters that can be configured on Linux nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
+        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
 
         /// <summary>
         /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the
@@ -7872,6 +7896,41 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The workload metadata configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadMetadataConfig")]
         public virtual WorkloadMetadataConfig WorkloadMetadataConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Node kubelet configs.</summary>
+    public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default
+        /// which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to
+        /// enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to
+        /// mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying
+        /// the CPU limits. The default value is 'true' if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuota")]
+        public virtual System.Nullable<bool> CpuCfsQuota { get; set; }
+
+        /// <summary>
+        /// Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers,
+        /// each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"),
+        /// "ms", "s", "m", "h". The value must be a positive duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCfsQuotaPeriod")]
+        public virtual string CpuCfsQuotaPeriod { get; set; }
+
+        /// <summary>
+        /// Control the CPU management policy on the node. See
+        /// https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are
+        /// allowed. - "none": the default, which represents the existing scheduling behavior. - "static": allows pods
+        /// with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The
+        /// default value is 'none' if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
+        public virtual string CpuManagerPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9215,6 +9274,14 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Required. The desired image type for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
+
+        /// <summary>Node kubelet configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
+        public virtual NodeKubeletConfig KubeletConfig { get; set; }
+
+        /// <summary>Parameters that can be configured on Linux nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
+        public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
 
         /// <summary>
         /// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in

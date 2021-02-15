@@ -1624,6 +1624,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
         public virtual System.Nullable<bool> Exclude { get; set; }
 
+        /// <summary>Optional. If the update call is triggered from rollback, set the value as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRollback")]
+        public virtual System.Nullable<bool> IsRollback { get; set; }
+
         /// <summary>
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the same policy

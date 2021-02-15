@@ -347,7 +347,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             this.service = service;
                         }
 
-                        /// <summary>Creates a endpoint, and returns the new Endpoint.</summary>
+                        /// <summary>Creates an endpoint, and returns the new endpoint.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The resource name of the service that this endpoint provides.
@@ -357,7 +357,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a endpoint, and returns the new Endpoint.</summary>
+                        /// <summary>Creates an endpoint, and returns the new endpoint.</summary>
                         public class CreateRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Endpoint>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -422,14 +422,14 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             }
                         }
 
-                        /// <summary>Deletes a endpoint.</summary>
+                        /// <summary>Deletes an endpoint.</summary>
                         /// <param name="name">Required. The name of the endpoint to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>Deletes a endpoint.</summary>
+                        /// <summary>Deletes an endpoint.</summary>
                         public class DeleteRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Empty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -467,14 +467,14 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             }
                         }
 
-                        /// <summary>Gets a endpoint.</summary>
+                        /// <summary>Gets an endpoint.</summary>
                         /// <param name="name">Required. The name of the endpoint to get.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>Gets a endpoint.</summary>
+                        /// <summary>Gets an endpoint.</summary>
                         public class GetRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Endpoint>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                         /// <summary>Lists all endpoints.</summary>
                         /// <param name="parent">
-                        /// Required. The resource name of the service whose endpoints we'd like to list.
+                        /// Required. The resource name of the service whose endpoints you'd like to list.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -532,33 +532,39 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the service whose endpoints we'd like to list.
+                            /// Required. The resource name of the service whose endpoints you'd like to list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Optional. The filter to list result by. General filter string syntax: () can be "name",
-                            /// "address", "port" or "metadata." for map field. can be "&amp;lt;, &amp;gt;, &amp;lt;=,
-                            /// &amp;gt;=, !=, =, :". Of which ":" means HAS, and is roughly the same as "=". must be
-                            /// the same data type as field. can be "AND, OR, NOT". Examples of valid filters: *
-                            /// "metadata.owner" returns Endpoints that have a label with the key "owner" this is the
-                            /// same as "metadata:owner". * "metadata.protocol=gRPC" returns Endpoints that have
-                            /// key/value "protocol=gRPC". * "address=192.108.1.105" returns Endpoints that have this
-                            /// address. * "port&amp;gt;8080" returns Endpoints that have port number larger than 8080.
-                            /// *
-                            /// "name&amp;gt;projects/my-project/locations/us-east/namespaces/my-namespace/services/my-service/endpoints/endpoint-c"
-                            /// returns Endpoints that have name that is alphabetically later than the string, so
-                            /// "endpoint-e" will be returned but "endpoint-a" will not be. * "metadata.owner!=sd AND
-                            /// metadata.foo=bar" returns Endpoints that have "owner" in label key but value is not "sd"
-                            /// AND have key/value foo=bar. * "doesnotexist.foo=bar" returns an empty list. Note that
-                            /// Endpoint doesn't have a field called "doesnotexist". Since the filter does not match any
-                            /// Endpoints, it returns no results.
+                            /// Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can
+                            /// be `name`, `address`, `port`, or `metadata.` for map field * `` can be `&amp;lt;`,
+                            /// `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is
+                            /// roughly the same as `=` * `` must be the same data type as field * `` can be `AND`,
+                            /// `OR`, `NOT` Examples of valid filters: * `metadata.owner` returns endpoints that have a
+                            /// metadata with the key `owner`, this is the same as `metadata:owner` *
+                            /// `metadata.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` *
+                            /// `address=192.108.1.105` returns endpoints that have this address * `port&amp;gt;8080`
+                            /// returns endpoints that have port number larger than 8080 *
+                            /// `name&amp;gt;projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c`
+                            /// returns endpoints that have name that is alphabetically later than the string, so
+                            /// "endpoint-e" is returned but "endpoint-a" is not * `metadata.owner!=sd AND
+                            /// metadata.foo=bar` returns endpoints that have `owner` in metadata key but value is not
+                            /// `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note
+                            /// that endpoint doesn't have a field called "doesnotexist". Since the filter does not
+                            /// match any endpoints, it returns no results For more information about filtering, see
+                            /// [API Filtering](https://aip.dev/160).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Optional. The order to list result by.</summary>
+                            /// <summary>
+                            /// Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * ``
+                            /// allows values: `name`, `address`, `port` * `` ascending or descending order by ``. If
+                            /// this is left blank, `asc` is used Note that an empty `order_by` string results in
+                            /// default order, which is order by `name` in ascending order.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
@@ -628,18 +634,18 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             }
                         }
 
-                        /// <summary>Updates a endpoint.</summary>
+                        /// <summary>Updates an endpoint.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. The resource name for the endpoint in the format
-                        /// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+                        /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Endpoint body, string name)
                         {
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>Updates a endpoint.</summary>
+                        /// <summary>Updates an endpoint.</summary>
                         public class PatchRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Endpoint>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -652,7 +658,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                             /// <summary>
                             /// Immutable. The resource name for the endpoint in the format
-                            /// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+                            /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -700,7 +706,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         }
                     }
 
-                    /// <summary>Creates a service, and returns the new Service.</summary>
+                    /// <summary>Creates a service, and returns the new service.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The resource name of the namespace this service will belong to.
@@ -710,7 +716,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a service, and returns the new Service.</summary>
+                    /// <summary>Creates a service, and returns the new service.</summary>
                     public class CreateRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Service>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -928,7 +934,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                     /// <summary>Lists all services belonging to a namespace.</summary>
                     /// <param name="parent">
-                    /// Required. The resource name of the namespace whose services we'd like to list.
+                    /// Required. The resource name of the namespace whose services you'd like to list.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -946,30 +952,36 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the namespace whose services we'd like to list.
+                        /// Required. The resource name of the namespace whose services you'd like to list.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. The filter to list result by. General filter string syntax: () can be "name", or
-                        /// "metadata." for map field. can be "&amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, !=, =, :". Of
-                        /// which ":" means HAS, and is roughly the same as "=". must be the same data type as field.
-                        /// can be "AND, OR, NOT". Examples of valid filters: * "metadata.owner" returns Services that
-                        /// have a label with the key "owner" this is the same as "metadata:owner". *
-                        /// "metadata.protocol=gRPC" returns Services that have key/value "protocol=gRPC". *
-                        /// "name&amp;gt;projects/my-project/locations/us-east/namespaces/my-namespace/services/service-c"
-                        /// returns Services that have name that is alphabetically later than the string, so "service-e"
-                        /// will be returned but "service-a" will not be. * "metadata.owner!=sd AND metadata.foo=bar"
-                        /// returns Services that have "owner" in label key but value is not "sd" AND have key/value
-                        /// foo=bar. * "doesnotexist.foo=bar" returns an empty list. Note that Service doesn't have a
-                        /// field called "doesnotexist". Since the filter does not match any Services, it returns no
-                        /// results.
+                        /// Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be
+                        /// `name` or `metadata.` for map field * `` can be `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`,
+                        /// `&amp;gt;=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * ``
+                        /// must be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid
+                        /// filters: * `metadata.owner` returns services that have a metadata with the key `owner`, this
+                        /// is the same as `metadata:owner` * `metadata.protocol=gRPC` returns services that have
+                        /// key/value `protocol=gRPC` *
+                        /// `name&amp;gt;projects/my-project/locations/us-east1/namespaces/my-namespace/services/service-c`
+                        /// returns services that have name that is alphabetically later than the string, so "service-e"
+                        /// is returned but "service-a" is not * `metadata.owner!=sd AND metadata.foo=bar` returns
+                        /// services that have `owner` in metadata key but value is not `sd` AND have key/value
+                        /// `foo=bar` * `doesnotexist.foo=bar` returns an empty list. Note that service doesn't have a
+                        /// field called "doesnotexist". Since the filter does not match any services, it returns no
+                        /// results For more information about filtering, see [API Filtering](https://aip.dev/160).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. The order to list result by.</summary>
+                        /// <summary>
+                        /// Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * ``
+                        /// allows value: `name` * `` ascending or descending order by ``. If this is left blank, `asc`
+                        /// is used Note that an empty `order_by` string results in default order, which is order by
+                        /// `name` in ascending order.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1043,7 +1055,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Immutable. The resource name for the service in the format
-                    /// 'projects/*/locations/*/namespaces/*/services/*'.
+                    /// `projects/*/locations/*/namespaces/*/services/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Service body, string name)
                     {
@@ -1063,7 +1075,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                         /// <summary>
                         /// Immutable. The resource name for the service in the format
-                        /// 'projects/*/locations/*/namespaces/*/services/*'.
+                        /// `projects/*/locations/*/namespaces/*/services/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1288,7 +1300,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     }
                 }
 
-                /// <summary>Creates a namespace, and returns the new Namespace.</summary>
+                /// <summary>Creates a namespace, and returns the new namespace.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the project and location the namespace will be created in.
@@ -1298,7 +1310,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a namespace, and returns the new Namespace.</summary>
+                /// <summary>Creates a namespace, and returns the new namespace.</summary>
                 public class CreateRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Namespace>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1518,7 +1530,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                 /// <summary>Lists all namespaces.</summary>
                 /// <param name="parent">
-                /// Required. The resource name of the project and location whose namespaces we'd like to list.
+                /// Required. The resource name of the project and location whose namespaces you'd like to list.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1536,32 +1548,34 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the project and location whose namespaces we'd like to list.
+                    /// Required. The resource name of the project and location whose namespaces you'd like to list.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. The filter to list result by. General filter string syntax: () can be "name", or
-                    /// "labels." for map field. can be "&amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=, !=, =, :". Of which
-                    /// ":" means HAS, and is roughly the same as "=". must be the same data type as field. can be "AND,
-                    /// OR, NOT". Examples of valid filters: * "labels.owner" returns Namespaces that have a label with
-                    /// the key "owner" this is the same as "labels:owner". * "labels.protocol=gRPC" returns Namespaces
-                    /// that have key/value "protocol=gRPC". *
-                    /// "name&amp;gt;projects/my-project/locations/us-east/namespaces/namespace-c" returns Namespaces
-                    /// that have name that is alphabetically later than the string, so "namespace-e" will be returned
-                    /// but "namespace-a" will not be. * "labels.owner!=sd AND labels.foo=bar" returns Namespaces that
-                    /// have "owner" in label key but value is not "sd" AND have key/value foo=bar. *
-                    /// "doesnotexist.foo=bar" returns an empty list. Note that Namespace doesn't have a field called
-                    /// "doesnotexist". Since the filter does not match any Namespaces, it returns no results.
+                    /// Optional. The filter to list results by. General `filter` string syntax: ` ()` * `` can be
+                    /// `name` or `labels.` for map field * `` can be `&amp;lt;`, `&amp;gt;`, `&amp;lt;=`, `&amp;gt;=`,
+                    /// `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must be the same
+                    /// data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `labels.owner`
+                    /// returns namespaces that have a label with the key `owner`, this is the same as `labels:owner` *
+                    /// `labels.owner=sd` returns namespaces that have key/value `owner=sd` *
+                    /// `name&amp;gt;projects/my-project/locations/us-east1/namespaces/namespace-c` returns namespaces
+                    /// that have name that is alphabetically later than the string, so "namespace-e" is returned but
+                    /// "namespace-a" is not * `labels.owner!=sd AND labels.foo=bar` returns namespaces that have
+                    /// `owner` in label key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar`
+                    /// returns an empty list. Note that namespace doesn't have a field called "doesnotexist". Since the
+                    /// filter does not match any namespaces, it returns no results For more information about
+                    /// filtering, see [API Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. The order to list result by. General order by string syntax: () (,) allows values
-                    /// {"name"} ascending or descending order by . If this is left blank, "asc" is used. Note that an
-                    /// empty order_by string result in default order, which is order by name in ascending order.
+                    /// Optional. The order to list results by. General `order_by` string syntax: ` () (,)` * `` allows
+                    /// value: `name` * `` ascending or descending order by ``. If this is left blank, `asc` is used
+                    /// Note that an empty `order_by` string results in default order, which is order by `name` in
+                    /// ascending order.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -1635,7 +1649,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                 /// <summary>Updates a namespace.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+                /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ServiceDirectory.v1beta1.Data.Namespace body, string name)
                 {
@@ -1655,7 +1669,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
 
                     /// <summary>
                     /// Immutable. The resource name for the namespace in the format
-                    /// 'projects/*/locations/*/namespaces/*'.
+                    /// `projects/*/locations/*/namespaces/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2016,35 +2030,37 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. An IPv4 or IPv6 address. Service Directory will reject bad addresses like: "8.8.8" "8.8.8.8:53"
-        /// "test:bad:address" "[::1]" "[::1]:8080" Limited to 45 characters.
+        /// Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` *
+        /// `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
         /// <summary>
-        /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: - The
+        /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The
         /// entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata
-        /// that goes beyond any these limits will be rejected. - Valid metadata keys have two segments: an optional
-        /// prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less,
-        /// beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots
-        /// (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a
-        /// series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash
-        /// (/). Metadata that fails to meet these requirements will be rejected. - The '(*.)google.com/' and
-        /// '(*.)googleapis.com/' prefixes are reserved for system metadata managed by Service Directory. If the user
-        /// tries to write to these keyspaces, those entries will be silently ignored by the system.
+        /// that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and
+        /// name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning
+        /// and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and
+        /// alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of
+        /// DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata
+        /// that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/`
+        /// prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these
+        /// keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the
+        /// `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service
+        /// Directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Immutable. The resource name for the endpoint in the format
-        /// 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Optional. Service Directory will reject values outside of [0, 65535].</summary>
+        /// <summary>Optional. Service Directory rejects values outside of `[0, 65535]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
@@ -2229,14 +2245,14 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     public class Namespace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Resource labels associated with this Namespace. No more than 64 user labels can be associated with
+        /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with
         /// a given resource. Label keys and values can be no longer than 63 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2312,14 +2328,21 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     public class ResolveServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The filter applied to the endpoints of the resolved service. General filter string syntax: *`field
-        /// operator value`* (*`logical connector`*) *`field`* can be `name` or `metadata.`*`key`* for map field.
-        /// *`operator`* can be `\&amp;lt;`, `&amp;gt;`, `\&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:`. Of which `:` means
-        /// `HAS` and is roughly the same as `=`. *`value`* must be the same data type as the field. *`logical
-        /// connector*` can be `AND`, `OR`, `NOT`. Examples of valid filters: * `metadata.owner` returns endpoints that
-        /// have a label with the key `owner`, this is the same as `metadata:owner` * `metadata.protocol=gRPC` returns
-        /// endpoints that have key/value `protocol=gRPC` * `metadata.owner!=sd AND metadata.foo=bar` returns endpoints
-        /// that have `owner` field in metadata with a value that is not `sd` and have the key/value `foo=bar`.
+        /// Optional. The filter applied to the endpoints of the resolved service. General `filter` string syntax: ` ()`
+        /// * `` can be `name`, `address`, `port`, or `metadata.` for map field * `` can be `&amp;lt;`, `&amp;gt;`,
+        /// `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, `:`. Of which `:` means `HAS`, and is roughly the same as `=` * `` must
+        /// be the same data type as field * `` can be `AND`, `OR`, `NOT` Examples of valid filters: * `metadata.owner`
+        /// returns endpoints that have a annotation with the key `owner`, this is the same as `metadata:owner` *
+        /// `metadata.protocol=gRPC` returns endpoints that have key/value `protocol=gRPC` * `address=192.108.1.105`
+        /// returns endpoints that have this address * `port&amp;gt;8080` returns endpoints that have port number larger
+        /// than 8080 *
+        /// `name&amp;gt;projects/my-project/locations/us-east1/namespaces/my-namespace/services/my-service/endpoints/endpoint-c`
+        /// returns endpoints that have name that is alphabetically later than the string, so "endpoint-e" is returned
+        /// but "endpoint-a" is not * `metadata.owner!=sd AND metadata.foo=bar` returns endpoints that have `owner` in
+        /// annotation key but value is not `sd` AND have key/value `foo=bar` * `doesnotexist.foo=bar` returns an empty
+        /// list. Note that endpoint doesn't have a field called "doesnotexist". Since the filter does not match any
+        /// endpoint, it returns no results For more information about filtering, see [API
+        /// Filtering](https://aip.dev/160).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointFilter")]
         public virtual string EndpointFilter { get; set; }
@@ -2353,29 +2376,31 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Endpoints associated with this service. Returned on LookupService.Resolve. Control plane
+        /// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane
         /// clients should use RegistrationService.ListEndpoints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
         public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
 
         /// <summary>
-        /// Optional. Metadata for the service. This data can be consumed by service clients. Restrictions: - The entire
-        /// metadata dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Metadata that goes
-        /// beyond any these limits will be rejected. - Valid metadata keys have two segments: an optional prefix and
-        /// name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning
-        /// and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and
+        /// Optional. Metadata for the service. This data can be consumed by service clients. Restrictions: * The entire
+        /// metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes
+        /// beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name,
+        /// separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and
+        /// ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and
         /// alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of
         /// DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata
-        /// that fails to meet these requirements will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/'
+        /// that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/`
         /// prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these
-        /// keyspaces, those entries will be silently ignored by the system.
+        /// keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the
+        /// `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service
+        /// Directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+        /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
