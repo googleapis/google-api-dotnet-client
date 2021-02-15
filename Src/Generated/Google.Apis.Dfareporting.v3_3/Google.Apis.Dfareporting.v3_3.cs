@@ -22519,7 +22519,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// The value of the custom floodlight variable. The length of string must not exceed 50 characters.
+        /// The value of the custom floodlight variable. The length of string must not exceed 100 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -26322,7 +26322,7 @@ namespace Google.Apis.Dfareporting.v3_3.Data
             public class ReportPropertiesData
             {
                 /// <summary>
-                /// DFA checks to see if a click interaction occurred within the specified period of time before a
+                /// CM360 checks to see if a click interaction occurred within the specified period of time before a
                 /// conversion. By default the value is pulled from Floodlight or you can manually enter a custom value.
                 /// Valid values: 1-90.
                 /// </summary>
@@ -26330,9 +26330,9 @@ namespace Google.Apis.Dfareporting.v3_3.Data
                 public virtual System.Nullable<int> ClicksLookbackWindow { get; set; }
 
                 /// <summary>
-                /// DFA checks to see if an impression interaction occurred within the specified period of time before a
-                /// conversion. By default the value is pulled from Floodlight or you can manually enter a custom value.
-                /// Valid values: 1-90.
+                /// CM360 checks to see if an impression interaction occurred within the specified period of time before
+                /// a conversion. By default the value is pulled from Floodlight or you can manually enter a custom
+                /// value. Valid values: 1-90.
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("impressionsLookbackWindow")]
                 public virtual System.Nullable<int> ImpressionsLookbackWindow { get; set; }

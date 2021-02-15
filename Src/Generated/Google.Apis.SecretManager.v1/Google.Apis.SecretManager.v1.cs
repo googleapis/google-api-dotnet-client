@@ -1956,6 +1956,13 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual Replication Replication { get; set; }
 
+        /// <summary>
+        /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations
+        /// are called on the secret or its versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
+        public virtual System.Collections.Generic.IList<Topic> Topics { get; set; }
+
         /// <summary>Input only. The TTL for the Secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
@@ -2053,6 +2060,21 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Pub/Sub topic which SM will publish to when control plane events occur on this secret.</summary>
+    public class Topic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Pub/Sub topic that will be published to, in the following format:
+        /// `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher`
+        /// permissions on the topic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1013,197 +1013,9 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The evaluation result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
-        public virtual GoogleCloudDocumentaiUiv1beta3Evaluation Evaluation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An evaluation of a ProcessorVersion's performance.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3Evaluation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metrics for all the entities in aggregate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allEntitiesMetrics")]
-        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics AllEntitiesMetrics { get; set; }
-
-        /// <summary>The time that the evaluation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Metrics across confidence levels, for different entities.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityMetrics")]
-        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics> EntityMetrics { get; set; }
-
-        /// <summary>
-        /// The resource name of the evaluation. Format:
-        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}/evaluations/{evaluation}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Evaluations metrics, at a specific confidence level.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The confidence level.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevel")]
-        public virtual System.Nullable<float> ConfidenceLevel { get; set; }
-
-        /// <summary>The metrics at the specific confidence level.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics Metrics { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Evaluation metrics, either in aggregate or about a specific entity.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3EvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The calculated f1 score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
-        public virtual System.Nullable<float> F1Score { get; set; }
-
-        /// <summary>The calculated precision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
-        public virtual System.Nullable<float> Precision { get; set; }
-
-        /// <summary>The calculated recall.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
-        public virtual System.Nullable<float> Recall { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metrics across multiple confidence levels.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3EvaluationMultiConfidenceMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metrics across confidence levels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceLevelMetrics")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3EvaluationConfidenceLevelMetrics> ConfidenceLevelMetrics { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Gives a short summary of an evaluation, and links to the evaluation itself.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3EvaluationReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An aggregate of the statistics for the evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aggregateMetrics")]
-        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationMetrics AggregateMetrics { get; set; }
-
-        /// <summary>The resource name of the evaluation.</summary>
+        /// <summary>The resource name of the created evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluation")]
         public virtual string Evaluation { get; set; }
-
-        /// <summary>The resource name of the Long Running Operation for the evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
-        public virtual string Operation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
-    /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
-    /// version. So the processor's behavior (when processing documents) is defined by a default version.
-    /// </summary>
-    public class GoogleCloudDocumentaiUiv1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time the processor version was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>The display name of the processor version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The most recently invoked evaluation for the processor version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
-        public virtual GoogleCloudDocumentaiUiv1beta3EvaluationReference LatestEvaluation { get; set; }
-
-        /// <summary>
-        /// The resource name of the processor version. Format:
-        /// projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The schema of the processor version. Describes the output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual GoogleCloudDocumentaiUiv1beta3Schema Schema { get; set; }
-
-        /// <summary>The state of the processor version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The schema defines the output of the processed document by a processor.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3Schema : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Display name to show to users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Entity types of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> EntityTypes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
-    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
-    /// </summary>
-    public class GoogleCloudDocumentaiUiv1beta3SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Type of the entity. It can be either a value type (such as "text", "numeric", "date" and "address"), or an
-        /// object type which may contain nested entities (such as "document" and "table").
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
-        public virtual string BaseType { get; set; }
-
-        /// <summary>Description of the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
-        public virtual string OccurrenceType { get; set; }
-
-        /// <summary>
-        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
-        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
-        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SchemaEntityType> Properties { get; set; }
-
-        /// <summary>Source of this entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>Name of the type. It must be unique within the set of same level types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1216,6 +1028,37 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        /// <summary>The test dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testDatasetValidation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation TestDatasetValidation { get; set; }
+
+        /// <summary>The training dataset validation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingDatasetValidation")]
+        public virtual GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation TrainingDatasetValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The dataset validation information. This includes any and all errors with documents and the dataset.
+    /// </summary>
+    public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Error information for the dataset as a whole. A maximum of 10 dataset errors will be returned. A single
+        /// dataset error is terminal for training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DatasetErrors { get; set; }
+
+        /// <summary>
+        /// Error information pertaining to specific documents. A maximum of 10 document errors will be returned. Any
+        /// document with errors will not be used throughout training.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> DocumentErrors { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1223,9 +1066,9 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The response for the TrainProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The processor version produced by training.</summary>
+        /// <summary>The resource name of the processor version produced by training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
-        public virtual GoogleCloudDocumentaiUiv1beta3ProcessorVersion ProcessorVersion { get; set; }
+        public virtual string ProcessorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1365,8 +1208,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the operation triggered by the processed document. Non-empty only when the [state] is
-        /// [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
+        /// The name of the operation triggered by the processed document. This field is populated only when the [state]
+        /// is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
         /// returned by [ReviewDocument] method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
@@ -3639,7 +3482,7 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>
         /// The name of the operation triggered by the processed document. If the human review process is not triggered,
         /// this field will be empty. It has the same response type and metadata as the long running operation returned
-        /// by ReviewDocument method. .
+        /// by ReviewDocument method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }
@@ -4706,8 +4549,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the operation triggered by the processed document. Non-empty only when the [state] is
-        /// [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
+        /// The name of the operation triggered by the processed document. This field is populated only when the [state]
+        /// is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
         /// returned by [ReviewDocument] method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
@@ -4776,7 +4619,7 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>
         /// The name of the operation triggered by the processed document. If the human review process is not triggered,
         /// this field will be empty. It has the same response type and metadata as the long running operation returned
-        /// by ReviewDocument method. .
+        /// by ReviewDocument method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }

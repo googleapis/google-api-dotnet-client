@@ -6137,6 +6137,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
+        /// <summary>
+        /// The sentiment analysis result of the current user request. The field is filled when sentiment analysis is
+        /// configured to be enabled for the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisResult")]
+        public virtual GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult SentimentAnalysisResult { get; set; }
+
         /// <summary>Information about session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3SessionInfo SessionInfo { get; set; }
@@ -6199,6 +6206,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Always present. Structured value for the parameter extracted from user utterance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedValue")]
         public virtual object ResolvedValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of sentiment analysis.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment,
+        /// regardless of score (positive or negative).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
+        public virtual System.Nullable<float> Magnitude { get; set; }
+
+        /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7698,6 +7723,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
+        /// <summary>
+        /// The sentiment analysis result of the current user request. The field is filled when sentiment analysis is
+        /// configured to be enabled for the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysisResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult SentimentAnalysisResult { get; set; }
+
         /// <summary>Information about session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; }
@@ -7760,6 +7792,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Always present. Structured value for the parameter extracted from user utterance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedValue")]
         public virtual object ResolvedValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the result of sentiment analysis.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A non-negative number in the [0, +inf) range, which represents the absolute magnitude of sentiment,
+        /// regardless of score (positive or negative).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("magnitude")]
+        public virtual System.Nullable<float> Magnitude { get; set; }
+
+        /// <summary>Sentiment score between -1.0 (negative sentiment) and 1.0 (positive sentiment).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
