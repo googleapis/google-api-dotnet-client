@@ -2,15 +2,6 @@
 
 set -e
 
-# Try to detect Python 2. It's quite different between Windows and Linux.
-if which python > /dev/null && python --version 2>&1 | grep -q "Python 2"; then declare -r PYTHON2=python
-elif which py > /dev/null && py -2 --version 2>&1 | grep -q "Python 2"; then declare -r PYTHON2="py -2"
-elif which python2 > /dev/null && python2 --version 2>&1 | grep -q "Python 2"; then declare -r PYTHON2=python2
-else
-  echo "Unable to detect Python 2 installation."
-  exit 1
-fi
-
 source CSharpGeneratorFunctions.sh
 
 # "nuget restore" fails if local package source directories don't exist.
@@ -88,9 +79,9 @@ if [ -z ${SKIPDOWNLOAD+x} ]; then
   echo Deleting existing \'$DISCOVERY_DOC_DIR\' directory...
   rm -rf $DISCOVERY_DOC_DIR
   # Download all discovery docs
-  $PYTHON2 -u get_discovery_documents.py --destination_dir $DISCOVERY_DOC_DIR
+  dotnet run -p $TOOLS_DIR/DiscoveryDocDownloader -- $DISCOVERY_DOC_DIR
   # Patch discovery docs
-  dotnet run --project $TOOLS_DIR/DiscoveryDocPatcher/DiscoveryDocPatcher.csproj -- $DISCOVERY_DOC_DIR
+  dotnet run -p $TOOLS_DIR/DiscoveryDocPatcher -- $DISCOVERY_DOC_DIR
   
   if [[ $SKIPREVERT == "TRUE" ]]
   then
@@ -124,7 +115,6 @@ if [ -z ${SKIPGENERATE+x} ]; then
   echo Deleting existing \'$CODE_GENERATION_DIR\' directory...
   rm -rf $CODE_GENERATION_DIR
   # Generate API projects from discovery docs
-  export PYTHONPATH=$(pwd)/ClientGenerator/src
   for jsonfile in $DISCOVERY_DOC_DIR/*.json; do
     IFS='/'; names=($jsonfile); unset IFS
     name=$(echo ${names[-1]} | sed 's/.json//g')
