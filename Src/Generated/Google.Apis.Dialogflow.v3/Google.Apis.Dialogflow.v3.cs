@@ -5360,9 +5360,13 @@ namespace Google.Apis.Dialogflow.v3
                             [Google.Apis.Util.StringValueAttribute("INTENT")]
                             INTENT,
 
-                            /// <summary>Page transition coverage</summary>
+                            /// <summary>Page transition coverage.</summary>
                             [Google.Apis.Util.StringValueAttribute("PAGE_TRANSITION")]
                             PAGETRANSITION,
+
+                            /// <summary>Transition route group coverage.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TRANSITION_ROUTE_GROUP")]
+                            TRANSITIONROUTEGROUP,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -5819,35 +5823,30 @@ namespace Google.Apis.Dialogflow.v3
 
                     /// <summary>Kicks off a test case run.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="projectsId"><c>null</c></param>
-                    /// <param name="locationsId"><c>null</c></param>
-                    /// <param name="agentsId"><c>null</c></param>
-                    public virtual RunRequest Run(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3RunTestCaseRequest body, string projectsId, string locationsId, string agentsId)
+                    /// <param name="name">
+                    /// Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.
+                    /// </param>
+                    public virtual RunRequest Run(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3RunTestCaseRequest body, string name)
                     {
-                        return new RunRequest(service, body, projectsId, locationsId, agentsId);
+                        return new RunRequest(service, body, name);
                     }
 
                     /// <summary>Kicks off a test case run.</summary>
                     public class RunRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Run request.</summary>
-                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3RunTestCaseRequest body, string projectsId, string locationsId, string agentsId) : base(service)
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3RunTestCaseRequest body, string name) : base(service)
                         {
-                            ProjectsId = projectsId;
-                            LocationsId = locationsId;
-                            AgentsId = agentsId;
+                            Name = name;
                             Body = body;
                             InitParameters();
                         }
 
-                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string LocationsId { get; private set; }
-
-                        [Google.Apis.Util.RequestParameterAttribute("agentsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string AgentsId { get; private set; }
+                        /// <summary>
+                        /// Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3RunTestCaseRequest Body { get; set; }
@@ -5862,35 +5861,19 @@ namespace Google.Apis.Dialogflow.v3
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v3/projects/{projectsId}/locations/{locationsId}/agents/{agentsId}/testCases:run";
+                        public override string RestPath => "v3/{+name}:run";
 
                         /// <summary>Initializes Run parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "projectsId",
+                                Name = "name",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("agentsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "agentsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/testCases/[^/]+$",
                             });
                         }
                     }
@@ -7737,7 +7720,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intentCoverage")]
         public virtual GoogleCloudDialogflowCxV3IntentCoverage IntentCoverage { get; set; }
 
-        /// <summary>Transition coverage.</summary>
+        /// <summary>Transition route group coverage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeGroupCoverage")]
+        public virtual GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage RouteGroupCoverage { get; set; }
+
+        /// <summary>Transition (excluding transition route groups) coverage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionCoverage")]
         public virtual GoogleCloudDialogflowCxV3TransitionCoverage TransitionCoverage { get; set; }
 
@@ -7788,9 +7775,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The output from the virtual agent.</summary>
     public class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Page on which the utterance was spoken. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
 
@@ -7817,9 +7802,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessageText> TextResponses { get; set; }
 
-        /// <summary>
-        /// The Intent that triggered the response. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Intent that triggered the response. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
         public virtual GoogleCloudDialogflowCxV3Intent TriggeredIntent { get; set; }
 
@@ -10134,10 +10117,6 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
-        /// <summary>Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10520,8 +10499,8 @@ namespace Google.Apis.Dialogflow.v3.Data
     }
 
     /// <summary>
-    /// Transition coverage represents the percentage of all possible transitions present within any of a parent's test
-    /// cases.
+    /// Transition coverage represents the percentage of all possible page transitions (page-level transition routes and
+    /// event handlers, excluding transition route groups) present within any of a parent's test cases.
     /// </summary>
     public class GoogleCloudDialogflowCxV3TransitionCoverage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10537,7 +10516,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A transition in the agent's graph.</summary>
+    /// <summary>A transition in a page.</summary>
     public class GoogleCloudDialogflowCxV3TransitionCoverageTransition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether or not the transition is covered by at least one of the agent's test cases.</summary>
@@ -10657,6 +10636,58 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Transition routes associated with the TransitionRouteGroup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Transition route group coverage represents the percentage of all possible transition routes present within any
+    /// of a parent's test cases. The results are grouped by the transition route group.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent of transition routes in all the transition route groups that are covered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverageScore")]
+        public virtual System.Nullable<float> CoverageScore { get; set; }
+
+        /// <summary>Transition route group coverages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage> Coverages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Coverage result message for one transition route group.</summary>
+    public class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The percent of transition routes in the transition route group that are covered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coverageScore")]
+        public virtual System.Nullable<float> CoverageScore { get; set; }
+
+        /// <summary>Transition route group metadata. Only name and displayName will be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeGroup")]
+        public virtual GoogleCloudDialogflowCxV3TransitionRouteGroup RouteGroup { get; set; }
+
+        /// <summary>The list of transition routes and coverage in the transition route group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition> Transitions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A transition coverage in a transition route group.</summary>
+    public class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not the transition route is covered by at least one of the agent's test cases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("covered")]
+        public virtual System.Nullable<bool> Covered { get; set; }
+
+        /// <summary>Intent route or condition route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionRoute")]
+        public virtual GoogleCloudDialogflowCxV3TransitionRoute TransitionRoute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11157,9 +11188,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The output from the virtual agent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Page on which the utterance was spoken. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
@@ -11186,9 +11215,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessageText> TextResponses { get; set; }
 
-        /// <summary>
-        /// The Intent that triggered the response. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Intent that triggered the response. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
         public virtual GoogleCloudDialogflowCxV3beta1Intent TriggeredIntent { get; set; }
 

@@ -65,7 +65,7 @@ namespace Google.Apis.Docs.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Docs API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your Google Docs documents</summary>
+            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
             public static string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>View your Google Docs documents</summary>
@@ -86,7 +86,7 @@ namespace Google.Apis.Docs.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Docs API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your Google Docs documents</summary>
+            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
             public const string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>View your Google Docs documents</summary>

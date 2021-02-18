@@ -715,6 +715,13 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. Raw text query to search for in rows of the table. Special characters must be escaped.
+                /// Logical operators and field specific filtering not supported.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// The maximum number of rows to return. The service may return fewer than this value. If unspecified,
                 /// at most 50 rows are returned. The maximum value is 1,000; values above 1,000 are coerced to 1,000.
                 /// </summary>
@@ -765,6 +772,14 @@ namespace Google.Apis.Area120Tables.v1alpha1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^tables/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {

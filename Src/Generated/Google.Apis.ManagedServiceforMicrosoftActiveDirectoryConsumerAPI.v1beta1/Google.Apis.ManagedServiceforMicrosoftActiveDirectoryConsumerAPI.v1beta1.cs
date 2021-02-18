@@ -356,7 +356,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
 
                         /// <summary>Gets details of a single sqlIntegration.</summary>
                         /// <param name="name">
-                        /// Required. SQLIntegration resource name using the form:
+                        /// Required. SqlIntegration resource name using the form:
                         /// `projects/{project_id}/locations/global/domains/*/sqlIntegrations/{name}`
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -365,7 +365,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                         }
 
                         /// <summary>Gets details of a single sqlIntegration.</summary>
-                        public class GetRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.SQLIntegration>
+                        public class GetRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.SqlIntegration>
                         {
                             /// <summary>Constructs a new Get request.</summary>
                             public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -375,7 +375,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                             }
 
                             /// <summary>
-                            /// Required. SQLIntegration resource name using the form:
+                            /// Required. SqlIntegration resource name using the form:
                             /// `projects/{project_id}/locations/global/domains/*/sqlIntegrations/{name}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -405,9 +405,9 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                             }
                         }
 
-                        /// <summary>Lists SQLIntegrations in a given domain.</summary>
+                        /// <summary>Lists SqlIntegrations in a given domain.</summary>
                         /// <param name="parent">
-                        /// Required. The resource name of the SQLIntegrations using the form:
+                        /// Required. The resource name of the SqlIntegrations using the form:
                         /// `projects/{project_id}/locations/global/domains/*`
                         /// </param>
                         public virtual ListRequest List(string parent)
@@ -415,8 +415,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists SQLIntegrations in a given domain.</summary>
-                        public class ListRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.ListSQLIntegrationsResponse>
+                        /// <summary>Lists SqlIntegrations in a given domain.</summary>
+                        public class ListRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1beta1.Data.ListSqlIntegrationsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
                             public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -426,7 +426,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the SQLIntegrations using the form:
+                            /// Required. The resource name of the SqlIntegrations using the form:
                             /// `projects/{project_id}/locations/global/domains/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -434,7 +434,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
 
                             /// <summary>
                             /// Optional. Filter specifying constraints of a list operation. For example,
-                            /// `SQLIntegration.name="sql"`.
+                            /// `SqlIntegration.name="sql"`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -2346,9 +2346,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
 
         /// <summary>
         /// schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule.
-        /// It's normally the initial schedule start time plus a week. If the reschedule type is next window, simply
-        /// take this value as start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
-        /// go beyond this deadline.
+        /// It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance
+        /// cannot be scheduled to start beyond this deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
         public virtual object ScheduleDeadlineTime { get; set; }
@@ -2373,6 +2372,10 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
         public virtual System.Nullable<bool> Exclude { get; set; }
+
+        /// <summary>Optional. If the update call is triggered from rollback, set the value as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRollback")]
+        public virtual System.Nullable<bool> IsRollback { get; set; }
 
         /// <summary>
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
@@ -2410,6 +2413,26 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
         public virtual string NodeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The
+        /// SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an
+        /// error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined
+        /// in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will
+        /// not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data
+        /// produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI
+        /// which has not been declared in the binary flags, there will be an error message emitted in the Eligibility
+        /// Exporter log and the metric for the SLI in question will not be emitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilities")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> Eligibilities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2478,7 +2501,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
 
         /// <summary>
         /// Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance should be
-        /// excluded from all SLIs defined in the service SLO configuration.
+        /// excluded from all SLIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
         public virtual string SliName { get; set; }
@@ -2494,7 +2517,10 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. User-defined instance eligibility.</summary>
+        /// <summary>
+        /// Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
         public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; }
 
@@ -2517,6 +2543,13 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; }
+
+        /// <summary>
+        /// Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility PerSliEligibility { get; set; }
 
         /// <summary>
         /// Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the
@@ -2580,8 +2613,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ListSQLIntegrationsResponse is the response message for ListSQLIntegrations method.</summary>
-    public class ListSQLIntegrationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>ListSqlIntegrationsResponse is the response message for ListSqlIntegrations method.</summary>
+    public class ListSqlIntegrationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Token to retrieve the next page of results, or empty if there are no more results in the list.
@@ -2589,9 +2622,9 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>A list of SQLIntegrations of a domain.</summary>
+        /// <summary>A list of SqlIntegrations of a domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlIntegrations")]
-        public virtual System.Collections.Generic.IList<SQLIntegration> SqlIntegrations { get; set; }
+        public virtual System.Collections.Generic.IList<SqlIntegration> SqlIntegrations { get; set; }
 
         /// <summary>A list of locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -2874,43 +2907,6 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the SQL instance integrated with AD.</summary>
-    public class SQLIntegration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The time sql integration was created. Synthetic field is populated automatically by CCFE.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// The unique name of the sql integration in the form of
-        /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The full resource name of an integrated sql instance TODO(b/161918255) Add resource type annotation post
-        /// CloudSQL API fix.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sqlInstance")]
-        public virtual string SqlInstance { get; set; }
-
-        /// <summary>Output only. The current state of the sql integration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>
-        /// Output only. The time sql integration was updated. Synthetic field is populated automatically by CCFE.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configure the schedule.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2940,6 +2936,43 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1bet
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Sql instance integrated with AD.</summary>
+    public class SqlIntegration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The time sql integration was created. Synthetic field is populated automatically by CCFE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The unique name of the sql integration in the form of
+        /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The full resource name of an integrated sql instance Reference to:
+        /// http://google3/google/cloud/sql/v1/cloud_sql_resources.proto?l=351&amp;amp;rcl=354416019
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlInstance")]
+        public virtual string SqlInstance { get; set; }
+
+        /// <summary>Output only. The current state of the sql integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The time sql integration was updated. Synthetic field is populated automatically by CCFE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

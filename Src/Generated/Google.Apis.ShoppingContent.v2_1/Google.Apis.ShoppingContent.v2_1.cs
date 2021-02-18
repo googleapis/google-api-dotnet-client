@@ -55,6 +55,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Pubsubnotificationsettings = new PubsubnotificationsettingsResource(this);
             Regionalinventory = new RegionalinventoryResource(this);
             Regions = new RegionsResource(this);
+            Reports = new ReportsResource(this);
             Repricingrules = new RepricingrulesResource(this);
             Returnaddress = new ReturnaddressResource(this);
             Returnpolicy = new ReturnpolicyResource(this);
@@ -164,6 +165,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Regions resource.</summary>
         public virtual RegionsResource Regions { get; }
+
+        /// <summary>Gets the Reports resource.</summary>
+        public virtual ReportsResource Reports { get; }
 
         /// <summary>Gets the Repricingrules resource.</summary>
         public virtual RepricingrulesResource Repricingrules { get; }
@@ -8882,6 +8886,84 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
     }
 
+    /// <summary>The "reports" collection of methods.</summary>
+    public class ReportsResource
+    {
+        private const string Resource = "reports";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ReportsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Retrieves merchant performance mertrics matching the search query and optionally segmented by selected
+        /// dimensions.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. Id of the merchant making the call. Must be a standalone account or an MCA subaccount.
+        /// </param>
+        public virtual SearchRequest Search(Google.Apis.ShoppingContent.v2_1.Data.SearchRequest body, long merchantId)
+        {
+            return new SearchRequest(service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Retrieves merchant performance mertrics matching the search query and optionally segmented by selected
+        /// dimensions.
+        /// </summary>
+        public class SearchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.SearchResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.SearchRequest body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Id of the merchant making the call. Must be a standalone account or an MCA subaccount.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.SearchRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/reports/search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "repricingrules" collection of methods.</summary>
     public class RepricingrulesResource
     {
@@ -13788,6 +13870,30 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Performance metrics. Values are only set for metrics requested explicitly in the request's search query.
+    /// </summary>
+    public class Metrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of clicks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
+        public virtual System.Nullable<long> Clicks { get; set; }
+
+        /// <summary>
+        /// Number of clicks merchant's products receive (clicks) divided by the number of times the products are shown
+        /// (impressions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ctr")]
+        public virtual System.Nullable<double> Ctr { get; set; }
+
+        /// <summary>Number of times merchant's products are shown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
+        public virtual System.Nullable<long> Impressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class MinimumOrderValueTable : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("storeCodeSetWithMovs")]
@@ -18124,6 +18230,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result row returned from the search query.</summary>
+    public class ReportRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Metrics requested by the merchant in the query. Metric values are only set for metrics requested explicitly
+        /// in the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual Metrics Metrics { get; set; }
+
+        /// <summary>
+        /// Segmentation dimensions requested by the merchant in the query. Dimension values are only set for dimensions
+        /// requested explicitly in the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual Segments Segments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Resource that represents a daily Repricing product report. Each report contains stats for a single type of
     /// Repricing rule for a single product on a given day. If there are multiple rules of the same type for the product
@@ -18963,6 +19090,76 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cells")]
         public virtual System.Collections.Generic.IList<Value> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the ReportService.Search method.</summary>
+    public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of ReportRows to retrieve in a single page. Defaults to the maximum of 1000. Values above 1000 are
+        /// coerced to 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Token of the page to retrieve. If not specified, the first page of results is returned. In order to request
+        /// the next page of results, the value obtained from `next_page_token` in the previous response should be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Required. Search query that defines performance metrics to retrieve and dimensions according to which the
+        /// metrics are to be segmented.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ReportService.Search method.</summary>
+    public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent
+        /// pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Rows that matched the search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<ReportRow> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Dimensions according to which metrics are segmented in the response. Values of product dimensions, e.g., offer
+    /// id, reflect the state of a product at the time of the corresponding event, e.g., impression or order. Segment
+    /// fields cannot be selected in queries without also selecting at least one metric field. Values are only set for
+    /// dimensions requested explicitly in the request's search query.
+    /// </summary>
+    public class Segments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date in the merchant timezone to which metrics apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>Merchant-provided id of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
+        public virtual string OfferId { get; set; }
+
+        /// <summary>Program to which metrics apply, e.g., Free Product Listing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("program")]
+        public virtual string Program { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

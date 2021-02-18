@@ -3921,6 +3921,14 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// The Default Identity tag. If specified when creating the account, the tag must be present in
+        /// activation_grants. If not specified when creating the account, the tag is set to the tag specified in
+        /// activation_grants.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         /// <summary>The unique and stable id of the default identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }

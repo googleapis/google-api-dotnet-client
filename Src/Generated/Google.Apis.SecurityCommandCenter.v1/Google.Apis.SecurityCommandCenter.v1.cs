@@ -4654,9 +4654,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual SecurityMarks SecurityMarks { get; set; }
 
-        /// <summary>
-        /// The time at which the asset was last updated, added, or deleted in Security Command Center.
-        /// </summary>
+        /// <summary>The time at which the asset was last updated or added in Cloud SCC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

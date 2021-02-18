@@ -3652,7 +3652,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Provides telephony information associated with each SIM card on the device. Only supported on fully managed
-        /// devices starting from Android API level 23 and above.
+        /// devices starting from Android API level 23.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("telephonyInfos")]
         public virtual System.Collections.Generic.IList<TelephonyInfo> TelephonyInfos { get; set; }
@@ -3959,7 +3959,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; }
 
-        /// <summary>Controls how long the work profile can stay off.</summary>
+        /// <summary>Controls how long the work profile can stay off. The duration must be at least 3 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDaysWithWorkOff")]
         public virtual System.Nullable<int> MaxDaysWithWorkOff { get; set; }
 
@@ -4818,7 +4818,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Telephony information associated with a given SIM card on the device. Only supported on fully managed devices
-    /// starting from Android API level 23 and above.
+    /// starting from Android API level 23.
     /// </summary>
     public class TelephonyInfo : Google.Apis.Requests.IDirectResponseSchema
     {

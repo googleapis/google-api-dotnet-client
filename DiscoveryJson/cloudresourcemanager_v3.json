@@ -1,0 +1,677 @@
+{
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/cloud-platform": {
+     "description": "View and manage your data across Google Cloud Platform services"
+    },
+    "https://www.googleapis.com/auth/cloud-platform.read-only": {
+     "description": "View your data across Google Cloud Platform services"
+    }
+   }
+  }
+ },
+ "basePath": "",
+ "baseUrl": "https://cloudresourcemanager.googleapis.com/",
+ "batchPath": "batch",
+ "canonicalName": "Cloud Resource Manager",
+ "description": "Creates, reads, and updates metadata for Google Cloud Platform resource containers.",
+ "discoveryVersion": "v1",
+ "documentationLink": "https://cloud.google.com/resource-manager",
+ "fullyEncodeReservedExpansion": true,
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "id": "cloudresourcemanager:v3",
+ "kind": "discovery#restDescription",
+ "mtlsRootUrl": "https://cloudresourcemanager.mtls.googleapis.com/",
+ "name": "cloudresourcemanager",
+ "ownerDomain": "google.com",
+ "ownerName": "Google",
+ "parameters": {
+  "$.xgafv": {
+   "description": "V1 error format.",
+   "enum": [
+    "1",
+    "2"
+   ],
+   "enumDescriptions": [
+    "v1 error format",
+    "v2 error format"
+   ],
+   "location": "query",
+   "type": "string"
+  },
+  "access_token": {
+   "description": "OAuth access token.",
+   "location": "query",
+   "type": "string"
+  },
+  "alt": {
+   "default": "json",
+   "description": "Data format for response.",
+   "enum": [
+    "json",
+    "media",
+    "proto"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json",
+    "Media download with context-dependent Content-Type",
+    "Responses with Content-Type of application/x-protobuf"
+   ],
+   "location": "query",
+   "type": "string"
+  },
+  "callback": {
+   "description": "JSONP",
+   "location": "query",
+   "type": "string"
+  },
+  "fields": {
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query",
+   "type": "string"
+  },
+  "key": {
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query",
+   "type": "string"
+  },
+  "oauth_token": {
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query",
+   "type": "string"
+  },
+  "prettyPrint": {
+   "default": "true",
+   "description": "Returns response with indentations and line breaks.",
+   "location": "query",
+   "type": "boolean"
+  },
+  "quotaUser": {
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+   "location": "query",
+   "type": "string"
+  },
+  "uploadType": {
+   "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+   "location": "query",
+   "type": "string"
+  },
+  "upload_protocol": {
+   "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+   "location": "query",
+   "type": "string"
+  }
+ },
+ "protocol": "rest",
+ "resources": {
+  "liens": {
+   "methods": {
+    "create": {
+     "description": "Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.",
+     "flatPath": "v3/liens",
+     "httpMethod": "POST",
+     "id": "cloudresourcemanager.liens.create",
+     "parameterOrder": [],
+     "parameters": {},
+     "path": "v3/liens",
+     "request": {
+      "$ref": "Lien"
+     },
+     "response": {
+      "$ref": "Lien"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only"
+     ]
+    },
+    "delete": {
+     "description": "Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`.",
+     "flatPath": "v3/liens/{liensId}",
+     "httpMethod": "DELETE",
+     "id": "cloudresourcemanager.liens.delete",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "Required. The name/identifier of the Lien to delete.",
+       "location": "path",
+       "pattern": "^liens/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v3/{+name}",
+     "response": {
+      "$ref": "Empty"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only"
+     ]
+    },
+    "get": {
+     "description": "Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission requires permission `resourcemanager.projects.get` or `resourcemanager.projects.updateLiens`.",
+     "flatPath": "v3/liens/{liensId}",
+     "httpMethod": "GET",
+     "id": "cloudresourcemanager.liens.get",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "Required. The name/identifier of the Lien.",
+       "location": "path",
+       "pattern": "^liens/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v3/{+name}",
+     "response": {
+      "$ref": "Lien"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only"
+     ]
+    },
+    "list": {
+     "description": "List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`.",
+     "flatPath": "v3/liens",
+     "httpMethod": "GET",
+     "id": "cloudresourcemanager.liens.list",
+     "parameterOrder": [],
+     "parameters": {
+      "pageSize": {
+       "description": "The maximum number of items to return. This is a suggestion for the server.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "pageToken": {
+       "description": "The `next_page_token` value returned from a previous List request, if any.",
+       "location": "query",
+       "type": "string"
+      },
+      "parent": {
+       "description": "Required. The name of the resource to list all attached Liens. For example, `projects/1234`. (google.api.field_policy).resource_type annotation is not set since the parent depends on the meta api implementation. This field could be a project or other sub project resources.",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "v3/liens",
+     "response": {
+      "$ref": "ListLiensResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only"
+     ]
+    }
+   }
+  },
+  "operations": {
+   "methods": {
+    "get": {
+     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+     "flatPath": "v3/operations/{operationsId}",
+     "httpMethod": "GET",
+     "id": "cloudresourcemanager.operations.get",
+     "parameterOrder": [
+      "name"
+     ],
+     "parameters": {
+      "name": {
+       "description": "The name of the operation resource.",
+       "location": "path",
+       "pattern": "^operations/.*$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v3/{+name}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/cloud-platform.read-only"
+     ]
+    }
+   }
+  }
+ },
+ "revision": "20210205",
+ "rootUrl": "https://cloudresourcemanager.googleapis.com/",
+ "schemas": {
+  "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation": {
+   "description": "Metadata describing a long running folder operation",
+   "id": "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
+   "properties": {
+    "destinationParent": {
+     "description": "The resource name of the folder or organization we are either creating the folder under or moving the folder to.",
+     "type": "string"
+    },
+    "displayName": {
+     "description": "The display name of the folder.",
+     "type": "string"
+    },
+    "operationType": {
+     "description": "The type of this operation.",
+     "enum": [
+      "OPERATION_TYPE_UNSPECIFIED",
+      "CREATE",
+      "MOVE"
+     ],
+     "enumDescriptions": [
+      "Operation type not specified.",
+      "A create folder operation.",
+      "A move folder operation."
+     ],
+     "type": "string"
+    },
+    "sourceParent": {
+     "description": "The resource name of the folder's parent. Only applicable when the operation_type is MOVE.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation": {
+   "description": "Metadata describing a long running folder operation",
+   "id": "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
+   "properties": {
+    "destinationParent": {
+     "description": "The resource name of the folder or organization we are either creating the folder under or moving the folder to.",
+     "type": "string"
+    },
+    "displayName": {
+     "description": "The display name of the folder.",
+     "type": "string"
+    },
+    "operationType": {
+     "description": "The type of this operation.",
+     "enum": [
+      "OPERATION_TYPE_UNSPECIFIED",
+      "CREATE",
+      "MOVE"
+     ],
+     "enumDescriptions": [
+      "Operation type not specified.",
+      "A create folder operation.",
+      "A move folder operation."
+     ],
+     "type": "string"
+    },
+    "sourceParent": {
+     "description": "The resource name of the folder's parent. Only applicable when the operation_type is MOVE.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CreateFolderMetadata": {
+   "description": "Metadata pertaining to the Folder creation process.",
+   "id": "CreateFolderMetadata",
+   "properties": {
+    "displayName": {
+     "description": "The display name of the folder.",
+     "type": "string"
+    },
+    "parent": {
+     "description": "The resource name of the folder or organization we are creating the folder under.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "CreateProjectMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by CreateProject. It provides insight for when significant phases of Project creation have completed.",
+   "id": "CreateProjectMetadata",
+   "properties": {
+    "createTime": {
+     "description": "Creation time of the project creation workflow.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "gettable": {
+     "description": "True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete.",
+     "type": "boolean"
+    },
+    "ready": {
+     "description": "True if the project creation process is complete.",
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "CreateTagKeyMetadata": {
+   "description": "Runtime operation information for creating a TagKey.",
+   "id": "CreateTagKeyMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "CreateTagValueMetadata": {
+   "description": "Runtime operation information for creating a TagValue.",
+   "id": "CreateTagValueMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "DeleteFolderMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteFolder.",
+   "id": "DeleteFolderMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "DeleteOrganizationMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteOrganization.",
+   "id": "DeleteOrganizationMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "DeleteProjectMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by DeleteProject.",
+   "id": "DeleteProjectMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "DeleteTagKeyMetadata": {
+   "description": "Runtime operation information for deleting a TagKey.",
+   "id": "DeleteTagKeyMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "DeleteTagValueMetadata": {
+   "description": "Runtime operation information for deleting a TagValue.",
+   "id": "DeleteTagValueMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "Empty": {
+   "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.",
+   "id": "Empty",
+   "properties": {},
+   "type": "object"
+  },
+  "FolderOperation": {
+   "description": "Metadata describing a long running folder operation",
+   "id": "FolderOperation",
+   "properties": {
+    "destinationParent": {
+     "description": "The resource name of the folder or organization we are either creating the folder under or moving the folder to.",
+     "type": "string"
+    },
+    "displayName": {
+     "description": "The display name of the folder.",
+     "type": "string"
+    },
+    "operationType": {
+     "description": "The type of this operation.",
+     "enum": [
+      "OPERATION_TYPE_UNSPECIFIED",
+      "CREATE",
+      "MOVE"
+     ],
+     "enumDescriptions": [
+      "Operation type not specified.",
+      "A create folder operation.",
+      "A move folder operation."
+     ],
+     "type": "string"
+    },
+    "sourceParent": {
+     "description": "The resource name of the folder's parent. Only applicable when the operation_type is MOVE.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "FolderOperationError": {
+   "description": "A classification of the Folder Operation error.",
+   "id": "FolderOperationError",
+   "properties": {
+    "errorMessageId": {
+     "description": "The type of operation error experienced.",
+     "enum": [
+      "ERROR_TYPE_UNSPECIFIED",
+      "ACTIVE_FOLDER_HEIGHT_VIOLATION",
+      "MAX_CHILD_FOLDERS_VIOLATION",
+      "FOLDER_NAME_UNIQUENESS_VIOLATION",
+      "RESOURCE_DELETED_VIOLATION",
+      "PARENT_DELETED_VIOLATION",
+      "CYCLE_INTRODUCED_VIOLATION",
+      "FOLDER_BEING_MOVED_VIOLATION",
+      "FOLDER_TO_DELETE_NON_EMPTY_VIOLATION",
+      "DELETED_FOLDER_HEIGHT_VIOLATION"
+     ],
+     "enumDescriptions": [
+      "The error type was unrecognized or unspecified.",
+      "The attempted action would violate the max folder depth constraint.",
+      "The attempted action would violate the max child folders constraint.",
+      "The attempted action would violate the locally-unique folder display_name constraint.",
+      "The resource being moved has been deleted.",
+      "The resource a folder was being added to has been deleted.",
+      "The attempted action would introduce cycle in resource path.",
+      "The attempted action would move a folder that is already being moved.",
+      "The folder the caller is trying to delete contains active resources.",
+      "The attempted action would violate the max deleted folder depth constraint."
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "Lien": {
+   "description": "A Lien represents an encumbrance on the actions that can be performed on a resource.",
+   "id": "Lien",
+   "properties": {
+    "createTime": {
+     "description": "The creation time of this Lien.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "name": {
+     "description": "A system-generated unique identifier for this Lien. Example: `liens/1234abcd`",
+     "type": "string"
+    },
+    "origin": {
+     "description": "A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'",
+     "type": "string"
+    },
+    "parent": {
+     "description": "A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`",
+     "type": "string"
+    },
+    "reason": {
+     "description": "Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'",
+     "type": "string"
+    },
+    "restrictions": {
+     "description": "The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "ListLiensResponse": {
+   "description": "The response message for Liens.ListLiens.",
+   "id": "ListLiensResponse",
+   "properties": {
+    "liens": {
+     "description": "A list of Liens.",
+     "items": {
+      "$ref": "Lien"
+     },
+     "type": "array"
+    },
+    "nextPageToken": {
+     "description": "Token to retrieve the next page of results, or empty if there are no more results in the list.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "MoveFolderMetadata": {
+   "description": "Metadata pertaining to the Folder move process.",
+   "id": "MoveFolderMetadata",
+   "properties": {
+    "destinationParent": {
+     "description": "The resource name of the folder or organization to move the folder to.",
+     "type": "string"
+    },
+    "displayName": {
+     "description": "The display name of the folder.",
+     "type": "string"
+    },
+    "sourceParent": {
+     "description": "The resource name of the folder's parent.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "MoveProjectMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by MoveProject.",
+   "id": "MoveProjectMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "Operation": {
+   "description": "This resource represents a long-running operation that is the result of a network API call.",
+   "id": "Operation",
+   "properties": {
+    "done": {
+     "description": "If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.",
+     "type": "boolean"
+    },
+    "error": {
+     "$ref": "Status",
+     "description": "The error result of the operation in case of failure or cancellation."
+    },
+    "metadata": {
+     "additionalProperties": {
+      "description": "Properties of the object. Contains field @type with type URL.",
+      "type": "any"
+     },
+     "description": "Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.",
+     "type": "object"
+    },
+    "name": {
+     "description": "The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.",
+     "type": "string"
+    },
+    "response": {
+     "additionalProperties": {
+      "description": "Properties of the object. Contains field @type with type URL.",
+      "type": "any"
+     },
+     "description": "The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.",
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "ProjectCreationStatus": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by CreateProject. It provides insight for when significant phases of Project creation have completed.",
+   "id": "ProjectCreationStatus",
+   "properties": {
+    "createTime": {
+     "description": "Creation time of the project creation workflow.",
+     "format": "google-datetime",
+     "type": "string"
+    },
+    "gettable": {
+     "description": "True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete.",
+     "type": "boolean"
+    },
+    "ready": {
+     "description": "True if the project creation process is complete.",
+     "type": "boolean"
+    }
+   },
+   "type": "object"
+  },
+  "Status": {
+   "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).",
+   "id": "Status",
+   "properties": {
+    "code": {
+     "description": "The status code, which should be an enum value of google.rpc.Code.",
+     "format": "int32",
+     "type": "integer"
+    },
+    "details": {
+     "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
+     "items": {
+      "additionalProperties": {
+       "description": "Properties of the object. Contains field @type with type URL.",
+       "type": "any"
+      },
+      "type": "object"
+     },
+     "type": "array"
+    },
+    "message": {
+     "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "UndeleteFolderMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by UndeleteFolder.",
+   "id": "UndeleteFolderMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UndeleteOrganizationMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by UndeleteOrganization.",
+   "id": "UndeleteOrganizationMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UndeleteProjectMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by UndeleteProject.",
+   "id": "UndeleteProjectMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UpdateFolderMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateFolder.",
+   "id": "UpdateFolderMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UpdateProjectMetadata": {
+   "description": "A status object which is used as the `metadata` field for the Operation returned by UpdateProject.",
+   "id": "UpdateProjectMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UpdateTagKeyMetadata": {
+   "description": "Runtime operation information for updating a TagKey.",
+   "id": "UpdateTagKeyMetadata",
+   "properties": {},
+   "type": "object"
+  },
+  "UpdateTagValueMetadata": {
+   "description": "Runtime operation information for updating a TagValue.",
+   "id": "UpdateTagValueMetadata",
+   "properties": {},
+   "type": "object"
+  }
+ },
+ "servicePath": "",
+ "title": "Cloud Resource Manager API",
+ "version": "v3",
+ "version_module": true
+}

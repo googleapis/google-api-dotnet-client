@@ -770,6 +770,31 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Position contains source position information about the stack trace element such as line number, column number
+    /// and length of the code block in bytes.
+    /// </summary>
+    public class Position : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source code column position (of the line) the current instruction was generated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual System.Nullable<long> Column { get; set; }
+
+        /// <summary>
+        /// The length in bytes of text in this character group, e.g. digits of a number, string length, or AST
+        /// (abstract syntax tree) node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; }
+
+        /// <summary>The source code line number the current instruction was generated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<long> Line { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A collection of stack elements (frames) where an error occurred.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -781,16 +806,15 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single stack element (frame) where an error occurred.</summary>
+    /// <summary>
+    /// A single stack element (frame) where an error occurred. This field currently only exists in v1Beta. We will need
+    /// to roll this change out to V1 after the feature is thoroughly tested. TODO(b/178540475)
+    /// </summary>
     public class StackTraceElement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source code column position (of the line) the current instruction was generated from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("column")]
-        public virtual System.Nullable<long> Column { get; set; }
-
-        /// <summary>The source code line number the current instruction was generated from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("line")]
-        public virtual System.Nullable<long> Line { get; set; }
+        /// <summary>The source position information of the stacktrace element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual Position Position { get; set; }
 
         /// <summary>The routine where the error occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routine")]

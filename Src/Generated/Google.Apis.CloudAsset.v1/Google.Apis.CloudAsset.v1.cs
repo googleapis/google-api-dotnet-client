@@ -3683,7 +3683,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
         /// when the resource belongs to one or more folders. To search against `folders`: * use a field query. Example:
-        /// `folders:(123 OR 456)` * specify the `scope` field as this folder in your search request.
+        /// `folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `scope` field as this folder in
+        /// your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<string> Folders { get; set; }
@@ -3742,16 +3743,29 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>
         /// The organization that this resource belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
         /// field is available when the resource belongs to an organization. To search against `organization`: * use a
-        /// field query. Example: `organization:123` * specify the `scope` field as this organization in your search
-        /// request.
+        /// field query. Example: `organization:123` * use a free text query. Example: `123` * specify the `scope` field
+        /// as this organization in your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; }
 
         /// <summary>
+        /// The type of this resource's immediate parent, if there is one. To search against the `parent_asset_type`: *
+        /// use a field query. Example: `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * use a free
+        /// text query. Example: `cloudresourcemanager.googleapis.com/Project`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentAssetType")]
+        public virtual string ParentAssetType { get; set; }
+
+        /// <summary>The full resource name of this resource's parent, if it has one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentFullResourceName")]
+        public virtual string ParentFullResourceName { get; set; }
+
+        /// <summary>
         /// The project that this resource belongs to, in the form of projects/{PROJECT_NUMBER}. This field is available
         /// when the resource belongs to a project. To search against `project`: * use a field query. Example:
-        /// `project:12345` * specify the `scope` field as this project in your search request.
+        /// `project:12345` * use a free text query. Example: `12345` * specify the `scope` field as this project in
+        /// your search request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }

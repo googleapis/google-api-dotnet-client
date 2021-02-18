@@ -1877,9 +1877,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule.
-        /// It's normally the initial schedule start time plus a week. If the reschedule type is next window, simply
-        /// take this value as start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
-        /// go beyond this deadline.
+        /// It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance
+        /// cannot be scheduled to start beyond this deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
         public virtual object ScheduleDeadlineTime { get; set; }
@@ -1904,6 +1903,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
         public virtual System.Nullable<bool> Exclude { get; set; }
+
+        /// <summary>Optional. If the update call is triggered from rollback, set the value as true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRollback")]
+        public virtual System.Nullable<bool> IsRollback { get; set; }
 
         /// <summary>
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
@@ -1941,6 +1944,26 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>The id of the node. This should be equal to SaasInstanceNode.node_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
         public virtual string NodeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The
+        /// SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an
+        /// error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined
+        /// in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will
+        /// not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data
+        /// produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI
+        /// which has not been declared in the binary flags, there will be an error message emitted in the Eligibility
+        /// Exporter log and the metric for the SLI in question will not be emitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilities")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> Eligibilities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2009,7 +2032,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance should be
-        /// excluded from all SLIs defined in the service SLO configuration.
+        /// excluded from all SLIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
         public virtual string SliName { get; set; }
@@ -2025,7 +2048,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. User-defined instance eligibility.</summary>
+        /// <summary>
+        /// Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
         public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; }
 
@@ -2048,6 +2074,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; }
+
+        /// <summary>
+        /// Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility PerSliEligibility { get; set; }
 
         /// <summary>
         /// Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the

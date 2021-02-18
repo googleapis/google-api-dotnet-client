@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DoubleClickBidManager.v1_1 Client Library</Title>
-    <Version>1.50.0.2231</Version>
+    <Version>1.50.0.2238</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

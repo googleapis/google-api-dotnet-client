@@ -76,7 +76,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Play Game Services.</summary>
         public class Scope
         {
-            /// <summary>View and manage its own configuration data in your Google Drive</summary>
+            /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public static string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
@@ -86,7 +86,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Play Game Services.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage its own configuration data in your Google Drive</summary>
+            /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public const string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>

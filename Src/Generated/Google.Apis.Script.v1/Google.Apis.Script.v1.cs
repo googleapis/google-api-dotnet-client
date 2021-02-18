@@ -84,7 +84,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View and manage the provisioning of users on your domain</summary>
             public static string AdminDirectoryUser = "https://www.googleapis.com/auth/admin.directory.user";
 
-            /// <summary>View and manage your Google Docs documents</summary>
+            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
             public static string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
@@ -144,7 +144,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View and manage the provisioning of users on your domain</summary>
             public const string AdminDirectoryUser = "https://www.googleapis.com/auth/admin.directory.user";
 
-            /// <summary>View and manage your Google Docs documents</summary>
+            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
             public const string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
