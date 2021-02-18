@@ -658,11 +658,11 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form
         /// `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic
         /// needs to be created before the budget is created; see
-        /// https://cloud.google.com/billing/docs/how-to/budgets#manage-notifications for more details. Caller is
+        /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is
         /// expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise,
         /// the API call will fail with PERMISSION_DENIED. See
-        /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details on Pub/Sub
-        /// roles and permissions.
+        /// https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task
+        /// for more details on Pub/Sub roles and permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
@@ -681,8 +681,8 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
 
     /// <summary>
     /// A budget is a plan that describes what you expect to spend on Cloud projects, plus the rules to execute as spend
-    /// is tracked against that plan, (for example, send an alert when 90% of the target spend is met). Currently all
-    /// plans are monthly budgets so the usage period(s) tracked are implied (calendar months of usage back-to-back).
+    /// is tracked against that plan, (for example, send an alert when 90% of the target spend is met). The budget time
+    /// period is configurable, with options such as month (default), quarter, year, or custom time period.
     /// </summary>
     public class GoogleCloudBillingBudgetsV1beta1Budget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -729,14 +729,17 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     /// <summary>The budgeted amount for each usage period.</summary>
     public class GoogleCloudBillingBudgetsV1beta1BudgetAmount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Use the last period's actual spend as the budget for the present period.</summary>
+        /// <summary>
+        /// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with
+        /// Filter.custom_period.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPeriodAmount")]
         public virtual GoogleCloudBillingBudgetsV1beta1LastPeriodAmount LastPeriodAmount { get; set; }
 
         /// <summary>
         /// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget,
         /// it must match the currency of the billing account. If specified when updating a budget, it must match the
-        /// existing budget currency_code. The `currency_code` is provided on output.
+        /// currency_code of the existing budget. The `currency_code` is provided on output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specifiedAmount")]
         public virtual GoogleTypeMoney SpecifiedAmount { get; set; }
@@ -756,9 +759,36 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).</summary>
+    public class GoogleCloudBillingBudgetsV1beta1CustomPeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The end date of the time period. If unset, specifies to track all usage incurred since the
+        /// start_date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>Required. The start date must be after January 1, 2017.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A filter for a budget, limiting the scope of the cost to calculate.</summary>
     public class GoogleCloudBillingBudgetsV1beta1Filter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is
+        /// set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June.
+        /// After that, it will track usage from July 1 to September 30 when current calendar month is July, August,
+        /// September, and so on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarPeriod")]
+        public virtual string CalendarPeriod { get; set; }
+
         /// <summary>
         /// Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to
         /// be subtracted from gross cost to determine the spend for threshold calculations. If
@@ -772,6 +802,12 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// <summary>Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creditTypesTreatment")]
         public virtual string CreditTypesTreatment { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies to track usage from any start date (required) to any end date (optional).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPeriod")]
+        public virtual GoogleCloudBillingBudgetsV1beta1CustomPeriod CustomPeriod { get; set; }
 
         /// <summary>
         /// Optional. A single label and value pair specifying that usage from only this set of labeled resources should
@@ -897,6 +933,35 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

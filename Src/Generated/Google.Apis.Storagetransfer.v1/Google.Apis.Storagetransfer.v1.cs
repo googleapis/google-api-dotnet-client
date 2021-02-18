@@ -603,6 +603,67 @@ namespace Google.Apis.Storagetransfer.v1
                 });
             }
         }
+
+        /// <summary>
+        /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
+        /// active TransferOperation. If this method is called while a TransferOperation is active, an error wil be
+        /// returned.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="jobName">Required. The name of the transfer job.</param>
+        public virtual RunRequest Run(Google.Apis.Storagetransfer.v1.Data.RunTransferJobRequest body, string jobName)
+        {
+            return new RunRequest(service, body, jobName);
+        }
+
+        /// <summary>
+        /// Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one
+        /// active TransferOperation. If this method is called while a TransferOperation is active, an error wil be
+        /// returned.
+        /// </summary>
+        public class RunRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Run request.</summary>
+            public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Storagetransfer.v1.Data.RunTransferJobRequest body, string jobName) : base(service)
+            {
+                JobName = jobName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the transfer job.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string JobName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storagetransfer.v1.Data.RunTransferJobRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "run";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+jobName}:run";
+
+            /// <summary>Initializes Run parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("jobName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^transferJobs/.*$",
+                });
+            }
+        }
     }
 
     /// <summary>The "transferOperations" collection of methods.</summary>
@@ -749,8 +810,10 @@ namespace Google.Apis.Storagetransfer.v1
             }
         }
 
-        /// <summary>Lists transfer operations.</summary>
-        /// <param name="name">Required. The value `transferOperations`.</param>
+        /// <summary>
+        /// Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.
+        /// </summary>
+        /// <param name="name">Not used.</param>
         /// <param name="filter">
         /// Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id",
         /// "jobNames":["jobid1","jobid2",...], "operationNames":["opid1","opid2",...],
@@ -764,7 +827,9 @@ namespace Google.Apis.Storagetransfer.v1
             return new ListRequest(service, name, filter);
         }
 
-        /// <summary>Lists transfer operations.</summary>
+        /// <summary>
+        /// Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.
+        /// </summary>
         public class ListRequest : StoragetransferBaseServiceRequest<Google.Apis.Storagetransfer.v1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -775,7 +840,7 @@ namespace Google.Apis.Storagetransfer.v1
                 InitParameters();
             }
 
-            /// <summary>Required. The value `transferOperations`.</summary>
+            /// <summary>Not used.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1381,8 +1446,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
-        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
-        /// use the default HTTP mapping, the `name` should have the format of `transferOperations/some/unique/name`.
+        /// The server-assigned unique name. The format of `name` is `transferOperations/some/unique/name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1411,6 +1475,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to ResumeTransferOperation.</summary>
     public class ResumeTransferOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request passed to RunTransferJob.</summary>
+    public class RunTransferJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the Google Cloud Platform Console project that owns the transfer job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

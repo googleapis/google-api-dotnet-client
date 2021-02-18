@@ -1888,11 +1888,12 @@ namespace Google.Apis.Dialogflow.v2
                         /// <param name="session">
                         /// Required. The name of the session this query is sent to. Format:
                         /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If
-                        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is
-                        /// not specified, we are using "-". It's up to the API caller to choose an appropriate `Session
-                        /// ID` and `User Id`. They can be a random number or some type of user and session identifiers
-                        /// (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36
-                        /// characters. For more information, see the [API interactions
+                        /// `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID`
+                        /// might be referred to as environment name at some places). If `User ID` is not specified, we
+                        /// are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User
+                        /// Id`. They can be a random number or some type of user and session identifiers (preferably
+                        /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For
+                        /// more information, see the [API interactions
                         /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
                         /// versions for production traffic. See [Versions and
                         /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
@@ -1922,9 +1923,10 @@ namespace Google.Apis.Dialogflow.v2
                             /// <summary>
                             /// Required. The name of the session this query is sent to. Format:
                             /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If
-                            /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID`
-                            /// is not specified, we are using "-". It's up to the API caller to choose an appropriate
-                            /// `Session ID` and `User Id`. They can be a random number or some type of user and session
+                            /// `Environment ID` is not specified, we assume default 'draft' environment (`Environment
+                            /// ID` might be referred to as environment name at some places). If `User ID` is not
+                            /// specified, we are using "-". It's up to the API caller to choose an appropriate `Session
+                            /// ID` and `User Id`. They can be a random number or some type of user and session
                             /// identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not
                             /// exceed 36 characters. For more information, see the [API interactions
                             /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
@@ -3465,10 +3467,11 @@ namespace Google.Apis.Dialogflow.v2
                 /// <param name="session">
                 /// Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or
                 /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume
-                /// default 'draft' environment. If `User ID` is not specified, we are using "-". It's up to the API
-                /// caller to choose an appropriate `Session ID` and `User Id`. They can be a random number or some type
-                /// of user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID`
-                /// must not exceed 36 characters. For more information, see the [API interactions
+                /// default 'draft' environment (`Environment ID` might be referred to as environment name at some
+                /// places). If `User ID` is not specified, we are using "-". It's up to the API caller to choose an
+                /// appropriate `Session ID` and `User Id`. They can be a random number or some type of user and session
+                /// identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36
+                /// characters. For more information, see the [API interactions
                 /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions for
                 /// production traffic. See [Versions and
                 /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
@@ -3497,10 +3500,11 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>
                     /// Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or
                     /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
-                    /// assume default 'draft' environment. If `User ID` is not specified, we are using "-". It's up to
-                    /// the API caller to choose an appropriate `Session ID` and `User Id`. They can be a random number
-                    /// or some type of user and session identifiers (preferably hashed). The length of the `Session ID`
-                    /// and `User ID` must not exceed 36 characters. For more information, see the [API interactions
+                    /// assume default 'draft' environment (`Environment ID` might be referred to as environment name at
+                    /// some places). If `User ID` is not specified, we are using "-". It's up to the API caller to
+                    /// choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of
+                    /// user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID`
+                    /// must not exceed 36 characters. For more information, see the [API interactions
                     /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions
                     /// for production traffic. See [Versions and
                     /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
@@ -4783,9 +4787,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The output from the virtual agent.</summary>
     public class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Page on which the utterance was spoken. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
 
@@ -4812,9 +4814,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessageText> TextResponses { get; set; }
 
-        /// <summary>
-        /// The Intent that triggered the response. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Intent that triggered the response. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
         public virtual GoogleCloudDialogflowCxV3Intent TriggeredIntent { get; set; }
 
@@ -6369,9 +6369,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The output from the virtual agent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The Page on which the utterance was spoken. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Page on which the utterance was spoken. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3beta1Page CurrentPage { get; set; }
 
@@ -6398,9 +6396,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textResponses")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessageText> TextResponses { get; set; }
 
-        /// <summary>
-        /// The Intent that triggered the response. Only some fields such as name and displayname will be set.
-        /// </summary>
+        /// <summary>The Intent that triggered the response. Only name and displayName will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredIntent")]
         public virtual GoogleCloudDialogflowCxV3beta1Intent TriggeredIntent { get; set; }
 

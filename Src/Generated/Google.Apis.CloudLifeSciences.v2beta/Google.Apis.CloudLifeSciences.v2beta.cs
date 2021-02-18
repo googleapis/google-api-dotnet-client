@@ -1253,6 +1253,12 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
         public virtual Pipeline Pipeline { get; set; }
 
+        /// <summary>
+        /// The name of the Cloud Pub/Sub topic where notifications of operation status changes are sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubTopic")]
+        public virtual string PubSubTopic { get; set; }
+
         /// <summary>The first time at which resources were allocated to execute the pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
@@ -1476,6 +1482,14 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         /// <summary>Required. The description of the pipeline to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
         public virtual Pipeline Pipeline { get; set; }
+
+        /// <summary>
+        /// The name of an existing Pub/Sub topic. The server will publish messages to this topic whenever the status of
+        /// the operation changes. The Life Sciences Service Agent account must have publisher permissions to the
+        /// specified topic or notifications will not be sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSubTopic")]
+        public virtual string PubSubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

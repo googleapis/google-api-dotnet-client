@@ -6722,6 +6722,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Dataproc job config.</summary>
     public class JobPlacement : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Cluster labels to identify a cluster where the job will be submitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ClusterLabels { get; set; }
+
         /// <summary>Required. The name of the cluster where the job will be submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
@@ -7528,10 +7532,10 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Security related configuration, including Kerberos.</summary>
+    /// <summary>Security related configuration, including encryption, Kerberos, etc.</summary>
     public class SecurityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Kerberos related configuration.</summary>
+        /// <summary>Optional. Kerberos related configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kerberosConfig")]
         public virtual KerberosConfig KerberosConfig { get; set; }
 
