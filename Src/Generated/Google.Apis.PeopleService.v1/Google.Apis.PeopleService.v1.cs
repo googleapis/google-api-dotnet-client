@@ -85,7 +85,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your exact date of birth</summary>
             public static string UserBirthdayRead = "https://www.googleapis.com/auth/user.birthday.read";
 
-            /// <summary>View your email addresses</summary>
+            /// <summary>See and download all of your Google Account email addresses</summary>
             public static string UserEmailsRead = "https://www.googleapis.com/auth/user.emails.read";
 
             /// <summary>See your gender</summary>
@@ -125,7 +125,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>See and download your exact date of birth</summary>
             public const string UserBirthdayRead = "https://www.googleapis.com/auth/user.birthday.read";
 
-            /// <summary>View your email addresses</summary>
+            /// <summary>See and download all of your Google Account email addresses</summary>
             public const string UserEmailsRead = "https://www.googleapis.com/auth/user.emails.read";
 
             /// <summary>See your gender</summary>

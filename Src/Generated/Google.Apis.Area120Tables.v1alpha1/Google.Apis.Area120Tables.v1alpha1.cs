@@ -1376,12 +1376,20 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
     /// <summary>A single row in a table.</summary>
     public class Row : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Time when the row was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when
         /// creating a row.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Time when the row was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// The values of the row. This is a map of column key to value. Key is user entered name(default) or the
@@ -1401,6 +1409,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<ColumnDescription> Columns { get; set; }
 
+        /// <summary>Time when the table was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>The human readable title of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1408,6 +1420,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>The resource name of the table. Table names have the form `tables/{table}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Time when the table was last updated excluding updates to individual rows</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1435,6 +1451,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
     /// <summary>A single workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Time when the workspace was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>The human readable title of the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -1448,6 +1468,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>The list of tables in the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<Table> Tables { get; set; }
+
+        /// <summary>Time when the workspace was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

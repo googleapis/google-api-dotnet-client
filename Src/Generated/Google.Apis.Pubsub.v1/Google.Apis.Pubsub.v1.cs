@@ -279,9 +279,456 @@ namespace Google.Apis.Pubsub.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Schemas = new SchemasResource(service);
             Snapshots = new SnapshotsResource(service);
             Subscriptions = new SubscriptionsResource(service);
             Topics = new TopicsResource(service);
+        }
+
+        /// <summary>Gets the Schemas resource.</summary>
+        public virtual SchemasResource Schemas { get; }
+
+        /// <summary>The "schemas" collection of methods.</summary>
+        public class SchemasResource
+        {
+            private const string Resource = "schemas";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SchemasResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a schema.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.Schema body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a schema.</summary>
+            public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Schema>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.Schema body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project in which to create the schema. Format is `projects/{project-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The ID to use for the schema, which will become the final component of the schema's resource name.
+                /// See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("schemaId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SchemaId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.Schema Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/schemas";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("schemaId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "schemaId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a schema.</summary>
+            /// <param name="name">
+            /// Required. Name of the schema to delete. Format is `projects/{project}/schemas/{schema}`.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a schema.</summary>
+            public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the schema to delete. Format is `projects/{project}/schemas/{schema}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a schema.</summary>
+            /// <param name="name">
+            /// Required. The name of the schema to get. Format is `projects/{project}/schemas/{schema}`.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a schema.</summary>
+            public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Schema>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the schema to get. Format is `projects/{project}/schemas/{schema}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// The set of fields to return in the response. If not set, returns a Schema with `name` and `type`,
+                /// but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>
+                /// The set of fields to return in the response. If not set, returns a Schema with `name` and `type`,
+                /// but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                public enum ViewEnum
+                {
+                    /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW_UNSPECIFIED")]
+                    SCHEMAVIEWUNSPECIFIED,
+
+                    /// <summary>Include the name and type of the schema, but not the definition.</summary>
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC,
+
+                    /// <summary>Include all Schema object fields.</summary>
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/schemas/[^/]+$",
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists schemas in a project.</summary>
+            /// <param name="parent">
+            /// Required. The name of the project in which to list schemas. Format is `projects/{project-id}`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists schemas in a project.</summary>
+            public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSchemasResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project in which to list schemas. Format is `projects/{project-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Maximum number of schemas to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The value returned by the last `ListSchemasResponse`; indicates that this is a continuation of a
+                /// prior `ListSchemas` call, and that the system should return the next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// The set of Schema fields to return in the response. If not set, returns Schemas with `name` and
+                /// `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>
+                /// The set of Schema fields to return in the response. If not set, returns Schemas with `name` and
+                /// `type`, but not `definition`. Set to `FULL` to retrieve all fields.
+                /// </summary>
+                public enum ViewEnum
+                {
+                    /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW_UNSPECIFIED")]
+                    SCHEMAVIEWUNSPECIFIED,
+
+                    /// <summary>Include the name and type of the schema, but not the definition.</summary>
+                    [Google.Apis.Util.StringValueAttribute("BASIC")]
+                    BASIC,
+
+                    /// <summary>Include all Schema object fields.</summary>
+                    [Google.Apis.Util.StringValueAttribute("FULL")]
+                    FULL,
+                }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/schemas";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Validates a schema.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.
+            /// </param>
+            public virtual ValidateRequest Validate(Google.Apis.Pubsub.v1.Data.ValidateSchemaRequest body, string parent)
+            {
+                return new ValidateRequest(service, body, parent);
+            }
+
+            /// <summary>Validates a schema.</summary>
+            public class ValidateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ValidateSchemaResponse>
+            {
+                /// <summary>Constructs a new Validate request.</summary>
+                public ValidateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.ValidateSchemaRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.ValidateSchemaRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "validate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/schemas:validate";
+
+                /// <summary>Initializes Validate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Validates a message against a schema.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.
+            /// </param>
+            public virtual ValidateMessageRequest ValidateMessage(Google.Apis.Pubsub.v1.Data.ValidateMessageRequest body, string parent)
+            {
+                return new ValidateMessageRequest(service, body, parent);
+            }
+
+            /// <summary>Validates a message against a schema.</summary>
+            public class ValidateMessageRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ValidateMessageResponse>
+            {
+                /// <summary>Constructs a new ValidateMessage request.</summary>
+                public ValidateMessageRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.ValidateMessageRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.ValidateMessageRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "validateMessage";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/schemas:validateMessage";
+
+                /// <summary>Initializes ValidateMessage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Snapshots resource.</summary>
@@ -2834,6 +3281,24 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `ListSchemas` method.</summary>
+    public class ListSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If not empty, indicates that there may be more schemas that match the request; this value should be passed
+        /// in a new `ListSchemasRequest`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resulting schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<Schema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `ListSnapshots` method.</summary>
     public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3269,6 +3734,47 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A schema resource.</summary>
+    public class Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The definition of the schema. This should contain a string representing the full definition of the schema
+        /// that is a valid schema definition of the type specified in `type`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definition")]
+        public virtual string Definition { get; set; }
+
+        /// <summary>Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The type of the schema definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for validating messages published against a schema.</summary>
+    public class SchemaSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding of messages validated against `schema`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>
+        /// Required. The name of the schema that messages published should be validated against. Format is
+        /// `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has
+        /// been deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `Seek` method.</summary>
     public class SeekRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3536,6 +4042,10 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>Settings for validating messages published against a schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaSettings")]
+        public virtual SchemaSettings SchemaSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3590,6 +4100,56 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `ValidateMessage` method.</summary>
+    public class ValidateMessageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding expected for messages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>Message to validate against the provided `schema_spec`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Name of the schema against which to validate. Format is `projects/{project}/schemas/{schema}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Ad-hoc schema against which to validate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual Schema Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ValidateMessage` method. Empty for now.</summary>
+    public class ValidateMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `ValidateSchema` method.</summary>
+    public class ValidateSchemaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema object to validate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual Schema Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ValidateSchema` method. Empty for now.</summary>
+    public class ValidateSchemaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

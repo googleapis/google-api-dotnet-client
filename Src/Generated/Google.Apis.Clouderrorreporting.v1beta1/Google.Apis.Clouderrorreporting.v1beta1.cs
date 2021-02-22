@@ -480,10 +480,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             }
 
             /// <summary>
-            /// Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an [API
-            /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
-            /// to the URL as the value of a `key` parameter. For example: `POST
-            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
+            /// Report an individual error event and record the event to a log. This endpoint accepts **either** an
+            /// OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To
+            /// use an API key, append it to the URL as the value of a `key` parameter. For example: `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:**
+            /// [Error Reporting](/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs
+            /// stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see
+            /// [Using Error Reporting with regionalized logs](/error-reporting/docs/regionalization).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectName">
@@ -497,10 +500,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             }
 
             /// <summary>
-            /// Report an individual error event. This endpoint accepts **either** an OAuth token, **or** an [API
-            /// key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it
-            /// to the URL as the value of a `key` parameter. For example: `POST
-            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
+            /// Report an individual error event and record the event to a log. This endpoint accepts **either** an
+            /// OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To
+            /// use an API key, append it to the URL as the value of a `key` parameter. For example: `POST
+            /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:**
+            /// [Error Reporting](/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs
+            /// stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see
+            /// [Using Error Reporting with regionalized logs](/error-reporting/docs/regionalization).
             /// </summary>
             public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
             {
@@ -570,9 +576,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
             /// <summary>Lists the specified groups.</summary>
             /// <param name="projectName">
-            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
-            /// where `{projectID}` is the [Google Cloud Platform project
-            /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+            /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or
+            /// `projects/{projectNumber}`, where `{projectID}` and `{projectNumber}` can be found in the [Google Cloud
+            /// Console](https://support.google.com/cloud/answer/6158840). Examples: `projects/my-project-123`,
+            /// `projects/5551234`.
             /// </param>
             public virtual ListRequest List(string projectName)
             {
@@ -590,9 +597,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`,
-                /// where `{projectID}` is the [Google Cloud Platform project
-                /// ID](https://support.google.com/cloud/answer/6158840). Example: `projects/my-project-123`.
+                /// Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}`
+                /// or `projects/{projectNumber}`, where `{projectID}` and `{projectNumber}` can be found in the [Google
+                /// Cloud Console](https://support.google.com/cloud/answer/6158840). Examples:
+                /// `projects/my-project-123`, `projects/5551234`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }

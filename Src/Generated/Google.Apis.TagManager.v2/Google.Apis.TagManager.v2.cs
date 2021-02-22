@@ -6798,6 +6798,14 @@ namespace Google.Apis.TagManager.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// User notes on how to apply this tag in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.create @mutable
+        /// tagmanager.accounts.containers.workspaces.tags.update
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; }
+
+        /// <summary>
         /// The client's parameters. @mutable tagmanager.accounts.containers.workspaces.clients.create @mutable
         /// tagmanager.accounts.containers.workspaces.clients.update
         /// </summary>
