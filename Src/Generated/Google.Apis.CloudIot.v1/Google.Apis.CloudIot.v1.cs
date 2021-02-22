@@ -665,7 +665,8 @@ namespace Google.Apis.CloudIot.v1
 
                         /// <summary>
                         /// The fields of the `Device` resource to be returned in the response. If the field mask is
-                        /// unset or empty, all fields are returned.
+                        /// unset or empty, all fields are returned. Fields have to be provided in snake_case format,
+                        /// for example: `last_heartbeat_time`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object FieldMask { get; set; }
@@ -744,7 +745,8 @@ namespace Google.Apis.CloudIot.v1
 
                         /// <summary>
                         /// The fields of the `Device` resource to be returned in the response. The fields `id` and
-                        /// `num_id` are always returned, along with any other fields specified.
+                        /// `num_id` are always returned, along with any other fields specified in snake_case format,
+                        /// for example: `last_heartbeat_time`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object FieldMask { get; set; }
@@ -1203,7 +1205,8 @@ namespace Google.Apis.CloudIot.v1
 
                             /// <summary>
                             /// The fields of the `Device` resource to be returned in the response. The fields `id` and
-                            /// `num_id` are always returned, along with any other fields specified.
+                            /// `num_id` are always returned, along with any other fields specified in snake_case
+                            /// format, for example: `last_heartbeat_time`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object FieldMask { get; set; }

@@ -6285,6 +6285,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Autopilot is the configuration for Autopilot settings on the cluster. It is the official product name of what is
+    /// previously known as AutoGKE
+    /// </summary>
+    public class Autopilot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable Autopilot</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.</summary>
     public class AutoprovisioningNodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6485,6 +6499,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Configuration controlling RBAC group membership information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; }
+
+        /// <summary>
+        /// Autopilot configuration for the cluster. It has the same semantics as AutoGKE and overrides the setting in
+        /// autogke.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autopilot")]
+        public virtual Autopilot Autopilot { get; set; }
 
         /// <summary>Cluster-level autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]

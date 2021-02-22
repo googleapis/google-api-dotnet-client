@@ -4494,7 +4494,10 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
-        /// <summary>The type of delivery mechanism used for this channel.</summary>
+        /// <summary>
+        /// The type of delivery mechanism used for this channel. Valid values are "web_hook" (or "webhook"). Both
+        /// values refer to a channel where Http requests are used to deliver messages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
