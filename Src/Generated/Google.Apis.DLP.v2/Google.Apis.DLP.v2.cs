@@ -10068,7 +10068,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>///////////// // The core content of the template // ///////////////</summary>
+        /// <summary>The core content of the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyConfig")]
         public virtual GooglePrivacyDlpV2DeidentifyConfig DeidentifyConfig { get; set; }
 

@@ -1742,7 +1742,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Schedule specification.</summary>
+        /// <summary>
+        /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will
+        /// never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual Schedule Schedule { get; set; }
 
@@ -1890,7 +1893,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>
         /// Required. The job to update. `transferJob` is expected to specify only four fields: description,
         /// transfer_spec, notification_config, and status. An `UpdateTransferJobRequest` that specifies other fields
-        /// will be rejected with the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
+        /// are rejected with the error INVALID_ARGUMENT. Updating a job satus to DELETED requires
         /// `storagetransfer.jobs.delete` permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferJob")]
@@ -1900,7 +1903,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// The field mask of the fields in `transferJob` that are to be updated in this request. Fields in
         /// `transferJob` that can be updated are: description, transfer_spec, notification_config, and status. To
         /// update the `transfer_spec` of the job, a complete transfer specification must be provided. An incomplete
-        /// specification missing any required fields will be rejected with the error INVALID_ARGUMENT.
+        /// specification missing any required fields is rejected with the error INVALID_ARGUMENT.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTransferJobFieldMask")]
         public virtual object UpdateTransferJobFieldMask { get; set; }

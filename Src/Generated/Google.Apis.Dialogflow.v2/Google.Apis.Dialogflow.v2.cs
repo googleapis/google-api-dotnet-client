@@ -1016,7 +1016,142 @@ namespace Google.Apis.Dialogflow.v2
                 public EnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Intents = new IntentsResource(service);
                     Users = new UsersResource(service);
+                }
+
+                /// <summary>Gets the Intents resource.</summary>
+                public virtual IntentsResource Intents { get; }
+
+                /// <summary>The "intents" collection of methods.</summary>
+                public class IntentsResource
+                {
+                    private const string Resource = "intents";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public IntentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Returns the list of all intents in the specified agent.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent to list all intents from. Format: `projects//agent`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all intents in the specified agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListIntentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The agent to list all intents from. Format: `projects//agent`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        public enum IntentViewEnum
+                        {
+                            /// <summary>Training phrases field is not populated in the response.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
+                            INTENTVIEWUNSPECIFIED,
+
+                            /// <summary>All fields are populated.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
+                            INTENTVIEWFULL,
+                        }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return in a single page. By default 100 and at most
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/intents";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/environments/[^/]+$",
+                            });
+                            RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Users resource.</summary>
@@ -5601,8 +5736,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Required. The language of the input. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes. Note that queries in the same session do not necessarily need to specify the same
+        /// language.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -5644,8 +5780,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is
-        /// generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not
-        /// supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        /// generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be
+        /// defined by the user. It's guaranteed that there is at most one such message in each response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageEndInteraction EndInteraction { get; set; }
@@ -7183,8 +7319,9 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Required. The language of the input. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes. Note that queries in the same session do not necessarily need to specify the same
+        /// language.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -7226,8 +7363,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is
-        /// generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not
-        /// supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        /// generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be
+        /// defined by the user. It's guaranteed that there is at most one such message in each response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; }

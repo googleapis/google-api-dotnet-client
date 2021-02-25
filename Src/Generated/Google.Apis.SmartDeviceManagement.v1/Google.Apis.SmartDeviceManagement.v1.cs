@@ -883,8 +883,7 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     }
 
     /// <summary>
-    /// Represents device relationships, for instance, structure/room to which the device is assigned to. For now this
-    /// is only filled in the enterprise flow.
+    /// Represents device relationships, for instance, structure/room to which the device is assigned to.
     /// </summary>
     public class GoogleHomeEnterpriseSdmV1ParentRelation : Google.Apis.Requests.IDirectResponseSchema
     {

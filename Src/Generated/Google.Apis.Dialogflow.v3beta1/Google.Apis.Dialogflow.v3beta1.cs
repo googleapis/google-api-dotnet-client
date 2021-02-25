@@ -375,8 +375,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// The language of the following fields in `entity_type`: * `EntityType.entities.value` *
                         /// `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the
                         /// agent's default language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -518,8 +518,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// The language to retrieve the entity type for. The following fields are language dependent: *
                         /// `EntityType.entities.value` * `EntityType.entities.synonyms` *
                         /// `EntityType.excluded_phrases.value` If not specified, the agent's default language is used.
-                        /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                        /// supported. Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -585,8 +585,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// The language to list entity types for. The following fields are language dependent: *
                         /// `EntityType.entities.value` * `EntityType.entities.synonyms` *
                         /// `EntityType.excluded_phrases.value` If not specified, the agent's default language is used.
-                        /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                        /// supported. Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -682,8 +682,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// The language of the following fields in `entity_type`: * `EntityType.entities.value` *
                         /// `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the
                         /// agent's default language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -2281,8 +2281,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
                             /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
                             /// specified, the agent's default language is used. [Many
-                            /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                            /// Note: languages must be enabled in the agent before they can be used.
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2427,8 +2427,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
                             /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
                             /// specified, the agent's default language is used. [Many
-                            /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                            /// Note: languages must be enabled in the agent before they can be used.
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2498,8 +2498,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
                             /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
                             /// specified, the agent's default language is used. [Many
-                            /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                            /// Note: languages must be enabled in the agent before they can be used.
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2600,8 +2600,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
                             /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
                             /// specified, the agent's default language is used. [Many
-                            /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                            /// Note: languages must be enabled in the agent before they can be used.
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2709,8 +2709,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// The language to list transition route groups for. The field `messages` in
                             /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are
-                            /// supported. Note: languages must be enabled in the agent before they can be used.
+                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+                            /// are supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2852,8 +2852,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// The language to list transition route groups for. The field `messages` in
                             /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are
-                            /// supported. Note: languages must be enabled in the agent before they can be used.
+                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+                            /// are supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2920,8 +2920,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// The language to list transition route groups for. The field `messages` in
                             /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are
-                            /// supported. Note: languages must be enabled in the agent before they can be used.
+                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+                            /// are supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -3018,8 +3018,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// The language to list transition route groups for. The field `messages` in
                             /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are
-                            /// supported. Note: languages must be enabled in the agent before they can be used.
+                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+                            /// are supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -3493,8 +3493,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
                         /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
                         /// language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -3634,8 +3634,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
                         /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
                         /// language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -3769,8 +3769,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
                         /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
                         /// language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -3865,8 +3865,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
                         /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
                         /// language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -4096,8 +4096,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <summary>
                         /// The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If
                         /// not specified, the agent's default language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -4217,8 +4217,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <summary>
                         /// The language to retrieve the intent for. The following fields are language dependent: *
                         /// `Intent.training_phrases.parts.text` If not specified, the agent's default language is used.
-                        /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                        /// supported. Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -4303,8 +4303,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <summary>
                         /// The language to list intents for. The following fields are language dependent: *
                         /// `Intent.training_phrases.parts.text` If not specified, the agent's default language is used.
-                        /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported.
-                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                        /// supported. Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -4409,8 +4409,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <summary>
                         /// The language of the following fields in `intent`: * `Intent.training_phrases.parts.text` If
                         /// not specified, the agent's default language is used. [Many
-                        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
-                        /// languages must be enabled in the agent before they can be used.
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string LanguageCode { get; set; }
@@ -8444,8 +8444,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Required. The language of the input. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes. Note that queries in the same session do not necessarily need to specify the same
+        /// language.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -8487,8 +8488,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is
-        /// generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not
-        /// supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        /// generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be
+        /// defined by the user. It's guaranteed that there is at most one such message in each response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageEndInteraction EndInteraction { get; set; }
@@ -9144,8 +9145,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Immutable. The default language of the agent as a language tag. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes. This field cannot be set by the Agents.UpdateAgent method.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
         public virtual string DefaultLanguageCode { get; set; }
@@ -11238,8 +11239,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Required. The language of the input. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes. Note that queries in the same session do not necessarily need to specify the same
+        /// language.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -11261,6 +11263,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyzeQueryTextSentiment")]
         public virtual System.Nullable<bool> AnalyzeQueryTextSentiment { get; set; }
+
+        /// <summary>Whether to disable webhook calls for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableWebhook")]
+        public virtual System.Nullable<bool> DisableWebhook { get; set; }
 
         /// <summary>The geo location of this conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
@@ -11350,8 +11356,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The language that was triggered during intent detection. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes.
+        /// Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently
+        /// supported language codes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -11465,8 +11471,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is
-        /// generated by Dialogflow only when the conversation reaches `END_SESSION` or `END_PAGE` page. It is not
-        /// supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
+        /// generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be
+        /// defined by the user. It's guaranteed that there is at most one such message in each response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; }
