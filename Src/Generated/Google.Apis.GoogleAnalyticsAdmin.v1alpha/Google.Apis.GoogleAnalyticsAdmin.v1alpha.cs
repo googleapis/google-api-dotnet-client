@@ -1286,8 +1286,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire
-            /// entity, use one path with the string "*" to match all fields.
+            /// Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update").
+            /// Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to
+            /// match all fields.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -1703,8 +1704,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -1970,8 +1972,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2236,8 +2239,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -2590,8 +2594,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3676,8 +3681,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3758,8 +3764,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
-                /// entire entity, use one path with the string "*" to match all fields.
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -4088,8 +4095,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire
-            /// entity, use one path with the string "*" to match all fields.
+            /// Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update").
+            /// Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to
+            /// match all fields.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }

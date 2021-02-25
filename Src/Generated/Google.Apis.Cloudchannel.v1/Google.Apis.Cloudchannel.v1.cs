@@ -4663,6 +4663,12 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>The payment plan for the Offer. Describes how to make a payment.</summary>
     public class GoogleCloudChannelV1Plan : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Reseller Billing account that will be charged when this offer is transacted. Only present for GCP offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
         /// <summary>Describes how frequently the reseller will be billed, such as once per month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentCycle")]
         public virtual GoogleCloudChannelV1Period PaymentCycle { get; set; }

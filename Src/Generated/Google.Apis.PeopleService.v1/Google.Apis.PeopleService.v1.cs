@@ -1029,6 +1029,86 @@ namespace Google.Apis.PeopleService.v1
                 });
             }
         }
+
+        /// <summary>
+        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query.
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>
+        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query.
+        /// </summary>
+        public class SearchRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Required. The plain-text query for the request. The query is used to match prefix phrases of the fields
+            /// on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo
+            /// n", "nam", etc., but not "oo n".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>
+            /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
+            /// specified by separating them with commas. Valid values are: * emailAddresses * names * phoneNumbers
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/otherContacts:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "people" collection of methods.</summary>
@@ -1991,6 +2071,88 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
+        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query.
+        /// </summary>
+        public virtual SearchContactsRequest SearchContacts()
+        {
+            return new SearchContactsRequest(service);
+        }
+
+        /// <summary>
+        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query.
+        /// </summary>
+        public class SearchContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
+        {
+            /// <summary>Constructs a new SearchContacts request.</summary>
+            public SearchContactsRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Optional. The number of results to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Required. The plain-text query for the request. The query is used to match prefix phrases of the fields
+            /// on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo
+            /// n", "nam", etc., but not "oo n".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>
+            /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
+            /// specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies *
+            /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+            /// imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames
+            /// * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls *
+            /// userDefined
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "searchContacts";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/people:searchContacts";
+
+            /// <summary>Initializes SearchContacts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that
         /// match the search query.
         /// </summary>
@@ -2774,7 +2936,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for deleteing a contact's photo.</summary>
+    /// <summary>The response for deleting a contact's photo.</summary>
     public class DeleteContactPhotoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3929,6 +4091,28 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The total number of items in the list without pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a search request for the authenticated user, given a query.</summary>
+    public class SearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The results of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<SearchResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A result of a search query.</summary>
+    public class SearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The matched Person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual Person Person { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

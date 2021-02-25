@@ -933,10 +933,10 @@ namespace Google.Apis.Transcoder.v1beta1.Data
 
         /// <summary>
         /// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between
-        /// -24 and 0, where -24 is the Advanced Television Systems Committee (ATSC A/85), -23 is the EU R128 broadcast
-        /// standard, -19 is the prior standard for online mono audio, -18 is the ReplayGain standard, -16 is the prior
-        /// standard for stereo audio, -14 is the new online audio standard recommended by Spotify, as well as Amazon
-        /// Echo, and 0 disables normalization. The default is 0.
+        /// -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard *
+        /// -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the
+        /// ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard
+        /// recommended by Spotify, as well as Amazon Echo * 0 disables normalization
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lufs")]
         public virtual System.Nullable<double> Lufs { get; set; }
@@ -1660,6 +1660,32 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match
+    /// the output resolution.
+    /// </summary>
+    public class Pad : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of pixels to add to the bottom. The default is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottomPixels")]
+        public virtual System.Nullable<int> BottomPixels { get; set; }
+
+        /// <summary>The number of pixels to add to the left. The default is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leftPixels")]
+        public virtual System.Nullable<int> LeftPixels { get; set; }
+
+        /// <summary>The number of pixels to add to the right. The default is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rightPixels")]
+        public virtual System.Nullable<int> RightPixels { get; set; }
+
+        /// <summary>The number of pixels to add to the top. The default is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topPixels")]
+        public virtual System.Nullable<int> TopPixels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Preprocessing configurations.</summary>
     public class PreprocessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1682,6 +1708,10 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         /// <summary>Denoise preprocessing configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denoise")]
         public virtual Denoise Denoise { get; set; }
+
+        /// <summary>Specify the video pad filter configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pad")]
+        public virtual Pad Pad { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1786,6 +1816,14 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual object Interval { get; set; }
+
+        /// <summary>
+        /// The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality
+        /// and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data
+        /// compression ratio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quality")]
+        public virtual System.Nullable<int> Quality { get; set; }
 
         /// <summary>
         /// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created.

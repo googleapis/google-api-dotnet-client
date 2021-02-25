@@ -1435,6 +1435,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
         public virtual GoogleTypePostalAddress AddressValue { get; set; }
 
+        /// <summary>Boolean value. Can be used for entities with binary values, or for checkboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
         /// <summary>
         /// Date value. Includes year, month, day. See also:
         /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
@@ -2517,6 +2521,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
         public virtual GoogleTypePostalAddress AddressValue { get; set; }
 
+        /// <summary>Boolean value. Can be used for entities with binary values, or for checkboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
         /// <summary>
         /// Date value. Includes year, month, day. See also:
         /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
@@ -3446,6 +3454,21 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The common config to specify a set of documents used as input.</summary>
+    public class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of documents individually specified on Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3GcsDocuments GcsDocuments { get; set; }
+
+        /// <summary>The set of documents that match the specified Cloud Storage [gcs_prefix].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual GoogleCloudDocumentaiV1beta3GcsPrefix GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for batch process method.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3527,7 +3550,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>The input documents for batch process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputDocuments")]
-        public virtual GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig InputDocuments { get; set; }
+        public virtual GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig InputDocuments { get; set; }
 
         /// <summary>The overall output config for batch process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
@@ -3771,6 +3794,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
         public virtual GoogleTypePostalAddress AddressValue { get; set; }
+
+        /// <summary>Boolean value. Can be used for entities with binary values, or for checkboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         /// <summary>
         /// Date value. Includes year, month, day. See also:
@@ -4540,6 +4567,43 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Text translated into the target language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
         public virtual string TranslatedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a document stored on Cloud Storage.</summary>
+    public class GoogleCloudDocumentaiV1beta3GcsDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Storage object uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>An IANA MIME type (RFC6838) of the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a set of documents on Cloud Storage.</summary>
+    public class GoogleCloudDocumentaiV1beta3GcsDocuments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3GcsDocument> Documents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies all documents on Cloud Storage with a common prefix.</summary>
+    public class GoogleCloudDocumentaiV1beta3GcsPrefix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUriPrefix")]
+        public virtual string GcsUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

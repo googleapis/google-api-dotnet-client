@@ -1289,6 +1289,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
         public virtual GoogleTypePostalAddress AddressValue { get; set; }
 
+        /// <summary>Boolean value. Can be used for entities with binary values, or for checkboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
+
         /// <summary>
         /// Date value. Includes year, month, day. See also:
         /// https://github.com/googleapis/googleapis/blob/master/google/type/date.proto
@@ -2398,6 +2402,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressValue")]
         public virtual GoogleTypePostalAddress AddressValue { get; set; }
+
+        /// <summary>Boolean value. Can be used for entities with binary values, or for checkboxes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; }
 
         /// <summary>
         /// Date value. Includes year, month, day. See also:

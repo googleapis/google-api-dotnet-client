@@ -998,10 +998,13 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// assignments exist at higher levels. Example: * The organization `organizationA` contains two
                     /// projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`,
                     /// `project1`, and `project2`) could all be created and mapped to the same or different
-                    /// reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin'
-                    /// permissions on the project using the reservation and the project that owns this reservation.
-                    /// Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match
-                    /// location of the reservation.
+                    /// reservations. "None" assignments represent an absence of the assignment. Projects assigned to
+                    /// None use on-demand pricing. To create a "None" assignment, use "none" as a reservation_id in the
+                    /// parent. Example parent: `projects/myproject/locations/US/reservations/none`. Returns
+                    /// `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the
+                    /// project using the reservation and the project that owns this reservation. Returns
+                    /// `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match location of
+                    /// the reservation.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1024,10 +1027,13 @@ namespace Google.Apis.BigQueryReservation.v1
                     /// assignments exist at higher levels. Example: * The organization `organizationA` contains two
                     /// projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`,
                     /// `project1`, and `project2`) could all be created and mapped to the same or different
-                    /// reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin'
-                    /// permissions on the project using the reservation and the project that owns this reservation.
-                    /// Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match
-                    /// location of the reservation.
+                    /// reservations. "None" assignments represent an absence of the assignment. Projects assigned to
+                    /// None use on-demand pricing. To create a "None" assignment, use "none" as a reservation_id in the
+                    /// parent. Example parent: `projects/myproject/locations/US/reservations/none`. Returns
+                    /// `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the
+                    /// project using the reservation and the project that owns this reservation. Returns
+                    /// `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match location of
+                    /// the reservation.
                     /// </summary>
                     public class CreateRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Assignment>
                     {
@@ -1628,7 +1634,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// <summary>Retrieves a BI reservation.</summary>
             /// <param name="name">
             /// Required. Name of the requested reservation, for example:
-            /// `projects/{project_id}/locations/{location_id}/bireservation`
+            /// `projects/{project_id}/locations/{location_id}/biReservation`
             /// </param>
             public virtual GetBiReservationRequest GetBiReservation(string name)
             {
@@ -1647,7 +1653,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
                 /// <summary>
                 /// Required. Name of the requested reservation, for example:
-                /// `projects/{project_id}/locations/{location_id}/bireservation`
+                /// `projects/{project_id}/locations/{location_id}/biReservation`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1904,7 +1910,7 @@ namespace Google.Apis.BigQueryReservation.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// The resource name of the singleton BI reservation. Reservation names have the form
-            /// `projects/{project_id}/locations/{location_id}/bireservation`.
+            /// `projects/{project_id}/locations/{location_id}/biReservation`.
             /// </param>
             public virtual UpdateBiReservationRequest UpdateBiReservation(Google.Apis.BigQueryReservation.v1.Data.BiReservation body, string name)
             {
@@ -1928,7 +1934,7 @@ namespace Google.Apis.BigQueryReservation.v1
 
                 /// <summary>
                 /// The resource name of the singleton BI reservation. Reservation names have the form
-                /// `projects/{project_id}/locations/{location_id}/bireservation`.
+                /// `projects/{project_id}/locations/{location_id}/biReservation`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2015,7 +2021,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     {
         /// <summary>
         /// The resource name of the singleton BI reservation. Reservation names have the form
-        /// `projects/{project_id}/locations/{location_id}/bireservation`.
+        /// `projects/{project_id}/locations/{location_id}/biReservation`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

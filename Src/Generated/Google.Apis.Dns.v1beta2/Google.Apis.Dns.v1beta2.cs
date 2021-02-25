@@ -325,7 +325,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Atomically update the ResourceRecordSet collection.</summary>
+        /// <summary>Atomically updates the ResourceRecordSet collection.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
@@ -336,7 +336,7 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(service, body, project, managedZone);
         }
 
-        /// <summary>Atomically update the ResourceRecordSet collection.</summary>
+        /// <summary>Atomically updates the ResourceRecordSet collection.</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Change>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -411,7 +411,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Fetch the representation of an existing Change.</summary>
+        /// <summary>Fetches the representation of an existing Change.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -424,7 +424,7 @@ namespace Google.Apis.Dns.v1beta2
             return new GetRequest(service, project, managedZone, changeId);
         }
 
-        /// <summary>Fetch the representation of an existing Change.</summary>
+        /// <summary>Fetches the representation of an existing Change.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Change>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -507,7 +507,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Enumerate Changes to a ResourceRecordSet collection.</summary>
+        /// <summary>Enumerates Changes to a ResourceRecordSet collection.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -517,7 +517,7 @@ namespace Google.Apis.Dns.v1beta2
             return new ListRequest(service, project, managedZone);
         }
 
-        /// <summary>Enumerate Changes to a ResourceRecordSet collection.</summary>
+        /// <summary>Enumerates Changes to a ResourceRecordSet collection.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ChangesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -539,8 +539,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string ManagedZone { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -693,7 +693,7 @@ namespace Google.Apis.Dns.v1beta2
 
             /// <summary>
             /// An optional comma-separated list of digest types to compute and display for key signing keys. If
-            /// omitted, the recommended digest type will be computed and displayed.
+            /// omitted, the recommended digest type is computed and displayed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("digestType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DigestType { get; set; }
@@ -787,14 +787,14 @@ namespace Google.Apis.Dns.v1beta2
 
             /// <summary>
             /// An optional comma-separated list of digest types to compute and display for key signing keys. If
-            /// omitted, the recommended digest type will be computed and displayed.
+            /// omitted, the recommended digest type is computed and displayed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("digestType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string DigestType { get; set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -877,16 +877,16 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Fetch the representation of an existing Operation.</summary>
+        /// <summary>Fetches the representation of an existing Operation.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">Identifies the managed zone addressed by this request.</param>
-        /// <param name="operation">Identifies the operation addressed by this request.</param>
+        /// <param name="operation">Identifies the operation addressed by this request (ID of the operation).</param>
         public virtual GetRequest Get(string project, string managedZone, string operation)
         {
             return new GetRequest(service, project, managedZone, operation);
         }
 
-        /// <summary>Fetch the representation of an existing Operation.</summary>
+        /// <summary>Fetches the representation of an existing Operation.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -906,7 +906,7 @@ namespace Google.Apis.Dns.v1beta2
             [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedZone { get; private set; }
 
-            /// <summary>Identifies the operation addressed by this request.</summary>
+            /// <summary>Identifies the operation addressed by this request (ID of the operation).</summary>
             [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Operation { get; private set; }
 
@@ -965,7 +965,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Enumerate Operations for the given ManagedZone.</summary>
+        /// <summary>Enumerates Operations for the given ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">Identifies the managed zone addressed by this request.</param>
         public virtual ListRequest List(string project, string managedZone)
@@ -973,7 +973,7 @@ namespace Google.Apis.Dns.v1beta2
             return new ListRequest(service, project, managedZone);
         }
 
-        /// <summary>Enumerate Operations for the given ManagedZone.</summary>
+        /// <summary>Enumerates Operations for the given ManagedZone.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ManagedZoneOperationsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -993,8 +993,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string ManagedZone { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -1343,8 +1343,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string DnsName { get; set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -1591,7 +1591,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Create a new Policy</summary>
+        /// <summary>Creates a new Policy</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1beta2.Data.Policy body, string project)
@@ -1599,7 +1599,7 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(service, body, project);
         }
 
-        /// <summary>Create a new Policy</summary>
+        /// <summary>Creates a new Policy</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Policy>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1660,7 +1660,7 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Delete a previously created Policy. Will fail if the policy is still being referenced by a network.
+        /// Delete a previously created Policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -1670,7 +1670,7 @@ namespace Google.Apis.Dns.v1beta2
         }
 
         /// <summary>
-        /// Delete a previously created Policy. Will fail if the policy is still being referenced by a network.
+        /// Delete a previously created Policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
@@ -1737,7 +1737,7 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Fetch the representation of an existing Policy.</summary>
+        /// <summary>Fetches the representation of an existing Policy.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
         public virtual GetRequest Get(string project, string policy)
@@ -1745,7 +1745,7 @@ namespace Google.Apis.Dns.v1beta2
             return new GetRequest(service, project, policy);
         }
 
-        /// <summary>Fetch the representation of an existing Policy.</summary>
+        /// <summary>Fetches the representation of an existing Policy.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Policy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1811,14 +1811,14 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Enumerate all Policies associated with a project.</summary>
+        /// <summary>Enumerates all Policies associated with a project.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Enumerate all Policies associated with a project.</summary>
+        /// <summary>Enumerates all Policies associated with a project.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.PoliciesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1833,8 +1833,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2590,7 +2590,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Enumerate ResourceRecordSets that have been created but not yet deleted.</summary>
+        /// <summary>Enumerate ResourceRecordSets that you have created but not yet deleted.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -2600,7 +2600,7 @@ namespace Google.Apis.Dns.v1beta2
             return new ListRequest(service, project, managedZone);
         }
 
-        /// <summary>Enumerate ResourceRecordSets that have been created but not yet deleted.</summary>
+        /// <summary>Enumerate ResourceRecordSets that you have created but not yet deleted.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ResourceRecordSetsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2622,8 +2622,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string ManagedZone { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -2725,7 +2725,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Create a new Response Policy</summary>
+        /// <summary>Creates a new Response Policy</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1beta2.Data.ResponsePolicy body, string project)
@@ -2733,7 +2733,7 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(service, body, project);
         }
 
-        /// <summary>Create a new Response Policy</summary>
+        /// <summary>Creates a new Response Policy</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ResponsePolicy>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2969,8 +2969,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string Project { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -3201,7 +3201,7 @@ namespace Google.Apis.Dns.v1beta2
             this.service = service;
         }
 
-        /// <summary>Create a new Response Policy Rule.</summary>
+        /// <summary>Creates a new Response Policy Rule.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="responsePolicy">
@@ -3212,7 +3212,7 @@ namespace Google.Apis.Dns.v1beta2
             return new CreateRequest(service, body, project, responsePolicy);
         }
 
-        /// <summary>Create a new Response Policy Rule.</summary>
+        /// <summary>Creates a new Response Policy Rule.</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.ResponsePolicyRule>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -3497,8 +3497,8 @@ namespace Google.Apis.Dns.v1beta2
             public virtual string ResponsePolicy { get; private set; }
 
             /// <summary>
-            /// Optional. Maximum number of results to be returned. If unspecified, the server will decide how many
-            /// results to return.
+            /// Optional. Maximum number of results to be returned. If unspecified, the server decides how many results
+            /// to return.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
@@ -3825,8 +3825,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your pagination token. In
         /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
         /// if the contents of the collection change between the first and last paginated list request, the set of all
-        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a "snapshot"
-        /// of collections larger than the maximum page size.
+        /// elements returned are an inconsistent view of the collection. There is no way to retrieve a "snapshot" of
+        /// collections larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3869,13 +3869,13 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present
-        /// as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+        /// Active keys are used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as
+        /// DNSKEY Resource Records for the use of resolvers validating existing signatures.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
         public virtual System.Nullable<bool> IsActive { get; set; }
 
-        /// <summary>Length of the key in bits. Specified at creation time then immutable.</summary>
+        /// <summary>Length of the key in bits. Specified at creation time, then immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
         public virtual System.Nullable<long> KeyLength { get; set; }
 
@@ -3898,9 +3898,9 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and,
-        /// when active, will be used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry
-        /// Point flag will be cleared and this key will be used to sign only resource record sets of other types.
-        /// Immutable after creation time.
+        /// when active, are used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
+        /// flag is cleared and this key is used to sign only resource record sets of other types. Immutable after
+        /// creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -3939,8 +3939,8 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the
-        /// Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY.
-        /// Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of
+        /// Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY.
+        /// Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of
         /// resource record sets.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
@@ -3972,8 +3972,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your pagination token. In
         /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
         /// if the contents of the collection change between the first and last paginated list request, the set of all
-        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a "snapshot"
-        /// of collections larger than the maximum page size.
+        /// elements returned are an inconsistent view of the collection. There is no way to retrieve a "snapshot" of
+        /// collections larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4037,7 +4037,8 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers
-        /// that all host the same ManagedZones. Most users will leave this field unset.
+        /// that all host the same ManagedZones. Most users will leave this field unset. If you need to use this field,
+        /// please reach out to your account team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServerSet")]
         public virtual string NameServerSet { get; set; }
@@ -4062,7 +4063,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual ManagedZonePrivateVisibilityConfig PrivateVisibilityConfig { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve
+        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves
         /// reverse lookup queries using automatically configured records for VPC resources. This only applies to
         /// networks listed under private_visibility_config.
         /// </summary>
@@ -4120,8 +4121,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// List of target name servers to forward to. Cloud DNS will select the best available name server if more than
-        /// one target is given.
+        /// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one
+        /// target is given.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetNameServers")]
         public virtual System.Collections.Generic.IList<ManagedZoneForwardingConfigNameServerTarget> TargetNameServers { get; set; }
@@ -4133,9 +4134,9 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class ManagedZoneForwardingConfigNameServerTarget : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS will make forwarding
-        /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
-        /// Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions
+        /// based on address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the internet.
+        /// When set to PRIVATE, Cloud DNS always sends queries through VPC for this target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
@@ -4145,7 +4146,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Ipv4Address { get; set; }
 
         /// <summary>
-        /// IPv6 address of a target name server. Will not accept both fields (ipv4 &amp;amp; ipv6) being populated.
+        /// IPv6 address of a target name server. Does not accept both fields (ipv4 &amp;amp; ipv6) being populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; }
@@ -4170,8 +4171,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your page token. In this way
         /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
-        /// of a collection larger than the maximum page size.
+        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4314,8 +4315,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your page token. In this way
         /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
-        /// of a collection larger than the maximum page size.
+        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4421,8 +4422,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your page token. In this way
         /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
-        /// of a collection larger than the maximum page size.
+        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4479,8 +4480,8 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
-        /// connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are
-        /// bound to this policy.
+        /// connections. When enabled, a virtual IP address is allocated from each of the sub-networks that are bound to
+        /// this policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
         public virtual System.Nullable<bool> EnableInboundForwarding { get; set; }
@@ -4499,7 +4500,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>User assigned name for this policy.</summary>
+        /// <summary>User-assigned name for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4531,9 +4532,9 @@ namespace Google.Apis.Dns.v1beta2.Data
     public class PolicyAlternativeNameServerConfigTargetNameServer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS will make forwarding
-        /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the
-        /// Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target.
+        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decision
+        /// based on address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the internet.
+        /// When set to PRIVATE, Cloud DNS always sends queries through VPC for this target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
@@ -4543,7 +4544,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Ipv4Address { get; set; }
 
         /// <summary>
-        /// IPv6 address to forward to. Will not accept both fields (ipv4 &amp;amp; ipv6) being populated.
+        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp;amp; ipv6) being populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
         public virtual string Ipv6Address { get; set; }
@@ -4707,11 +4708,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
-        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
-        /// if the contents of the collection change between the first and last paginated list request, the set of all
-        /// elements returned will be an inconsistent view of the collection. There is no way to retrieve a consistent
-        /// snapshot of a collection larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your pagination token. This
+        /// lets you retrieve complete contents of even larger collections, one page at a time. However, if the contents
+        /// of the collection change between the first and last paginated list request, the set of elements returned are
+        /// an inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger
+        /// than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4748,8 +4749,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your page token. In this way
         /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
-        /// of a collection larger than the maximum page size.
+        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4889,8 +4890,8 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// pagination order. To fetch them, make another list request using this value as your page token. In this way
         /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned will be an inconsistent view of the collection. There is no way to retrieve a consistent snapshot
-        /// of a collection larger than the maximum page size.
+        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

@@ -37,6 +37,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Accounts = new AccountsResource(this);
             Accountstatuses = new AccountstatusesResource(this);
             Accounttax = new AccounttaxResource(this);
+            Buyongoogleprograms = new BuyongoogleprogramsResource(this);
             Collections = new CollectionsResource(this);
             Collectionstatuses = new CollectionstatusesResource(this);
             Csses = new CssesResource(this);
@@ -59,6 +60,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Repricingrules = new RepricingrulesResource(this);
             Returnaddress = new ReturnaddressResource(this);
             Returnpolicy = new ReturnpolicyResource(this);
+            Returnpolicyonline = new ReturnpolicyonlineResource(this);
             Settlementreports = new SettlementreportsResource(this);
             Settlementtransactions = new SettlementtransactionsResource(this);
             Shippingsettings = new ShippingsettingsResource(this);
@@ -111,6 +113,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Accounttax resource.</summary>
         public virtual AccounttaxResource Accounttax { get; }
+
+        /// <summary>Gets the Buyongoogleprograms resource.</summary>
+        public virtual BuyongoogleprogramsResource Buyongoogleprograms { get; }
 
         /// <summary>Gets the Collections resource.</summary>
         public virtual CollectionsResource Collections { get; }
@@ -177,6 +182,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Returnpolicy resource.</summary>
         public virtual ReturnpolicyResource Returnpolicy { get; }
+
+        /// <summary>Gets the Returnpolicyonline resource.</summary>
+        public virtual ReturnpolicyonlineResource Returnpolicyonline { get; }
 
         /// <summary>Gets the Settlementreports resource.</summary>
         public virtual SettlementreportsResource Settlementreports { get; }
@@ -2202,6 +2210,163 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "buyongoogleprograms" collection of methods.</summary>
+    public class BuyongoogleprogramsResource
+    {
+        private const string Resource = "buyongoogleprograms";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public BuyongoogleprogramsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves a status of BoG program for your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+        /// only US is available.
+        /// </param>
+        public virtual GetRequest Get(long merchantId, string regionCode)
+        {
+            return new GetRequest(service, merchantId, regionCode);
+        }
+
+        /// <summary>Retrieves a status of BoG program for your Merchant Center account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+            /// Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the Terms of Service.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+        /// only US is available.
+        /// </param>
+        public virtual OnboardRequest Onboard(Google.Apis.ShoppingContent.v2_1.Data.OnboardBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
+        {
+            return new OnboardRequest(service, body, merchantId, regionCode);
+        }
+
+        /// <summary>
+        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the Terms of Service.
+        /// </summary>
+        public class OnboardRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Onboard request.</summary>
+            public OnboardRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.OnboardBuyOnGoogleProgramRequest body, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+            /// Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.OnboardBuyOnGoogleProgramRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "onboard";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}/onboard";
+
+            /// <summary>Initializes Onboard parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -9322,7 +9487,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long MerchantId { get; private set; }
 
-            /// <summary>CLDR country code (e.g. "US"), used as a filter on repricing rules.</summary>
+            /// <summary>
+            /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (e.g. "US"), used
+            /// as a filter on repricing rules.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("countryCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CountryCode { get; set; }
 
@@ -10052,6 +10220,324 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "returnpolicyonline" collection of methods.</summary>
+    public class ReturnpolicyonlineResource
+    {
+        private const string Resource = "returnpolicyonline";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ReturnpolicyonlineResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Creates a new return policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The id of the merchant for which to retrieve the return policy online object.
+        /// </param>
+        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId)
+        {
+            return new CreateRequest(service, body, merchantId);
+        }
+
+        /// <summary>Creates a new return policy.</summary>
+        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The id of the merchant for which to retrieve the return policy online object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Deletes an existing return policy.</summary>
+        /// <param name="merchantId">
+        /// Required. The id of the merchant for which to retrieve the return policy online object.
+        /// </param>
+        /// <param name="returnPolicyId">Required. The id of the return policy to delete.</param>
+        public virtual DeleteRequest Delete(long merchantId, string returnPolicyId)
+        {
+            return new DeleteRequest(service, merchantId, returnPolicyId);
+        }
+
+        /// <summary>Deletes an existing return policy.</summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId, string returnPolicyId) : base(service)
+            {
+                MerchantId = merchantId;
+                ReturnPolicyId = returnPolicyId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The id of the merchant for which to retrieve the return policy online object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the return policy to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPolicyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReturnPolicyId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPolicyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPolicyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Gets an existing return policy.</summary>
+        /// <param name="merchantId">
+        /// Required. The id of the merchant for which to retrieve the return policy online object.
+        /// </param>
+        /// <param name="returnPolicyId">Required. The id of the return policy to retrieve.</param>
+        public virtual GetRequest Get(long merchantId, string returnPolicyId)
+        {
+            return new GetRequest(service, merchantId, returnPolicyId);
+        }
+
+        /// <summary>Gets an existing return policy.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId, string returnPolicyId) : base(service)
+            {
+                MerchantId = merchantId;
+                ReturnPolicyId = returnPolicyId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The id of the merchant for which to retrieve the return policy online object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the return policy to retrieve.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPolicyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReturnPolicyId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPolicyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPolicyId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists all existing return policies.</summary>
+        /// <param name="merchantId">
+        /// Required. The id of the merchant for which to retrieve the return policy online object.
+        /// </param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists all existing return policies.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListReturnPolicyOnlineResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The id of the merchant for which to retrieve the return policy online object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates an existing return policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The id of the merchant for which to retrieve the return policy online object.
+        /// </param>
+        /// <param name="returnPolicyId">Required. The id of the return policy to update.</param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId, string returnPolicyId)
+        {
+            return new PatchRequest(service, body, merchantId, returnPolicyId);
+        }
+
+        /// <summary>Updates an existing return policy.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline body, long merchantId, string returnPolicyId) : base(service)
+            {
+                MerchantId = merchantId;
+                ReturnPolicyId = returnPolicyId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The id of the merchant for which to retrieve the return policy online object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The id of the return policy to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("returnPolicyId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ReturnPolicyId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ReturnPolicyOnline Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("returnPolicyId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "returnPolicyId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -11403,8 +11889,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string LinkedAccountId { get; set; }
 
         /// <summary>
-        /// Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingAdsOther`" -
-        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+        /// Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" -
+        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
@@ -11774,6 +12260,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Regular business days. May not be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
         public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GetProgramStatus method.</summary>
+    public class BuyOnGoogleProgramStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The customer service pending email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServicePendingEmail")]
+        public virtual string CustomerServicePendingEmail { get; set; }
+
+        /// <summary>The customer service verified email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServiceVerifiedEmail")]
+        public virtual string CustomerServiceVerifiedEmail { get; set; }
+
+        /// <summary>The current participation stage for the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("participationStage")]
+        public virtual string ParticipationStage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13584,6 +14089,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the `ListReturnPolicyOnline` method.</summary>
+    public class ListReturnPolicyOnlineResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The retrieved return policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicies")]
+        public virtual System.Collections.Generic.IList<ReturnPolicyOnline> ReturnPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Local inventory resource. For accepted attribute values, see the local product inventory feed specification.
     /// </summary>
@@ -13938,6 +14454,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAmount")]
         public virtual Price TaxAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the OnboardProgram method.</summary>
+    public class OnboardBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The customer service email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerServiceEmail")]
+        public virtual string CustomerServiceEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18339,7 +18866,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cogsBasedRule")]
         public virtual RepricingRuleCostOfGoodsSaleRule CogsBasedRule { get; set; }
 
-        /// <summary>Required. Immutable. CLDR country code (e.g. "US").</summary>
+        /// <summary>
+        /// Required. Immutable. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+        /// (e.g. "US").
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
         public virtual string CountryCode { get; set; }
 
@@ -18753,6 +19283,153 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Return policy online object. This is currently used to represent return policies for ads and free listings
+    /// programs.
+    /// </summary>
+    public class ReturnPolicyOnline : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The countries of sale where the return policy is applicable. The values must be a valid 2 letter ISO 3166
+        /// code, e.g. "US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<string> Countries { get; set; }
+
+        /// <summary>
+        /// The item conditions that are accepted for returns. This is required to not be empty unless the type of
+        /// return policy is noReturns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemConditions")]
+        public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
+
+        /// <summary>
+        /// The unique user-defined label of the return policy. The same label cannot be used in different return
+        /// policies for the same country. Policies with the label 'default' will apply to all products, unless a
+        /// product specifies a return_policy_label attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the policy as shown in Merchant Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The return policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual ReturnPolicyOnlinePolicy Policy { get; set; }
+
+        /// <summary>
+        /// The restocking fee that applies to all return reason categories. This would be treated as a free restocking
+        /// fee if the value is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restockingFee")]
+        public virtual ReturnPolicyOnlineRestockingFee RestockingFee { get; set; }
+
+        /// <summary>
+        /// The return methods of how customers can return an item. This value is required to not be empty unless the
+        /// type of return policy is noReturns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnMethods")]
+        public virtual System.Collections.Generic.IList<string> ReturnMethods { get; set; }
+
+        /// <summary>Output only. Return policy ID generated by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyId")]
+        public virtual string ReturnPolicyId { get; set; }
+
+        /// <summary>The return policy uri. This can used by Google to do a sanity check for the policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyUri")]
+        public virtual string ReturnPolicyUri { get; set; }
+
+        /// <summary>
+        /// The return reason category information. This required to not be empty unless the type of return policy is
+        /// noReturns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnReasonCategoryInfo")]
+        public virtual System.Collections.Generic.IList<ReturnPolicyOnlineReturnReasonCategoryInfo> ReturnReasonCategoryInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The available policies.</summary>
+    public class ReturnPolicyOnlinePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of days items can be returned after delivery, where one day is defined to be 24 hours after the
+        /// delivery timestamp. Required for `numberOfDaysAfterDelivery` returns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Nullable<long> Days { get; set; }
+
+        /// <summary>Policy type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The restocking fee. This can either be a fixed fee or a micro percent.</summary>
+    public class ReturnPolicyOnlineRestockingFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fixed restocking fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
+        public virtual PriceAmount FixedFee { get; set; }
+
+        /// <summary>
+        /// Percent of total price in micros. 15,000,000 means 15% of the total price would be charged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microPercent")]
+        public virtual System.Nullable<int> MicroPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The return reason category info wrapper.</summary>
+    public class ReturnPolicyOnlineReturnReasonCategoryInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The corresponding return label source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnLabelSource")]
+        public virtual string ReturnLabelSource { get; set; }
+
+        /// <summary>The return reason category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnReasonCategory")]
+        public virtual string ReturnReasonCategory { get; set; }
+
+        /// <summary>
+        /// The corresponding return shipping fee. This is only applicable when returnLabelSource is not the customer's
+        /// responsibility.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnShippingFee")]
+        public virtual ReturnPolicyOnlineReturnShippingFee ReturnShippingFee { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the
+    /// actual shipping cost.
+    /// </summary>
+    public class ReturnPolicyOnlineReturnShippingFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fixed return shipping fee amount. This value is only applicable when type is FIXED. We will treat the return
+        /// shipping fee as free if type is FIXED and this value is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
+        public virtual PriceAmount FixedFee { get; set; }
+
+        /// <summary>Type of return shipping fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ReturnPolicyPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -19113,8 +19790,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string PageToken { get; set; }
 
         /// <summary>
-        /// Required. Search query that defines performance metrics to retrieve and dimensions according to which the
-        /// metrics are to be segmented.
+        /// Required. Query that defines performance metrics to retrieve and dimensions according to which the metrics
+        /// are to be segmented.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -19412,7 +20089,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// The type of the transaction that occurred. Acceptable values are: - "`order`" - "`reversal`" -
         /// "`orderRefund`" - "`reversalRefund`" - "`issueRelatedRefundAndReplacement`" -
         /// "`returnLabelShippingFeeTransaction`" - "`reversalIssueRelatedRefundAndReplacement`" -
-        /// "`reversalReturnLabelShippingFeeTransaction`"
+        /// "`reversalReturnLabelShippingFeeTransaction`" - "`lumpSumCorrectionTransaction`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

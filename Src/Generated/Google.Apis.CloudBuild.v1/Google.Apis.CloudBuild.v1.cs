@@ -2366,7 +2366,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
-        /// <summary>Path, from the source root, to a file whose contents is used for the template.</summary>
+        /// <summary>Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 

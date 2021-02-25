@@ -6272,6 +6272,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
         public virtual string DdlOperationPerformed { get; set; }
 
+        /// <summary>[Output-only] The DDL target dataset. Present only for CREATE/ALTER/DROP SCHEMA queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetDataset")]
+        public virtual DatasetReference DdlTargetDataset { get; set; }
+
         /// <summary>The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetRoutine")]
         public virtual RoutineReference DdlTargetRoutine { get; set; }
