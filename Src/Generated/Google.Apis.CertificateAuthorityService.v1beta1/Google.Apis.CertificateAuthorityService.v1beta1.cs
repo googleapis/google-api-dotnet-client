@@ -4329,8 +4329,7 @@ namespace Google.Apis.CertificateAuthorityService.v1beta1.Data
 
         /// <summary>
         /// Private Preview. This feature is only available for approved services. User defined labels for the resource
-        /// that this operation is associated with. Only a combination of 1000 user labels per consumer project are
-        /// allowed.
+        /// that this operation is associated with.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }

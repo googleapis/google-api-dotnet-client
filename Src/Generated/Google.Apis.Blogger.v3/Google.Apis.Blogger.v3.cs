@@ -676,7 +676,7 @@ namespace Google.Apis.Blogger.v3
                     Name = "status",
                     IsRequired = false,
                     ParameterType = "query",
-                    DefaultValue = null,
+                    DefaultValue = "LIVE",
                     Pattern = null,
                 });
                 RequestParameters.Add("view", new Google.Apis.Discovery.Parameter

@@ -957,6 +957,46 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BackupId { get; set; }
 
+                    /// <summary>Required. The encryption type of the backup.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("encryptionConfig.encryptionType", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<EncryptionConfigEncryptionTypeEnum> EncryptionConfigEncryptionType { get; set; }
+
+                    /// <summary>Required. The encryption type of the backup.</summary>
+                    public enum EncryptionConfigEncryptionTypeEnum
+                    {
+                        /// <summary>Unspecified. Do not use.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENCRYPTION_TYPE_UNSPECIFIED")]
+                        ENCRYPTIONTYPEUNSPECIFIED,
+
+                        /// <summary>
+                        /// Use the same encryption configuration as the database. This is the default option when
+                        /// encryption_config is empty. For example, if the database is using
+                        /// `Customer_Managed_Encryption`, the backup will be using the same Cloud KMS key as the
+                        /// database.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("USE_DATABASE_ENCRYPTION")]
+                        USEDATABASEENCRYPTION,
+
+                        /// <summary>Use Google default encryption.</summary>
+                        [Google.Apis.Util.StringValueAttribute("GOOGLE_DEFAULT_ENCRYPTION")]
+                        GOOGLEDEFAULTENCRYPTION,
+
+                        /// <summary>
+                        /// Use customer managed encryption. If specified, `kms_key_name` must contain a valid Cloud KMS
+                        /// key.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("CUSTOMER_MANAGED_ENCRYPTION")]
+                        CUSTOMERMANAGEDENCRYPTION,
+                    }
+
+                    /// <summary>
+                    /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set
+                    /// only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+                    /// `projects//locations//keyRings//cryptoKeys/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("encryptionConfig.kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string EncryptionConfigKmsKeyName { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Spanner.v1.Data.Backup Body { get; set; }
 
@@ -987,6 +1027,22 @@ namespace Google.Apis.Spanner.v1
                         RequestParameters.Add("backupId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "backupId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("encryptionConfig.encryptionType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "encryptionConfig.encryptionType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("encryptionConfig.kmsKeyName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "encryptionConfig.kmsKeyName",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4547,6 +4603,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
+        /// <summary>Output only. The encryption information for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
         /// <summary>
         /// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity
         /// that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once
@@ -4865,6 +4925,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string CreateStatement { get; set; }
 
         /// <summary>
+        /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will
+        /// encrypt/decrypt all data at rest using Google default encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>
         /// Optional. A list of DDL statements to run inside the newly created database. Statements can create tables,
         /// indexes, etc. These statements execute atomically with the creation of the database: if there is an error in
         /// any statement, the database is not created.
@@ -4950,6 +5017,24 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual object EarliestVersionTime { get; set; }
 
         /// <summary>
+        /// Output only. For databases that are using customer managed encryption, this field contains the encryption
+        /// configuration for the database. For databases that are using Google default or other types of encryption,
+        /// this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// Output only. For databases that are using customer managed encryption, this field contains the encryption
+        /// information for the database, such as encryption state and the Cloud KMS key versions that are in use. For
+        /// databases that are using Google default or other types of encryption, this field is empty. This field is
+        /// propagated lazily from the backend. There might be a delay from when a key version is being used and when it
+        /// appears in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual System.Collections.Generic.IList<EncryptionInfo> EncryptionInfo { get; set; }
+
+        /// <summary>
         /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as
         /// specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the
         /// database.
@@ -5007,6 +5092,44 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption configuration for a Cloud Spanner database.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form
+        /// `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption information for a Cloud Spanner database or backup.</summary>
+    public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or
+        /// backup. Regardless of status, data is always encrypted at rest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
+        public virtual Status EncryptionStatus { get; set; }
+
+        /// <summary>Output only. The type of encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Output only. A Cloud KMS key version that is being used to protect the database or backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6238,6 +6361,25 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encryption configuration for the restored database.</summary>
+    public class RestoreDatabaseEncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The encryption type of the restored database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to encrypt/decrypt the restored database. This field should be
+        /// set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+        /// `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata type for the long-running operation returned by RestoreDatabase.</summary>
     public class RestoreDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6300,6 +6442,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. An encryption configuration describing the encryption type and key resources in Cloud KMS used to
+        /// encrypt/decrypt the database to restore to. If this field is not specified, the restored database will use
+        /// the same encryption configuration as the backup by default, namely encryption_type =
+        /// `USE_CONFIG_DEFAULT_OR_DATABASE_ENCRYPTION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual RestoreDatabaseEncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

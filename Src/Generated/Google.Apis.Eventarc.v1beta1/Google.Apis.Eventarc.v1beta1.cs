@@ -1925,9 +1925,13 @@ namespace Google.Apis.Eventarc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>Optional. User labels attached to the triggers that can be used to group resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
-        /// Required. The criteria by which events are filtered. Only events that match with this criteria will be sent
-        /// to the destination.
+        /// Required. null The criteria by which events are filtered. Only events that match with this criteria will be
+        /// sent to the destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchingCriteria")]
         public virtual System.Collections.Generic.IList<MatchingCriteria> MatchingCriteria { get; set; }

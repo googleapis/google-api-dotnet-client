@@ -12271,7 +12271,10 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, object> JsonPayload { get; set; }
 
         /// <summary>
-        /// Optional. A set of user-defined (key, value) data that provides additional information about the log entry.
+        /// Optional. A set of user-defined (key, value) data that provides additional information about the log
+        /// entry.Cloud Logging truncates label keys that exceed 512 B and label values that exceed 64 KB upon their
+        /// associated log entry being written. The truncation is indicated by an ellipsis at the end of the character
+        /// string.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -12298,7 +12301,7 @@ namespace Google.Apis.Logging.v2.Data
         /// k8s_node MonitoredResources have this field populated for GKE versions older than 1.12.6. For GKE versions
         /// 1.12.6 and above, the metadata field has been deprecated. The Kubernetes pod labels that used to be in
         /// metadata.userLabels will now be present in the labels field with a key prefix of k8s-pod/. The system labels
-        /// that were present in the metadata.systemLabels field will no longer be available in the LogEntry.
+        /// that were present in the metadata.systemLabels field will no longer be available in the log entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual MonitoredResourceMetadata Metadata { get; set; }

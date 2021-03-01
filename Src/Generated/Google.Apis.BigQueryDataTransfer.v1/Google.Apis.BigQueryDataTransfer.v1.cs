@@ -1116,29 +1116,29 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                         public enum StatesEnum
                         {
-                            /// <summary>State placeholder.</summary>
+                            /// <summary>State placeholder (0).</summary>
                             [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
                             TRANSFERSTATEUNSPECIFIED,
 
                             /// <summary>
-                            /// Data transfer is scheduled and is waiting to be picked up by data transfer backend.
+                            /// Data transfer is scheduled and is waiting to be picked up by data transfer backend (2).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("PENDING")]
                             PENDING,
 
-                            /// <summary>Data transfer is in progress.</summary>
+                            /// <summary>Data transfer is in progress (3).</summary>
                             [Google.Apis.Util.StringValueAttribute("RUNNING")]
                             RUNNING,
 
-                            /// <summary>Data transfer completed successfully.</summary>
+                            /// <summary>Data transfer completed successfully (4).</summary>
                             [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
                             SUCCEEDED,
 
-                            /// <summary>Data transfer failed.</summary>
+                            /// <summary>Data transfer failed (5).</summary>
                             [Google.Apis.Util.StringValueAttribute("FAILED")]
                             FAILED,
 
-                            /// <summary>Data transfer is cancelled.</summary>
+                            /// <summary>Data transfer is cancelled (6).</summary>
                             [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                             CANCELLED,
                         }
@@ -1525,11 +1525,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the transfer config. Transfer config names have the form of
-                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically
-                /// generated based on the config_id specified in CreateTransferConfigRequest along with project_id and
-                /// region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required,
-                /// will be generated for config_id.
+                /// The resource name of the transfer config. Transfer config names have the form
+                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually
+                /// a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer
+                /// config.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
                 {
@@ -1550,11 +1549,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the transfer config. Transfer config names have the form of
-                    /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is
-                    /// automatically generated based on the config_id specified in CreateTransferConfigRequest along
-                    /// with project_id and region. If config_id is not provided, usually a uuid, even though it is not
-                    /// guaranteed or required, will be generated for config_id.
+                    /// The resource name of the transfer config. Transfer config names have the form
+                    /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is
+                    /// usually a uuid, even though it is not guaranteed or required. The name is ignored when creating
+                    /// a transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2264,29 +2262,29 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                     public enum StatesEnum
                     {
-                        /// <summary>State placeholder.</summary>
+                        /// <summary>State placeholder (0).</summary>
                         [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
                         TRANSFERSTATEUNSPECIFIED,
 
                         /// <summary>
-                        /// Data transfer is scheduled and is waiting to be picked up by data transfer backend.
+                        /// Data transfer is scheduled and is waiting to be picked up by data transfer backend (2).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("PENDING")]
                         PENDING,
 
-                        /// <summary>Data transfer is in progress.</summary>
+                        /// <summary>Data transfer is in progress (3).</summary>
                         [Google.Apis.Util.StringValueAttribute("RUNNING")]
                         RUNNING,
 
-                        /// <summary>Data transfer completed successfully.</summary>
+                        /// <summary>Data transfer completed successfully (4).</summary>
                         [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
                         SUCCEEDED,
 
-                        /// <summary>Data transfer failed.</summary>
+                        /// <summary>Data transfer failed (5).</summary>
                         [Google.Apis.Util.StringValueAttribute("FAILED")]
                         FAILED,
 
-                        /// <summary>Data transfer is cancelled.</summary>
+                        /// <summary>Data transfer is cancelled (6).</summary>
                         [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                         CANCELLED,
                     }
@@ -2671,11 +2669,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The resource name of the transfer config. Transfer config names have the form of
-            /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically
-            /// generated based on the config_id specified in CreateTransferConfigRequest along with project_id and
-            /// region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required, will
-            /// be generated for config_id.
+            /// The resource name of the transfer config. Transfer config names have the form
+            /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a
+            /// uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
             {
@@ -2696,11 +2692,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// The resource name of the transfer config. Transfer config names have the form of
-                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically
-                /// generated based on the config_id specified in CreateTransferConfigRequest along with project_id and
-                /// region. If config_id is not provided, usually a uuid, even though it is not guaranteed or required,
-                /// will be generated for config_id.
+                /// The resource name of the transfer config. Transfer config names have the form
+                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually
+                /// a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer
+                /// config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3473,11 +3468,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual EmailPreferences EmailPreferences { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form of
-        /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. The name is automatically generated
-        /// based on the config_id specified in CreateTransferConfigRequest along with project_id and region. If
-        /// config_id is not provided, usually a uuid, even though it is not guaranteed or required, will be generated
-        /// for config_id.
+        /// The resource name of the transfer config. Transfer config names have the form
+        /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid,
+        /// even though it is not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

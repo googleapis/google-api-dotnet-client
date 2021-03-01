@@ -4796,6 +4796,13 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flexibleEnvironmentAvailable")]
         public virtual System.Nullable<bool> FlexibleEnvironmentAvailable { get; set; }
 
+        /// <summary>
+        /// Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the
+        /// given location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchApiAvailable")]
+        public virtual System.Nullable<bool> SearchApiAvailable { get; set; }
+
         /// <summary>App Engine standard environment is available in the given location.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standardEnvironmentAvailable")]
         public virtual System.Nullable<bool> StandardEnvironmentAvailable { get; set; }

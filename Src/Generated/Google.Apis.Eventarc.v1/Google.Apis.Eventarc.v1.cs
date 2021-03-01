@@ -1926,11 +1926,15 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. The list of filters that applies to event attributes. Only events that match all the provided
+        /// Required. null The list of filters that applies to event attributes. Only events that match all the provided
         /// filters will be sent to the destination.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
+
+        /// <summary>Optional. User labels attached to the triggers that can be used to group resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Required. The resource name of the trigger. Must be unique within the location on the project and must be in
@@ -1947,7 +1951,7 @@ namespace Google.Apis.Eventarc.v1.Data
         /// when invoking the service. See
         /// https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to
         /// invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should
-        /// also have 'eventarc.events.receiveAuditLogV1Written' permission.
+        /// also have `roles/eventarc.eventReceiver` IAM role.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

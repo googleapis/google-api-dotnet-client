@@ -933,14 +933,23 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual BuildBazelRemoteExecutionV2Digest InputRootDigest { get; set; }
 
         /// <summary>
-        /// List of required supported NodeProperty keys. In order to ensure that equivalent `Action`s always hash to
-        /// the same value, the supported node properties MUST be lexicographically sorted by name. Sorting of strings
-        /// is done by code point, equivalently, by the UTF-8 bytes. The interpretation of these properties is
-        /// server-dependent. If a property is not recognized by the server, the server will return an
-        /// `INVALID_ARGUMENT` error.
+        /// The optional platform requirements for the execution environment. The server MAY choose to execute the
+        /// action on any worker satisfying the requirements, so the client SHOULD ensure that running the action on any
+        /// such worker will have the same result. A detailed lexicon for this can be found in the accompanying
+        /// platform.md. New in version 2.2: clients SHOULD set these platform properties as well as those in the
+        /// Command. Servers SHOULD prefer those set here.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputNodeProperties")]
-        public virtual System.Collections.Generic.IList<string> OutputNodeProperties { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual BuildBazelRemoteExecutionV2Platform Platform { get; set; }
+
+        /// <summary>
+        /// An optional additional salt value used to place this `Action` into a separate cache namespace from other
+        /// instances having the same field contents. This salt typically comes from operational configuration specific
+        /// to sources such as repo and service configuration, and allows disowning an entire set of ActionResults that
+        /// might have been poisoned by buggy software or tool failures.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salt")]
+        public virtual string Salt { get; set; }
 
         /// <summary>
         /// A timeout after which the execution should be killed. If the timeout is absent, then the client is
@@ -960,7 +969,11 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An ActionResult represents the result of an Action being run.</summary>
+    /// <summary>
+    /// An ActionResult represents the result of an Action being run. It is advised that at least one field (for example
+    /// `ActionResult.execution_metadata.Worker`) have a non-default value, to ensure that the serialized value is
+    /// non-empty, which can then be used as a basic data sanity check.
+    /// </summary>
     public class BuildBazelRemoteExecutionV2ActionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The details of the execution that originally produced this result.</summary>
@@ -1141,6 +1154,17 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         public virtual System.Collections.Generic.IList<string> OutputFiles { get; set; }
 
         /// <summary>
+        /// A list of keys for node properties the client expects to retrieve for output files and directories. Keys are
+        /// either names of string-based NodeProperty or names of fields in NodeProperties. In order to ensure that
+        /// equivalent `Action`s always hash to the same value, the node properties MUST be lexicographically sorted by
+        /// name. Sorting of strings is done by code point, equivalently, by the UTF-8 bytes. The interpretation of
+        /// string-based properties is server-dependent. If a property is not recognized by the server, the server will
+        /// return an `INVALID_ARGUMENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputNodeProperties")]
+        public virtual System.Collections.Generic.IList<string> OutputNodeProperties { get; set; }
+
+        /// <summary>
         /// A list of the output paths that the client expects to retrieve from the action. Only the listed paths will
         /// be returned to the client as output. The type of the output (file or directory) is not specified, and will
         /// be determined by the server after action execution. If the resulting path is a file, it will be returned in
@@ -1163,6 +1187,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// The platform requirements for the execution environment. The server MAY choose to execute the action on any
         /// worker satisfying the requirements, so the client SHOULD ensure that running the action on any such worker
         /// will have the same result. A detailed lexicon for this can be found in the accompanying platform.md.
+        /// DEPRECATED as of v2.2: platform properties are now specified directly in the action. See documentation note
+        /// in the Action for migration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual BuildBazelRemoteExecutionV2Platform Platform { get; set; }
@@ -1257,9 +1283,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2FileNode> Files { get; set; }
 
-        /// <summary>The node properties of the Directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
-        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; }
+        public virtual BuildBazelRemoteExecutionV2NodeProperties NodeProperties { get; set; }
 
         /// <summary>The symlinks in the directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlinks")]
@@ -1302,11 +1327,17 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
         public virtual string Stage { get; set; }
 
-        /// <summary>If set, the client can use this name with ByteStream.Read to stream the standard error.</summary>
+        /// <summary>
+        /// If set, the client can use this resource name with ByteStream.Read to stream the standard error from the
+        /// endpoint hosting streamed responses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stderrStreamName")]
         public virtual string StderrStreamName { get; set; }
 
-        /// <summary>If set, the client can use this name with ByteStream.Read to stream the standard output.</summary>
+        /// <summary>
+        /// If set, the client can use this resource name with ByteStream.Read to stream the standard output from the
+        /// endpoint hosting streamed responses.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stdoutStreamName")]
         public virtual string StdoutStreamName { get; set; }
 
@@ -1362,6 +1393,13 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// <summary>ExecutedActionMetadata contains details about a completed execution.</summary>
     public class BuildBazelRemoteExecutionV2ExecutedActionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Details that are specific to the kind of worker used. For example, on POSIX-like systems this could contain
+        /// a message with getrusage(2) statistics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryMetadata")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> AuxiliaryMetadata { get; set; }
+
         /// <summary>When the worker completed executing the action command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionCompletedTimestamp")]
         public virtual object ExecutionCompletedTimestamp { get; set; }
@@ -1421,9 +1459,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The node properties of the FileNode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
-        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; }
+        public virtual BuildBazelRemoteExecutionV2NodeProperties NodeProperties { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1443,6 +1480,28 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReadable")]
         public virtual System.Nullable<bool> HumanReadable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Node properties for FileNodes, DirectoryNodes, and SymlinkNodes. The server is responsible for specifying the
+    /// properties that it accepts.
+    /// </summary>
+    public class BuildBazelRemoteExecutionV2NodeProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file's last modification timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtime")]
+        public virtual object Mtime { get; set; }
+
+        /// <summary>A list of string-based NodeProperties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> Properties { get; set; }
+
+        /// <summary>The UNIX file mode, e.g., 0755.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unixMode")]
+        public virtual System.Nullable<long> UnixMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1510,9 +1569,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isExecutable")]
         public virtual System.Nullable<bool> IsExecutable { get; set; }
 
-        /// <summary>The supported node properties of the OutputFile, if requested by the Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
-        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; }
+        public virtual BuildBazelRemoteExecutionV2NodeProperties NodeProperties { get; set; }
 
         /// <summary>
         /// The full path of the file relative to the working directory, including the filename. The path separator is a
@@ -1531,9 +1589,8 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// </summary>
     public class BuildBazelRemoteExecutionV2OutputSymlink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The supported node properties of the OutputSymlink, if requested by the Action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
-        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; }
+        public virtual BuildBazelRemoteExecutionV2NodeProperties NodeProperties { get; set; }
 
         /// <summary>
         /// The full path of the symlink relative to the working directory, including the filename. The path separator
@@ -1545,8 +1602,7 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         /// <summary>
         /// The target path of the symlink. The path separator is a forward slash `/`. The target path can be relative
         /// to the parent directory of the symlink or it can be an absolute path starting with `/`. Support for absolute
-        /// paths can be checked using the Capabilities API. The canonical form forbids the substrings `/./` and `//` in
-        /// the target path. `..` components are allowed anywhere in the target path.
+        /// paths can be checked using the Capabilities API. `..` components are allowed anywhere in the target path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
@@ -1582,7 +1638,9 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// RAM must be available may be interpreted as allowing a worker with 16GB to fulfill a request for 8GB, while a
     /// property describing the OS environment on which the action must be performed may require an exact match with the
     /// worker's OS. The server MAY use the `value` of one or more properties to determine how it sets up the execution
-    /// environment, such as by making specific system files available to the worker.
+    /// environment, such as by making specific system files available to the worker. Both names and values are
+    /// typically case-sensitive. Note that the platform is implicitly part of the action digest, so even tiny changes
+    /// in the names or values (like changing case) may result in different action cache entries.
     /// </summary>
     public class BuildBazelRemoteExecutionV2PlatformProperty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1645,15 +1703,16 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The node properties of the SymlinkNode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProperties")]
-        public virtual System.Collections.Generic.IList<BuildBazelRemoteExecutionV2NodeProperty> NodeProperties { get; set; }
+        public virtual BuildBazelRemoteExecutionV2NodeProperties NodeProperties { get; set; }
 
         /// <summary>
         /// The target path of the symlink. The path separator is a forward slash `/`. The target path can be relative
         /// to the parent directory of the symlink or it can be an absolute path starting with `/`. Support for absolute
-        /// paths can be checked using the Capabilities API. The canonical form forbids the substrings `/./` and `//` in
-        /// the target path. `..` components are allowed anywhere in the target path.
+        /// paths can be checked using the Capabilities API. `..` components are allowed anywhere in the target path as
+        /// logical canonicalization may lead to different behavior in the presence of directory symlinks (e.g.
+        /// `foo/../bar` may not be the same as `bar`). To reduce potential cache misses, canonicalization is still
+        /// recommended where this is possible without impacting correctness.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
@@ -1712,6 +1771,10 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
     /// <summary>CommandDuration contains the various duration metrics tracked when a bot performs a command.</summary>
     public class GoogleDevtoolsRemotebuildbotCommandDurations : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The time spent to release the CAS blobs used by the task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("casRelease")]
+        public virtual object CasRelease { get; set; }
+
         /// <summary>
         /// The time spent waiting for Container Manager to assign an asynchronous container for execution.
         /// </summary>

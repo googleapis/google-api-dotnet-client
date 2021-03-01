@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ChromeManagement.v1 Client Library</Title>
-    <Version>1.50.0.2240</Version>
+    <Version>1.50.0.2249</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -62,10 +62,12 @@
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Google.Apis" Version="1.50.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.50.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="Google.Apis" Version="1.50.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.50.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -74,11 +76,13 @@
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
     <PackageReference Include="Google.Apis" Version="[1.25.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.25.0]" ExcludeAssets="build" />
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="Google.Apis" Version="1.50.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.50.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
@@ -87,6 +91,7 @@
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
     <PackageReference Include="Google.Apis" Version="[1.10.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.10.0]" ExcludeAssets="build" />
   </ItemGroup>
 
 </Project>
