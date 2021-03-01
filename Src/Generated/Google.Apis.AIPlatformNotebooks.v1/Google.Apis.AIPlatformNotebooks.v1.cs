@@ -3054,6 +3054,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputNotebookFolder")]
         public virtual string OutputNotebookFolder { get; set; }
 
+        /// <summary>Parameters used within the 'input_notebook_file' notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual string Parameters { get; set; }
+
         /// <summary>
         /// Parameters to be overridden in the notebook during execution. Ref
         /// https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the
@@ -3747,6 +3751,12 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The most recent execution names triggered from this schedule and their corresponding states.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentExecutions")]
+        public virtual System.Collections.Generic.IList<Execution> RecentExecutions { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -3760,7 +3770,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
-        /// <summary>Output only. TIme the schedule was last updated.</summary>
+        /// <summary>Output only. Time the schedule was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -3981,6 +3991,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Target VM Image. Format: ainotebooks-vm/project/image-name/name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetImage")]
         public virtual string TargetImage { get; set; }
+
+        /// <summary>Target VM Version, like m63.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
 
         /// <summary>The version of the notebook instance before this upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

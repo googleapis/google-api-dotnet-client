@@ -62,6 +62,20 @@ namespace Google.Apis.ChromeManagement.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Chrome Management API.</summary>
+        public class Scope
+        {
+            /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
+            public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Chrome Management API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
+            public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
+        }
+
         /// <summary>Gets the Customers resource.</summary>
         public virtual CustomersResource Customers { get; }
     }
