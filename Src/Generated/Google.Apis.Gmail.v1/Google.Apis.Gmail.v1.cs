@@ -83,10 +83,10 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Manage drafts and send emails</summary>
             public static string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";
 
-            /// <summary>Insert mail into your mailbox</summary>
+            /// <summary>Add emails into your Gmail mailbox</summary>
             public static string GmailInsert = "https://www.googleapis.com/auth/gmail.insert";
 
-            /// <summary>Manage mailbox labels</summary>
+            /// <summary>See and edit your email labels</summary>
             public static string GmailLabels = "https://www.googleapis.com/auth/gmail.labels";
 
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
@@ -101,7 +101,7 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Send email on your behalf</summary>
             public static string GmailSend = "https://www.googleapis.com/auth/gmail.send";
 
-            /// <summary>Manage your basic mail settings</summary>
+            /// <summary>See, edit, create, or change your email settings and filters in Gmail</summary>
             public static string GmailSettingsBasic = "https://www.googleapis.com/auth/gmail.settings.basic";
 
             /// <summary>Manage your sensitive mail settings, including who can manage your mail</summary>
@@ -129,10 +129,10 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Manage drafts and send emails</summary>
             public const string GmailCompose = "https://www.googleapis.com/auth/gmail.compose";
 
-            /// <summary>Insert mail into your mailbox</summary>
+            /// <summary>Add emails into your Gmail mailbox</summary>
             public const string GmailInsert = "https://www.googleapis.com/auth/gmail.insert";
 
-            /// <summary>Manage mailbox labels</summary>
+            /// <summary>See and edit your email labels</summary>
             public const string GmailLabels = "https://www.googleapis.com/auth/gmail.labels";
 
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
@@ -147,7 +147,7 @@ namespace Google.Apis.Gmail.v1
             /// <summary>Send email on your behalf</summary>
             public const string GmailSend = "https://www.googleapis.com/auth/gmail.send";
 
-            /// <summary>Manage your basic mail settings</summary>
+            /// <summary>See, edit, create, or change your email settings and filters in Gmail</summary>
             public const string GmailSettingsBasic = "https://www.googleapis.com/auth/gmail.settings.basic";
 
             /// <summary>Manage your sensitive mail settings, including who can manage your mail</summary>
@@ -7180,7 +7180,8 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string SendAsEmail { get; set; }
 
         /// <summary>
-        /// An optional HTML signature that is included in messages composed with this alias in the Gmail web UI.
+        /// An optional HTML signature that is included in messages composed with this alias in the Gmail web UI. This
+        /// signature is added to new emails only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; }

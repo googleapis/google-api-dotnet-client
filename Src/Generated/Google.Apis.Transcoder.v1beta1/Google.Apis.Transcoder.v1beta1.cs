@@ -1252,7 +1252,8 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         public virtual NormalizedCoordinate Resolution { get; set; }
 
         /// <summary>
-        /// Required. URI of the image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`.
+        /// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the
+        /// only supported image type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }

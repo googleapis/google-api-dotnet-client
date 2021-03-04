@@ -3279,7 +3279,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> PathFilters { get; set; }
 
         /// <summary>
-        /// Similar to path_filters, this contains set of filters to apply if `path` field referes to array elements.
+        /// Similar to path_filters, this contains set of filters to apply if `path` field refers to array elements.
         /// This is meant to support value matching beyond exact match. To perform exact match, use path_filters. When
         /// both path_filters and path_value_matchers are set, an implicit AND must be performed.
         /// </summary>

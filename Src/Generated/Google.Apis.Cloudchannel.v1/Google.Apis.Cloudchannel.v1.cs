@@ -4664,7 +4664,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1Plan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Reseller Billing account that will be charged when this offer is transacted. Only present for GCP offers.
+        /// Reseller Billing account to charge after an offer transaction. Only present for Google Cloud Platform
+        /// offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }

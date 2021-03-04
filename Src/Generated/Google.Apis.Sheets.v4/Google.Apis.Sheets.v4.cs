@@ -3636,7 +3636,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class ChartData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The aggregation type for the series of a data source chart. Not supported for regular charts.
+        /// The aggregation type for the series of a data source chart. Only supported for data source charts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
         public virtual string AggregateType { get; set; }
@@ -3646,8 +3646,8 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual DataSourceColumnReference ColumnReference { get; set; }
 
         /// <summary>
-        /// The rule to group the data by if the ChartData backs the domain of a data source chart. Not supported for
-        /// regular charts.
+        /// The rule to group the data by if the ChartData backs the domain of a data source chart. Only supported for
+        /// data source charts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupRule")]
         public virtual ChartGroupRule GroupRule { get; set; }

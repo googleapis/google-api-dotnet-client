@@ -3737,7 +3737,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
         public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
-        /// <summary>The id to indicate different time series.</summary>
+        /// <summary>
+        /// The time_series_id value for this time series. It will be one of the unique values from the
+        /// time_series_id_column specified during ARIMA model training. Only present when time_series_id_column
+        /// training option was used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
         public virtual string TimeSeriesId { get; set; }
 
@@ -3804,7 +3808,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seasonalPeriods")]
         public virtual System.Collections.Generic.IList<string> SeasonalPeriods { get; set; }
 
-        /// <summary>The id to indicate different time series.</summary>
+        /// <summary>
+        /// The time_series_id value for this time series. It will be one of the unique values from the
+        /// time_series_id_column specified during ARIMA model training. Only present when time_series_id_column
+        /// training option was used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
         public virtual string TimeSeriesId { get; set; }
 
@@ -5135,6 +5143,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxBadRecords")]
         public virtual System.Nullable<int> MaxBadRecords { get; set; }
 
+        /// <summary>Additional properties to set if sourceFormat is set to Parquet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parquetOptions")]
+        public virtual ParquetOptions ParquetOptions { get; set; }
+
         /// <summary>
         /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for
         /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
@@ -5720,6 +5732,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; }
+
+        /// <summary>[Optional] Options to configure parquet support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parquetOptions")]
+        public virtual ParquetOptions ParquetOptions { get; set; }
 
         /// <summary>
         /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a
@@ -6740,6 +6756,24 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Confusion matrix at different thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confusionMatrixList")]
         public virtual System.Collections.Generic.IList<ConfusionMatrix> ConfusionMatrixList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ParquetOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableListInference")]
+        public virtual System.Nullable<bool> EnableListInference { get; set; }
+
+        /// <summary>
+        /// [Optional] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumAsString")]
+        public virtual System.Nullable<bool> EnumAsString { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8378,9 +8412,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDataColumn")]
         public virtual string TimeSeriesDataColumn { get; set; }
 
-        /// <summary>
-        /// The id column that will be used to indicate different time series to forecast in parallel.
-        /// </summary>
+        /// <summary>The time series id column that was used during ARIMA model training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumn")]
         public virtual string TimeSeriesIdColumn { get; set; }
 

@@ -305,7 +305,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// </summary>
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-        /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+        /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
         /// </param>
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual ListRequest List(string userKey, ListRequest.ApplicationNameEnum applicationName)
@@ -331,7 +331,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-            /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+            /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
+            /// address.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -348,8 +349,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 ApplicationNameUndefined,
 
                 /// <summary>
-                /// The G Suite Access Transparency activity reports return information about different types of Access
-                /// Transparency activity events.
+                /// The Google Workspace Access Transparency activity reports return information about different types
+                /// of Access Transparency activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("access_transparency")]
                 AccessTransparency,
@@ -362,7 +363,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Admin,
 
                 /// <summary>
-                /// The G Suite Calendar application's activity reports return information about various Calendar
+                /// The Google Calendar application's activity reports return information about various Calendar
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("calendar")]
@@ -374,7 +375,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
                 /// <summary>
                 /// The Google Drive application's activity reports return information about various Google Drive
-                /// activity events. The Drive activity report is only available for G Suite Business customers.
+                /// activity events. The Drive activity report is only available for Google Workspace Business and
+                /// Enterprise customers.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("drive")]
                 Drive,
@@ -511,12 +513,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string EndTime { get; set; }
 
             /// <summary>
-            /// The name of the event being queried by the API. Each `eventName` is related to a specific G Suite
-            /// service or feature which the API organizes into types of events. An example is the Google Calendar
-            /// events in the Admin console application's reports. The Calendar Settings `type` structure has all of the
-            /// Calendar `eventName` activities reported by the API. When an administrator changes a Calendar setting,
-            /// the API reports this activity in the Calendar Settings `type` and `eventName` parameters. For more
-            /// information about `eventName` query strings and parameters, see the list of event names for various
+            /// The name of the event being queried by the API. Each `eventName` is related to a specific Google
+            /// Workspace service or feature which the API organizes into types of events. An example is the Google
+            /// Calendar events in the Admin console application's reports. The Calendar Settings `type` structure has
+            /// all of the Calendar `eventName` activities reported by the API. When an administrator changes a Calendar
+            /// setting, the API reports this activity in the Calendar Settings `type` and `eventName` parameters. For
+            /// more information about `eventName` query strings and parameters, see the list of event names for various
             /// applications above in `applicationName`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventName", Google.Apis.Util.RequestParameterType.Query)]
@@ -710,7 +712,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="body">The body of the request.</param>
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-        /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+        /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
         /// </param>
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual WatchRequest Watch(Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName)
@@ -735,7 +737,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-            /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+            /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
+            /// address.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -752,8 +755,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 ApplicationNameUnspecified,
 
                 /// <summary>
-                /// The G Suite Access Transparency activity reports return information about different types of Access
-                /// Transparency activity events.
+                /// The Google Workspace Access Transparency activity reports return information about different types
+                /// of Access Transparency activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("access_transparency")]
                 AccessTransparency,
@@ -766,7 +769,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 Admin,
 
                 /// <summary>
-                /// The G Suite Calendar application's activity reports return information about various Calendar
+                /// The Google Calendar application's activity reports return information about various Calendar
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("calendar")]
@@ -778,7 +781,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
                 /// <summary>
                 /// The Google Drive application's activity reports return information about various Google Drive
-                /// activity events. The Drive activity report is only available for G Suite Business customers.
+                /// activity events. The Drive activity report is only available for Google Workspace Business and
+                /// Google Workspace Enterprise customers.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("drive")]
                 Drive,
@@ -915,12 +919,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string EndTime { get; set; }
 
             /// <summary>
-            /// The name of the event being queried by the API. Each `eventName` is related to a specific G Suite
-            /// service or feature which the API organizes into types of events. An example is the Google Calendar
-            /// events in the Admin console application's reports. The Calendar Settings `type` structure has all of the
-            /// Calendar `eventName` activities reported by the API. When an administrator changes a Calendar setting,
-            /// the API reports this activity in the Calendar Settings `type` and `eventName` parameters. For more
-            /// information about `eventName` query strings and parameters, see the list of event names for various
+            /// The name of the event being queried by the API. Each `eventName` is related to a specific Google
+            /// Workspace service or feature which the API organizes into types of events. An example is the Google
+            /// Calendar events in the Admin console application's reports. The Calendar Settings `type` structure has
+            /// all of the Calendar `eventName` activities reported by the API. When an administrator changes a Calendar
+            /// setting, the API reports this activity in the Calendar Settings `type` and `eventName` parameters. For
+            /// more information about `eventName` query strings and parameters, see the list of event names for various
             /// applications above in `applicationName`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventName", Google.Apis.Util.RequestParameterType.Query)]
@@ -1541,7 +1545,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// </summary>
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-        /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+        /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
         /// </param>
         /// <param name="date">
         /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We recommend
@@ -1569,7 +1573,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
 
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
-            /// information, or `userKey` for a user's unique G Suite profile ID or their primary email address.
+            /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
+            /// address.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -1785,9 +1790,9 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
 
         /// <summary>
         /// IP address of the user doing the action. This is the Internet Protocol (IP) address of the user when logging
-        /// into G Suite which may or may not reflect the user's physical location. For example, the IP address can be
-        /// the user's proxy server's address or a virtual private network (VPN) address. The API supports IPv4 and
-        /// IPv6.
+        /// into Google Workspace, which may or may not reflect the user's physical location. For example, the IP
+        /// address can be the user's proxy server's address or a virtual private network (VPN) address. The API
+        /// supports IPv4 and IPv6.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
@@ -1825,7 +1830,8 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             public virtual string Key { get; set; }
 
             /// <summary>
-            /// The unique G Suite profile ID of the actor. May be absent if the actor is not a G Suite user.
+            /// The unique Google Workspace profile ID of the actor. May be absent if the actor is not a Google
+            /// Workspace user.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
             public virtual string ProfileId { get; set; }
@@ -1836,11 +1842,11 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
         {
             /// <summary>
             /// Name of the event. This is the specific name of the activity reported by the API. And each `eventName`
-            /// is related to a specific G Suite service or feature which the API organizes into types of events. For
-            /// `eventName` request parameters in general: - If no `eventName` is given, the report returns all possible
-            /// instances of an `eventName`. - When you request an `eventName`, the API's response returns all
-            /// activities which contain that `eventName`. It is possible that the returned activities will have other
-            /// `eventName` properties in addition to the one requested. For more information about `eventName`
+            /// is related to a specific Google Workspace service or feature which the API organizes into types of
+            /// events. For `eventName` request parameters in general: - If no `eventName` is given, the report returns
+            /// all possible instances of an `eventName`. - When you request an `eventName`, the API's response returns
+            /// all activities which contain that `eventName`. It is possible that the returned activities will have
+            /// other `eventName` properties in addition to the one requested. For more information about `eventName`
             /// properties, see the list of event names for various applications above in `applicationName`.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1854,9 +1860,10 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             public virtual System.Collections.Generic.IList<ParametersData> Parameters { get; set; }
 
             /// <summary>
-            /// Type of event. The G Suite service or feature that an administrator changes is identified in the `type`
-            /// property which identifies an event using the `eventName` property. For a full list of the API's `type`
-            /// categories, see the list of event names for various applications above in `applicationName`.
+            /// Type of event. The Google Workspace service or feature that an administrator changes is identified in
+            /// the `type` property which identifies an event using the `eventName` property. For a full list of the
+            /// API's `type` categories, see the list of event names for various applications above in
+            /// `applicationName`.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
@@ -1935,7 +1942,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
             public virtual string ApplicationName { get; set; }
 
-            /// <summary>The unique identifier for a G suite account.</summary>
+            /// <summary>The unique identifier for a Google Workspace account.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
             public virtual string CustomerId { get; set; }
 
@@ -2092,7 +2099,7 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
             public virtual string EntityId { get; set; }
 
-            /// <summary>Output only. The user's immutable G Suite profile identifier.</summary>
+            /// <summary>Output only. The user's immutable Google Workspace profile identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
             public virtual string ProfileId { get; set; }
 
