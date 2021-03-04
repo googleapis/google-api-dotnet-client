@@ -1583,7 +1583,7 @@ namespace Google.Apis.Dns.v1
             this.service = service;
         }
 
-        /// <summary>Creates a new Policy</summary>
+        /// <summary>Creates a new Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.Policy body, string project)
@@ -1591,7 +1591,7 @@ namespace Google.Apis.Dns.v1
             return new CreateRequest(service, body, project);
         }
 
-        /// <summary>Creates a new Policy</summary>
+        /// <summary>Creates a new Policy.</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Policy>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1652,7 +1652,7 @@ namespace Google.Apis.Dns.v1
         }
 
         /// <summary>
-        /// Delete a previously created Policy. Fails if the policy is still being referenced by a network.
+        /// Deletes a previously created Policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -1662,7 +1662,7 @@ namespace Google.Apis.Dns.v1
         }
 
         /// <summary>
-        /// Delete a previously created Policy. Fails if the policy is still being referenced by a network.
+        /// Deletes a previously created Policy. Fails if the policy is still being referenced by a network.
         /// </summary>
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
@@ -2132,7 +2132,7 @@ namespace Google.Apis.Dns.v1
             this.service = service;
         }
 
-        /// <summary>Enumerate ResourceRecordSets that you have created but not yet deleted.</summary>
+        /// <summary>Enumerates ResourceRecordSets that you have created but not yet deleted.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -2142,7 +2142,7 @@ namespace Google.Apis.Dns.v1
             return new ListRequest(service, project, managedZone);
         }
 
-        /// <summary>Enumerate ResourceRecordSets that you have created but not yet deleted.</summary>
+        /// <summary>Enumerates ResourceRecordSets that you have created but not yet deleted.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSetsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2291,7 +2291,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// Status of the operation (output only). A status of "done" means that the request to update the authoritative
-        /// servers has been sent but the servers might not be updated yet.
+        /// servers has been sent, but the servers might not be updated yet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -2363,13 +2363,13 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Active keys are used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as
+        /// Active keys are used to sign subsequent changes to the ManagedZone. Inactive keys are still present as
         /// DNSKEY Resource Records for the use of resolvers validating existing signatures.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
         public virtual System.Nullable<bool> IsActive { get; set; }
 
-        /// <summary>Length of the key in bits. Specified at creation time, then immutable.</summary>
+        /// <summary>Length of the key in bits. Specified at creation time, and then immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyLength")]
         public virtual System.Nullable<long> KeyLength { get; set; }
 
@@ -2393,7 +2393,7 @@ namespace Google.Apis.Dns.v1.Data
         /// <summary>
         /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the Secure Entry Point flag set and,
         /// when active, are used to sign only resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
-        /// flag is cleared and this key is used to sign only resource record sets of other types. Immutable after
+        /// flag is cleared, and this key is used to sign only resource record sets of other types. Immutable after
         /// creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -2531,8 +2531,8 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers
-        /// that all host the same ManagedZones. Most users will leave this field unset. If you need to use this field,
-        /// please reach out to your account team.
+        /// that all host the same ManagedZones. Most users leave this field unset. If you need to use this field,
+        /// contact your account team.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServerSet")]
         public virtual string NameServerSet { get; set; }
@@ -2565,8 +2565,8 @@ namespace Google.Apis.Dns.v1.Data
         public virtual ManagedZoneReverseLookupConfig ReverseLookupConfig { get; set; }
 
         /// <summary>
-        /// This field links to the associated service directory namespace. This field should not be set for public
-        /// zones or forwarding zones.
+        /// This field links to the associated service directory namespace. Do not set this field for public zones or
+        /// forwarding zones.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
         public virtual ManagedZoneServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
@@ -2629,8 +2629,8 @@ namespace Google.Apis.Dns.v1.Data
     {
         /// <summary>
         /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions
-        /// based on address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the internet.
-        /// When set to PRIVATE, Cloud DNS always sends queries through VPC for this target.
+        /// based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to
+        /// the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
@@ -2729,7 +2729,7 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The fully qualified URL of the VPC network to bind to. This should be formatted like
+        /// The fully qualified URL of the VPC network to bind to. Format this URL like
         /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
@@ -2765,7 +2765,7 @@ namespace Google.Apis.Dns.v1.Data
     public class ManagedZoneServiceDirectoryConfigNamespace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The time that the namespace backing this zone was deleted, empty string if it still exists. This is in
+        /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in
         /// RFC3339 text format. Output only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
@@ -2968,7 +2968,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN
-        /// connections. When enabled, a virtual IP address is allocated from each of the sub-networks that are bound to
+        /// connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to
         /// this policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInboundForwarding")]
@@ -3020,9 +3020,9 @@ namespace Google.Apis.Dns.v1.Data
     public class PolicyAlternativeNameServerConfigTargetNameServer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decision
-        /// based on address ranges; that is, RFC1918 addresses go to the VPC, non-RFC1918 addresses go to the internet.
-        /// When set to PRIVATE, Cloud DNS always sends queries through VPC for this target.
+        /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions
+        /// based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the
+        /// internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingPath")]
         public virtual string ForwardingPath { get; set; }
@@ -3145,7 +3145,7 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A unit of data that will be returned by the DNS servers.</summary>
+    /// <summary>A unit of data that is returned by the DNS servers.</summary>
     public class ResourceRecordSet : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

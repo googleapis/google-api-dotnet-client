@@ -6238,7 +6238,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
-        /// <summary>The list of experiments to enable.</summary>
+        /// <summary>
+        /// The list of experiments to enable. This field should be used for SDK related experiments and not for service
+        /// related experiments. The proper field for service related experiments is service_options. For more details
+        /// see the rationale at go/user-specified-service-options.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiments")]
         public virtual System.Collections.Generic.IList<string> Experiments { get; set; }
 
@@ -6268,6 +6272,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceKmsKeyName")]
         public virtual string ServiceKmsKeyName { get; set; }
+
+        /// <summary>
+        /// The list of service options to enable. This field should be used for service related experiments only. These
+        /// experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always
+        /// on). For more details see the rationale at go/user-specified-service-options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceOptions")]
+        public virtual System.Collections.Generic.IList<string> ServiceOptions { get; set; }
 
         /// <summary>Output only. The shuffle mode used for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleMode")]

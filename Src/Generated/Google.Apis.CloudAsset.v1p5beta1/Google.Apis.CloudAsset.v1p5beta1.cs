@@ -661,6 +661,238 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
+    /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset
+    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// </summary>
+    public class GoogleCloudAssetV1p7beta1Asset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Please also refer to the [access level user
+        /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessLevel AccessLevel { get; set; }
+
+        /// <summary>
+        /// Please also refer to the [access policy user
+        /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
+        public virtual GoogleIdentityAccesscontextmanagerV1AccessPolicy AccessPolicy { get; set; }
+
+        /// <summary>
+        /// The ancestry path of an asset in Google Cloud [resource
+        /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as
+        /// a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and
+        /// ends at root. If the asset is a project, folder, or organization, the ancestry path starts from the asset
+        /// itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
+
+        /// <summary>
+        /// The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
+        /// A representation of the Cloud IAM policy set on a Google Cloud resource. There can be a maximum of one Cloud
+        /// IAM policy set on any given resource. In addition, Cloud IAM policies inherit their granted access scope
+        /// from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is
+        /// the union of both the policy set on this resource and each policy set on all of the resource's ancestry
+        /// resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/docs/policies#inheritance)
+        /// for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamPolicy")]
+        public virtual Policy IamPolicy { get; set; }
+
+        /// <summary>
+        /// The full name of the asset. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// A representation of an [organization
+        /// policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
+        /// There can be more than one organization policy with different constraints set on a given resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicy")]
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV1Policy> OrgPolicy { get; set; }
+
+        /// <summary>
+        /// The related assets of the asset of one relationship type. One asset only represents one type of
+        /// relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAssets")]
+        public virtual GoogleCloudAssetV1p7beta1RelatedAssets RelatedAssets { get; set; }
+
+        /// <summary>A representation of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GoogleCloudAssetV1p7beta1Resource Resource { get; set; }
+
+        /// <summary>
+        /// Please also refer to the [service perimeter user
+        /// guide](https://cloud.google.com/vpc-service-controls/docs/overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicePerimeter")]
+        public virtual GoogleIdentityAccesscontextmanagerV1ServicePerimeter ServicePerimeter { get; set; }
+
+        /// <summary>
+        /// The last update timestamp of an asset. update_time is updated when create/update/delete operation is
+        /// performed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An asset identify in Google Cloud which contains its name, type and ancestors. An asset can be any resource in
+    /// the Google Cloud [resource
+    /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset
+    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// </summary>
+    public class GoogleCloudAssetV1p7beta1RelatedAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ancestors of an asset in Google Cloud [resource
+        /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as
+        /// a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and
+        /// ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
+
+        /// <summary>
+        /// The full name of the asset. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The detailed related assets with the `relationship_type`.</summary>
+    public class GoogleCloudAssetV1p7beta1RelatedAssets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The peer resources of the relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1p7beta1RelatedAsset> Assets { get; set; }
+
+        /// <summary>The detailed relation attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipAttributes")]
+        public virtual GoogleCloudAssetV1p7beta1RelationshipAttributes RelationshipAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The relationship attributes which include `type`, `source_resource_type`, `target_resource_type` and `action`.
+    /// </summary>
+    public class GoogleCloudAssetV1p7beta1RelationshipAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detail of the relationship, e.g. `contains`, `attaches`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The source asset type. Example: `compute.googleapis.com/Instance`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceType")]
+        public virtual string SourceResourceType { get; set; }
+
+        /// <summary>The target asset type. Example: `compute.googleapis.com/Disk`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
+        public virtual string TargetResourceType { get; set; }
+
+        /// <summary>The unique identifier of the relationship type. Example: `INSTANCE_TO_INSTANCEGROUP`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of a Google Cloud resource.</summary>
+    public class GoogleCloudAssetV1p7beta1Resource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content of the resource, in which some sensitive fields are removed and may not be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
+
+        /// <summary>
+        /// The URL of the discovery document containing the resource's JSON schema. Example:
+        /// `https://www.googleapis.com/discovery/v1/apis/compute/v1/rest` This value is unspecified for resources that
+        /// do not have an API based on a discovery document, such as Cloud Bigtable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryDocumentUri")]
+        public virtual string DiscoveryDocumentUri { get; set; }
+
+        /// <summary>
+        /// The JSON schema name listed in the discovery document. Example: `Project` This value is unspecified for
+        /// resources that do not have an API based on a discovery document, such as Cloud Bigtable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryName")]
+        public virtual string DiscoveryName { get; set; }
+
+        /// <summary>
+        /// The location of the resource in Google Cloud, such as its zone and region. For more information, see
+        /// https://cloud.google.com/about/locations/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The full name of the immediate parent of this resource. See [Resource
+        /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. For
+        /// Google Cloud assets, this value is the parent resource defined in the [Cloud IAM policy
+        /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy). Example:
+        /// `//cloudresourcemanager.googleapis.com/projects/my_project_123` For third-party assets, this field may be
+        /// set differently.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// The REST URL for accessing the resource. An HTTP `GET` request using this URL returns the resource itself.
+        /// Example: `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123` This value is unspecified
+        /// for resources without a REST API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
+        public virtual string ResourceUrl { get; set; }
+
+        /// <summary>The API version. Example: `v1`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Used in `policy_type` to specify how `boolean_policy` will behave at this resource.</summary>
     public class GoogleCloudOrgpolicyV1BooleanPolicy : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1865,6 +1865,13 @@ namespace Google.Apis.RemoteBuildExecution.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numWarnings")]
         public virtual System.Nullable<ulong> NumWarnings { get; set; }
 
+        /// <summary>
+        /// Indicates whether output files and/or output directories were found relative to the execution root or to the
+        /// user provided work directory or both or none.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputLocation")]
+        public virtual string OutputLocation { get; set; }
+
         /// <summary>Indicates whether an asynchronous container was used for execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usedAsyncContainer")]
         public virtual System.Nullable<bool> UsedAsyncContainer { get; set; }

@@ -389,8 +389,86 @@ namespace Google.Apis.ShoppingContent.v2_1
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Credentials = new CredentialsResource(service);
             Labels = new LabelsResource(service);
             Returncarrier = new ReturncarrierResource(service);
+        }
+
+        /// <summary>Gets the Credentials resource.</summary>
+        public virtual CredentialsResource Credentials { get; }
+
+        /// <summary>The "credentials" collection of methods.</summary>
+        public class CredentialsResource
+        {
+            private const string Resource = "credentials";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CredentialsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant
+            /// Center account and purpose, this method updates them.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Required. The merchant id of the account these credentials belong to.</param>
+            public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.AccountCredentials body, long accountId)
+            {
+                return new CreateRequest(service, body, accountId);
+            }
+
+            /// <summary>
+            /// Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant
+            /// Center account and purpose, this method updates them.
+            /// </summary>
+            public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.AccountCredentials>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.AccountCredentials body, long accountId) : base(service)
+                {
+                    AccountId = accountId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The merchant id of the account these credentials belong to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AccountId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ShoppingContent.v2_1.Data.AccountCredentials Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "content/v2.1/accounts/{accountId}/credentials";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Labels resource.</summary>
@@ -2299,7 +2377,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the Terms of Service.
+        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
+        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -2313,7 +2392,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the Terms of Service.
+        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
+        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest).
         /// </summary>
         public class OnboardRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -11387,6 +11467,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The phone number of the business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Credentials allowing Google to call a partner's API on behalf of a merchant.</summary>
+    public class AccountCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An OAuth access token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>The amount of time, in seconds, after which the access token is no longer valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiresIn")]
+        public virtual System.Nullable<long> ExpiresIn { get; set; }
+
+        /// <summary>Indicates to Google how Google should use these OAuth tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

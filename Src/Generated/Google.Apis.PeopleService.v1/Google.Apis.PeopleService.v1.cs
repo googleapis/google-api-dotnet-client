@@ -3142,10 +3142,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Arbitrary client data that is populated by clients. Duplicate keys and values are allowed.
-    /// LINT.IfChange(GroupClientData)
-    /// </summary>
+    /// <summary>Arbitrary client data that is populated by clients. Duplicate keys and values are allowed.</summary>
     public class GroupClientData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The client specified key of the client data.</summary>

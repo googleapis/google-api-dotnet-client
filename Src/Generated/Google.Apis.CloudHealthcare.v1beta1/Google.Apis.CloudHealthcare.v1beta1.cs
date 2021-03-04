@@ -1516,7 +1516,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             this.service = service;
                         }
 
-                        /// <summary>Creates a new Attribute definition in the parent Consent store.</summary>
+                        /// <summary>Creates a new Attribute definition in the parent consent store.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The name of the consent store that this Attribute definition belongs to.
@@ -1526,7 +1526,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a new Attribute definition in the parent Consent store.</summary>
+                        /// <summary>Creates a new Attribute definition in the parent consent store.</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -1591,11 +1591,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Deletes the specified Attribute definition. Fails if it is referenced by any User data
-                        /// mapping, or the latest revision of any Consent.
+                        /// Deletes the specified Attribute definition. Fails if the Attribute definition is referenced
+                        /// by any User data mapping, or the latest revision of any Consent.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. The resource name of the Attribute definition to delete.
+                        /// Required. The resource name of the Attribute definition to delete. To preserve referential
+                        /// integrity, Attribute definitions referenced by a User data mapping or the latest revision of
+                        /// a Consent cannot be deleted.
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -1603,8 +1605,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Deletes the specified Attribute definition. Fails if it is referenced by any User data
-                        /// mapping, or the latest revision of any Consent.
+                        /// Deletes the specified Attribute definition. Fails if the Attribute definition is referenced
+                        /// by any User data mapping, or the latest revision of any Consent.
                         /// </summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                         {
@@ -1615,7 +1617,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the Attribute definition to delete.</summary>
+                            /// <summary>
+                            /// Required. The resource name of the Attribute definition to delete. To preserve
+                            /// referential integrity, Attribute definitions referenced by a User data mapping or the
+                            /// latest revision of a Consent cannot be deleted.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -1688,16 +1694,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
+                        /// <summary>Lists the Attribute definitions in the specified consent store.</summary>
                         /// <param name="parent">
-                        /// Required. Name of the Consent store to retrieve attribute definitions from.
+                        /// Required. Name of the consent store to retrieve Attribute definitions from.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
+                        /// <summary>Lists the Attribute definitions in the specified consent store.</summary>
                         public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListAttributeDefinitionsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1708,18 +1714,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. Name of the Consent store to retrieve attribute definitions from.
+                            /// Required. Name of the consent store to retrieve Attribute definitions from.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Restricts the attributes returned to those matching a filter. The following syntax is
-                            /// available: * A string field value can be written as text inside quotation marks, for
-                            /// example `"query text"`. The only valid relational operation for text fields is equality
-                            /// (`=`), where text is searched within the field, rather than having the field be equal to
-                            /// the text. For example, `"Comment = great"` returns messages with `great` in the comment
-                            /// field. * A number field value can be written as an integer, a decimal, or an
+                            /// Optional. Restricts the attributes returned to those matching a filter. The following
+                            /// syntax is available: * A string field value can be written as text inside quotation
+                            /// marks, for example `"query text"`. The only valid relational operation for text fields
+                            /// is equality (`=`), where text is searched within the field, rather than having the field
+                            /// be equal to the text. For example, `"Comment = great"` returns messages with `great` in
+                            /// the comment field. * A number field value can be written as an integer, a decimal, or an
                             /// exponential. The valid relational operators for number fields are the equality operator
                             /// (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
                             /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can
@@ -1733,20 +1739,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// `AND` or `OR` operators between the expressions. If a boolean operator appears within a
                             /// quoted string, it is not treated as special, it's just another part of the character
                             /// string to be matched. You can prepend the `NOT` operator to an expression to negate it.
-                            /// The only field available for filtering is `category`.
+                            /// The only field available for filtering is `category`. For example,
+                            /// `filter=category=\"REQUEST\"`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// Limit on the number of attribute definitions to return in a single response. If not
-                            /// specified, 100 is used. May not be larger than 1000.
+                            /// Optional. Limit on the number of Attribute definitions to return in a single response.
+                            /// If not specified, 100 is used. May not be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// Token to retrieve the next page of results or empty to get the first page.
+                            /// Optional. Token to retrieve the next page of results or empty to get the first page.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -1802,8 +1809,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>Updates the specified Attribute definition.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Resource name of the attribute definition, of the form
+                        /// Resource name of the Attribute definition, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+                        /// Cannot be changed after creation.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AttributeDefinition body, string name)
                         {
@@ -1822,18 +1830,20 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Resource name of the attribute definition, of the form
+                            /// Resource name of the Attribute definition, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+                            /// Cannot be changed after creation.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The update mask that applies to the resource. For the `FieldMask` definition, see
+                            /// Required. The update mask that applies to the resource. For the `FieldMask` definition,
+                            /// see
                             /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-                            /// The `description`, `allowed_values`, `consent_default_values`, and
-                            /// `data_mapping_default_value` fields are allowed to be updated. The updated
-                            /// `allowed_values` must contain all values from the previous `allowed_values`.
+                            /// Only the `description`, `allowed_values`, `consent_default_values` and
+                            /// `data_mapping_default_value` fields can be updated. The updated `allowed_values` must
+                            /// contain all values from the previous `allowed_values`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -1894,17 +1904,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             this.service = service;
                         }
 
-                        /// <summary>Creates a new Consent artifact in the parent Consent store.</summary>
+                        /// <summary>Creates a new Consent artifact in the parent consent store.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The name of the Consent store this consent artifact belongs to.
+                        /// Required. The name of the consent store this Consent artifact belongs to.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a new Consent artifact in the parent Consent store.</summary>
+                        /// <summary>Creates a new Consent artifact in the parent consent store.</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentArtifact>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -1916,7 +1926,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The name of the Consent store this consent artifact belongs to.
+                            /// Required. The name of the consent store this Consent artifact belongs to.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1952,18 +1962,22 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Deletes the specified Consent artifact. Fails if it is referenced by the latest revision of
-                        /// any Consent.
+                        /// Deletes the specified Consent artifact. Fails if the artifact is referenced by the latest
+                        /// revision of any Consent.
                         /// </summary>
-                        /// <param name="name">Required. The resource name of the consent artifact to delete.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the Consent artifact to delete. To preserve referential
+                        /// integrity, Consent artifacts referenced by the latest revision of a Consent cannot be
+                        /// deleted.
+                        /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
                         }
 
                         /// <summary>
-                        /// Deletes the specified Consent artifact. Fails if it is referenced by the latest revision of
-                        /// any Consent.
+                        /// Deletes the specified Consent artifact. Fails if the artifact is referenced by the latest
+                        /// revision of any Consent.
                         /// </summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                         {
@@ -1974,7 +1988,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the consent artifact to delete.</summary>
+                            /// <summary>
+                            /// Required. The resource name of the Consent artifact to delete. To preserve referential
+                            /// integrity, Consent artifacts referenced by the latest revision of a Consent cannot be
+                            /// deleted.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -2003,7 +2021,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Gets the specified Consent artifact.</summary>
-                        /// <param name="name">Required. The resource name of the consent artifact to retrieve.</param>
+                        /// <param name="name">Required. The resource name of the Consent artifact to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
@@ -2019,7 +2037,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the consent artifact to retrieve.</summary>
+                            /// <summary>Required. The resource name of the Consent artifact to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -2047,16 +2065,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
+                        /// <summary>Lists the Consent artifacts in the specified consent store.</summary>
                         /// <param name="parent">
-                        /// Required. Name of the Consent store to retrieve consent artifacts from.
+                        /// Required. Name of the consent store to retrieve consent artifacts from.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
+                        /// <summary>Lists the Consent artifacts in the specified consent store.</summary>
                         public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentArtifactsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -2067,18 +2085,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. Name of the Consent store to retrieve consent artifacts from.
+                            /// Required. Name of the consent store to retrieve consent artifacts from.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Restricts the artifacts returned to those matching a filter. The following syntax is
-                            /// available: * A string field value can be written as text inside quotation marks, for
-                            /// example `"query text"`. The only valid relational operation for text fields is equality
-                            /// (`=`), where text is searched within the field, rather than having the field be equal to
-                            /// the text. For example, `"Comment = great"` returns messages with `great` in the comment
-                            /// field. * A number field value can be written as an integer, a decimal, or an
+                            /// Optional. Restricts the artifacts returned to those matching a filter. The following
+                            /// syntax is available: * A string field value can be written as text inside quotation
+                            /// marks, for example `"query text"`. The only valid relational operation for text fields
+                            /// is equality (`=`), where text is searched within the field, rather than having the field
+                            /// be equal to the text. For example, `"Comment = great"` returns messages with `great` in
+                            /// the comment field. * A number field value can be written as an integer, a decimal, or an
                             /// exponential. The valid relational operators for number fields are the equality operator
                             /// (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
                             /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can
@@ -2092,21 +2110,22 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// `AND` or `OR` operators between the expressions. If a boolean operator appears within a
                             /// quoted string, it is not treated as special, it's just another part of the character
                             /// string to be matched. You can prepend the `NOT` operator to an expression to negate it.
-                            /// The fields available for filtering are: - user_id - consent_content_version - metadata.
-                            /// For example, `Metadata("key")="value"` or `HasMetadata("key")`.
+                            /// The fields available for filtering are: - user_id. For example,
+                            /// `filter=user_id=\"user123\"`. - consent_content_version - metadata. For example,
+                            /// `filter=Metadata(\"testkey\")=\"value\"` or `filter=HasMetadata(\"testkey\")`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// Limit on the number of consent artifacts to return in a single response. If not
-                            /// specified, 100 is used. May not be larger than 1000.
+                            /// Optional. Limit on the number of consent artifacts to return in a single response. If
+                            /// not specified, 100 is used. May not be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// The next_page_token value returned from the previous List request, if any.
+                            /// Optional. The next_page_token value returned from the previous List request, if any.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -2179,13 +2198,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Activates the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `ACTIVE`. If the latest revision of the given consent is in the `ACTIVE`
-                        /// state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest
-                        /// revision of the given consent is in the `REJECTED` or `REVOKED` state.
+                        /// `state` updated to `ACTIVE`. If the latest revision of the specified Consent is in the
+                        /// `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the specified consent is in the `REJECTED` or `REVOKED` state.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to activate, of the form
+                        /// Required. The resource name of the Consent to activate, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                         /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                         /// </param>
@@ -2196,9 +2215,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Activates the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `ACTIVE`. If the latest revision of the given consent is in the `ACTIVE`
-                        /// state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest
-                        /// revision of the given consent is in the `REJECTED` or `REVOKED` state.
+                        /// `state` updated to `ACTIVE`. If the latest revision of the specified Consent is in the
+                        /// `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
+                        /// latest revision of the specified consent is in the `REJECTED` or `REVOKED` state.
                         /// </summary>
                         public class ActivateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
                         {
@@ -2211,7 +2230,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent to activate, of the form
+                            /// Required. The resource name of the Consent to activate, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                             /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                             /// </summary>
@@ -2248,7 +2267,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Creates a new Consent in the parent Consent store.</summary>
+                        /// <summary>Creates a new Consent in the parent consent store.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the consent store.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string parent)
@@ -2256,7 +2275,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a new Consent in the parent Consent store.</summary>
+                        /// <summary>Creates a new Consent in the parent consent store.</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -2304,10 +2323,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Deletes the Consent and its revisions. To keep a record of the Consent but mark it inactive,
                         /// see [RevokeConsent]. To delete a revision of a Consent, see [DeleteConsentRevision]. This
-                        /// operation does not delete the related consent artifact.
+                        /// operation does not delete the related Consent artifact.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to delete, of the form
+                        /// Required. The resource name of the Consent to delete, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                         /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                         /// </param>
@@ -2319,7 +2338,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Deletes the Consent and its revisions. To keep a record of the Consent but mark it inactive,
                         /// see [RevokeConsent]. To delete a revision of a Consent, see [DeleteConsentRevision]. This
-                        /// operation does not delete the related consent artifact.
+                        /// operation does not delete the related Consent artifact.
                         /// </summary>
                         public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                         {
@@ -2331,7 +2350,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent to delete, of the form
+                            /// Required. The resource name of the Consent to delete, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                             /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                             /// </summary>
@@ -2367,7 +2386,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// specified revision is the latest revision.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. The resource name of the consent revision to delete, of the form
+                        /// Required. The resource name of the Consent revision to delete, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`.
                         /// An INVALID_ARGUMENT error occurs if `revision_id` is not specified in the name.
                         /// </param>
@@ -2390,7 +2409,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent revision to delete, of the form
+                            /// Required. The resource name of the Consent revision to delete, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`.
                             /// An INVALID_ARGUMENT error occurs if `revision_id` is not specified in the name.
                             /// </summary>
@@ -2426,9 +2445,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// specified in the resource name.
                         /// </summary>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to retrieve, of the form
+                        /// Required. The resource name of the Consent to retrieve, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
-                        /// In order to retrieve a previous revision of the consent, also provide the revision ID:
+                        /// In order to retrieve a previous revision of the Consent, also provide the revision ID:
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
@@ -2450,9 +2469,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent to retrieve, of the form
+                            /// Required. The resource name of the Consent to retrieve, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
-                            /// In order to retrieve a previous revision of the consent, also provide the revision ID:
+                            /// In order to retrieve a previous revision of the Consent, also provide the revision ID:
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2483,16 +2502,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Lists the Consent in the given Consent store, returning each consent's latest revision.
+                        /// Lists the Consent in the given consent store, returning each Consent's latest revision.
                         /// </summary>
-                        /// <param name="parent">Required. Name of the Consent store to retrieve consents from.</param>
+                        /// <param name="parent">Required. Name of the consent store to retrieve Consents from.</param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
                         /// <summary>
-                        /// Lists the Consent in the given Consent store, returning each consent's latest revision.
+                        /// Lists the Consent in the given consent store, returning each Consent's latest revision.
                         /// </summary>
                         public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentsResponse>
                         {
@@ -2503,17 +2522,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. Name of the Consent store to retrieve consents from.</summary>
+                            /// <summary>Required. Name of the consent store to retrieve Consents from.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Restricts the consents returned to those matching a filter. The following syntax is
-                            /// available: * A string field value can be written as text inside quotation marks, for
-                            /// example `"query text"`. The only valid relational operation for text fields is equality
-                            /// (`=`), where text is searched within the field, rather than having the field be equal to
-                            /// the text. For example, `"Comment = great"` returns messages with `great` in the comment
-                            /// field. * A number field value can be written as an integer, a decimal, or an
+                            /// Optional. Restricts the consents returned to those matching a filter. The following
+                            /// syntax is available: * A string field value can be written as text inside quotation
+                            /// marks, for example `"query text"`. The only valid relational operation for text fields
+                            /// is equality (`=`), where text is searched within the field, rather than having the field
+                            /// be equal to the text. For example, `"Comment = great"` returns messages with `great` in
+                            /// the comment field. * A number field value can be written as an integer, a decimal, or an
                             /// exponential. The valid relational operators for number fields are the equality operator
                             /// (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
                             /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can
@@ -2527,22 +2546,23 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// `AND` or `OR` operators between the expressions. If a boolean operator appears within a
                             /// quoted string, it is not treated as special, it's just another part of the character
                             /// string to be matched. You can prepend the `NOT` operator to an expression to negate it.
-                            /// The fields available for filtering are: - user_id - consent_artifact - state -
-                            /// revision_create_time - metadata. For example, `Metadata("key")="value"` or
-                            /// `HasMetadata("key")`.
+                            /// The fields available for filtering are: - user_id. For example,
+                            /// `filter='user_id="user123"'`. - consent_artifact - state - revision_create_time -
+                            /// metadata. For example, `filter=Metadata(\"testkey\")=\"value\"` or
+                            /// `filter=HasMetadata(\"testkey\")`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// Limit on the number of consents to return in a single response. If not specified, 100 is
-                            /// used. May not be larger than 1000.
+                            /// Optional. Limit on the number of Consents to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// The next_page_token value returned from the previous List request, if any.
+                            /// Optional. The next_page_token value returned from the previous List request, if any.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -2595,16 +2615,20 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
+                        /// <summary>
+                        /// Lists the revisions of the specified Consent in reverse chronological order.
+                        /// </summary>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to retrieve revisions for.
+                        /// Required. The resource name of the Consent to retrieve revisions for.
                         /// </param>
                         public virtual ListRevisionsRequest ListRevisions(string name)
                         {
                             return new ListRevisionsRequest(service, name);
                         }
 
-                        /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
+                        /// <summary>
+                        /// Lists the revisions of the specified Consent in reverse chronological order.
+                        /// </summary>
                         public class ListRevisionsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentRevisionsResponse>
                         {
                             /// <summary>Constructs a new ListRevisions request.</summary>
@@ -2614,17 +2638,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the consent to retrieve revisions for.</summary>
+                            /// <summary>Required. The resource name of the Consent to retrieve revisions for.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// Restricts the revisions returned to those matching a filter. The following syntax is
-                            /// available: * A string field value can be written as text inside quotation marks, for
-                            /// example `"query text"`. The only valid relational operation for text fields is equality
-                            /// (`=`), where text is searched within the field, rather than having the field be equal to
-                            /// the text. For example, `"Comment = great"` returns messages with `great` in the comment
-                            /// field. * A number field value can be written as an integer, a decimal, or an
+                            /// Optional. Restricts the revisions returned to those matching a filter. The following
+                            /// syntax is available: * A string field value can be written as text inside quotation
+                            /// marks, for example `"query text"`. The only valid relational operation for text fields
+                            /// is equality (`=`), where text is searched within the field, rather than having the field
+                            /// be equal to the text. For example, `"Comment = great"` returns messages with `great` in
+                            /// the comment field. * A number field value can be written as an integer, a decimal, or an
                             /// exponential. The valid relational operators for number fields are the equality operator
                             /// (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
                             /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can
@@ -2638,22 +2662,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// `AND` or `OR` operators between the expressions. If a boolean operator appears within a
                             /// quoted string, it is not treated as special, it's just another part of the character
                             /// string to be matched. You can prepend the `NOT` operator to an expression to negate it.
-                            /// Fields/functions available for filtering are: - user_id - consent_artifact - state -
-                            /// revision_create_time
+                            /// Fields/functions available for filtering are: - user_id. For example,
+                            /// `filter='user_id="user123"'`. - consent_artifact - state - revision_create_time -
+                            /// metadata. For example, `filter=Metadata(\"testkey\")=\"value\"` or
+                            /// `filter=HasMetadata(\"testkey\")`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// Limit on the number of revisions to return in a single response. If not specified, 100
-                            /// is used. May not be larger than 1000.
+                            /// Optional. Limit on the number of revisions to return in a single response. If not
+                            /// specified, 100 is used. May not be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// Token to retrieve the next page of results or empty if there are no more results in the
-                            /// list.
+                            /// Optional. Token to retrieve the next page of results or empty if there are no more
+                            /// results in the list.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -2708,13 +2734,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Updates the latest revision of the specified Consent by committing a new revision with the
-                        /// changes. A FAILED_PRECONDITION error occurs if the latest revision of the given consent is
-                        /// in the `REJECTED` or `REVOKED` state.
+                        /// changes. A FAILED_PRECONDITION error occurs if the latest revision of the specified Consent
+                        /// is in the `REJECTED` or `REVOKED` state.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Resource name of the Consent, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+                        /// Cannot be changed after creation.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Consent body, string name)
                         {
@@ -2723,8 +2750,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Updates the latest revision of the specified Consent by committing a new revision with the
-                        /// changes. A FAILED_PRECONDITION error occurs if the latest revision of the given consent is
-                        /// in the `REJECTED` or `REVOKED` state.
+                        /// changes. A FAILED_PRECONDITION error occurs if the latest revision of the specified Consent
+                        /// is in the `REJECTED` or `REVOKED` state.
                         /// </summary>
                         public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
                         {
@@ -2739,14 +2766,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// <summary>
                             /// Resource name of the Consent, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+                            /// Cannot be changed after creation.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The update mask to apply to the resource. For the `FieldMask` definition, see
+                            /// Required. The update mask to apply to the resource. For the `FieldMask` definition, see
                             /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-                            /// The `user_id`, `policies`, and `consent_artifact` fields can be updated.
+                            /// Only the `user_id`, `policies`, `consent_artifact`, and `metadata` fields can be
+                            /// updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -2791,13 +2820,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Rejects the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `REJECTED`. If the latest revision of the given consent is in the
+                        /// `state` updated to `REJECTED`. If the latest revision of the specified Consent is in the
                         /// `REJECTED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
-                        /// latest revision of the given consent is in the `ACTIVE` or `REVOKED` state.
+                        /// latest revision of the specified Consent is in the `ACTIVE` or `REVOKED` state.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to reject, of the form
+                        /// Required. The resource name of the Consent to reject, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                         /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                         /// </param>
@@ -2808,9 +2837,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Rejects the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `REJECTED`. If the latest revision of the given consent is in the
+                        /// `state` updated to `REJECTED`. If the latest revision of the specified Consent is in the
                         /// `REJECTED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
-                        /// latest revision of the given consent is in the `ACTIVE` or `REVOKED` state.
+                        /// latest revision of the specified Consent is in the `ACTIVE` or `REVOKED` state.
                         /// </summary>
                         public class RejectRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Consent>
                         {
@@ -2823,7 +2852,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent to reject, of the form
+                            /// Required. The resource name of the Consent to reject, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                             /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                             /// </summary>
@@ -2862,13 +2891,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Revokes the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `REVOKED`. If the latest revision of the given consent is in the
+                        /// `state` updated to `REVOKED`. If the latest revision of the specified Consent is in the
                         /// `REVOKED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
                         /// latest revision of the given consent is in `DRAFT` or `REJECTED` state.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Required. The resource name of the consent to revoke, of the form
+                        /// Required. The resource name of the Consent to revoke, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                         /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                         /// </param>
@@ -2879,7 +2908,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Revokes the latest revision of the specified Consent by committing a new revision with
-                        /// `state` updated to `REVOKED`. If the latest revision of the given consent is in the
+                        /// `state` updated to `REVOKED`. If the latest revision of the specified Consent is in the
                         /// `REVOKED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the
                         /// latest revision of the given consent is in `DRAFT` or `REJECTED` state.
                         /// </summary>
@@ -2894,7 +2923,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the consent to revoke, of the form
+                            /// Required. The resource name of the Consent to revoke, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                             /// An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name.
                             /// </summary>
@@ -2951,7 +2980,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>Archives the specified User data mapping.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The resource name of the user data mapping to archive.</param>
+                        /// <param name="name">Required. The resource name of the User data mapping to archive.</param>
                         public virtual ArchiveRequest Archive(Google.Apis.CloudHealthcare.v1beta1.Data.ArchiveUserDataMappingRequest body, string name)
                         {
                             return new ArchiveRequest(service, body, name);
@@ -2968,7 +2997,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The resource name of the user data mapping to archive.</summary>
+                            /// <summary>Required. The resource name of the User data mapping to archive.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -3002,7 +3031,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Creates a new User data mapping in the parent Consent store.</summary>
+                        /// <summary>Creates a new User data mapping in the parent consent store.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">Required. Name of the consent store.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping body, string parent)
@@ -3010,7 +3039,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a new User data mapping in the parent Consent store.</summary>
+                        /// <summary>Creates a new User data mapping in the parent consent store.</summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.UserDataMapping>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -3056,7 +3085,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Deletes the specified User data mapping.</summary>
-                        /// <param name="name">Required. The resource name of the user data mapping to delete.</param>
+                        /// <param name="name">Required. The resource name of the User data mapping to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(service, name);
@@ -3072,7 +3101,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the user data mapping to delete.</summary>
+                            /// <summary>Required. The resource name of the User data mapping to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -3101,7 +3130,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Gets the specified User data mapping.</summary>
-                        /// <param name="name">Required. The resource name of the user data mapping to retrieve.</param>
+                        /// <param name="name">Required. The resource name of the User data mapping to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(service, name);
@@ -3117,7 +3146,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Required. The resource name of the user data mapping to retrieve.</summary>
+                            /// <summary>Required. The resource name of the User data mapping to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -3145,16 +3174,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
                         }
 
-                        /// <summary>Lists the User data mappings in the given Consent store.</summary>
+                        /// <summary>Lists the User data mappings in the specified consent store.</summary>
                         /// <param name="parent">
-                        /// Required. Name of the Consent store to retrieve user data mappings from.
+                        /// Required. Name of the consent store to retrieve User data mappings from.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
                         }
 
-                        /// <summary>Lists the User data mappings in the given Consent store.</summary>
+                        /// <summary>Lists the User data mappings in the specified consent store.</summary>
                         public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListUserDataMappingsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -3165,45 +3194,46 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Required. Name of the Consent store to retrieve user data mappings from.
+                            /// Required. Name of the consent store to retrieve User data mappings from.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Restricts the user data mappings returned to those matching a filter. The following
-                            /// syntax is available: * A string field value can be written as text inside quotation
-                            /// marks, for example `"query text"`. The only valid relational operation for text fields
-                            /// is equality (`=`), where text is searched within the field, rather than having the field
-                            /// be equal to the text. For example, `"Comment = great"` returns messages with `great` in
-                            /// the comment field. * A number field value can be written as an integer, a decimal, or an
-                            /// exponential. The valid relational operators for number fields are the equality operator
-                            /// (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
-                            /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can
-                            /// prepend the `NOT` operator to an expression to negate it. * A date field value must be
-                            /// written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format.
-                            /// Leading zeros are required for one-digit months and days. The valid relational operators
-                            /// for date fields are the equality operator (`=`) , along with the less than/greater than
-                            /// operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no
-                            /// inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to
-                            /// negate it. * Multiple field query expressions can be combined in one query by adding
-                            /// `AND` or `OR` operators between the expressions. If a boolean operator appears within a
-                            /// quoted string, it is not treated as special, it's just another part of the character
-                            /// string to be matched. You can prepend the `NOT` operator to an expression to negate it.
-                            /// The fields available for filtering are: - data_id - user_id - archived - archive_time
+                            /// Optional. Restricts the user data mappings returned to those matching a filter. The
+                            /// following syntax is available: * A string field value can be written as text inside
+                            /// quotation marks, for example `"query text"`. The only valid relational operation for
+                            /// text fields is equality (`=`), where text is searched within the field, rather than
+                            /// having the field be equal to the text. For example, `"Comment = great"` returns messages
+                            /// with `great` in the comment field. * A number field value can be written as an integer,
+                            /// a decimal, or an exponential. The valid relational operators for number fields are the
+                            /// equality operator (`=`), along with the less than/greater than operators (`&amp;lt;`,
+                            /// `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator.
+                            /// You can prepend the `NOT` operator to an expression to negate it. * A date field value
+                            /// must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time
+                            /// format. Leading zeros are required for one-digit months and days. The valid relational
+                            /// operators for date fields are the equality operator (`=`) , along with the less
+                            /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note
+                            /// that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
+                            /// expression to negate it. * Multiple field query expressions can be combined in one query
+                            /// by adding `AND` or `OR` operators between the expressions. If a boolean operator appears
+                            /// within a quoted string, it is not treated as special, it's just another part of the
+                            /// character string to be matched. You can prepend the `NOT` operator to an expression to
+                            /// negate it. The fields available for filtering are: - data_id - user_id. For example,
+                            /// `filter=user_id=\"user123\"`. - archived - archive_time
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
                             /// <summary>
-                            /// Limit on the number of user data mappings to return in a single response. If not
-                            /// specified, 100 is used. May not be larger than 1000.
+                            /// Optional. Limit on the number of User data mappings to return in a single response. If
+                            /// not specified, 100 is used. May not be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// Token to retrieve the next page of results or empty to get the first page.
+                            /// Optional. Token to retrieve the next page of results, or empty to get the first page.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -3286,8 +3316,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The update mask that applies to the resource. For the `FieldMask` definition, see
+                            /// Required. The update mask that applies to the resource. For the `FieldMask` definition,
+                            /// see
                             /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+                            /// Only the `data_id`, `user_id` and `resource_attributes` fields can be updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -3332,12 +3364,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Checks if a particular data_id of a User data mapping in the given Consent store is consented
-                    /// for a given use.
+                    /// Checks if a particular data_id of a User data mapping in the specified consent store is
+                    /// consented for the specified use.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="consentStore">
-                    /// Name of the Consent store where the requested data_id is stored, of the form
+                    /// Required. Name of the consent store where the requested data_id is stored, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// </param>
                     public virtual CheckDataAccessRequest CheckDataAccess(Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessRequest body, string consentStore)
@@ -3346,8 +3378,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Checks if a particular data_id of a User data mapping in the given Consent store is consented
-                    /// for a given use.
+                    /// Checks if a particular data_id of a User data mapping in the specified consent store is
+                    /// consented for the specified use.
                     /// </summary>
                     public class CheckDataAccessRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.CheckDataAccessResponse>
                     {
@@ -3360,7 +3392,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Name of the Consent store where the requested data_id is stored, of the form
+                        /// Required. Name of the consent store where the requested data_id is stored, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
@@ -3397,18 +3429,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Creates a new Consent store in the parent dataset. Attempting to create a consent store with the
+                    /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the
                     /// same ID as an existing store fails with an ALREADY_EXISTS error.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. The name of the dataset this Consent store belongs to.</param>
+                    /// <param name="parent">Required. The name of the dataset this consent store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
                     /// <summary>
-                    /// Creates a new Consent store in the parent dataset. Attempting to create a consent store with the
+                    /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the
                     /// same ID as an existing store fails with an ALREADY_EXISTS error.
                     /// </summary>
                     public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
@@ -3421,13 +3453,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the dataset this Consent store belongs to.</summary>
+                        /// <summary>Required. The name of the dataset this consent store belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The ID of the consent store to create. The string must match the following regex:
-                        /// `[\p{L}\p{N}_\-\.]{1,256}`.
+                        /// Required. The ID of the consent store to create. The string must match the following regex:
+                        /// `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("consentStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ConsentStoreId { get; set; }
@@ -3470,18 +3502,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
-                    /// <summary>
-                    /// Deletes the specified Consent store and removes all consent data in the specified consent store.
-                    /// </summary>
-                    /// <param name="name">Required. The resource name of the Consent store to delete.</param>
+                    /// <summary>Deletes the specified consent store and removes all the consent store's data.</summary>
+                    /// <param name="name">Required. The resource name of the consent store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>
-                    /// Deletes the specified Consent store and removes all consent data in the specified consent store.
-                    /// </summary>
+                    /// <summary>Deletes the specified consent store and removes all the consent store's data.</summary>
                     public class DeleteRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Empty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -3491,7 +3519,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The resource name of the Consent store to delete.</summary>
+                        /// <summary>Required. The resource name of the consent store to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3520,13 +3548,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Evaluates the end user's Consents for all matching User data mappings. Note: User data mappings
-                    /// are indexed asynchronously, so there might be a slight delay between the time a mapping is
-                    /// created or updated and when it is included in the results of EvaluateUserConsents.
+                    /// Evaluates the user's Consents for all matching User data mappings. Note: User data mappings are
+                    /// indexed asynchronously, which can cause a slight delay between the time mappings are created or
+                    /// updated and when they are included in EvaluateUserConsents results.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="consentStore">
-                    /// Name of the Consent store to retrieve user data mappings from.
+                    /// Required. Name of the consent store to retrieve User data mappings from.
                     /// </param>
                     public virtual EvaluateUserConsentsRequest EvaluateUserConsents(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsRequest body, string consentStore)
                     {
@@ -3534,9 +3562,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Evaluates the end user's Consents for all matching User data mappings. Note: User data mappings
-                    /// are indexed asynchronously, so there might be a slight delay between the time a mapping is
-                    /// created or updated and when it is included in the results of EvaluateUserConsents.
+                    /// Evaluates the user's Consents for all matching User data mappings. Note: User data mappings are
+                    /// indexed asynchronously, which can cause a slight delay between the time mappings are created or
+                    /// updated and when they are included in EvaluateUserConsents results.
                     /// </summary>
                     public class EvaluateUserConsentsRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateUserConsentsResponse>
                     {
@@ -3548,7 +3576,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the Consent store to retrieve user data mappings from.</summary>
+                        /// <summary>Required. Name of the consent store to retrieve User data mappings from.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ConsentStore { get; private set; }
 
@@ -3582,14 +3610,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
-                    /// <summary>Gets the specified Consent store.</summary>
-                    /// <param name="name">Required. The resource name of the Consent store to get.</param>
+                    /// <summary>Gets the specified consent store.</summary>
+                    /// <param name="name">Required. The resource name of the consent store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets the specified Consent store.</summary>
+                    /// <summary>Gets the specified consent store.</summary>
                     public class GetRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -3599,7 +3627,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The resource name of the Consent store to get.</summary>
+                        /// <summary>Required. The resource name of the consent store to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3703,14 +3731,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
-                    /// <summary>Lists the Consent stores in the given dataset.</summary>
+                    /// <summary>Lists the consent stores in the specified dataset.</summary>
                     /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists the Consent stores in the given dataset.</summary>
+                    /// <summary>Lists the consent stores in the specified dataset.</summary>
                     public class ListRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ListConsentStoresResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -3725,12 +3753,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Restricts the stores returned to those matching a filter. The following syntax is available:
-                        /// * A string field value can be written as text inside quotation marks, for example `"query
-                        /// text"`. The only valid relational operation for text fields is equality (`=`), where text is
-                        /// searched within the field, rather than having the field be equal to the text. For example,
-                        /// `"Comment = great"` returns messages with `great` in the comment field. * A number field
-                        /// value can be written as an integer, a decimal, or an exponential. The valid relational
+                        /// Optional. Restricts the stores returned to those matching a filter. The following syntax is
+                        /// available: * A string field value can be written as text inside quotation marks, for example
+                        /// `"query text"`. The only valid relational operation for text fields is equality (`=`), where
+                        /// text is searched within the field, rather than having the field be equal to the text. For
+                        /// example, `"Comment = great"` returns messages with `great` in the comment field. * A number
+                        /// field value can be written as an integer, a decimal, or an exponential. The valid relational
                         /// operators for number fields are the equality operator (`=`), along with the less
                         /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that
                         /// there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression
@@ -3744,20 +3772,20 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// operator appears within a quoted string, it is not treated as special, it's just another
                         /// part of the character string to be matched. You can prepend the `NOT` operator to an
                         /// expression to negate it. Only filtering on labels is supported. For example,
-                        /// `labels.key=value`.
+                        /// `filter=labels.key=value`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Limit on the number of Consent stores to return in a single response. If not specified, 100
-                        /// is used. May not be larger than 1000.
+                        /// Optional. Limit on the number of consent stores to return in a single response. If not
+                        /// specified, 100 is used. May not be larger than 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// Token to retrieve the next page of results or empty to get the first page.
+                        /// Optional. Token to retrieve the next page of results, or empty to get the first page.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3810,18 +3838,19 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
-                    /// <summary>Updates the specified Consent store.</summary>
+                    /// <summary>Updates the specified consent store.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Resource name of the Consent store, of the form
+                    /// Resource name of the consent store, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
+                    /// Cannot be changed after creation.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore body, string name)
                     {
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified Consent store.</summary>
+                    /// <summary>Updates the specified consent store.</summary>
                     public class PatchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ConsentStore>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -3833,16 +3862,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Resource name of the Consent store, of the form
+                        /// Resource name of the consent store, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
+                        /// Cannot be changed after creation.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The update mask that applies to the resource. For the `FieldMask` definition, see
-                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. The
-                        /// `labels` field is allowed to be updated.
+                        /// Required. The update mask that applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+                        /// Only the `labels`, `default_consent_ttl`, and `enable_consent_create_on_update` fields are
+                        /// allowed to be updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -3886,12 +3917,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Queries all data_ids that are consented for a given use in the given Consent store and writes
-                    /// them to a specified destination. The returned Operation includes a progress counter for the
-                    /// number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing logs]
-                    /// (/healthcare/docs/how-tos/logging)). For example, the following sample log entry shows a `failed
-                    /// to evaluate consent policy` error that occurred during a QueryAccessibleData call to consent
-                    /// store
+                    /// Queries all data_ids that are consented for a specified use in the given consent store and
+                    /// writes them to a specified destination. The returned Operation includes a progress counter for
+                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
+                    /// logs] (cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following sample log
+                    /// entry shows a `failed to evaluate consent policy` error that occurred during a
+                    /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -3907,7 +3938,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="consentStore">
-                    /// Name of the Consent store to retrieve user data mappings from.
+                    /// Required. Name of the consent store to retrieve User data mappings from.
                     /// </param>
                     public virtual QueryAccessibleDataRequest QueryAccessibleData(Google.Apis.CloudHealthcare.v1beta1.Data.QueryAccessibleDataRequest body, string consentStore)
                     {
@@ -3915,12 +3946,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Queries all data_ids that are consented for a given use in the given Consent store and writes
-                    /// them to a specified destination. The returned Operation includes a progress counter for the
-                    /// number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing logs]
-                    /// (/healthcare/docs/how-tos/logging)). For example, the following sample log entry shows a `failed
-                    /// to evaluate consent policy` error that occurred during a QueryAccessibleData call to consent
-                    /// store
+                    /// Queries all data_ids that are consented for a specified use in the given consent store and
+                    /// writes them to a specified destination. The returned Operation includes a progress counter for
+                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
+                    /// logs] (cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following sample log
+                    /// entry shows a `failed to evaluate consent policy` error that occurred during a
+                    /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -3944,7 +3975,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the Consent store to retrieve user data mappings from.</summary>
+                        /// <summary>Required. Name of the consent store to retrieve User data mappings from.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("consentStore", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ConsentStore { get; private set; }
 
@@ -12332,24 +12363,26 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 {
     /// <summary>
     /// Activates the latest revision of the specified Consent by committing a new revision with `state` updated to
-    /// `ACTIVE`. If the latest revision of the given consent is in the `ACTIVE` state, no new revision is committed.
+    /// `ACTIVE`. If the latest revision of the given Consent is in the `ACTIVE` state, no new revision is committed. A
+    /// FAILED_PRECONDITION error occurs if the latest revision of the given consent is in the `REJECTED` or `REVOKED`
+    /// state.
     /// </summary>
     public class ActivateConsentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the consent artifact that contains proof of the end user's consent, of the
-        /// form
+        /// Required. The resource name of the Consent artifact that contains documentation of the user's consent, of
+        /// the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-        /// If the draft consent had a consent artifact, this consent artifact overwrites it.
+        /// If the draft Consent had a Consent artifact, this Consent artifact overwrites it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
 
-        /// <summary>Timestamp in UTC of when this consent is considered expired.</summary>
+        /// <summary>Timestamp in UTC of when this Consent is considered expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
-        /// <summary>The time to live for this consent from when it is marked as active.</summary>
+        /// <summary>The time to live for this Consent from when it is marked as active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
 
@@ -12379,8 +12412,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
         /// <summary>
-        /// entity_mentions contains all the annotated medical entities that were were mentioned in the provided
-        /// document.
+        /// entity_mentions contains all the annotated medical entities that were mentioned in the provided document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityMentions")]
         public virtual System.Collections.Generic.IList<EntityMention> EntityMentions { get; set; }
@@ -12511,12 +12543,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// An attribute value for a consent or data mapping. Each Attribute must have a corresponding AttributeDefinition
-    /// in the consent store that defines the default and allowed values.
+    /// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding
+    /// AttributeDefinition in the consent store that defines the default and allowed values.
     /// </summary>
     public class Attribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates the name of an attribute defined at the consent store.</summary>
+        /// <summary>Indicates the name of an attribute defined in the consent store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeDefinitionId")]
         public virtual string AttributeDefinitionId { get; set; }
 
@@ -12549,26 +12581,27 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Category { get; set; }
 
         /// <summary>
-        /// Default values of the attribute in consents. If no default values are specified, it defaults to an empty
-        /// value.
+        /// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an
+        /// empty value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentDefaultValues")]
         public virtual System.Collections.Generic.IList<string> ConsentDefaultValues { get; set; }
 
         /// <summary>
-        /// Default value of the attribute in user data mappings. If no default value is specified, it defaults to an
-        /// empty value. This field is only applicable to attributes of the category `RESOURCE`.
+        /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it
+        /// defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataMappingDefaultValue")]
         public virtual string DataMappingDefaultValue { get; set; }
 
-        /// <summary>A description of the attribute.</summary>
+        /// <summary>Optional. A description of the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name of the attribute definition, of the form
+        /// Resource name of the Attribute definition, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
+        /// Cannot be changed after creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -12720,21 +12753,23 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Checks if a particular data_id of a User data mapping in the given Consent store is consented for a given use.
+    /// Checks if a particular data_id of a User data mapping in the given consent store is consented for a given use.
     /// </summary>
     public class CheckDataAccessRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Consents to evaluate the access request against. They must have the same `user_id` as the data to check
-        /// access for, exist in the current `consent_store`, and can have a `state` of either `ACTIVE` or `DRAFT`. A
-        /// maximum of 100 consents can be provided here. If unspecified, all `ACTIVE` unexpired consents in the current
-        /// `consent_store` will be evaluated.
+        /// Optional. Specific Consents to evaluate the access request against. These Consents must have the same
+        /// `user_id` as the evaluated User data mapping, must exist in the current `consent_store`, and have a `state`
+        /// of either `ACTIVE` or `DRAFT`. A maximum of 100 Consents can be provided here. If no selection is specified,
+        /// the access request is evaluated against all `ACTIVE` unexpired Consents with the same `user_id` as the
+        /// evaluated User data mapping.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
         public virtual ConsentList ConsentList { get; set; }
 
         /// <summary>
-        /// The unique identifier of the data to check access for. It must exist in the given `consent_store`.
+        /// Required. The unique identifier of the resource to check access for. This identifier must correspond to a
+        /// User data mapping in the given consent store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
         public virtual string DataId { get; set; }
@@ -12744,8 +12779,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
 
         /// <summary>
-        /// The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and returns `consented` as `TRUE`
-        /// or `FALSE`.
+        /// Optional. The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and returns `consented`
+        /// as `TRUE` or `FALSE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; }
@@ -12755,7 +12790,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Checks if a particular data_id of a User data mapping in the given Consent store is consented for a given use.
+    /// Checks if a particular data_id of a User data mapping in the given consent store is consented for a given use.
     /// </summary>
     public class CheckDataAccessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12763,7 +12798,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consentDetails")]
         public virtual System.Collections.Generic.IDictionary<string, ConsentEvaluation> ConsentDetails { get; set; }
 
-        /// <summary>Whether the requested data is consented for the given use.</summary>
+        /// <summary>Whether the requested resource is consented for the given use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consented")]
         public virtual System.Nullable<bool> Consented { get; set; }
 
@@ -12782,28 +12817,28 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents an end user's consent.</summary>
+    /// <summary>Represents a user's consent.</summary>
     public class Consent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the consent artifact that contains proof of the end user's consent, of the
+        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the
         /// form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
 
-        /// <summary>Timestamp in UTC of when this consent is considered expired.</summary>
+        /// <summary>Timestamp in UTC of when this Consent is considered expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual object ExpireTime { get; set; }
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize consent resources. Metadata keys must: - be between 1 and 63
-        /// characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63
-        /// characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be:
-        /// - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63
-        /// characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata
-        /// entries can be associated with a given consent.
+        /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between
+        /// 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up
+        /// to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values
+        /// must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up
+        /// to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64
+        /// metadata entries can be associated with a given consent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
@@ -12811,12 +12846,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Resource name of the Consent, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
+        /// Cannot be changed after creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+        /// Optional. Represents a user's consent in terms of the resources that can be accessed and under what
+        /// conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1beta1ConsentPolicy> Policies { get; set; }
@@ -12826,17 +12863,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual object RevisionCreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The revision ID of the consent. The format is an 8-character hexadecimal string. Refer to a
+        /// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a
         /// specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
-        /// <summary>Indicates the current state of this consent.</summary>
+        /// <summary>Required. Indicates the current state of this Consent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Input only. The time to live for this consent from when it is created.</summary>
+        /// <summary>Input only. The time to live for this Consent from when it is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
 
@@ -12848,23 +12885,24 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Proof of an end user's consent.</summary>
+    /// <summary>Documentation of a user's consent.</summary>
     public class ConsentArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Screenshots of the consent content.</summary>
+        /// <summary>Optional. Screenshots, PDFs, or other binary information documenting the user's consent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentContentScreenshots")]
         public virtual System.Collections.Generic.IList<Image> ConsentContentScreenshots { get; set; }
 
-        /// <summary>An string indicating the version of the consent content.</summary>
+        /// <summary>Optional. An string indicating the version of the consent information shown to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentContentVersion")]
         public virtual string ConsentContentVersion { get; set; }
 
-        /// <summary>A signature from guardian.</summary>
+        /// <summary>Optional. A signature from a guardian.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guardianSignature")]
         public virtual Signature GuardianSignature { get; set; }
 
         /// <summary>
-        /// Metadata associated with the consent artifact. For example, the consent locale or user agent version.
+        /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent
+        /// version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
@@ -12872,6 +12910,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Resource name of the Consent artifact, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// Cannot be changed after creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -12880,11 +12919,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
 
-        /// <summary>User's signature.</summary>
+        /// <summary>Optional. User's signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userSignature")]
         public virtual Signature UserSignature { get; set; }
 
-        /// <summary>A signature from a witness.</summary>
+        /// <summary>Optional. A signature from a witness.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("witnessSignature")]
         public virtual Signature WitnessSignature { get; set; }
 
@@ -12917,33 +12956,38 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Consent store.</summary>
+    /// <summary>Represents a consent store.</summary>
     public class ConsentStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not
-        /// affect the expiration time of existing consents.
+        /// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this
+        /// field will not affect the expiration time of existing consents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultConsentTtl")]
         public virtual object DefaultConsentTtl { get; set; }
 
-        /// <summary>If true, UpdateConsent creates the consent if it does not already exist.</summary>
+        /// <summary>
+        /// Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified,
+        /// defaults to `false`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConsentCreateOnUpdate")]
         public virtual System.Nullable<bool> EnableConsentCreateOnUpdate { get; set; }
 
         /// <summary>
-        /// User-supplied key-value pairs used to organize Consent stores. Label keys must be between 1 and 63
+        /// Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63
         /// characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular
-        /// expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding
-        /// of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}
-        /// No more than 64 labels can be associated with a given store.
+        /// expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding
+        /// of maximum 128 bytes, and must conform to the following PCRE regular expression:
+        /// [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more
+        /// information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Resource name of the Consent store, of the form
+        /// Resource name of the consent store, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
+        /// Cannot be changed after creation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13399,43 +13443,47 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Evaluate an end user's Consents for all matching User data mappings.</summary>
+    /// <summary>
+    /// Evaluate a user's Consents for all matching User data mappings. Note: User data mappings are indexed
+    /// asynchronously, causing slight delays between the time mappings are created or updated and when they are
+    /// included in EvaluateUserConsents results.
+    /// </summary>
     public class EvaluateUserConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Consents to evaluate the access request against. They must have the same `user_id` as the data to check
-        /// access for, exist in the current `consent_store`, and can have a `state` of either `ACTIVE` or `DRAFT`. A
-        /// maximum of 100 consents can be provided here. If unspecified, all `ACTIVE` unexpired consents in the current
-        /// `consent_store` will be evaluated.
+        /// Optional. Specific Consents to evaluate the access request against. These Consents must have the same
+        /// `user_id` as the User data mappings being evalauted, must exist in the current `consent_store`, and must
+        /// have a `state` of either `ACTIVE` or `DRAFT`. A maximum of 100 Consents can be provided here. If
+        /// unspecified, all `ACTIVE` unexpired Consents in the current `consent_store` will be evaluated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentList")]
         public virtual ConsentList ConsentList { get; set; }
 
         /// <summary>
-        /// Limit on the number of user data mappings to return in a single response. If not specified, 100 is used. May
-        /// not be larger than 1000.
+        /// Optional. Limit on the number of User data mappings to return in a single response. If not specified, 100 is
+        /// used. May not be larger than 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
-        /// <summary>Token to retrieve the next page of results to get the first page.</summary>
+        /// <summary>Optional. Token to retrieve the next page of results, or empty to get the first page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
 
-        /// <summary>The values of request attributes associated with this access request.</summary>
+        /// <summary>Required. The values of request attributes associated with this access request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
 
         /// <summary>
-        /// The values of resources attributes associated with the type of data being requested. If no values are
-        /// specified, then all data types are queried.
+        /// Optional. The values of resource attributes associated with the resources being requested. If no values are
+        /// specified, then all resources are queried.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
 
         /// <summary>
-        /// The view for EvaluateUserConsentsResponse. If unspecified, defaults to `BASIC` and returns `consented` as
-        /// `TRUE` or `FALSE`.
+        /// Optional. The view for EvaluateUserConsentsResponse. If unspecified, defaults to `BASIC` and returns
+        /// `consented` as `TRUE` or `FALSE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; }
@@ -13448,11 +13496,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Evaluate an end user's Consents for all matching User data mappings.</summary>
     public class EvaluateUserConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list. This token is
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list. This token is
         /// valid for 72 hours after it is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -14024,12 +14071,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Represents an end user's consent in terms of the resources that can be accessed and under what conditions.
+    /// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
     /// </summary>
     public class GoogleCloudHealthcareV1beta1ConsentPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The request conditions to meet to grant access. In addition to any supported comparison operators,
+        /// Required. The request conditions to meet to grant access. In addition to any supported comparison operators,
         /// authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND`
         /// (`&amp;amp;&amp;amp;`), `OR` (`||`).
         /// </summary>
@@ -14037,8 +14084,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual Expr AuthorizationRule { get; set; }
 
         /// <summary>
-        /// The data resources that this policy applies to. A data resource is a match if it matches all the attributes
-        /// listed here.
+        /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed
+        /// here. If empty, this policy applies to all User data mappings for the given user.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IList<Attribute> ResourceAttributes { get; set; }
@@ -14744,18 +14791,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the Attribute definitions in the given Consent store.</summary>
     public class ListAttributeDefinitionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The returned attribute definitions. The maximum number of attributes returned is determined by the value of
+        /// The returned Attribute definitions. The maximum number of attributes returned is determined by the value of
         /// page_size in the ListAttributeDefinitionsRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeDefinitions")]
         public virtual System.Collections.Generic.IList<AttributeDefinition> AttributeDefinitions { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14764,18 +14810,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the Consent artifacts in the given Consent store.</summary>
     public class ListConsentArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The returned consent artifacts. The maximum number of artifacts returned is determined by the value of
+        /// The returned Consent artifacts. The maximum number of artifacts returned is determined by the value of
         /// page_size in the ListConsentArtifactsRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifacts")]
         public virtual System.Collections.Generic.IList<ConsentArtifact> ConsentArtifacts { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14784,18 +14829,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the revisions of the given Consent in reverse chronological order.</summary>
     public class ListConsentRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The returned consent revisions. The maximum number of revisions returned is determined by the value of
+        /// The returned Consent revisions. The maximum number of revisions returned is determined by the value of
         /// `page_size` in the ListConsentRevisionsRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consents")]
         public virtual System.Collections.Generic.IList<Consent> Consents { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14804,18 +14848,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the Consent stores in the given dataset.</summary>
     public class ListConsentStoresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The returned Consent stores. The maximum number of stores returned is determined by the value of page_size
+        /// The returned consent stores. The maximum number of stores returned is determined by the value of page_size
         /// in the ListConsentStoresRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentStores")]
         public virtual System.Collections.Generic.IList<ConsentStore> ConsentStores { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14824,18 +14867,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the Consents in the given Consent store.</summary>
     public class ListConsentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The returned consents. The maximum number of consents returned is determined by the value of page_size in
+        /// The returned Consents. The maximum number of Consents returned is determined by the value of page_size in
         /// the ListConsentsRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consents")]
         public virtual System.Collections.Generic.IList<Consent> Consents { get; set; }
 
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -14968,17 +15010,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Lists the User data mappings in the given Consent store.</summary>
     public class ListUserDataMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// The returned user data mappings. The maximum number of user data mappings returned is determined by the
+        /// The returned User data mappings. The maximum number of User data mappings returned is determined by the
         /// value of page_size in the ListUserDataMappingsRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDataMappings")]
@@ -15323,7 +15364,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Queries all data_ids that are consented for a given use in the given Consent store and writes them to a
+    /// Queries all data_ids that are consented for a given use in the given consent store and writes them to a
     /// specified destination. The returned Operation includes a progress counter for the number of User data mappings
     /// processed. Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-tos/logging) and
     /// [QueryAccessibleData] for a sample log entry).
@@ -15342,8 +15383,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> RequestAttributes { get; set; }
 
         /// <summary>
-        /// The values of resources attributes associated with the type of data being requested. If no values are
-        /// specified, then all data types are included in the output.
+        /// Optional. The values of resource attributes associated with the type of resources being requested. If no
+        /// values are specified, then all resource types are included in the output.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
@@ -15364,16 +15405,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
     /// <summary>
     /// Rejects the latest revision of the specified Consent by committing a new revision with `state` updated to
-    /// `REJECTED`. If the latest revision of the given consent is in the `REJECTED` state, no new revision is
+    /// `REJECTED`. If the latest revision of the given Consent is in the `REJECTED` state, no new revision is
     /// committed.
     /// </summary>
     public class RejectConsentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the consent artifact that contains proof of the end user's rejection of the draft
-        /// consent, of the form
+        /// Optional. The resource name of the Consent artifact that contains documentation of the user's rejection of
+        /// the draft Consent, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-        /// If the draft consent had a consent artifact, this consent artifact overwrites it.
+        /// If the draft Consent had a Consent artifact, this Consent artifact overwrites it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
@@ -15421,11 +15462,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consentDetails")]
         public virtual System.Collections.Generic.IDictionary<string, ConsentEvaluation> ConsentDetails { get; set; }
 
-        /// <summary>Whether the requested data is consented for the given use.</summary>
+        /// <summary>Whether the resource is consented for the given use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consented")]
         public virtual System.Nullable<bool> Consented { get; set; }
 
-        /// <summary>The unique identifier of the data the consents were checked for.</summary>
+        /// <summary>The unique identifier of the evaluated resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
         public virtual string DataId { get; set; }
 
@@ -15435,13 +15476,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
     /// <summary>
     /// Revokes the latest revision of the specified Consent by committing a new revision with `state` updated to
-    /// `REVOKED`. If the latest revision of the given consent is in the `REVOKED` state, no new revision is committed.
+    /// `REVOKED`. If the latest revision of the given Consent is in the `REVOKED` state, no new revision is committed.
     /// </summary>
     public class RevokeConsentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the consent artifact that contains proof of the end user's revocation of the consent,
-        /// of the form
+        /// Optional. The resource name of the Consent artifact that contains proof of the user's revocation of the
+        /// Consent, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
@@ -15659,21 +15700,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>User signature.</summary>
     public class Signature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An image of the user's signature.</summary>
+        /// <summary>Optional. An image of the user's signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual Image Image { get; set; }
 
         /// <summary>
-        /// Metadata associated with the user's signature. For example, the user's name or the user's title.
+        /// Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
-        /// <summary>Timestamp of the signature.</summary>
+        /// <summary>Optional. Timestamp of the signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureTime")]
         public virtual object SignatureTime { get; set; }
 
-        /// <summary>User's UUID provided by the client.</summary>
+        /// <summary>Required. User's UUID provided by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
 
@@ -15839,18 +15880,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Maps a user data entry to its end user and Attributes.</summary>
+    /// <summary>Maps a resource to the associated user and Attributes.</summary>
     public class UserDataMapping : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Indicates the time when this data mapping was archived.</summary>
+        /// <summary>Output only. Indicates the time when this mapping was archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
         public virtual object ArchiveTime { get; set; }
 
-        /// <summary>Output only. Indicates whether this data mapping is archived.</summary>
+        /// <summary>Output only. Indicates whether this mapping is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
         public virtual System.Nullable<bool> Archived { get; set; }
 
-        /// <summary>Required. A unique identifier for the mapped data.</summary>
+        /// <summary>Required. A unique identifier for the mapped resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataId")]
         public virtual string DataId { get; set; }
 
@@ -15862,10 +15903,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Attributes of end user data. Each attribute can have exactly one value specified. Only explicitly set
-        /// attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data
-        /// mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the
-        /// field "values" in each Attribute.
+        /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with
+        /// defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued,
+        /// that is, exactly one value is specified for the field "values" in each Attribute.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IList<Attribute> ResourceAttributes { get; set; }

@@ -8268,6 +8268,39 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
+    /// Parameters for node pool-level network config. Only applicable if `ip_allocation_policy.use_ip_aliases` is true.
+    /// </summary>
+    public class NodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. [Input only] Whether to create a new range for pod IPs in this node pool. Defaults are provided
+        /// for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or
+        /// `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
+        public virtual System.Nullable<bool> CreatePodRange { get; set; }
+
+        /// <summary>
+        /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to
+        /// blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with
+        /// a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
+        /// (e.g. `10.96.0.0/14`) to pick a specific range to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrBlock")]
+        public virtual string PodIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podRange")]
+        public virtual string PodRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e.
     /// VM's), with a common configuration and specification, under the control of the cluster master. They may have a
     /// set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may
@@ -8328,6 +8361,12 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The name of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual NodeNetworkConfig NetworkConfig { get; set; }
 
         /// <summary>[Output only] The pod CIDR block size per node in this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrSize")]

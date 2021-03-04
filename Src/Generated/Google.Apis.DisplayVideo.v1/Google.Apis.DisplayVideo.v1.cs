@@ -15221,59 +15221,61 @@ namespace Google.Apis.DisplayVideo.v1.Data
     public class AssignedTargetingOption : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Age range details. This field will be populated when the TargetingType is `TARGETING_TYPE_AGE_RANGE`.
+        /// Age range details. This field will be populated when the targeting_type is `TARGETING_TYPE_AGE_RANGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRangeDetails")]
         public virtual AgeRangeAssignedTargetingOptionDetails AgeRangeDetails { get; set; }
 
         /// <summary>
-        /// App category details. This field will be populated when the TargetingType is `TARGETING_TYPE_APP_CATEGORY`.
+        /// App category details. This field will be populated when the targeting_type is `TARGETING_TYPE_APP_CATEGORY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCategoryDetails")]
         public virtual AppCategoryAssignedTargetingOptionDetails AppCategoryDetails { get; set; }
 
-        /// <summary>App details. This field will be populated when the TargetingType is `TARGETING_TYPE_APP`.</summary>
+        /// <summary>
+        /// App details. This field will be populated when the targeting_type is `TARGETING_TYPE_APP`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appDetails")]
         public virtual AppAssignedTargetingOptionDetails AppDetails { get; set; }
 
         /// <summary>
-        /// Output only. The unique ID of the assigned targeting option. The ID is only unique within a given line item
+        /// Output only. The unique ID of the assigned targeting option. The ID is only unique within a given resource
         /// and targeting type. It may be reused in other contexts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignedTargetingOptionId")]
         public virtual string AssignedTargetingOptionId { get; set; }
 
         /// <summary>
-        /// Audience targeting details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group option per line item.
+        /// Audience targeting details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_AUDIENCE_GROUP`. You can only target one audience group option per resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audienceGroupDetails")]
         public virtual AudienceGroupAssignedTargetingOptionDetails AudienceGroupDetails { get; set; }
 
         /// <summary>
-        /// Authorized seller status details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per line
-        /// item. If a line item doesn't have an authorized seller status option, all authorized sellers indicated as
+        /// Authorized seller status details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS`. You can only target one authorized seller status option per
+        /// resource. If a resource doesn't have an authorized seller status option, all authorized sellers indicated as
         /// DIRECT or RESELLER in the ads.txt file are targeted by default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedSellerStatusDetails")]
         public virtual AuthorizedSellerStatusAssignedTargetingOptionDetails AuthorizedSellerStatusDetails { get; set; }
 
         /// <summary>
-        /// Browser details. This field will be populated when the TargetingType is `TARGETING_TYPE_BROWSER`.
+        /// Browser details. This field will be populated when the targeting_type is `TARGETING_TYPE_BROWSER`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserDetails")]
         public virtual BrowserAssignedTargetingOptionDetails BrowserDetails { get; set; }
 
         /// <summary>
-        /// Carrier and ISP details. This field will be populated when the TargetingType is
+        /// Carrier and ISP details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_CARRIER_AND_ISP`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrierAndIspDetails")]
         public virtual CarrierAndIspAssignedTargetingOptionDetails CarrierAndIspDetails { get; set; }
 
         /// <summary>
-        /// Category details. This field will be populated when the TargetingType is `TARGETING_TYPE_CATEGORY`.
+        /// Category details. This field will be populated when the targeting_type is `TARGETING_TYPE_CATEGORY`.
         /// Targeting a category will also target its subcategories. If a category is excluded from targeting and a
         /// subcategory is included, the exclusion will take precedence.
         /// </summary>
@@ -15281,82 +15283,81 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual CategoryAssignedTargetingOptionDetails CategoryDetails { get; set; }
 
         /// <summary>
-        /// Channel details. This field will be populated when the TargetingType is `TARGETING_TYPE_CHANNEL`.
+        /// Channel details. This field will be populated when the targeting_type is `TARGETING_TYPE_CHANNEL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelDetails")]
         public virtual ChannelAssignedTargetingOptionDetails ChannelDetails { get; set; }
 
         /// <summary>
-        /// Content instream position details. This field will be populated when the TargetingType is
+        /// Content instream position details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_CONTENT_INSTREAM_POSITION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentInstreamPositionDetails")]
         public virtual ContentInstreamPositionAssignedTargetingOptionDetails ContentInstreamPositionDetails { get; set; }
 
         /// <summary>
-        /// Content outstream position details. This field will be populated when the TargetingType is
+        /// Content outstream position details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOutstreamPositionDetails")]
         public virtual ContentOutstreamPositionAssignedTargetingOptionDetails ContentOutstreamPositionDetails { get; set; }
 
         /// <summary>
-        /// Day and time details. This field will be populated when the TargetingType is `TARGETING_TYPE_DAY_AND_TIME`.
+        /// Day and time details. This field will be populated when the targeting_type is `TARGETING_TYPE_DAY_AND_TIME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dayAndTimeDetails")]
         public virtual DayAndTimeAssignedTargetingOptionDetails DayAndTimeDetails { get; set; }
 
         /// <summary>
-        /// Device make and model details. This field will be populated when the TargetingType is
+        /// Device make and model details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_DEVICE_MAKE_MODEL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMakeModelDetails")]
         public virtual DeviceMakeModelAssignedTargetingOptionDetails DeviceMakeModelDetails { get; set; }
 
         /// <summary>
-        /// Device Type details. This field will be populated when the TargetingType is `TARGETING_TYPE_DEVICE_TYPE`.
+        /// Device Type details. This field will be populated when the targeting_type is `TARGETING_TYPE_DEVICE_TYPE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeDetails")]
         public virtual DeviceTypeAssignedTargetingOptionDetails DeviceTypeDetails { get; set; }
 
         /// <summary>
-        /// Digital content label details. This field will be populated when the TargetingType is
+        /// Digital content label details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`. Digital content labels are targeting exclusions.
         /// Advertiser level digital content label exclusions, if set, are always applied in serving (even though they
-        /// aren't visible in line item settings). Line item settings can exclude content labels in addition to
-        /// advertiser exclusions, but can't override them. A line item won't serve if all the digital content labels
-        /// are excluded.
+        /// aren't visible in resource settings). Resource settings can exclude content labels in addition to advertiser
+        /// exclusions, but can't override them. A line item won't serve if all the digital content labels are excluded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalContentLabelExclusionDetails")]
         public virtual DigitalContentLabelAssignedTargetingOptionDetails DigitalContentLabelExclusionDetails { get; set; }
 
         /// <summary>
-        /// Environment details. This field will be populated when the TargetingType is `TARGETING_TYPE_ENVIRONMENT`.
+        /// Environment details. This field will be populated when the targeting_type is `TARGETING_TYPE_ENVIRONMENT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentDetails")]
         public virtual EnvironmentAssignedTargetingOptionDetails EnvironmentDetails { get; set; }
 
         /// <summary>
-        /// Exchange details. This field will be populated when the TargetingType is `TARGETING_TYPE_EXCHANGE`.
+        /// Exchange details. This field will be populated when the targeting_type is `TARGETING_TYPE_EXCHANGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeDetails")]
         public virtual ExchangeAssignedTargetingOptionDetails ExchangeDetails { get; set; }
 
         /// <summary>
-        /// Gender details. This field will be populated when the TargetingType is `TARGETING_TYPE_GENDER`.
+        /// Gender details. This field will be populated when the targeting_type is `TARGETING_TYPE_GENDER`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genderDetails")]
         public virtual GenderAssignedTargetingOptionDetails GenderDetails { get; set; }
 
         /// <summary>
-        /// Geographic region details. This field will be populated when the TargetingType is
+        /// Geographic region details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_GEO_REGION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoRegionDetails")]
         public virtual GeoRegionAssignedTargetingOptionDetails GeoRegionDetails { get; set; }
 
         /// <summary>
-        /// Household income details. This field will be populated when the TargetingType is
+        /// Household income details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_HOUSEHOLD_INCOME`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("householdIncomeDetails")]
@@ -15367,29 +15368,29 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Inheritance { get; set; }
 
         /// <summary>
-        /// Inventory source details. This field will be populated when the TargetingType is
+        /// Inventory source details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_INVENTORY_SOURCE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceDetails")]
         public virtual InventorySourceAssignedTargetingOptionDetails InventorySourceDetails { get; set; }
 
         /// <summary>
-        /// Inventory source group details. This field will be populated when the TargetingType is
+        /// Inventory source group details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_INVENTORY_SOURCE_GROUP`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceGroupDetails")]
         public virtual InventorySourceGroupAssignedTargetingOptionDetails InventorySourceGroupDetails { get; set; }
 
         /// <summary>
-        /// Keyword details. This field will be populated when the TargetingType is `TARGETING_TYPE_KEYWORD`. A maximum
-        /// of 5000 direct negative keywords can be assigned to a line item. No limit on number of positive keywords
-        /// that can be assigned.
+        /// Keyword details. This field will be populated when the targeting_type is `TARGETING_TYPE_KEYWORD`. A maximum
+        /// of 5000 direct negative keywords can be assigned to a resource. No limit on number of positive keywords that
+        /// can be assigned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordDetails")]
         public virtual KeywordAssignedTargetingOptionDetails KeywordDetails { get; set; }
 
         /// <summary>
-        /// Language details. This field will be populated when the TargetingType is `TARGETING_TYPE_LANGUAGE`.
+        /// Language details. This field will be populated when the targeting_type is `TARGETING_TYPE_LANGUAGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageDetails")]
         public virtual LanguageAssignedTargetingOptionDetails LanguageDetails { get; set; }
@@ -15399,60 +15400,59 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Keyword details. This field will be populated when the TargetingType is
-        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a line
-        /// item.
+        /// Keyword details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListDetails")]
         public virtual NegativeKeywordListAssignedTargetingOptionDetails NegativeKeywordListDetails { get; set; }
 
         /// <summary>
-        /// On screen position details. This field will be populated when the TargetingType is
+        /// On screen position details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_ON_SCREEN_POSITION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionDetails")]
         public virtual OnScreenPositionAssignedTargetingOptionDetails OnScreenPositionDetails { get; set; }
 
         /// <summary>
-        /// Operating system details. This field will be populated when the TargetingType is
+        /// Operating system details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_OPERATING_SYSTEM`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemDetails")]
         public virtual OperatingSystemAssignedTargetingOptionDetails OperatingSystemDetails { get; set; }
 
         /// <summary>
-        /// Parental status details. This field will be populated when the TargetingType is
+        /// Parental status details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_PARENTAL_STATUS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentalStatusDetails")]
         public virtual ParentalStatusAssignedTargetingOptionDetails ParentalStatusDetails { get; set; }
 
         /// <summary>
-        /// Proximity location list details. This field will be populated when the TargetingType is
+        /// Proximity location list details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityLocationListDetails")]
         public virtual ProximityLocationListAssignedTargetingOptionDetails ProximityLocationListDetails { get; set; }
 
         /// <summary>
-        /// Regional location list details. This field will be populated when the TargetingType is
+        /// Regional location list details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalLocationListDetails")]
         public virtual RegionalLocationListAssignedTargetingOptionDetails RegionalLocationListDetails { get; set; }
 
         /// <summary>
-        /// Sensitive category details. This field will be populated when the TargetingType is
+        /// Sensitive category details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`. Sensitive categories are targeting exclusions. Advertiser
         /// level sensitive category exclusions, if set, are always applied in serving (even though they aren't visible
-        /// in line item settings). Line item settings can exclude sensitive categories in addition to advertiser
+        /// in resource settings). Resource settings can exclude sensitive categories in addition to advertiser
         /// exclusions, but can't override them.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitiveCategoryExclusionDetails")]
         public virtual SensitiveCategoryAssignedTargetingOptionDetails SensitiveCategoryExclusionDetails { get; set; }
 
         /// <summary>
-        /// Sub-exchange details. This field will be populated when the TargetingType is `TARGETING_TYPE_SUB_EXCHANGE`.
+        /// Sub-exchange details. This field will be populated when the targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subExchangeDetails")]
         public virtual SubExchangeAssignedTargetingOptionDetails SubExchangeDetails { get; set; }
@@ -15462,33 +15462,35 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string TargetingType { get; set; }
 
         /// <summary>
-        /// Third party verification details. This field will be populated when the TargetingType is
+        /// Third party verification details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyVerifierDetails")]
         public virtual ThirdPartyVerifierAssignedTargetingOptionDetails ThirdPartyVerifierDetails { get; set; }
 
-        /// <summary>URL details. This field will be populated when the TargetingType is `TARGETING_TYPE_URL`.</summary>
+        /// <summary>
+        /// URL details. This field will be populated when the targeting_type is `TARGETING_TYPE_URL`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlDetails")]
         public virtual UrlAssignedTargetingOptionDetails UrlDetails { get; set; }
 
         /// <summary>
-        /// User rewarded content details. This field will be populated when the TargetingType is
+        /// User rewarded content details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_USER_REWARDED_CONTENT`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRewardedContentDetails")]
         public virtual UserRewardedContentAssignedTargetingOptionDetails UserRewardedContentDetails { get; set; }
 
         /// <summary>
-        /// Video player size details. This field will be populated when the TargetingType is
+        /// Video player size details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoPlayerSizeDetails")]
         public virtual VideoPlayerSizeAssignedTargetingOptionDetails VideoPlayerSizeDetails { get; set; }
 
         /// <summary>
-        /// Viewability details. This field will be populated when the TargetingType is `TARGETING_TYPE_VIEWABILITY`.
-        /// You can only target one viewability option per line item.
+        /// Viewability details. This field will be populated when the targeting_type is `TARGETING_TYPE_VIEWABILITY`.
+        /// You can only target one viewability option per resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewabilityDetails")]
         public virtual ViewabilityAssignedTargetingOptionDetails ViewabilityDetails { get; set; }
@@ -15737,7 +15739,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// Indicates if this option is being negatively targeted. All assigned browser targeting options on the same
-        /// line item must have the same value for this field.
+        /// resource must have the same value for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
@@ -16200,7 +16202,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// Indicates if this option is being negatively targeted. All assigned carrier and ISP targeting options on the
-        /// same line item must have the same value for this field.
+        /// same resource must have the same value for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
@@ -18577,7 +18579,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// Indicates if this option is being negatively targeted. All assigned language targeting options on the same
-        /// line item must have the same value for this field.
+        /// resource must have the same value for this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
@@ -20041,9 +20043,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
 
         /// <summary>
         /// Required. Radius range for proximity location list. This represents the size of the area around a chosen
-        /// location that will be targeted. `All` proximity location targeting under a single line item must have the
+        /// location that will be targeted. `All` proximity location targeting under a single resource must have the
         /// same radius range value. Set this value to match any existing targeting. If updated, this field will change
-        /// the radius range for all proximity targeting under the line item.
+        /// the radius range for all proximity targeting under the resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximityRadiusRange")]
         public virtual string ProximityRadiusRange { get; set; }
@@ -20291,7 +20293,7 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The URL or app ID of the site. Must be UTF-8 encoded with a maximum length of 240 bytes.
+        /// Required. The app ID or URL of the site. Must be UTF-8 encoded with a maximum length of 240 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlOrAppId")]
         public virtual string UrlOrAppId { get; set; }
