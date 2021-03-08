@@ -71,7 +71,7 @@ namespace Google.Apis.Requests
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(GetType().FullName).Append(Message).AppendFormat(" [{0}]", Code).AppendLine();
+            sb.AppendLine(GetType().FullName).AppendFormat(" {0}", Message).AppendFormat(" [{0}]", Code).AppendLine();
             if (Errors.IsNullOrEmpty())
             {
                 sb.AppendLine("No individual errors");
