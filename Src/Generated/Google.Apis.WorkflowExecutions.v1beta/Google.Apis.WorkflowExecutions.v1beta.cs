@@ -806,10 +806,7 @@ namespace Google.Apis.WorkflowExecutions.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A single stack element (frame) where an error occurred. This field currently only exists in v1Beta. We will need
-    /// to roll this change out to V1 after the feature is thoroughly tested. TODO(b/178540475)
-    /// </summary>
+    /// <summary>A single stack element (frame) where an error occurred.</summary>
     public class StackTraceElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The source position information of the stacktrace element.</summary>

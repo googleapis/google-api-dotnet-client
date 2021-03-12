@@ -3486,7 +3486,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
-        /// <summary>Data transfer specific parameters.</summary>
+        /// <summary>
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data
+        /// transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed
+        /// here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 
@@ -3582,7 +3586,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
 
-        /// <summary>Output only. Data transfer specific parameters.</summary>
+        /// <summary>
+        /// Output only. Parameters specific to each data source. For more information see the bq tab in the 'Setting up
+        /// a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are
+        /// listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
 

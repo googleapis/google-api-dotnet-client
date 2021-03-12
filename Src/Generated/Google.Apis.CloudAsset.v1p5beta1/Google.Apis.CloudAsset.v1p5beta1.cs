@@ -437,6 +437,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1
 }
 namespace Google.Apis.CloudAsset.v1p5beta1.Data
 {
+    /// <summary>A response message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
+    public class AnalyzeIamPolicyLongrunningResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An asset in Google Cloud. An asset can be any resource in the Google Cloud [resource
     /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside

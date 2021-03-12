@@ -17830,19 +17830,19 @@ namespace Google.Apis.DisplayVideo.v1.Data
     {
         /// <summary>
         /// The maximum number of times a user may be shown with the same ad during this period. Must be greater than 0.
-        /// Applicable when unlimited is `false`.
+        /// Required when unlimited is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxImpressions")]
         public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>
-        /// The time unit in which the frequency cap will be applied. Applicable when unlimited is `false`.
+        /// The time unit in which the frequency cap will be applied. Required when unlimited is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeUnit")]
         public virtual string TimeUnit { get; set; }
 
         /// <summary>
-        /// The number of time_unit the frequency cap will last. Applicable when unlimited is `false`. The following
+        /// The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following
         /// restrictions apply based on the value of time_unit: * `TIME_UNIT_LIFETIME` - this field is output only and
         /// will default to 1 * `TIME_UNIT_MONTHS` - must be between 1 and 2 * `TIME_UNIT_WEEKS` - must be between 1 and
         /// 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 *

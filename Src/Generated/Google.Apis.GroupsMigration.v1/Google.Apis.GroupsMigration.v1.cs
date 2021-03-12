@@ -65,14 +65,14 @@ namespace Google.Apis.GroupsMigration.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Groups Migration API.</summary>
         public class Scope
         {
-            /// <summary>Manage messages in groups on your domain</summary>
+            /// <summary>Upload messages to any Google group in your domain</summary>
             public static string AppsGroupsMigration = "https://www.googleapis.com/auth/apps.groups.migration";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Groups Migration API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Manage messages in groups on your domain</summary>
+            /// <summary>Upload messages to any Google group in your domain</summary>
             public const string AppsGroupsMigration = "https://www.googleapis.com/auth/apps.groups.migration";
         }
 

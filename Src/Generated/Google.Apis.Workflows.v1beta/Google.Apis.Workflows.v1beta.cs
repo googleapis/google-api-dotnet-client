@@ -1294,7 +1294,7 @@ namespace Google.Apis.Workflows.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>Workflow code to be executed. The size limit is 32KB.</summary>
+        /// <summary>Workflow code to be executed. The size limit is 128KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContents")]
         public virtual string SourceContents { get; set; }
 

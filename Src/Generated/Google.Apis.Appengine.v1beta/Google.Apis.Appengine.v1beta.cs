@@ -5526,7 +5526,7 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiConfig")]
         public virtual ApiConfigHandler ApiConfig { get; set; }
 
-        /// <summary>app_engine_apis allows Second Generation runtimes to access the App Engine APIs.</summary>
+        /// <summary>app_engine_apis allows second generation runtimes to access the App Engine APIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineApis")]
         public virtual System.Nullable<bool> AppEngineApis { get; set; }
 
@@ -5720,6 +5720,13 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>The path or name of the app's main executable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeMainExecutablePath")]
         public virtual string RuntimeMainExecutablePath { get; set; }
+
+        /// <summary>
+        /// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service
+        /// account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be

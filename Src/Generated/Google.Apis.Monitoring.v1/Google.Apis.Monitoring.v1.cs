@@ -316,8 +316,9 @@ namespace Google.Apis.Monitoring.v1
             }
 
             /// <summary>
-            /// Creates a new custom dashboard.This method requires the monitoring.dashboards.create permission on the
-            /// specified project. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see
+            /// Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the
+            /// specified project. For more information about permissions, see Cloud Identity and Access Management.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -330,8 +331,9 @@ namespace Google.Apis.Monitoring.v1
             }
 
             /// <summary>
-            /// Creates a new custom dashboard.This method requires the monitoring.dashboards.create permission on the
-            /// specified project. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see
+            /// Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the
+            /// specified project. For more information about permissions, see Cloud Identity and Access Management.
             /// </summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
             {

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AnalyticsData.v1alpha Client Library</Title>
-    <Version>1.50.0.2235</Version>
+    <Version>1.50.0.2260</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

@@ -6029,6 +6029,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes any options that have an effect on the debugging of pipelines.</summary>
+    public class DebugOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When true, enables the logging of the literal hot key to the user's Cloud Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHotKeyLogging")]
+        public virtual System.Nullable<bool> EnableHotKeyLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response from deleting a snapshot.</summary>
     public class DeleteSnapshotResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6237,6 +6248,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
+
+        /// <summary>Any debugging options to be supplied to the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
+        public virtual DebugOptions DebugOptions { get; set; }
 
         /// <summary>
         /// The list of experiments to enable. This field should be used for SDK related experiments and not for service

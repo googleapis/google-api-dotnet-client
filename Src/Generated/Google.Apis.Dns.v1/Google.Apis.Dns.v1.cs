@@ -2055,6 +2055,456 @@ namespace Google.Apis.Dns.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            ManagedZones = new ManagedZonesResource(service);
+        }
+
+        /// <summary>Gets the ManagedZones resource.</summary>
+        public virtual ManagedZonesResource ManagedZones { get; }
+
+        /// <summary>The "managedZones" collection of methods.</summary>
+        public class ManagedZonesResource
+        {
+            private const string Resource = "managedZones";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ManagedZonesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Rrsets = new RrsetsResource(service);
+            }
+
+            /// <summary>Gets the Rrsets resource.</summary>
+            public virtual RrsetsResource Rrsets { get; }
+
+            /// <summary>The "rrsets" collection of methods.</summary>
+            public class RrsetsResource
+            {
+                private const string Resource = "rrsets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RrsetsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a new ResourceRecordSet.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="project">Identifies the project addressed by this request.</param>
+                /// <param name="managedZone">
+                /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone)
+                {
+                    return new CreateRequest(service, body, project, managedZone);
+                }
+
+                /// <summary>Create a new ResourceRecordSet.</summary>
+                public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone) : base(service)
+                    {
+                        Project = project;
+                        ManagedZone = managedZone;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifies the project addressed by this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Project { get; private set; }
+
+                    /// <summary>
+                    /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ManagedZone { get; private set; }
+
+                    /// <summary>
+                    /// For mutating operation requests only. An optional identifier specified by the client. Must be
+                    /// unique for operation resources in the Operations collection.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientOperationId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dns.v1.Data.ResourceRecordSet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "managedZone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientOperationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Delete a previously created ResourceRecordSet.</summary>
+                /// <param name="project">Identifies the project addressed by this request.</param>
+                /// <param name="managedZone">
+                /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                /// </param>
+                /// <param name="name">Fully qualified domain name.</param>
+                /// <param name="type">RRSet type.</param>
+                public virtual DeleteRequest Delete(string project, string managedZone, string name, string type)
+                {
+                    return new DeleteRequest(service, project, managedZone, name, type);
+                }
+
+                /// <summary>Delete a previously created ResourceRecordSet.</summary>
+                public class DeleteRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSetsDeleteResponse>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string name, string type) : base(service)
+                    {
+                        Project = project;
+                        ManagedZone = managedZone;
+                        Name = name;
+                        Type = type;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifies the project addressed by this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Project { get; private set; }
+
+                    /// <summary>
+                    /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ManagedZone { get; private set; }
+
+                    /// <summary>Fully qualified domain name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>RRSet type.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Type { get; private set; }
+
+                    /// <summary>
+                    /// For mutating operation requests only. An optional identifier specified by the client. Must be
+                    /// unique for operation resources in the Operations collection.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientOperationId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "managedZone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientOperationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Fetch the representation of an existing ResourceRecordSet.</summary>
+                /// <param name="project">Identifies the project addressed by this request.</param>
+                /// <param name="managedZone">
+                /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                /// </param>
+                /// <param name="name">Fully qualified domain name.</param>
+                /// <param name="type">RRSet type.</param>
+                public virtual GetRequest Get(string project, string managedZone, string name, string type)
+                {
+                    return new GetRequest(service, project, managedZone, name, type);
+                }
+
+                /// <summary>Fetch the representation of an existing ResourceRecordSet.</summary>
+                public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string project, string managedZone, string name, string type) : base(service)
+                    {
+                        Project = project;
+                        ManagedZone = managedZone;
+                        Name = name;
+                        Type = type;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifies the project addressed by this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Project { get; private set; }
+
+                    /// <summary>
+                    /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ManagedZone { get; private set; }
+
+                    /// <summary>Fully qualified domain name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>RRSet type.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Type { get; private set; }
+
+                    /// <summary>
+                    /// For mutating operation requests only. An optional identifier specified by the client. Must be
+                    /// unique for operation resources in the Operations collection.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientOperationId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "managedZone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientOperationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Apply a partial update to an existing ResourceRecordSet.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="project">Identifies the project addressed by this request.</param>
+                /// <param name="managedZone">
+                /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                /// </param>
+                /// <param name="name">Fully qualified domain name.</param>
+                /// <param name="type">RRSet type.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone, string name, string type)
+                {
+                    return new PatchRequest(service, body, project, managedZone, name, type);
+                }
+
+                /// <summary>Apply a partial update to an existing ResourceRecordSet.</summary>
+                public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dns.v1.Data.ResourceRecordSet body, string project, string managedZone, string name, string type) : base(service)
+                    {
+                        Project = project;
+                        ManagedZone = managedZone;
+                        Name = name;
+                        Type = type;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Identifies the project addressed by this request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Project { get; private set; }
+
+                    /// <summary>
+                    /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("managedZone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ManagedZone { get; private set; }
+
+                    /// <summary>Fully qualified domain name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>RRSet type.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Type { get; private set; }
+
+                    /// <summary>
+                    /// For mutating operation requests only. An optional identifier specified by the client. Must be
+                    /// unique for operation resources in the Operations collection.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientOperationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientOperationId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dns.v1.Data.ResourceRecordSet Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "dns/v1/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("managedZone", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "managedZone",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("clientOperationId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientOperationId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Fetch the representation of an existing Project.</summary>
@@ -3171,6 +3621,12 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResourceRecordSetsDeleteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

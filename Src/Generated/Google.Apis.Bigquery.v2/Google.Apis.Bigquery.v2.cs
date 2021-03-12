@@ -5879,6 +5879,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string CreateDisposition { get; set; }
 
         /// <summary>
+        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query
+        /// with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createSession")]
+        public virtual System.Nullable<bool> CreateSession { get; set; }
+
+        /// <summary>
         /// [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this
         /// does not alter behavior of unqualified dataset names.
         /// </summary>
@@ -6612,6 +6619,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class Model : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The best trial_id across all training runs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestTrialId")]
+        public virtual System.Nullable<long> BestTrialId { get; set; }
+
         /// <summary>Output only. The time when this model was created, in millisecs since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
@@ -7010,6 +7021,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>
+        /// If true, creates a new session, where session id will be a server generated random id. If false, runs query
+        /// with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createSession")]
+        public virtual System.Nullable<bool> CreateSession { get; set; }
+
+        /// <summary>
         /// [Optional] Specifies the default datasetId and projectId to assume for any unqualified table names in the
         /// query. If not set, all table names in the query string must be qualified in the format 'datasetId.tableId'.
         /// </summary>
@@ -7382,6 +7400,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>
+        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type
+        /// documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnTableType")]
+        public virtual StandardSqlTableType ReturnTableType { get; set; }
+
+        /// <summary>
         /// Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from
         /// definition_body at query time in each query that references this routine. If present, then the evaluated
         /// result will be cast to the specified returned type at query time. For example, for the functions created
@@ -7650,6 +7675,17 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<StandardSqlField> Fields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table type</summary>
+    public class StandardSqlTableType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns in this table type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<StandardSqlField> Columns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6524,7 +6524,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        /// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set
+        /// to 3. For standard cluster master_config groups, must be set to 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numInstances")]
         public virtual System.Nullable<int> NumInstances { get; set; }

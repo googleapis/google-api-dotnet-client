@@ -1046,7 +1046,14 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Alerts from G Suite Security Center rules service configured by admin.</summary>
+    /// <summary>Metadata related to the action.</summary>
+    public class ActionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Alerts from Google Workspace Security Center rules service configured by an admin.</summary>
     public class ActivityRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of action names associated with the rule threshold.</summary>
@@ -1574,7 +1581,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An incident reported by Google Operations for a G Suite application.</summary>
+    /// <summary>An incident reported by Google Operations for a Google Workspace application.</summary>
     public class GoogleOperations : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of emails which correspond to the users directly affected by the incident.</summary>
@@ -1582,8 +1589,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> AffectedUserEmails { get; set; }
 
         /// <summary>
-        /// Optional. Application-specific data for an incident, provided when the G Suite application which reported
-        /// the incident cannot be completely restored to a valid state.
+        /// Optional. Application-specific data for an incident, provided when the Google Workspace application which
+        /// reported the incident cannot be completely restored to a valid state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentData")]
         public virtual Attachment AttachmentData { get; set; }
@@ -1593,7 +1600,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// A header to display above the incident message. Typcially used to attach a localized notice on the timeline
+        /// A header to display above the incident message. Typically used to attach a localized notice on the timeline
         /// for followup comms translations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
@@ -1825,7 +1832,9 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common alert information about violated rules that are configured by G Suite administrators.</summary>
+    /// <summary>
+    /// Common alert information about violated rules that are configured by Google Workspace administrators.
+    /// </summary>
     public class RuleViolationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Source of the data.</summary>
@@ -1860,6 +1869,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Trigger of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
         public virtual string Trigger { get; set; }
+
+        /// <summary>Metadata related to the triggered actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionInfo")]
+        public virtual System.Collections.Generic.IList<ActionInfo> TriggeredActionInfo { get; set; }
 
         /// <summary>Actions applied as a consequence of the rule being triggered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionTypes")]

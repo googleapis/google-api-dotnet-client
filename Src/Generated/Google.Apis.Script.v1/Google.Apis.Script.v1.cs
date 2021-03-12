@@ -1939,7 +1939,7 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to create a script project.</summary>
+    /// <summary>Request to create a script project. Request to create a script project.</summary>
     public class CreateProjectRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

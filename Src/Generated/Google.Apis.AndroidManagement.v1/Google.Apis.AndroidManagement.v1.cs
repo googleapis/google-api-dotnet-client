@@ -2720,6 +2720,25 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This feature is not generally available.</summary>
+    public class ContentProviderEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Required. This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingCertsSha256")]
+        public virtual System.Collections.Generic.IList<string> SigningCertsSha256 { get; set; }
+
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -3740,6 +3759,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This feature is not generally available.</summary>
+    public class OncCertificateProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateReferences")]
+        public virtual System.Collections.Generic.IList<string> CertificateReferences { get; set; }
+
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentProviderEndpoint")]
+        public virtual ContentProviderEndpoint ContentProviderEndpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4143,10 +4177,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installAppsDisabled")]
         public virtual System.Nullable<bool> InstallAppsDisabled { get; set; }
 
-        /// <summary>
-        /// Whether the user is allowed to enable the "Unknown Sources" setting, which allows installation of apps from
-        /// unknown sources.
-        /// </summary>
+        /// <summary>This field has no effect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installUnknownSourcesAllowed")]
         public virtual System.Nullable<bool> InstallUnknownSourcesAllowed { get; set; }
 
@@ -4221,6 +4252,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether resetting network settings is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkResetDisabled")]
         public virtual System.Nullable<bool> NetworkResetDisabled { get; set; }
+
+        /// <summary>This feature is not generally available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oncCertificateProviders")]
+        public virtual System.Collections.Generic.IList<OncCertificateProvider> OncCertificateProviders { get; set; }
 
         /// <summary>Network configuration for the device. See configure networks for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNetworkConfiguration")]

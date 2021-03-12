@@ -2667,6 +2667,10 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageBreak")]
         public virtual PageBreak PageBreak { get; set; }
 
+        /// <summary>A paragraph element that links to a person or email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual Person Person { get; set; }
+
         /// <summary>The zero-based start index of this paragraph element, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
@@ -2923,6 +2927,66 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Indicates if there was a suggested change to spacing_mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spacingModeSuggested")]
         public virtual System.Nullable<bool> SpacingModeSuggested { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A person or email address mentioned in a document. These mentions behave as a single, immutable element
+    /// containing the person's name or email address.
+    /// </summary>
+    public class Person : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique ID of this link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personId")]
+        public virtual string PersonId { get; set; }
+
+        /// <summary>Output only. The properties of this Person. This field is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personProperties")]
+        public virtual PersonProperties PersonProperties { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that remove this person link from the document. A Person might have multiple deletion
+        /// IDs if, for example, multiple users suggest to delete it. If empty, then this person link isn't suggested
+        /// for deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDeletionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedDeletionIds { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that insert this person link into the document. A Person might have multiple insertion
+        /// IDs if it is a nested suggested change (a suggestion within a suggestion made by a different user, for
+        /// example). If empty, then this person link isn't a suggested insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedInsertionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedInsertionIds { get; set; }
+
+        /// <summary>The suggested text style changes to this Person, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedTextStyle> SuggestedTextStyleChanges { get; set; }
+
+        /// <summary>The text style of this Person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
+        public virtual TextStyle TextStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties specific to a linked Person.</summary>
+    public class PersonProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The email address linked to this Person. This field is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the person if it is displayed in the link text instead of the person's email
+        /// address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

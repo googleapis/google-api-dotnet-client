@@ -6285,10 +6285,7 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Autopilot is the configuration for Autopilot settings on the cluster. It is the official product name of what is
-    /// previously known as AutoGKE
-    /// </summary>
+    /// <summary>Autopilot is the configuration for Autopilot settings on the cluster.</summary>
     public class Autopilot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enable Autopilot</summary>
@@ -6500,10 +6497,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; }
 
-        /// <summary>
-        /// Autopilot configuration for the cluster. It has the same semantics as AutoGKE and overrides the setting in
-        /// autogke.
-        /// </summary>
+        /// <summary>Autopilot configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilot")]
         public virtual Autopilot Autopilot { get; set; }
 
@@ -6957,6 +6951,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired config of Intra-node visibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredIntraNodeVisibilityConfig")]
         public virtual IntraNodeVisibilityConfig DesiredIntraNodeVisibilityConfig { get; set; }
+
+        /// <summary>The desired L4 Internal Load Balancer Subsetting configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredL4ilbSubsettingConfig")]
+        public virtual ILBSubsettingConfig DesiredL4ilbSubsettingConfig { get; set; }
 
         /// <summary>
         /// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in
@@ -7438,6 +7436,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+    /// </summary>
+    public class ILBSubsettingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables l4 ILB subsetting for this cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7976,6 +7987,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntraNodeVisibility")]
         public virtual System.Nullable<bool> EnableIntraNodeVisibility { get; set; }
 
+        /// <summary>Whether L4ILB Subsetting is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableL4ilbSubsetting")]
+        public virtual System.Nullable<bool> EnableL4ilbSubsetting { get; set; }
+
         /// <summary>
         /// Output only. The relative name of the Google Compute Engine
         /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is
@@ -8030,6 +8045,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether NetworkPolicy is enabled for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags`
+    /// field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+    /// </summary>
+    public class NetworkTags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of network tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8248,6 +8277,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Collection of node-level [Kubernetes
+    /// labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+    /// </summary>
+    public class NodeLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Map of node label keys and node label values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>NodeManagement defines the set of node management services turned on for the node pool.</summary>
     public class NodeManagement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8447,6 +8490,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Value for taint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+    /// </summary>
+    public class NodeTaints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of node taints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taints")]
+        public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9707,6 +9763,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
         public virtual NodeKubeletConfig KubeletConfig { get; set; }
 
+        /// <summary>
+        /// The desired node labels to be applied to all nodes in the node pool. If this field is not present, the
+        /// labels will not be changed. Otherwise, the existing node labels will be *replaced* with the provided labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual NodeLabels Labels { get; set; }
+
         /// <summary>Parameters that can be configured on Linux nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linuxNodeConfig")]
         public virtual LinuxNodeConfig LinuxNodeConfig { get; set; }
@@ -9751,6 +9814,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags
+        /// will not be changed. Otherwise, the existing network tags will be *replaced* with the provided tags.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual NetworkTags Tags { get; set; }
+
+        /// <summary>
+        /// The desired node taints to be applied to all nodes in the node pool. If this field is not present, the
+        /// taints will not be changed. Otherwise, the existing node taints will be *replaced* with the provided taints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taints")]
+        public virtual NodeTaints Taints { get; set; }
 
         /// <summary>Upgrade settings control disruption and speed of the upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
