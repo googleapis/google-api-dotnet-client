@@ -2602,8 +2602,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123",
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
         /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 150
-        /// by default; 100 for Type.VARIANT. * Max indexable entries count: 150 by default; 40 for Type.VARIANT. * Max
-        /// searchable entries count: 30. * The key must be a UTF-8 encoded string with a length limit of 128
+        /// by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128
         /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
@@ -2709,7 +2708,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>
-        /// Required. Product title. This field must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters.
         /// Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property
         /// [title](https://support.google.com/merchants/answer/6324415). Schema.org property
         /// [Product.name](https://schema.org/name).

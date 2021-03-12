@@ -1321,10 +1321,7 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>Updates a message.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Resource name, in the form "spaces/*/messages/*". Example:
-            /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-            /// </param>
+            /// <param name="name"><c>null</c></param>
             public virtual UpdateRequest Update(Google.Apis.HangoutsChat.v1.Data.Message body, string name)
             {
                 return new UpdateRequest(service, body, name);
@@ -1341,10 +1338,6 @@ namespace Google.Apis.HangoutsChat.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Resource name, in the form "spaces/*/messages/*". Example:
-                /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2084,10 +2077,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
 
-        /// <summary>
-        /// Resource name, in the form "spaces/*/messages/*". Example:
-        /// spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2167,7 +2156,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Slash Command in Hangouts Chat.</summary>
+    /// <summary>A Slash Command in Chat.</summary>
     public class SlashCommand : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The id of the slash command invoked.</summary>

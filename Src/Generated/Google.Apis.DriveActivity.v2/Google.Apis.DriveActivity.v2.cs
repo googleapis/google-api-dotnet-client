@@ -526,7 +526,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     /// <summary>An object was created by copying an existing object.</summary>
     public class Copy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The the original object.</summary>
+        /// <summary>The original object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
         public virtual TargetReference OriginalObject { get; set; }
 
@@ -592,7 +592,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("legacyId")]
         public virtual string LegacyId { get; set; }
 
-        /// <summary>The name of the domain, e.g. "google.com".</summary>
+        /// <summary>The name of the domain, e.g. `google.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -604,7 +604,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+        /// The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a
         /// specific collection ID for this resource name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -707,7 +707,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
-        /// <summary>The target Drive item. The format is "items/ITEM_ID".</summary>
+        /// <summary>The target Drive item. The format is `items/ITEM_ID`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -742,7 +742,7 @@ namespace Google.Apis.DriveActivity.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; }
 
-        /// <summary>The target Drive item. The format is "items/ITEM_ID".</summary>
+        /// <summary>The target Drive item. The format is `items/ITEM_ID`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -758,7 +758,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     public class DriveReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the shared drive. The format is "COLLECTION_ID/DRIVE_ID". Clients should not assume a
+        /// The resource name of the shared drive. The format is `COLLECTION_ID/DRIVE_ID`. Clients should not assume a
         /// specific collection ID for this resource name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -806,7 +806,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>
         /// The link to the discussion thread containing this comment, for example,
-        /// "https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID".
+        /// `https://docs.google.com/DOCUMENT_ID/edit?disco=THREAD_ID`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkToDiscussion")]
         public virtual string LinkToDiscussion { get; set; }
@@ -868,7 +868,7 @@ namespace Google.Apis.DriveActivity.v2.Data
 
         /// <summary>
         /// The identifier for this user that can be used with the People API to get more information. The format is
-        /// "people/ACCOUNT_ID". See https://developers.google.com/people/.
+        /// `people/ACCOUNT_ID`. See https://developers.google.com/people/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("personName")]
         public virtual string PersonName { get; set; }
@@ -964,8 +964,8 @@ namespace Google.Apis.DriveActivity.v2.Data
         public virtual Group Group { get; set; }
 
         /// <summary>
-        /// Indicates the Google Drive permissions role. The role determines a user's ability to read, write, and
-        /// comment on items.
+        /// Indicates the [Google Drive permissions role](https://developers.google.com/drive/web/manage-sharing#roles).
+        /// The role determines a user's ability to read, write, and comment on items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -1008,7 +1008,7 @@ namespace Google.Apis.DriveActivity.v2.Data
     public class QueryDriveActivityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Return activities for this Drive folder and all children and descendants. The format is "items/ITEM_ID".
+        /// Return activities for this Drive folder and all children and descendants. The format is `items/ITEM_ID`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestorName")]
         public virtual string AncestorName { get; set; }
@@ -1023,17 +1023,17 @@ namespace Google.Apis.DriveActivity.v2.Data
         /// <summary>
         /// The filtering for items returned from this query request. The format of the filter string is a sequence of
         /// expressions, joined by an optional "AND", where each expression is of the form "field operator value".
-        /// Supported fields: - time: Uses numerical operators on date values either in terms of milliseconds since Jan
-        /// 1, 1970 or in RFC 3339 format. Examples: - time &amp;gt; 1452409200000 AND time &amp;lt;= 1492812924310 -
-        /// time &amp;gt;= "2016-01-10T01:02:03-05:00" - detail.action_detail_case: Uses the "has" operator (:) and
-        /// either a singular value or a list of allowed action types enclosed in parentheses. Examples: -
-        /// detail.action_detail_case: RENAME - detail.action_detail_case:(CREATE EDIT) -
-        /// -detail.action_detail_case:MOVE
+        /// Supported fields: - `time`: Uses numerical operators on date values either in terms of milliseconds since
+        /// Jan 1, 1970 or in RFC 3339 format. Examples: - `time &amp;gt; 1452409200000 AND time &amp;lt;=
+        /// 1492812924310` - `time &amp;gt;= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses the "has"
+        /// operator (:) and either a singular value or a list of allowed action types enclosed in parentheses.
+        /// Examples: - `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE EDIT)` -
+        /// `-detail.action_detail_case:MOVE`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
-        /// <summary>Return activities for this Drive item. The format is "items/ITEM_ID".</summary>
+        /// <summary>Return activities for this Drive item. The format is `items/ITEM_ID`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemName")]
         public virtual string ItemName { get; set; }
 

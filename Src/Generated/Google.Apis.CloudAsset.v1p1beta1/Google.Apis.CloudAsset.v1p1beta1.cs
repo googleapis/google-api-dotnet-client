@@ -547,6 +547,13 @@ namespace Google.Apis.CloudAsset.v1p1beta1
 }
 namespace Google.Apis.CloudAsset.v1p1beta1.Data
 {
+    /// <summary>A response message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
+    public class AnalyzeIamPolicyLongrunningResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If

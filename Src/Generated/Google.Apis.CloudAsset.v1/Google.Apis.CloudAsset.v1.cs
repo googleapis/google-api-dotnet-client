@@ -1541,6 +1541,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
+    public class AnalyzeIamPolicyLongrunningResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response message for AssetService.AnalyzeIamPolicy.</summary>
     public class AnalyzeIamPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
     {

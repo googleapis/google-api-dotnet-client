@@ -347,12 +347,14 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <param name="name">
                 /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in
                 /// format: `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where
-                /// device_id is the unique ID assigned to the Device, device_user_id is the unique ID assigned to the
-                /// User and partner_id identifies the partner storing the data. To get the client state for devices
-                /// belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`.
-                /// Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This suffix
-                /// is used in setting up Custom Access Levels in Context-Aware Access. You may use `my_customer`
-                /// instead of the customer ID for devices managed by your own organization.
+                /// `device_id` is the unique ID assigned to the Device, `device_user_id` is the unique ID assigned to
+                /// the User and `partner_id` identifies the partner storing the data. To get the client state for
+                /// devices belonging to your own organization, the `partnerId` is in the format:
+                /// `customerId-*anystring*`. Where the `customerId` is your organization's customer ID and `anystring`
+                /// is any suffix. This suffix is used in setting up Custom Access Levels in Context-Aware Access. You
+                /// may use `my_customer` instead of the customer ID for devices managed by your own organization. You
+                /// may specify `-` in place of the `{device_id}`, so the ClientState resource name can be:
+                /// `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -372,19 +374,21 @@ namespace Google.Apis.CloudIdentity.v1
                     /// <summary>
                     /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the
                     /// ClientState in format:
-                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where device_id is
-                    /// the unique ID assigned to the Device, device_user_id is the unique ID assigned to the User and
-                    /// partner_id identifies the partner storing the data. To get the client state for devices
+                    /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`, where `device_id`
+                    /// is the unique ID assigned to the Device, `device_user_id` is the unique ID assigned to the User
+                    /// and `partner_id` identifies the partner storing the data. To get the client state for devices
                     /// belonging to your own organization, the `partnerId` is in the format: `customerId-*anystring*`.
                     /// Where the `customerId` is your organization's customer ID and `anystring` is any suffix. This
                     /// suffix is used in setting up Custom Access Levels in Context-Aware Access. You may use
-                    /// `my_customer` instead of the customer ID for devices managed by your own organization.
+                    /// `my_customer` instead of the customer ID for devices managed by your own organization. You may
+                    /// specify `-` in place of the `{device_id}`, so the ClientState resource name can be:
+                    /// `devices/-/deviceUsers/{device_user_resource_id}/clientStates/{partner_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
+                    /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
                     /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
                     /// customer to whom the device belongs.
@@ -454,7 +458,7 @@ namespace Google.Apis.CloudIdentity.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
+                    /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
                     /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
                     /// customer to whom the device belongs.
@@ -591,7 +595,7 @@ namespace Google.Apis.CloudIdentity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
+                    /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer.
                     /// If you're using this API for your own organization, use `customers/my_customer` If you're using
                     /// this API to manage another organization, use `customers/{customer_id}`, where customer_id is the
                     /// customer to whom the device belongs.
@@ -872,7 +876,7 @@ namespace Google.Apis.CloudIdentity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
                 /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
                 /// to whom the device belongs.
@@ -942,7 +946,7 @@ namespace Google.Apis.CloudIdentity.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
                 /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
                 /// to whom the device belongs.
@@ -1010,7 +1014,7 @@ namespace Google.Apis.CloudIdentity.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+                /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
                 /// you're using this API for your own organization, use `customers/my_customer` If you're using this
                 /// API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer
                 /// to whom the device belongs.
@@ -1427,7 +1431,7 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>
-            /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
             /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
             /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
             /// the device belongs.
@@ -1493,7 +1497,7 @@ namespace Google.Apis.CloudIdentity.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If
             /// you're using this API for your own organization, use `customers/my_customer` If you're using this API to
             /// manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
             /// the device belongs.
@@ -1561,7 +1565,7 @@ namespace Google.Apis.CloudIdentity.v1
             public virtual string Name { get; private set; }
 
             /// <summary>
-            /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer in the
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Customer in the
             /// format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. If
             /// you're using this API for your own organization, use `customers/my_customer`. If you're using this API
             /// to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
@@ -1618,7 +1622,7 @@ namespace Google.Apis.CloudIdentity.v1
             }
 
             /// <summary>
-            /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer in the
+            /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer in the
             /// format: `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. If
             /// you're using this API for your own organization, use `customers/my_customer`. If you're using this API
             /// to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom
@@ -3327,7 +3331,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -3354,7 +3358,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -3381,7 +3385,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -3410,7 +3414,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -3793,7 +3797,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -3822,7 +3826,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're
         /// using this API for your own organization, use `customers/my_customer` If you're using this API to manage
         /// another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device
         /// belongs.
@@ -4307,9 +4311,10 @@ namespace Google.Apis.CloudIdentity.v1.Data
     }
 
     /// <summary>
-    /// The `UserInvitation` resource represents an email sent to an unmanaged user account (an email address that
-    /// shares the domain of the Google Workspace customer but is not managed by it yet), inviting them to join the
-    /// customer’s domain. If the user accepts the `UserInvitation`, the account will become a managed account.
+    /// The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to
+    /// join the customer’s Google Workspace or Cloud Identity account. An unmanaged account shares an email address
+    /// domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the
+    /// `UserInvitation`, the user account will become managed.
     /// </summary>
     public class UserInvitation : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -4425,8 +4425,7 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> ContainerPortValue { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If specified, used to
-        /// specify which protocol to use. Allowed values are "http1" and "h2c".
+        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

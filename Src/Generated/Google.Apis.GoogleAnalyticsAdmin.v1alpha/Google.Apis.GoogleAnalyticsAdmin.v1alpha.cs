@@ -1369,6 +1369,63 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 base.InitParameters();
             }
         }
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the specified set of filters.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="account">Required. The account resource for which to return change history resources.</param>
+        public virtual SearchChangeHistoryEventsRequest SearchChangeHistoryEvents(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest body, string account)
+        {
+            return new SearchChangeHistoryEventsRequest(service, body, account);
+        }
+
+        /// <summary>
+        /// Searches through all changes to an account or its children given the specified set of filters.
+        /// </summary>
+        public class SearchChangeHistoryEventsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse>
+        {
+            /// <summary>Constructs a new SearchChangeHistoryEvents request.</summary>
+            public SearchChangeHistoryEventsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest body, string account) : base(service)
+            {
+                Account = account;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The account resource for which to return change history resources.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Account { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "searchChangeHistoryEvents";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/{+account}:searchChangeHistoryEvents";
+
+            /// <summary>Initializes SearchChangeHistoryEvents parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("account", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "account",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
     }
 
     /// <summary>The "properties" collection of methods.</summary>
@@ -4403,6 +4460,114 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A description of a change to a single Google Analytics resource.</summary>
+    public class GoogleAnalyticsAdminV1alphaChangeHistoryChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of action that changed this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Resource name of the resource whose changes are described by this entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// Resource contents from after the change was made. If this resource was deleted in this change, this field
+        /// will be missing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAfterChange")]
+        public virtual GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource ResourceAfterChange { get; set; }
+
+        /// <summary>
+        /// Resource contents from before the change was made. If this resource was created in this change, this field
+        /// will be missing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceBeforeChange")]
+        public virtual GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource ResourceBeforeChange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A snapshot of a resource as before or after the result of a change in change history.</summary>
+    public class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A snapshot of an Account resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
+
+        /// <summary>A snapshot of an AndroidAppDataStream resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidAppDataStream")]
+        public virtual GoogleAnalyticsAdminV1alphaAndroidAppDataStream AndroidAppDataStream { get; set; }
+
+        /// <summary>A snapshot of a FirebaseLink resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firebaseLink")]
+        public virtual GoogleAnalyticsAdminV1alphaFirebaseLink FirebaseLink { get; set; }
+
+        /// <summary>A snapshot of a GoogleAdsLink resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAdsLink")]
+        public virtual GoogleAnalyticsAdminV1alphaGoogleAdsLink GoogleAdsLink { get; set; }
+
+        /// <summary>A snapshot of an IosAppDataStream resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosAppDataStream")]
+        public virtual GoogleAnalyticsAdminV1alphaIosAppDataStream IosAppDataStream { get; set; }
+
+        /// <summary>A snapshot of a Property resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty Property { get; set; }
+
+        /// <summary>A snapshot of a WebDataStream resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webDataStream")]
+        public virtual GoogleAnalyticsAdminV1alphaWebDataStream WebDataStream { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of changes within a Google Analytics account or its child properties that resulted from the same cause.
+    /// Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic
+    /// Google Analytics system changes.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaChangeHistoryEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of actor that made this change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorType")]
+        public virtual string ActorType { get; set; }
+
+        /// <summary>Time when change was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeTime")]
+        public virtual object ChangeTime { get; set; }
+
+        /// <summary>
+        /// A list of changes made in this change history event that fit the filters specified in
+        /// SearchChangeHistoryEventsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaChangeHistoryChange> Changes { get; set; }
+
+        /// <summary>
+        /// If true, then the list of changes returned was filtered, and does not represent all changes that occurred in
+        /// this event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changesFiltered")]
+        public virtual System.Nullable<bool> ChangesFiltered { get; set; }
+
+        /// <summary>ID of this change history event. This ID is unique across Google Analytics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Email address of the Google account that made the change. This will be a valid email address if the actor
+        /// field is set to USER, and empty otherwise. Google accounts that have been deleted will cause an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userActorEmail")]
+        public virtual string UserActorEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Request message for CreateUserLink RPC. Users can have multiple email addresses associated with their Google
     /// account, and one of these email addresses is the "primary" email address. Any of the email addresses associated
@@ -4966,6 +5131,76 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The param to be passed in the ToS link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTicketId")]
         public virtual string AccountTicketId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SearchChangeHistoryEvents RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set, only return changes that match one or more of these types of actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual System.Collections.Generic.IList<string> Action { get; set; }
+
+        /// <summary>Optional. If set, only return changes if they are made by a user in this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorEmail")]
+        public virtual System.Collections.Generic.IList<string> ActorEmail { get; set; }
+
+        /// <summary>Optional. If set, only return changes made after this time (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestChangeTime")]
+        public virtual object EarliestChangeTime { get; set; }
+
+        /// <summary>Optional. If set, only return changes made before this time (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestChangeTime")]
+        public virtual object LatestChangeTime { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of ChangeHistoryEvent items to return. The service may return fewer than this
+        /// value, even if there are additional pages. If unspecified, at most 50 items will be returned. The maximum
+        /// value is 200 (higher values will be coerced to the maximum).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous `SearchChangeHistoryEvents` call. Provide this to retrieve
+        /// the subsequent page. When paginating, all other parameters provided to `SearchChangeHistoryEvents` must
+        /// match the call that provided the page token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Resource name for a child property. If set, only return changes made to this property or its child
+        /// resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>
+        /// Optional. If set, only return changes if they are for a resource that matches at least one of these types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual System.Collections.Generic.IList<string> ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SearchAccounts RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Results that were accessible to the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeHistoryEvents")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaChangeHistoryEvent> ChangeHistoryEvents { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

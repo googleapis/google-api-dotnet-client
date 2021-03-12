@@ -3727,7 +3727,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated and will stop working on July 1, 2021. Use the
+            /// **Note:** This method is deprecated. Use the
             /// [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
             /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
             /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a
@@ -3747,7 +3747,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated and will stop working on July 1, 2021. Use the
+            /// **Note:** This method is deprecated. Use the
             /// [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
             /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
             /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a
@@ -3804,7 +3804,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated and will stop working on July 1, 2021. Use the
+            /// **Note:** This method is deprecated. Use the
             /// [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
             /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
             /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a
@@ -3824,7 +3824,7 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// **Note:** This method is deprecated and will stop working on July 1, 2021. Use the
+            /// **Note:** This method is deprecated. Use the
             /// [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
             /// method in the IAM Service Account Credentials API instead. If you currently use this method, see the
             /// [migration guide](https://cloud.google.com/iam/help/credentials/migrate-api) for instructions. Signs a

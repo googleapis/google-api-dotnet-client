@@ -2014,6 +2014,178 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
+            /// <summary>Creates a new Site. Sites take several minutes to propagate through Firebase systems.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent Project of a Site, e.g.: `projects/{project-number}`.</param>
+            public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new Site. Sites take several minutes to propagate through Firebase systems.</summary>
+            public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent Project of a Site, e.g.: `projects/{project-number}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. Immutable. A globally unique ID to identify the Site. The ID must also be a valid domain
+                /// name label.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("siteId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string SiteId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseHosting.v1beta1.Data.Site Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/sites";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "siteId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a Site from the specified parent Project.</summary>
+            /// <param name="name">
+            /// Required. The fully qualified resource name of the Site, e.g.:
+            /// `projects/{project-number}/sites/{site-id}`.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a Site from the specified parent Project.</summary>
+            public class DeleteRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully qualified resource name of the Site, e.g.:
+                /// `projects/{project-number}/sites/{site-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sites/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets the Site identified by the specified resource name.</summary>
+            /// <param name="name">
+            /// Required. The fully qualified resource name of the Site, e.g.:
+            /// `projects/{project-number}/sites/{site-id}`. As a `site-id` is a globally unique identifier, you can
+            /// also use the unique sub-collection resource access pattern as well: `projects/-/sites/{site-id}`.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the Site identified by the specified resource name.</summary>
+            public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The fully qualified resource name of the Site, e.g.:
+                /// `projects/{project-number}/sites/{site-id}`. As a `site-id` is a globally unique identifier, you can
+                /// also use the unique sub-collection resource access pattern as well: `projects/-/sites/{site-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sites/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets the Hosting metadata for a specific site.</summary>
             /// <param name="name">
             /// Required. The site for which to get the SiteConfig, in the format: sites/ site-name/config
@@ -2059,6 +2231,164 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/sites/[^/]+/config$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists each Site associated with the specified parent Project. Sites are returned in a consistent, but
+            /// undefined, order to facilitate pagination. Site data might be out of sync by a few seconds. If you
+            /// require up-to-date data, use GetSite.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The Project that owns the sites to list, e.g.: `projects/{project-number}`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists each Site associated with the specified parent Project. Sites are returned in a consistent, but
+            /// undefined, order to facilitate pagination. Site data might be out of sync by a few seconds. If you
+            /// require up-to-date data, use GetSite.
+            /// </summary>
+            public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListSitesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Project that owns the sites to list, e.g.: `projects/{project-number}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of sites to return in the response. The server may return fewer Sites
+                /// at its discretion. If you don't specify a value or specify one that's too large, the server can
+                /// select its own value.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token from a previous call to `ListSites` that tells the server where to resume listing.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/sites";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates attributes of the Site identified by the specified resource name.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
+            /// `projects/{project-number}/sites/{site-id}`.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates attributes of the Site identified by the specified resource name.</summary>
+            public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
+                /// `projects/{project-number}/sites/{site-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>A mask that specifies which Site fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseHosting.v1beta1.Data.Site Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/sites/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -4254,6 +4584,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response from ListSites.</summary>
+    public class ListSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token returned when the list of results is too large to fit in a single response. If the string is empty,
+        /// the response is the last or only page of results. Use the token in a follow-up call to `ListSites` to find
+        /// the next group of Sites. Page tokens are short-lived and should not be stored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of Site objects from the parent Firebase Project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sites")]
+        public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListVersionFilesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary> The list of paths to the hashes of the files in the specified version.</summary>
@@ -4555,6 +4904,39 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>Defines how to handle a trailing slash in the URL path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trailingSlashBehavior")]
         public virtual string TrailingSlashBehavior { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A `Site` represents a Firebase Hosting Site.</summary>
+    public class Site : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The ID of a Web App associated with the Site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Output only. The default URL for this Hosting Site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUrl")]
+        public virtual string DefaultUrl { get; set; }
+
+        /// <summary>Optional. User-specified labels for the Hosting Site.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
+        /// `projects/{project-number}/sites/{site-id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The Hosting site type. There will always be a single DEFAULT_SITE, which is created when
+        /// Hosting is provisioned. All additional sites are USER_SITE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

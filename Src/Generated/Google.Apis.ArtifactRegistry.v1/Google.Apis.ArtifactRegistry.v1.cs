@@ -35,6 +35,7 @@ namespace Google.Apis.ArtifactRegistry.v1
         public ArtifactRegistryService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Operations = new OperationsResource(this);
+            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -84,6 +85,9 @@ namespace Google.Apis.ArtifactRegistry.v1
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for ArtifactRegistry requests.</summary>
@@ -545,6 +549,151 @@ namespace Google.Apis.ArtifactRegistry.v1
             }
         }
     }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Repositories = new RepositoriesResource(service);
+            }
+
+            /// <summary>Gets the Repositories resource.</summary>
+            public virtual RepositoriesResource Repositories { get; }
+
+            /// <summary>The "repositories" collection of methods.</summary>
+            public class RepositoriesResource
+            {
+                private const string Resource = "repositories";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RepositoriesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DockerImages = new DockerImagesResource(service);
+                }
+
+                /// <summary>Gets the DockerImages resource.</summary>
+                public virtual DockerImagesResource DockerImages { get; }
+
+                /// <summary>The "dockerImages" collection of methods.</summary>
+                public class DockerImagesResource
+                {
+                    private const string Resource = "dockerImages";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DockerImagesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists docker images.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the parent resource whose docker images will be listed.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists docker images.</summary>
+                    public class ListRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.ListDockerImagesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent resource whose docker images will be listed.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The maximum number of artifacts to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request, if any.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dockerImages";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 namespace Google.Apis.ArtifactRegistry.v1.Data
 {
@@ -568,8 +717,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// Required. registry_location, project_id, repository_name and image id forms a unique image
-        /// name:`projects//locations//repository//dockerimages/`. For example,
-        /// "projects/test-project/locations/us-west4/repositories/test-repo/dockerimages/
+        /// name:`projects//locations//repository//dockerImages/`. For example,
+        /// "projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/
         /// nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf", where "us-west4" is the
         /// registry_location, "test-project" is the project_id, "test-repo" is the repository_name and
         /// "nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf" is the image's digest.
@@ -604,6 +753,23 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from listing docker images.</summary>
+    public class ListDockerImagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The docker images returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dockerImages")]
+        public virtual System.Collections.Generic.IList<DockerImage> DockerImages { get; set; }
+
+        /// <summary>
+        /// The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

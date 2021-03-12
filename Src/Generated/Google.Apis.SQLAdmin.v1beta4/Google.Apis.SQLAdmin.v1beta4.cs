@@ -73,7 +73,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud SQL Admin API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -83,7 +83,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud SQL Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -2425,7 +2425,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
-        /// <summary>Truncate MySQL general and slow query log tables</summary>
+        /// <summary>Truncate MySQL general and slow query log tables MySQL only.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the Cloud SQL project.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -2434,7 +2434,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new TruncateLogRequest(service, body, project, instance);
         }
 
-        /// <summary>Truncate MySQL general and slow query log tables</summary>
+        /// <summary>Truncate MySQL general and slow query log tables MySQL only.</summary>
         public class TruncateLogRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new TruncateLog request.</summary>
@@ -4146,7 +4146,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Cloud SQL instance resource. Next field: 36</summary>
+    /// <summary>A Cloud SQL instance resource.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4276,9 +4276,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; }
 
-        /// <summary>
-        /// The status indicating if instance satisfies physical zone separation. Reserved for future use.
-        /// </summary>
+        /// <summary>The status indicating if instance satisfiesPzs. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -4528,7 +4526,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// database, either by using this property or by using the *csvExportOptions.selectQuery* property, which takes
         /// precedence over this property. *PostgreSQL instances:* You must specify one database to be exported. If
         /// *fileType* is *CSV*, this database must match the one specified in the *csvExportOptions.selectQuery*
-        /// property.
+        /// property. *SQL Server instances:* You must specify one database to be exported, and the *fileType* must be
+        /// *BAK*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databases")]
         public virtual System.Collections.Generic.IList<string> Databases { get; set; }
@@ -5166,7 +5165,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
     /// <summary>
     /// An Operation resource. For successful operations that return an Operation resource, only the fields relevant to
-    /// the operation are populated in the resource. Next field: 18
+    /// the operation are populated in the resource.
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5563,14 +5562,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>External primary instance migration setting error.</summary>
+    /// <summary>External primary instance migration setting error/warning.</summary>
     public class SqlExternalSyncSettingError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional information about the error encountered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; }
 
-        /// <summary>This is always *sql#migrationSettingError*.</summary>
+        /// <summary>Can be *sql#externalSyncSettingError* or *sql#externalSyncSettingWarning*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5603,6 +5602,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always *sql#migrationSettingErrorList*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>List of migration warnings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<SqlExternalSyncSettingError> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

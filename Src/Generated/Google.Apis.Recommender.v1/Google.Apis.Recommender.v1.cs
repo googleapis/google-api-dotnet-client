@@ -399,9 +399,12 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
-                    /// supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -423,9 +426,12 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID
-                        /// refers to supported insight types:
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// INSIGHT_TYPE_ID refers to supported insight types:
                         /// https://cloud.google.com/recommender/docs/insights/insight-types.)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -658,8 +664,11 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
                     /// supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -682,9 +691,13 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID
-                        /// refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                        /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// RECOMMENDER_ID refers to supported recommenders:
+                        /// https://cloud.google.com/recommender/docs/recommenders.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1090,9 +1103,12 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
-                    /// supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1114,9 +1130,12 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID
-                        /// refers to supported insight types:
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// INSIGHT_TYPE_ID refers to supported insight types:
                         /// https://cloud.google.com/recommender/docs/insights/insight-types.)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1349,8 +1368,11 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
                     /// supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -1373,9 +1395,13 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID
-                        /// refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                        /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// RECOMMENDER_ID refers to supported recommenders:
+                        /// https://cloud.google.com/recommender/docs/recommenders.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1781,9 +1807,12 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
-                    /// supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1805,9 +1834,12 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID
-                        /// refers to supported insight types:
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// INSIGHT_TYPE_ID refers to supported insight types:
                         /// https://cloud.google.com/recommender/docs/insights/insight-types.)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2040,8 +2072,11 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
                     /// supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -2064,9 +2099,13 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID
-                        /// refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                        /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// RECOMMENDER_ID refers to supported recommenders:
+                        /// https://cloud.google.com/recommender/docs/recommenders.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2472,9 +2511,12 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
-                    /// supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2496,9 +2538,12 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID
-                        /// refers to supported insight types:
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// 3. `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// INSIGHT_TYPE_ID refers to supported insight types:
                         /// https://cloud.google.com/recommender/docs/insights/insight-types.)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2731,8 +2776,11 @@ namespace Google.Apis.Recommender.v1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                    /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION here
-                    /// refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+                    /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                    /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                    /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                    /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` LOCATION
+                    /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
                     /// supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
                     /// </param>
                     public virtual ListRequest List(string parent)
@@ -2755,9 +2803,13 @@ namespace Google.Apis.Recommender.v1
 
                         /// <summary>
                         /// Required. The container resource on which to execute the request. Acceptable formats: 1.
-                        /// "projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]", LOCATION
-                        /// here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID
-                        /// refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.
+                        /// `projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 2.
+                        /// `billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 3.
+                        /// `folders/[FOLDER_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]` 4.
+                        /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// RECOMMENDER_ID refers to supported recommenders:
+                        /// https://cloud.google.com/recommender/docs/recommenders.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }

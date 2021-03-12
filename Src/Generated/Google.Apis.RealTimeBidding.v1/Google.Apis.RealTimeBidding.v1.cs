@@ -282,6 +282,7 @@ namespace Google.Apis.RealTimeBidding.v1
         {
             this.service = service;
             Creatives = new CreativesResource(service);
+            Endpoints = new EndpointsResource(service);
             PretargetingConfigs = new PretargetingConfigsResource(service);
         }
 
@@ -518,6 +519,153 @@ namespace Google.Apis.RealTimeBidding.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^bidders/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Endpoints resource.</summary>
+        public virtual EndpointsResource Endpoints { get; }
+
+        /// <summary>The "endpoints" collection of methods.</summary>
+        public class EndpointsResource
+        {
+            private const string Resource = "endpoints";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EndpointsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets a bidder endpoint by its name.</summary>
+            /// <param name="name">
+            /// Required. Name of the bidder endpoint to get. Format: `bidders/{bidderAccountId}/endpoints/{endpointId}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a bidder endpoint by its name.</summary>
+            public class GetRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.Endpoint>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the bidder endpoint to get. Format:
+                /// `bidders/{bidderAccountId}/endpoints/{endpointId}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/endpoints/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all the bidder's endpoints.</summary>
+            /// <param name="parent">
+            /// Required. Name of the bidder whose endpoints will be listed. Format: `bidders/{bidderAccountId}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the bidder's endpoints.</summary>
+            public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListEndpointsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the bidder whose endpoints will be listed. Format: `bidders/{bidderAccountId}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of endpoints to return. If unspecified, at most 100 endpoints will be returned.
+                /// The maximum value is 500; values above 500 will be coerced to 500.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. This value is received from a
+                /// previous `ListEndpoints` call in ListEndpointsResponse.nextPageToken.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/endpoints";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1331,6 +1479,112 @@ namespace Google.Apis.RealTimeBidding.v1
                         Pattern = @"^bidders/[^/]+/pretargetingConfigs/[^/]+$",
                     });
                 }
+            }
+        }
+
+        /// <summary>Gets a bidder account by its name.</summary>
+        /// <param name="name">Required. Name of the bidder to get. Format: `bidders/{bidderAccountId}`</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets a bidder account by its name.</summary>
+        public class GetRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.Bidder>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. Name of the bidder to get. Format: `bidders/{bidderAccountId}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^bidders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Lists all the bidder accounts that belong to the caller.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists all the bidder accounts that belong to the caller.</summary>
+        public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListBiddersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The maximum number of bidders to return. If unspecified, at most 100 bidders will be returned. The
+            /// maximum value is 500; values above 500 will be coerced to 500.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A token identifying a page of results the server should return. This value is received from a previous
+            /// `ListBidders` call in ListBiddersResponse.nextPageToken.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/bidders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -2186,6 +2440,51 @@ namespace Google.Apis.RealTimeBidding.v1
             }
         }
 
+        /// <summary>Gets a buyer account by its name.</summary>
+        /// <param name="name">Required. Name of the buyer to get. Format: `buyers/{buyerId}`</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Gets a buyer account by its name.</summary>
+        public class GetRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.Buyer>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. Name of the buyer to get. Format: `buyers/{buyerId}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^buyers/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>
         /// Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a
         /// web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.
@@ -2248,6 +2547,71 @@ namespace Google.Apis.RealTimeBidding.v1
                 });
             }
         }
+
+        /// <summary>
+        /// Lists all buyer account information the calling buyer user or service account is permissioned to manage.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// Lists all buyer account information the calling buyer user or service account is permissioned to manage.
+        /// </summary>
+        public class ListRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.ListBuyersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The maximum number of buyers to return. If unspecified, at most 100 buyers will be returned. The maximum
+            /// value is 500; values above 500 will be coerced to 500.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A token identifying a page of results the server should return. This value is received from a previous
+            /// `ListBuyers` call in ListBuyersResponse.nextPageToken.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/buyers";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.RealTimeBidding.v1.Data
@@ -2255,6 +2619,47 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>A request to activate a pretargeting configuration. Sets the configuration's state to ACTIVE.</summary>
     public class ActivatePretargetingConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The list of detected Ad Technology Providers for this creative. Bids placed for inventory that will serve to EEA
+    /// or UK users are expected to comply with GDPR requirements. You must ensure that the creatives used in such bids
+    /// should contain only user consented ad technology providers as indicated in the bid request. Google reserves the
+    /// right to filter non-compliant bids. User consented ad technology providers can be found in the [Google
+    /// Protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) with the
+    /// `BidRequest.adslot.consented_providers_settings` field, and can be found as an [OpenRTB
+    /// extension](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto) with the
+    /// `BidRequest.user.ext.consented_providers_settings` and `BidRequest.user.ext.consent` fields. See
+    /// https://support.google.com/authorizedbuyers/answer/9789378 for additional information about the Google TCF v2
+    /// integration.
+    /// </summary>
+    public class AdTechnologyProviders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The detected IAB Global Vendor List (GVL) IDs for this creative. See the IAB Global Vendor List at
+        /// https://vendorlist.consensu.org/v2/vendor-list.json for details about the vendors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedGvlIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedGvlIds { get; set; }
+
+        /// <summary>
+        /// The detected [Google Ad Tech Providers (ATP)](https://support.google.com/admanager/answer/9012903) for this
+        /// creative. See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID
+        /// to provided name, a privacy policy URL, and a list of domains which can be attributed to the provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedProviderIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> DetectedProviderIds { get; set; }
+
+        /// <summary>
+        /// Domains of detected unidentified ad technology providers (if any). You must ensure that the creatives used
+        /// in bids placed for inventory that will serve to EEA or UK users does not contain unidentified ad technology
+        /// providers. Google reserves the right to filter non-compliant bids.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unidentifiedProviderDomains")]
+        public virtual System.Collections.Generic.IList<string> UnidentifiedProviderDomains { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2386,6 +2791,100 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppTargeting")]
         public virtual StringTargetingDimension MobileAppTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Bidder settings.</summary>
+    public class Bidder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A flag to bypass pretargeting for private auctions and preferred deals. When true, bid requests
+        /// from these nonguaranteed deals will always be sent. When false, bid requests will be subject to regular
+        /// pretargeting configurations. Programmatic Guaranteed deals will always be sent to the bidder, regardless of
+        /// the value for this flag. Auction packages are not impacted by this value and are subject to the regular
+        /// pretargeting configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassNonguaranteedDealsPretargeting")]
+        public virtual System.Nullable<bool> BypassNonguaranteedDealsPretargeting { get; set; }
+
+        /// <summary>
+        /// Output only. The buyer's network ID used for cookie matching. This ID corresponds to the `google_nid`
+        /// parameter in the URL used in cookie match requests. Refer to
+        /// https://developers.google.com/authorized-buyers/rtb/cookie-guide for further information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cookieMatchingNetworkId")]
+        public virtual string CookieMatchingNetworkId { get; set; }
+
+        /// <summary>
+        /// Output only. The base URL used in cookie match requests. Refer to
+        /// https://developers.google.com/authorized-buyers/rtb/cookie-guide for further information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cookieMatchingUrl")]
+        public virtual string CookieMatchingUrl { get; set; }
+
+        /// <summary>
+        /// Output only. The billing ID for the deals pretargeting config. This billing ID is sent on the bid request
+        /// for guaranteed and nonguaranteed deals matched in pretargeting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dealsBillingId")]
+        public virtual string DealsBillingId { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the bidder resource that must follow the pattern `bidders/{bidderAccountId}`, where
+        /// `{bidderAccountId}` is the account ID of the bidder whose information is to be received. One can get their
+        /// account ID on the Authorized Buyers or Open Bidding UI, or by contacting their Google account manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RTB Buyer account information.</summary>
+    public class Buyer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The number of creatives that this buyer submitted via the API or bid with in the last 30 days.
+        /// This is counted against the maximum number of active creatives.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeCreativeCount")]
+        public virtual System.Nullable<long> ActiveCreativeCount { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the bidder resource that is responsible for receiving bidding traffic for this
+        /// account. The bidder name must follow the pattern `bidders/{bidderAccountId}`, where `{bidderAccountId}` is
+        /// the account ID of the bidder receiving traffic for this buyer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidder")]
+        public virtual string Bidder { get; set; }
+
+        /// <summary>
+        /// Output only. A list of billing IDs associated with this account. These IDs appear on: 1. A bid request, to
+        /// signal which buyers are eligible to bid on a given opportunity, and which pretargeting configurations were
+        /// matched for each eligible buyer. 2. The bid response, to attribute a winning impression to a specific
+        /// account for billing, reporting, policy and publisher block enforcement.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingIds")]
+        public virtual System.Collections.Generic.IList<string> BillingIds { get; set; }
+
+        /// <summary>Output only. The diplay name associated with this buyer account, as visible to sellers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The maximum number of active creatives that this buyer can have.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumActiveCreativeCount")]
+        public virtual System.Nullable<long> MaximumActiveCreativeCount { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the buyer resource that must follow the pattern `buyers/{buyerAccountId}`, where
+        /// `{buyerAccountId}` is the account ID of the buyer account whose information is to be received. One can get
+        /// their account ID on the Authorized Buyers or Open Bidding UI, or by contacting their Google account manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2545,6 +3044,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>Top level status and detected attributes of a creative.</summary>
     public class CreativeServingDecision : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The detected ad technology providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTechnologyProviders")]
+        public virtual AdTechnologyProviders AdTechnologyProviders { get; set; }
+
         /// <summary>
         /// The policy compliance of this creative in China. When approved or disapproved, this applies to both deals
         /// and open auction in China. When pending review, this creative is allowed to serve for deals but not for open
@@ -2814,6 +3317,40 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Bidder endpoint that receives bid requests.</summary>
+    public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The protocol that the bidder endpoint is using.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidProtocol")]
+        public virtual string BidProtocol { get; set; }
+
+        /// <summary>The maximum number of queries per second allowed to be sent to this server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumQps")]
+        public virtual System.Nullable<long> MaximumQps { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the endpoint resource that must follow the pattern
+        /// `bidders/{bidderAccountId}/endpoints/{endpointId}`, where {bidderAccountId} is the account ID of the bidder
+        /// who operates this endpoint, and {endpointId} is a unique ID assigned by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The trading location that bid requests should be sent from. See
+        /// https://developers.google.com/authorized-buyers/rtb/peer-guide#trading-locations for further information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tradingLocation")]
+        public virtual string TradingLocation { get; set; }
+
+        /// <summary>Output only. The URL that bid requests should be sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for a request to get remarketing tag.</summary>
     public class GetRemarketingTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2907,6 +3444,42 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response containing bidders.</summary>
+    public class ListBiddersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of bidders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidders")]
+        public virtual System.Collections.Generic.IList<Bidder> Bidders { get; set; }
+
+        /// <summary>
+        /// A token which can be passed to a subsequent call to the `ListBidders` method to retrieve the next page of
+        /// results in ListBiddersRequest.pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response containing buyer account information.</summary>
+    public class ListBuyersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of buyers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buyers")]
+        public virtual System.Collections.Generic.IList<Buyer> Buyers { get; set; }
+
+        /// <summary>
+        /// A token which can be passed to a subsequent call to the `ListBuyers` method to retrieve the next page of
+        /// results in ListBuyersRequest.pageToken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A response for listing creatives.</summary>
     public class ListCreativesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2917,6 +3490,24 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         /// <summary>
         /// A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.pageToken field in
         /// the subsequent call to the `ListCreatives` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response containing bidder endpoints.</summary>
+    public class ListEndpointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of bidder endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; }
+
+        /// <summary>
+        /// A token which can be passed to a subsequent call to the `ListEndpoints` method to retrieve the next page of
+        /// results in ListEndpointsRequest.pageToken.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

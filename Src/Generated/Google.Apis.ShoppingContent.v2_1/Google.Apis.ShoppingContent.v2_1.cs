@@ -2378,7 +2378,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
-        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest).
+        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only
+        /// possible if the authenticated account is the same as the merchant id in the request. Calling this method
+        /// multiple times will only accept Terms of Service if the latest version is not currently signed.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -2393,7 +2395,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>
         /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
-        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest).
+        /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only
+        /// possible if the authenticated account is the same as the merchant id in the request. Calling this method
+        /// multiple times will only accept Terms of Service if the latest version is not currently signed.
         /// </summary>
         public class OnboardRequest : ShoppingContentBaseServiceRequest<string>
         {
