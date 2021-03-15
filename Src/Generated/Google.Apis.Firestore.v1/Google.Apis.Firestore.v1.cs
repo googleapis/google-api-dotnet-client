@@ -506,7 +506,7 @@ namespace Google.Apis.Firestore.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// A field name of the form
+                    /// Required. A field name of the form
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
                     /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value ,
                     /// e.g. `address.city`, or a special field path. The only valid special field is `*`, which
@@ -548,7 +548,7 @@ namespace Google.Apis.Firestore.v1
                         }
 
                         /// <summary>
-                        /// A field name of the form
+                        /// Required. A field name of the form
                         /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
                         /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value
                         /// , e.g. `address.city`, or a special field path. The only valid special field is `*`, which
@@ -3292,7 +3292,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual GoogleFirestoreAdminV1IndexConfig IndexConfig { get; set; }
 
         /// <summary>
-        /// A field name of the form
+        /// Required. A field name of the form
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field
         /// path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`,
         /// or a special field path. The only valid special field is `*`, which represents any field. Field paths may be
@@ -3510,7 +3510,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string FieldPath { get; set; }
 
         /// <summary>
-        /// Indicates that this field supports ordering by the specified order or comparing using =, &amp;lt;,
+        /// Indicates that this field supports ordering by the specified order or comparing using =, !=, &amp;lt;,
         /// &amp;lt;=, &amp;gt;, &amp;gt;=.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
@@ -3679,7 +3679,7 @@ namespace Google.Apis.Firestore.v1.Data
     }
 
     /// <summary>
-    /// An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing degrees
+    /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
     /// latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must
     /// be within normalized ranges.
     /// </summary>

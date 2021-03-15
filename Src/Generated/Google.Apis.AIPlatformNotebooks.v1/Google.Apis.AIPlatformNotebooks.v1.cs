@@ -3351,6 +3351,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Response for checking if a notebook instance is upgradeable.</summary>
     public class IsInstanceUpgradeableResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The new image self link this instance will be upgraded to if calling the upgrade endpoint. This field will
+        /// only be populated if field upgradeable is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeImage")]
+        public virtual string UpgradeImage { get; set; }
+
         /// <summary>Additional information about upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeInfo")]
         public virtual string UpgradeInfo { get; set; }

@@ -2139,8 +2139,8 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
     public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Can this scheduled update be rescheduled? By default, it's true and API needs to do explicitly check whether
-        /// it's set, if it's set as false explicitly, it's false
+        /// This field will be deprecated, and will be always set to true since reschedule can happen multiple times
+        /// now.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
         public virtual System.Nullable<bool> CanReschedule { get; set; }

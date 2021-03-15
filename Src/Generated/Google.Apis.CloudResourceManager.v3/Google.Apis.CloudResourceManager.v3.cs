@@ -69,7 +69,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Resource Manager API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -79,7 +79,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Resource Manager API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -741,8 +741,8 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of TagBindings to return in the response. This is currently not used by the
-            /// server and will return the full page even if a size is specified.
+            /// Optional. The maximum number of TagBindings to return in the response. The server allows a maximum of
+            /// 300 TagBindings to return. If unspecified, the server will use 100 as the default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1093,15 +1093,15 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of TagKeys to return in the response. This is currently not used by the
-            /// server and will return the full page even if a size is specified currently.
+            /// Optional. The maximum number of TagKeys to return in the response. The server allows a maximum of 300
+            /// TagKeys to return. If unspecified, the server will use 100 as the default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
             /// Optional. A pagination token returned from a previous call to `ListTagKey` that indicates where this
-            /// listing should continue from. This is currently not used by the server.
+            /// listing should continue from.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1662,15 +1662,15 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of TagValues to return in the response. This is currently not used by the
-            /// server and will return the full page even if a size is specified currently.
+            /// Optional. The maximum number of TagValues to return in the response. The server allows a maximum of 300
+            /// TagValues to return. If unspecified, the server will use 100 as the default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
             /// Optional. A pagination token returned from a previous call to `ListTagValues` that indicates where this
-            /// listing should continue from. This is currently not used by the server.
+            /// listing should continue from.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2309,7 +2309,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     {
         /// <summary>
         /// A pagination token returned from a previous call to `ListTagBindings` that indicates from where listing
-        /// should continue. This is currently not used, but the server may at any point start supplying a valid token.
+        /// should continue.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -2327,7 +2327,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     {
         /// <summary>
         /// A pagination token returned from a previous call to `ListTagKeys` that indicates from where listing should
-        /// continue. This is currently not used, but the server may at any point start supplying a valid token.
+        /// continue.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
