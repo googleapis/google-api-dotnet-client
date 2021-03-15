@@ -2065,7 +2065,9 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Pub/Sub topic which SM will publish to when control plane events occur on this secret.</summary>
+    /// <summary>
+    /// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
+    /// </summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

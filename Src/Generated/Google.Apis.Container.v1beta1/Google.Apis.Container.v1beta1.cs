@@ -6285,7 +6285,10 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Autopilot is the configuration for Autopilot settings on the cluster.</summary>
+    /// <summary>
+    /// Autopilot is the configuration for Autopilot settings on the cluster. It is the official product name of what is
+    /// previously known as AutoGKE
+    /// </summary>
     public class Autopilot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Enable Autopilot</summary>
@@ -6497,7 +6500,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig AuthenticatorGroupsConfig { get; set; }
 
-        /// <summary>Autopilot configuration for the cluster.</summary>
+        /// <summary>
+        /// Autopilot configuration for the cluster. It has the same semantics as AutoGKE and overrides the setting in
+        /// autogke.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autopilot")]
         public virtual Autopilot Autopilot { get; set; }
 
