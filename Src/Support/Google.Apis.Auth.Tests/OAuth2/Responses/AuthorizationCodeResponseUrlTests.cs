@@ -34,6 +34,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             Assert.Null(response.ErrorUri);
             Assert.Null(response.ErrorDescription);
             Assert.Null(response.State);
+            Assert.Empty(response.AdditionalParameters.Values);
         }
 
         [Fact]
@@ -45,6 +46,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             dic["error_uri"] = "URI";
             dic["error_description"] = "DESC";
             dic["state"] = "STATE";
+            dic["another_parameter"] = "ANOTHER_PARAMETER";
 
             // Some other parameter, which is not part of the response.
             dic["another_one"] = "BLAH BLAH BLAH";
@@ -56,7 +58,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
         [Fact]
         public void TestConstructor_Query()
         {
-            string query = "code=123&error=ERR&error_uri=URI&error_description=DESC&state=STATE&other_ine=2222222222";
+            string query = "code=123&error=ERR&error_uri=URI&error_description=DESC&state=STATE&other_ine=2222222222&another_parameter=ANOTHER_PARAMETER";
             var response = new AuthorizationCodeResponseUrl(query);
             SubtestConstructor(response);
         }
@@ -68,6 +70,8 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             Assert.Equal("URI", response.ErrorUri);
             Assert.Equal("DESC", response.ErrorDescription);
             Assert.Equal("STATE", response.State);
+            Assert.Contains("another_parameter", response.AdditionalParameters.Keys);
+            Assert.Equal("ANOTHER_PARAMETER", response.AdditionalParameters["another_parameter"]);
         }
     }
 }

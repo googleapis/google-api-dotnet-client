@@ -54,6 +54,11 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// </summary>
         public string ErrorUri { get; set; }
 
+        /// <summary>
+        /// Contains any extra parameters in the authorization code response URL query string.
+        /// </summary>
+        public IDictionary<string, string> AdditionalParameters { get; set; } = new Dictionary<string, string>();
+
         /// <summary>Constructs a new authorization code response URL from the specified dictionary.</summary>
         public AuthorizationCodeResponseUrl(IDictionary<string, string> queryString)
         {
@@ -93,6 +98,10 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 if (setters.TryGetValue(pair.Key, out setter))
                 {
                     setter(pair.Value);
+                }
+                else
+                {
+                    AdditionalParameters[pair.Key] = pair.Value;
                 }
             }
         }
