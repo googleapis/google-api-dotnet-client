@@ -645,6 +645,13 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The batch response containing multiple pivot reports.</summary>
     public class BatchRunPivotReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Identifies what kind of resource this message is. This `kind` is always the fixed string
+        /// "analyticsData#batchRunPivotReports". Useful to distinguish between response types in JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>Individual responses. Each response has a separate pivot report request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivotReports")]
         public virtual System.Collections.Generic.IList<RunPivotReportResponse> PivotReports { get; set; }
@@ -677,6 +684,13 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The batch response containing multiple reports.</summary>
     public class BatchRunReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Identifies what kind of resource this message is. This `kind` is always the fixed string
+        /// "analyticsData#batchRunReports". Useful to distinguish between response types in JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>Individual responses. Each response has a separate report request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
         public virtual System.Collections.Generic.IList<RunReportResponse> Reports { get; set; }
@@ -1322,10 +1336,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> FieldNames { get; set; }
 
         /// <summary>
-        /// The number of rows to return in this pivot. If the `limit` parameter is unspecified, up to 10,000 rows are
-        /// returned. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 100,000.
-        /// For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is
-        /// `1,000,000`.
+        /// The number of rows to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common
+        /// for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not
+        /// exceed 100,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the
+        /// product is `1,000,000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1436,6 +1450,14 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrentRequests")]
         public virtual QuotaStatus ConcurrentRequests { get; set; }
+
+        /// <summary>
+        /// Analytics Properties can send up to 120 requests with potentially thresholded dimensions per hour. In a
+        /// batch request, each report request is individually counted for this quota if the request contains
+        /// potentially thresholded dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("potentiallyThresholdedRequestsPerHour")]
+        public virtual QuotaStatus PotentiallyThresholdedRequestsPerHour { get; set; }
 
         /// <summary>
         /// Standard Analytics Properties and cloud project pairs can have up to 10 server errors per hour; Analytics
@@ -1621,6 +1643,13 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionHeaders")]
         public virtual System.Collections.Generic.IList<DimensionHeader> DimensionHeaders { get; set; }
 
+        /// <summary>
+        /// Identifies what kind of resource this message is. This `kind` is always the fixed string
+        /// "analyticsData#runPivotReport". Useful to distinguish between response types in JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>Metadata for the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ResponseMetaData Metadata { get; set; }
@@ -1718,6 +1747,13 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionHeaders")]
         public virtual System.Collections.Generic.IList<DimensionHeader> DimensionHeaders { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this message is. This `kind` is always the fixed string
+        /// "analyticsData#runRealtimeReport". Useful to distinguish between response types in JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>If requested, the maximum values of metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximums")]
@@ -1867,6 +1903,13 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensionHeaders")]
         public virtual System.Collections.Generic.IList<DimensionHeader> DimensionHeaders { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this message is. This `kind` is always the fixed string
+        /// "analyticsData#runReport". Useful to distinguish between response types in JSON.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>If requested, the maximum values of metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximums")]

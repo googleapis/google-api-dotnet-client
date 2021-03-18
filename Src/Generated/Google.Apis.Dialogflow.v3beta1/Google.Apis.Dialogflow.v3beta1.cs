@@ -1250,10 +1250,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 this.service = service;
                             }
 
-                            /// <summary>
-                            /// Creates a session entity type. If the specified session entity type already exists,
-                            /// overrides the session entity type.
-                            /// </summary>
+                            /// <summary>Creates a session entity type.</summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">
                             /// Required. The session to create a session entity type for. Format:
@@ -1266,10 +1263,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 return new CreateRequest(service, body, parent);
                             }
 
-                            /// <summary>
-                            /// Creates a session entity type. If the specified session entity type already exists,
-                            /// overrides the session entity type.
-                            /// </summary>
+                            /// <summary>Creates a session entity type.</summary>
                             public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SessionEntityType>
                             {
                                 /// <summary>Constructs a new Create request.</summary>
@@ -4504,10 +4498,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                             this.service = service;
                         }
 
-                        /// <summary>
-                        /// Creates a session entity type. If the specified session entity type already exists,
-                        /// overrides the session entity type.
-                        /// </summary>
+                        /// <summary>Creates a session entity type.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The session to create a session entity type for. Format:
@@ -4520,10 +4511,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>
-                        /// Creates a session entity type. If the specified session entity type already exists,
-                        /// overrides the session entity type.
-                        /// </summary>
+                        /// <summary>Creates a session entity type.</summary>
                         public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1SessionEntityType>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -5104,6 +5092,57 @@ namespace Google.Apis.Dialogflow.v3beta1
                         public ResultsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                        }
+
+                        /// <summary>Gets a test case result.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the testcase. Format:
+                        /// `projects//locations//agents//testCases//results/`.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets a test case result.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCaseResult>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the testcase. Format:
+                            /// `projects//locations//agents//testCases//results/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/testCases/[^/]+/results/[^/]+$",
+                                });
+                            }
                         }
 
                         /// <summary>Fetches a list of results for a given test case.</summary>
@@ -11009,7 +11048,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// If natural language speech audio was provided as input, this field will contain the trascript for the audio.
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
@@ -11019,7 +11059,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string TriggerEvent { get; set; }
 
         /// <summary>
-        /// If an intent was provided as input, this field will contain a copy of the intent identifier.
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
         public virtual string TriggerIntent { get; set; }
@@ -11400,7 +11441,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Text { get; set; }
 
         /// <summary>
-        /// If natural language speech audio was provided as input, this field will contain the trascript for the audio.
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; }
@@ -11410,7 +11452,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string TriggerEvent { get; set; }
 
         /// <summary>
-        /// If an intent was provided as input, this field will contain a copy of the intent identifier.
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
         public virtual string TriggerIntent { get; set; }

@@ -306,6 +306,7 @@ namespace Google.Apis.Dialogflow.v2
                 EntityTypes = new EntityTypesResource(service);
                 Environments = new EnvironmentsResource(service);
                 Intents = new IntentsResource(service);
+                KnowledgeBases = new KnowledgeBasesResource(service);
                 Sessions = new SessionsResource(service);
             }
 
@@ -2768,6 +2769,747 @@ namespace Google.Apis.Dialogflow.v2
                 }
             }
 
+            /// <summary>Gets the KnowledgeBases resource.</summary>
+            public virtual KnowledgeBasesResource KnowledgeBases { get; }
+
+            /// <summary>The "knowledgeBases" collection of methods.</summary>
+            public class KnowledgeBasesResource
+            {
+                private const string Resource = "knowledgeBases";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public KnowledgeBasesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Documents = new DocumentsResource(service);
+                }
+
+                /// <summary>Gets the Documents resource.</summary>
+                public virtual DocumentsResource Documents { get; }
+
+                /// <summary>The "documents" collection of methods.</summary>
+                public class DocumentsResource
+                {
+                    private const string Resource = "documents";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DocumentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new document. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The knowledge base to create a document for. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new document. Operation </summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The knowledge base to create a document for. Format:
+                        /// `projects//locations//knowledgeBases/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/documents";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified document. Operation </summary>
+                    /// <param name="name">
+                    /// Required. The name of the document to delete. Format:
+                    /// `projects//locations//knowledgeBases//documents/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified document. Operation </summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the document to delete. Format:
+                        /// `projects//locations//knowledgeBases//documents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves the specified document.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the document to retrieve. Format
+                    /// `projects//locations//knowledgeBases//documents/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves the specified document.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the document to retrieve. Format
+                        /// `projects//locations//knowledgeBases//documents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                    /// <param name="parent">
+                    /// Required. The knowledge base to list all documents for. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all documents of the knowledge base.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListDocumentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The knowledge base to list all documents for. Format:
+                        /// `projects//locations//knowledgeBases/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of items to return in a single page. By default 10 and at most 100.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/documents";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the specified document. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Optional. The document resource name. The name must be empty when creating a document. Format:
+                    /// `projects//locations//knowledgeBases//documents/`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified document. Operation </summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. The document resource name. The name must be empty when creating a document.
+                        /// Format: `projects//locations//knowledgeBases//documents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Not specified means `update all`. Currently, only `display_name` can be updated,
+                        /// an InvalidArgument will be returned for attempting to update other fields.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Document Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Reloads the specified document from its specified source, content_uri or content. The previously
+                    /// loaded content of the document will be deleted. Note: Even when the content of the document has
+                    /// not changed, there still may be side effects because of internal implementation changes. Note:
+                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`. Operation
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the document to reload. Format:
+                    /// `projects//locations//knowledgeBases//documents/`
+                    /// </param>
+                    public virtual ReloadRequest Reload(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest body, string name)
+                    {
+                        return new ReloadRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Reloads the specified document from its specified source, content_uri or content. The previously
+                    /// loaded content of the document will be deleted. Note: Even when the content of the document has
+                    /// not changed, there still may be side effects because of internal implementation changes. Note:
+                    /// The `projects.agent.knowledgeBases.documents` resource is deprecated; only use
+                    /// `projects.knowledgeBases.documents`. Operation
+                    /// </summary>
+                    public class ReloadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Reload request.</summary>
+                        public ReloadRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the document to reload. Format:
+                        /// `projects//locations//knowledgeBases//documents/`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ReloadDocumentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "reload";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}:reload";
+
+                        /// <summary>Initializes Reload parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+/documents/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a knowledge base.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project to create a knowledge base for. Format: `projects//locations/`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a knowledge base.</summary>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project to create a knowledge base for. Format: `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/knowledgeBases";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified knowledge base.</summary>
+                /// <param name="name">
+                /// Required. The name of the knowledge base to delete. Format: `projects//locations//knowledgeBases/`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes the specified knowledge base.</summary>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the knowledge base to delete. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Force deletes the knowledge base. When set to true, any documents in the knowledge
+                    /// base are also deleted.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves the specified knowledge base.</summary>
+                /// <param name="name">
+                /// Required. The name of the knowledge base to retrieve. Format `projects//locations//knowledgeBases/`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves the specified knowledge base.</summary>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the knowledge base to retrieve. Format
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+                /// <param name="parent">
+                /// Required. The project to list of knowledge bases for. Format: `projects//locations/`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Returns the list of all knowledge bases of the specified agent.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListKnowledgeBasesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project to list of knowledge bases for. Format: `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of items to return in a single page. By default 10 and at most 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/knowledgeBases";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the specified knowledge base.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format:
+                /// `projects//locations//knowledgeBases/`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the specified knowledge base.</summary>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format:
+                    /// `projects//locations//knowledgeBases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an
+                    /// InvalidArgument will be returned for attempting to update other fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2KnowledgeBase Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/agent/knowledgeBases/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Sessions resource.</summary>
             public virtual SessionsResource Sessions { get; }
 
@@ -4662,7 +5404,7 @@ namespace Google.Apis.Dialogflow.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Optional. The unique identifier of this conversation profile. Format:
+            /// The unique identifier of this conversation profile. Format:
             /// `projects//locations//conversationProfiles/`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string name)
@@ -4686,7 +5428,7 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// Optional. The unique identifier of this conversation profile. Format:
+                /// The unique identifier of this conversation profile. Format:
                 /// `projects//locations//conversationProfiles/`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -6637,11 +7379,3832 @@ namespace Google.Apis.Dialogflow.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Agent = new AgentResource(service);
                 AnswerRecords = new AnswerRecordsResource(service);
                 ConversationProfiles = new ConversationProfilesResource(service);
                 Conversations = new ConversationsResource(service);
                 KnowledgeBases = new KnowledgeBasesResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the Agent resource.</summary>
+            public virtual AgentResource Agent { get; }
+
+            /// <summary>The "agent" collection of methods.</summary>
+            public class AgentResource
+            {
+                private const string Resource = "agent";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AgentResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    EntityTypes = new EntityTypesResource(service);
+                    Environments = new EnvironmentsResource(service);
+                    Intents = new IntentsResource(service);
+                    Sessions = new SessionsResource(service);
+                }
+
+                /// <summary>Gets the EntityTypes resource.</summary>
+                public virtual EntityTypesResource EntityTypes { get; }
+
+                /// <summary>The "entityTypes" collection of methods.</summary>
+                public class EntityTypesResource
+                {
+                    private const string Resource = "entityTypes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EntityTypesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Entities = new EntitiesResource(service);
+                    }
+
+                    /// <summary>Gets the Entities resource.</summary>
+                    public virtual EntitiesResource Entities { get; }
+
+                    /// <summary>The "entities" collection of methods.</summary>
+                    public class EntitiesResource
+                    {
+                        private const string Resource = "entities";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public EntitiesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Creates multiple new entities in the specified entity type. Operation </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the entity type to create entities in. Format:
+                        /// `projects//agent/entityTypes/`.
+                        /// </param>
+                        public virtual BatchCreateRequest BatchCreate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
+                        {
+                            return new BatchCreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>Creates multiple new entities in the specified entity type. Operation </summary>
+                        public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new BatchCreate request.</summary>
+                            public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the entity type to create entities in. Format:
+                            /// `projects//agent/entityTypes/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "batchCreate";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entities:batchCreate";
+
+                            /// <summary>Initializes BatchCreate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes entities in the specified entity type. Operation </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the entity type to delete entries for. Format:
+                        /// `projects//agent/entityTypes/`.
+                        /// </param>
+                        public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
+                        {
+                            return new BatchDeleteRequest(service, body, parent);
+                        }
+
+                        /// <summary>Deletes entities in the specified entity type. Operation </summary>
+                        public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new BatchDelete request.</summary>
+                            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the entity type to delete entries for. Format:
+                            /// `projects//agent/entityTypes/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "batchDelete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entities:batchDelete";
+
+                            /// <summary>Initializes BatchDelete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates or creates multiple entities in the specified entity type. This method does not
+                        /// affect entities in the entity type that aren't explicitly specified in the request.
+                        /// Operation
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the entity type to update or create entities in. Format:
+                        /// `projects//agent/entityTypes/`.
+                        /// </param>
+                        public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
+                        {
+                            return new BatchUpdateRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Updates or creates multiple entities in the specified entity type. This method does not
+                        /// affect entities in the entity type that aren't explicitly specified in the request.
+                        /// Operation
+                        /// </summary>
+                        public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new BatchUpdate request.</summary>
+                            public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the entity type to update or create entities in. Format:
+                            /// `projects//agent/entityTypes/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "batchUpdate";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entities:batchUpdate";
+
+                            /// <summary>Initializes BatchUpdate parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Deletes entity types in the specified agent. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the agent to delete all entities types for. Format: `projects//agent`.
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(service, body, parent);
+                    }
+
+                    /// <summary>Deletes entity types in the specified agent. Operation </summary>
+                    public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the agent to delete all entities types for. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/entityTypes:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates/Creates multiple entity types in the specified agent. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the agent to update or create entity types in. Format: `projects//agent`.
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
+                    {
+                        return new BatchUpdateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Updates/Creates multiple entity types in the specified agent. Operation </summary>
+                    public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the agent to update or create entity types in. Format:
+                        /// `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/entityTypes:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates an entity type in the specified agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to create a entity type for. Format: `projects//agent`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates an entity type in the specified agent.</summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to create a entity type for. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/entityTypes";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified entity type.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the entity type to delete. Format: `projects//agent/entityTypes/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified entity type.</summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the entity type to delete. Format: `projects//agent/entityTypes/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves the specified entity type.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the entity type. Format: `projects//agent/entityTypes/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves the specified entity type.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the entity type. Format: `projects//agent/entityTypes/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of all entity types in the specified agent.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent to list all entity types from. Format: `projects//agent`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all entity types in the specified agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEntityTypesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to list all entity types from. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return in a single page. By default 100 and at most
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/entityTypes";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the specified entity type.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+                    /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified entity type.</summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and
+                        /// EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Optional. The mask to control which fields get updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/entityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Environments resource.</summary>
+                public virtual EnvironmentsResource Environments { get; }
+
+                /// <summary>The "environments" collection of methods.</summary>
+                public class EnvironmentsResource
+                {
+                    private const string Resource = "environments";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EnvironmentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Users = new UsersResource(service);
+                    }
+
+                    /// <summary>Gets the Users resource.</summary>
+                    public virtual UsersResource Users { get; }
+
+                    /// <summary>The "users" collection of methods.</summary>
+                    public class UsersResource
+                    {
+                        private const string Resource = "users";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public UsersResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Sessions = new SessionsResource(service);
+                        }
+
+                        /// <summary>Gets the Sessions resource.</summary>
+                        public virtual SessionsResource Sessions { get; }
+
+                        /// <summary>The "sessions" collection of methods.</summary>
+                        public class SessionsResource
+                        {
+                            private const string Resource = "sessions";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public SessionsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Contexts = new ContextsResource(service);
+                                EntityTypes = new EntityTypesResource(service);
+                            }
+
+                            /// <summary>Gets the Contexts resource.</summary>
+                            public virtual ContextsResource Contexts { get; }
+
+                            /// <summary>The "contexts" collection of methods.</summary>
+                            public class ContextsResource
+                            {
+                                private const string Resource = "contexts";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public ContextsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Creates a context. If the specified context already exists, overrides the context.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="parent">
+                                /// Required. The session to create a context for. Format: `projects//agent/sessions/`
+                                /// or `projects//agent/environments//users//sessions/`. If `Environment ID` is not
+                                /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                                /// assume default '-' user.
+                                /// </param>
+                                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
+                                {
+                                    return new CreateRequest(service, body, parent);
+                                }
+
+                                /// <summary>
+                                /// Creates a context. If the specified context already exists, overrides the context.
+                                /// </summary>
+                                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                                {
+                                    /// <summary>Constructs a new Create request.</summary>
+                                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The session to create a context for. Format:
+                                    /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
+                                    /// If `Environment ID` is not specified, we assume default 'draft' environment. If
+                                    /// `User ID` is not specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "create";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+parent}/contexts";
+
+                                    /// <summary>Initializes Create parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Deletes the specified context.</summary>
+                                /// <param name="name">
+                                /// Required. The name of the context to delete. Format:
+                                /// `projects//agent/sessions//contexts/` or
+                                /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is
+                                /// not specified, we assume default 'draft' environment. If `User ID` is not specified,
+                                /// we assume default '-' user.
+                                /// </param>
+                                public virtual DeleteRequest Delete(string name)
+                                {
+                                    return new DeleteRequest(service, name);
+                                }
+
+                                /// <summary>Deletes the specified context.</summary>
+                                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                                {
+                                    /// <summary>Constructs a new Delete request.</summary>
+                                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The name of the context to delete. Format:
+                                    /// `projects//agent/sessions//contexts/` or
+                                    /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID`
+                                    /// is not specified, we assume default 'draft' environment. If `User ID` is not
+                                    /// specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "delete";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "DELETE";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Delete parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Retrieves the specified context.</summary>
+                                /// <param name="name">
+                                /// Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
+                                /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is
+                                /// not specified, we assume default 'draft' environment. If `User ID` is not specified,
+                                /// we assume default '-' user.
+                                /// </param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(service, name);
+                                }
+
+                                /// <summary>Retrieves the specified context.</summary>
+                                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The name of the context. Format: `projects//agent/sessions//contexts/`
+                                    /// or `projects//agent/environments//users//sessions//contexts/`. If `Environment
+                                    /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not
+                                    /// specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Returns the list of all contexts in the specified session.</summary>
+                                /// <param name="parent">
+                                /// Required. The session to list all contexts from. Format: `projects//agent/sessions/`
+                                /// or `projects//agent/environments//users//sessions/`. If `Environment ID` is not
+                                /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                                /// assume default '-' user.
+                                /// </param>
+                                public virtual ListRequest List(string parent)
+                                {
+                                    return new ListRequest(service, parent);
+                                }
+
+                                /// <summary>Returns the list of all contexts in the specified session.</summary>
+                                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
+                                {
+                                    /// <summary>Constructs a new List request.</summary>
+                                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The session to list all contexts from. Format:
+                                    /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
+                                    /// If `Environment ID` is not specified, we assume default 'draft' environment. If
+                                    /// `User ID` is not specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>
+                                    /// Optional. The maximum number of items to return in a single page. By default 100
+                                    /// and at most 1000.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. The next_page_token value returned from a previous list request.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string PageToken { get; set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "list";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+parent}/contexts";
+
+                                    /// <summary>Initializes List parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Updates the specified context.</summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="name">
+                                /// Required. The unique identifier of the context. Format:
+                                /// `projects//agent/sessions//contexts/`, or
+                                /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is
+                                /// always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may
+                                /// be at most 250 bytes long. If `Environment ID` is not specified, we assume default
+                                /// 'draft' environment. If `User ID` is not specified, we assume default '-' user. The
+                                /// following context names are reserved for internal use by Dialogflow. You should not
+                                /// use these contexts or create contexts with these names: * `__system_counters__` *
+                                /// `*_id_dialog_context` * `*_dialog_params_size`
+                                /// </param>
+                                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
+                                {
+                                    return new PatchRequest(service, body, name);
+                                }
+
+                                /// <summary>Updates the specified context.</summary>
+                                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                                {
+                                    /// <summary>Constructs a new Patch request.</summary>
+                                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The unique identifier of the context. Format:
+                                    /// `projects//agent/sessions//contexts/`, or
+                                    /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is
+                                    /// always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and
+                                    /// may be at most 250 bytes long. If `Environment ID` is not specified, we assume
+                                    /// default 'draft' environment. If `User ID` is not specified, we assume default
+                                    /// '-' user. The following context names are reserved for internal use by
+                                    /// Dialogflow. You should not use these contexts or create contexts with these
+                                    /// names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual object UpdateMask { get; set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "patch";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "PATCH";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Patch parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "updateMask",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Gets the EntityTypes resource.</summary>
+                            public virtual EntityTypesResource EntityTypes { get; }
+
+                            /// <summary>The "entityTypes" collection of methods.</summary>
+                            public class EntityTypesResource
+                            {
+                                private const string Resource = "entityTypes";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public EntityTypesResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Creates a session entity type. If the specified session entity type already exists,
+                                /// overrides the session entity type. This method doesn't work with Google Assistant
+                                /// integration. Contact Dialogflow support if you need to use session entities with
+                                /// Google Assistant integration.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="parent">
+                                /// Required. The session to create a session entity type for. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                                /// `Environment ID` is not specified, we assume default 'draft' environment. If `User
+                                /// ID` is not specified, we assume default '-' user.
+                                /// </param>
+                                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
+                                {
+                                    return new CreateRequest(service, body, parent);
+                                }
+
+                                /// <summary>
+                                /// Creates a session entity type. If the specified session entity type already exists,
+                                /// overrides the session entity type. This method doesn't work with Google Assistant
+                                /// integration. Contact Dialogflow support if you need to use session entities with
+                                /// Google Assistant integration.
+                                /// </summary>
+                                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                                {
+                                    /// <summary>Constructs a new Create request.</summary>
+                                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The session to create a session entity type for. Format:
+                                    /// `projects//agent/sessions/` or `projects//agent/environments//users//
+                                    /// sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+                                    /// environment. If `User ID` is not specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "create";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "POST";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+parent}/entityTypes";
+
+                                    /// <summary>Initializes Create parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// Deletes the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                /// <param name="name">
+                                /// Required. The name of the entity type to delete. Format:
+                                /// `projects//agent/sessions//entityTypes/` or
+                                /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID`
+                                /// is not specified, we assume default 'draft' environment. If `User ID` is not
+                                /// specified, we assume default '-' user.
+                                /// </param>
+                                public virtual DeleteRequest Delete(string name)
+                                {
+                                    return new DeleteRequest(service, name);
+                                }
+
+                                /// <summary>
+                                /// Deletes the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                                {
+                                    /// <summary>Constructs a new Delete request.</summary>
+                                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The name of the entity type to delete. Format:
+                                    /// `projects//agent/sessions//entityTypes/` or
+                                    /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment
+                                    /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not
+                                    /// specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "delete";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "DELETE";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Delete parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// Retrieves the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                /// <param name="name">
+                                /// Required. The name of the session entity type. Format:
+                                /// `projects//agent/sessions//entityTypes/` or
+                                /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID`
+                                /// is not specified, we assume default 'draft' environment. If `User ID` is not
+                                /// specified, we assume default '-' user.
+                                /// </param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(service, name);
+                                }
+
+                                /// <summary>
+                                /// Retrieves the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The name of the session entity type. Format:
+                                    /// `projects//agent/sessions//entityTypes/` or
+                                    /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment
+                                    /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not
+                                    /// specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// Returns the list of all session entity types in the specified session. This method
+                                /// doesn't work with Google Assistant integration. Contact Dialogflow support if you
+                                /// need to use session entities with Google Assistant integration.
+                                /// </summary>
+                                /// <param name="parent">
+                                /// Required. The session to list all session entity types from. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                                /// `Environment ID` is not specified, we assume default 'draft' environment. If `User
+                                /// ID` is not specified, we assume default '-' user.
+                                /// </param>
+                                public virtual ListRequest List(string parent)
+                                {
+                                    return new ListRequest(service, parent);
+                                }
+
+                                /// <summary>
+                                /// Returns the list of all session entity types in the specified session. This method
+                                /// doesn't work with Google Assistant integration. Contact Dialogflow support if you
+                                /// need to use session entities with Google Assistant integration.
+                                /// </summary>
+                                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
+                                {
+                                    /// <summary>Constructs a new List request.</summary>
+                                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The session to list all session entity types from. Format:
+                                    /// `projects//agent/sessions/` or `projects//agent/environments//users//
+                                    /// sessions/`. If `Environment ID` is not specified, we assume default 'draft'
+                                    /// environment. If `User ID` is not specified, we assume default '-' user.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>
+                                    /// Optional. The maximum number of items to return in a single page. By default 100
+                                    /// and at most 1000.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                                    /// <summary>
+                                    /// Optional. The next_page_token value returned from a previous list request.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string PageToken { get; set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "list";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+parent}/entityTypes";
+
+                                    /// <summary>Initializes List parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
+
+                                /// <summary>
+                                /// Updates the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                /// <param name="body">The body of the request.</param>
+                                /// <param name="name">
+                                /// Required. The unique identifier of this session entity type. Format:
+                                /// `projects//agent/sessions//entityTypes/`, or
+                                /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID`
+                                /// is not specified, we assume default 'draft' environment. If `User ID` is not
+                                /// specified, we assume default '-' user. `` must be the display name of an existing
+                                /// entity type in the same agent that will be overridden or supplemented.
+                                /// </param>
+                                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
+                                {
+                                    return new PatchRequest(service, body, name);
+                                }
+
+                                /// <summary>
+                                /// Updates the specified session entity type. This method doesn't work with Google
+                                /// Assistant integration. Contact Dialogflow support if you need to use session
+                                /// entities with Google Assistant integration.
+                                /// </summary>
+                                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                                {
+                                    /// <summary>Constructs a new Patch request.</summary>
+                                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        Body = body;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The unique identifier of this session entity type. Format:
+                                    /// `projects//agent/sessions//entityTypes/`, or
+                                    /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment
+                                    /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not
+                                    /// specified, we assume default '-' user. `` must be the display name of an
+                                    /// existing entity type in the same agent that will be overridden or supplemented.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual object UpdateMask { get; set; }
+
+                                    /// <summary>Gets or sets the body of this request.</summary>
+                                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
+
+                                    /// <summary>Returns the body of the request.</summary>
+                                    protected override object GetBody() => Body;
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "patch";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "PATCH";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v2/{+name}";
+
+                                    /// <summary>Initializes Patch parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "updateMask",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
+                            }
+
+                            /// <summary>Deletes all active contexts in the specified session.</summary>
+                            /// <param name="parent">
+                            /// Required. The name of the session to delete all contexts from. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                            /// `Environment ID` is not specified we assume default 'draft' environment. If `User ID` is
+                            /// not specified, we assume default '-' user.
+                            /// </param>
+                            public virtual DeleteContextsRequest DeleteContexts(string parent)
+                            {
+                                return new DeleteContextsRequest(service, parent);
+                            }
+
+                            /// <summary>Deletes all active contexts in the specified session.</summary>
+                            public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new DeleteContexts request.</summary>
+                                public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the session to delete all contexts from. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                                /// `Environment ID` is not specified we assume default 'draft' environment. If `User
+                                /// ID` is not specified, we assume default '-' user.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "deleteContexts";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "DELETE";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v2/{+parent}/contexts";
+
+                                /// <summary>Initializes DeleteContexts parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>
+                            /// Processes a natural language query and returns structured, actionable data as a result.
+                            /// This method is not idempotent, because it may cause contexts and session entity types to
+                            /// be updated, which in turn might affect results of future queries. Note: Always use agent
+                            /// versions for production traffic. See [Versions and
+                            /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="session">
+                            /// Required. The name of the session this query is sent to. Format:
+                            /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If
+                            /// `Environment ID` is not specified, we assume default 'draft' environment (`Environment
+                            /// ID` might be referred to as environment name at some places). If `User ID` is not
+                            /// specified, we are using "-". It's up to the API caller to choose an appropriate `Session
+                            /// ID` and `User Id`. They can be a random number or some type of user and session
+                            /// identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not
+                            /// exceed 36 characters. For more information, see the [API interactions
+                            /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+                            /// versions for production traffic. See [Versions and
+                            /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                            /// </param>
+                            public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
+                            {
+                                return new DetectIntentRequest(service, body, session);
+                            }
+
+                            /// <summary>
+                            /// Processes a natural language query and returns structured, actionable data as a result.
+                            /// This method is not idempotent, because it may cause contexts and session entity types to
+                            /// be updated, which in turn might affect results of future queries. Note: Always use agent
+                            /// versions for production traffic. See [Versions and
+                            /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                            /// </summary>
+                            public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
+                            {
+                                /// <summary>Constructs a new DetectIntent request.</summary>
+                                public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session) : base(service)
+                                {
+                                    Session = session;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The name of the session this query is sent to. Format:
+                                /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If
+                                /// `Environment ID` is not specified, we assume default 'draft' environment
+                                /// (`Environment ID` might be referred to as environment name at some places). If `User
+                                /// ID` is not specified, we are using "-". It's up to the API caller to choose an
+                                /// appropriate `Session ID` and `User Id`. They can be a random number or some type of
+                                /// user and session identifiers (preferably hashed). The length of the `Session ID` and
+                                /// `User ID` must not exceed 36 characters. For more information, see the [API
+                                /// interactions guide](https://cloud.google.com/dialogflow/docs/api-overview). Note:
+                                /// Always use agent versions for production traffic. See [Versions and
+                                /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Session { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "detectIntent";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v2/{+session}:detectIntent";
+
+                                /// <summary>Initializes DetectIntent parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "session",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent to list all environments from. Format: `projects//agent`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEnvironmentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to list all environments from. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return in a single page. By default 100 and at most
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/environments";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Intents resource.</summary>
+                public virtual IntentsResource Intents { get; }
+
+                /// <summary>The "intents" collection of methods.</summary>
+                public class IntentsResource
+                {
+                    private const string Resource = "intents";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public IntentsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Deletes intents in the specified agent. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the agent to delete all entities types for. Format: `projects//agent`.
+                    /// </param>
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
+                    {
+                        return new BatchDeleteRequest(service, body, parent);
+                    }
+
+                    /// <summary>Deletes intents in the specified agent. Operation </summary>
+                    public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchDelete request.</summary>
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the agent to delete all entities types for. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDelete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/intents:batchDelete";
+
+                        /// <summary>Initializes BatchDelete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates/Creates multiple intents in the specified agent. Operation </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the agent to update or create intents in. Format: `projects//agent`.
+                    /// </param>
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
+                    {
+                        return new BatchUpdateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Updates/Creates multiple intents in the specified agent. Operation </summary>
+                    public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchUpdate request.</summary>
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the agent to update or create intents in. Format: `projects//agent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchUpdate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/intents:batchUpdate";
+
+                        /// <summary>Initializes BatchUpdate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Creates an intent in the specified agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to create a intent for. Format: `projects//agent`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates an intent in the specified agent.</summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The agent to create a intent for. Format: `projects//agent`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        public enum IntentViewEnum
+                        {
+                            /// <summary>Training phrases field is not populated in the response.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
+                            INTENTVIEWUNSPECIFIED,
+
+                            /// <summary>All fields are populated.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
+                            INTENTVIEWFULL,
+                        }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/intents";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                            RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes the specified intent and its direct or indirect followup intents.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the intent to delete. If this intent has direct or indirect followup
+                    /// intents, we also delete them. Format: `projects//agent/intents/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes the specified intent and its direct or indirect followup intents.</summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the intent to delete. If this intent has direct or indirect followup
+                        /// intents, we also delete them. Format: `projects//agent/intents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves the specified intent.</summary>
+                    /// <param name="name">Required. The name of the intent. Format: `projects//agent/intents/`.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves the specified intent.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the intent. Format: `projects//agent/intents/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        public enum IntentViewEnum
+                        {
+                            /// <summary>Training phrases field is not populated in the response.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
+                            INTENTVIEWUNSPECIFIED,
+
+                            /// <summary>All fields are populated.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
+                            INTENTVIEWFULL,
+                        }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$",
+                            });
+                            RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of all intents in the specified agent.</summary>
+                    /// <param name="parent">
+                    /// Required. The agent to list all intents from. Format: `projects//agent`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all intents in the specified agent.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListIntentsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The agent to list all intents from. Format: `projects//agent`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        public enum IntentViewEnum
+                        {
+                            /// <summary>Training phrases field is not populated in the response.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
+                            INTENTVIEWUNSPECIFIED,
+
+                            /// <summary>All fields are populated.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
+                            INTENTVIEWFULL,
+                        }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of items to return in a single page. By default 100 and at most
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous list request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/intents";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent$",
+                            });
+                            RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the specified intent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
+                    /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the specified intent.</summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and
+                        /// Intents.BatchUpdateIntents methods. Format: `projects//agent/intents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
+
+                        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+                        public enum IntentViewEnum
+                        {
+                            /// <summary>Training phrases field is not populated in the response.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
+                            INTENTVIEWUNSPECIFIED,
+
+                            /// <summary>All fields are populated.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
+                            INTENTVIEWFULL,
+                        }
+
+                        /// <summary>
+                        /// Optional. The language used to access language-specific data. If not specified, the agent's
+                        /// default language is used. For more information, see [Multilingual intent and entity
+                        /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Optional. The mask to control which fields get updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/intents/[^/]+$",
+                            });
+                            RequestParameters.Add("intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Sessions resource.</summary>
+                public virtual SessionsResource Sessions { get; }
+
+                /// <summary>The "sessions" collection of methods.</summary>
+                public class SessionsResource
+                {
+                    private const string Resource = "sessions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SessionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Contexts = new ContextsResource(service);
+                        EntityTypes = new EntityTypesResource(service);
+                    }
+
+                    /// <summary>Gets the Contexts resource.</summary>
+                    public virtual ContextsResource Contexts { get; }
+
+                    /// <summary>The "contexts" collection of methods.</summary>
+                    public class ContextsResource
+                    {
+                        private const string Resource = "contexts";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ContextsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Creates a context. If the specified context already exists, overrides the context.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The session to create a context for. Format: `projects//agent/sessions/` or
+                        /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
+                        /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
+                        /// user.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a context. If the specified context already exists, overrides the context.
+                        /// </summary>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The session to create a context for. Format: `projects//agent/sessions/` or
+                            /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified,
+                            /// we assume default 'draft' environment. If `User ID` is not specified, we assume default
+                            /// '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/contexts";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Deletes the specified context.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/`
+                        /// or `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes the specified context.</summary>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the context to delete. Format:
+                            /// `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                            /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Retrieves the specified context.</summary>
+                        /// <param name="name">
+                        /// Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
+                        /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Retrieves the specified context.</summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. If `Environment ID` is not
+                            /// specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Returns the list of all contexts in the specified session.</summary>
+                        /// <param name="parent">
+                        /// Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
+                        /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
+                        /// assume default 'draft' environment. If `User ID` is not specified, we assume default '-'
+                        /// user.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Returns the list of all contexts in the specified session.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
+                            /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified,
+                            /// we assume default 'draft' environment. If `User ID` is not specified, we assume default
+                            /// '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return in a single page. By default 100 and at
+                            /// most 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The next_page_token value returned from a previous list request.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/contexts";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the specified context.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The unique identifier of the context. Format:
+                        /// `projects//agent/sessions//contexts/`, or
+                        /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always
+                        /// converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250
+                        /// bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If
+                        /// `User ID` is not specified, we assume default '-' user. The following context names are
+                        /// reserved for internal use by Dialogflow. You should not use these contexts or create
+                        /// contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
+                        /// `*_dialog_params_size`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates the specified context.</summary>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The unique identifier of the context. Format:
+                            /// `projects//agent/sessions//contexts/`, or
+                            /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always
+                            /// converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most
+                            /// 250 bytes long. If `Environment ID` is not specified, we assume default 'draft'
+                            /// environment. If `User ID` is not specified, we assume default '-' user. The following
+                            /// context names are reserved for internal use by Dialogflow. You should not use these
+                            /// contexts or create contexts with these names: * `__system_counters__` *
+                            /// `*_id_dialog_context` * `*_dialog_params_size`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. The mask to control which fields get updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the EntityTypes resource.</summary>
+                    public virtual EntityTypesResource EntityTypes { get; }
+
+                    /// <summary>The "entityTypes" collection of methods.</summary>
+                    public class EntityTypesResource
+                    {
+                        private const string Resource = "entityTypes";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public EntityTypesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Creates a session entity type. If the specified session entity type already exists,
+                        /// overrides the session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The session to create a session entity type for. Format:
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is
+                        /// not specified, we assume default '-' user.
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
+                        {
+                            return new CreateRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a session entity type. If the specified session entity type already exists,
+                        /// overrides the session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The session to create a session entity type for. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                            /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID`
+                            /// is not specified, we assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entityTypes";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the entity type to delete. Format:
+                        /// `projects//agent/sessions//entityTypes/` or
+                        /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user.
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the entity type to delete. Format:
+                            /// `projects//agent/sessions//entityTypes/` or
+                            /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is
+                            /// not specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Retrieves the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The name of the session entity type. Format:
+                        /// `projects//agent/sessions//entityTypes/` or
+                        /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user.
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Retrieves the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the session entity type. Format:
+                            /// `projects//agent/sessions//entityTypes/` or
+                            /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is
+                            /// not specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Returns the list of all session entity types in the specified session. This method doesn't
+                        /// work with Google Assistant integration. Contact Dialogflow support if you need to use
+                        /// session entities with Google Assistant integration.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. The session to list all session entity types from. Format:
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is
+                        /// not specified, we assume default '-' user.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Returns the list of all session entity types in the specified session. This method doesn't
+                        /// work with Google Assistant integration. Contact Dialogflow support if you need to use
+                        /// session entities with Google Assistant integration.
+                        /// </summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The session to list all session entity types from. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If
+                            /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID`
+                            /// is not specified, we assume default '-' user.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum number of items to return in a single page. By default 100 and at
+                            /// most 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. The next_page_token value returned from a previous list request.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entityTypes";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The unique identifier of this session entity type. Format:
+                        /// `projects//agent/sessions//entityTypes/`, or
+                        /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
+                        /// default '-' user. `` must be the display name of an existing entity type in the same agent
+                        /// that will be overridden or supplemented.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates the specified session entity type. This method doesn't work with Google Assistant
+                        /// integration. Contact Dialogflow support if you need to use session entities with Google
+                        /// Assistant integration.
+                        /// </summary>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The unique identifier of this session entity type. Format:
+                            /// `projects//agent/sessions//entityTypes/`, or
+                            /// `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is
+                            /// not specified, we assume default 'draft' environment. If `User ID` is not specified, we
+                            /// assume default '-' user. `` must be the display name of an existing entity type in the
+                            /// same agent that will be overridden or supplemented.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Optional. The mask to control which fields get updated.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Deletes all active contexts in the specified session.</summary>
+                    /// <param name="parent">
+                    /// Required. The name of the session to delete all contexts from. Format:
+                    /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment
+                    /// ID` is not specified we assume default 'draft' environment. If `User ID` is not specified, we
+                    /// assume default '-' user.
+                    /// </param>
+                    public virtual DeleteContextsRequest DeleteContexts(string parent)
+                    {
+                        return new DeleteContextsRequest(service, parent);
+                    }
+
+                    /// <summary>Deletes all active contexts in the specified session.</summary>
+                    public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new DeleteContexts request.</summary>
+                        public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the session to delete all contexts from. Format:
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If
+                        /// `Environment ID` is not specified we assume default 'draft' environment. If `User ID` is not
+                        /// specified, we assume default '-' user.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deleteContexts";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/contexts";
+
+                        /// <summary>Initializes DeleteContexts parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Processes a natural language query and returns structured, actionable data as a result. This
+                    /// method is not idempotent, because it may cause contexts and session entity types to be updated,
+                    /// which in turn might affect results of future queries. Note: Always use agent versions for
+                    /// production traffic. See [Versions and
+                    /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">
+                    /// Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or
+                    /// `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we
+                    /// assume default 'draft' environment (`Environment ID` might be referred to as environment name at
+                    /// some places). If `User ID` is not specified, we are using "-". It's up to the API caller to
+                    /// choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of
+                    /// user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID`
+                    /// must not exceed 36 characters. For more information, see the [API interactions
+                    /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions
+                    /// for production traffic. See [Versions and
+                    /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                    /// </param>
+                    public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
+                    {
+                        return new DetectIntentRequest(service, body, session);
+                    }
+
+                    /// <summary>
+                    /// Processes a natural language query and returns structured, actionable data as a result. This
+                    /// method is not idempotent, because it may cause contexts and session entity types to be updated,
+                    /// which in turn might affect results of future queries. Note: Always use agent versions for
+                    /// production traffic. See [Versions and
+                    /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                    /// </summary>
+                    public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
+                    {
+                        /// <summary>Constructs a new DetectIntent request.</summary>
+                        public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session) : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the session this query is sent to. Format:
+                        /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If
+                        /// `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID`
+                        /// might be referred to as environment name at some places). If `User ID` is not specified, we
+                        /// are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User
+                        /// Id`. They can be a random number or some type of user and session identifiers (preferably
+                        /// hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For
+                        /// more information, see the [API interactions
+                        /// guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent
+                        /// versions for production traffic. See [Versions and
+                        /// environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "detectIntent";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+session}:detectIntent";
+
+                        /// <summary>Initializes DetectIntent parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "session",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agent/sessions/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Exports the specified agent to a ZIP file. Operation </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project that the agent to export is associated with. Format: `projects/`.
+                /// </param>
+                public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
+                {
+                    return new ExportRequest(service, body, parent);
+                }
+
+                /// <summary>Exports the specified agent to a ZIP file. Operation </summary>
+                public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Export request.</summary>
+                    public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project that the agent to export is associated with. Format: `projects/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "export";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent:export";
+
+                    /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves the fulfillment.</summary>
+                /// <param name="name">
+                /// Required. The name of the fulfillment. Format: `projects//agent/fulfillment`.
+                /// </param>
+                public virtual GetFulfillmentRequest GetFulfillment(string name)
+                {
+                    return new GetFulfillmentRequest(service, name);
+                }
+
+                /// <summary>Retrieves the fulfillment.</summary>
+                public class GetFulfillmentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment>
+                {
+                    /// <summary>Constructs a new GetFulfillment request.</summary>
+                    public GetFulfillmentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the fulfillment. Format: `projects//agent/fulfillment`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getFulfillment";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes GetFulfillment parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/fulfillment$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets agent validation result. Agent validation is performed during training time and is updated
+                /// automatically when training is completed.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The project that the agent is associated with. Format: `projects/`.
+                /// </param>
+                public virtual GetValidationResultRequest GetValidationResult(string parent)
+                {
+                    return new GetValidationResultRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Gets agent validation result. Agent validation is performed during training time and is updated
+                /// automatically when training is completed.
+                /// </summary>
+                public class GetValidationResultRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ValidationResult>
+                {
+                    /// <summary>Constructs a new GetValidationResult request.</summary>
+                    public GetValidationResultRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The project that the agent is associated with. Format: `projects/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The language for which you want a validation result. If not specified, the agent's
+                    /// default language is used. [Many
+                    /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note:
+                    /// languages must be enabled in the agent before they can be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getValidationResult";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent/validationResult";
+
+                    /// <summary>Initializes GetValidationResult parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting
+                /// the existing ones. Intents and entity types with the same name are replaced with the new versions
+                /// from ImportAgentRequest. After the import, the imported draft agent will be trained automatically
+                /// (unless disabled in agent settings). However, once the import is done, training may not be completed
+                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly.
+                /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent
+                /// is updated not when it is done training.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project that the agent to import is associated with. Format: `projects/`.
+                /// </param>
+                public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
+                {
+                    return new ImportRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Imports the specified agent from a ZIP file. Uploads new intents and entity types without deleting
+                /// the existing ones. Intents and entity types with the same name are replaced with the new versions
+                /// from ImportAgentRequest. After the import, the imported draft agent will be trained automatically
+                /// (unless disabled in agent settings). However, once the import is done, training may not be completed
+                /// yet. Please call TrainAgent and wait for the operation it returns in order to train explicitly.
+                /// Operation An operation which tracks when importing is complete. It only tracks when the draft agent
+                /// is updated not when it is done training.
+                /// </summary>
+                public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project that the agent to import is associated with. Format: `projects/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All
+                /// the intents and entity types in the older version are deleted. After the restore, the restored draft
+                /// agent will be trained automatically (unless disabled in agent settings). However, once the restore
+                /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it
+                /// returns in order to train explicitly. Operation An operation which tracks when restoring is
+                /// complete. It only tracks when the draft agent is updated not when it is done training.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project that the agent to restore is associated with. Format: `projects/`.
+                /// </param>
+                public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
+                {
+                    return new RestoreRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Restores the specified agent from a ZIP file. Replaces the current agent version with a new one. All
+                /// the intents and entity types in the older version are deleted. After the restore, the restored draft
+                /// agent will be trained automatically (unless disabled in agent settings). However, once the restore
+                /// is done, training may not be completed yet. Please call TrainAgent and wait for the operation it
+                /// returns in order to train explicitly. Operation An operation which tracks when restoring is
+                /// complete. It only tracks when the draft agent is updated not when it is done training.
+                /// </summary>
+                public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Restore request.</summary>
+                    public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project that the agent to restore is associated with. Format: `projects/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "restore";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent:restore";
+
+                    /// <summary>Initializes Restore parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns the list of agents. Since there is at most one conversational agent per project, this method
+                /// is useful primarily for listing all agents across projects the caller has access to. One can achieve
+                /// that with a wildcard project collection id "-". Refer to [List
+                /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+                /// </summary>
+                /// <param name="parent">Required. The project to list agents from. Format: `projects/`.</param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Returns the list of agents. Since there is at most one conversational agent per project, this method
+                /// is useful primarily for listing all agents across projects the caller has access to. One can achieve
+                /// that with a wildcard project collection id "-". Refer to [List
+                /// Sub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
+                /// </summary>
+                public class SearchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchAgentsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The project to list agents from. Format: `projects/`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of items to return in a single page. By default 100 and at most
+                    /// 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Trains the specified agent. Operation </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project that the agent to train is associated with. Format: `projects/`.
+                /// </param>
+                public virtual TrainRequest Train(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
+                {
+                    return new TrainRequest(service, body, parent);
+                }
+
+                /// <summary>Trains the specified agent. Operation </summary>
+                public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Train request.</summary>
+                    public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project that the agent to train is associated with. Format: `projects/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "train";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/agent:train";
+
+                    /// <summary>Initializes Train parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the fulfillment.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The unique identifier of the fulfillment. Format: `projects//agent/fulfillment`.
+                /// </param>
+                public virtual UpdateFulfillmentRequest UpdateFulfillment(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name)
+                {
+                    return new UpdateFulfillmentRequest(service, body, name);
+                }
+
+                /// <summary>Updates the fulfillment.</summary>
+                public class UpdateFulfillmentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment>
+                {
+                    /// <summary>Constructs a new UpdateFulfillment request.</summary>
+                    public UpdateFulfillmentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique identifier of the fulfillment. Format: `projects//agent/fulfillment`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The mask to control which fields get updated. If the mask is not present, all fields
+                    /// will be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Fulfillment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateFulfillment";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes UpdateFulfillment parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agent/fulfillment$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the AnswerRecords resource.</summary>
@@ -7098,7 +11661,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. The unique identifier of this conversation profile. Format:
+                /// The unique identifier of this conversation profile. Format:
                 /// `projects//locations//conversationProfiles/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ConversationProfile body, string name)
@@ -7122,7 +11685,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// Optional. The unique identifier of this conversation profile. Format:
+                    /// The unique identifier of this conversation profile. Format:
                     /// `projects//locations//conversationProfiles/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9295,6 +13858,169 @@ namespace Google.Apis.Dialogflow.v2
                             Pattern = null,
                         });
                     }
+                }
+            }
+
+            /// <summary>Deletes the specified agent.</summary>
+            /// <param name="parent">
+            /// Required. The project that the agent to delete is associated with. Format: `projects/`.
+            /// </param>
+            public virtual DeleteAgentRequest DeleteAgent(string parent)
+            {
+                return new DeleteAgentRequest(service, parent);
+            }
+
+            /// <summary>Deletes the specified agent.</summary>
+            public class DeleteAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new DeleteAgent request.</summary>
+                public DeleteAgentRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project that the agent to delete is associated with. Format: `projects/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "deleteAgent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/agent";
+
+                /// <summary>Initializes DeleteAgent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the specified agent.</summary>
+            /// <param name="parent">
+            /// Required. The project that the agent to fetch is associated with. Format: `projects/`.
+            /// </param>
+            public virtual GetAgentRequest GetAgent(string parent)
+            {
+                return new GetAgentRequest(service, parent);
+            }
+
+            /// <summary>Retrieves the specified agent.</summary>
+            public class GetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent>
+            {
+                /// <summary>Constructs a new GetAgent request.</summary>
+                public GetAgentRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project that the agent to fetch is associated with. Format: `projects/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAgent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/agent";
+
+                /// <summary>Initializes GetAgent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Creates/updates the specified agent.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The project of this agent. Format: `projects/`.</param>
+            public virtual SetAgentRequest SetAgent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent)
+            {
+                return new SetAgentRequest(service, body, parent);
+            }
+
+            /// <summary>Creates/updates the specified agent.</summary>
+            public class SetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent>
+            {
+                /// <summary>Constructs a new SetAgent request.</summary>
+                public SetAgentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The project of this agent. Format: `projects/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "setAgent";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/agent";
+
+                /// <summary>Initializes SetAgent parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -13681,8 +18407,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>
-        /// Optional. The unique identifier of this conversation profile. Format:
-        /// `projects//locations//conversationProfiles/`.
+        /// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

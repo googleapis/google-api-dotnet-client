@@ -875,6 +875,17 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The long running operation metadata for SampleDataset.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3SampleDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1158,8 +1169,8 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta1Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers
-        /// use a pure binary representation, whereas JSON representations use base64.
+        /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields,
+        /// protobuffers use a pure binary representation, whereas JSON representations use base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -1201,7 +1212,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardInfo")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentShardInfo ShardInfo { get; set; }
 
-        /// <summary>UTF-8 encoded text in reading order from the document.</summary>
+        /// <summary>Optional. UTF-8 encoded text in reading order from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -1217,16 +1228,9 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentStyle> TextStyles { get; set; }
 
         /// <summary>
-        /// A list of translations on Document.text. For document shards, translations in this list may cross shard
-        /// boundaries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("translations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentTranslation> Translations { get; set; }
-
-        /// <summary>
-        /// Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is
-        /// not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-        /// for more info.
+        /// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object
+        /// versioning is not supported. See [Google Cloud Storage Request
+        /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -1248,11 +1252,11 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Deprecated. Use `id` field instead.</summary>
+        /// <summary>Optional. Deprecated. Use `id` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -1285,7 +1289,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redacted")]
         public virtual System.Nullable<bool> Redacted { get; set; }
 
-        /// <summary>Provenance of the entity. Text anchor indexing into the Document.text.</summary>
+        /// <summary>Optional. Provenance of the entity. Text anchor indexing into the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
 
@@ -2032,36 +2036,6 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A translation of the text segment.</summary>
-    public class GoogleCloudDocumentaiV1beta1DocumentTranslation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The history of this annotation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentProvenance> Provenance { get; set; }
-
-        /// <summary>
-        /// Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single
-        /// `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text
-        /// change is inserted before that index.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
-        public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
-
-        /// <summary>Text translated into the target language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
-        public virtual string TranslatedText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The Google Cloud Storage location where the output file will be written to.</summary>
     public class GoogleCloudDocumentaiV1beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2268,8 +2242,8 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta2Document : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers
-        /// use a pure binary representation, whereas JSON representations use base64.
+        /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields,
+        /// protobuffers use a pure binary representation, whereas JSON representations use base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -2315,7 +2289,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardInfo")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentShardInfo ShardInfo { get; set; }
 
-        /// <summary>UTF-8 encoded text in reading order from the document.</summary>
+        /// <summary>Optional. UTF-8 encoded text in reading order from the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -2331,16 +2305,9 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentStyle> TextStyles { get; set; }
 
         /// <summary>
-        /// A list of translations on Document.text. For document shards, translations in this list may cross shard
-        /// boundaries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("translations")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentTranslation> Translations { get; set; }
-
-        /// <summary>
-        /// Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is
-        /// not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-        /// for more info.
+        /// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object
+        /// versioning is not supported. See [Google Cloud Storage Request
+        /// URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -2362,11 +2329,11 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Deprecated. Use `id` field instead.</summary>
+        /// <summary>Optional. Deprecated. Use `id` field instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionId")]
         public virtual string MentionId { get; set; }
 
-        /// <summary>Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
+        /// <summary>Optional. Text value in the document e.g. `1600 Amphitheatre Pkwy`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mentionText")]
         public virtual string MentionText { get; set; }
 
@@ -2399,7 +2366,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redacted")]
         public virtual System.Nullable<bool> Redacted { get; set; }
 
-        /// <summary>Provenance of the entity. Text anchor indexing into the Document.text.</summary>
+        /// <summary>Optional. Provenance of the entity. Text anchor indexing into the Document.text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
 
@@ -3170,36 +3137,6 @@ namespace Google.Apis.Document.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A translation of the text segment.</summary>
-    public class GoogleCloudDocumentaiV1beta2DocumentTranslation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see
-        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>The history of this annotation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentProvenance> Provenance { get; set; }
-
-        /// <summary>
-        /// Provenance of the translation. Text anchor indexing into the Document.text. There can only be a single
-        /// `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text
-        /// change is inserted before that index.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAnchor")]
-        public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
-
-        /// <summary>Text translated into the target language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
-        public virtual string TranslatedText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

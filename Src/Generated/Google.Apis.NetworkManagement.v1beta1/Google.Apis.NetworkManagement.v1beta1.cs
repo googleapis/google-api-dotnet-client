@@ -65,14 +65,14 @@ namespace Google.Apis.NetworkManagement.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Network Management API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Network Management API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1367,15 +1367,23 @@ namespace Google.Apis.NetworkManagement.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1500,9 +1508,6 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("bindingId")]
-        public virtual string BindingId { get; set; }
-
         /// <summary>
         /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
         /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
@@ -1851,7 +1856,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>For display only. Metadata associated with a Compute Engine firewall rule.</summary>
+    /// <summary>
+    /// For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a hierarchical
+    /// firewall policy rule.
+    /// </summary>
     public class FirewallInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Possible values: ALLOW, DENY</summary>
@@ -1862,27 +1870,50 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>Name of a Compute Engine firewall rule.</summary>
+        /// <summary>
+        /// The display name of the VPC firewall rule. This field is not applicable to hierarchical firewall policy
+        /// rules.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>URI of a Compute Engine network.</summary>
+        /// <summary>The firewall rule's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firewallRuleType")]
+        public virtual string FirewallRuleType { get; set; }
+
+        /// <summary>
+        /// The URI of the VPC network that the firewall rule is associated with. This field is not applicable to
+        /// hierarchical firewall policy rules.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>Priority of the firewall rule.</summary>
+        /// <summary>
+        /// The hierarchical firewall policy that this rule is associated with. This field is not applicable to VPC
+        /// firewall rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The priority of the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual System.Nullable<int> Priority { get; set; }
 
-        /// <summary>Target service accounts of the firewall rule.</summary>
+        /// <summary>The target service accounts specified by the firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; }
 
-        /// <summary>Target tags of the firewall rule.</summary>
+        /// <summary>
+        /// The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall
+        /// policy rules.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
         public virtual System.Collections.Generic.IList<string> TargetTags { get; set; }
 
-        /// <summary>URI of a Compute Engine firewall rule. Implied default rule does not have URI.</summary>
+        /// <summary>
+        /// The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical
+        /// firewall policy rules.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -2329,31 +2360,30 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>The details of probing from the latest run.</summary>
+    /// <summary>Results of active probing from the last run of the test.</summary>
     public class ProbingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Causes that the probing was aborted.</summary>
+        /// <summary>The reason probing was aborted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abortCause")]
         public virtual string AbortCause { get; set; }
 
         /// <summary>
-        /// Derived from the test input. The actual source and destination endpoint where the probing was run.
+        /// The source and destination endpoints derived from the test input and used for active probing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointInfo")]
         public virtual EndpointInfo EndpointInfo { get; set; }
 
-        /// <summary>The details of an internal failure or a cancellation of reachability analysis.</summary>
+        /// <summary>Details about an internal failure or the cancellation of active probing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
         /// <summary>
-        /// One way probing latency distribution. The latency is measured as duration of packet traversal of Google
-        /// Cloud network, from source to destination endpoint.
+        /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probingLatency")]
         public virtual LatencyDistribution ProbingLatency { get; set; }
 
-        /// <summary>The overall reachability result of the test.</summary>
+        /// <summary>The overall result of active probing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
 
@@ -2361,11 +2391,11 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sentProbeCount")]
         public virtual System.Nullable<int> SentProbeCount { get; set; }
 
-        /// <summary>Number of probes that reached destination.</summary>
+        /// <summary>Number of probes that reached the destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successfulProbeCount")]
         public virtual System.Nullable<int> SuccessfulProbeCount { get; set; }
 
-        /// <summary>The time the reachability state was verified.</summary>
+        /// <summary>The time that reachability was assessed through active probing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
         public virtual object VerifyTime { get; set; }
 
@@ -2373,14 +2403,14 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details of reachability state from the latest run.</summary>
+    /// <summary>Results of the configuration analysis from the last run of the test.</summary>
     public class ReachabilityDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The details of a failure or a cancellation of reachability analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
-        /// <summary>The overall reachability result of the test.</summary>
+        /// <summary>The overall result of the test's configuration analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
 
@@ -2391,7 +2421,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("traces")]
         public virtual System.Collections.Generic.IList<Trace> Traces { get; set; }
 
-        /// <summary>The time the reachability state was verified.</summary>
+        /// <summary>The time of the configuration analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
         public virtual object VerifyTime { get; set; }
 
@@ -2534,7 +2564,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual DropInfo Drop { get; set; }
 
         /// <summary>
-        /// Display info of the source and destination under analysis. The endpiont info in an intermediate state may
+        /// Display info of the source and destination under analysis. The endpoint info in an intermediate state may
         /// differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
@@ -2619,10 +2649,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     }
 
     /// <summary>
-    /// Trace represents one simulated packet forwarding path. - Each trace contains multiple ordered steps. - Each step
-    /// is in a particular state and has an associated configuration. - State is categorized as a final or non-final
-    /// state. - Each final state has a reason associated with it. - Each trace must end with a final state (the last
-    /// step). |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))
+    /// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step
+    /// is in a particular state with associated configuration. * State is categorized as final or non-final states. *
+    /// Each final state has a reason associated. * Each trace must end with a final state (the last step). ```
+    /// |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
     /// </summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {

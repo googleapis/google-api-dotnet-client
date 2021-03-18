@@ -75,13 +75,13 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri =>
         #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET45
-            BaseUriOverride ?? "https://shoppingcontent.googleapis.com/";
+            BaseUriOverride ?? "https://shoppingcontent.googleapis.com/content/v2.1/";
         #else
-            "https://shoppingcontent.googleapis.com/";
+            "https://shoppingcontent.googleapis.com/content/v2.1/";
         #endif
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "";
+        public override string BasePath => "content/v2.1/";
 
         #if !NET40
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
@@ -453,7 +453,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/credentials";
+                public override string RestPath => "accounts/{accountId}/credentials";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -524,7 +524,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/labels";
+                public override string RestPath => "accounts/{accountId}/labels";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -575,7 +575,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/labels/{labelId}";
+                public override string RestPath => "accounts/{accountId}/labels/{labelId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -644,7 +644,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/labels";
+                public override string RestPath => "accounts/{accountId}/labels";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -719,7 +719,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/labels/{labelId}";
+                public override string RestPath => "accounts/{accountId}/labels/{labelId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -802,7 +802,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier";
+                public override string RestPath => "accounts/{accountId}/returncarrier";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -859,7 +859,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "DELETE";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}";
+                public override string RestPath => "accounts/{accountId}/returncarrier/{carrierAccountId}";
 
                 /// <summary>Initializes Delete parameter list.</summary>
                 protected override void InitParameters()
@@ -916,7 +916,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier";
+                public override string RestPath => "accounts/{accountId}/returncarrier";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -981,7 +981,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "PATCH";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/accounts/{accountId}/returncarrier/{carrierAccountId}";
+                public override string RestPath => "accounts/{accountId}/returncarrier/{carrierAccountId}";
 
                 /// <summary>Initializes Patch parameter list.</summary>
                 protected override void InitParameters()
@@ -1029,7 +1029,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/accounts/authinfo";
+            public override string RestPath => "accounts/authinfo";
 
             /// <summary>Initializes Authinfo parameter list.</summary>
             protected override void InitParameters()
@@ -1085,7 +1085,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}/claimwebsite";
+            public override string RestPath => "{merchantId}/accounts/{accountId}/claimwebsite";
 
             /// <summary>Initializes Claimwebsite parameter list.</summary>
             protected override void InitParameters()
@@ -1152,7 +1152,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/accounts/batch";
+            public override string RestPath => "accounts/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -1205,7 +1205,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}";
+            public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1300,7 +1300,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}";
+            public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1369,7 +1369,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts";
+            public override string RestPath => "{merchantId}/accounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1438,7 +1438,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}/link";
+            public override string RestPath => "{merchantId}/accounts/{accountId}/link";
 
             /// <summary>Initializes Link parameter list.</summary>
             protected override void InitParameters()
@@ -1525,7 +1525,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts";
+            public override string RestPath => "{merchantId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1622,7 +1622,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}/listlinks";
+            public override string RestPath => "{merchantId}/accounts/{accountId}/listlinks";
 
             /// <summary>Initializes Listlinks parameter list.</summary>
             protected override void InitParameters()
@@ -1715,7 +1715,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}";
+            public override string RestPath => "{merchantId}/accounts/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1782,7 +1782,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounts/{accountId}/updatelabels";
+            public override string RestPath => "{merchantId}/accounts/{accountId}/updatelabels";
 
             /// <summary>Initializes Updatelabels parameter list.</summary>
             protected override void InitParameters()
@@ -1852,7 +1852,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/accountstatuses/batch";
+            public override string RestPath => "accountstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -1914,7 +1914,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accountstatuses/{accountId}";
+            public override string RestPath => "{merchantId}/accountstatuses/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1990,7 +1990,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accountstatuses";
+            public override string RestPath => "{merchantId}/accountstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2076,7 +2076,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/accounttax/batch";
+            public override string RestPath => "accounttax/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -2125,7 +2125,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounttax/{accountId}";
+            public override string RestPath => "{merchantId}/accounttax/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2186,7 +2186,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounttax";
+            public override string RestPath => "{merchantId}/accounttax";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2271,7 +2271,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/accounttax/{accountId}";
+            public override string RestPath => "{merchantId}/accounttax/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2351,7 +2351,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}";
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2434,7 +2434,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/buyongoogleprograms/{regionCode}/onboard";
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}/onboard";
 
             /// <summary>Initializes Onboard parameter list.</summary>
             protected override void InitParameters()
@@ -2523,7 +2523,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collections";
+            public override string RestPath => "{merchantId}/collections";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -2583,7 +2583,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collections/{collectionId}";
+            public override string RestPath => "{merchantId}/collections/{collectionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2647,7 +2647,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collections/{collectionId}";
+            public override string RestPath => "{merchantId}/collections/{collectionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2725,7 +2725,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collections";
+            public override string RestPath => "{merchantId}/collections";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2816,7 +2816,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collectionstatuses/{collectionId}";
+            public override string RestPath => "{merchantId}/collectionstatuses/{collectionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2888,7 +2888,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/collectionstatuses";
+            public override string RestPath => "{merchantId}/collectionstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2978,7 +2978,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{cssGroupId}/csses/{cssDomainId}";
+            public override string RestPath => "{cssGroupId}/csses/{cssDomainId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3047,7 +3047,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{cssGroupId}/csses";
+            public override string RestPath => "{cssGroupId}/csses";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3122,7 +3122,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{cssGroupId}/csses/{cssDomainId}/updatelabels";
+            public override string RestPath => "{cssGroupId}/csses/{cssDomainId}/updatelabels";
 
             /// <summary>Initializes Updatelabels parameter list.</summary>
             protected override void InitParameters()
@@ -3192,7 +3192,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/datafeeds/batch";
+            public override string RestPath => "datafeeds/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -3239,7 +3239,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds/{datafeedId}";
+            public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -3308,7 +3308,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds/{datafeedId}/fetchNow";
+            public override string RestPath => "{merchantId}/datafeeds/{datafeedId}/fetchNow";
 
             /// <summary>Initializes Fetchnow parameter list.</summary>
             protected override void InitParameters()
@@ -3371,7 +3371,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds/{datafeedId}";
+            public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3436,7 +3436,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds";
+            public override string RestPath => "{merchantId}/datafeeds";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3493,7 +3493,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds";
+            public override string RestPath => "{merchantId}/datafeeds";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3578,7 +3578,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeeds/{datafeedId}";
+            public override string RestPath => "{merchantId}/datafeeds/{datafeedId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3648,7 +3648,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/datafeedstatuses/batch";
+            public override string RestPath => "datafeedstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -3711,7 +3711,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeedstatuses/{datafeedId}";
+            public override string RestPath => "{merchantId}/datafeedstatuses/{datafeedId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3792,7 +3792,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/datafeedstatuses";
+            public override string RestPath => "{merchantId}/datafeedstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3870,7 +3870,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/liasettings/batch";
+            public override string RestPath => "liasettings/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -3919,7 +3919,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3986,7 +3986,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}/accessiblegmbaccounts";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts";
 
             /// <summary>Initializes Getaccessiblegmbaccounts parameter list.</summary>
             protected override void InitParameters()
@@ -4047,7 +4047,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings";
+            public override string RestPath => "{merchantId}/liasettings";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4106,7 +4106,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/liasettings/posdataproviders";
+            public override string RestPath => "liasettings/posdataproviders";
 
             /// <summary>Initializes Listposdataproviders parameter list.</summary>
             protected override void InitParameters()
@@ -4161,7 +4161,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}/requestgmbaccess";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/requestgmbaccess";
 
             /// <summary>Initializes Requestgmbaccess parameter list.</summary>
             protected override void InitParameters()
@@ -4242,7 +4242,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}";
 
             /// <summary>Initializes Requestinventoryverification parameter list.</summary>
             protected override void InitParameters()
@@ -4341,7 +4341,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}/setinventoryverificationcontact";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact";
 
             /// <summary>Initializes Setinventoryverificationcontact parameter list.</summary>
             protected override void InitParameters()
@@ -4454,7 +4454,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}/setposdataprovider";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/setposdataprovider";
 
             /// <summary>Initializes Setposdataprovider parameter list.</summary>
             protected override void InitParameters()
@@ -4555,7 +4555,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/liasettings/{accountId}";
+            public override string RestPath => "{merchantId}/liasettings/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -4625,7 +4625,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/localinventory/batch";
+            public override string RestPath => "localinventory/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -4680,7 +4680,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products/{productId}/localinventory";
+            public override string RestPath => "{merchantId}/products/{productId}/localinventory";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4770,7 +4770,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderinvoices/{orderId}/createChargeInvoice";
+            public override string RestPath => "{merchantId}/orderinvoices/{orderId}/createChargeInvoice";
 
             /// <summary>Initializes Createchargeinvoice parameter list.</summary>
             protected override void InitParameters()
@@ -4847,7 +4847,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderinvoices/{orderId}/createRefundInvoice";
+            public override string RestPath => "{merchantId}/orderinvoices/{orderId}/createRefundInvoice";
 
             /// <summary>Initializes Createrefundinvoice parameter list.</summary>
             protected override void InitParameters()
@@ -4935,7 +4935,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreports/disbursements";
+            public override string RestPath => "{merchantId}/orderreports/disbursements";
 
             /// <summary>Initializes Listdisbursements parameter list.</summary>
             protected override void InitParameters()
@@ -5038,7 +5038,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreports/disbursements/{disbursementId}/transactions";
+            public override string RestPath => "{merchantId}/orderreports/disbursements/{disbursementId}/transactions";
 
             /// <summary>Initializes Listtransactions parameter list.</summary>
             protected override void InitParameters()
@@ -5154,7 +5154,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreturns/{returnId}/acknowledge";
+            public override string RestPath => "{merchantId}/orderreturns/{returnId}/acknowledge";
 
             /// <summary>Initializes Acknowledge parameter list.</summary>
             protected override void InitParameters()
@@ -5217,7 +5217,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreturns/createOrderReturn";
+            public override string RestPath => "{merchantId}/orderreturns/createOrderReturn";
 
             /// <summary>Initializes Createorderreturn parameter list.</summary>
             protected override void InitParameters()
@@ -5270,7 +5270,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreturns/{returnId}";
+            public override string RestPath => "{merchantId}/orderreturns/{returnId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5475,7 +5475,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreturns";
+            public override string RestPath => "{merchantId}/orderreturns";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5624,7 +5624,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orderreturns/{returnId}/process";
+            public override string RestPath => "{merchantId}/orderreturns/{returnId}/process";
 
             /// <summary>Initializes Process parameter list.</summary>
             protected override void InitParameters()
@@ -5708,7 +5708,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/acknowledge";
+            public override string RestPath => "{merchantId}/orders/{orderId}/acknowledge";
 
             /// <summary>Initializes Acknowledge parameter list.</summary>
             protected override void InitParameters()
@@ -5769,7 +5769,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/testorders/{orderId}/advance";
+            public override string RestPath => "{merchantId}/testorders/{orderId}/advance";
 
             /// <summary>Initializes Advancetestorder parameter list.</summary>
             protected override void InitParameters()
@@ -5838,7 +5838,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/cancel";
+            public override string RestPath => "{merchantId}/orders/{orderId}/cancel";
 
             /// <summary>Initializes Cancel parameter list.</summary>
             protected override void InitParameters()
@@ -5907,7 +5907,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/cancelLineItem";
+            public override string RestPath => "{merchantId}/orders/{orderId}/cancelLineItem";
 
             /// <summary>Initializes Cancellineitem parameter list.</summary>
             protected override void InitParameters()
@@ -5976,7 +5976,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/testorders/{orderId}/cancelByCustomer";
+            public override string RestPath => "{merchantId}/testorders/{orderId}/cancelByCustomer";
 
             /// <summary>Initializes Canceltestorderbycustomer parameter list.</summary>
             protected override void InitParameters()
@@ -6041,7 +6041,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/testorders";
+            public override string RestPath => "{merchantId}/testorders";
 
             /// <summary>Initializes Createtestorder parameter list.</summary>
             protected override void InitParameters()
@@ -6102,7 +6102,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/testreturn";
+            public override string RestPath => "{merchantId}/orders/{orderId}/testreturn";
 
             /// <summary>Initializes Createtestreturn parameter list.</summary>
             protected override void InitParameters()
@@ -6163,7 +6163,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}";
+            public override string RestPath => "{merchantId}/orders/{orderId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6224,7 +6224,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/ordersbymerchantid/{merchantOrderId}";
+            public override string RestPath => "{merchantId}/ordersbymerchantid/{merchantOrderId}";
 
             /// <summary>Initializes Getbymerchantorderid parameter list.</summary>
             protected override void InitParameters()
@@ -6323,7 +6323,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/testordertemplates/{templateName}";
+            public override string RestPath => "{merchantId}/testordertemplates/{templateName}";
 
             /// <summary>Initializes Gettestordertemplate parameter list.</summary>
             protected override void InitParameters()
@@ -6414,7 +6414,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/inStoreRefundLineItem";
+            public override string RestPath => "{merchantId}/orders/{orderId}/inStoreRefundLineItem";
 
             /// <summary>Initializes Instorerefundlineitem parameter list.</summary>
             protected override void InitParameters()
@@ -6564,7 +6564,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders";
+            public override string RestPath => "{merchantId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6681,7 +6681,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/refunditem";
+            public override string RestPath => "{merchantId}/orders/{orderId}/refunditem";
 
             /// <summary>Initializes Refunditem parameter list.</summary>
             protected override void InitParameters()
@@ -6750,7 +6750,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/refundorder";
+            public override string RestPath => "{merchantId}/orders/{orderId}/refundorder";
 
             /// <summary>Initializes Refundorder parameter list.</summary>
             protected override void InitParameters()
@@ -6819,7 +6819,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/rejectReturnLineItem";
+            public override string RestPath => "{merchantId}/orders/{orderId}/rejectReturnLineItem";
 
             /// <summary>Initializes Rejectreturnlineitem parameter list.</summary>
             protected override void InitParameters()
@@ -6900,7 +6900,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/returnRefundLineItem";
+            public override string RestPath => "{merchantId}/orders/{orderId}/returnRefundLineItem";
 
             /// <summary>Initializes Returnrefundlineitem parameter list.</summary>
             protected override void InitParameters()
@@ -6977,7 +6977,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/setLineItemMetadata";
+            public override string RestPath => "{merchantId}/orders/{orderId}/setLineItemMetadata";
 
             /// <summary>Initializes Setlineitemmetadata parameter list.</summary>
             protected override void InitParameters()
@@ -7046,7 +7046,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/shipLineItems";
+            public override string RestPath => "{merchantId}/orders/{orderId}/shipLineItems";
 
             /// <summary>Initializes Shiplineitems parameter list.</summary>
             protected override void InitParameters()
@@ -7115,7 +7115,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/updateLineItemShippingDetails";
+            public override string RestPath => "{merchantId}/orders/{orderId}/updateLineItemShippingDetails";
 
             /// <summary>Initializes Updatelineitemshippingdetails parameter list.</summary>
             protected override void InitParameters()
@@ -7184,7 +7184,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/updateMerchantOrderId";
+            public override string RestPath => "{merchantId}/orders/{orderId}/updateMerchantOrderId";
 
             /// <summary>Initializes Updatemerchantorderid parameter list.</summary>
             protected override void InitParameters()
@@ -7253,7 +7253,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/orders/{orderId}/updateShipment";
+            public override string RestPath => "{merchantId}/orders/{orderId}/updateShipment";
 
             /// <summary>Initializes Updateshipment parameter list.</summary>
             protected override void InitParameters()
@@ -7329,7 +7329,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/ordertrackingsignals";
+            public override string RestPath => "{merchantId}/ordertrackingsignals";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -7391,7 +7391,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/pos/batch";
+            public override string RestPath => "pos/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -7440,7 +7440,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7513,7 +7513,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store/{storeCode}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7588,7 +7588,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/store";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7655,7 +7655,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/inventory";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/inventory";
 
             /// <summary>Initializes Inventory parameter list.</summary>
             protected override void InitParameters()
@@ -7714,7 +7714,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/store";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/store";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7781,7 +7781,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pos/{targetMerchantId}/sale";
+            public override string RestPath => "{merchantId}/pos/{targetMerchantId}/sale";
 
             /// <summary>Initializes Sale parameter list.</summary>
             protected override void InitParameters()
@@ -7851,7 +7851,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/products/batch";
+            public override string RestPath => "products/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -7902,7 +7902,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products/{productId}";
+            public override string RestPath => "{merchantId}/products/{productId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7973,7 +7973,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products/{productId}";
+            public override string RestPath => "{merchantId}/products/{productId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8048,7 +8048,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products";
+            public override string RestPath => "{merchantId}/products";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8119,7 +8119,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products";
+            public override string RestPath => "{merchantId}/products";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8260,7 +8260,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/{merchantId}/productstatuses/{productId}/repricingreports";
+                public override string RestPath => "{merchantId}/productstatuses/{productId}/repricingreports";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -8356,7 +8356,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/productstatuses/batch";
+            public override string RestPath => "productstatuses/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -8410,7 +8410,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/productstatuses/{productId}";
+            public override string RestPath => "{merchantId}/productstatuses/{productId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8490,7 +8490,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/productstatuses";
+            public override string RestPath => "{merchantId}/productstatuses";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8574,7 +8574,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pubsubnotificationsettings";
+            public override string RestPath => "{merchantId}/pubsubnotificationsettings";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8633,7 +8633,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/pubsubnotificationsettings";
+            public override string RestPath => "{merchantId}/pubsubnotificationsettings";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8695,7 +8695,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/regionalinventory/batch";
+            public override string RestPath => "regionalinventory/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -8756,7 +8756,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/products/{productId}/regionalinventory";
+            public override string RestPath => "{merchantId}/products/{productId}/regionalinventory";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8836,7 +8836,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/regions";
+            public override string RestPath => "{merchantId}/regions";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -8895,7 +8895,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+            public override string RestPath => "{merchantId}/regions/{regionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8954,7 +8954,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+            public override string RestPath => "{merchantId}/regions/{regionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9022,7 +9022,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/regions";
+            public override string RestPath => "{merchantId}/regions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9101,7 +9101,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/regions/{regionId}";
+            public override string RestPath => "{merchantId}/regions/{regionId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -9195,7 +9195,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/reports/search";
+            public override string RestPath => "{merchantId}/reports/search";
 
             /// <summary>Initializes Search parameter list.</summary>
             protected override void InitParameters()
@@ -9309,7 +9309,7 @@ namespace Google.Apis.ShoppingContent.v2_1
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "content/v2.1/{merchantId}/repricingrules/{ruleId}/repricingreports";
+                public override string RestPath => "{merchantId}/repricingrules/{ruleId}/repricingreports";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -9407,7 +9407,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/repricingrules";
+            public override string RestPath => "{merchantId}/repricingrules";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -9466,7 +9466,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/repricingrules/{ruleId}";
+            public override string RestPath => "{merchantId}/repricingrules/{ruleId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9525,7 +9525,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/repricingrules/{ruleId}";
+            public override string RestPath => "{merchantId}/repricingrules/{ruleId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9607,7 +9607,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/repricingrules";
+            public override string RestPath => "{merchantId}/repricingrules";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9708,7 +9708,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/repricingrules/{ruleId}";
+            public override string RestPath => "{merchantId}/repricingrules/{ruleId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -9778,7 +9778,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/returnaddress/batch";
+            public override string RestPath => "returnaddress/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -9821,7 +9821,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnaddress/{returnAddressId}";
+            public override string RestPath => "{merchantId}/returnaddress/{returnAddressId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9880,7 +9880,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnaddress/{returnAddressId}";
+            public override string RestPath => "{merchantId}/returnaddress/{returnAddressId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9941,7 +9941,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnaddress";
+            public override string RestPath => "{merchantId}/returnaddress";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10001,7 +10001,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnaddress";
+            public override string RestPath => "{merchantId}/returnaddress";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10087,7 +10087,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/returnpolicy/batch";
+            public override string RestPath => "returnpolicy/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -10130,7 +10130,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicy/{returnPolicyId}";
+            public override string RestPath => "{merchantId}/returnpolicy/{returnPolicyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -10189,7 +10189,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicy/{returnPolicyId}";
+            public override string RestPath => "{merchantId}/returnpolicy/{returnPolicyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10250,7 +10250,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicy";
+            public override string RestPath => "{merchantId}/returnpolicy";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10295,7 +10295,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicy";
+            public override string RestPath => "{merchantId}/returnpolicy";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10367,7 +10367,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline";
+            public override string RestPath => "{merchantId}/returnpolicyonline";
 
             /// <summary>Initializes Create parameter list.</summary>
             protected override void InitParameters()
@@ -10422,7 +10422,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+            public override string RestPath => "{merchantId}/returnpolicyonline/{returnPolicyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -10485,7 +10485,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+            public override string RestPath => "{merchantId}/returnpolicyonline/{returnPolicyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10542,7 +10542,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline";
+            public override string RestPath => "{merchantId}/returnpolicyonline";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10605,7 +10605,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/returnpolicyonline/{returnPolicyId}";
+            public override string RestPath => "{merchantId}/returnpolicyonline/{returnPolicyId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10679,7 +10679,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/settlementreports/{settlementId}";
+            public override string RestPath => "{merchantId}/settlementreports/{settlementId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10755,7 +10755,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/settlementreports";
+            public override string RestPath => "{merchantId}/settlementreports";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10868,7 +10868,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/settlementreports/{settlementId}/transactions";
+            public override string RestPath => "{merchantId}/settlementreports/{settlementId}/transactions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10962,7 +10962,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/shippingsettings/batch";
+            public override string RestPath => "shippingsettings/batch";
 
             /// <summary>Initializes Custombatch parameter list.</summary>
             protected override void InitParameters()
@@ -11011,7 +11011,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/shippingsettings/{accountId}";
+            public override string RestPath => "{merchantId}/shippingsettings/{accountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11064,7 +11064,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/supportedCarriers";
+            public override string RestPath => "{merchantId}/supportedCarriers";
 
             /// <summary>Initializes Getsupportedcarriers parameter list.</summary>
             protected override void InitParameters()
@@ -11109,7 +11109,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/supportedHolidays";
+            public override string RestPath => "{merchantId}/supportedHolidays";
 
             /// <summary>Initializes Getsupportedholidays parameter list.</summary>
             protected override void InitParameters()
@@ -11154,7 +11154,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/supportedPickupServices";
+            public override string RestPath => "{merchantId}/supportedPickupServices";
 
             /// <summary>Initializes Getsupportedpickupservices parameter list.</summary>
             protected override void InitParameters()
@@ -11207,7 +11207,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/shippingsettings";
+            public override string RestPath => "{merchantId}/shippingsettings";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11294,7 +11294,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "content/v2.1/{merchantId}/shippingsettings/{accountId}";
+            public override string RestPath => "{merchantId}/shippingsettings/{accountId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -20106,7 +20106,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// "`damagedOrDefectiveItem`" - "`expiredItem`" - "`faultyItem`" - "`incorrectItemReceived`" - "`itemMissing`"
         /// - "`qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`" -
         /// "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" - "`wrongItem`" - "`returns`" -
-        /// "`undeliverable`" - "`refundFromMerchant`" - "`returnLabelShippingFee`" - "`pspFee`"
+        /// "`undeliverable`" - "`issueRelatedRefundAndReplacementAmountDescription`" - "`refundFromMerchant`" -
+        /// "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -20117,7 +20118,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The type of the amount. Acceptable values are: - "`itemPrice`" - "`orderPrice`" - "`refund`" -
-        /// "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" - "`returnLabelShippingFeeAmount`"
+        /// "`earlyRefund`" - "`courtesyRefund`" - "`returnRefund`" - "`returnLabelShippingFeeAmount`" -
+        /// "`lumpSumCorrectionAmount`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
