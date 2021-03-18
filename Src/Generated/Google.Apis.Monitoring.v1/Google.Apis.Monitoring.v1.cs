@@ -384,7 +384,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete permission on
-            /// the specified dashboard. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// the specified dashboard. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="name">
             /// Required. The resource name of the Dashboard. The format is:
@@ -397,7 +398,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete permission on
-            /// the specified dashboard. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// the specified dashboard. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Empty>
             {
@@ -441,7 +443,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the
-            /// specified dashboard. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// specified dashboard. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="name">
             /// Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID] (for
@@ -454,7 +457,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the
-            /// specified dashboard. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// specified dashboard. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
             {
@@ -499,7 +503,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on the
-            /// specified project. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// specified project. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="parent">
             /// Required. The scope of the dashboards to list. The format is: projects/[PROJECT_ID_OR_NUMBER]
@@ -511,7 +516,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on the
-            /// specified project. For more information, see Google Cloud IAM (https://cloud.google.com/iam).
+            /// specified project. For more information, see Cloud Identity and Access Management
+            /// (https://cloud.google.com/iam).
             /// </summary>
             public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.ListDashboardsResponse>
             {
@@ -585,8 +591,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Replaces an existing custom dashboard with a new definition.This method requires the
-            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Google
-            /// Cloud IAM (https://cloud.google.com/iam).
+            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Cloud
+            /// Identity and Access Management (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Immutable. The resource name of the dashboard.</param>
@@ -597,8 +603,8 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Replaces an existing custom dashboard with a new definition.This method requires the
-            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Google
-            /// Cloud IAM (https://cloud.google.com/iam).
+            /// monitoring.dashboards.update permission on the specified dashboard. For more information, see Cloud
+            /// Identity and Access Management (https://cloud.google.com/iam).
             /// </summary>
             public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
             {
