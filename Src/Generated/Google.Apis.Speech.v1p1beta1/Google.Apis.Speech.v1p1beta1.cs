@@ -1414,6 +1414,10 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual RecognitionConfig Config { get; set; }
 
+        /// <summary>Optional. Specifies an optional destination for the recognition results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual TranscriptOutputConfig OutputConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1990,6 +1994,20 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies an optional destination for the recognition results.</summary>
+    public class TranscriptOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies a Cloud Storage URI for the recognition results. Must be specified in the format:
+        /// `gs://bucket_name/object_name`, and the bucket must already exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

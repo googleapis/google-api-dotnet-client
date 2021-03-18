@@ -1550,6 +1550,14 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxBatchTotalSizeBytes")]
         public virtual System.Nullable<long> MaxBatchTotalSizeBytes { get; set; }
 
+        /// <summary>
+        /// Compressors supported by the "compressed-blobs" bytestream resources. Servers MUST support
+        /// identity/no-compression, even if it is not listed here. Note that this does not imply which if any
+        /// compressors are supported by the server at the gRPC level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedCompressor")]
+        public virtual System.Collections.Generic.IList<string> SupportedCompressor { get; set; }
+
         /// <summary>Whether absolute symlink targets are supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symlinkAbsolutePathStrategy")]
         public virtual string SymlinkAbsolutePathStrategy { get; set; }
@@ -2293,11 +2301,33 @@ namespace Google.Apis.RemoteBuildExecution.v2.Data
         public virtual string ActionId { get; set; }
 
         /// <summary>
+        /// A brief description of the kind of action, for example, CppCompile or GoLink. There is no standard agreed
+        /// set of values for this, and they are expected to vary between different client tools.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionMnemonic")]
+        public virtual string ActionMnemonic { get; set; }
+
+        /// <summary>
+        /// An identifier for the configuration in which the target was built, e.g. for differentiating building host
+        /// tools or different target platforms. There is no expectation that this value will have any particular
+        /// structure, or equality across invocations, though some client tools may offer these guarantees.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationId")]
+        public virtual string ConfigurationId { get; set; }
+
+        /// <summary>
         /// An identifier to tie multiple tool invocations together. For example, runs of foo_test, bar_test and
         /// baz_test on a post-submit of a given patch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("correlatedInvocationsId")]
         public virtual string CorrelatedInvocationsId { get; set; }
+
+        /// <summary>
+        /// An identifier for the target which produced this action. No guarantees are made around how many actions may
+        /// relate to a single target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
 
         /// <summary>The details for the tool invoking the requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolDetails")]

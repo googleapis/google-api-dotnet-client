@@ -1381,6 +1381,131 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
+        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchCreateContactsRequest BatchCreateContacts(Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest body)
+        {
+            return new BatchCreateContactsRequest(service, body);
+        }
+
+        /// <summary>
+        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts.
+        /// </summary>
+        public class BatchCreateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchCreateContactsResponse>
+        {
+            /// <summary>Constructs a new BatchCreateContacts request.</summary>
+            public BatchCreateContactsRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchCreateContacts";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/people:batchCreateContacts";
+
+            /// <summary>Initializes BatchCreateContacts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Delete a batch of contacts. Any non-contact data will not be deleted.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchDeleteContactsRequest BatchDeleteContacts(Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest body)
+        {
+            return new BatchDeleteContactsRequest(service, body);
+        }
+
+        /// <summary>Delete a batch of contacts. Any non-contact data will not be deleted.</summary>
+        public class BatchDeleteContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new BatchDeleteContacts request.</summary>
+            public BatchDeleteContactsRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchDeleteContacts";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/people:batchDeleteContacts";
+
+            /// <summary>Initializes BatchDeleteContacts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual BatchUpdateContactsRequest BatchUpdateContacts(Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest body)
+        {
+            return new BatchUpdateContactsRequest(service, body);
+        }
+
+        /// <summary>
+        /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
+        /// </summary>
+        public class BatchUpdateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchUpdateContactsResponse>
+        {
+            /// <summary>Constructs a new BatchUpdateContacts request.</summary>
+            public BatchUpdateContactsRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchUpdateContacts";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/people:batchUpdateContacts";
+
+            /// <summary>Initializes BatchUpdateContacts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Create a new contact and return the person resource for that contact. The request returns a 400 error if
         /// more than one field is specified on a field that is a singleton for contact sources: * biographies *
         /// birthdays * genders * names
@@ -2603,12 +2728,122 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A request to create a batch of contacts.</summary>
+    public class BatchCreateContactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The contact to create. Allows up to 200 contacts in a single request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual System.Collections.Generic.IList<ContactToCreate> Contacts { get; set; }
+
+        /// <summary>
+        /// Required. A field mask to restrict which fields on each person are returned in the response. Multiple fields
+        /// can be specified by separating them with commas. If read mask is left empty, the post-mutate-get is skipped
+        /// and no data will be returned in the response. Valid values are: * addresses * ageRanges * biographies *
+        /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders *
+        /// imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames *
+        /// occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
+        public virtual object ReadMask { get; set; }
+
+        /// <summary>
+        /// Optional. A mask of what source types to return in the post mutate read. Defaults to
+        /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a request to create a batch of contacts.</summary>
+    public class BatchCreateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contacts that were created, unless the request `read_mask` is empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdPeople")]
+        public virtual System.Collections.Generic.IList<PersonResponse> CreatedPeople { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to delete a batch of existing contacts.</summary>
+    public class BatchDeleteContactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource names of the contact to delete. It's repeatable. Allows up to 500 resource names in a
+        /// single request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response to a batch get contact groups request.</summary>
     public class BatchGetContactGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of responses for each requested contact group resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responses")]
         public virtual System.Collections.Generic.IList<ContactGroupResponse> Responses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to update a batch of contacts.</summary>
+    public class BatchUpdateContactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A map of resource names to the person data to be updated. Allows up to 200 contacts in a single
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contacts")]
+        public virtual System.Collections.Generic.IDictionary<string, Person> Contacts { get; set; }
+
+        /// <summary>
+        /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
+        /// specified by separating them with commas. If read mask is left empty, the post-mutate-get is skipped and no
+        /// data will be returned in the response. Valid values are: * addresses * ageRanges * biographies * birthdays *
+        /// calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients *
+        /// interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations *
+        /// organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readMask")]
+        public virtual object ReadMask { get; set; }
+
+        /// <summary>
+        /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+        /// READ_SOURCE_TYPE_PROFILE if not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<string> Sources { get; set; }
+
+        /// <summary>
+        /// Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified
+        /// by separating them with commas. All specified fields will be replaced, or cleared if left empty for each
+        /// person. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses
+        /// * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords
+        /// * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls *
+        /// userDefined
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to a request to create a batch of contacts.</summary>
+    public class BatchUpdateContactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A map of resource names to the contacts that were updated, unless the request `read_mask` is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateResult")]
+        public virtual System.Collections.Generic.IDictionary<string, PersonResponse> UpdateResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2827,6 +3062,17 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The status of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wrapper that contains the person data to populate a newly created source.</summary>
+    public class ContactToCreate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The person data to populate a newly created source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactPerson")]
+        public virtual Person ContactPerson { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

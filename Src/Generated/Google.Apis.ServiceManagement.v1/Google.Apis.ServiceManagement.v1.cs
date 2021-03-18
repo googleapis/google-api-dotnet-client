@@ -2726,13 +2726,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Operation payload for DisableService method.</summary>
-    public class DisableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// `Documentation` provides the information for describing a service. Example: documentation: summary: &amp;gt; The
     /// Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include

@@ -88,7 +88,7 @@ namespace Google.Apis.Drive.v2
             public static string DriveAppsReadonly = "https://www.googleapis.com/auth/drive.apps.readonly";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
@@ -121,7 +121,7 @@ namespace Google.Apis.Drive.v2
             public const string DriveAppsReadonly = "https://www.googleapis.com/auth/drive.apps.readonly";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
 

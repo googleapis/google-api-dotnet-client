@@ -693,14 +693,6 @@ namespace Google.Apis.Fitness.v1
                     [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DatasetId { get; private set; }
 
-                    /// <summary>The client's current time in milliseconds since epoch.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentTimeMillis", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
-
-                    /// <summary>When the operation was performed on the client.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("modifiedTimeMillis", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> ModifiedTimeMillis { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -735,22 +727,6 @@ namespace Google.Apis.Fitness.v1
                             Name = "datasetId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("currentTimeMillis", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "currentTimeMillis",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("modifiedTimeMillis", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "modifiedTimeMillis",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -939,13 +915,6 @@ namespace Google.Apis.Fitness.v1
                     [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DatasetId { get; private set; }
 
-                    /// <summary>
-                    /// The client's current time in milliseconds since epoch. Note that the minStartTimeNs and
-                    /// maxEndTimeNs properties in the request body are in nanoseconds instead of milliseconds.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("currentTimeMillis", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
-
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Fitness.v1.Data.Dataset Body { get; set; }
 
@@ -986,14 +955,6 @@ namespace Google.Apis.Fitness.v1
                             Name = "datasetId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("currentTimeMillis", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "currentTimeMillis",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1522,10 +1483,6 @@ namespace Google.Apis.Fitness.v1
                 [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SessionId { get; private set; }
 
-                /// <summary>The client's current time in milliseconds since epoch.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("currentTimeMillis", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1552,14 +1509,6 @@ namespace Google.Apis.Fitness.v1
                         Name = "sessionId",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("currentTimeMillis", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currentTimeMillis",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1727,10 +1676,6 @@ namespace Google.Apis.Fitness.v1
                 [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SessionId { get; private set; }
 
-                /// <summary>The client's current time in milliseconds since epoch.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("currentTimeMillis", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> CurrentTimeMillis { get; set; }
-
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Fitness.v1.Data.Session Body { get; set; }
 
@@ -1763,14 +1708,6 @@ namespace Google.Apis.Fitness.v1
                         Name = "sessionId",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("currentTimeMillis", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "currentTimeMillis",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });

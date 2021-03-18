@@ -639,7 +639,7 @@ namespace Google.Apis.Dns.v1
             this.service = service;
         }
 
-        /// <summary>Fetch the representation of an existing DnsKey.</summary>
+        /// <summary>Fetches the representation of an existing DnsKey.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -650,7 +650,7 @@ namespace Google.Apis.Dns.v1
             return new GetRequest(service, project, managedZone, dnsKeyId);
         }
 
-        /// <summary>Fetch the representation of an existing DnsKey.</summary>
+        /// <summary>Fetches the representation of an existing DnsKey.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.DnsKey>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -746,7 +746,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Enumerate DnsKeys to a ResourceRecordSet collection.</summary>
+        /// <summary>Enumerates DnsKeys to a ResourceRecordSet collection.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -756,7 +756,7 @@ namespace Google.Apis.Dns.v1
             return new ListRequest(service, project, managedZone);
         }
 
-        /// <summary>Enumerate DnsKeys to a ResourceRecordSet collection.</summary>
+        /// <summary>Enumerates DnsKeys to a ResourceRecordSet collection.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.DnsKeysListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1085,7 +1085,7 @@ namespace Google.Apis.Dns.v1
             this.service = service;
         }
 
-        /// <summary>Create a new ManagedZone.</summary>
+        /// <summary>Creates a new ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual CreateRequest Create(Google.Apis.Dns.v1.Data.ManagedZone body, string project)
@@ -1093,7 +1093,7 @@ namespace Google.Apis.Dns.v1
             return new CreateRequest(service, body, project);
         }
 
-        /// <summary>Create a new ManagedZone.</summary>
+        /// <summary>Creates a new ManagedZone.</summary>
         public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZone>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1153,7 +1153,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Delete a previously created ManagedZone.</summary>
+        /// <summary>Deletes a previously created ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -1163,7 +1163,7 @@ namespace Google.Apis.Dns.v1
             return new DeleteRequest(service, project, managedZone);
         }
 
-        /// <summary>Delete a previously created ManagedZone.</summary>
+        /// <summary>Deletes a previously created ManagedZone.</summary>
         public class DeleteRequest : DnsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1231,7 +1231,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Fetch the representation of an existing ManagedZone.</summary>
+        /// <summary>Fetches the representation of an existing ManagedZone.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
         /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -1241,7 +1241,7 @@ namespace Google.Apis.Dns.v1
             return new GetRequest(service, project, managedZone);
         }
 
-        /// <summary>Fetch the representation of an existing ManagedZone.</summary>
+        /// <summary>Fetches the representation of an existing ManagedZone.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZone>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1309,14 +1309,14 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Enumerate ManagedZones that have been created but not yet deleted.</summary>
+        /// <summary>Enumerates ManagedZones that have been created but not yet deleted.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>Enumerate ManagedZones that have been created but not yet deleted.</summary>
+        /// <summary>Enumerates ManagedZones that have been created but not yet deleted.</summary>
         public class ListRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ManagedZonesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1396,7 +1396,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Apply a partial update to an existing ManagedZone.</summary>
+        /// <summary>Applies a partial update to an existing ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
@@ -1407,7 +1407,7 @@ namespace Google.Apis.Dns.v1
             return new PatchRequest(service, body, project, managedZone);
         }
 
-        /// <summary>Apply a partial update to an existing ManagedZone.</summary>
+        /// <summary>Applies a partial update to an existing ManagedZone.</summary>
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1482,7 +1482,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Update an existing ManagedZone.</summary>
+        /// <summary>Updates an existing ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="managedZone">
@@ -1493,7 +1493,7 @@ namespace Google.Apis.Dns.v1
             return new UpdateRequest(service, body, project, managedZone);
         }
 
-        /// <summary>Update an existing ManagedZone.</summary>
+        /// <summary>Updates an existing ManagedZone.</summary>
         public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.Operation>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1878,7 +1878,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Apply a partial update to an existing Policy.</summary>
+        /// <summary>Applies a partial update to an existing Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -1887,7 +1887,7 @@ namespace Google.Apis.Dns.v1
             return new PatchRequest(service, body, project, policy);
         }
 
-        /// <summary>Apply a partial update to an existing Policy.</summary>
+        /// <summary>Applies a partial update to an existing Policy.</summary>
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.PoliciesPatchResponse>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1960,7 +1960,7 @@ namespace Google.Apis.Dns.v1
             }
         }
 
-        /// <summary>Update an existing Policy.</summary>
+        /// <summary>Updates an existing Policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param name="policy">User given friendly name of the policy addressed by this request.</param>
@@ -1969,7 +1969,7 @@ namespace Google.Apis.Dns.v1
             return new UpdateRequest(service, body, project, policy);
         }
 
-        /// <summary>Update an existing Policy.</summary>
+        /// <summary>Updates an existing Policy.</summary>
         public class UpdateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.PoliciesUpdateResponse>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2093,7 +2093,7 @@ namespace Google.Apis.Dns.v1
                     this.service = service;
                 }
 
-                /// <summary>Create a new ResourceRecordSet.</summary>
+                /// <summary>Creates a new ResourceRecordSet.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="project">Identifies the project addressed by this request.</param>
                 /// <param name="managedZone">
@@ -2104,7 +2104,7 @@ namespace Google.Apis.Dns.v1
                     return new CreateRequest(service, body, project, managedZone);
                 }
 
-                /// <summary>Create a new ResourceRecordSet.</summary>
+                /// <summary>Creates a new ResourceRecordSet.</summary>
                 public class CreateRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -2179,7 +2179,7 @@ namespace Google.Apis.Dns.v1
                     }
                 }
 
-                /// <summary>Delete a previously created ResourceRecordSet.</summary>
+                /// <summary>Deletes a previously created ResourceRecordSet.</summary>
                 /// <param name="project">Identifies the project addressed by this request.</param>
                 /// <param name="managedZone">
                 /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -2191,7 +2191,7 @@ namespace Google.Apis.Dns.v1
                     return new DeleteRequest(service, project, managedZone, name, type);
                 }
 
-                /// <summary>Delete a previously created ResourceRecordSet.</summary>
+                /// <summary>Deletes a previously created ResourceRecordSet.</summary>
                 public class DeleteRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSetsDeleteResponse>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2285,7 +2285,7 @@ namespace Google.Apis.Dns.v1
                     }
                 }
 
-                /// <summary>Fetch the representation of an existing ResourceRecordSet.</summary>
+                /// <summary>Fetches the representation of an existing ResourceRecordSet.</summary>
                 /// <param name="project">Identifies the project addressed by this request.</param>
                 /// <param name="managedZone">
                 /// Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
@@ -2297,7 +2297,7 @@ namespace Google.Apis.Dns.v1
                     return new GetRequest(service, project, managedZone, name, type);
                 }
 
-                /// <summary>Fetch the representation of an existing ResourceRecordSet.</summary>
+                /// <summary>Fetches the representation of an existing ResourceRecordSet.</summary>
                 public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2391,7 +2391,7 @@ namespace Google.Apis.Dns.v1
                     }
                 }
 
-                /// <summary>Apply a partial update to an existing ResourceRecordSet.</summary>
+                /// <summary>Applies a partial update to an existing ResourceRecordSet.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="project">Identifies the project addressed by this request.</param>
                 /// <param name="managedZone">
@@ -2404,7 +2404,7 @@ namespace Google.Apis.Dns.v1
                     return new PatchRequest(service, body, project, managedZone, name, type);
                 }
 
-                /// <summary>Apply a partial update to an existing ResourceRecordSet.</summary>
+                /// <summary>Applies a partial update to an existing ResourceRecordSet.</summary>
                 public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1.Data.ResourceRecordSet>
                 {
                     /// <summary>Constructs a new Patch request.</summary>

@@ -1020,7 +1020,7 @@ namespace Google.Apis.Sheets.v4
                     COLUMNS,
                 }
 
-                /// <summary>The A1 notation of the values to retrieve.</summary>
+                /// <summary>The A1 notation or R1C1 notation of the range to retrieve values from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
@@ -1301,7 +1301,7 @@ namespace Google.Apis.Sheets.v4
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to update.</param>
-            /// <param name="range">The A1 notation of the values to clear.</param>
+            /// <param name="range">The A1 notation or R1C1 notation of the values to clear.</param>
             public virtual ClearRequest Clear(Google.Apis.Sheets.v4.Data.ClearValuesRequest body, string spreadsheetId, string range)
             {
                 return new ClearRequest(service, body, spreadsheetId, range);
@@ -1326,7 +1326,7 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of the values to clear.</summary>
+                /// <summary>The A1 notation or R1C1 notation of the values to clear.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -1372,7 +1372,7 @@ namespace Google.Apis.Sheets.v4
             /// Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
             /// </summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
-            /// <param name="range">The A1 notation of the values to retrieve.</param>
+            /// <param name="range">The A1 notation or R1C1 notation of the range to retrieve values from.</param>
             public virtual GetRequest Get(string spreadsheetId, string range)
             {
                 return new GetRequest(service, spreadsheetId, range);
@@ -1395,7 +1395,7 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of the values to retrieve.</summary>
+                /// <summary>The A1 notation or R1C1 notation of the range to retrieve values from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
@@ -2845,7 +2845,7 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>The request for clearing more than one range of values in a spreadsheet.</summary>
     public class BatchClearValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ranges to clear, in A1 notation.</summary>
+        /// <summary>The ranges to clear, in A1 or R1C1 notation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ranges")]
         public virtual System.Collections.Generic.IList<string> Ranges { get; set; }
 
@@ -3322,7 +3322,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<float> BubbleOpacity { get; set; }
 
         /// <summary>
-        /// The data contianing the bubble sizes. Bubble sizes are used to draw the bubbles at different sizes relative
+        /// The data containing the bubble sizes. Bubble sizes are used to draw the bubbles at different sizes relative
         /// to each other. If specified, group_ids must also be specified. This field is optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleSizes")]
@@ -3351,7 +3351,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string LegendPosition { get; set; }
 
         /// <summary>
-        /// The data contianing the bubble y-values. These values locate the bubbles in the chart vertically.
+        /// The data containing the bubble y-values. These values locate the bubbles in the chart vertically.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual ChartData Series { get; set; }
@@ -6224,7 +6224,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// True if the headings in this pivot group should be repeated. This is only valid for row groupings and is
-        /// ignored by columns. By default, we minimize repitition of headings by not showing higher level headings
+        /// ignored by columns. By default, we minimize repetition of headings by not showing higher level headings
         /// where they are the same. For example, even though the third row below corresponds to "Q1 Mar", "Q1" is not
         /// shown because it is redundant with previous rows. Setting repeat_headings to true would cause "Q1" to be
         /// repeated for "Feb" and "Mar". +--------------+ | Q1 | Jan | | | Feb | | | Mar | +--------+-----+ | Q1 Total

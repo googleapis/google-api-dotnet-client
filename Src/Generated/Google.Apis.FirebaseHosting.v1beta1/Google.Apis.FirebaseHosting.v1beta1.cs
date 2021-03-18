@@ -431,7 +431,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The site or channel to which the release belongs, in either of the following formats:
-                    /// - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                     {
@@ -454,16 +454,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                         /// <summary>
                         /// Required. The site or channel to which the release belongs, in either of the following
-                        /// formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                        /// formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID
-                        /// The SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter.
-                        /// This query parameter must be empty if the `type` field in the request body is
-                        /// `SITE_DISABLE`.
+                        ///  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The
+                        /// SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This
+                        /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string VersionName { get; set; }
@@ -513,7 +512,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The site or channel for which to list releases, in either of the following formats: -
-                    /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -536,7 +535,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                         /// <summary>
                         /// Required. The site or channel for which to list releases, in either of the following
-                        /// formats: - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                        /// formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -599,7 +598,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>Creates a new channel in the specified site.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The site in which to create this channel, in the format: sites/ SITE_NAME
+                /// Required. The site in which to create this channel, in the format: sites/ SITE_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string parent)
                 {
@@ -618,7 +617,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The site in which to create this channel, in the format: sites/ SITE_NAME
+                    /// Required. The site in which to create this channel, in the format: sites/ SITE_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -669,8 +668,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// Deletes the specified channel of the specified site. The `live` channel cannot be deleted.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The fully-qualified identifier for the channel, in the format:
-                /// sites/SITE_NAME/channels/CHANNEL_ID
+                /// Required. The fully-qualified resource name for the channel, in the format:
+                /// sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -690,8 +689,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The fully-qualified identifier for the channel, in the format:
-                    /// sites/SITE_NAME/channels/CHANNEL_ID
+                    /// Required. The fully-qualified resource name for the channel, in the format:
+                    /// sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -722,8 +721,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Retrieves information for the specified channel of the specified site.</summary>
                 /// <param name="name">
-                /// Required. The fully-qualified identifier for the channel, in the format:
-                /// sites/SITE_NAME/channels/CHANNEL_ID
+                /// Required. The fully-qualified resource name for the channel, in the format:
+                /// sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -741,8 +740,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The fully-qualified identifier for the channel, in the format:
-                    /// sites/SITE_NAME/channels/CHANNEL_ID
+                    /// Required. The fully-qualified resource name for the channel, in the format:
+                    /// sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -775,7 +774,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// Lists the channels for the specified site. All sites have a default `live` channel.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. The site for which to list channels, in the format: sites/ SITE_NAME
+                /// Required. The site for which to list channels, in the format: sites/SITE_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -794,9 +793,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The site for which to list channels, in the format: sites/ SITE_NAME
-                    /// </summary>
+                    /// <summary>Required. The site for which to list channels, in the format: sites/SITE_ID</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -860,7 +857,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The fully-qualified identifier for the channel, in the format: sites/ SITE_NAME/channels/CHANNEL_ID
+                /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
                 {
@@ -882,8 +879,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// The fully-qualified identifier for the channel, in the format: sites/
-                    /// SITE_NAME/channels/CHANNEL_ID
+                    /// The fully-qualified resource name for the channel, in the format: sites/
+                    /// SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1256,7 +1253,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The site or channel to which the release belongs, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
@@ -1279,15 +1276,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The site or channel to which the release belongs, in either of the following formats:
-                    /// - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
-                    /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This
-                    /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                    ///  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The
+                    /// SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query
+                    /// parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionName { get; set; }
@@ -1337,7 +1334,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The site or channel for which to list releases, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1360,7 +1357,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The site or channel for which to list releases, in either of the following formats: -
-                    /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1457,8 +1454,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
                     /// <param name="parent">
-                    /// Required. The version for which to list files, in the format: sites/
-                    /// SITE_NAME/versions/VERSION_ID
+                    /// Required. The version for which to list files, in the format: sites/SITE_ID /versions/VERSION_ID
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1476,8 +1472,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. The version for which to list files, in the format: sites/
-                        /// SITE_NAME/versions/VERSION_ID
+                        /// Required. The version for which to list files, in the format: sites/SITE_ID
+                        /// /versions/VERSION_ID
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1573,7 +1569,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The target site for the cloned version, in the format: sites/ SITE_NAME
+                /// Required. The target site for the cloned version, in the format: sites/ SITE_ID
                 /// </param>
                 public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
                 {
@@ -1594,7 +1590,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The target site for the cloned version, in the format: sites/ SITE_NAME
+                    /// Required. The target site for the cloned version, in the format: sites/ SITE_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1632,7 +1628,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>Creates a new version for the specified site.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
+                /// Required. The site in which to create the version, in the format: sites/ SITE_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
                 {
@@ -1651,7 +1647,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
+                    /// Required. The site in which to create the version, in the format: sites/ SITE_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1718,8 +1714,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Deletes the specified version.</summary>
                 /// <param name="name">
-                /// Required. The fully-qualified identifier for the version, in the format:
-                /// sites/SITE_NAME/versions/VERSION_ID
+                /// Required. The fully-qualified resource name for the version, in the format:
+                /// sites/SITE_ID/versions/VERSION_ID
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1737,8 +1733,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The fully-qualified identifier for the version, in the format:
-                    /// sites/SITE_NAME/versions/VERSION_ID
+                    /// Required. The fully-qualified resource name for the version, in the format:
+                    /// sites/SITE_ID/versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1773,7 +1769,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The site or channel for which to list versions, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1795,7 +1791,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The site or channel for which to list versions, in either of the following formats: -
-                    /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1878,7 +1874,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The fully-qualified identifier for the version, in the format: sites/ SITE_NAME/versions/VERSION_ID
+                /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID
                 /// This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
@@ -1903,8 +1899,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// The fully-qualified identifier for the version, in the format: sites/
-                    /// SITE_NAME/versions/VERSION_ID This name is provided in the response body when you call
+                    /// The fully-qualified resource name for the version, in the format: sites/
+                    /// SITE_ID/versions/VERSION_ID This name is provided in the response body when you call
                     /// [`CreateVersion`](sites.versions/create).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1959,7 +1955,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
+                /// Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID
                 /// </param>
                 public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
                 {
@@ -1978,7 +1974,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
+                    /// Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2014,15 +2010,25 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Creates a new Site. Sites take several minutes to propagate through Firebase systems.</summary>
+            /// <summary>
+            /// Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take
+            /// several minutes to propagate through Firebase systems.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent Project of a Site, e.g.: `projects/{project-number}`.</param>
+            /// <param name="parent">
+            /// Required. The Firebase project in which to create a Hosting site, in the format:
+            /// projects/PROJECT_IDENTIFIER Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details
+            /// about PROJECT_IDENTIFIER values.
+            /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a new Site. Sites take several minutes to propagate through Firebase systems.</summary>
+            /// <summary>
+            /// Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take
+            /// several minutes to propagate through Firebase systems.
+            /// </summary>
             public class CreateRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2033,13 +2039,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The parent Project of a Site, e.g.: `projects/{project-number}`.</summary>
+                /// <summary>
+                /// Required. The Firebase project in which to create a Hosting site, in the format:
+                /// projects/PROJECT_IDENTIFIER Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for
+                /// details about PROJECT_IDENTIFIER values.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. Immutable. A globally unique ID to identify the Site. The ID must also be a valid domain
-                /// name label.
+                /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to
+                /// construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name
+                /// label.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("siteId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SiteId { get; set; }
@@ -2082,17 +2093,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Deletes a Site from the specified parent Project.</summary>
+            /// <summary>Deletes the specified Hosting Site from the specified parent Firebase project.</summary>
             /// <param name="name">
-            /// Required. The fully qualified resource name of the Site, e.g.:
-            /// `projects/{project-number}/sites/{site-id}`.
+            /// Required. The fully-qualified resource name for the Hosting site, in the format:
+            /// projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name)
+            /// field for details about PROJECT_IDENTIFIER values.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a Site from the specified parent Project.</summary>
+            /// <summary>Deletes the specified Hosting Site from the specified parent Firebase project.</summary>
             public class DeleteRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -2103,8 +2115,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The fully qualified resource name of the Site, e.g.:
-                /// `projects/{project-number}/sites/{site-id}`.
+                /// Required. The fully-qualified resource name for the Hosting site, in the format:
+                /// projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name)
+                /// field for details about PROJECT_IDENTIFIER values.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2133,18 +2146,19 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Gets the Site identified by the specified resource name.</summary>
+            /// <summary>Gets the specified Hosting Site.</summary>
             /// <param name="name">
-            /// Required. The fully qualified resource name of the Site, e.g.:
-            /// `projects/{project-number}/sites/{site-id}`. As a `site-id` is a globally unique identifier, you can
-            /// also use the unique sub-collection resource access pattern as well: `projects/-/sites/{site-id}`.
+            /// Required. The fully-qualified resource name for the Hosting site, in the format:
+            /// projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name)
+            /// field for details about PROJECT_IDENTIFIER values. Since a SITE_ID is a globally unique identifier, you
+            /// can also use the unique sub-collection resource access pattern, in the format: projects/-/sites/SITE_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets the Site identified by the specified resource name.</summary>
+            /// <summary>Gets the specified Hosting Site.</summary>
             public class GetRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -2155,9 +2169,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The fully qualified resource name of the Site, e.g.:
-                /// `projects/{project-number}/sites/{site-id}`. As a `site-id` is a globally unique identifier, you can
-                /// also use the unique sub-collection resource access pattern as well: `projects/-/sites/{site-id}`.
+                /// Required. The fully-qualified resource name for the Hosting site, in the format:
+                /// projects/PROJECT_IDENTIFIER/sites/SITE_ID Refer to the `Site` [`name`](../projects#Site.FIELDS.name)
+                /// field for details about PROJECT_IDENTIFIER values. Since a SITE_ID is a globally unique identifier,
+                /// you can also use the unique sub-collection resource access pattern, in the format:
+                /// projects/-/sites/SITE_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2235,24 +2251,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>
-            /// Lists each Site associated with the specified parent Project. Sites are returned in a consistent, but
-            /// undefined, order to facilitate pagination. Site data might be out of sync by a few seconds. If you
-            /// require up-to-date data, use GetSite.
-            /// </summary>
+            /// <summary>Lists each Hosting Site associated with the specified parent Firebase project.</summary>
             /// <param name="parent">
-            /// Required. The Project that owns the sites to list, e.g.: `projects/{project-number}`.
+            /// Required. The Firebase project for which to list sites, in the format: projects/PROJECT_IDENTIFIER Refer
+            /// to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values.
             /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>
-            /// Lists each Site associated with the specified parent Project. Sites are returned in a consistent, but
-            /// undefined, order to facilitate pagination. Site data might be out of sync by a few seconds. If you
-            /// require up-to-date data, use GetSite.
-            /// </summary>
+            /// <summary>Lists each Hosting Site associated with the specified parent Firebase project.</summary>
             public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListSitesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2263,15 +2272,16 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The Project that owns the sites to list, e.g.: `projects/{project-number}`.
+                /// Required. The Firebase project for which to list sites, in the format: projects/PROJECT_IDENTIFIER
+                /// Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about
+                /// PROJECT_IDENTIFIER values.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. The maximum number of sites to return in the response. The server may return fewer Sites
-                /// at its discretion. If you don't specify a value or specify one that's too large, the server can
-                /// select its own value.
+                /// Optional. The maximum number of sites to return. The service may return a lower number if fewer
+                /// sites exist than this maximum number. If unspecified, defaults to 40.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2322,18 +2332,23 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
             }
 
-            /// <summary>Updates attributes of the Site identified by the specified resource name.</summary>
+            /// <summary>Updates attributes of the specified Hosting Site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
-            /// `projects/{project-number}/sites/{site-id}`.
+            /// Output only. The fully-qualified resource name of the Hosting site, in the format:
+            /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
+            /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+            /// ***(recommended)*** or its
+            /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+            /// Learn more about using project identifiers in Google's [AIP 2510
+            /// standard](https://google.aip.dev/cloud/2510).
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Site body, string name)
             {
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates attributes of the Site identified by the specified resource name.</summary>
+            /// <summary>Updates attributes of the specified Hosting Site.</summary>
             public class PatchRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Site>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -2345,13 +2360,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
-                /// `projects/{project-number}/sites/{site-id}`.
+                /// Output only. The fully-qualified resource name of the Hosting site, in the format:
+                /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
+                /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+                /// ***(recommended)*** or its
+                /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+                /// Learn more about using project identifiers in Google's [AIP 2510
+                /// standard](https://google.aip.dev/cloud/2510).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A mask that specifies which Site fields to update.</summary>
+                /// <summary>A set of field names from your Site that you want to update.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -2528,7 +2548,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The site or channel to which the release belongs, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
                 {
@@ -2551,15 +2571,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The site or channel to which the release belongs, in either of the following formats:
-                    /// - sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
-                    /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This
-                    /// query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                    ///  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The
+                    /// SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query
+                    /// parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string VersionName { get; set; }
@@ -2609,7 +2629,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The site or channel for which to list releases, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2632,7 +2652,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                     /// <summary>
                     /// Required. The site or channel for which to list releases, in either of the following formats: -
-                    /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                    /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2695,7 +2715,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <summary>Creates a new channel in the specified site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The site in which to create this channel, in the format: sites/ SITE_NAME
+            /// Required. The site in which to create this channel, in the format: sites/ SITE_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string parent)
             {
@@ -2713,9 +2733,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The site in which to create this channel, in the format: sites/ SITE_NAME
-                /// </summary>
+                /// <summary>Required. The site in which to create this channel, in the format: sites/ SITE_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2765,8 +2783,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// Deletes the specified channel of the specified site. The `live` channel cannot be deleted.
             /// </summary>
             /// <param name="name">
-            /// Required. The fully-qualified identifier for the channel, in the format:
-            /// sites/SITE_NAME/channels/CHANNEL_ID
+            /// Required. The fully-qualified resource name for the channel, in the format:
+            /// sites/SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2786,8 +2804,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The fully-qualified identifier for the channel, in the format:
-                /// sites/SITE_NAME/channels/CHANNEL_ID
+                /// Required. The fully-qualified resource name for the channel, in the format:
+                /// sites/SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2818,8 +2836,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>Retrieves information for the specified channel of the specified site.</summary>
             /// <param name="name">
-            /// Required. The fully-qualified identifier for the channel, in the format:
-            /// sites/SITE_NAME/channels/CHANNEL_ID
+            /// Required. The fully-qualified resource name for the channel, in the format:
+            /// sites/SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2837,8 +2855,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The fully-qualified identifier for the channel, in the format:
-                /// sites/SITE_NAME/channels/CHANNEL_ID
+                /// Required. The fully-qualified resource name for the channel, in the format:
+                /// sites/SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2868,9 +2886,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             }
 
             /// <summary>Lists the channels for the specified site. All sites have a default `live` channel.</summary>
-            /// <param name="parent">
-            /// Required. The site for which to list channels, in the format: sites/ SITE_NAME
-            /// </param>
+            /// <param name="parent">Required. The site for which to list channels, in the format: sites/SITE_ID</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -2886,7 +2902,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The site for which to list channels, in the format: sites/ SITE_NAME</summary>
+                /// <summary>Required. The site for which to list channels, in the format: sites/SITE_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2950,7 +2966,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The fully-qualified identifier for the channel, in the format: sites/ SITE_NAME/channels/CHANNEL_ID
+            /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Channel body, string name)
             {
@@ -2972,7 +2988,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// The fully-qualified identifier for the channel, in the format: sites/ SITE_NAME/channels/CHANNEL_ID
+                /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3339,7 +3355,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The site or channel to which the release belongs, in either of the following formats: -
-            /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+            /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Release body, string parent)
             {
@@ -3362,15 +3378,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>
                 /// Required. The site or channel to which the release belongs, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                ///  The unique identifier for a version, in the format: sites/SITE_NAME /versions/VERSION_ID The
-                /// SITE_NAME in this version identifier must match the SITE_NAME in the `parent` parameter. This query
-                /// parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
+                ///  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID
+                /// in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter
+                /// must be empty if the `type` field in the request body is `SITE_DISABLE`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("versionName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VersionName { get; set; }
@@ -3420,7 +3436,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </summary>
             /// <param name="parent">
             /// Required. The site or channel for which to list releases, in either of the following formats: -
-            /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+            /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -3443,7 +3459,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>
                 /// Required. The site or channel for which to list releases, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3540,7 +3556,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>Lists the remaining files to be uploaded for the specified version.</summary>
                 /// <param name="parent">
-                /// Required. The version for which to list files, in the format: sites/ SITE_NAME/versions/VERSION_ID
+                /// Required. The version for which to list files, in the format: sites/SITE_ID /versions/VERSION_ID
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3558,8 +3574,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The version for which to list files, in the format: sites/
-                    /// SITE_NAME/versions/VERSION_ID
+                    /// Required. The version for which to list files, in the format: sites/SITE_ID /versions/VERSION_ID
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3654,7 +3669,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The target site for the cloned version, in the format: sites/ SITE_NAME
+            /// Required. The target site for the cloned version, in the format: sites/ SITE_ID
             /// </param>
             public virtual CloneRequest Clone(Google.Apis.FirebaseHosting.v1beta1.Data.CloneVersionRequest body, string parent)
             {
@@ -3674,7 +3689,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>Required. The target site for the cloned version, in the format: sites/ SITE_NAME</summary>
+                /// <summary>Required. The target site for the cloned version, in the format: sites/ SITE_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3711,7 +3726,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <summary>Creates a new version for the specified site.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
+            /// Required. The site in which to create the version, in the format: sites/ SITE_ID
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string parent)
             {
@@ -3729,9 +3744,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The site in which to create the version, in the format: sites/ SITE_NAME
-                /// </summary>
+                /// <summary>Required. The site in which to create the version, in the format: sites/ SITE_ID</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -3797,8 +3810,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
             /// <summary>Deletes the specified version.</summary>
             /// <param name="name">
-            /// Required. The fully-qualified identifier for the version, in the format:
-            /// sites/SITE_NAME/versions/VERSION_ID
+            /// Required. The fully-qualified resource name for the version, in the format:
+            /// sites/SITE_ID/versions/VERSION_ID
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -3816,8 +3829,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The fully-qualified identifier for the version, in the format:
-                /// sites/SITE_NAME/versions/VERSION_ID
+                /// Required. The fully-qualified resource name for the version, in the format:
+                /// sites/SITE_ID/versions/VERSION_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3852,7 +3865,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </summary>
             /// <param name="parent">
             /// Required. The site or channel for which to list versions, in either of the following formats: -
-            /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+            /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -3874,7 +3887,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>
                 /// Required. The site or channel for which to list versions, in either of the following formats: -
-                /// sites/SITE_NAME - sites/SITE_NAME/channels/CHANNEL_ID
+                /// sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3957,8 +3970,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The fully-qualified identifier for the version, in the format: sites/ SITE_NAME/versions/VERSION_ID This
-            /// name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
+            /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID
+            /// This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseHosting.v1beta1.Data.Version body, string name)
             {
@@ -3982,7 +3995,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// The fully-qualified identifier for the version, in the format: sites/ SITE_NAME/versions/VERSION_ID
+                /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID
                 /// This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4037,7 +4050,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
             /// <summary> Adds content files to the specified version. Each file must be under 2 GB.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
+            /// Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID
             /// </param>
             public virtual PopulateFilesRequest PopulateFiles(Google.Apis.FirebaseHosting.v1beta1.Data.PopulateVersionFilesRequest body, string parent)
             {
@@ -4056,7 +4069,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The version to which to add files, in the format: sites/SITE_NAME /versions/VERSION_ID
+                /// Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4291,7 +4304,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The fully-qualified identifier for the channel, in the format: sites/ SITE_NAME/channels/CHANNEL_ID
+        /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4358,7 +4371,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// Required. The unique identifier for the version to be cloned, in the format:
-        /// sites/SITE_NAME/versions/VERSION_ID
+        /// sites/SITE_ID/versions/VERSION_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
         public virtual string SourceVersion { get; set; }
@@ -4584,18 +4597,16 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response from ListSites.</summary>
     public class ListSitesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token returned when the list of results is too large to fit in a single response. If the string is empty,
-        /// the response is the last or only page of results. Use the token in a follow-up call to `ListSites` to find
-        /// the next group of Sites. Page tokens are short-lived and should not be stored.
+        /// The pagination token, if more results exist beyond the ones in this response. Include this token in your
+        /// next call to `ListSites`. Page tokens are short-lived and should not be stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>A list of Site objects from the parent Firebase Project.</summary>
+        /// <summary>A list of Site objects associated with the specified Firebase project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sites")]
         public virtual System.Collections.Generic.IList<Site> Sites { get; set; }
 
@@ -4713,7 +4724,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// The URL to which the files should be uploaded, in the format:
-        /// "https://upload-firebasehosting.googleapis.com/upload/sites/SITE_NAME /versions/VERSION_ID/files" Perform a
+        /// "https://upload-firebasehosting.googleapis.com/upload/sites/SITE_ID /versions/VERSION_ID/files" Perform a
         /// multipart `POST` of the Gzipped file contents to the URL using a forward slash and the hash of the file
         /// appended to the end.
         /// </summary>
@@ -4792,7 +4803,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// Output only. The unique identifier for the release, in either of the following formats: -
-        /// sites/SITE_NAME/releases/RELEASE_ID - sites/SITE_NAME/channels/CHANNEL_ID/releases/RELEASE_ID This name is
+        /// sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is
         /// provided in the response body when you call [`releases.create`](sites.releases/create) or
         /// [`channels.releases.create`](sites.channels.releases/create).
         /// </summary>
@@ -4909,31 +4920,40 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A `Site` represents a Firebase Hosting Site.</summary>
+    /// <summary>A `Site` represents a Firebase Hosting site.</summary>
     public class Site : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The ID of a Web App associated with the Site.</summary>
+        /// <summary>
+        /// Optional. The [ID of a Web
+        /// App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+        /// associated with the Hosting site.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual string AppId { get; set; }
 
-        /// <summary>Output only. The default URL for this Hosting Site.</summary>
+        /// <summary>Output only. The default URL for the Hosting site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultUrl")]
         public virtual string DefaultUrl { get; set; }
 
-        /// <summary>Optional. User-specified labels for the Hosting Site.</summary>
+        /// <summary>Optional. User-specified labels for the Hosting site.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The fully qualified resource name of the Hosting Site, e.g.:
-        /// `projects/{project-number}/sites/{site-id}`.
+        /// Output only. The fully-qualified resource name of the Hosting site, in the format:
+        /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
+        /// [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        /// ***(recommended)*** or its
+        /// [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        /// Learn more about using project identifiers in Google's [AIP 2510
+        /// standard](https://google.aip.dev/cloud/2510).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The Hosting site type. There will always be a single DEFAULT_SITE, which is created when
-        /// Hosting is provisioned. All additional sites are USER_SITE.
+        /// Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when
+        /// Hosting is provisioned for the project. All additional sites are `USER_SITE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5041,7 +5061,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The fully-qualified identifier for the version, in the format: sites/ SITE_NAME/versions/VERSION_ID This
+        /// The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This
         /// name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
