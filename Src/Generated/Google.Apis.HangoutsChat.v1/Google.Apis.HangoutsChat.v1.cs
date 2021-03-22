@@ -2302,7 +2302,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user in Hangouts Chat.</summary>
+    /// <summary>A user in Google Chat.</summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The user's display name.</summary>
@@ -2313,7 +2313,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
         public virtual string DomainId { get; set; }
 
-        /// <summary>True when the user is deleted or the user's proifle is not visible.</summary>
+        /// <summary>True when the user is deleted or the user's profile is not visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
         public virtual System.Nullable<bool> IsAnonymous { get; set; }
 

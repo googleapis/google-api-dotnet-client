@@ -34,8 +34,11 @@ namespace Google.Apis.CloudResourceManager.v3
         /// <param name="initializer">The service initializer.</param>
         public CloudResourceManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
             Liens = new LiensResource(this);
             Operations = new OperationsResource(this);
+            Organizations = new OrganizationsResource(this);
+            Projects = new ProjectsResource(this);
             TagBindings = new TagBindingsResource(this);
             TagKeys = new TagKeysResource(this);
             TagValues = new TagValuesResource(this);
@@ -86,11 +89,20 @@ namespace Google.Apis.CloudResourceManager.v3
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
 
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
         /// <summary>Gets the Liens resource.</summary>
         public virtual LiensResource Liens { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the TagBindings resource.</summary>
         public virtual TagBindingsResource TagBindings { get; }
@@ -280,6 +292,832 @@ namespace Google.Apis.CloudResourceManager.v3
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of
+        /// the folder creation workflow. Upon success the Operation.response field will be populated with the created
+        /// Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or
+        /// fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its
+        /// parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10.
+        /// Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
+        /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
+        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
+        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
+        /// The caller must have `resourcemanager.folders.create` permission on the identified parent.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Folder body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of
+        /// the folder creation workflow. Upon success the Operation.response field will be populated with the created
+        /// Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or
+        /// fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its
+        /// parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10.
+        /// Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
+        /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
+        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
+        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
+        /// The caller must have `resourcemanager.folders.create` permission on the identified parent.
+        /// </summary>
+        public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Folder body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.Folder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/folders";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is
+        /// deleted approximately 30 days later. This method may only be called on an empty Folder, where a Folder is
+        /// empty if it doesn't contain any Folders or Projects in the ACTIVE state. If called on a folder in
+        /// DELETE_REQUESTED state the result will be a no-op success. The caller must have
+        /// `resourcemanager.folders.delete` permission on the identified folder.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`.
+        /// </param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>
+        /// Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is
+        /// deleted approximately 30 days later. This method may only be called on an empty Folder, where a Folder is
+        /// empty if it doesn't contain any Folders or Projects in the ACTIVE state. If called on a folder in
+        /// DELETE_REQUESTED state the result will be a no-op success. The caller must have
+        /// `resourcemanager.folders.delete` permission on the identified folder.
+        /// </summary>
+        public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format
+        /// `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get`
+        /// permission on the identified folder.
+        /// </summary>
+        /// <param name="name">
+        /// Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>
+        /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format
+        /// `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get`
+        /// permission on the identified folder.
+        /// </summary>
+        public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Folder>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource
+        /// exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have
+        /// `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource
+        /// exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have
+        /// `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+        /// </summary>
+        public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly
+        /// consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based
+        /// upon the (ascending) lexical ordering of their display_name. The caller must have
+        /// `resourcemanager.folders.list` permission on the identified parent.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly
+        /// consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based
+        /// upon the (ascending) lexical ordering of their display_name. The caller must have
+        /// `resourcemanager.folders.list` permission on the identified parent.
+        /// </summary>
+        public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListFoldersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of Folders to return in the response. If unspecified, server picks an
+            /// appropriate default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this
+            /// listing should continue from.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the
+            /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
+            /// the `resourcemanager.folders.list` permission on the `parent`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>
+            /// Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/folders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of
+        /// the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder.
+        /// Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs
+        /// synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs
+        /// asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the
+        /// Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients.
+        /// Folder moves will be rejected if they violate either the naming, height or fanout constraints described in
+        /// the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the
+        /// folder's current and proposed new parent.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the Folder to move. Must be of the form folders/{folder_id}
+        /// </param>
+        public virtual MoveRequest Move(Google.Apis.CloudResourceManager.v3.Data.MoveFolderRequest body, string name)
+        {
+            return new MoveRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of
+        /// the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder.
+        /// Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs
+        /// synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs
+        /// asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the
+        /// Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients.
+        /// Folder moves will be rejected if they violate either the naming, height or fanout constraints described in
+        /// the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the
+        /// folder's current and proposed new parent.
+        /// </summary>
+        public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Move request.</summary>
+            public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.MoveFolderRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Folder to move. Must be of the form folders/{folder_id}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.MoveFolderRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "move";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}:move";
+
+            /// <summary>Initializes Move parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they
+        /// violate either the display_name formatting rules or naming constraints described in the CreateFolder
+        /// documentation. The Folder's display_name must start and end with a letter or digit, may contain letters,
+        /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
+        /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder. If the update fails due to the unique name constraint then a
+        /// PreconditionFailure explaining this violation will be returned in the Status.details field.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+        /// "folders/1234".
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Folder body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they
+        /// violate either the display_name formatting rules or naming constraints described in the CreateFolder
+        /// documentation. The Folder's display_name must start and end with a letter or digit, may contain letters,
+        /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
+        /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder. If the update fails due to the unique name constraint then a
+        /// PreconditionFailure explaining this violation will be returned in the Status.details field.
+        /// </summary>
+        public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Folder body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+            /// "folders/1234".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. Fields to be updated. Only the `display_name` can be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.Folder Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Search for folders that match specific filter criteria. Search provides an eventually consistent view of the
+        /// folders a user has access to which meet the specified filter criteria. This will only return folders on
+        /// which the caller has the permission `resourcemanager.folders.get`.
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>
+        /// Search for folders that match specific filter criteria. Search provides an eventually consistent view of the
+        /// folders a user has access to which meet the specified filter criteria. This will only return folders on
+        /// which the caller has the permission `resourcemanager.folders.get`.
+        /// </summary>
+        public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchFoldersResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of folders to return in the response. If unspecified, server picks an
+            /// appropriate default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from where
+            /// search should continue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Optional. Search criteria used to select the Folders to return. If no search criteria is specified then
+            /// all accessible folders will be returned. Query expressions can be used to restrict results based upon
+            /// displayName, state and parent, where the operators `=` (`:`) `NOT`, `AND` and `OR` can be used along
+            /// with the suffix wildcard symbol `*`. The displayName field in a query expression should use escaped
+            /// quotes for values that include whitespace to prevent unexpected behavior. | Field | Description |
+            /// |-------------------------|----------------------------------------| | displayName | Filters by
+            /// displayName. | | parent | Filters by parent (e.g. folders/123). | | state, lifecycleState | Filters by
+            /// state. | Some example queries are: * Query `displayName=Test*` returns Folder resources whose display
+            /// name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set to `ACTIVE`. *
+            /// Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. *
+            /// Query `parent=folders/123 AND state=ACTIVE` returns active Folder resources that have `folders/123` as a
+            /// parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources with display names
+            /// that include both "Test" and "String".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/folders:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be
+        /// the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy`
+        /// permission on the identified folder.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be
+        /// the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy`
+        /// permission on the identified folder.
+        /// </summary>
+        public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's
+        /// resource name, e.g. "folders/1234". There are no permissions required for making this API call.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
+        /// the appropriate value for this field.
+        /// </param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's
+        /// resource name, e.g. "folders/1234". There are no permissions required for making this API call.
+        /// </summary>
+        public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Cancels the deletion request for a Folder. This method may be called on a Folder in any state. If Folder is
+        /// in ACTIVE state the result will be a no-op success. In order to succeed, the Folder's parent must be in the
+        /// ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and
+        /// fanout constraints described in the CreateFolder documentation. The caller must have
+        /// `resourcemanager.folders.undelete` permission on the identified folder.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`.
+        /// </param>
+        public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v3.Data.UndeleteFolderRequest body, string name)
+        {
+            return new UndeleteRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Cancels the deletion request for a Folder. This method may be called on a Folder in any state. If Folder is
+        /// in ACTIVE state the result will be a no-op success. In order to succeed, the Folder's parent must be in the
+        /// ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and
+        /// fanout constraints described in the CreateFolder documentation. The caller must have
+        /// `resourcemanager.folders.undelete` permission on the identified folder.
+        /// </summary>
+        public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Undelete request.</summary>
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.UndeleteFolderRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.UndeleteFolderRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "undelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}:undelete";
+
+            /// <summary>Initializes Undelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+$",
+                });
+            }
         }
     }
 
@@ -591,6 +1429,1178 @@ namespace Google.Apis.CloudResourceManager.v3
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^operations/.*$",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the Organization to fetch. This is the organization's relative path in the
+        /// API, formatted as "organizations/[organizationId]". For example, "organizations/1234".
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
+        public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Organization>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the Organization to fetch. This is the organization's relative path in
+            /// the API, formatted as "organizations/[organizationId]". For example, "organizations/1234".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource
+        /// exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
+        /// specified organization
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource
+        /// exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
+        /// specified organization
+        /// </summary>
+        public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Searches Organization resources that are visible to the user and satisfy the specified filter. This method
+        /// returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the
+        /// results, and may take a small amount of time to appear. Search will only return organizations on which the
+        /// user has the permission `resourcemanager.organizations.get`
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>
+        /// Searches Organization resources that are visible to the user and satisfy the specified filter. This method
+        /// returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the
+        /// results, and may take a small amount of time to appear. Search will only return organizations on which the
+        /// user has the permission `resourcemanager.organizations.get`
+        /// </summary>
+        public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchOrganizationsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of Organizations to return in the response. If unspecified, server picks an
+            /// appropriate default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to `SearchOrganizations` that indicates from
+            /// where listing should continue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Optional. An optional query string used to filter the Organizations to return in the response. Query
+            /// rules are case-insensitive. | Field | Description |
+            /// |------------------|--------------------------------------------| | directoryCustomerId,
+            /// owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. |
+            /// Organizations may be queried by `directoryCustomerId` or by `domain`, where the domain is a G Suite
+            /// domain, for example: * Query `directorycustomerid:123456789` returns Organization resources with
+            /// `owner.directory_customer_id` equal to `123456789`. * Query `domain:google.com` returns Organization
+            /// resources corresponding to the domain `google.com`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/organizations:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource`
+        /// field should be the organization's resource name, e.g. "organizations/123". Authorization requires the
+        /// Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource`
+        /// field should be the organization's resource name, e.g. "organizations/123". Authorization requires the
+        /// Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization
+        /// </summary>
+        public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified Organization. The `resource` field should be the
+        /// organization's resource name, e.g. "organizations/123". There are no permissions required for making this
+        /// API call.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
+        /// the appropriate value for this field.
+        /// </param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Returns permissions that a caller has on the specified Organization. The `resource` field should be the
+        /// organization's resource name, e.g. "organizations/123". There are no permissions required for making this
+        /// API call.
+        /// </summary>
+        public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^organizations/[^/]+$",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Request that a new Project be created. The result is an Operation which can be used to track the creation
+        /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
+        /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Project body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// Request that a new Project be created. The result is an Operation which can be used to track the creation
+        /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
+        /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        /// </summary>
+        public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Project body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.Project Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/projects";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Marks the Project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
+        /// This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the
+        /// Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at
+        /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
+        /// state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects.
+        /// However, you cannot update the project. After the deletion completes, the Project is not retrievable by the
+        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently (eg., deleting a
+        /// `DELETE_REQUESTED` project will not be an error, but also won't do anything). The caller must have delete
+        /// permissions for this Project.
+        /// </summary>
+        /// <param name="name">Required. The name of the Project (for example, `projects/415104041262`).</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>
+        /// Marks the Project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
+        /// This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the
+        /// Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at
+        /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
+        /// state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects.
+        /// However, you cannot update the project. After the deletion completes, the Project is not retrievable by the
+        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently (eg., deleting a
+        /// `DELETE_REQUESTED` project will not be an error, but also won't do anything). The caller must have delete
+        /// permissions for this Project.
+        /// </summary>
+        public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the Project (for example, `projects/415104041262`).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the Project identified by the specified `name` (for example, `projects/415104041262`). The caller
+        /// must have read permissions for this Project.
+        /// </summary>
+        /// <param name="name">Required. The name of the project (for example, `projects/415104041262`).</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>
+        /// Retrieves the Project identified by the specified `name` (for example, `projects/415104041262`). The caller
+        /// must have read permissions for this Project.
+        /// </summary>
+        public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Project>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the project (for example, `projects/415104041262`).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the
+        /// resource does not exist.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the
+        /// resource does not exist.
+        /// </summary>
+        public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.GetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists Projects that are direct children of the specified folder or organization resource. List provides a
+        /// strongly consistent view of the Projects underneath the specified parent resource. List returns Projects
+        /// sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
+        /// `resourcemanager.projects.list` permission on the identified parent.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>
+        /// Lists Projects that are direct children of the specified folder or organization resource. List provides a
+        /// strongly consistent view of the Projects underneath the specified parent resource. List returns Projects
+        /// sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
+        /// `resourcemanager.projects.list` permission on the identified parent.
+        /// </summary>
+        public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListProjectsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Required. The name of the parent resource to list projects under. For example, setting this field to
+            /// 'folders/1234' would list all projects directly under that folder.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>
+            /// Optional. Indicate that Projects in the `DELETE_REQUESTED` state should also be returned. Normally only
+            /// `ACTIVE` projects are returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/projects";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showDeleted",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Move a Project under a new resource parent. Returns an operation which can be used to track the process of
+        /// the Project move workflow. Upon success, the Operation.response field will be populated with the moved
+        /// Project. The caller must have `resourcemanager.projects.update` permission on the Project and have
+        /// `resourcemanager.projects.move` permission on the Project's current and proposed new parent.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. The name of the project to move.</param>
+        public virtual MoveRequest Move(Google.Apis.CloudResourceManager.v3.Data.MoveProjectRequest body, string name)
+        {
+            return new MoveRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Move a Project under a new resource parent. Returns an operation which can be used to track the process of
+        /// the Project move workflow. Upon success, the Operation.response field will be populated with the moved
+        /// Project. The caller must have `resourcemanager.projects.update` permission on the Project and have
+        /// `resourcemanager.projects.move` permission on the Project's current and proposed new parent.
+        /// </summary>
+        public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Move request.</summary>
+            public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.MoveProjectRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the project to move.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.MoveProjectRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "move";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}:move";
+
+            /// <summary>Initializes Move parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the attributes of the Project identified by the specified `name` (for example,
+        /// `projects/415104041262`). At present this is only useful for updating the display_name and labels. Deleting
+        /// all labels requires an update mask for labels field. The caller must have modify permissions for this
+        /// Project.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+        /// "projects/". Example: `projects/415104041262`
+        /// </param>
+        public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Project body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the attributes of the Project identified by the specified `name` (for example,
+        /// `projects/415104041262`). At present this is only useful for updating the display_name and labels. Deleting
+        /// all labels requires an update mask for labels field. The caller must have modify permissions for this
+        /// Project.
+        /// </summary>
+        public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.Project body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+            /// "projects/". Example: `projects/415104041262`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Optional. An update mask to selectively update fields.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.Project Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Search for Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified query. This method returns Projects in an unspecified order. This method is eventually consistent
+        /// with project mutations; this means that a newly created project may not appear in the results or recent
+        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// project, use the GetProject method.
+        /// </summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>
+        /// Search for Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
+        /// specified query. This method returns Projects in an unspecified order. This method is eventually consistent
+        /// with project mutations; this means that a newly created project may not appear in the results or recent
+        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// project, use the GetProject method.
+        /// </summary>
+        public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchProjectsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Optional. A query string for searching for projects that the caller has `resourcemanager.projects.get`
+            /// permission to. If multiple fields are included in the query, the it will return results that match any
+            /// of the fields. Some eligible fields are: | Field | Description |
+            /// |-------------------------|----------------------------------------------| | displayName, name | Filters
+            /// by displayName. | | parent.type | Parent's type: `folder` or `organization`. | | parent.id | Parent's id
+            /// number (e.g. 123) | | parent | Project's parent. (e.g. folders/123, organizations/*) Prefer parent field
+            /// over parent.id and parent.type. | | id, projectId | Filters by projectId. | | state, lifecycleState |
+            /// Filters by state. | | labels | Filters by label name or value. | | labels. (where *key* is the name of a
+            /// label) | Filters by label name. | Search expressions are case insensitive. Some examples queries: |
+            /// Query | Description | |------------------|-----------------------------------------------------| |
+            /// name:how* | The project's name starts with "how". | | name:Howl | The project's name is `Howl` or
+            /// `howl`. | | name:HOWL | Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* |
+            /// The project has the label `color`. | | labels.color:red | The project's label `color` has the value
+            /// `red`. | | labels.color:red labels.size:big | The project's label `color` has the value `red` and its
+            /// label `size` has the value `big`. | If no query is specified, the call will return projects for which
+            /// the user has the `resourcemanager.projects.get` permission.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/projects:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing
+        /// policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies
+        /// or changing their roles can render services completely inoperable. It is important to understand how the
+        /// service account is being used before removing or updating its roles. The following constraints apply when
+        /// using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
+        /// `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is
+        /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
+        /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
+        /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
+        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
+        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
+        /// Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be
+        /// sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership changes
+        /// that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. +
+        /// If the project is not part of an organization, there must be at least one owner who has accepted the Terms
+        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
+        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
+        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// rectified. + Calling this method requires enabling the App Engine Admin API.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+        /// appropriate value for this field.
+        /// </param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>
+        /// Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing
+        /// policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies
+        /// or changing their roles can render services completely inoperable. It is important to understand how the
+        /// service account is being used before removing or updating its roles. The following constraints apply when
+        /// using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
+        /// `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is
+        /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
+        /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
+        /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
+        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
+        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
+        /// Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be
+        /// sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership changes
+        /// that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. +
+        /// If the project is not part of an organization, there must be at least one owner who has accepted the Terms
+        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
+        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
+        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// rectified. + Calling this method requires enabling the App Engine Admin API.
+        /// </summary>
+        public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See the operation documentation for the
+            /// appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.SetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
+        /// the appropriate value for this field.
+        /// </param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation
+            /// for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "testIamPermissions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+resource}:testIamPermissions";
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Restores the Project identified by the specified `name` (for example, `projects/415104041262`). You can only
+        /// use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
+        /// Project cannot be restored. The caller must have undelete permissions for this Project.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. The name of the Project (for example, `projects/415104041262`). Required.
+        /// </param>
+        public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v3.Data.UndeleteProjectRequest body, string name)
+        {
+            return new UndeleteRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// Restores the Project identified by the specified `name` (for example, `projects/415104041262`). You can only
+        /// use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
+        /// Project cannot be restored. The caller must have undelete permissions for this Project.
+        /// </summary>
+        public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
+        {
+            /// <summary>Constructs a new Undelete request.</summary>
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudResourceManager.v3.Data.UndeleteProjectRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the Project (for example, `projects/415104041262`). Required.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudResourceManager.v3.Data.UndeleteProjectRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "undelete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+name}:undelete";
+
+            /// <summary>Initializes Undelete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
                 });
             }
         }
@@ -2092,6 +4102,46 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata pertaining to the Folder creation process.</summary>
+    public class CreateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the folder or organization we are creating the folder under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by CreateProject. It provides
+    /// insight for when significant phases of Project creation have completed.
+    /// </summary>
+    public class CreateProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation time of the project creation workflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to
+        /// work until the project creation is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
+        public virtual System.Nullable<bool> Gettable { get; set; }
+
+        /// <summary>True if the project creation process is complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ready")]
+        public virtual System.Nullable<bool> Ready { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for creating a TagKey.</summary>
     public class CreateTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2101,6 +4151,33 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
     /// <summary>Runtime operation information for creating a TagValue.</summary>
     public class CreateTagValueMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by DeleteFolder.
+    /// </summary>
+    public class DeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by DeleteOrganization.
+    /// </summary>
+    public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by DeleteProject.
+    /// </summary>
+    public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2174,6 +4251,61 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Folder in an Organization's resource hierarchy, used to organize that Organization's resources.
+    /// </summary>
+    public class Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp when the Folder was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Timestamp when the Folder was requested to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders
+        /// with the same parent can share the same display name. The display name must start and end with a letter or
+        /// digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
+        /// This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. A checksum computed by the server based on the current value of the Folder resource. This may
+        /// be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+        /// "folders/1234".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via
+        /// MoveFolder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Output only. The lifecycle state of the folder. Updates to the state must be performed via DeleteFolder and
+        /// UndeleteFolder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Timestamp when the Folder was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>Metadata describing a long running folder operation</summary>
@@ -2287,6 +4419,26 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The ListFolders response message.</summary>
+    public class ListFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A possibly paginated list of Folders that are direct descendants of the specified parent resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
+        /// <summary>
+        /// A pagination token returned from a previous call to `ListFolders` that indicates from where listing should
+        /// continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Liens.ListLiens.</summary>
     public class ListLiensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2299,6 +4451,32 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A page of the response received from the ListProjects method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request
+    /// page. NOTE: A response may contain fewer elements than the request `page_size` and still have a
+    /// `next_page_token`.
+    /// </summary>
+    public class ListProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set. Pagination tokens have a limited
+        /// lifetime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Projects under the parent. This list can be paginated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual System.Collections.Generic.IList<Project> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2360,6 +4538,59 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata pertaining to the Folder move process.</summary>
+    public class MoveFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the folder or organization to move the folder to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The display name of the folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name of the folder's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceParent")]
+        public virtual string SourceParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The MoveFolder request message.</summary>
+    public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form
+        /// `folders/{folder_id}` or `organizations/{org_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by MoveProject.
+    /// </summary>
+    public class MoveProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request sent to MoveProject method.</summary>
+    public class MoveProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new parent to move the Project under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
+        public virtual string DestinationParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2401,6 +4632,54 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The root node in the resource hierarchy to which a particular entity's (e.g., company) resources belong.
+    /// </summary>
+    public class Organization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp when the Organization was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Timestamp when the Organization was requested for deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>Immutable. The G Suite / Workspace customer id used in the Directory API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoryCustomerId")]
+        public virtual string DirectoryCustomerId { get; set; }
+
+        /// <summary>
+        /// Output only. A human-readable string that refers to the Organization in the GCP Console UI. This string is
+        /// set by the server and cannot be changed. The string will be set to the primary domain (for example,
+        /// "google.com") of the G Suite customer that owns the organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. A checksum computed by the server based on the current value of the Organization resource. This
+        /// may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the organization. This is the organization's relative path in the API. Its
+        /// format is "organizations/[organization_id]". For example, "organizations/1234".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The organization's current lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Timestamp when the Organization was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>
@@ -2468,6 +4747,73 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
+    /// A Project is a high-level Google Cloud Platform entity. It is a container for ACLs, APIs, App Engine Apps, VMs,
+    /// and other Google Cloud Platform resources.
+    /// </summary>
+    public class Project : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time at which this resource was requested for deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Optional. A user-assigned display name of the Project. When present it must be between 4 to 30 characters.
+        /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
+        /// and exclamation point. Example: `My Project`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. A checksum computed by the server based on the current value of the Project resource. This may
+        /// be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. The labels associated with this Project. Label keys must be between 1 and 63 characters long and
+        /// must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be
+        /// between 0 and 63 characters long and must conform to the regular expression
+        /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource.
+        /// Clients should store labels in a representation such as JSON that does not depend on specific characters
+        /// being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+        /// "projects/". Example: `projects/415104041262`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Immutable. The unique, user-assigned id of the Project. It must be 6 to 30 lowercase ASCII letters, digits,
+        /// or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Output only. The Project lifecycle state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The most recent time this resource was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>
     /// A status object which is used as the `metadata` field for the Operation returned by CreateProject. It provides
     /// insight for when significant phases of Project creation have completed.
     /// </summary>
@@ -2487,6 +4833,69 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// <summary>True if the project creation process is complete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ready")]
         public virtual System.Nullable<bool> Ready { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for searching folders.</summary>
+    public class SearchFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A possibly paginated folder search results. the specified parent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
+
+        /// <summary>
+        /// A pagination token returned from a previous call to `SearchFolders` that indicates from where searching
+        /// should continue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response returned from the `SearchOrganizations` method.</summary>
+    public class SearchOrganizationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A pagination token to be used to retrieve the next page of results. If the result is too large to fit within
+        /// the page size specified in the request, this field will be set with a token that can be used to fetch the
+        /// next page of results. If this field is empty, it indicates that this response contains the last page of
+        /// results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Organizations that matched the search query, possibly paginated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
+        public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A page of the response received from the SearchProjects method. A paginated response where more pages are
+    /// available has `next_page_token` set. This token can be used in a subsequent request to retrieve the next request
+    /// page.
+    /// </summary>
+    public class SearchProjectsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Pagination token. If the result set is too large to fit in a single response, this token is returned. It
+        /// encodes the position of the current result cursor. Feeding this value into a new list request with the
+        /// `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is
+        /// no next page and the list returned is the last page in the result set. Pagination tokens have a limited
+        /// lifetime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Projects that matched the list filter query. This list can be paginated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projects")]
+        public virtual System.Collections.Generic.IList<Project> Projects { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2699,6 +5108,65 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteFolder.
+    /// </summary>
+    public class UndeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The UndeleteFolder request message.</summary>
+    public class UndeleteFolderRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteOrganization.
+    /// </summary>
+    public class UndeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteProject.
+    /// </summary>
+    public class UndeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request sent to the UndeleteProject method.</summary>
+    public class UndeleteProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UpdateFolder.
+    /// </summary>
+    public class UpdateFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A status object which is used as the `metadata` field for the Operation returned by UpdateProject.
+    /// </summary>
+    public class UpdateProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

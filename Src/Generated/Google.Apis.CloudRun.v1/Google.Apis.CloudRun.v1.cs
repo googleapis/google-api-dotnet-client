@@ -66,14 +66,14 @@ namespace Google.Apis.CloudRun.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Run Admin API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Run Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -633,6 +633,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.DomainMapping Body { get; set; }
 
@@ -659,6 +666,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -693,6 +708,13 @@ namespace Google.Apis.CloudRun.v1
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ApiVersion { get; set; }
+
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
 
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -730,6 +752,14 @@ namespace Google.Apis.CloudRun.v1
                     RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1000,6 +1030,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ApiVersion { get; set; }
 
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
@@ -1036,6 +1073,14 @@ namespace Google.Apis.CloudRun.v1
                     RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1519,6 +1564,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
@@ -1545,6 +1597,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1586,6 +1646,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ApiVersion { get; set; }
 
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Kind { get; set; }
@@ -1622,6 +1689,14 @@ namespace Google.Apis.CloudRun.v1
                     RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                     {
                         Name = "apiVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1880,6 +1955,13 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// DryRun is a query string parameter which indicates that the server should run validation without
+                /// persisting the request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string DryRun { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
@@ -1906,6 +1988,14 @@ namespace Google.Apis.CloudRun.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^namespaces/[^/]+/services/[^/]+$",
+                    });
+                    RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -2387,6 +2477,13 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.DomainMapping Body { get; set; }
 
@@ -2413,6 +2510,14 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2447,6 +2552,13 @@ namespace Google.Apis.CloudRun.v1
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ApiVersion { get; set; }
+
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
 
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -2484,6 +2596,14 @@ namespace Google.Apis.CloudRun.v1
                         RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2755,6 +2875,13 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ApiVersion { get; set; }
 
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
+
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
@@ -2791,6 +2918,14 @@ namespace Google.Apis.CloudRun.v1
                         RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3276,6 +3411,13 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
@@ -3302,6 +3444,14 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3343,6 +3493,13 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ApiVersion { get; set; }
 
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
+
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Kind { get; set; }
@@ -3379,6 +3536,14 @@ namespace Google.Apis.CloudRun.v1
                         RequestParameters.Add("apiVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "apiVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3714,6 +3879,13 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// DryRun is a query string parameter which indicates that the server should run validation without
+                    /// persisting the request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string DryRun { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudRun.v1.Data.Service Body { get; set; }
 
@@ -3740,6 +3912,14 @@ namespace Google.Apis.CloudRun.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                        });
+                        RequestParameters.Add("dryRun", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dryRun",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3894,15 +4074,23 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
