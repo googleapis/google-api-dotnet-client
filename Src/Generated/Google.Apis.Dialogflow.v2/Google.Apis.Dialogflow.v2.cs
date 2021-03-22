@@ -5492,221 +5492,8 @@ namespace Google.Apis.Dialogflow.v2
             public ConversationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                CallMatchers = new CallMatchersResource(service);
                 Messages = new MessagesResource(service);
                 Participants = new ParticipantsResource(service);
-            }
-
-            /// <summary>Gets the CallMatchers resource.</summary>
-            public virtual CallMatchersResource CallMatchers { get; }
-
-            /// <summary>The "callMatchers" collection of methods.</summary>
-            public class CallMatchersResource
-            {
-                private const string Resource = "callMatchers";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public CallMatchersResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Creates a call matcher that links incoming SIP calls to the specified conversation if they fulfill
-                /// specified criteria.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. Resource identifier of the conversation adding the call matcher. Format:
-                /// `projects//locations//conversations/`.
-                /// </param>
-                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CallMatcher body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>
-                /// Creates a call matcher that links incoming SIP calls to the specified conversation if they fulfill
-                /// specified criteria.
-                /// </summary>
-                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CallMatcher>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CallMatcher body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource identifier of the conversation adding the call matcher. Format:
-                    /// `projects//locations//conversations/`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CallMatcher Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/callMatchers";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Requests deletion of a call matcher.</summary>
-                /// <param name="name">
-                /// Required. The unique identifier of the CallMatcher to delete. Format:
-                /// `projects//locations//conversations//callMatchers/`.
-                /// </param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Requests deletion of a call matcher.</summary>
-                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The unique identifier of the CallMatcher to delete. Format:
-                    /// `projects//locations//conversations//callMatchers/`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/conversations/[^/]+/callMatchers/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Returns the list of all call matchers in the specified conversation.</summary>
-                /// <param name="parent">
-                /// Required. The conversation to list all call matchers from. Format:
-                /// `projects//locations//conversations/`.
-                /// </param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Returns the list of all call matchers in the specified conversation.</summary>
-                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListCallMatchersResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The conversation to list all call matchers from. Format:
-                    /// `projects//locations//conversations/`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. The maximum number of items to return in a single page. By default 100 and at most
-                    /// 1000.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/callMatchers";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the Messages resource.</summary>
@@ -11749,223 +11536,8 @@ namespace Google.Apis.Dialogflow.v2
                 public ConversationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    CallMatchers = new CallMatchersResource(service);
                     Messages = new MessagesResource(service);
                     Participants = new ParticipantsResource(service);
-                }
-
-                /// <summary>Gets the CallMatchers resource.</summary>
-                public virtual CallMatchersResource CallMatchers { get; }
-
-                /// <summary>The "callMatchers" collection of methods.</summary>
-                public class CallMatchersResource
-                {
-                    private const string Resource = "callMatchers";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public CallMatchersResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Creates a call matcher that links incoming SIP calls to the specified conversation if they
-                    /// fulfill specified criteria.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. Resource identifier of the conversation adding the call matcher. Format:
-                    /// `projects//locations//conversations/`.
-                    /// </param>
-                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CreateCallMatcherRequest body, string parent)
-                    {
-                        return new CreateRequest(service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Creates a call matcher that links incoming SIP calls to the specified conversation if they
-                    /// fulfill specified criteria.
-                    /// </summary>
-                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CallMatcher>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CreateCallMatcherRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. Resource identifier of the conversation adding the call matcher. Format:
-                        /// `projects//locations//conversations/`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2CreateCallMatcherRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "create";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+parent}/callMatchers";
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Requests deletion of a call matcher.</summary>
-                    /// <param name="name">
-                    /// Required. The unique identifier of the CallMatcher to delete. Format:
-                    /// `projects//locations//conversations//callMatchers/`.
-                    /// </param>
-                    public virtual DeleteRequest Delete(string name)
-                    {
-                        return new DeleteRequest(service, name);
-                    }
-
-                    /// <summary>Requests deletion of a call matcher.</summary>
-                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The unique identifier of the CallMatcher to delete. Format:
-                        /// `projects//locations//conversations//callMatchers/`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "delete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "DELETE";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+name}";
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/callMatchers/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Returns the list of all call matchers in the specified conversation.</summary>
-                    /// <param name="parent">
-                    /// Required. The conversation to list all call matchers from. Format:
-                    /// `projects//locations//conversations/`.
-                    /// </param>
-                    public virtual ListRequest List(string parent)
-                    {
-                        return new ListRequest(service, parent);
-                    }
-
-                    /// <summary>Returns the list of all call matchers in the specified conversation.</summary>
-                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListCallMatchersResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The conversation to list all call matchers from. Format:
-                        /// `projects//locations//conversations/`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Optional. The maximum number of items to return in a single page. By default 100 and at most
-                        /// 1000.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. The next_page_token value returned from a previous list request.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2/{+parent}/callMatchers";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
                 }
 
                 /// <summary>Gets the Messages resource.</summary>
@@ -17716,10 +17288,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Participants.AnalyzeContent.</summary>
     public class GoogleCloudDialogflowV2AnalyzeContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The natural language speech audio to be processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioInput")]
-        public virtual GoogleCloudDialogflowV2AudioInput AudioInput { get; set; }
-
         /// <summary>An input event to send to Dialogflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventInput")]
         public virtual GoogleCloudDialogflowV2EventInput EventInput { get; set; }
@@ -17942,24 +17510,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the natural language speech audio to be processed.</summary>
-    public class GoogleCloudDialogflowV2AudioInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The natural language speech audio to be processed. A single request can contain up to 1 minute of
-        /// speech audio data. The transcribed text cannot contain more than 256 bytes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
-        public virtual string Audio { get; set; }
-
-        /// <summary>Required. Instructs the speech recognizer how to process the speech audio.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual GoogleCloudDialogflowV2InputAudioConfig Config { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Defines the Automated Agent to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2AutomatedAgentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18162,71 +17712,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a call matcher that describes criteria for matching incoming SIP calls to a conversation. When
-    /// Dialogflow get a SIP call from a third-party carrier, Dialogflow matches the call to an existing conversation by
-    /// either: * Extracting the conversation id from the [Call-Info
-    /// header](https://tools.ietf.org/html/rfc3261#section-20.9), e.g. `Call-Info:
-    /// ;purpose=Goog-ContactCenter-Conversation`. * Or, if that doesn't work, matching incoming [SIP
-    /// headers](https://tools.ietf.org/html/rfc3261#section-7.3) against any CallMatcher for the conversation. If an
-    /// incoming SIP call without valid `Call-Info` header matches to zero or multiple conversations with `CallMatcher`,
-    /// we reject it. A call matcher contains equality conditions for SIP headers that all have to be fulfilled in order
-    /// for a SIP call to match. The matched SIP headers consist of well-known headers (`To`, `From`, `Call-ID`) and
-    /// custom headers. A CallMatcher is only valid if it specifies: * At least 1 custom header, * or at least 2
-    /// well-known headers.
-    /// </summary>
-    public class GoogleCloudDialogflowV2CallMatcher : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Value of the [`Call-ID` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.4) to match. If empty or
-        /// unspecified, we don't match to the [`Call-ID` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.4).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callIdHeader")]
-        public virtual string CallIdHeader { get; set; }
-
-        /// <summary>Custom SIP headers that must match.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customHeaders")]
-        public virtual GoogleCloudDialogflowV2CallMatcherCustomHeaders CustomHeaders { get; set; }
-
-        /// <summary>
-        /// Value of the [`From` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.3) to match. If empty or
-        /// unspecified, we don't match to the [`From` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.3).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
-        public virtual string FromHeader { get; set; }
-
-        /// <summary>
-        /// Output only. The unique identifier of this call matcher. Format:
-        /// `projects//locations//conversations//callMatchers/`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Value of the [`To` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.2) to match. If empty or
-        /// unspecified, we don't match to the [`To` header](https://tools.ietf.org/html/rfc3261#section-8.1.1.2).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("toHeader")]
-        public virtual string ToHeader { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Custom SIP headers. See the [description of headers in the
-    /// RFC](https://tools.ietf.org/html/rfc3261#section-7.3).
-    /// </summary>
-    public class GoogleCloudDialogflowV2CallMatcherCustomHeaders : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cisco's proprietary `Cisco-Guid` header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ciscoGuid")]
-        public virtual string CiscoGuid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The request message for Conversations.CompleteConversation.</summary>
     public class GoogleCloudDialogflowV2CompleteConversationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18391,10 +17876,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("humanAgentAssistantConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfig HumanAgentAssistantConfig { get; set; }
 
-        /// <summary>Configuration for connecting to a live agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentHandoffConfig")]
-        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfig HumanAgentHandoffConfig { get; set; }
-
         /// <summary>
         /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies.
         /// Users need to create a ConversationProfile for each language they want to support.
@@ -18429,17 +17910,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Output only. Update time of the conversation profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The request message for Conversations.CreateCallMatcher.</summary>
-    public class GoogleCloudDialogflowV2CreateCallMatcherRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The call matcher to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callMatcher")]
-        public virtual GoogleCloudDialogflowV2CallMatcher CallMatcher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18942,10 +18412,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Defines the Human Agent Assist to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Configuration for agent assistance of end user participant.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endUserSuggestionConfig")]
-        public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig EndUserSuggestionConfig { get; set; }
-
         /// <summary>Configuration for agent assistance of human agent participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanAgentSuggestionConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig HumanAgentSuggestionConfig { get; set; }
@@ -18979,14 +18445,6 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Configuration for analyses to run on each conversation message.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Enable entity extraction in conversation messages on [agent assist
-        /// stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults
-        /// to false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableEntityExtraction")]
-        public virtual System.Nullable<bool> EnableEntityExtraction { get; set; }
-
         /// <summary>
         /// Enable sentiment analysis in conversation messages on [agent assist
         /// stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults
@@ -19206,65 +18664,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The suggestion results payload that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SuggestionResult> SuggestionResults { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a
-    /// conversation.
-    /// </summary>
-    public class GoogleCloudDialogflowV2HumanAgentHandoffConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Uses LivePerson (https://www.liveperson.com).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("livePersonConfig")]
-        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig LivePersonConfig { get; set; }
-
-        /// <summary>Uses Salesforce Live Agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("salesforceLiveAgentConfig")]
-        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig SalesforceLiveAgentConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration specific to LivePerson (https://www.liveperson.com).</summary>
-    public class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Account number of the LivePerson account to connect. This is the account number you input at the
-        /// login page.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountNumber")]
-        public virtual string AccountNumber { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration specific to Salesforce Live Agent.</summary>
-    public class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Live Agent chat button ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttonId")]
-        public virtual string ButtonId { get; set; }
-
-        /// <summary>Required. Live Agent deployment ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
-        public virtual string DeploymentId { get; set; }
-
-        /// <summary>
-        /// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent
-        /// settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should
-        /// fill in d.la4-c2-phx.salesforceliveagent.com.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endpointDomain")]
-        public virtual string EndpointDomain { get; set; }
-
-        /// <summary>Required. The organization ID of the Salesforce account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
-        public virtual string OrganizationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20280,26 +19679,6 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// A token to retrieve next page of results. Or empty if there are no more results. Pass this value in the
         /// ListAnswerRecordsRequest.page_token field in the subsequent call to `ListAnswerRecords` method to retrieve
         /// the next page of results.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response message for Conversations.ListCallMatchers.</summary>
-    public class GoogleCloudDialogflowV2ListCallMatchersResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of call matchers. There is a maximum number of items returned based on the page_size field in the
-        /// request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callMatchers")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2CallMatcher> CallMatchers { get; set; }
-
-        /// <summary>
-        /// Token to retrieve the next page of results or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

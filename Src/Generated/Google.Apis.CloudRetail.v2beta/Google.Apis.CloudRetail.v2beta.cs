@@ -971,21 +971,11 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
                     /// Required. Full resource name of the format:
-                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The id of the
-                    /// recommendation engine placement. This id is used to identify the set of models that will be used
-                    /// to make the prediction. We currently support three placements with the following IDs by default:
-                    /// * `shopping_cart`: Predicts products frequently bought together with one or more products in the
-                    /// same shopping session. Commonly displayed after `add-to-cart` events, on product detail pages,
-                    /// or on the shopping cart page. * `home_page`: Predicts the next product that a user will most
-                    /// likely engage with or purchase based on the shopping or viewing history of the specified
-                    /// `userId` or `visitorId`. For example - Recommendations for you. * `product_detail`: Predicts the
-                    /// next product that a user will most likely engage with or purchase. The prediction is based on
-                    /// the shopping or viewing history of the specified `userId` or `visitorId` and its relevance to a
-                    /// specified `CatalogItem`. Typically used on product detail pages. For example - More products
-                    /// like this. * `recently_viewed_default`: Returns up to 75 products recently viewed by the
-                    /// specified `userId` or `visitorId`, most recent ones first. Returns nothing if neither of them
-                    /// has viewed any products yet. For example - Recently viewed. The full list of available
-                    /// placements can be seen at
+                    /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                    /// Recommendations AI placement. Before you can request predictions from your model, you must
+                    /// create at least one placement for it. For more information, see [Managing
+                    /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The full
+                    /// list of available placements can be seen at
                     /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
                     /// </param>
                     public virtual PredictRequest Predict(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaPredictRequest body, string placement)
@@ -1006,21 +996,11 @@ namespace Google.Apis.CloudRetail.v2beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The id of the
-                        /// recommendation engine placement. This id is used to identify the set of models that will be
-                        /// used to make the prediction. We currently support three placements with the following IDs by
-                        /// default: * `shopping_cart`: Predicts products frequently bought together with one or more
-                        /// products in the same shopping session. Commonly displayed after `add-to-cart` events, on
-                        /// product detail pages, or on the shopping cart page. * `home_page`: Predicts the next product
-                        /// that a user will most likely engage with or purchase based on the shopping or viewing
-                        /// history of the specified `userId` or `visitorId`. For example - Recommendations for you. *
-                        /// `product_detail`: Predicts the next product that a user will most likely engage with or
-                        /// purchase. The prediction is based on the shopping or viewing history of the specified
-                        /// `userId` or `visitorId` and its relevance to a specified `CatalogItem`. Typically used on
-                        /// product detail pages. For example - More products like this. * `recently_viewed_default`:
-                        /// Returns up to 75 products recently viewed by the specified `userId` or `visitorId`, most
-                        /// recent ones first. Returns nothing if neither of them has viewed any products yet. For
-                        /// example - Recently viewed. The full list of available placements can be seen at
+                        /// {name=projects/*/locations/global/catalogs/default_catalog/placements/*} The ID of the
+                        /// Recommendations AI placement. Before you can request predictions from your model, you must
+                        /// create at least one placement for it. For more information, see [Managing
+                        /// placements](https://cloud.google.com/retail/recommendations-ai/docs/manage-placements). The
+                        /// full list of available placements can be seen at
                         /// https://console.cloud.google.com/recommendation/catalogs/default_catalog/placements
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
@@ -2656,8 +2636,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// the specified tags. Boolean operators `OR` and `NOT` are supported if the expression is enclosed in
         /// parentheses, and must be separated from the tag values by a space. `-"tagA"` is also supported and is
         /// equivalent to `NOT "tagA"`. Tag values must be double quoted UTF-8 encoded strings with a size limit of
-        /// 1,000 characters. * filterOutOfStockItems. Restricts predictions to products that do not have a stockState
-        /// value of OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") *
+        /// 1,000 characters. Note: "Recently viewed" models don't support tag filtering at the moment. *
+        /// filterOutOfStockItems. Restricts predictions to products that do not have a stockState value of
+        /// OUT_OF_STOCK. Examples: * tag=("Red" OR "Blue") tag="New-Arrival" tag=(NOT "promotional") *
         /// filterOutOfStockItems tag=(-"promotional") * filterOutOfStockItems If your filter blocks all prediction
         /// results, nothing will be returned. If you want generic (unfiltered) popular products to be returned instead,
         /// set `strictFiltering` to false in `PredictRequest.params`.
@@ -3380,217 +3361,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration of destination for Export related errors.</summary>
-    public class GoogleCloudRetailV2mainExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Export
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
-        public virtual string GcsPrefix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the Export operation. This will be returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudRetailV2mainExportMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Operation create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the ExportProductsRequest. If the long running operation is done, then this message is returned by
-    /// the google.longrunning.Operations.response field if the operation was successful.
-    /// </summary>
-    public class GoogleCloudRetailV2mainExportProductsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A sample of errors encountered while processing the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
-
-        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRetailV2mainExportErrorsConfig ErrorsConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the ExportUserEventsRequest. If the long running operation was successful, then this message is
-    /// returned by the google.longrunning.Operations.response field if the operation was successful.
-    /// </summary>
-    public class GoogleCloudRetailV2mainExportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A sample of errors encountered while processing the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
-
-        /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRetailV2mainExportErrorsConfig ErrorsConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Configuration of destination for Import related errors.</summary>
-    public class GoogleCloudRetailV2mainImportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import
-        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
-        /// message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
-        public virtual string GcsPrefix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the Import operation. This will be returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudRetailV2mainImportMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Operation create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Count of entries that encountered errors while processing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
-        public virtual System.Nullable<long> FailureCount { get; set; }
-
-        /// <summary>Count of entries that were processed successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
-
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the ImportProductsRequest. If the long running operation is done, then this message is returned by
-    /// the google.longrunning.Operations.response field if the operation was successful.
-    /// </summary>
-    public class GoogleCloudRetailV2mainImportProductsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A sample of errors encountered while processing the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
-
-        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRetailV2mainImportErrorsConfig ErrorsConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the ImportUserEventsRequest. If the long running operation was successful, then this message is
-    /// returned by the google.longrunning.Operations.response field if the operation was successful.
-    /// </summary>
-    public class GoogleCloudRetailV2mainImportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A sample of errors encountered while processing the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
-
-        /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
-        public virtual GoogleCloudRetailV2mainImportErrorsConfig ErrorsConfig { get; set; }
-
-        /// <summary>Aggregated statistics of user event import status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("importSummary")]
-        public virtual GoogleCloudRetailV2mainUserEventImportSummary ImportSummary { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the Purge operation. This will be returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudRetailV2mainPurgeMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is
-    /// returned by the google.longrunning.Operations.response field.
-    /// </summary>
-    public class GoogleCloudRetailV2mainPurgeUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The total count of events purged as a result of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("purgedEventsCount")]
-        public virtual System.Nullable<long> PurgedEventsCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for RejoinUserEvents method.</summary>
-    public class GoogleCloudRetailV2mainRejoinUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for RejoinUserEvents method.</summary>
-    public class GoogleCloudRetailV2mainRejoinUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of user events that were joined with latest product catalog.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rejoinedUserEventsCount")]
-        public virtual System.Nullable<long> RejoinedUserEventsCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A summary of import result. The UserEventImportSummary summarizes the import status for user events.
-    /// </summary>
-    public class GoogleCloudRetailV2mainUserEventImportSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Count of user events imported with complete existing catalog information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("joinedEventsCount")]
-        public virtual System.Nullable<long> JoinedEventsCount { get; set; }
-
-        /// <summary>
-        /// Count of user events imported, but with catalog information not found in the imported catalog.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
-        public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

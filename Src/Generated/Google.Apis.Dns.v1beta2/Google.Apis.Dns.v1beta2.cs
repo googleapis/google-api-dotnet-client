@@ -2515,14 +2515,14 @@ namespace Google.Apis.Dns.v1beta2
             }
         }
 
-        /// <summary>Fetch the representation of an existing Project.</summary>
+        /// <summary>Fetches the representation of an existing Project.</summary>
         /// <param name="project">Identifies the project addressed by this request.</param>
         public virtual GetRequest Get(string project)
         {
             return new GetRequest(service, project);
         }
 
-        /// <summary>Fetch the representation of an existing Project.</summary>
+        /// <summary>Fetches the representation of an existing Project.</summary>
         public class GetRequest : DnsBaseServiceRequest<Google.Apis.Dns.v1beta2.Data.Project>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3822,11 +3822,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
-        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
-        /// if the contents of the collection change between the first and last paginated list request, the set of all
-        /// elements returned are an inconsistent view of the collection. There is no way to retrieve a "snapshot" of
-        /// collections larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your pagination token. This
+        /// lets you retrieve the complete contents of even very large collections one page at a time. However, if the
+        /// contents of the collection change between the first and last paginated list request, the set of all elements
+        /// returned are an inconsistent view of the collection. You cannot retrieve a "snapshot" of collections larger
+        /// than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4168,10 +4168,10 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
-        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you retrieve the complete contents of even very large collections one page at a time. However, if the
         /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
+        /// returned are an inconsistent view of the collection. You cannot retrieve a consistent snapshot of a
         /// collection larger than the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -4287,7 +4287,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The fully qualified URL of the namespace associated with the zone. This should be formatted like
+        /// The fully qualified URL of the namespace associated with the zone. Format must be
         /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceUrl")]
@@ -4312,11 +4312,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
-        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
-        /// collection larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4419,11 +4419,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
-        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
-        /// collection larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4574,7 +4574,7 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     /// <summary>
     /// A project resource. The project is a top level container for resources including Cloud DNS ManagedZones.
-    /// Projects can be created only in the APIs console.
+    /// Projects can be created only in the APIs console. Next tag: 7.
     /// </summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4746,11 +4746,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
-        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
-        /// collection larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4887,11 +4887,11 @@ namespace Google.Apis.Dns.v1beta2.Data
 
         /// <summary>
         /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. In this way
-        /// you can retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. There is no way to retrieve a consistent snapshot of a
-        /// collection larger than the maximum page size.
+        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
+        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
+        /// collection change between the first and last paginated list request, the set of all elements returned are an
+        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
+        /// the maximum page size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

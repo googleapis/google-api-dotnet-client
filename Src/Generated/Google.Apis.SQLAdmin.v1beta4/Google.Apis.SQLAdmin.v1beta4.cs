@@ -73,7 +73,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud SQL Admin API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -83,7 +83,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud SQL Admin API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google SQL Service instances</summary>
@@ -4315,9 +4315,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// The current serving state of the Cloud SQL instance. This can be one of the following.
         /// *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running,
         /// or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with
-        /// billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted.
-        /// *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance.
-        /// *FAILED*: The instance creation failed.
+        /// billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created.
+        /// *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4798,6 +4797,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>
         /// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more
         /// than this field value will be truncated to this value. When unset, query length will be the default value.
+        /// Changing query length will restart the database.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryStringLength")]
         public virtual System.Nullable<int> QueryStringLength { get; set; }

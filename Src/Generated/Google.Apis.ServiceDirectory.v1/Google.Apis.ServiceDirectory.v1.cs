@@ -1901,15 +1901,23 @@ namespace Google.Apis.ServiceDirectory.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2377,7 +2385,7 @@ namespace Google.Apis.ServiceDirectory.v1.Data
     {
         /// <summary>
         /// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The
-        /// entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs.
+        /// entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs.
         /// Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional
         /// prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less,
         /// beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots

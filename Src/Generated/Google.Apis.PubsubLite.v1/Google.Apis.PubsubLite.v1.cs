@@ -368,6 +368,14 @@ namespace Google.Apis.PubsubLite.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// If true, the newly created subscription will only receive messages published after the
+                        /// subscription was created. Otherwise, the entire message backlog will be received on the
+                        /// subscription. Defaults to false.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("skipBacklog", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SkipBacklog { get; set; }
+
+                        /// <summary>
                         /// Required. The ID to use for the subscription, which will become the final component of the
                         /// subscription's name. This value is structured like: `my-sub-name`.
                         /// </summary>
@@ -400,6 +408,14 @@ namespace Google.Apis.PubsubLite.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                            RequestParameters.Add("skipBacklog", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "skipBacklog",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("subscriptionId", new Google.Apis.Discovery.Parameter
                             {
