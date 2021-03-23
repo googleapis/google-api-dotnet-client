@@ -1,0 +1,214 @@
+{
+  "Google.Apis.YouTube.v3.CaptionsResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.CaptionsResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.CaptionsResource+UpdateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.CaptionsResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.ChannelBannersResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.ChannelBannersResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.CommentsResource+ListRequest.TextFormatEnum": [
+    "textFormatUnspecified",
+    "html",
+    "plainText"
+  ],
+  "Google.Apis.YouTube.v3.CommentsResource+SetModerationStatusRequest.ModerationStatusEnum": [
+    "published",
+    "heldForReview",
+    "likelySpam",
+    "rejected"
+  ],
+  "Google.Apis.YouTube.v3.CommentThreadsResource+ListRequest.ModerationStatusEnum": [
+    "published",
+    "heldForReview",
+    "likelySpam",
+    "rejected"
+  ],
+  "Google.Apis.YouTube.v3.CommentThreadsResource+ListRequest.OrderEnum": [
+    "orderUnspecified",
+    "time",
+    "relevance"
+  ],
+  "Google.Apis.YouTube.v3.CommentThreadsResource+ListRequest.TextFormatEnum": [
+    "textFormatUnspecified",
+    "html",
+    "plainText"
+  ],
+  "Google.Apis.YouTube.v3.LiveBroadcastsResource+ListRequest.BroadcastStatusEnum": [
+    "broadcastStatusFilterUnspecified",
+    "all",
+    "active",
+    "upcoming",
+    "completed"
+  ],
+  "Google.Apis.YouTube.v3.LiveBroadcastsResource+ListRequest.BroadcastTypeEnum": [
+    "broadcastTypeFilterUnspecified",
+    "all",
+    "event",
+    "persistent"
+  ],
+  "Google.Apis.YouTube.v3.LiveBroadcastsResource+TransitionRequest.BroadcastStatusEnum": [
+    "statusUnspecified",
+    "testing",
+    "live",
+    "complete"
+  ],
+  "Google.Apis.YouTube.v3.MembersResource+ListRequest.ModeEnum": [
+    "listMembersModeUnknown",
+    "updates",
+    "all_current"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.ChannelTypeEnum": [
+    "channelTypeUnspecified",
+    "any",
+    "show"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.EventTypeEnum": [
+    "none",
+    "upcoming",
+    "live",
+    "completed"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.OrderEnum": [
+    "searchSortUnspecified",
+    "date",
+    "rating",
+    "viewCount",
+    "relevance",
+    "title",
+    "videoCount"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.SafeSearchEnum": [
+    "safeSearchSettingUnspecified",
+    "none",
+    "moderate",
+    "strict"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoCaptionEnum": [
+    "videoCaptionUnspecified",
+    "any",
+    "closedCaption",
+    "none"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoDefinitionEnum": [
+    "any",
+    "standard",
+    "high"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoDimensionEnum": [
+    "any",
+    "2d",
+    "3d"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoDurationEnum": [
+    "videoDurationUnspecified",
+    "any",
+    "short",
+    "medium",
+    "long"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoEmbeddableEnum": [
+    "videoEmbeddableUnspecified",
+    "any",
+    "true"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoLicenseEnum": [
+    "any",
+    "youtube",
+    "creativeCommon"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoSyndicatedEnum": [
+    "videoSyndicatedUnspecified",
+    "any",
+    "true"
+  ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoTypeEnum": [
+    "videoTypeUnspecified",
+    "any",
+    "movie",
+    "episode"
+  ],
+  "Google.Apis.YouTube.v3.SubscriptionsResource+ListRequest.OrderEnum": [
+    "subscriptionOrderUnspecified",
+    "relevance",
+    "unread",
+    "alphabetical"
+  ],
+  "Google.Apis.YouTube.v3.ThirdPartyLinksResource+DeleteRequest.TypeEnum": [
+    "linkUnspecified",
+    "channelToStoreLink"
+  ],
+  "Google.Apis.YouTube.v3.ThirdPartyLinksResource+ListRequest.TypeEnum": [
+    "linkUnspecified",
+    "channelToStoreLink"
+  ],
+  "Google.Apis.YouTube.v3.ThumbnailsResource+SetMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.ThumbnailsResource+SetMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.VideosResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.VideosResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.VideosResource+ListRequest.ChartEnum": [
+    "chartUnspecified",
+    "mostPopular"
+  ],
+  "Google.Apis.YouTube.v3.VideosResource+ListRequest.MyRatingEnum": [
+    "none",
+    "like",
+    "dislike"
+  ],
+  "Google.Apis.YouTube.v3.VideosResource+RateRequest.RatingEnum": [
+    "none",
+    "like",
+    "dislike"
+  ],
+  "Google.Apis.YouTube.v3.WatermarksResource+SetMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.WatermarksResource+SetMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.YouTube.v3.YouTubeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.YouTubeBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

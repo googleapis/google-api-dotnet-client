@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Doubleclicksearch.v2.DoubleclicksearchBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Doubleclicksearch.v2.DoubleclicksearchBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

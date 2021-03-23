@@ -1,0 +1,25 @@
+{
+  "Google.Apis.CloudHealthcare.v1.CloudHealthcareBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudHealthcare.v1.CloudHealthcareBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudHealthcare.v1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+GetRequest.ViewEnum": [
+    "MESSAGE_VIEW_UNSPECIFIED",
+    "RAW_ONLY",
+    "PARSED_ONLY",
+    "FULL",
+    "BASIC"
+  ],
+  "Google.Apis.CloudHealthcare.v1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+ListRequest.ViewEnum": [
+    "MESSAGE_VIEW_UNSPECIFIED",
+    "RAW_ONLY",
+    "PARSED_ONLY",
+    "FULL",
+    "BASIC"
+  ]
+}

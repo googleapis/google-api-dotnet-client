@@ -1,0 +1,11 @@
+{
+  "Google.Apis.YouTubeAnalytics.v2.YouTubeAnalyticsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTubeAnalytics.v2.YouTubeAnalyticsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

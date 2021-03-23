@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DoubleClickBidManager.v1_1.DoubleClickBidManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DoubleClickBidManager.v1_1.DoubleClickBidManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

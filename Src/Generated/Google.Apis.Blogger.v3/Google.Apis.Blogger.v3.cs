@@ -131,11 +131,11 @@ namespace Google.Apis.Blogger.v3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -151,15 +151,15 @@ namespace Google.Apis.Blogger.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -422,19 +422,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -504,19 +504,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -581,19 +581,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Default value of status is LIVE.</summary>
@@ -605,11 +605,11 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
-                DELETED,
+                DELETED = 1,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -619,19 +619,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -882,19 +882,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -992,19 +992,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTIED")]
-                EMPTIED,
+                EMPTIED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING")]
-                PENDING,
+                PENDING = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SPAM")]
-                SPAM,
+                SPAM = 3,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -1014,19 +1014,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1159,19 +1159,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTIED")]
-                EMPTIED,
+                EMPTIED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING")]
-                PENDING,
+                PENDING = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SPAM")]
-                SPAM,
+                SPAM = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1428,15 +1428,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("30DAYS")]
-                Value30DAYS,
+                Value30DAYS = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("7DAYS")]
-                Value7DAYS,
+                Value7DAYS = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1575,19 +1575,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1729,11 +1729,11 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                DRAFT,
+                DRAFT = 1,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -1743,19 +1743,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2250,15 +2250,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
-                ORDERBYUNSPECIFIED,
+                ORDERBYUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                PUBLISHED,
+                PUBLISHED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
-                UPDATED,
+                UPDATED = 2,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2274,15 +2274,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                DRAFT,
+                DRAFT = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
-                SCHEDULED,
+                SCHEDULED = 2,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -2292,19 +2292,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2524,19 +2524,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2638,19 +2638,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2828,15 +2828,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
-                ORDERBYUNSPECIFIED,
+                ORDERBYUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                PUBLISHED,
+                PUBLISHED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
-                UPDATED,
+                UPDATED = 2,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -2852,15 +2852,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIVE")]
-                LIVE,
+                LIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                DRAFT,
+                DRAFT = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SCHEDULED")]
-                SCHEDULED,
+                SCHEDULED = 2,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -2870,19 +2870,19 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                VIEWTYPEUNSPECIFIED,
+                VIEWTYPEUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("READER")]
-                READER,
+                READER = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AUTHOR")]
-                AUTHOR,
+                AUTHOR = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ADMIN")]
-                ADMIN,
+                ADMIN = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -3269,15 +3269,15 @@ namespace Google.Apis.Blogger.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNSPECIFIED")]
-                ORDERBYUNSPECIFIED,
+                ORDERBYUNSPECIFIED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                PUBLISHED,
+                PUBLISHED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UPDATED")]
-                UPDATED,
+                UPDATED = 2,
             }
 
             /// <summary>Gets the method name.</summary>

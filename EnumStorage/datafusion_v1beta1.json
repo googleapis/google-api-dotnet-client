@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DataFusion.v1beta1.DataFusionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DataFusion.v1beta1.DataFusionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

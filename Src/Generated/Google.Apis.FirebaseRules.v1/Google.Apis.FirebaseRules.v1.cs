@@ -109,11 +109,11 @@ namespace Google.Apis.FirebaseRules.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -129,15 +129,15 @@ namespace Google.Apis.FirebaseRules.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -523,17 +523,17 @@ namespace Google.Apis.FirebaseRules.v1
                 {
                     /// <summary>Executable format unspecified. Defaults to FIREBASE_RULES_EXECUTABLE_V1</summary>
                     [Google.Apis.Util.StringValueAttribute("RELEASE_EXECUTABLE_VERSION_UNSPECIFIED")]
-                    RELEASEEXECUTABLEVERSIONUNSPECIFIED,
+                    RELEASEEXECUTABLEVERSIONUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Firebase Rules syntax 'rules2' executable versions: Custom AST for use with Java clients.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V1")]
-                    FIREBASERULESEXECUTABLEV1,
+                    FIREBASERULESEXECUTABLEV1 = 1,
 
                     /// <summary>CEL-based executable for use with C++ clients.</summary>
                     [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V2")]
-                    FIREBASERULESEXECUTABLEV2,
+                    FIREBASERULESEXECUTABLEV2 = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>

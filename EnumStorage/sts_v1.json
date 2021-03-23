@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudSecurityToken.v1.CloudSecurityTokenBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudSecurityToken.v1.CloudSecurityTokenBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

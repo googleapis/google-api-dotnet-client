@@ -1,0 +1,38 @@
+{
+  "Google.Apis.DeploymentManager.alpha.DeploymentManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+DeleteRequest.DeletePolicyEnum": [
+    "DELETE",
+    "ABANDON"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+InsertRequest.CreatePolicyEnum": [
+    "CREATE_OR_ACQUIRE",
+    "ACQUIRE",
+    "CREATE"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+PatchRequest.CreatePolicyEnum": [
+    "CREATE_OR_ACQUIRE",
+    "ACQUIRE",
+    "CREATE"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+PatchRequest.DeletePolicyEnum": [
+    "DELETE",
+    "ABANDON"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+UpdateRequest.CreatePolicyEnum": [
+    "CREATE_OR_ACQUIRE",
+    "ACQUIRE",
+    "CREATE"
+  ],
+  "Google.Apis.DeploymentManager.alpha.DeploymentsResource+UpdateRequest.DeletePolicyEnum": [
+    "DELETE",
+    "ABANDON"
+  ]
+}

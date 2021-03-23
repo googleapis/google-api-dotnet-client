@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Logging.v2.LoggingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Logging.v2.LoggingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

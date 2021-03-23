@@ -1,0 +1,26 @@
+{
+  "Google.Apis.RealTimeBidding.v1.BiddersResource+CreativesResource+ListRequest.ViewEnum": [
+    "CREATIVE_VIEW_UNSPECIFIED",
+    "SERVING_DECISION_ONLY",
+    "FULL"
+  ],
+  "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+GetRequest.ViewEnum": [
+    "CREATIVE_VIEW_UNSPECIFIED",
+    "SERVING_DECISION_ONLY",
+    "FULL"
+  ],
+  "Google.Apis.RealTimeBidding.v1.BuyersResource+CreativesResource+ListRequest.ViewEnum": [
+    "CREATIVE_VIEW_UNSPECIFIED",
+    "SERVING_DECISION_ONLY",
+    "FULL"
+  ],
+  "Google.Apis.RealTimeBidding.v1.RealTimeBiddingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RealTimeBidding.v1.RealTimeBiddingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

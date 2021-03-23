@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudComposer.v1beta1.CloudComposerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudComposer.v1beta1.CloudComposerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

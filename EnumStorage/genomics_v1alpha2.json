@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Genomics.v1alpha2.GenomicsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Genomics.v1alpha2.GenomicsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

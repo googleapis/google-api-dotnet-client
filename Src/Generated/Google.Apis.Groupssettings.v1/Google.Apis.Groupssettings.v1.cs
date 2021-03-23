@@ -97,11 +97,11 @@ namespace Google.Apis.Groupssettings.v1
         {
             /// <summary>Responses with Content-Type of application/atom+xml</summary>
             [Google.Apis.Util.StringValueAttribute("atom")]
-            Atom,
+            Atom = 0,
 
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 1,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>

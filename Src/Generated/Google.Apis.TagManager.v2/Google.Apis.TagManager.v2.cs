@@ -137,11 +137,11 @@ namespace Google.Apis.TagManager.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -157,15 +157,15 @@ namespace Google.Apis.TagManager.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1352,443 +1352,443 @@ namespace Google.Apis.TagManager.v2
                         {
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
+                            BuiltInVariableTypeUnspecified = 0,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
+                            PageUrl = 1,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
+                            PageHostname = 2,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
+                            PagePath = 3,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
+                            Referrer = 4,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            Event__ = 5,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
+                            ClickElement = 6,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
+                            ClickClasses = 7,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
+                            ClickId = 8,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
+                            ClickTarget = 9,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
+                            ClickUrl = 10,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
+                            ClickText = 11,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
-                            FirstPartyServingUrl,
+                            FirstPartyServingUrl = 12,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
+                            FormElement = 13,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
+                            FormClasses = 14,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
+                            FormId = 15,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
+                            FormTarget = 16,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
+                            FormUrl = 17,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
+                            FormText = 18,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
+                            ErrorMessage = 19,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
+                            ErrorUrl = 20,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
+                            ErrorLine = 21,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
+                            NewHistoryUrl = 22,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
+                            OldHistoryUrl = 23,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
+                            NewHistoryFragment = 24,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
+                            OldHistoryFragment = 25,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
+                            NewHistoryState = 26,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
+                            OldHistoryState = 27,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
+                            HistorySource = 28,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
+                            ContainerVersion = 29,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            DebugMode = 30,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
+                            RandomNumber = 31,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
+                            ContainerId = 32,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appId")]
-                            AppId,
+                            AppId = 33,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appName")]
-                            AppName,
+                            AppName = 34,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionCode")]
-                            AppVersionCode,
+                            AppVersionCode = 35,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
-                            AppVersionName,
+                            AppVersionName = 36,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
+                            Language = 37,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
+                            OsVersion = 38,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
+                            Platform = 39,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
+                            SdkVersion = 40,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
-                            DeviceName,
+                            DeviceName = 41,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
+                            Resolution = 42,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
+                            AdvertiserId = 43,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
+                            AdvertisingTrackingEnabled = 44,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
+                            HtmlId = 45,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
-                            EnvironmentName,
+                            EnvironmentName = 46,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
+                            AmpBrowserLanguage = 47,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
+                            AmpCanonicalPath = 48,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
+                            AmpCanonicalUrl = 49,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
+                            AmpCanonicalHost = 50,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
+                            AmpReferrer = 51,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
+                            AmpTitle = 52,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
+                            AmpClientId = 53,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
+                            AmpClientTimezone = 54,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
+                            AmpClientTimestamp = 55,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
+                            AmpClientScreenWidth = 56,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
+                            AmpClientScreenHeight = 57,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
+                            AmpClientScrollX = 58,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
+                            AmpClientScrollY = 59,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
+                            AmpClientMaxScrollX = 60,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
+                            AmpClientMaxScrollY = 61,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            AmpTotalEngagedTime = 62,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
+                            AmpPageViewId = 63,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
+                            AmpPageLoadTime = 64,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
+                            AmpPageDownloadTime = 65,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
+                            AmpGtmEvent = 66,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("eventName")]
-                            EventName,
+                            EventName = 67,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
-                            FirebaseEventParameterCampaign,
+                            FirebaseEventParameterCampaign = 68,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAclid")]
-                            FirebaseEventParameterCampaignAclid,
+                            FirebaseEventParameterCampaignAclid = 69,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAnid")]
-                            FirebaseEventParameterCampaignAnid,
+                            FirebaseEventParameterCampaignAnid = 70,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignClickTimestamp")]
-                            FirebaseEventParameterCampaignClickTimestamp,
+                            FirebaseEventParameterCampaignClickTimestamp = 71,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignContent")]
-                            FirebaseEventParameterCampaignContent,
+                            FirebaseEventParameterCampaignContent = 72,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignCp1")]
-                            FirebaseEventParameterCampaignCp1,
+                            FirebaseEventParameterCampaignCp1 = 73,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignGclid")]
-                            FirebaseEventParameterCampaignGclid,
+                            FirebaseEventParameterCampaignGclid = 74,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignSource")]
-                            FirebaseEventParameterCampaignSource,
+                            FirebaseEventParameterCampaignSource = 75,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignTerm")]
-                            FirebaseEventParameterCampaignTerm,
+                            FirebaseEventParameterCampaignTerm = 76,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCurrency")]
-                            FirebaseEventParameterCurrency,
+                            FirebaseEventParameterCurrency = 77,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkAcceptTime")]
-                            FirebaseEventParameterDynamicLinkAcceptTime,
+                            FirebaseEventParameterDynamicLinkAcceptTime = 78,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkLinkid")]
-                            FirebaseEventParameterDynamicLinkLinkid,
+                            FirebaseEventParameterDynamicLinkLinkid = 79,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageDeviceTime")]
-                            FirebaseEventParameterNotificationMessageDeviceTime,
+                            FirebaseEventParameterNotificationMessageDeviceTime = 80,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageId")]
-                            FirebaseEventParameterNotificationMessageId,
+                            FirebaseEventParameterNotificationMessageId = 81,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageName")]
-                            FirebaseEventParameterNotificationMessageName,
+                            FirebaseEventParameterNotificationMessageName = 82,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageTime")]
-                            FirebaseEventParameterNotificationMessageTime,
+                            FirebaseEventParameterNotificationMessageTime = 83,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationTopic")]
-                            FirebaseEventParameterNotificationTopic,
+                            FirebaseEventParameterNotificationTopic = 84,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousAppVersion")]
-                            FirebaseEventParameterPreviousAppVersion,
+                            FirebaseEventParameterPreviousAppVersion = 85,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousOsVersion")]
-                            FirebaseEventParameterPreviousOsVersion,
+                            FirebaseEventParameterPreviousOsVersion = 86,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPrice")]
-                            FirebaseEventParameterPrice,
+                            FirebaseEventParameterPrice = 87,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterProductId")]
-                            FirebaseEventParameterProductId,
+                            FirebaseEventParameterProductId = 88,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterQuantity")]
-                            FirebaseEventParameterQuantity,
+                            FirebaseEventParameterQuantity = 89,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
-                            FirebaseEventParameterValue,
+                            FirebaseEventParameterValue = 90,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
+                            VideoProvider = 91,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
+                            VideoUrl = 92,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
+                            VideoTitle = 93,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
-                            VideoDuration,
+                            VideoDuration = 94,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
-                            VideoPercent,
+                            VideoPercent = 95,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
-                            VideoVisible,
+                            VideoVisible = 96,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
+                            VideoStatus = 97,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            VideoCurrentTime = 98,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
+                            ScrollDepthThreshold = 99,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
+                            ScrollDepthUnits = 100,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
+                            ScrollDepthDirection = 101,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
+                            ElementVisibilityRatio = 102,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            ElementVisibilityTime = 103,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
+                            ElementVisibilityFirstTime = 104,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
+                            ElementVisibilityRecentTime = 105,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestPath")]
-                            RequestPath,
+                            RequestPath = 106,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestMethod")]
-                            RequestMethod,
+                            RequestMethod = 107,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clientName")]
-                            ClientName,
+                            ClientName = 108,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
-                            QueryString,
+                            QueryString = 109,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -1859,443 +1859,443 @@ namespace Google.Apis.TagManager.v2
                         {
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
+                            BuiltInVariableTypeUnspecified = 0,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
+                            PageUrl = 1,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
+                            PageHostname = 2,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
+                            PagePath = 3,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
+                            Referrer = 4,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            Event__ = 5,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
+                            ClickElement = 6,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
+                            ClickClasses = 7,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
+                            ClickId = 8,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
+                            ClickTarget = 9,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
+                            ClickUrl = 10,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
+                            ClickText = 11,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
-                            FirstPartyServingUrl,
+                            FirstPartyServingUrl = 12,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
+                            FormElement = 13,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
+                            FormClasses = 14,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
+                            FormId = 15,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
+                            FormTarget = 16,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
+                            FormUrl = 17,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
+                            FormText = 18,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
+                            ErrorMessage = 19,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
+                            ErrorUrl = 20,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
+                            ErrorLine = 21,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
+                            NewHistoryUrl = 22,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
+                            OldHistoryUrl = 23,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
+                            NewHistoryFragment = 24,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
+                            OldHistoryFragment = 25,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
+                            NewHistoryState = 26,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
+                            OldHistoryState = 27,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
+                            HistorySource = 28,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
+                            ContainerVersion = 29,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            DebugMode = 30,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
+                            RandomNumber = 31,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
+                            ContainerId = 32,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appId")]
-                            AppId,
+                            AppId = 33,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appName")]
-                            AppName,
+                            AppName = 34,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionCode")]
-                            AppVersionCode,
+                            AppVersionCode = 35,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
-                            AppVersionName,
+                            AppVersionName = 36,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
+                            Language = 37,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
+                            OsVersion = 38,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
+                            Platform = 39,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
+                            SdkVersion = 40,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
-                            DeviceName,
+                            DeviceName = 41,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
+                            Resolution = 42,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
+                            AdvertiserId = 43,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
+                            AdvertisingTrackingEnabled = 44,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
+                            HtmlId = 45,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
-                            EnvironmentName,
+                            EnvironmentName = 46,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
+                            AmpBrowserLanguage = 47,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
+                            AmpCanonicalPath = 48,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
+                            AmpCanonicalUrl = 49,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
+                            AmpCanonicalHost = 50,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
+                            AmpReferrer = 51,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
+                            AmpTitle = 52,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
+                            AmpClientId = 53,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
+                            AmpClientTimezone = 54,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
+                            AmpClientTimestamp = 55,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
+                            AmpClientScreenWidth = 56,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
+                            AmpClientScreenHeight = 57,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
+                            AmpClientScrollX = 58,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
+                            AmpClientScrollY = 59,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
+                            AmpClientMaxScrollX = 60,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
+                            AmpClientMaxScrollY = 61,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            AmpTotalEngagedTime = 62,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
+                            AmpPageViewId = 63,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
+                            AmpPageLoadTime = 64,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
+                            AmpPageDownloadTime = 65,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
+                            AmpGtmEvent = 66,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("eventName")]
-                            EventName,
+                            EventName = 67,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
-                            FirebaseEventParameterCampaign,
+                            FirebaseEventParameterCampaign = 68,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAclid")]
-                            FirebaseEventParameterCampaignAclid,
+                            FirebaseEventParameterCampaignAclid = 69,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAnid")]
-                            FirebaseEventParameterCampaignAnid,
+                            FirebaseEventParameterCampaignAnid = 70,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignClickTimestamp")]
-                            FirebaseEventParameterCampaignClickTimestamp,
+                            FirebaseEventParameterCampaignClickTimestamp = 71,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignContent")]
-                            FirebaseEventParameterCampaignContent,
+                            FirebaseEventParameterCampaignContent = 72,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignCp1")]
-                            FirebaseEventParameterCampaignCp1,
+                            FirebaseEventParameterCampaignCp1 = 73,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignGclid")]
-                            FirebaseEventParameterCampaignGclid,
+                            FirebaseEventParameterCampaignGclid = 74,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignSource")]
-                            FirebaseEventParameterCampaignSource,
+                            FirebaseEventParameterCampaignSource = 75,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignTerm")]
-                            FirebaseEventParameterCampaignTerm,
+                            FirebaseEventParameterCampaignTerm = 76,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCurrency")]
-                            FirebaseEventParameterCurrency,
+                            FirebaseEventParameterCurrency = 77,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkAcceptTime")]
-                            FirebaseEventParameterDynamicLinkAcceptTime,
+                            FirebaseEventParameterDynamicLinkAcceptTime = 78,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkLinkid")]
-                            FirebaseEventParameterDynamicLinkLinkid,
+                            FirebaseEventParameterDynamicLinkLinkid = 79,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageDeviceTime")]
-                            FirebaseEventParameterNotificationMessageDeviceTime,
+                            FirebaseEventParameterNotificationMessageDeviceTime = 80,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageId")]
-                            FirebaseEventParameterNotificationMessageId,
+                            FirebaseEventParameterNotificationMessageId = 81,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageName")]
-                            FirebaseEventParameterNotificationMessageName,
+                            FirebaseEventParameterNotificationMessageName = 82,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageTime")]
-                            FirebaseEventParameterNotificationMessageTime,
+                            FirebaseEventParameterNotificationMessageTime = 83,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationTopic")]
-                            FirebaseEventParameterNotificationTopic,
+                            FirebaseEventParameterNotificationTopic = 84,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousAppVersion")]
-                            FirebaseEventParameterPreviousAppVersion,
+                            FirebaseEventParameterPreviousAppVersion = 85,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousOsVersion")]
-                            FirebaseEventParameterPreviousOsVersion,
+                            FirebaseEventParameterPreviousOsVersion = 86,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPrice")]
-                            FirebaseEventParameterPrice,
+                            FirebaseEventParameterPrice = 87,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterProductId")]
-                            FirebaseEventParameterProductId,
+                            FirebaseEventParameterProductId = 88,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterQuantity")]
-                            FirebaseEventParameterQuantity,
+                            FirebaseEventParameterQuantity = 89,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
-                            FirebaseEventParameterValue,
+                            FirebaseEventParameterValue = 90,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
+                            VideoProvider = 91,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
+                            VideoUrl = 92,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
+                            VideoTitle = 93,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
-                            VideoDuration,
+                            VideoDuration = 94,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
-                            VideoPercent,
+                            VideoPercent = 95,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
-                            VideoVisible,
+                            VideoVisible = 96,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
+                            VideoStatus = 97,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            VideoCurrentTime = 98,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
+                            ScrollDepthThreshold = 99,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
+                            ScrollDepthUnits = 100,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
+                            ScrollDepthDirection = 101,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
+                            ElementVisibilityRatio = 102,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            ElementVisibilityTime = 103,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
+                            ElementVisibilityFirstTime = 104,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
+                            ElementVisibilityRecentTime = 105,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestPath")]
-                            RequestPath,
+                            RequestPath = 106,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestMethod")]
-                            RequestMethod,
+                            RequestMethod = 107,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clientName")]
-                            ClientName,
+                            ClientName = 108,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
-                            QueryString,
+                            QueryString = 109,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2429,443 +2429,443 @@ namespace Google.Apis.TagManager.v2
                         {
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("builtInVariableTypeUnspecified")]
-                            BuiltInVariableTypeUnspecified,
+                            BuiltInVariableTypeUnspecified = 0,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageUrl")]
-                            PageUrl,
+                            PageUrl = 1,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pageHostname")]
-                            PageHostname,
+                            PageHostname = 2,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("pagePath")]
-                            PagePath,
+                            PagePath = 3,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("referrer")]
-                            Referrer,
+                            Referrer = 4,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("event")]
-                            Event__,
+                            Event__ = 5,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickElement")]
-                            ClickElement,
+                            ClickElement = 6,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickClasses")]
-                            ClickClasses,
+                            ClickClasses = 7,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickId")]
-                            ClickId,
+                            ClickId = 8,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickTarget")]
-                            ClickTarget,
+                            ClickTarget = 9,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickUrl")]
-                            ClickUrl,
+                            ClickUrl = 10,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clickText")]
-                            ClickText,
+                            ClickText = 11,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firstPartyServingUrl")]
-                            FirstPartyServingUrl,
+                            FirstPartyServingUrl = 12,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formElement")]
-                            FormElement,
+                            FormElement = 13,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formClasses")]
-                            FormClasses,
+                            FormClasses = 14,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formId")]
-                            FormId,
+                            FormId = 15,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formTarget")]
-                            FormTarget,
+                            FormTarget = 16,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formUrl")]
-                            FormUrl,
+                            FormUrl = 17,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("formText")]
-                            FormText,
+                            FormText = 18,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorMessage")]
-                            ErrorMessage,
+                            ErrorMessage = 19,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorUrl")]
-                            ErrorUrl,
+                            ErrorUrl = 20,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
-                            ErrorLine,
+                            ErrorLine = 21,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryUrl")]
-                            NewHistoryUrl,
+                            NewHistoryUrl = 22,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryUrl")]
-                            OldHistoryUrl,
+                            OldHistoryUrl = 23,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryFragment")]
-                            NewHistoryFragment,
+                            NewHistoryFragment = 24,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryFragment")]
-                            OldHistoryFragment,
+                            OldHistoryFragment = 25,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("newHistoryState")]
-                            NewHistoryState,
+                            NewHistoryState = 26,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("oldHistoryState")]
-                            OldHistoryState,
+                            OldHistoryState = 27,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("historySource")]
-                            HistorySource,
+                            HistorySource = 28,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerVersion")]
-                            ContainerVersion,
+                            ContainerVersion = 29,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("debugMode")]
-                            DebugMode,
+                            DebugMode = 30,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("randomNumber")]
-                            RandomNumber,
+                            RandomNumber = 31,
 
                             /// <summary>For web or mobile.</summary>
                             [Google.Apis.Util.StringValueAttribute("containerId")]
-                            ContainerId,
+                            ContainerId = 32,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appId")]
-                            AppId,
+                            AppId = 33,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appName")]
-                            AppName,
+                            AppName = 34,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionCode")]
-                            AppVersionCode,
+                            AppVersionCode = 35,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("appVersionName")]
-                            AppVersionName,
+                            AppVersionName = 36,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("language")]
-                            Language,
+                            Language = 37,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("osVersion")]
-                            OsVersion,
+                            OsVersion = 38,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("platform")]
-                            Platform,
+                            Platform = 39,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
-                            SdkVersion,
+                            SdkVersion = 40,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
-                            DeviceName,
+                            DeviceName = 41,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("resolution")]
-                            Resolution,
+                            Resolution = 42,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertiserId")]
-                            AdvertiserId,
+                            AdvertiserId = 43,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("advertisingTrackingEnabled")]
-                            AdvertisingTrackingEnabled,
+                            AdvertisingTrackingEnabled = 44,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("htmlId")]
-                            HtmlId,
+                            HtmlId = 45,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
-                            EnvironmentName,
+                            EnvironmentName = 46,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampBrowserLanguage")]
-                            AmpBrowserLanguage,
+                            AmpBrowserLanguage = 47,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalPath")]
-                            AmpCanonicalPath,
+                            AmpCanonicalPath = 48,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalUrl")]
-                            AmpCanonicalUrl,
+                            AmpCanonicalUrl = 49,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampCanonicalHost")]
-                            AmpCanonicalHost,
+                            AmpCanonicalHost = 50,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampReferrer")]
-                            AmpReferrer,
+                            AmpReferrer = 51,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTitle")]
-                            AmpTitle,
+                            AmpTitle = 52,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientId")]
-                            AmpClientId,
+                            AmpClientId = 53,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimezone")]
-                            AmpClientTimezone,
+                            AmpClientTimezone = 54,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientTimestamp")]
-                            AmpClientTimestamp,
+                            AmpClientTimestamp = 55,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenWidth")]
-                            AmpClientScreenWidth,
+                            AmpClientScreenWidth = 56,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScreenHeight")]
-                            AmpClientScreenHeight,
+                            AmpClientScreenHeight = 57,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollX")]
-                            AmpClientScrollX,
+                            AmpClientScrollX = 58,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientScrollY")]
-                            AmpClientScrollY,
+                            AmpClientScrollY = 59,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollX")]
-                            AmpClientMaxScrollX,
+                            AmpClientMaxScrollX = 60,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampClientMaxScrollY")]
-                            AmpClientMaxScrollY,
+                            AmpClientMaxScrollY = 61,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampTotalEngagedTime")]
-                            AmpTotalEngagedTime,
+                            AmpTotalEngagedTime = 62,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageViewId")]
-                            AmpPageViewId,
+                            AmpPageViewId = 63,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageLoadTime")]
-                            AmpPageLoadTime,
+                            AmpPageLoadTime = 64,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampPageDownloadTime")]
-                            AmpPageDownloadTime,
+                            AmpPageDownloadTime = 65,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("ampGtmEvent")]
-                            AmpGtmEvent,
+                            AmpGtmEvent = 66,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("eventName")]
-                            EventName,
+                            EventName = 67,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaign")]
-                            FirebaseEventParameterCampaign,
+                            FirebaseEventParameterCampaign = 68,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAclid")]
-                            FirebaseEventParameterCampaignAclid,
+                            FirebaseEventParameterCampaignAclid = 69,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignAnid")]
-                            FirebaseEventParameterCampaignAnid,
+                            FirebaseEventParameterCampaignAnid = 70,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignClickTimestamp")]
-                            FirebaseEventParameterCampaignClickTimestamp,
+                            FirebaseEventParameterCampaignClickTimestamp = 71,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignContent")]
-                            FirebaseEventParameterCampaignContent,
+                            FirebaseEventParameterCampaignContent = 72,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignCp1")]
-                            FirebaseEventParameterCampaignCp1,
+                            FirebaseEventParameterCampaignCp1 = 73,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignGclid")]
-                            FirebaseEventParameterCampaignGclid,
+                            FirebaseEventParameterCampaignGclid = 74,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignSource")]
-                            FirebaseEventParameterCampaignSource,
+                            FirebaseEventParameterCampaignSource = 75,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCampaignTerm")]
-                            FirebaseEventParameterCampaignTerm,
+                            FirebaseEventParameterCampaignTerm = 76,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterCurrency")]
-                            FirebaseEventParameterCurrency,
+                            FirebaseEventParameterCurrency = 77,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkAcceptTime")]
-                            FirebaseEventParameterDynamicLinkAcceptTime,
+                            FirebaseEventParameterDynamicLinkAcceptTime = 78,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterDynamicLinkLinkid")]
-                            FirebaseEventParameterDynamicLinkLinkid,
+                            FirebaseEventParameterDynamicLinkLinkid = 79,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageDeviceTime")]
-                            FirebaseEventParameterNotificationMessageDeviceTime,
+                            FirebaseEventParameterNotificationMessageDeviceTime = 80,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageId")]
-                            FirebaseEventParameterNotificationMessageId,
+                            FirebaseEventParameterNotificationMessageId = 81,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageName")]
-                            FirebaseEventParameterNotificationMessageName,
+                            FirebaseEventParameterNotificationMessageName = 82,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationMessageTime")]
-                            FirebaseEventParameterNotificationMessageTime,
+                            FirebaseEventParameterNotificationMessageTime = 83,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterNotificationTopic")]
-                            FirebaseEventParameterNotificationTopic,
+                            FirebaseEventParameterNotificationTopic = 84,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousAppVersion")]
-                            FirebaseEventParameterPreviousAppVersion,
+                            FirebaseEventParameterPreviousAppVersion = 85,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPreviousOsVersion")]
-                            FirebaseEventParameterPreviousOsVersion,
+                            FirebaseEventParameterPreviousOsVersion = 86,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterPrice")]
-                            FirebaseEventParameterPrice,
+                            FirebaseEventParameterPrice = 87,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterProductId")]
-                            FirebaseEventParameterProductId,
+                            FirebaseEventParameterProductId = 88,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterQuantity")]
-                            FirebaseEventParameterQuantity,
+                            FirebaseEventParameterQuantity = 89,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("firebaseEventParameterValue")]
-                            FirebaseEventParameterValue,
+                            FirebaseEventParameterValue = 90,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
-                            VideoProvider,
+                            VideoProvider = 91,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoUrl")]
-                            VideoUrl,
+                            VideoUrl = 92,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoTitle")]
-                            VideoTitle,
+                            VideoTitle = 93,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
-                            VideoDuration,
+                            VideoDuration = 94,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
-                            VideoPercent,
+                            VideoPercent = 95,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoVisible")]
-                            VideoVisible,
+                            VideoVisible = 96,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoStatus")]
-                            VideoStatus,
+                            VideoStatus = 97,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
-                            VideoCurrentTime,
+                            VideoCurrentTime = 98,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
-                            ScrollDepthThreshold,
+                            ScrollDepthThreshold = 99,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
-                            ScrollDepthUnits,
+                            ScrollDepthUnits = 100,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
-                            ScrollDepthDirection,
+                            ScrollDepthDirection = 101,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
-                            ElementVisibilityRatio,
+                            ElementVisibilityRatio = 102,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
-                            ElementVisibilityTime,
+                            ElementVisibilityTime = 103,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
-                            ElementVisibilityFirstTime,
+                            ElementVisibilityFirstTime = 104,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
-                            ElementVisibilityRecentTime,
+                            ElementVisibilityRecentTime = 105,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestPath")]
-                            RequestPath,
+                            RequestPath = 106,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("requestMethod")]
-                            RequestMethod,
+                            RequestMethod = 107,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("clientName")]
-                            ClientName,
+                            ClientName = 108,
 
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
-                            QueryString,
+                            QueryString = 109,
                         }
 
                         /// <summary>Gets the method name.</summary>

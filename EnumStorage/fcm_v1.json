@@ -1,0 +1,11 @@
+{
+  "Google.Apis.FirebaseCloudMessaging.v1.FirebaseCloudMessagingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseCloudMessaging.v1.FirebaseCloudMessagingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

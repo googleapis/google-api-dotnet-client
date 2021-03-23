@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudBillingBudget.v1beta1.CloudBillingBudgetBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudBillingBudget.v1beta1.CloudBillingBudgetBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

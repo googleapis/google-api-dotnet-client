@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Speech.v1.SpeechBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Speech.v1.SpeechBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

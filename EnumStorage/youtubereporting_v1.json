@@ -1,0 +1,11 @@
+{
+  "Google.Apis.YouTubeReporting.v1.YouTubeReportingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTubeReporting.v1.YouTubeReportingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

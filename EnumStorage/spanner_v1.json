@@ -1,0 +1,17 @@
+{
+  "Google.Apis.Spanner.v1.ProjectsResource+InstancesResource+BackupsResource+CreateRequest.EncryptionConfigEncryptionTypeEnum": [
+    "ENCRYPTION_TYPE_UNSPECIFIED",
+    "USE_DATABASE_ENCRYPTION",
+    "GOOGLE_DEFAULT_ENCRYPTION",
+    "CUSTOMER_MANAGED_ENCRYPTION"
+  ],
+  "Google.Apis.Spanner.v1.SpannerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Spanner.v1.SpannerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

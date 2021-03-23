@@ -1,0 +1,11 @@
+{
+  "Google.Apis.MyBusinessAccountManagement.v1.MyBusinessAccountManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MyBusinessAccountManagement.v1.MyBusinessAccountManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

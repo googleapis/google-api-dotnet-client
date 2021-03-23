@@ -1,0 +1,19 @@
+{
+  "Google.Apis.CloudAsset.v1.CloudAssetBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudAsset.v1.CloudAssetBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudAsset.v1.V1Resource+BatchGetAssetsHistoryRequest.ContentTypeEnum": [
+    "CONTENT_TYPE_UNSPECIFIED",
+    "RESOURCE",
+    "IAM_POLICY",
+    "ORG_POLICY",
+    "ACCESS_POLICY",
+    "OS_INVENTORY"
+  ]
+}

@@ -119,11 +119,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -139,15 +139,15 @@ namespace Google.Apis.Admin.Reports.reports_v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -346,32 +346,32 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("application_name_undefined")]
-                ApplicationNameUndefined,
+                ApplicationNameUndefined = 0,
 
                 /// <summary>
                 /// The Google Workspace Access Transparency activity reports return information about different types
                 /// of Access Transparency activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("access_transparency")]
-                AccessTransparency,
+                AccessTransparency = 1,
 
                 /// <summary>
                 /// The Admin console application's activity reports return account information about different types of
                 /// administrator activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("admin")]
-                Admin,
+                Admin = 2,
 
                 /// <summary>
                 /// The Google Calendar application's activity reports return information about various Calendar
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("calendar")]
-                Calendar,
+                Calendar = 3,
 
                 /// <summary>The Chat activity reports return information about various Chat activity events.</summary>
                 [Google.Apis.Util.StringValueAttribute("chat")]
-                Chat,
+                Chat = 4,
 
                 /// <summary>
                 /// The Google Drive application's activity reports return information about various Google Drive
@@ -379,108 +379,108 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// Enterprise customers.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("drive")]
-                Drive,
+                Drive = 5,
 
                 /// <summary>
                 /// The Google Cloud Platform application's activity reports return information about various GCP
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gcp")]
-                Gcp,
+                Gcp = 6,
 
                 /// <summary>
                 /// The Google+ application's activity reports return information about various Google+ activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gplus")]
-                Gplus,
+                Gplus = 7,
 
                 /// <summary>
                 /// The Google Groups application's activity reports return information about various Groups activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("groups")]
-                Groups,
+                Groups = 8,
 
                 /// <summary>
                 /// The Enterprise Groups activity reports return information about various Enterprise group activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("groups_enterprise")]
-                GroupsEnterprise,
+                GroupsEnterprise = 9,
 
                 /// <summary>
                 /// The Jamboard activity reports return information about various Jamboard activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("jamboard")]
-                Jamboard,
+                Jamboard = 10,
 
                 /// <summary>
                 /// The Login application's activity reports return account information about different types of Login
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("login")]
-                Login,
+                Login = 11,
 
                 /// <summary>
                 /// The Meet Audit activity report return information about different types of Meet Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("meet")]
-                Meet,
+                Meet = 12,
 
                 /// <summary>
                 /// The Mobile Audit activity report return information about different types of Mobile Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("mobile")]
-                Mobile,
+                Mobile = 13,
 
                 /// <summary>
                 /// The Rules activity report return information about different types of Rules activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("rules")]
-                Rules,
+                Rules = 14,
 
                 /// <summary>
                 /// The SAML activity report return information about different types of SAML activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("saml")]
-                Saml,
+                Saml = 15,
 
                 /// <summary>
                 /// The Token application's activity reports return account information about different types of Token
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("token")]
-                Token,
+                Token = 16,
 
                 /// <summary>
                 /// The User Accounts application's activity reports return account information about different types of
                 /// User Accounts activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("user_accounts")]
-                UserAccounts,
+                UserAccounts = 17,
 
                 /// <summary>
                 /// The Context-aware access activity reports return information about users' access denied events due
                 /// to Context-aware access rules.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("context_aware_access")]
-                ContextAwareAccess,
+                ContextAwareAccess = 18,
 
                 /// <summary>
                 /// The Chrome activity reports return information about unsafe events reported in the context of the
                 /// WebProtect features of BeyondCorp.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
-                Chrome,
+                Chrome = 19,
 
                 /// <summary>
                 /// The Data Studio activity reports return information about various types of Data Studio activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("data_studio")]
-                DataStudio,
+                DataStudio = 20,
             }
 
             /// <summary>
@@ -752,32 +752,32 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("application_name_unspecified")]
-                ApplicationNameUnspecified,
+                ApplicationNameUnspecified = 0,
 
                 /// <summary>
                 /// The Google Workspace Access Transparency activity reports return information about different types
                 /// of Access Transparency activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("access_transparency")]
-                AccessTransparency,
+                AccessTransparency = 1,
 
                 /// <summary>
                 /// The Admin console application's activity reports return account information about different types of
                 /// administrator activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("admin")]
-                Admin,
+                Admin = 2,
 
                 /// <summary>
                 /// The Google Calendar application's activity reports return information about various Calendar
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("calendar")]
-                Calendar,
+                Calendar = 3,
 
                 /// <summary>The Chat activity reports return information about various Chat activity events.</summary>
                 [Google.Apis.Util.StringValueAttribute("chat")]
-                Chat,
+                Chat = 4,
 
                 /// <summary>
                 /// The Google Drive application's activity reports return information about various Google Drive
@@ -785,108 +785,108 @@ namespace Google.Apis.Admin.Reports.reports_v1
                 /// Google Workspace Enterprise customers.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("drive")]
-                Drive,
+                Drive = 5,
 
                 /// <summary>
                 /// The Google Cloud Platform application's activity reports return information about various GCP
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gcp")]
-                Gcp,
+                Gcp = 6,
 
                 /// <summary>
                 /// The Google+ application's activity reports return information about various Google+ activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("gplus")]
-                Gplus,
+                Gplus = 7,
 
                 /// <summary>
                 /// The Google Groups application's activity reports return information about various Groups activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("groups")]
-                Groups,
+                Groups = 8,
 
                 /// <summary>
                 /// The Enterprise Groups activity reports return information about various Enterprise group activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("groups_enterprise")]
-                GroupsEnterprise,
+                GroupsEnterprise = 9,
 
                 /// <summary>
                 /// The Jamboard activity reports return information about various Jamboard activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("jamboard")]
-                Jamboard,
+                Jamboard = 10,
 
                 /// <summary>
                 /// The Login application's activity reports return account information about different types of Login
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("login")]
-                Login,
+                Login = 11,
 
                 /// <summary>
                 /// The Meet Audit activity report return information about different types of Meet Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("meet")]
-                Meet,
+                Meet = 12,
 
                 /// <summary>
                 /// The Mobile Audit activity report return information about different types of Mobile Audit activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("mobile")]
-                Mobile,
+                Mobile = 13,
 
                 /// <summary>
                 /// The Rules activity report return information about different types of Rules activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("rules")]
-                Rules,
+                Rules = 14,
 
                 /// <summary>
                 /// The SAML activity report return information about different types of SAML activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("saml")]
-                Saml,
+                Saml = 15,
 
                 /// <summary>
                 /// The Token application's activity reports return account information about different types of Token
                 /// activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("token")]
-                Token,
+                Token = 16,
 
                 /// <summary>
                 /// The User Accounts application's activity reports return account information about different types of
                 /// User Accounts activity events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("user_accounts")]
-                UserAccounts,
+                UserAccounts = 17,
 
                 /// <summary>
                 /// The Context-aware access activity reports return information about users' access denied events due
                 /// to Context-aware access rules.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("context_aware_access")]
-                ContextAwareAccess,
+                ContextAwareAccess = 18,
 
                 /// <summary>
                 /// The Chrome activity reports return information about unsafe events reported in the context of the
                 /// WebProtect features of BeyondCorp.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("chrome")]
-                Chrome,
+                Chrome = 19,
 
                 /// <summary>
                 /// The Data Studio activity reports return information about various types of Data Studio activity
                 /// events.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("data_studio")]
-                DataStudio,
+                DataStudio = 20,
             }
 
             /// <summary>
@@ -1353,11 +1353,11 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("entity_type_undefined")]
-                EntityTypeUndefined,
+                EntityTypeUndefined = 0,
 
                 /// <summary>Returns a report on Google+ communities.</summary>
                 [Google.Apis.Util.StringValueAttribute("gplus_communities")]
-                GplusCommunities,
+                GplusCommunities = 1,
             }
 
             /// <summary>Represents the key of the object to filter the data with.</summary>
@@ -1369,18 +1369,18 @@ namespace Google.Apis.Admin.Reports.reports_v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("entityKeyUndefined")]
-                EntityKeyUndefined,
+                EntityKeyUndefined = 0,
 
                 /// <summary>Returns activity events for all users.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 1,
 
                 /// <summary>
                 /// Represents an app-specific identifier for the entity. For details on how to obtain the `entityKey`
                 /// for a particular `entityType`, see the Entities Usage parameters reference guides.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("entityKey")]
-                EntityKey,
+                EntityKey = 2,
             }
 
             /// <summary>

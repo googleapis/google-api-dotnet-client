@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudScheduler.v1.CloudSchedulerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudScheduler.v1.CloudSchedulerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

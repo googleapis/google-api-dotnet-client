@@ -160,7 +160,7 @@ namespace Google.Apis.Oauth2.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>

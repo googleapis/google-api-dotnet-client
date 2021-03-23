@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Safebrowsing.v4.SafebrowsingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Safebrowsing.v4.SafebrowsingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

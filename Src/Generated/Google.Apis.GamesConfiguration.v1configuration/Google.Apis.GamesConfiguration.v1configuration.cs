@@ -107,11 +107,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -127,15 +127,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -600,15 +600,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
-                IMAGETYPEUNSPECIFIED,
+                IMAGETYPEUNSPECIFIED = 0,
 
                 /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
-                ACHIEVEMENTICON,
+                ACHIEVEMENTICON = 1,
 
                 /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
-                LEADERBOARDICON,
+                LEADERBOARDICON = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -682,11 +682,11 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -702,15 +702,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -764,15 +764,15 @@ namespace Google.Apis.GamesConfiguration.v1configuration
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE_TYPE_UNSPECIFIED")]
-                IMAGETYPEUNSPECIFIED,
+                IMAGETYPEUNSPECIFIED = 0,
 
                 /// <summary>The icon image for an achievement resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACHIEVEMENT_ICON")]
-                ACHIEVEMENTICON,
+                ACHIEVEMENTICON = 1,
 
                 /// <summary>The icon image for a leaderboard resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("LEADERBOARD_ICON")]
-                LEADERBOARDICON,
+                LEADERBOARDICON = 2,
             }
 
             /// <summary>Constructs a new Upload media upload instance.</summary>

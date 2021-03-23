@@ -1,0 +1,75 @@
+{
+  "Google.Apis.Games.v1.AchievementsResource+ListRequest.StateEnum": [
+    "ALL",
+    "HIDDEN",
+    "REVEALED",
+    "UNLOCKED"
+  ],
+  "Google.Apis.Games.v1.ApplicationsResource+GetEndPointRequest.EndPointTypeEnum": [
+    "END_POINT_TYPE_UNSPECIFIED",
+    "PROFILE_CREATION",
+    "PROFILE_SETTINGS"
+  ],
+  "Google.Apis.Games.v1.ApplicationsResource+GetRequest.PlatformTypeEnum": [
+    "PLATFORM_TYPE_UNSPECIFIED",
+    "ANDROID",
+    "IOS",
+    "WEB_APP"
+  ],
+  "Google.Apis.Games.v1.GamesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Games.v1.GamesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Games.v1.MetagameResource+ListCategoriesByPlayerRequest.CollectionEnum": [
+    "COLLECTION_UNSPECIFIED",
+    "ALL"
+  ],
+  "Google.Apis.Games.v1.PlayersResource+ListRequest.CollectionEnum": [
+    "CONNECTED",
+    "VISIBLE",
+    "FRIENDS_ALL"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+GetRequest.IncludeRankTypeEnum": [
+    "INCLUDE_RANK_TYPE_UNSPECIFIED",
+    "ALL",
+    "PUBLIC",
+    "SOCIAL",
+    "FRIENDS"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+GetRequest.TimeSpanEnum": [
+    "SCORE_TIME_SPAN_UNSPECIFIED",
+    "ALL",
+    "ALL_TIME",
+    "WEEKLY",
+    "DAILY"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+ListRequest.CollectionEnum": [
+    "SCORE_COLLECTION_UNSPECIFIED",
+    "PUBLIC",
+    "SOCIAL",
+    "FRIENDS"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+ListRequest.TimeSpanEnum": [
+    "SCORE_TIME_SPAN_UNSPECIFIED",
+    "ALL_TIME",
+    "WEEKLY",
+    "DAILY"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+ListWindowRequest.CollectionEnum": [
+    "SCORE_COLLECTION_UNSPECIFIED",
+    "PUBLIC",
+    "SOCIAL",
+    "FRIENDS"
+  ],
+  "Google.Apis.Games.v1.ScoresResource+ListWindowRequest.TimeSpanEnum": [
+    "SCORE_TIME_SPAN_UNSPECIFIED",
+    "ALL_TIME",
+    "WEEKLY",
+    "DAILY"
+  ]
+}

@@ -149,7 +149,7 @@ namespace Google.Apis.Storage.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -942,11 +942,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -1143,23 +1143,23 @@ namespace Google.Apis.Storage.v1
                 /// Project team owners get OWNER access, and allAuthenticatedUsers get READER access.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 1,
 
                 /// <summary>Project team members get access according to their roles.</summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 2,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 3,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get WRITER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicReadWrite")]
-                PublicReadWrite,
+                PublicReadWrite = 4,
             }
 
             /// <summary>Apply a predefined set of default object access controls to this bucket.</summary>
@@ -1171,29 +1171,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -1211,11 +1211,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -1345,11 +1345,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -1577,23 +1577,23 @@ namespace Google.Apis.Storage.v1
                 /// Project team owners get OWNER access, and allAuthenticatedUsers get READER access.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 1,
 
                 /// <summary>Project team members get access according to their roles.</summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 2,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 3,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get WRITER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicReadWrite")]
-                PublicReadWrite,
+                PublicReadWrite = 4,
             }
 
             /// <summary>Apply a predefined set of default object access controls to this bucket.</summary>
@@ -1605,29 +1605,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>Set of properties to return. Defaults to full.</summary>
@@ -1639,11 +1639,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -1964,23 +1964,23 @@ namespace Google.Apis.Storage.v1
                 /// Project team owners get OWNER access, and allAuthenticatedUsers get READER access.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 1,
 
                 /// <summary>Project team members get access according to their roles.</summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 2,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 3,
 
                 /// <summary>Project team owners get OWNER access, and allUsers get WRITER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicReadWrite")]
-                PublicReadWrite,
+                PublicReadWrite = 4,
             }
 
             /// <summary>Apply a predefined set of default object access controls to this bucket.</summary>
@@ -1992,29 +1992,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>Set of properties to return. Defaults to full.</summary>
@@ -2026,11 +2026,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit owner, acl and defaultObjectAcl properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -3908,29 +3908,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -4127,29 +4127,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -4224,11 +4224,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -4663,11 +4663,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -5066,29 +5066,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -5106,11 +5106,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -5283,7 +5283,7 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -5383,29 +5383,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -5423,11 +5423,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -5537,11 +5537,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -5759,29 +5759,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>Set of properties to return. Defaults to full.</summary>
@@ -5793,11 +5793,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -5998,29 +5998,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>
@@ -6105,11 +6105,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -6634,29 +6634,29 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Object owner gets OWNER access, and allAuthenticatedUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("authenticatedRead")]
-                AuthenticatedRead,
+                AuthenticatedRead = 0,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerFullControl")]
-                BucketOwnerFullControl,
+                BucketOwnerFullControl = 1,
 
                 /// <summary>Object owner gets OWNER access, and project team owners get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("bucketOwnerRead")]
-                BucketOwnerRead,
+                BucketOwnerRead = 2,
 
                 /// <summary>Object owner gets OWNER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("private")]
-                Private__,
+                Private__ = 3,
 
                 /// <summary>
                 /// Object owner gets OWNER access, and project team members get access according to their roles.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("projectPrivate")]
-                ProjectPrivate,
+                ProjectPrivate = 4,
 
                 /// <summary>Object owner gets OWNER access, and allUsers get READER access.</summary>
                 [Google.Apis.Util.StringValueAttribute("publicRead")]
-                PublicRead,
+                PublicRead = 5,
             }
 
             /// <summary>Set of properties to return. Defaults to full.</summary>
@@ -6668,11 +6668,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>
@@ -6867,11 +6867,11 @@ namespace Google.Apis.Storage.v1
             {
                 /// <summary>Include all properties.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Omit the owner, acl property.</summary>
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
-                NoAcl,
+                NoAcl = 1,
             }
 
             /// <summary>

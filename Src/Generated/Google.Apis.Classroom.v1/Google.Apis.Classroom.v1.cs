@@ -249,11 +249,11 @@ namespace Google.Apis.Classroom.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -269,15 +269,15 @@ namespace Google.Apis.Classroom.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -986,18 +986,18 @@ namespace Google.Apis.Classroom.v1
                 {
                     /// <summary>No state specified. This is never returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("ANNOUNCEMENT_STATE_UNSPECIFIED")]
-                    ANNOUNCEMENTSTATEUNSPECIFIED,
+                    ANNOUNCEMENTSTATEUNSPECIFIED = 0,
 
                     /// <summary>Status for announcement that has been published. This is the default state.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
+                    PUBLISHED = 1,
 
                     /// <summary>
                     /// Status for an announcement that is not yet published. Announcement in this state is visible only
                     /// to course teachers and domain administrators.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                    DRAFT,
+                    DRAFT = 2,
 
                     /// <summary>
                     /// Status for announcement that was published but is now deleted. Announcement in this state is
@@ -1005,7 +1005,7 @@ namespace Google.Apis.Classroom.v1
                     /// after some time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
-                    DELETED,
+                    DELETED = 3,
                 }
 
                 /// <summary>
@@ -1469,15 +1469,15 @@ namespace Google.Apis.Classroom.v1
                     {
                         /// <summary>No restriction on submission late values specified.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
-                        LATEVALUESUNSPECIFIED,
+                        LATEVALUESUNSPECIFIED = 0,
 
                         /// <summary>Return StudentSubmissions where late is true.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
-                        LATEONLY,
+                        LATEONLY = 1,
 
                         /// <summary>Return StudentSubmissions where late is false.</summary>
                         [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
-                        NOTLATEONLY,
+                        NOTLATEONLY = 2,
                     }
 
                     /// <summary>
@@ -1510,30 +1510,30 @@ namespace Google.Apis.Classroom.v1
                     {
                         /// <summary>No state specified. This should never be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("SUBMISSION_STATE_UNSPECIFIED")]
-                        SUBMISSIONSTATEUNSPECIFIED,
+                        SUBMISSIONSTATEUNSPECIFIED = 0,
 
                         /// <summary>
                         /// The student has never accessed this submission. Attachments are not returned and timestamps
                         /// is not set.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("NEW")]
-                        NEW__,
+                        NEW__ = 1,
 
                         /// <summary>Has been created.</summary>
                         [Google.Apis.Util.StringValueAttribute("CREATED")]
-                        CREATED,
+                        CREATED = 2,
 
                         /// <summary>Has been turned in to the teacher.</summary>
                         [Google.Apis.Util.StringValueAttribute("TURNED_IN")]
-                        TURNEDIN,
+                        TURNEDIN = 3,
 
                         /// <summary>Has been returned to the student.</summary>
                         [Google.Apis.Util.StringValueAttribute("RETURNED")]
-                        RETURNED,
+                        RETURNED = 4,
 
                         /// <summary>Student chose to "unsubmit" the assignment.</summary>
                         [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
-                        RECLAIMEDBYSTUDENT,
+                        RECLAIMEDBYSTUDENT = 5,
                     }
 
                     /// <summary>
@@ -2456,25 +2456,25 @@ namespace Google.Apis.Classroom.v1
                 {
                     /// <summary>No state specified. This is never returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("COURSE_WORK_STATE_UNSPECIFIED")]
-                    COURSEWORKSTATEUNSPECIFIED,
+                    COURSEWORKSTATEUNSPECIFIED = 0,
 
                     /// <summary>Status for work that has been published. This is the default state.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
+                    PUBLISHED = 1,
 
                     /// <summary>
                     /// Status for work that is not yet published. Work in this state is visible only to course teachers
                     /// and domain administrators.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                    DRAFT,
+                    DRAFT = 2,
 
                     /// <summary>
                     /// Status for work that was published but is now deleted. Work in this state is visible only to
                     /// course teachers and domain administrators. Work in this state is deleted after some time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
-                    DELETED,
+                    DELETED = 3,
                 }
 
                 /// <summary>
@@ -3051,20 +3051,20 @@ namespace Google.Apis.Classroom.v1
                 {
                     /// <summary>No state specified. This is never returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("COURSEWORK_MATERIAL_STATE_UNSPECIFIED")]
-                    COURSEWORKMATERIALSTATEUNSPECIFIED,
+                    COURSEWORKMATERIALSTATEUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Status for course work material that has been published. This is the default state.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
+                    PUBLISHED = 1,
 
                     /// <summary>
                     /// Status for an course work material that is not yet published. Course work material in this state
                     /// is visible only to course teachers and domain administrators.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                    DRAFT,
+                    DRAFT = 2,
 
                     /// <summary>
                     /// Status for course work material that was published but is now deleted. Course work material in
@@ -3072,7 +3072,7 @@ namespace Google.Apis.Classroom.v1
                     /// this state is deleted after some time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
-                    DELETED,
+                    DELETED = 3,
                 }
 
                 /// <summary>
@@ -4615,17 +4615,17 @@ namespace Google.Apis.Classroom.v1
             {
                 /// <summary>No course state. No returned Course message will use this value.</summary>
                 [Google.Apis.Util.StringValueAttribute("COURSE_STATE_UNSPECIFIED")]
-                COURSESTATEUNSPECIFIED,
+                COURSESTATEUNSPECIFIED = 0,
 
                 /// <summary>The course is active.</summary>
                 [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                ACTIVE,
+                ACTIVE = 1,
 
                 /// <summary>
                 /// The course has been archived. You cannot modify it except to change it to a different state.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ARCHIVED")]
-                ARCHIVED,
+                ARCHIVED = 2,
 
                 /// <summary>
                 /// The course has been created, but not yet activated. It is accessible by the primary teacher and
@@ -4633,7 +4633,7 @@ namespace Google.Apis.Classroom.v1
                 /// may only be changed to `PROVISIONED` if it is in the `DECLINED` state.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PROVISIONED")]
-                PROVISIONED,
+                PROVISIONED = 3,
 
                 /// <summary>
                 /// The course has been created, but declined. It is accessible by the course owner and domain
@@ -4642,7 +4642,7 @@ namespace Google.Apis.Classroom.v1
                 /// `PROVISIONED` state.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DECLINED")]
-                DECLINED,
+                DECLINED = 4,
 
                 /// <summary>
                 /// The course has been suspended. You cannot modify the course, and only the user identified by the
@@ -4650,7 +4650,7 @@ namespace Google.Apis.Classroom.v1
                 /// Terms of Service.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("SUSPENDED")]
-                SUSPENDED,
+                SUSPENDED = 5,
             }
 
             /// <summary>
@@ -5645,18 +5645,18 @@ namespace Google.Apis.Classroom.v1
                 {
                     /// <summary>Should never be returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("GUARDIAN_INVITATION_STATE_UNSPECIFIED")]
-                    GUARDIANINVITATIONSTATEUNSPECIFIED,
+                    GUARDIANINVITATIONSTATEUNSPECIFIED = 0,
 
                     /// <summary>The invitation is active and awaiting a response.</summary>
                     [Google.Apis.Util.StringValueAttribute("PENDING")]
-                    PENDING,
+                    PENDING = 1,
 
                     /// <summary>
                     /// The invitation is no longer active. It may have been accepted, declined, withdrawn or it may
                     /// have expired.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETE")]
-                    COMPLETE,
+                    COMPLETE = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>

@@ -1,0 +1,47 @@
+{
+  "Google.Apis.BigQueryDataTransfer.v1.BigQueryDataTransferBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.BigQueryDataTransferBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+LocationsResource+TransferConfigsResource+RunsResource+ListRequest.RunAttemptEnum": [
+    "RUN_ATTEMPT_UNSPECIFIED",
+    "LATEST"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+LocationsResource+TransferConfigsResource+RunsResource+ListRequest.StatesEnum": [
+    "TRANSFER_STATE_UNSPECIFIED",
+    "PENDING",
+    "RUNNING",
+    "SUCCEEDED",
+    "FAILED",
+    "CANCELLED"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+LocationsResource+TransferConfigsResource+RunsResource+TransferLogsResource+ListRequest.MessageTypesEnum": [
+    "MESSAGE_SEVERITY_UNSPECIFIED",
+    "INFO",
+    "WARNING",
+    "ERROR"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+TransferConfigsResource+RunsResource+ListRequest.RunAttemptEnum": [
+    "RUN_ATTEMPT_UNSPECIFIED",
+    "LATEST"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+TransferConfigsResource+RunsResource+ListRequest.StatesEnum": [
+    "TRANSFER_STATE_UNSPECIFIED",
+    "PENDING",
+    "RUNNING",
+    "SUCCEEDED",
+    "FAILED",
+    "CANCELLED"
+  ],
+  "Google.Apis.BigQueryDataTransfer.v1.ProjectsResource+TransferConfigsResource+RunsResource+TransferLogsResource+ListRequest.MessageTypesEnum": [
+    "MESSAGE_SEVERITY_UNSPECIFIED",
+    "INFO",
+    "WARNING",
+    "ERROR"
+  ]
+}

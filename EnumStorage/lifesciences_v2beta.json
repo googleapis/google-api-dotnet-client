@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudLifeSciences.v2beta.CloudLifeSciencesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudLifeSciences.v2beta.CloudLifeSciencesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Transcoder.v1beta1.TranscoderBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Transcoder.v1beta1.TranscoderBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

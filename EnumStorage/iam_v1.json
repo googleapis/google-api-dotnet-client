@@ -1,0 +1,33 @@
+{
+  "Google.Apis.Iam.v1.IamBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Iam.v1.IamBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Iam.v1.OrganizationsResource+RolesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Iam.v1.ProjectsResource+RolesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Iam.v1.ProjectsResource+ServiceAccountsResource+KeysResource+GetRequest.PublicKeyTypeEnum": [
+    "TYPE_NONE",
+    "TYPE_X509_PEM_FILE",
+    "TYPE_RAW_PUBLIC_KEY"
+  ],
+  "Google.Apis.Iam.v1.ProjectsResource+ServiceAccountsResource+KeysResource+ListRequest.KeyTypesEnum": [
+    "KEY_TYPE_UNSPECIFIED",
+    "USER_MANAGED",
+    "SYSTEM_MANAGED"
+  ],
+  "Google.Apis.Iam.v1.RolesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ]
+}

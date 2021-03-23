@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PlayableLocations.v3.PlayableLocationsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PlayableLocations.v3.PlayableLocationsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

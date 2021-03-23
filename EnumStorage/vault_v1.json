@@ -1,0 +1,37 @@
+{
+  "Google.Apis.Vault.v1.MattersResource+GetRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Vault.v1.MattersResource+HoldsResource+GetRequest.ViewEnum": [
+    "HOLD_VIEW_UNSPECIFIED",
+    "BASIC_HOLD",
+    "FULL_HOLD"
+  ],
+  "Google.Apis.Vault.v1.MattersResource+HoldsResource+ListRequest.ViewEnum": [
+    "HOLD_VIEW_UNSPECIFIED",
+    "BASIC_HOLD",
+    "FULL_HOLD"
+  ],
+  "Google.Apis.Vault.v1.MattersResource+ListRequest.StateEnum": [
+    "STATE_UNSPECIFIED",
+    "OPEN",
+    "CLOSED",
+    "DELETED"
+  ],
+  "Google.Apis.Vault.v1.MattersResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Vault.v1.VaultBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Vault.v1.VaultBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

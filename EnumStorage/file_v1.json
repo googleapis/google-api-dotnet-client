@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudFilestore.v1.CloudFilestoreBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudFilestore.v1.CloudFilestoreBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

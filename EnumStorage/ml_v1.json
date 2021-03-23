@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudMachineLearningEngine.v1.CloudMachineLearningEngineBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

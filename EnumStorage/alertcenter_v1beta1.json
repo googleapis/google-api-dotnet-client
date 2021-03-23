@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AlertCenter.v1beta1.AlertCenterBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AlertCenter.v1beta1.AlertCenterBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

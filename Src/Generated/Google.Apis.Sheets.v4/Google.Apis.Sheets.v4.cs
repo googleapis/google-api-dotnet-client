@@ -125,11 +125,11 @@ namespace Google.Apis.Sheets.v4
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -145,15 +145,15 @@ namespace Google.Apis.Sheets.v4
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -630,11 +630,11 @@ namespace Google.Apis.Sheets.v4
                     /// of the sheet will still insert new rows or columns so the data can be written.)
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OVERWRITE")]
-                    OVERWRITE,
+                    OVERWRITE = 0,
 
                     /// <summary>Rows are inserted for the new data.</summary>
                     [Google.Apis.Util.StringValueAttribute("INSERT_ROWS")]
-                    INSERTROWS,
+                    INSERTROWS = 1,
                 }
 
                 /// <summary>
@@ -661,14 +661,14 @@ namespace Google.Apis.Sheets.v4
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
+                    SERIALNUMBER = 0,
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
                     /// number format (which is dependent on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
+                    FORMATTEDSTRING = 1,
                 }
 
                 /// <summary>
@@ -690,21 +690,21 @@ namespace Google.Apis.Sheets.v4
                     /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
+                    FORMATTEDVALUE = 0,
 
                     /// <summary>
                     /// Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and
                     /// `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
+                    UNFORMATTEDVALUE = 1,
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
+                    FORMULA = 2,
                 }
 
                 /// <summary>How the input data should be interpreted.</summary>
@@ -716,11 +716,11 @@ namespace Google.Apis.Sheets.v4
                 {
                     /// <summary>Default input value. This value must not be used.</summary>
                     [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
-                    INPUTVALUEOPTIONUNSPECIFIED,
+                    INPUTVALUEOPTIONUNSPECIFIED = 0,
 
                     /// <summary>The values the user has entered will not be parsed and will be stored as-is.</summary>
                     [Google.Apis.Util.StringValueAttribute("RAW")]
-                    RAW,
+                    RAW = 1,
 
                     /// <summary>
                     /// The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers,
@@ -728,7 +728,7 @@ namespace Google.Apis.Sheets.v4
                     /// when entering text into a cell via the Google Sheets UI.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
-                    USERENTERED,
+                    USERENTERED = 2,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -982,14 +982,14 @@ namespace Google.Apis.Sheets.v4
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
+                    SERIALNUMBER = 0,
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
                     /// number format (which is dependent on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
+                    FORMATTEDSTRING = 1,
                 }
 
                 /// <summary>
@@ -1009,15 +1009,15 @@ namespace Google.Apis.Sheets.v4
                 {
                     /// <summary>The default value, do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
+                    DIMENSIONUNSPECIFIED = 0,
 
                     /// <summary>Operates on the rows of a sheet.</summary>
                     [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
+                    ROWS = 1,
 
                     /// <summary>Operates on the columns of a sheet.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
+                    COLUMNS = 2,
                 }
 
                 /// <summary>The A1 notation or R1C1 notation of the range to retrieve values from.</summary>
@@ -1043,21 +1043,21 @@ namespace Google.Apis.Sheets.v4
                     /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
+                    FORMATTEDVALUE = 0,
 
                     /// <summary>
                     /// Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and
                     /// `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
+                    UNFORMATTEDVALUE = 1,
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
+                    FORMULA = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1423,14 +1423,14 @@ namespace Google.Apis.Sheets.v4
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
+                    SERIALNUMBER = 0,
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
                     /// number format (which is dependent on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
+                    FORMATTEDSTRING = 1,
                 }
 
                 /// <summary>
@@ -1450,15 +1450,15 @@ namespace Google.Apis.Sheets.v4
                 {
                     /// <summary>The default value, do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
+                    DIMENSIONUNSPECIFIED = 0,
 
                     /// <summary>Operates on the rows of a sheet.</summary>
                     [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
+                    ROWS = 1,
 
                     /// <summary>Operates on the columns of a sheet.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
+                    COLUMNS = 2,
                 }
 
                 /// <summary>
@@ -1480,21 +1480,21 @@ namespace Google.Apis.Sheets.v4
                     /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
+                    FORMATTEDVALUE = 0,
 
                     /// <summary>
                     /// Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and
                     /// `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
+                    UNFORMATTEDVALUE = 1,
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
+                    FORMULA = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1621,14 +1621,14 @@ namespace Google.Apis.Sheets.v4
                     /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as not a leap year.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
+                    SERIALNUMBER = 0,
 
                     /// <summary>
                     /// Instructs date, time, datetime, and duration fields to be output as strings in their given
                     /// number format (which is dependent on the spreadsheet locale).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
+                    FORMATTEDSTRING = 1,
                 }
 
                 /// <summary>
@@ -1650,21 +1650,21 @@ namespace Google.Apis.Sheets.v4
                     /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
+                    FORMATTEDVALUE = 0,
 
                     /// <summary>
                     /// Values will be calculated, but not formatted in the reply. For example, if `A1` is `1.23` and
                     /// `A2` is `=A1` and formatted as currency, then `A2` would return the number `1.23`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
+                    UNFORMATTEDVALUE = 1,
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
                     /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
+                    FORMULA = 2,
                 }
 
                 /// <summary>How the input data should be interpreted.</summary>
@@ -1676,11 +1676,11 @@ namespace Google.Apis.Sheets.v4
                 {
                     /// <summary>Default input value. This value must not be used.</summary>
                     [Google.Apis.Util.StringValueAttribute("INPUT_VALUE_OPTION_UNSPECIFIED")]
-                    INPUTVALUEOPTIONUNSPECIFIED,
+                    INPUTVALUEOPTIONUNSPECIFIED = 0,
 
                     /// <summary>The values the user has entered will not be parsed and will be stored as-is.</summary>
                     [Google.Apis.Util.StringValueAttribute("RAW")]
-                    RAW,
+                    RAW = 1,
 
                     /// <summary>
                     /// The values will be parsed as if the user typed them into the UI. Numbers will stay as numbers,
@@ -1688,7 +1688,7 @@ namespace Google.Apis.Sheets.v4
                     /// when entering text into a cell via the Google Sheets UI.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
-                    USERENTERED,
+                    USERENTERED = 2,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>

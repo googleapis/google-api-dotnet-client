@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AbusiveExperienceReport.v1.AbusiveExperienceReportBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AbusiveExperienceReport.v1.AbusiveExperienceReportBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

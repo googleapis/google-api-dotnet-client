@@ -125,11 +125,11 @@ namespace Google.Apis.Docs.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -145,15 +145,15 @@ namespace Google.Apis.Docs.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -461,7 +461,7 @@ namespace Google.Apis.Docs.v1
                 /// SUGGESTIONS_INLINE is applied. This is the default suggestions view mode.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT_FOR_CURRENT_ACCESS")]
-                DEFAULTFORCURRENTACCESS,
+                DEFAULTFORCURRENTACCESS = 0,
 
                 /// <summary>
                 /// The returned document has suggestions inline. Suggested changes will be differentiated from base
@@ -469,7 +469,7 @@ namespace Google.Apis.Docs.v1
                 /// if the user does not have permission to view suggested changes.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("SUGGESTIONS_INLINE")]
-                SUGGESTIONSINLINE,
+                SUGGESTIONSINLINE = 1,
 
                 /// <summary>
                 /// The returned document is a preview with all suggested changes accepted. Requests to retrieve a
@@ -477,14 +477,14 @@ namespace Google.Apis.Docs.v1
                 /// suggested changes.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PREVIEW_SUGGESTIONS_ACCEPTED")]
-                PREVIEWSUGGESTIONSACCEPTED,
+                PREVIEWSUGGESTIONSACCEPTED = 2,
 
                 /// <summary>
                 /// The returned document is a preview with all suggested changes rejected if there are any suggestions
                 /// in the document.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PREVIEW_WITHOUT_SUGGESTIONS")]
-                PREVIEWWITHOUTSUGGESTIONS,
+                PREVIEWWITHOUTSUGGESTIONS = 3,
             }
 
             /// <summary>Gets the method name.</summary>

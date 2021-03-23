@@ -91,11 +91,11 @@ namespace Google.Apis.CivicInfo.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -111,15 +111,15 @@ namespace Google.Apis.CivicInfo.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -509,39 +509,39 @@ namespace Google.Apis.CivicInfo.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("international")]
-                International,
+                International = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("country")]
-                Country,
+                Country = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea1")]
-                AdministrativeArea1,
+                AdministrativeArea1 = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("regional")]
-                Regional,
+                Regional = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea2")]
-                AdministrativeArea2,
+                AdministrativeArea2 = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("locality")]
-                Locality,
+                Locality = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality1")]
-                SubLocality1,
+                SubLocality1 = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality2")]
-                SubLocality2,
+                SubLocality2 = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("special")]
-                Special,
+                Special = 8,
             }
 
             /// <summary>
@@ -559,47 +559,47 @@ namespace Google.Apis.CivicInfo.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfState")]
-                HeadOfState,
+                HeadOfState = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfGovernment")]
-                HeadOfGovernment,
+                HeadOfGovernment = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("deputyHeadOfGovernment")]
-                DeputyHeadOfGovernment,
+                DeputyHeadOfGovernment = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("governmentOfficer")]
-                GovernmentOfficer,
+                GovernmentOfficer = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("executiveCouncil")]
-                ExecutiveCouncil,
+                ExecutiveCouncil = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorUpperBody")]
-                LegislatorUpperBody,
+                LegislatorUpperBody = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorLowerBody")]
-                LegislatorLowerBody,
+                LegislatorLowerBody = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("highestCourtJudge")]
-                HighestCourtJudge,
+                HighestCourtJudge = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("judge")]
-                Judge,
+                Judge = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("schoolBoard")]
-                SchoolBoard,
+                SchoolBoard = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
-                SpecialPurposeOfficer,
+                SpecialPurposeOfficer = 10,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -686,39 +686,39 @@ namespace Google.Apis.CivicInfo.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("international")]
-                International,
+                International = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("country")]
-                Country,
+                Country = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea1")]
-                AdministrativeArea1,
+                AdministrativeArea1 = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("regional")]
-                Regional,
+                Regional = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("administrativeArea2")]
-                AdministrativeArea2,
+                AdministrativeArea2 = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("locality")]
-                Locality,
+                Locality = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality1")]
-                SubLocality1,
+                SubLocality1 = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subLocality2")]
-                SubLocality2,
+                SubLocality2 = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("special")]
-                Special,
+                Special = 8,
             }
 
             /// <summary>
@@ -744,47 +744,47 @@ namespace Google.Apis.CivicInfo.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfState")]
-                HeadOfState,
+                HeadOfState = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("headOfGovernment")]
-                HeadOfGovernment,
+                HeadOfGovernment = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("deputyHeadOfGovernment")]
-                DeputyHeadOfGovernment,
+                DeputyHeadOfGovernment = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("governmentOfficer")]
-                GovernmentOfficer,
+                GovernmentOfficer = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("executiveCouncil")]
-                ExecutiveCouncil,
+                ExecutiveCouncil = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorUpperBody")]
-                LegislatorUpperBody,
+                LegislatorUpperBody = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("legislatorLowerBody")]
-                LegislatorLowerBody,
+                LegislatorLowerBody = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("highestCourtJudge")]
-                HighestCourtJudge,
+                HighestCourtJudge = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("judge")]
-                Judge,
+                Judge = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("schoolBoard")]
-                SchoolBoard,
+                SchoolBoard = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
-                SpecialPurposeOfficer,
+                SpecialPurposeOfficer = 10,
             }
 
             /// <summary>Gets the method name.</summary>

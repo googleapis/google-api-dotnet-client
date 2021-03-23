@@ -111,11 +111,11 @@ namespace Google.Apis.Testing.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -131,15 +131,15 @@ namespace Google.Apis.Testing.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -628,27 +628,27 @@ namespace Google.Apis.Testing.v1
             {
                 /// <summary>Do not use. For proto versioning only.</summary>
                 [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_TYPE_UNSPECIFIED")]
-                ENVIRONMENTTYPEUNSPECIFIED,
+                ENVIRONMENTTYPEUNSPECIFIED = 0,
 
                 /// <summary>A device running a version of the Android OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
-                ANDROID,
+                ANDROID = 1,
 
                 /// <summary>A device running a version of iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
-                IOS,
+                IOS = 2,
 
                 /// <summary>A network configuration to use when running a test.</summary>
                 [Google.Apis.Util.StringValueAttribute("NETWORK_CONFIGURATION")]
-                NETWORKCONFIGURATION,
+                NETWORKCONFIGURATION = 3,
 
                 /// <summary>The software environment provided by TestExecutionService.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROVIDED_SOFTWARE")]
-                PROVIDEDSOFTWARE,
+                PROVIDEDSOFTWARE = 4,
 
                 /// <summary>The IP blocks used by devices in the test environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("DEVICE_IP_BLOCKS")]
-                DEVICEIPBLOCKS,
+                DEVICEIPBLOCKS = 5,
             }
 
             /// <summary>For authorization, the cloud project requesting the TestEnvironmentCatalog.</summary>

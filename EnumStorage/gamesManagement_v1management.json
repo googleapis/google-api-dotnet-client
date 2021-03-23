@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GamesManagement.v1management.GamesManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GamesManagement.v1management.GamesManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

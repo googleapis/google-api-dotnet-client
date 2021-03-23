@@ -1,0 +1,23 @@
+{
+  "Google.Apis.ManufacturerCenter.v1.AccountsResource+ProductsResource+GetRequest.IncludeEnum": [
+    "UNKNOWN",
+    "ATTRIBUTES",
+    "ISSUES",
+    "DESTINATION_STATUSES"
+  ],
+  "Google.Apis.ManufacturerCenter.v1.AccountsResource+ProductsResource+ListRequest.IncludeEnum": [
+    "UNKNOWN",
+    "ATTRIBUTES",
+    "ISSUES",
+    "DESTINATION_STATUSES"
+  ],
+  "Google.Apis.ManufacturerCenter.v1.ManufacturerCenterBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ManufacturerCenter.v1.ManufacturerCenterBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

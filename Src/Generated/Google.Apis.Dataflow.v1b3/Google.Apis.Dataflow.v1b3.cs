@@ -115,11 +115,11 @@ namespace Google.Apis.Dataflow.v1b3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -135,15 +135,15 @@ namespace Google.Apis.Dataflow.v1b3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -963,7 +963,7 @@ namespace Google.Apis.Dataflow.v1b3
                     {
                         /// <summary>The message importance isn't specified, or is unknown.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
-                        JOBMESSAGEIMPORTANCEUNKNOWN,
+                        JOBMESSAGEIMPORTANCEUNKNOWN = 0,
 
                         /// <summary>
                         /// The message is at the 'debug' level: typically only useful for software engineers working on
@@ -971,7 +971,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// messages at this level by default.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
-                        JOBMESSAGEDEBUG,
+                        JOBMESSAGEDEBUG = 1,
 
                         /// <summary>
                         /// The message is at the 'detailed' level: somewhat verbose, but potentially useful to users.
@@ -979,7 +979,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// These messages are displayed by default in the Dataflow monitoring UI.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
-                        JOBMESSAGEDETAILED,
+                        JOBMESSAGEDETAILED = 2,
 
                         /// <summary>
                         /// The message is at the 'basic' level: useful for keeping track of the execution of a Dataflow
@@ -987,7 +987,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// default, and these messages are displayed by default in the Dataflow monitoring UI.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
-                        JOBMESSAGEBASIC,
+                        JOBMESSAGEBASIC = 3,
 
                         /// <summary>
                         /// The message is at the 'warning' level: indicating a condition pertaining to a job which may
@@ -996,7 +996,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// monitoring UI.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
-                        JOBMESSAGEWARNING,
+                        JOBMESSAGEWARNING = 4,
 
                         /// <summary>
                         /// The message is at the 'error' level: indicating a condition preventing a job from
@@ -1004,7 +1004,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// default, and these messages are displayed by default in the Dataflow monitoring UI.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
-                        JOBMESSAGEERROR,
+                        JOBMESSAGEERROR = 5,
                     }
 
                     /// <summary>
@@ -1294,25 +1294,25 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JobUuid`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
+                    UNKNOWN = 0,
 
                     /// <summary>
                     /// Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs
                     /// ordered on the termination timestamp.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
+                    ALL = 1,
 
                     /// <summary>
                     /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
                     /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
+                    TERMINATED = 2,
 
                     /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                     [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
+                    ACTIVE = 3,
                 }
 
                 /// <summary>
@@ -1348,24 +1348,24 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
+                    JOBVIEWUNKNOWN = 0,
 
                     /// <summary>
                     /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
                     /// time, and Cloud SDK version details.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
+                    JOBVIEWSUMMARY = 1,
 
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
+                    JOBVIEWALL = 2,
 
                     /// <summary>
                     /// Request summary info and limited job description data for steps, labels and environment.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
+                    JOBVIEWDESCRIPTION = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1486,24 +1486,24 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
+                    JOBVIEWUNKNOWN = 0,
 
                     /// <summary>
                     /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
                     /// time, and Cloud SDK version details.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
+                    JOBVIEWSUMMARY = 1,
 
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
+                    JOBVIEWALL = 2,
 
                     /// <summary>
                     /// Request summary info and limited job description data for steps, labels and environment.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
+                    JOBVIEWDESCRIPTION = 3,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1616,24 +1616,24 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
+                    JOBVIEWUNKNOWN = 0,
 
                     /// <summary>
                     /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
                     /// time, and Cloud SDK version details.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
+                    JOBVIEWSUMMARY = 1,
 
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
+                    JOBVIEWALL = 2,
 
                     /// <summary>
                     /// Request summary info and limited job description data for steps, labels and environment.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
+                    JOBVIEWDESCRIPTION = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1828,25 +1828,25 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JobUuid`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
+                    UNKNOWN = 0,
 
                     /// <summary>
                     /// Returns all running jobs first ordered on creation timestamp, then returns all terminated jobs
                     /// ordered on the termination timestamp.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
-                    ALL,
+                    ALL = 1,
 
                     /// <summary>
                     /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
                     /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                    TERMINATED,
+                    TERMINATED = 2,
 
                     /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                     [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                    ACTIVE,
+                    ACTIVE = 3,
                 }
 
                 /// <summary>
@@ -1882,24 +1882,24 @@ namespace Google.Apis.Dataflow.v1b3
                     /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                    JOBVIEWUNKNOWN,
+                    JOBVIEWUNKNOWN = 0,
 
                     /// <summary>
                     /// Request summary information only: Project ID, Job ID, job name, job type, job status, start/end
                     /// time, and Cloud SDK version details.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                    JOBVIEWSUMMARY,
+                    JOBVIEWSUMMARY = 1,
 
                     /// <summary>Request all information available for this job.</summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                    JOBVIEWALL,
+                    JOBVIEWALL = 2,
 
                     /// <summary>
                     /// Request summary info and limited job description data for steps, labels and environment.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                    JOBVIEWDESCRIPTION,
+                    JOBVIEWDESCRIPTION = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2541,7 +2541,7 @@ namespace Google.Apis.Dataflow.v1b3
                         {
                             /// <summary>The message importance isn't specified, or is unknown.</summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_IMPORTANCE_UNKNOWN")]
-                            JOBMESSAGEIMPORTANCEUNKNOWN,
+                            JOBMESSAGEIMPORTANCEUNKNOWN = 0,
 
                             /// <summary>
                             /// The message is at the 'debug' level: typically only useful for software engineers
@@ -2549,7 +2549,7 @@ namespace Google.Apis.Dataflow.v1b3
                             /// display log messages at this level by default.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DEBUG")]
-                            JOBMESSAGEDEBUG,
+                            JOBMESSAGEDEBUG = 1,
 
                             /// <summary>
                             /// The message is at the 'detailed' level: somewhat verbose, but potentially useful to
@@ -2557,7 +2557,7 @@ namespace Google.Apis.Dataflow.v1b3
                             /// default. These messages are displayed by default in the Dataflow monitoring UI.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_DETAILED")]
-                            JOBMESSAGEDETAILED,
+                            JOBMESSAGEDETAILED = 2,
 
                             /// <summary>
                             /// The message is at the 'basic' level: useful for keeping track of the execution of a
@@ -2566,7 +2566,7 @@ namespace Google.Apis.Dataflow.v1b3
                             /// UI.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_BASIC")]
-                            JOBMESSAGEBASIC,
+                            JOBMESSAGEBASIC = 3,
 
                             /// <summary>
                             /// The message is at the 'warning' level: indicating a condition pertaining to a job which
@@ -2575,7 +2575,7 @@ namespace Google.Apis.Dataflow.v1b3
                             /// Dataflow monitoring UI.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_WARNING")]
-                            JOBMESSAGEWARNING,
+                            JOBMESSAGEWARNING = 4,
 
                             /// <summary>
                             /// The message is at the 'error' level: indicating a condition preventing a job from
@@ -2583,7 +2583,7 @@ namespace Google.Apis.Dataflow.v1b3
                             /// default, and these messages are displayed by default in the Dataflow monitoring UI.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("JOB_MESSAGE_ERROR")]
-                            JOBMESSAGEERROR,
+                            JOBMESSAGEERROR = 5,
                         }
 
                         /// <summary>
@@ -3203,24 +3203,24 @@ namespace Google.Apis.Dataflow.v1b3
                         /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                        JOBVIEWUNKNOWN,
+                        JOBVIEWUNKNOWN = 0,
 
                         /// <summary>
                         /// Request summary information only: Project ID, Job ID, job name, job type, job status,
                         /// start/end time, and Cloud SDK version details.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                        JOBVIEWSUMMARY,
+                        JOBVIEWSUMMARY = 1,
 
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                        JOBVIEWALL,
+                        JOBVIEWALL = 2,
 
                         /// <summary>
                         /// Request summary info and limited job description data for steps, labels and environment.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                        JOBVIEWDESCRIPTION,
+                        JOBVIEWDESCRIPTION = 3,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -3338,24 +3338,24 @@ namespace Google.Apis.Dataflow.v1b3
                         /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                        JOBVIEWUNKNOWN,
+                        JOBVIEWUNKNOWN = 0,
 
                         /// <summary>
                         /// Request summary information only: Project ID, Job ID, job name, job type, job status,
                         /// start/end time, and Cloud SDK version details.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                        JOBVIEWSUMMARY,
+                        JOBVIEWSUMMARY = 1,
 
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                        JOBVIEWALL,
+                        JOBVIEWALL = 2,
 
                         /// <summary>
                         /// Request summary info and limited job description data for steps, labels and environment.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                        JOBVIEWDESCRIPTION,
+                        JOBVIEWDESCRIPTION = 3,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -3684,25 +3684,25 @@ namespace Google.Apis.Dataflow.v1b3
                         /// `JobUuid`.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                        UNKNOWN,
+                        UNKNOWN = 0,
 
                         /// <summary>
                         /// Returns all running jobs first ordered on creation timestamp, then returns all terminated
                         /// jobs ordered on the termination timestamp.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ALL")]
-                        ALL,
+                        ALL = 1,
 
                         /// <summary>
                         /// Filters the jobs that have a terminated state, ordered on the termination timestamp. Example
                         /// terminated states: `JOB_STATE_STOPPED`, `JOB_STATE_UPDATED`, `JOB_STATE_DRAINED`, etc.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TERMINATED")]
-                        TERMINATED,
+                        TERMINATED = 2,
 
                         /// <summary>Filters the jobs that are running ordered on the creation timestamp.</summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                        ACTIVE,
+                        ACTIVE = 3,
                     }
 
                     /// <summary>
@@ -3735,24 +3735,24 @@ namespace Google.Apis.Dataflow.v1b3
                         /// `JOB_VIEW_SUMMARY` information, and may contain additional information.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNKNOWN")]
-                        JOBVIEWUNKNOWN,
+                        JOBVIEWUNKNOWN = 0,
 
                         /// <summary>
                         /// Request summary information only: Project ID, Job ID, job name, job type, job status,
                         /// start/end time, and Cloud SDK version details.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SUMMARY")]
-                        JOBVIEWSUMMARY,
+                        JOBVIEWSUMMARY = 1,
 
                         /// <summary>Request all information available for this job.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ALL")]
-                        JOBVIEWALL,
+                        JOBVIEWALL = 2,
 
                         /// <summary>
                         /// Request summary info and limited job description data for steps, labels and environment.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_DESCRIPTION")]
-                        JOBVIEWDESCRIPTION,
+                        JOBVIEWDESCRIPTION = 3,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -4483,7 +4483,7 @@ namespace Google.Apis.Dataflow.v1b3
                         /// Template view that retrieves only the metadata associated with the template.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("METADATA_ONLY")]
-                        METADATAONLY,
+                        METADATAONLY = 0,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -5119,7 +5119,7 @@ namespace Google.Apis.Dataflow.v1b3
                 {
                     /// <summary>Template view that retrieves only the metadata associated with the template.</summary>
                     [Google.Apis.Util.StringValueAttribute("METADATA_ONLY")]
-                    METADATAONLY,
+                    METADATAONLY = 0,
                 }
 
                 /// <summary>Gets the method name.</summary>

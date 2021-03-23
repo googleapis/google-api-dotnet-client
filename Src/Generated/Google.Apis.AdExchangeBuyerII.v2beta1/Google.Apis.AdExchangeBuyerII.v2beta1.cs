@@ -101,11 +101,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -121,15 +121,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1485,7 +1485,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// not share an ID.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("NO_DUPLICATES")]
-                    NODUPLICATES,
+                    NODUPLICATES = 0,
 
                     /// <summary>
                     /// Not recommended. Using this option will allow multiple creatives to share the same ID. Get and
@@ -1494,7 +1494,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// single ID is already shared by multiple creatives from previous APIs.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORCE_ENABLE_DUPLICATE_IDS")]
-                    FORCEENABLEDUPLICATEIDS,
+                    FORCEENABLEDUPLICATEIDS = 1,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -2002,21 +2002,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     /// <summary>A placeholder for an undefined filter syntax.</summary>
                     [Google.Apis.Util.StringValueAttribute("FILTER_SYNTAX_UNSPECIFIED")]
-                    FILTERSYNTAXUNSPECIFIED,
+                    FILTERSYNTAXUNSPECIFIED = 0,
 
                     /// <summary>
                     /// PQL query syntax. Visit https://developers.google.com/ad-manager/api/pqlreference for PQL
                     /// documentation and examples.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PQL")]
-                    PQL,
+                    PQL = 1,
 
                     /// <summary>
                     /// API list filtering syntax. Read about syntax and usage at
                     /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("LIST_FILTER")]
-                    LISTFILTER,
+                    LISTFILTER = 2,
                 }
 
                 /// <summary>
@@ -2748,21 +2748,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 {
                     /// <summary>A placeholder for an undefined filter syntax.</summary>
                     [Google.Apis.Util.StringValueAttribute("FILTER_SYNTAX_UNSPECIFIED")]
-                    FILTERSYNTAXUNSPECIFIED,
+                    FILTERSYNTAXUNSPECIFIED = 0,
 
                     /// <summary>
                     /// PQL query syntax. Visit https://developers.google.com/ad-manager/api/pqlreference for PQL
                     /// documentation and examples.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PQL")]
-                    PQL,
+                    PQL = 1,
 
                     /// <summary>
                     /// API list filtering syntax. Read about syntax and usage at
                     /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("LIST_FILTER")]
-                    LISTFILTER,
+                    LISTFILTER = 2,
                 }
 
                 /// <summary>

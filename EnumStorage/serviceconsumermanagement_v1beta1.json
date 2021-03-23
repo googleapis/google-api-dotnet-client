@@ -1,0 +1,41 @@
+{
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServiceConsumerManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServiceConsumerManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+GetRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+GetRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ProducerOverridesResource+CreateRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ProducerOverridesResource+DeleteRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ProducerOverridesResource+PatchRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceConsumerManagement.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+ListRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

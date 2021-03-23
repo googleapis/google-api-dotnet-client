@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudRetail.v2beta.CloudRetailBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudRetail.v2beta.CloudRetailBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

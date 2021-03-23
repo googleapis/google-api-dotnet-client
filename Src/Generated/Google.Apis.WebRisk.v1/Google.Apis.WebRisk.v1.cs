@@ -109,11 +109,11 @@ namespace Google.Apis.WebRisk.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -129,15 +129,15 @@ namespace Google.Apis.WebRisk.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -327,19 +327,19 @@ namespace Google.Apis.WebRisk.v1
             {
                 /// <summary>No entries should match this threat type. This threat type is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("THREAT_TYPE_UNSPECIFIED")]
-                THREATTYPEUNSPECIFIED,
+                THREATTYPEUNSPECIFIED = 0,
 
                 /// <summary>Malware targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("MALWARE")]
-                MALWARE,
+                MALWARE = 1,
 
                 /// <summary>Social engineering targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING")]
-                SOCIALENGINEERING,
+                SOCIALENGINEERING = 2,
 
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
-                UNWANTEDSOFTWARE,
+                UNWANTEDSOFTWARE = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -921,15 +921,15 @@ namespace Google.Apis.WebRisk.v1
             {
                 /// <summary>Unknown.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPRESSION_TYPE_UNSPECIFIED")]
-                COMPRESSIONTYPEUNSPECIFIED,
+                COMPRESSIONTYPEUNSPECIFIED = 0,
 
                 /// <summary>Raw, uncompressed data.</summary>
                 [Google.Apis.Util.StringValueAttribute("RAW")]
-                RAW,
+                RAW = 1,
 
                 /// <summary>Rice-Golomb encoded data.</summary>
                 [Google.Apis.Util.StringValueAttribute("RICE")]
-                RICE,
+                RICE = 2,
             }
 
             /// <summary>
@@ -947,19 +947,19 @@ namespace Google.Apis.WebRisk.v1
             {
                 /// <summary>No entries should match this threat type. This threat type is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("THREAT_TYPE_UNSPECIFIED")]
-                THREATTYPEUNSPECIFIED,
+                THREATTYPEUNSPECIFIED = 0,
 
                 /// <summary>Malware targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("MALWARE")]
-                MALWARE,
+                MALWARE = 1,
 
                 /// <summary>Social engineering targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING")]
-                SOCIALENGINEERING,
+                SOCIALENGINEERING = 2,
 
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
-                UNWANTEDSOFTWARE,
+                UNWANTEDSOFTWARE = 3,
             }
 
             /// <summary>
@@ -1073,19 +1073,19 @@ namespace Google.Apis.WebRisk.v1
             {
                 /// <summary>No entries should match this threat type. This threat type is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("THREAT_TYPE_UNSPECIFIED")]
-                THREATTYPEUNSPECIFIED,
+                THREATTYPEUNSPECIFIED = 0,
 
                 /// <summary>Malware targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("MALWARE")]
-                MALWARE,
+                MALWARE = 1,
 
                 /// <summary>Social engineering targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL_ENGINEERING")]
-                SOCIALENGINEERING,
+                SOCIALENGINEERING = 2,
 
                 /// <summary>Unwanted software targeting any platform.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNWANTED_SOFTWARE")]
-                UNWANTEDSOFTWARE,
+                UNWANTEDSOFTWARE = 3,
             }
 
             /// <summary>Required. The URI to be checked for matches.</summary>

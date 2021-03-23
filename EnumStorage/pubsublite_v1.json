@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PubsubLite.v1.PubsubLiteBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PubsubLite.v1.PubsubLiteBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

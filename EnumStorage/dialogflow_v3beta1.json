@@ -1,0 +1,27 @@
+{
+  "Google.Apis.Dialogflow.v3beta1.DialogflowBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dialogflow.v3beta1.DialogflowBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dialogflow.v3beta1.ProjectsResource+LocationsResource+AgentsResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_PARTIAL",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v3beta1.ProjectsResource+LocationsResource+AgentsResource+TestCasesResource+CalculateCoverageRequest.TypeEnum": [
+    "COVERAGE_TYPE_UNSPECIFIED",
+    "INTENT",
+    "PAGE_TRANSITION",
+    "TRANSITION_ROUTE_GROUP"
+  ],
+  "Google.Apis.Dialogflow.v3beta1.ProjectsResource+LocationsResource+AgentsResource+TestCasesResource+ListRequest.ViewEnum": [
+    "TEST_CASE_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

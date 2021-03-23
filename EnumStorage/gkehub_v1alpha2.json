@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GKEHub.v1alpha2.GKEHubBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GKEHub.v1alpha2.GKEHubBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

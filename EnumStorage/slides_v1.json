@@ -1,0 +1,20 @@
+{
+  "Google.Apis.Slides.v1.PresentationsResource+PagesResource+GetThumbnailRequest.ThumbnailPropertiesMimeTypeEnum": [
+    "PNG"
+  ],
+  "Google.Apis.Slides.v1.PresentationsResource+PagesResource+GetThumbnailRequest.ThumbnailPropertiesThumbnailSizeEnum": [
+    "THUMBNAIL_SIZE_UNSPECIFIED",
+    "LARGE",
+    "MEDIUM",
+    "SMALL"
+  ],
+  "Google.Apis.Slides.v1.SlidesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Slides.v1.SlidesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

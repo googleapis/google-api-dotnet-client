@@ -1,0 +1,104 @@
+{
+  "Google.Apis.Gmail.v1.GmailBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.GmailBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+CreateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+CreateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+GetRequest.FormatEnum": [
+    "minimal",
+    "full",
+    "raw",
+    "metadata"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+SendMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+SendMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+UpdateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+DraftsResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+HistoryResource+ListRequest.HistoryTypesEnum": [
+    "messageAdded",
+    "messageDeleted",
+    "labelAdded",
+    "labelRemoved"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+GetRequest.FormatEnum": [
+    "minimal",
+    "full",
+    "raw",
+    "metadata"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+ImportMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+ImportMediaUpload.InternalDateSourceEnum": [
+    "receivedTime",
+    "dateHeader"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+ImportMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+ImportRequest.InternalDateSourceEnum": [
+    "receivedTime",
+    "dateHeader"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+InsertMediaUpload.InternalDateSourceEnum": [
+    "receivedTime",
+    "dateHeader"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+InsertRequest.InternalDateSourceEnum": [
+    "receivedTime",
+    "dateHeader"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+SendMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+MessagesResource+SendMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Gmail.v1.UsersResource+ThreadsResource+GetRequest.FormatEnum": [
+    "full",
+    "metadata",
+    "minimal"
+  ]
+}

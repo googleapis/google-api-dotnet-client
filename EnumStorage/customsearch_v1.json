@@ -1,0 +1,125 @@
+{
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.ImgColorTypeEnum": [
+    "imgColorTypeUndefined",
+    "mono",
+    "gray",
+    "color",
+    "trans"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.ImgDominantColorEnum": [
+    "imgDominantColorUndefined",
+    "black",
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "teal",
+    "white",
+    "yellow"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.ImgSizeEnum": [
+    "imgSizeUndefined",
+    "HUGE",
+    "ICON",
+    "LARGE",
+    "MEDIUM",
+    "SMALL",
+    "XLARGE",
+    "XXLARGE"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.ImgTypeEnum": [
+    "imgTypeUndefined",
+    "clipart",
+    "face",
+    "lineart",
+    "stock",
+    "photo",
+    "animated"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.SafeEnum": [
+    "safeUndefined",
+    "active",
+    "high",
+    "medium",
+    "off"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.SearchTypeEnum": [
+    "searchTypeUndefined",
+    "image"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+ListRequest.SiteSearchFilterEnum": [
+    "siteSearchFilterUndefined",
+    "e",
+    "i"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.ImgColorTypeEnum": [
+    "imgColorTypeUndefined",
+    "mono",
+    "gray",
+    "color",
+    "trans"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.ImgDominantColorEnum": [
+    "imgDominantColorUndefined",
+    "black",
+    "blue",
+    "brown",
+    "gray",
+    "green",
+    "orange",
+    "pink",
+    "purple",
+    "red",
+    "teal",
+    "white",
+    "yellow"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.ImgSizeEnum": [
+    "imgSizeUndefined",
+    "HUGE",
+    "ICON",
+    "LARGE",
+    "MEDIUM",
+    "SMALL",
+    "XLARGE",
+    "XXLARGE"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.ImgTypeEnum": [
+    "imgTypeUndefined",
+    "clipart",
+    "face",
+    "lineart",
+    "stock",
+    "photo",
+    "animated"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.SafeEnum": [
+    "safeUndefined",
+    "active",
+    "high",
+    "medium",
+    "off"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.SearchTypeEnum": [
+    "searchTypeUndefined",
+    "image"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CseResource+SiterestrictResource+ListRequest.SiteSearchFilterEnum": [
+    "siteSearchFilterUndefined",
+    "e",
+    "i"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CustomSearchAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CustomSearchAPI.v1.CustomSearchAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

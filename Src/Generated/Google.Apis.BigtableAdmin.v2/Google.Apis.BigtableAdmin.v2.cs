@@ -149,11 +149,11 @@ namespace Google.Apis.BigtableAdmin.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -169,15 +169,15 @@ namespace Google.Apis.BigtableAdmin.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -2352,25 +2352,25 @@ namespace Google.Apis.BigtableAdmin.v2
                     {
                         /// <summary>Uses the default view for each method as documented in its request.</summary>
                         [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                        VIEWUNSPECIFIED,
+                        VIEWUNSPECIFIED = 0,
 
                         /// <summary>Only populates `name`.</summary>
                         [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
-                        NAMEONLY,
+                        NAMEONLY = 1,
 
                         /// <summary>Only populates `name` and fields related to the table's schema.</summary>
                         [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
-                        SCHEMAVIEW,
+                        SCHEMAVIEW = 2,
 
                         /// <summary>
                         /// Only populates `name` and fields related to the table's replication state.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
-                        REPLICATIONVIEW,
+                        REPLICATIONVIEW = 3,
 
                         /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
-                        FULL,
+                        FULL = 4,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -2526,25 +2526,25 @@ namespace Google.Apis.BigtableAdmin.v2
                     {
                         /// <summary>Uses the default view for each method as documented in its request.</summary>
                         [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                        VIEWUNSPECIFIED,
+                        VIEWUNSPECIFIED = 0,
 
                         /// <summary>Only populates `name`.</summary>
                         [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
-                        NAMEONLY,
+                        NAMEONLY = 1,
 
                         /// <summary>Only populates `name` and fields related to the table's schema.</summary>
                         [Google.Apis.Util.StringValueAttribute("SCHEMA_VIEW")]
-                        SCHEMAVIEW,
+                        SCHEMAVIEW = 2,
 
                         /// <summary>
                         /// Only populates `name` and fields related to the table's replication state.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
-                        REPLICATIONVIEW,
+                        REPLICATIONVIEW = 3,
 
                         /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
-                        FULL,
+                        FULL = 4,
                     }
 
                     /// <summary>Gets the method name.</summary>

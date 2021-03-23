@@ -111,11 +111,11 @@ namespace Google.Apis.DLP.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -131,15 +131,15 @@ namespace Google.Apis.DLP.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1885,15 +1885,15 @@ namespace Google.Apis.DLP.v2
                     {
                         /// <summary>Unused</summary>
                         [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                        DLPJOBTYPEUNSPECIFIED,
+                        DLPJOBTYPEUNSPECIFIED = 0,
 
                         /// <summary>The job inspected Google Cloud for sensitive data.</summary>
                         [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                        INSPECTJOB,
+                        INSPECTJOB = 1,
 
                         /// <summary>The job executed a Risk Analysis computation.</summary>
                         [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                        RISKANALYSISJOB,
+                        RISKANALYSISJOB = 2,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -4642,15 +4642,15 @@ namespace Google.Apis.DLP.v2
                 {
                     /// <summary>Unused</summary>
                     [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                    DLPJOBTYPEUNSPECIFIED,
+                    DLPJOBTYPEUNSPECIFIED = 0,
 
                     /// <summary>The job inspected Google Cloud for sensitive data.</summary>
                     [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                    INSPECTJOB,
+                    INSPECTJOB = 1,
 
                     /// <summary>The job executed a Risk Analysis computation.</summary>
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                    RISKANALYSISJOB,
+                    RISKANALYSISJOB = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -6875,15 +6875,15 @@ namespace Google.Apis.DLP.v2
                     {
                         /// <summary>Unused</summary>
                         [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                        DLPJOBTYPEUNSPECIFIED,
+                        DLPJOBTYPEUNSPECIFIED = 0,
 
                         /// <summary>The job inspected Google Cloud for sensitive data.</summary>
                         [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                        INSPECTJOB,
+                        INSPECTJOB = 1,
 
                         /// <summary>The job executed a Risk Analysis computation.</summary>
                         [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                        RISKANALYSISJOB,
+                        RISKANALYSISJOB = 2,
                     }
 
                     /// <summary>Gets the method name.</summary>

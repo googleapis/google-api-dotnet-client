@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudResourceManager.v2.CloudResourceManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudResourceManager.v2.CloudResourceManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

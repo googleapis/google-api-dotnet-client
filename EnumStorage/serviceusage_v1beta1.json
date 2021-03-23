@@ -1,0 +1,56 @@
+{
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+GetRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+AdminOverridesResource+CreateRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+AdminOverridesResource+DeleteRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+AdminOverridesResource+PatchRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ConsumerOverridesResource+CreateRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ConsumerOverridesResource+DeleteRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+ConsumerOverridesResource+PatchRequest.ForceOnlyEnum": [
+    "QUOTA_SAFETY_CHECK_UNSPECIFIED",
+    "LIMIT_DECREASE_BELOW_USAGE",
+    "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+LimitsResource+GetRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServicesResource+ConsumerQuotaMetricsResource+ListRequest.ViewEnum": [
+    "QUOTA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServiceUsageBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ServiceUsage.v1beta1.ServiceUsageBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

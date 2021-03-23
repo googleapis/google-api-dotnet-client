@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudProfiler.v2.CloudProfilerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudProfiler.v2.CloudProfilerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

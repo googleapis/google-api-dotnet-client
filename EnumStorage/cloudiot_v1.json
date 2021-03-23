@@ -1,0 +1,21 @@
+{
+  "Google.Apis.CloudIot.v1.CloudIotBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudIot.v1.CloudIotBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudIot.v1.ProjectsResource+LocationsResource+RegistriesResource+DevicesResource+ListRequest.GatewayListOptionsGatewayTypeEnum": [
+    "GATEWAY_TYPE_UNSPECIFIED",
+    "GATEWAY",
+    "NON_GATEWAY"
+  ],
+  "Google.Apis.CloudIot.v1.ProjectsResource+LocationsResource+RegistriesResource+GroupsResource+DevicesResource+ListRequest.GatewayListOptionsGatewayTypeEnum": [
+    "GATEWAY_TYPE_UNSPECIFIED",
+    "GATEWAY",
+    "NON_GATEWAY"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.TagManager.v1.TagManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.TagManager.v1.TagManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

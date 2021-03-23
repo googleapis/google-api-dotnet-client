@@ -1,0 +1,19 @@
+{
+  "Google.Apis.ChromeManagement.v1.ChromeManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ChromeManagement.v1.ChromeManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ChromeManagement.v1.CustomersResource+ReportsResource+FindInstalledAppDevicesRequest.AppTypeEnum": [
+    "APP_TYPE_UNSPECIFIED",
+    "EXTENSION",
+    "APP",
+    "THEME",
+    "HOSTED_APP",
+    "ANDROID_APP"
+  ]
+}

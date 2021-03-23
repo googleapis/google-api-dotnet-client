@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Container.v1beta1.ContainerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Container.v1beta1.ContainerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

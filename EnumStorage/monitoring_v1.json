@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Monitoring.v1.MonitoringBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Monitoring.v1.MonitoringBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

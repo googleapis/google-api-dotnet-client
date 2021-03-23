@@ -121,11 +121,11 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -141,15 +141,15 @@ namespace Google.Apis.AndroidPublisher.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -558,11 +558,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -578,15 +578,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -874,11 +874,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -894,15 +894,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -1052,15 +1052,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
-                    DeobfuscationFileTypeUnspecified,
+                    DeobfuscationFileTypeUnspecified = 0,
 
                     /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
-                    Proguard,
+                    Proguard = 1,
 
                     /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
-                    NativeCode,
+                    NativeCode = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1155,11 +1155,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -1175,15 +1175,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -1245,15 +1245,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("deobfuscationFileTypeUnspecified")]
-                    DeobfuscationFileTypeUnspecified,
+                    DeobfuscationFileTypeUnspecified = 0,
 
                     /// <summary>Proguard deobfuscation file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("proguard")]
-                    Proguard,
+                    Proguard = 1,
 
                     /// <summary>Native debugging symbols file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("nativeCode")]
-                    NativeCode,
+                    NativeCode = 2,
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
@@ -1567,15 +1567,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
-                    ExpansionFileTypeUnspecified,
+                    ExpansionFileTypeUnspecified = 0,
 
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
-                    Main,
+                    Main = 1,
 
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
-                    Patch,
+                    Patch = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1684,15 +1684,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
-                    ExpansionFileTypeUnspecified,
+                    ExpansionFileTypeUnspecified = 0,
 
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
-                    Main,
+                    Main = 1,
 
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
-                    Patch,
+                    Patch = 2,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1807,15 +1807,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
-                    ExpansionFileTypeUnspecified,
+                    ExpansionFileTypeUnspecified = 0,
 
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
-                    Main,
+                    Main = 1,
 
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
-                    Patch,
+                    Patch = 2,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1922,15 +1922,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
-                    ExpansionFileTypeUnspecified,
+                    ExpansionFileTypeUnspecified = 0,
 
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
-                    Main,
+                    Main = 1,
 
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
-                    Patch,
+                    Patch = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2027,11 +2027,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -2047,15 +2047,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -2119,15 +2119,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified expansion file type.</summary>
                     [Google.Apis.Util.StringValueAttribute("expansionFileTypeUnspecified")]
-                    ExpansionFileTypeUnspecified,
+                    ExpansionFileTypeUnspecified = 0,
 
                     /// <summary>Main expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("main")]
-                    Main,
+                    Main = 1,
 
                     /// <summary>Patch expansion file.</summary>
                     [Google.Apis.Util.StringValueAttribute("patch")]
-                    Patch,
+                    Patch = 2,
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
@@ -2230,39 +2230,39 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
-                    AppImageTypeUnspecified,
+                    AppImageTypeUnspecified = 0,
 
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
-                    PhoneScreenshots,
+                    PhoneScreenshots = 1,
 
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
-                    SevenInchScreenshots,
+                    SevenInchScreenshots = 2,
 
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
-                    TenInchScreenshots,
+                    TenInchScreenshots = 3,
 
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
-                    TvScreenshots,
+                    TvScreenshots = 4,
 
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
-                    WearScreenshots,
+                    WearScreenshots = 5,
 
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
+                    Icon = 6,
 
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
-                    FeatureGraphic,
+                    FeatureGraphic = 7,
 
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
-                    TvBanner,
+                    TvBanner = 8,
                 }
 
                 /// <summary>Unique identifier an image within the set of images attached to this edit.</summary>
@@ -2383,39 +2383,39 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
-                    AppImageTypeUnspecified,
+                    AppImageTypeUnspecified = 0,
 
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
-                    PhoneScreenshots,
+                    PhoneScreenshots = 1,
 
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
-                    SevenInchScreenshots,
+                    SevenInchScreenshots = 2,
 
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
-                    TenInchScreenshots,
+                    TenInchScreenshots = 3,
 
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
-                    TvScreenshots,
+                    TvScreenshots = 4,
 
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
-                    WearScreenshots,
+                    WearScreenshots = 5,
 
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
+                    Icon = 6,
 
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
-                    FeatureGraphic,
+                    FeatureGraphic = 7,
 
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
-                    TvBanner,
+                    TvBanner = 8,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2522,39 +2522,39 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
-                    AppImageTypeUnspecified,
+                    AppImageTypeUnspecified = 0,
 
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
-                    PhoneScreenshots,
+                    PhoneScreenshots = 1,
 
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
-                    SevenInchScreenshots,
+                    SevenInchScreenshots = 2,
 
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
-                    TenInchScreenshots,
+                    TenInchScreenshots = 3,
 
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
-                    TvScreenshots,
+                    TvScreenshots = 4,
 
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
-                    WearScreenshots,
+                    WearScreenshots = 5,
 
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
+                    Icon = 6,
 
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
-                    FeatureGraphic,
+                    FeatureGraphic = 7,
 
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
-                    TvBanner,
+                    TvBanner = 8,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2655,39 +2655,39 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
-                    AppImageTypeUnspecified,
+                    AppImageTypeUnspecified = 0,
 
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
-                    PhoneScreenshots,
+                    PhoneScreenshots = 1,
 
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
-                    SevenInchScreenshots,
+                    SevenInchScreenshots = 2,
 
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
-                    TenInchScreenshots,
+                    TenInchScreenshots = 3,
 
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
-                    TvScreenshots,
+                    TvScreenshots = 4,
 
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
-                    WearScreenshots,
+                    WearScreenshots = 5,
 
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
+                    Icon = 6,
 
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
-                    FeatureGraphic,
+                    FeatureGraphic = 7,
 
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
-                    TvBanner,
+                    TvBanner = 8,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2783,11 +2783,11 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -2803,15 +2803,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -2876,39 +2876,39 @@ namespace Google.Apis.AndroidPublisher.v3
                 {
                     /// <summary>Unspecified type. Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("appImageTypeUnspecified")]
-                    AppImageTypeUnspecified,
+                    AppImageTypeUnspecified = 0,
 
                     /// <summary>Phone screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("phoneScreenshots")]
-                    PhoneScreenshots,
+                    PhoneScreenshots = 1,
 
                     /// <summary>Seven inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("sevenInchScreenshots")]
-                    SevenInchScreenshots,
+                    SevenInchScreenshots = 2,
 
                     /// <summary>Ten inch screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tenInchScreenshots")]
-                    TenInchScreenshots,
+                    TenInchScreenshots = 3,
 
                     /// <summary>TV screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvScreenshots")]
-                    TvScreenshots,
+                    TvScreenshots = 4,
 
                     /// <summary>Wear screenshot.</summary>
                     [Google.Apis.Util.StringValueAttribute("wearScreenshots")]
-                    WearScreenshots,
+                    WearScreenshots = 5,
 
                     /// <summary>Icon.</summary>
                     [Google.Apis.Util.StringValueAttribute("icon")]
-                    Icon,
+                    Icon = 6,
 
                     /// <summary>Feature graphic.</summary>
                     [Google.Apis.Util.StringValueAttribute("featureGraphic")]
-                    FeatureGraphic,
+                    FeatureGraphic = 7,
 
                     /// <summary>TV banner.</summary>
                     [Google.Apis.Util.StringValueAttribute("tvBanner")]
-                    TvBanner,
+                    TvBanner = 8,
                 }
 
                 /// <summary>Constructs a new Upload media upload instance.</summary>
@@ -4820,11 +4820,11 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -4840,15 +4840,15 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -5020,11 +5020,11 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -5040,15 +5040,15 @@ namespace Google.Apis.AndroidPublisher.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>

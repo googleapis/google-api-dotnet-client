@@ -1,0 +1,11 @@
+{
+  "Google.Apis.FactCheckTools.v1alpha1.FactCheckToolsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FactCheckTools.v1alpha1.FactCheckToolsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

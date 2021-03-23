@@ -1,0 +1,26 @@
+{
+  "Google.Apis.DLP.v2.DLPBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DLP.v2.DLPBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DLP.v2.OrganizationsResource+LocationsResource+DlpJobsResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ],
+  "Google.Apis.DLP.v2.ProjectsResource+DlpJobsResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ],
+  "Google.Apis.DLP.v2.ProjectsResource+LocationsResource+DlpJobsResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "Google.Apis.Dataproc.v1.DataprocBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dataproc.v1.DataprocBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dataproc.v1.ProjectsResource+RegionsResource+JobsResource+ListRequest.JobStateMatcherEnum": [
+    "ALL",
+    "ACTIVE",
+    "NON_ACTIVE"
+  ]
+}

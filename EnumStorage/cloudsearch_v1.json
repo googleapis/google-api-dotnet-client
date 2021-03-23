@@ -1,0 +1,33 @@
+{
+  "Google.Apis.CloudSearch.v1.CloudSearchBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudSearch.v1.CloudSearchBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudSearch.v1.DebugResource+IdentitysourcesResource+UnmappedidsResource+ListRequest.ResolutionStatusCodeEnum": [
+    "CODE_UNSPECIFIED",
+    "NOT_FOUND",
+    "IDENTITY_SOURCE_NOT_FOUND",
+    "IDENTITY_SOURCE_MISCONFIGURED",
+    "TOO_MANY_MAPPINGS_FOUND",
+    "INTERNAL_ERROR"
+  ],
+  "Google.Apis.CloudSearch.v1.IndexingResource+DatasourcesResource+ItemsResource+DeleteRequest.ModeEnum": [
+    "UNSPECIFIED",
+    "SYNCHRONOUS",
+    "ASYNCHRONOUS"
+  ],
+  "Google.Apis.CloudSearch.v1.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudSearch.v1.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "Google.Apis.CloudTalentSolution.v3.CloudTalentSolutionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudTalentSolution.v3.CloudTalentSolutionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudTalentSolution.v3.ProjectsResource+CompleteRequest.ScopeEnum": [
+    "COMPLETION_SCOPE_UNSPECIFIED",
+    "TENANT",
+    "PUBLIC"
+  ],
+  "Google.Apis.CloudTalentSolution.v3.ProjectsResource+CompleteRequest.TypeEnum": [
+    "COMPLETION_TYPE_UNSPECIFIED",
+    "JOB_TITLE",
+    "COMPANY_NAME",
+    "COMBINED"
+  ],
+  "Google.Apis.CloudTalentSolution.v3.ProjectsResource+JobsResource+ListRequest.JobViewEnum": [
+    "JOB_VIEW_UNSPECIFIED",
+    "JOB_VIEW_ID_ONLY",
+    "JOB_VIEW_MINIMAL",
+    "JOB_VIEW_SMALL",
+    "JOB_VIEW_FULL"
+  ]
+}

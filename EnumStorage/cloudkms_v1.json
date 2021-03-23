@@ -1,0 +1,19 @@
+{
+  "Google.Apis.CloudKMS.v1.CloudKMSBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudKMS.v1.CloudKMSBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+CryptoKeyVersionsResource+ListRequest.ViewEnum": [
+    "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED",
+    "FULL"
+  ],
+  "Google.Apis.CloudKMS.v1.ProjectsResource+LocationsResource+KeyRingsResource+CryptoKeysResource+ListRequest.VersionViewEnum": [
+    "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED",
+    "FULL"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.OSConfig.v1.OSConfigBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.OSConfig.v1.OSConfigBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

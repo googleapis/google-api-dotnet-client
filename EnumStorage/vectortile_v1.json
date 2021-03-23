@@ -1,0 +1,36 @@
+{
+  "Google.Apis.SemanticTile.v1.FeaturetilesResource+GetRequest.ClientInfoPlatformEnum": [
+    "PLATFORM_UNSPECIFIED",
+    "EDITOR",
+    "MAC_OS",
+    "WINDOWS",
+    "LINUX",
+    "ANDROID",
+    "IOS",
+    "WEB_GL"
+  ],
+  "Google.Apis.SemanticTile.v1.SemanticTileBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SemanticTile.v1.SemanticTileBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.SemanticTile.v1.TerraintilesResource+GetRequest.ClientInfoPlatformEnum": [
+    "PLATFORM_UNSPECIFIED",
+    "EDITOR",
+    "MAC_OS",
+    "WINDOWS",
+    "LINUX",
+    "ANDROID",
+    "IOS",
+    "WEB_GL"
+  ],
+  "Google.Apis.SemanticTile.v1.TerraintilesResource+GetRequest.TerrainFormatsEnum": [
+    "TERRAIN_FORMAT_UNKNOWN",
+    "FIRST_DERIVATIVE",
+    "SECOND_DERIVATIVE"
+  ]
+}

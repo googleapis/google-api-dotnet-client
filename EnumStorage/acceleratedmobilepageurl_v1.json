@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Acceleratedmobilepageurl.v1.AcceleratedmobilepageurlBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Acceleratedmobilepageurl.v1.AcceleratedmobilepageurlBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -97,11 +97,11 @@ namespace Google.Apis.Dataproc.v1beta2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.Dataproc.v1beta2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -3838,17 +3838,17 @@ namespace Google.Apis.Dataproc.v1beta2
                     {
                         /// <summary>Match all jobs, regardless of state.</summary>
                         [Google.Apis.Util.StringValueAttribute("ALL")]
-                        ALL,
+                        ALL = 0,
 
                         /// <summary>
                         /// Only match jobs in non-terminal states: PENDING, RUNNING, or CANCEL_PENDING.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                        ACTIVE,
+                        ACTIVE = 1,
 
                         /// <summary>Only match jobs in terminal states: CANCELLED, DONE, or ERROR.</summary>
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
-                        NONACTIVE,
+                        NONACTIVE = 2,
                     }
 
                     /// <summary>Optional. The number of results to return in each response.</summary>

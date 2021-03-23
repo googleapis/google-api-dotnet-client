@@ -1,0 +1,39 @@
+{
+  "Google.Apis.Clouderrorreporting.v1beta1.ClouderrorreportingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Clouderrorreporting.v1beta1.ClouderrorreportingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Clouderrorreporting.v1beta1.ProjectsResource+EventsResource+ListRequest.TimeRangePeriodEnum": [
+    "PERIOD_UNSPECIFIED",
+    "PERIOD_1_HOUR",
+    "PERIOD_6_HOURS",
+    "PERIOD_1_DAY",
+    "PERIOD_1_WEEK",
+    "PERIOD_30_DAYS"
+  ],
+  "Google.Apis.Clouderrorreporting.v1beta1.ProjectsResource+GroupStatsResource+ListRequest.AlignmentEnum": [
+    "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
+    "ALIGNMENT_EQUAL_ROUNDED",
+    "ALIGNMENT_EQUAL_AT_END"
+  ],
+  "Google.Apis.Clouderrorreporting.v1beta1.ProjectsResource+GroupStatsResource+ListRequest.OrderEnum": [
+    "GROUP_ORDER_UNSPECIFIED",
+    "COUNT_DESC",
+    "LAST_SEEN_DESC",
+    "CREATED_DESC",
+    "AFFECTED_USERS_DESC"
+  ],
+  "Google.Apis.Clouderrorreporting.v1beta1.ProjectsResource+GroupStatsResource+ListRequest.TimeRangePeriodEnum": [
+    "PERIOD_UNSPECIFIED",
+    "PERIOD_1_HOUR",
+    "PERIOD_6_HOURS",
+    "PERIOD_1_DAY",
+    "PERIOD_1_WEEK",
+    "PERIOD_30_DAYS"
+  ]
+}

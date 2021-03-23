@@ -1,0 +1,6 @@
+{
+  "Google.Apis.AdSense.v1_4.AdSenseBaseServiceRequest<<TResponse>>.AltEnum": [
+    "csv",
+    "json"
+  ]
+}

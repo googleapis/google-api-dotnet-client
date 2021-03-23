@@ -115,11 +115,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -135,15 +135,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -866,19 +866,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             {
                                 /// <summary>No severity specified.</summary>
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_SEVERITY_UNSPECIFIED")]
-                                MESSAGESEVERITYUNSPECIFIED,
+                                MESSAGESEVERITYUNSPECIFIED = 0,
 
                                 /// <summary>Informational message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("INFO")]
-                                INFO,
+                                INFO = 1,
 
                                 /// <summary>Warning message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("WARNING")]
-                                WARNING,
+                                WARNING = 2,
 
                                 /// <summary>Error message.</summary>
                                 [Google.Apis.Util.StringValueAttribute("ERROR")]
-                                ERROR,
+                                ERROR = 3,
                             }
 
                             /// <summary>
@@ -1102,11 +1102,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         {
                             /// <summary>All runs should be returned.</summary>
                             [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                            RUNATTEMPTUNSPECIFIED,
+                            RUNATTEMPTUNSPECIFIED = 0,
 
                             /// <summary>Only latest run per day should be returned.</summary>
                             [Google.Apis.Util.StringValueAttribute("LATEST")]
-                            LATEST,
+                            LATEST = 1,
                         }
 
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
@@ -1118,29 +1118,29 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         {
                             /// <summary>State placeholder (0).</summary>
                             [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
-                            TRANSFERSTATEUNSPECIFIED,
+                            TRANSFERSTATEUNSPECIFIED = 0,
 
                             /// <summary>
                             /// Data transfer is scheduled and is waiting to be picked up by data transfer backend (2).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("PENDING")]
-                            PENDING,
+                            PENDING = 1,
 
                             /// <summary>Data transfer is in progress (3).</summary>
                             [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                            RUNNING,
+                            RUNNING = 2,
 
                             /// <summary>Data transfer completed successfully (4).</summary>
                             [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
-                            SUCCEEDED,
+                            SUCCEEDED = 3,
 
                             /// <summary>Data transfer failed (5).</summary>
                             [Google.Apis.Util.StringValueAttribute("FAILED")]
-                            FAILED,
+                            FAILED = 4,
 
                             /// <summary>Data transfer is cancelled (6).</summary>
                             [Google.Apis.Util.StringValueAttribute("CANCELLED")]
-                            CANCELLED,
+                            CANCELLED = 5,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2024,19 +2024,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         {
                             /// <summary>No severity specified.</summary>
                             [Google.Apis.Util.StringValueAttribute("MESSAGE_SEVERITY_UNSPECIFIED")]
-                            MESSAGESEVERITYUNSPECIFIED,
+                            MESSAGESEVERITYUNSPECIFIED = 0,
 
                             /// <summary>Informational message.</summary>
                             [Google.Apis.Util.StringValueAttribute("INFO")]
-                            INFO,
+                            INFO = 1,
 
                             /// <summary>Warning message.</summary>
                             [Google.Apis.Util.StringValueAttribute("WARNING")]
-                            WARNING,
+                            WARNING = 2,
 
                             /// <summary>Error message.</summary>
                             [Google.Apis.Util.StringValueAttribute("ERROR")]
-                            ERROR,
+                            ERROR = 3,
                         }
 
                         /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
@@ -2256,11 +2256,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     {
                         /// <summary>All runs should be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                        RUNATTEMPTUNSPECIFIED,
+                        RUNATTEMPTUNSPECIFIED = 0,
 
                         /// <summary>Only latest run per day should be returned.</summary>
                         [Google.Apis.Util.StringValueAttribute("LATEST")]
-                        LATEST,
+                        LATEST = 1,
                     }
 
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
@@ -2272,29 +2272,29 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     {
                         /// <summary>State placeholder (0).</summary>
                         [Google.Apis.Util.StringValueAttribute("TRANSFER_STATE_UNSPECIFIED")]
-                        TRANSFERSTATEUNSPECIFIED,
+                        TRANSFERSTATEUNSPECIFIED = 0,
 
                         /// <summary>
                         /// Data transfer is scheduled and is waiting to be picked up by data transfer backend (2).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("PENDING")]
-                        PENDING,
+                        PENDING = 1,
 
                         /// <summary>Data transfer is in progress (3).</summary>
                         [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                        RUNNING,
+                        RUNNING = 2,
 
                         /// <summary>Data transfer completed successfully (4).</summary>
                         [Google.Apis.Util.StringValueAttribute("SUCCEEDED")]
-                        SUCCEEDED,
+                        SUCCEEDED = 3,
 
                         /// <summary>Data transfer failed (5).</summary>
                         [Google.Apis.Util.StringValueAttribute("FAILED")]
-                        FAILED,
+                        FAILED = 4,
 
                         /// <summary>Data transfer is cancelled (6).</summary>
                         [Google.Apis.Util.StringValueAttribute("CANCELLED")]
-                        CANCELLED,
+                        CANCELLED = 5,
                     }
 
                     /// <summary>Gets the method name.</summary>

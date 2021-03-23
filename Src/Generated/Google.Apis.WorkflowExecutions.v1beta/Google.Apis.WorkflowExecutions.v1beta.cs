@@ -97,11 +97,11 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.WorkflowExecutions.v1beta
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -491,18 +491,18 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         {
                             /// <summary>The default / unset value.</summary>
                             [Google.Apis.Util.StringValueAttribute("EXECUTION_VIEW_UNSPECIFIED")]
-                            EXECUTIONVIEWUNSPECIFIED,
+                            EXECUTIONVIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// Includes only basic metadata about the execution. Following fields are returned: name,
                             /// start_time, end_time, state and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
-                            BASIC,
+                            BASIC = 1,
 
                             /// <summary>Includes all data.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -604,18 +604,18 @@ namespace Google.Apis.WorkflowExecutions.v1beta
                         {
                             /// <summary>The default / unset value.</summary>
                             [Google.Apis.Util.StringValueAttribute("EXECUTION_VIEW_UNSPECIFIED")]
-                            EXECUTIONVIEWUNSPECIFIED,
+                            EXECUTIONVIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// Includes only basic metadata about the execution. Following fields are returned: name,
                             /// start_time, end_time, state and workflow_revision_id.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
-                            BASIC,
+                            BASIC = 1,
 
                             /// <summary>Includes all data.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>

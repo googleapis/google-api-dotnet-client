@@ -1,0 +1,61 @@
+{
+  "Google.Apis.ShoppingContent.v2_1.AccountsResource+GetRequest.ViewEnum": [
+    "MERCHANT",
+    "CSS"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.AccountsResource+ListRequest.ViewEnum": [
+    "MERCHANT",
+    "CSS"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrderreturnsResource+ListRequest.OrderByEnum": [
+    "RETURN_CREATION_TIME_DESC",
+    "RETURN_CREATION_TIME_ASC"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrderreturnsResource+ListRequest.ShipmentStatesEnum": [
+    "NEW",
+    "SHIPPED",
+    "COMPLETED",
+    "UNDELIVERABLE",
+    "PENDING"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrderreturnsResource+ListRequest.ShipmentStatusEnum": [
+    "NEW",
+    "IN_PROGRESS",
+    "PROCESSED"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrderreturnsResource+ListRequest.ShipmentTypesEnum": [
+    "BY_MAIL",
+    "RETURNLESS",
+    "CONTACT_CUSTOMER_SUPPORT"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrdersResource+GettestordertemplateRequest.TemplateNameEnum": [
+    "TEMPLATE1",
+    "TEMPLATE2",
+    "TEMPLATE1A",
+    "TEMPLATE1B",
+    "TEMPLATE3",
+    "TEMPLATE4"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.OrdersResource+ListRequest.StatusesEnum": [
+    "ACTIVE",
+    "COMPLETED",
+    "CANCELED",
+    "IN_PROGRESS",
+    "PENDING_SHIPMENT",
+    "PARTIALLY_SHIPPED",
+    "SHIPPED",
+    "PARTIALLY_DELIVERED",
+    "DELIVERED",
+    "PARTIALLY_RETURNED",
+    "RETURNED"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.ShoppingContentBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ShoppingContent.v2_1.ShoppingContentBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

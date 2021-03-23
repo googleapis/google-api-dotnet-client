@@ -147,11 +147,11 @@ namespace Google.Apis.DeploymentManager.v2beta
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -167,15 +167,15 @@ namespace Google.Apis.DeploymentManager.v2beta
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -867,11 +867,11 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
-                DELETE,
+                DELETE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
+                ABANDON = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1080,15 +1080,15 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
+                CREATEORACQUIRE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
-                ACQUIRE,
+                ACQUIRE = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
-                CREATE,
+                CREATE = 2,
             }
 
             /// <summary>
@@ -1304,15 +1304,15 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
+                CREATEORACQUIRE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
-                ACQUIRE,
+                ACQUIRE = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
-                CREATE,
+                CREATE = 2,
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
@@ -1324,11 +1324,11 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
-                DELETE,
+                DELETE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
+                ABANDON = 1,
             }
 
             /// <summary>
@@ -1650,15 +1650,15 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
-                CREATEORACQUIRE,
+                CREATEORACQUIRE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
-                ACQUIRE,
+                ACQUIRE = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CREATE")]
-                CREATE,
+                CREATE = 2,
             }
 
             /// <summary>Sets the policy to use for deleting resources.</summary>
@@ -1670,11 +1670,11 @@ namespace Google.Apis.DeploymentManager.v2beta
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELETE")]
-                DELETE,
+                DELETE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ABANDON")]
-                ABANDON,
+                ABANDON = 1,
             }
 
             /// <summary>

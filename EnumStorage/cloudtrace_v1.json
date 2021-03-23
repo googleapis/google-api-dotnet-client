@@ -1,0 +1,17 @@
+{
+  "Google.Apis.CloudTrace.v1.CloudTraceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudTrace.v1.CloudTraceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudTrace.v1.ProjectsResource+TracesResource+ListRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "MINIMAL",
+    "ROOTSPAN",
+    "COMPLETE"
+  ]
+}

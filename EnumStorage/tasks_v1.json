@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Tasks.v1.TasksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Tasks.v1.TasksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

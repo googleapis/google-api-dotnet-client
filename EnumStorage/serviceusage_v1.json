@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ServiceUsage.v1.ServiceUsageBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ServiceUsage.v1.ServiceUsageBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

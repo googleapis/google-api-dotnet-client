@@ -1,0 +1,11 @@
+{
+  "Google.Apis.OrgPolicyAPI.v2.OrgPolicyAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.OrgPolicyAPI.v2.OrgPolicyAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

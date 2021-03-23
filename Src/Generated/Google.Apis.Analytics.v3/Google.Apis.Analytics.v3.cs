@@ -149,7 +149,7 @@ namespace Google.Apis.Analytics.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -374,11 +374,11 @@ namespace Google.Apis.Analytics.v3
                     /// visualization using Google Charts.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("dataTable")]
-                    DataTable,
+                    DataTable = 0,
 
                     /// <summary>Returns the response in standard JSON format.</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 1,
                 }
 
                 /// <summary>The desired sampling level.</summary>
@@ -390,18 +390,18 @@ namespace Google.Apis.Analytics.v3
                 {
                     /// <summary>Returns response with a sample size that balances speed and accuracy.</summary>
                     [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                    DEFAULT__,
+                    DEFAULT__ = 0,
 
                     /// <summary>Returns a fast response with a smaller sample size.</summary>
                     [Google.Apis.Util.StringValueAttribute("FASTER")]
-                    FASTER,
+                    FASTER = 1,
 
                     /// <summary>
                     /// Returns a more accurate response using a large sample size, but this may result in the response
                     /// being slower.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("HIGHER_PRECISION")]
-                    HIGHERPRECISION,
+                    HIGHERPRECISION = 2,
                 }
 
                 /// <summary>An Analytics segment to be applied to data.</summary>
@@ -647,18 +647,18 @@ namespace Google.Apis.Analytics.v3
                 {
                     /// <summary>Returns response with a sample size that balances speed and accuracy.</summary>
                     [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                    DEFAULT__,
+                    DEFAULT__ = 0,
 
                     /// <summary>Returns a fast response with a smaller sample size.</summary>
                     [Google.Apis.Util.StringValueAttribute("FASTER")]
-                    FASTER,
+                    FASTER = 1,
 
                     /// <summary>
                     /// Returns a more accurate response using a large sample size, but this may result in the response
                     /// being slower.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("HIGHER_PRECISION")]
-                    HIGHERPRECISION,
+                    HIGHERPRECISION = 2,
                 }
 
                 /// <summary>
@@ -6676,7 +6676,7 @@ namespace Google.Apis.Analytics.v3
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
                 }
 
                 /// <summary>Selector specifying which fields to include in a partial response.</summary>

@@ -1,0 +1,10 @@
+{
+  "Google.Apis.AdExchangeBuyer.v1_2.AdExchangeBuyerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.AdExchangeBuyer.v1_2.CreativesResource+ListRequest.StatusFilterEnum": [
+    "approved",
+    "disapproved",
+    "not_checked"
+  ]
+}

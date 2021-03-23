@@ -1,0 +1,34 @@
+{
+  "Google.Apis.WebRisk.v1.HashesResource+SearchRequest.ThreatTypesEnum": [
+    "THREAT_TYPE_UNSPECIFIED",
+    "MALWARE",
+    "SOCIAL_ENGINEERING",
+    "UNWANTED_SOFTWARE"
+  ],
+  "Google.Apis.WebRisk.v1.ThreatListsResource+ComputeDiffRequest.ConstraintsSupportedCompressionsEnum": [
+    "COMPRESSION_TYPE_UNSPECIFIED",
+    "RAW",
+    "RICE"
+  ],
+  "Google.Apis.WebRisk.v1.ThreatListsResource+ComputeDiffRequest.ThreatTypeEnum": [
+    "THREAT_TYPE_UNSPECIFIED",
+    "MALWARE",
+    "SOCIAL_ENGINEERING",
+    "UNWANTED_SOFTWARE"
+  ],
+  "Google.Apis.WebRisk.v1.UrisResource+SearchRequest.ThreatTypesEnum": [
+    "THREAT_TYPE_UNSPECIFIED",
+    "MALWARE",
+    "SOCIAL_ENGINEERING",
+    "UNWANTED_SOFTWARE"
+  ],
+  "Google.Apis.WebRisk.v1.WebRiskBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.WebRisk.v1.WebRiskBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

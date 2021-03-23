@@ -1,0 +1,76 @@
+{
+  "Google.Apis.Script.v1.ProcessesResource+ListRequest.UserProcessFilterStatusesEnum": [
+    "PROCESS_STATUS_UNSPECIFIED",
+    "RUNNING",
+    "PAUSED",
+    "COMPLETED",
+    "CANCELED",
+    "FAILED",
+    "TIMED_OUT",
+    "UNKNOWN",
+    "DELAYED"
+  ],
+  "Google.Apis.Script.v1.ProcessesResource+ListRequest.UserProcessFilterTypesEnum": [
+    "PROCESS_TYPE_UNSPECIFIED",
+    "ADD_ON",
+    "EXECUTION_API",
+    "TIME_DRIVEN",
+    "TRIGGER",
+    "WEBAPP",
+    "EDITOR",
+    "SIMPLE_TRIGGER",
+    "MENU",
+    "BATCH_TASK"
+  ],
+  "Google.Apis.Script.v1.ProcessesResource+ListRequest.UserProcessFilterUserAccessLevelsEnum": [
+    "USER_ACCESS_LEVEL_UNSPECIFIED",
+    "NONE",
+    "READ",
+    "WRITE",
+    "OWNER"
+  ],
+  "Google.Apis.Script.v1.ProcessesResource+ListScriptProcessesRequest.ScriptProcessFilterStatusesEnum": [
+    "PROCESS_STATUS_UNSPECIFIED",
+    "RUNNING",
+    "PAUSED",
+    "COMPLETED",
+    "CANCELED",
+    "FAILED",
+    "TIMED_OUT",
+    "UNKNOWN",
+    "DELAYED"
+  ],
+  "Google.Apis.Script.v1.ProcessesResource+ListScriptProcessesRequest.ScriptProcessFilterTypesEnum": [
+    "PROCESS_TYPE_UNSPECIFIED",
+    "ADD_ON",
+    "EXECUTION_API",
+    "TIME_DRIVEN",
+    "TRIGGER",
+    "WEBAPP",
+    "EDITOR",
+    "SIMPLE_TRIGGER",
+    "MENU",
+    "BATCH_TASK"
+  ],
+  "Google.Apis.Script.v1.ProcessesResource+ListScriptProcessesRequest.ScriptProcessFilterUserAccessLevelsEnum": [
+    "USER_ACCESS_LEVEL_UNSPECIFIED",
+    "NONE",
+    "READ",
+    "WRITE",
+    "OWNER"
+  ],
+  "Google.Apis.Script.v1.ProjectsResource+GetMetricsRequest.MetricsGranularityEnum": [
+    "UNSPECIFIED_GRANULARITY",
+    "WEEKLY",
+    "DAILY"
+  ],
+  "Google.Apis.Script.v1.ScriptBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Script.v1.ScriptBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

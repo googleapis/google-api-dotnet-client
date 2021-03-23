@@ -1,0 +1,26 @@
+{
+  "Google.Apis.Cloudchannel.v1.AccountsResource+ChannelPartnerLinksResource+GetRequest.ViewEnum": [
+    "UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Cloudchannel.v1.AccountsResource+ChannelPartnerLinksResource+ListRequest.ViewEnum": [
+    "UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Cloudchannel.v1.AccountsResource+CustomersResource+ListPurchasableSkusRequest.ChangeOfferPurchaseChangeTypeEnum": [
+    "CHANGE_TYPE_UNSPECIFIED",
+    "UPGRADE",
+    "DOWNGRADE"
+  ],
+  "Google.Apis.Cloudchannel.v1.CloudchannelBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Cloudchannel.v1.CloudchannelBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

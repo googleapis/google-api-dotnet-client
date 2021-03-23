@@ -101,11 +101,11 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -121,15 +121,15 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1378,39 +1378,39 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                 {
                     /// <summary>Unknown</summary>
                     [Google.Apis.Util.StringValueAttribute("KIND_UNSPECIFIED")]
-                    KINDUNSPECIFIED,
+                    KINDUNSPECIFIED = 0,
 
                     /// <summary>The note and occurrence represent a package vulnerability.</summary>
                     [Google.Apis.Util.StringValueAttribute("PACKAGE_VULNERABILITY")]
-                    PACKAGEVULNERABILITY,
+                    PACKAGEVULNERABILITY = 1,
 
                     /// <summary>The note and occurrence assert build provenance.</summary>
                     [Google.Apis.Util.StringValueAttribute("BUILD_DETAILS")]
-                    BUILDDETAILS,
+                    BUILDDETAILS = 2,
 
                     /// <summary>This represents an image basis relationship.</summary>
                     [Google.Apis.Util.StringValueAttribute("IMAGE_BASIS")]
-                    IMAGEBASIS,
+                    IMAGEBASIS = 3,
 
                     /// <summary>This represents a package installed via a package manager.</summary>
                     [Google.Apis.Util.StringValueAttribute("PACKAGE_MANAGER")]
-                    PACKAGEMANAGER,
+                    PACKAGEMANAGER = 4,
 
                     /// <summary>The note and occurrence track deployment events.</summary>
                     [Google.Apis.Util.StringValueAttribute("DEPLOYABLE")]
-                    DEPLOYABLE,
+                    DEPLOYABLE = 5,
 
                     /// <summary>The note and occurrence track the initial discovery status of a resource.</summary>
                     [Google.Apis.Util.StringValueAttribute("DISCOVERY")]
-                    DISCOVERY,
+                    DISCOVERY = 6,
 
                     /// <summary>This represents a logical "role" that can attest to artifacts.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTESTATION_AUTHORITY")]
-                    ATTESTATIONAUTHORITY,
+                    ATTESTATIONAUTHORITY = 7,
 
                     /// <summary>This represents an available software upgrade.</summary>
                     [Google.Apis.Util.StringValueAttribute("UPGRADE")]
-                    UPGRADE,
+                    UPGRADE = 8,
                 }
 
                 /// <summary>

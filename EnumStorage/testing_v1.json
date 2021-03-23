@@ -1,0 +1,19 @@
+{
+  "Google.Apis.Testing.v1.TestEnvironmentCatalogResource+GetRequest.EnvironmentTypeEnum": [
+    "ENVIRONMENT_TYPE_UNSPECIFIED",
+    "ANDROID",
+    "IOS",
+    "NETWORK_CONFIGURATION",
+    "PROVIDED_SOFTWARE",
+    "DEVICE_IP_BLOCKS"
+  ],
+  "Google.Apis.Testing.v1.TestingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Testing.v1.TestingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

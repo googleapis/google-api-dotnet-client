@@ -1,0 +1,21 @@
+{
+  "Google.Apis.Compute.alpha.ComputeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Compute.alpha.InstancesResource+UpdateRequest.MinimalActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.alpha.InstancesResource+UpdateRequest.MostDisruptiveAllowedActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.alpha.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
+    "INCOMING",
+    "OUTGOING"
+  ]
+}

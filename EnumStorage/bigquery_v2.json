@@ -1,0 +1,17 @@
+{
+  "Google.Apis.Bigquery.v2.BigqueryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Bigquery.v2.JobsResource+InsertMediaUpload.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Bigquery.v2.JobsResource+ListRequest.ProjectionEnum": [
+    "full",
+    "minimal"
+  ],
+  "Google.Apis.Bigquery.v2.JobsResource+ListRequest.StateFilterEnum": [
+    "done",
+    "pending",
+    "running"
+  ]
+}

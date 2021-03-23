@@ -1,0 +1,11 @@
+{
+  "Google.Apis.RecommendationsAI.v1beta1.RecommendationsAIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RecommendationsAI.v1beta1.RecommendationsAIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

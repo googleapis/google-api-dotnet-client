@@ -109,11 +109,11 @@ namespace Google.Apis.CloudTrace.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -129,15 +129,15 @@ namespace Google.Apis.CloudTrace.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -452,27 +452,27 @@ namespace Google.Apis.CloudTrace.v1
                 {
                     /// <summary>Default is `MINIMAL` if unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_TYPE_UNSPECIFIED")]
-                    VIEWTYPEUNSPECIFIED,
+                    VIEWTYPEUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Minimal view of the trace record that contains only the project and trace IDs.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("MINIMAL")]
-                    MINIMAL,
+                    MINIMAL = 1,
 
                     /// <summary>
                     /// Root span view of the trace record that returns the root spans along with the minimal trace
                     /// data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ROOTSPAN")]
-                    ROOTSPAN,
+                    ROOTSPAN = 2,
 
                     /// <summary>
                     /// Complete view of the trace record that contains the actual trace data. This is equivalent to
                     /// calling the REST `get` or RPC `GetTrace` method using the ID of each listed trace.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETE")]
-                    COMPLETE,
+                    COMPLETE = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>

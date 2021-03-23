@@ -201,7 +201,7 @@ namespace Google.Apis.Drive.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -2515,11 +2515,11 @@ namespace Google.Apis.Drive.v2
                 /// The visibility of the new file is determined by the user's default visibility/sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                DEFAULT__,
+                DEFAULT__ = 0,
 
                 /// <summary>The new file will be visible to only the owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
-                PRIVATE__,
+                PRIVATE__ = 1,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3038,11 +3038,11 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 0,
 
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
             }
 
             /// <summary>
@@ -3318,11 +3318,11 @@ namespace Google.Apis.Drive.v2
                 /// The visibility of the new file is determined by the user's default visibility/sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                DEFAULT__,
+                DEFAULT__ = 0,
 
                 /// <summary>The new file will be visible to only the owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
-                PRIVATE__,
+                PRIVATE__ = 1,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3481,7 +3481,7 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -3573,11 +3573,11 @@ namespace Google.Apis.Drive.v2
                 /// The visibility of the new file is determined by the user's default visibility/sharing policies.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                DEFAULT__,
+                DEFAULT__ = 0,
 
                 /// <summary>The new file will be visible to only the owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("PRIVATE")]
-                PRIVATE__,
+                PRIVATE__ = 1,
             }
 
             /// <summary>Constructs a new Insert media upload instance.</summary>
@@ -3644,11 +3644,11 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>The items that the user has accessed.</summary>
                 [Google.Apis.Util.StringValueAttribute("DEFAULT")]
-                DEFAULT__,
+                DEFAULT__ = 0,
 
                 /// <summary>Items shared to the user's domain.</summary>
                 [Google.Apis.Util.StringValueAttribute("DOMAIN")]
-                DOMAIN,
+                DOMAIN = 1,
             }
 
             /// <summary>ID of the shared drive to search.</summary>
@@ -3699,11 +3699,11 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 0,
 
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
             }
 
             /// <summary>Query string for searching files.</summary>
@@ -3923,33 +3923,33 @@ namespace Google.Apis.Drive.v2
                 /// provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBody")]
-                FromBody,
+                FromBody = 0,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request depending on other contents of the
                 /// update.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyIfNeeded")]
-                FromBodyIfNeeded,
+                FromBodyIfNeeded = 1,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request, or to the current time if no
                 /// value was provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyOrNow")]
-                FromBodyOrNow,
+                FromBodyOrNow = 2,
 
                 /// <summary>Maintain the previous value of modifiedDate.</summary>
                 [Google.Apis.Util.StringValueAttribute("noChange")]
-                NoChange,
+                NoChange = 3,
 
                 /// <summary>Set modifiedDate to the current time.</summary>
                 [Google.Apis.Util.StringValueAttribute("now")]
-                Now,
+                Now = 4,
 
                 /// <summary>Set modifiedDate to the current time depending on contents of the update.</summary>
                 [Google.Apis.Util.StringValueAttribute("nowIfNeeded")]
-                NowIfNeeded,
+                NowIfNeeded = 5,
             }
 
             /// <summary>
@@ -4505,33 +4505,33 @@ namespace Google.Apis.Drive.v2
                 /// provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBody")]
-                FromBody,
+                FromBody = 0,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request depending on other contents of the
                 /// update.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyIfNeeded")]
-                FromBodyIfNeeded,
+                FromBodyIfNeeded = 1,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request, or to the current time if no
                 /// value was provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyOrNow")]
-                FromBodyOrNow,
+                FromBodyOrNow = 2,
 
                 /// <summary>Maintain the previous value of modifiedDate.</summary>
                 [Google.Apis.Util.StringValueAttribute("noChange")]
-                NoChange,
+                NoChange = 3,
 
                 /// <summary>Set modifiedDate to the current time.</summary>
                 [Google.Apis.Util.StringValueAttribute("now")]
-                Now,
+                Now = 4,
 
                 /// <summary>Set modifiedDate to the current time depending on contents of the update.</summary>
                 [Google.Apis.Util.StringValueAttribute("nowIfNeeded")]
-                NowIfNeeded,
+                NowIfNeeded = 5,
             }
 
             /// <summary>
@@ -4800,7 +4800,7 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -4872,33 +4872,33 @@ namespace Google.Apis.Drive.v2
                 /// provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBody")]
-                FromBody,
+                FromBody = 0,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request depending on other contents of the
                 /// update.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyIfNeeded")]
-                FromBodyIfNeeded,
+                FromBodyIfNeeded = 1,
 
                 /// <summary>
                 /// Set modifiedDate to the value provided in the body of the request, or to the current time if no
                 /// value was provided.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("fromBodyOrNow")]
-                FromBodyOrNow,
+                FromBodyOrNow = 2,
 
                 /// <summary>Maintain the previous value of modifiedDate.</summary>
                 [Google.Apis.Util.StringValueAttribute("noChange")]
-                NoChange,
+                NoChange = 3,
 
                 /// <summary>Set modifiedDate to the current time.</summary>
                 [Google.Apis.Util.StringValueAttribute("now")]
-                Now,
+                Now = 4,
 
                 /// <summary>Set modifiedDate to the current time depending on contents of the update.</summary>
                 [Google.Apis.Util.StringValueAttribute("nowIfNeeded")]
-                NowIfNeeded,
+                NowIfNeeded = 5,
             }
 
             /// <summary>
@@ -5034,11 +5034,11 @@ namespace Google.Apis.Drive.v2
             {
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 0,
 
                 /// <summary>Deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
             }
 
             /// <summary>

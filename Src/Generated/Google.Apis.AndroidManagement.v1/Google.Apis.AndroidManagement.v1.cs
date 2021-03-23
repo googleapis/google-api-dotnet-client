@@ -101,11 +101,11 @@ namespace Google.Apis.AndroidManagement.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -121,15 +121,15 @@ namespace Google.Apis.AndroidManagement.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -695,15 +695,15 @@ namespace Google.Apis.AndroidManagement.v1
                 {
                     /// <summary>This value is ignored.</summary>
                     [Google.Apis.Util.StringValueAttribute("WIPE_DATA_FLAG_UNSPECIFIED")]
-                    WIPEDATAFLAGUNSPECIFIED,
+                    WIPEDATAFLAGUNSPECIFIED = 0,
 
                     /// <summary>Preserve the factory reset protection data on the device.</summary>
                     [Google.Apis.Util.StringValueAttribute("PRESERVE_RESET_PROTECTION_DATA")]
-                    PRESERVERESETPROTECTIONDATA,
+                    PRESERVERESETPROTECTIONDATA = 1,
 
                     /// <summary>Additionally wipe the device's external storage (such as SD cards).</summary>
                     [Google.Apis.Util.StringValueAttribute("WIPE_EXTERNAL_STORAGE")]
-                    WIPEEXTERNALSTORAGE,
+                    WIPEEXTERNALSTORAGE = 2,
                 }
 
                 /// <summary>
@@ -2014,13 +2014,13 @@ namespace Google.Apis.AndroidManagement.v1
                 /// method.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ENTERPRISE_VIEW_UNSPECIFIED")]
-                ENTERPRISEVIEWUNSPECIFIED,
+                ENTERPRISEVIEWUNSPECIFIED = 0,
 
                 /// <summary>
                 /// This feature is not generally available yet. Includes name and enterprise_display_name fields.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 1,
             }
 
             /// <summary>Gets the method name.</summary>

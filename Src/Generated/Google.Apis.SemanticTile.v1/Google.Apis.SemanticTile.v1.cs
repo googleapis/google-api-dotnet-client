@@ -87,11 +87,11 @@ namespace Google.Apis.SemanticTile.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -107,15 +107,15 @@ namespace Google.Apis.SemanticTile.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -340,35 +340,35 @@ namespace Google.Apis.SemanticTile.v1
             {
                 /// <summary>Unspecified or unknown OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
-                PLATFORMUNSPECIFIED,
+                PLATFORMUNSPECIFIED = 0,
 
                 /// <summary>Development environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
-                EDITOR,
+                EDITOR = 1,
 
                 /// <summary>macOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("MAC_OS")]
-                MACOS,
+                MACOS = 2,
 
                 /// <summary>Windows.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
-                WINDOWS,
+                WINDOWS = 3,
 
                 /// <summary>Linux</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
-                LINUX,
+                LINUX = 4,
 
                 /// <summary>Android</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
-                ANDROID,
+                ANDROID = 5,
 
                 /// <summary>iOS</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
-                IOS,
+                IOS = 6,
 
                 /// <summary>WebGL.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_GL")]
-                WEBGL,
+                WEBGL = 7,
             }
 
             /// <summary>
@@ -695,35 +695,35 @@ namespace Google.Apis.SemanticTile.v1
             {
                 /// <summary>Unspecified or unknown OS.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
-                PLATFORMUNSPECIFIED,
+                PLATFORMUNSPECIFIED = 0,
 
                 /// <summary>Development environment.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
-                EDITOR,
+                EDITOR = 1,
 
                 /// <summary>macOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("MAC_OS")]
-                MACOS,
+                MACOS = 2,
 
                 /// <summary>Windows.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
-                WINDOWS,
+                WINDOWS = 3,
 
                 /// <summary>Linux</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
-                LINUX,
+                LINUX = 4,
 
                 /// <summary>Android</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
-                ANDROID,
+                ANDROID = 5,
 
                 /// <summary>iOS</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
-                IOS,
+                IOS = 6,
 
                 /// <summary>WebGL.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_GL")]
-                WEBGL,
+                WEBGL = 7,
             }
 
             /// <summary>
@@ -764,15 +764,15 @@ namespace Google.Apis.SemanticTile.v1
             {
                 /// <summary>An unknown or unspecified terrain format.</summary>
                 [Google.Apis.Util.StringValueAttribute("TERRAIN_FORMAT_UNKNOWN")]
-                TERRAINFORMATUNKNOWN,
+                TERRAINFORMATUNKNOWN = 0,
 
                 /// <summary>Terrain elevation data encoded as a FirstDerivativeElevationGrid. .</summary>
                 [Google.Apis.Util.StringValueAttribute("FIRST_DERIVATIVE")]
-                FIRSTDERIVATIVE,
+                FIRSTDERIVATIVE = 1,
 
                 /// <summary>Terrain elevation data encoded as a SecondDerivativeElevationGrid.</summary>
                 [Google.Apis.Util.StringValueAttribute("SECOND_DERIVATIVE")]
-                SECONDDERIVATIVE,
+                SECONDDERIVATIVE = 2,
             }
 
             /// <summary>Gets the method name.</summary>

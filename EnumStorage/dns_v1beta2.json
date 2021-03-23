@@ -1,0 +1,18 @@
+{
+  "Google.Apis.Dns.v1beta2.ChangesResource+ListRequest.SortByEnum": [
+    "changeSequence"
+  ],
+  "Google.Apis.Dns.v1beta2.DnsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dns.v1beta2.DnsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dns.v1beta2.ManagedZoneOperationsResource+ListRequest.SortByEnum": [
+    "startTime",
+    "id"
+  ]
+}

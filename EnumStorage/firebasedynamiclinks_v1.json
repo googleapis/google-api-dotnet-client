@@ -1,0 +1,11 @@
+{
+  "Google.Apis.FirebaseDynamicLinks.v1.FirebaseDynamicLinksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseDynamicLinks.v1.FirebaseDynamicLinksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -147,11 +147,11 @@ namespace Google.Apis.Dns.v1beta2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -167,15 +167,15 @@ namespace Google.Apis.Dns.v1beta2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -561,7 +561,7 @@ namespace Google.Apis.Dns.v1beta2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("changeSequence")]
-                ChangeSequence,
+                ChangeSequence = 0,
             }
 
             /// <summary>Sorting order direction: 'ascending' or 'descending'.</summary>
@@ -1015,11 +1015,11 @@ namespace Google.Apis.Dns.v1beta2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("startTime")]
-                StartTime,
+                StartTime = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("id")]
-                Id,
+                Id = 1,
             }
 
             /// <summary>Gets the method name.</summary>

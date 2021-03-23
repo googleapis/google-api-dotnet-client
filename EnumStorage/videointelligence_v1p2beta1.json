@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudVideoIntelligence.v1p2beta1.CloudVideoIntelligenceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudVideoIntelligence.v1p2beta1.CloudVideoIntelligenceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

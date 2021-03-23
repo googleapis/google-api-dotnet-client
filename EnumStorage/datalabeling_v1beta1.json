@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DataLabeling.v1beta1.DataLabelingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DataLabeling.v1beta1.DataLabelingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

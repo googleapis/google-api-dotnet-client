@@ -1,0 +1,55 @@
+{
+  "Google.Apis.Calendar.v3.CalendarBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Calendar.v3.CalendarListResource+ListRequest.MinAccessRoleEnum": [
+    "freeBusyReader",
+    "owner",
+    "reader",
+    "writer"
+  ],
+  "Google.Apis.Calendar.v3.CalendarListResource+WatchRequest.MinAccessRoleEnum": [
+    "freeBusyReader",
+    "owner",
+    "reader",
+    "writer"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+DeleteRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+InsertRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+ListRequest.OrderByEnum": [
+    "startTime",
+    "updated"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+MoveRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+PatchRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+QuickAddRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+UpdateRequest.SendUpdatesEnum": [
+    "all",
+    "externalOnly",
+    "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+WatchRequest.OrderByEnum": [
+    "startTime",
+    "updated"
+  ]
+}

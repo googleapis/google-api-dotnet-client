@@ -97,11 +97,11 @@ namespace Google.Apis.ManufacturerCenter.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.ManufacturerCenter.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -434,19 +434,19 @@ namespace Google.Apis.ManufacturerCenter.v1
                 {
                     /// <summary>Unknown, never used.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
+                    UNKNOWN = 0,
 
                     /// <summary>Include the attributes of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
-                    ATTRIBUTES,
+                    ATTRIBUTES = 1,
 
                     /// <summary>Include the issues of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ISSUES")]
-                    ISSUES,
+                    ISSUES = 2,
 
                     /// <summary>Include the destination statuses of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
-                    DESTINATIONSTATUSES,
+                    DESTINATIONSTATUSES = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -529,19 +529,19 @@ namespace Google.Apis.ManufacturerCenter.v1
                 {
                     /// <summary>Unknown, never used.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                    UNKNOWN,
+                    UNKNOWN = 0,
 
                     /// <summary>Include the attributes of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
-                    ATTRIBUTES,
+                    ATTRIBUTES = 1,
 
                     /// <summary>Include the issues of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("ISSUES")]
-                    ISSUES,
+                    ISSUES = 2,
 
                     /// <summary>Include the destination statuses of the product.</summary>
                     [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
-                    DESTINATIONSTATUSES,
+                    DESTINATIONSTATUSES = 3,
                 }
 
                 /// <summary>Maximum number of product statuses to return in the response, used for paging.</summary>

@@ -121,7 +121,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -891,15 +891,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_3
             {
                 /// <summary>Creatives which have been approved.</summary>
                 [Google.Apis.Util.StringValueAttribute("approved")]
-                Approved,
+                Approved = 0,
 
                 /// <summary>Creatives which have been disapproved.</summary>
                 [Google.Apis.Util.StringValueAttribute("disapproved")]
-                Disapproved,
+                Disapproved = 1,
 
                 /// <summary>Creatives whose status is not yet checked.</summary>
                 [Google.Apis.Util.StringValueAttribute("not_checked")]
-                NotChecked,
+                NotChecked = 2,
             }
 
             /// <summary>Gets the method name.</summary>

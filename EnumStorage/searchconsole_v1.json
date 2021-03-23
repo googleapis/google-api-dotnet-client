@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SearchConsole.v1.SearchConsoleBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SearchConsole.v1.SearchConsoleBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

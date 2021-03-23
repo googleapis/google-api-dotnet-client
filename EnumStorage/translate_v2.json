@@ -1,0 +1,15 @@
+{
+  "Google.Apis.Translate.v2.TranslateBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Translate.v2.TranslateBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Translate.v2.TranslationsResource+ListRequest.FormatEnum": [
+    "html",
+    "text"
+  ]
+}

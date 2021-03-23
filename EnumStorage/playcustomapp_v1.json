@@ -1,0 +1,20 @@
+{
+  "Google.Apis.Playcustomapp.v1.AccountsResource+CustomAppsResource+CreateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Playcustomapp.v1.AccountsResource+CustomAppsResource+CreateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Playcustomapp.v1.PlaycustomappBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Playcustomapp.v1.PlaycustomappBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

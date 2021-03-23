@@ -1,0 +1,133 @@
+{
+  "Google.Apis.Blogger.v3.BloggerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Blogger.v3.BloggerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Blogger.v3.BlogsResource+GetByUrlRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.BlogsResource+GetRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.BlogsResource+ListByUserRequest.RoleEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.BlogsResource+ListByUserRequest.StatusEnum": [
+    "LIVE",
+    "DELETED"
+  ],
+  "Google.Apis.Blogger.v3.BlogsResource+ListByUserRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.CommentsResource+GetRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.CommentsResource+ListByBlogRequest.StatusEnum": [
+    "LIVE",
+    "EMPTIED",
+    "PENDING",
+    "SPAM"
+  ],
+  "Google.Apis.Blogger.v3.CommentsResource+ListRequest.StatusEnum": [
+    "LIVE",
+    "EMPTIED",
+    "PENDING",
+    "SPAM"
+  ],
+  "Google.Apis.Blogger.v3.CommentsResource+ListRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PagesResource+GetRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PagesResource+ListRequest.StatusEnum": [
+    "LIVE",
+    "DRAFT"
+  ],
+  "Google.Apis.Blogger.v3.PagesResource+ListRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PageViewsResource+GetRequest.RangeEnum": [
+    "all",
+    "30DAYS",
+    "7DAYS"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+GetByPathRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+GetRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+ListRequest.OrderByEnum": [
+    "ORDER_BY_UNSPECIFIED",
+    "PUBLISHED",
+    "UPDATED"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+ListRequest.StatusEnum": [
+    "LIVE",
+    "DRAFT",
+    "SCHEDULED"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+ListRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ],
+  "Google.Apis.Blogger.v3.PostsResource+SearchRequest.OrderByEnum": [
+    "ORDER_BY_UNSPECIFIED",
+    "PUBLISHED",
+    "UPDATED"
+  ],
+  "Google.Apis.Blogger.v3.PostUserInfosResource+ListRequest.OrderByEnum": [
+    "ORDER_BY_UNSPECIFIED",
+    "PUBLISHED",
+    "UPDATED"
+  ],
+  "Google.Apis.Blogger.v3.PostUserInfosResource+ListRequest.StatusEnum": [
+    "LIVE",
+    "DRAFT",
+    "SCHEDULED"
+  ],
+  "Google.Apis.Blogger.v3.PostUserInfosResource+ListRequest.ViewEnum": [
+    "VIEW_TYPE_UNSPECIFIED",
+    "READER",
+    "AUTHOR",
+    "ADMIN"
+  ]
+}

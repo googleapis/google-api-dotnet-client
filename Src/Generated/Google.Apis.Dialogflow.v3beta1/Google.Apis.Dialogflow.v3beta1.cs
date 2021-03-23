@@ -103,11 +103,11 @@ namespace Google.Apis.Dialogflow.v3beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -123,15 +123,15 @@ namespace Google.Apis.Dialogflow.v3beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -4283,15 +4283,15 @@ namespace Google.Apis.Dialogflow.v3beta1
                         {
                             /// <summary>Not specified. Treated as INTENT_VIEW_FULL.</summary>
                             [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_UNSPECIFIED")]
-                            INTENTVIEWUNSPECIFIED,
+                            INTENTVIEWUNSPECIFIED = 0,
 
                             /// <summary>Training phrases field is not populated in the response.</summary>
                             [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_PARTIAL")]
-                            INTENTVIEWPARTIAL,
+                            INTENTVIEWPARTIAL = 1,
 
                             /// <summary>All fields are populated.</summary>
                             [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
-                            INTENTVIEWFULL,
+                            INTENTVIEWFULL = 2,
                         }
 
                         /// <summary>
@@ -5393,19 +5393,19 @@ namespace Google.Apis.Dialogflow.v3beta1
                         {
                             /// <summary>Should never be used.</summary>
                             [Google.Apis.Util.StringValueAttribute("COVERAGE_TYPE_UNSPECIFIED")]
-                            COVERAGETYPEUNSPECIFIED,
+                            COVERAGETYPEUNSPECIFIED = 0,
 
                             /// <summary>Intent coverage.</summary>
                             [Google.Apis.Util.StringValueAttribute("INTENT")]
-                            INTENT,
+                            INTENT = 1,
 
                             /// <summary>Page transition coverage.</summary>
                             [Google.Apis.Util.StringValueAttribute("PAGE_TRANSITION")]
-                            PAGETRANSITION,
+                            PAGETRANSITION = 2,
 
                             /// <summary>Transition route group coverage.</summary>
                             [Google.Apis.Util.StringValueAttribute("TRANSITION_ROUTE_GROUP")]
-                            TRANSITIONROUTEGROUP,
+                            TRANSITIONROUTEGROUP = 3,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -5724,18 +5724,18 @@ namespace Google.Apis.Dialogflow.v3beta1
                         {
                             /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
                             [Google.Apis.Util.StringValueAttribute("TEST_CASE_VIEW_UNSPECIFIED")]
-                            TESTCASEVIEWUNSPECIFIED,
+                            TESTCASEVIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// Include basic metadata about the test case, but not the conversation turns. This is the
                             /// default value.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
-                            BASIC,
+                            BASIC = 1,
 
                             /// <summary>Include everything.</summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>

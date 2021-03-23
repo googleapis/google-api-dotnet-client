@@ -97,11 +97,11 @@ namespace Google.Apis.CloudTasks.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.CloudTasks.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -501,7 +501,7 @@ namespace Google.Apis.CloudTasks.v2
                         {
                             /// <summary>Unspecified. Defaults to BASIC.</summary>
                             [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                            VIEWUNSPECIFIED,
+                            VIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// The basic view omits fields which can be large or can contain sensitive data. This view
@@ -510,14 +510,14 @@ namespace Google.Apis.CloudTasks.v2
                             /// you choose to store in it.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
-                            BASIC,
+                            BASIC = 1,
 
                             /// <summary>
                             /// All information is returned. Authorization for FULL requires `cloudtasks.tasks.fullView`
                             /// [Google IAM](https://cloud.google.com/iam/) permission on the Queue resource.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -627,7 +627,7 @@ namespace Google.Apis.CloudTasks.v2
                         {
                             /// <summary>Unspecified. Defaults to BASIC.</summary>
                             [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                            VIEWUNSPECIFIED,
+                            VIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// The basic view omits fields which can be large or can contain sensitive data. This view
@@ -636,14 +636,14 @@ namespace Google.Apis.CloudTasks.v2
                             /// you choose to store in it.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("BASIC")]
-                            BASIC,
+                            BASIC = 1,
 
                             /// <summary>
                             /// All information is returned. Authorization for FULL requires `cloudtasks.tasks.fullView`
                             /// [Google IAM](https://cloud.google.com/iam/) permission on the Queue resource.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>

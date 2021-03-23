@@ -139,11 +139,11 @@ namespace Google.Apis.AdSense.v1_4
         {
             /// <summary>Responses with Content-Type of text/csv</summary>
             [Google.Apis.Util.StringValueAttribute("csv")]
-            Csv,
+            Csv = 0,
 
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 1,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>

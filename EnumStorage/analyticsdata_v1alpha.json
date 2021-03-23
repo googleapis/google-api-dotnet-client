@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AnalyticsData.v1alpha.AnalyticsDataBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AnalyticsData.v1alpha.AnalyticsDataBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

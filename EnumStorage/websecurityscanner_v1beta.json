@@ -1,0 +1,11 @@
+{
+  "Google.Apis.WebSecurityScanner.v1beta.WebSecurityScannerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.WebSecurityScanner.v1beta.WebSecurityScannerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
