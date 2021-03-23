@@ -169,11 +169,11 @@ namespace Google.Apis.CloudSearch.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -189,15 +189,15 @@ namespace Google.Apis.CloudSearch.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -856,34 +856,34 @@ namespace Google.Apis.CloudSearch.v1
                         /// Input-only value. Used to list all unmapped identities regardless of status.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CODE_UNSPECIFIED")]
-                        CODEUNSPECIFIED,
+                        CODEUNSPECIFIED = 0,
 
                         /// <summary>
                         /// The unmapped identity was not found in IDaaS, and needs to be provided by the user.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("NOT_FOUND")]
-                        NOTFOUND,
+                        NOTFOUND = 1,
 
                         /// <summary>
                         /// The identity source associated with the identity was either not found or deleted.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("IDENTITY_SOURCE_NOT_FOUND")]
-                        IDENTITYSOURCENOTFOUND,
+                        IDENTITYSOURCENOTFOUND = 2,
 
                         /// <summary>
                         /// IDaaS does not understand the identity source, probably because the schema was modified in a
                         /// non compatible way.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("IDENTITY_SOURCE_MISCONFIGURED")]
-                        IDENTITYSOURCEMISCONFIGURED,
+                        IDENTITYSOURCEMISCONFIGURED = 3,
 
                         /// <summary>The number of users associated with the external identity is too large.</summary>
                         [Google.Apis.Util.StringValueAttribute("TOO_MANY_MAPPINGS_FOUND")]
-                        TOOMANYMAPPINGSFOUND,
+                        TOOMANYMAPPINGSFOUND = 4,
 
                         /// <summary>Internal error.</summary>
                         [Google.Apis.Util.StringValueAttribute("INTERNAL_ERROR")]
-                        INTERNALERROR,
+                        INTERNALERROR = 5,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -1050,17 +1050,17 @@ namespace Google.Apis.CloudSearch.v1
                         /// update failure.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("UNSPECIFIED")]
-                        UNSPECIFIED,
+                        UNSPECIFIED = 0,
 
                         /// <summary>For real-time updates.</summary>
                         [Google.Apis.Util.StringValueAttribute("SYNCHRONOUS")]
-                        SYNCHRONOUS,
+                        SYNCHRONOUS = 1,
 
                         /// <summary>
                         /// For changes that are executed after the response is sent back to the caller.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("ASYNCHRONOUS")]
-                        ASYNCHRONOUS,
+                        ASYNCHRONOUS = 2,
                     }
 
                     /// <summary>
@@ -2077,11 +2077,11 @@ namespace Google.Apis.CloudSearch.v1
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -2097,15 +2097,15 @@ namespace Google.Apis.CloudSearch.v1
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BigQueryReservation.v1.BigQueryReservationBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BigQueryReservation.v1.BigQueryReservationBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

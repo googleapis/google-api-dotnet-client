@@ -175,11 +175,11 @@ namespace Google.Apis.Gmail.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -195,15 +195,15 @@ namespace Google.Apis.Gmail.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -475,11 +475,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -495,15 +495,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -685,14 +685,14 @@ namespace Google.Apis.Gmail.v1
                     /// Returns only email message ID and labels; does not return the email headers, body, or payload.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("minimal")]
-                    Minimal,
+                    Minimal = 0,
 
                     /// <summary>
                     /// Returns the full email message data with body content parsed in the `payload` field; the `raw`
                     /// field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("full")]
-                    Full,
+                    Full = 1,
 
                     /// <summary>
                     /// Returns the full email message data with body content in the `raw` field as a base64url encoded
@@ -700,11 +700,11 @@ namespace Google.Apis.Gmail.v1
                     /// gmail.metadata scope.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("raw")]
-                    Raw,
+                    Raw = 2,
 
                     /// <summary>Returns only email message ID, labels, and email headers.</summary>
                     [Google.Apis.Util.StringValueAttribute("metadata")]
-                    Metadata,
+                    Metadata = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -952,11 +952,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -972,15 +972,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -1171,11 +1171,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -1191,15 +1191,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -1339,19 +1339,19 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("messageAdded")]
-                    MessageAdded,
+                    MessageAdded = 0,
 
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("messageDeleted")]
-                    MessageDeleted,
+                    MessageDeleted = 1,
 
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("labelAdded")]
-                    LabelAdded,
+                    LabelAdded = 2,
 
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("labelRemoved")]
-                    LabelRemoved,
+                    LabelRemoved = 3,
                 }
 
                 /// <summary>Only return messages with a label matching the ID.</summary>
@@ -2193,14 +2193,14 @@ namespace Google.Apis.Gmail.v1
                     /// Returns only email message ID and labels; does not return the email headers, body, or payload.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("minimal")]
-                    Minimal,
+                    Minimal = 0,
 
                     /// <summary>
                     /// Returns the full email message data with body content parsed in the `payload` field; the `raw`
                     /// field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("full")]
-                    Full,
+                    Full = 1,
 
                     /// <summary>
                     /// Returns the full email message data with body content in the `raw` field as a base64url encoded
@@ -2208,11 +2208,11 @@ namespace Google.Apis.Gmail.v1
                     /// gmail.metadata scope.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("raw")]
-                    Raw,
+                    Raw = 2,
 
                     /// <summary>Returns only email message ID, labels, and email headers.</summary>
                     [Google.Apis.Util.StringValueAttribute("metadata")]
-                    Metadata,
+                    Metadata = 3,
                 }
 
                 /// <summary>When given and format is `METADATA`, only include headers specified.</summary>
@@ -2318,11 +2318,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Internal message date set to current time when received by Gmail.</summary>
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
-                    ReceivedTime,
+                    ReceivedTime = 0,
 
                     /// <summary>Internal message time based on 'Date' header in email, when valid.</summary>
                     [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
+                    DateHeader = 1,
                 }
 
                 /// <summary>
@@ -2446,11 +2446,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -2466,15 +2466,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -2537,11 +2537,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Internal message date set to current time when received by Gmail.</summary>
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
-                    ReceivedTime,
+                    ReceivedTime = 0,
 
                     /// <summary>Internal message time based on 'Date' header in email, when valid.</summary>
                     [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
+                    DateHeader = 1,
                 }
 
                 /// <summary>
@@ -2636,11 +2636,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Internal message date set to current time when received by Gmail.</summary>
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
-                    ReceivedTime,
+                    ReceivedTime = 0,
 
                     /// <summary>Internal message time based on 'Date' header in email, when valid.</summary>
                     [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
+                    DateHeader = 1,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -2734,11 +2734,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -2754,15 +2754,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -2825,11 +2825,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Internal message date set to current time when received by Gmail.</summary>
                     [Google.Apis.Util.StringValueAttribute("receivedTime")]
-                    ReceivedTime,
+                    ReceivedTime = 0,
 
                     /// <summary>Internal message time based on 'Date' header in email, when valid.</summary>
                     [Google.Apis.Util.StringValueAttribute("dateHeader")]
-                    DateHeader,
+                    DateHeader = 1,
                 }
 
                 /// <summary>Constructs a new Insert media upload instance.</summary>
@@ -3145,11 +3145,11 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -3165,15 +3165,15 @@ namespace Google.Apis.Gmail.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -5810,17 +5810,17 @@ namespace Google.Apis.Gmail.v1
                     /// field is not used. Format cannot be used when accessing the api using the gmail.metadata scope.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("full")]
-                    Full,
+                    Full = 0,
 
                     /// <summary>Returns only email message IDs, labels, and email headers.</summary>
                     [Google.Apis.Util.StringValueAttribute("metadata")]
-                    Metadata,
+                    Metadata = 1,
 
                     /// <summary>
                     /// Returns only email message IDs and labels; does not return the email headers, body, or payload.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("minimal")]
-                    Minimal,
+                    Minimal = 2,
                 }
 
                 /// <summary>When given and format is METADATA, only include headers specified.</summary>

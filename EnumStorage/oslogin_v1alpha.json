@@ -1,0 +1,21 @@
+{
+  "Google.Apis.CloudOSLogin.v1alpha.CloudOSLoginBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudOSLogin.v1alpha.CloudOSLoginBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudOSLogin.v1alpha.UsersResource+GetLoginProfileRequest.OperatingSystemTypeEnum": [
+    "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+    "LINUX",
+    "WINDOWS"
+  ],
+  "Google.Apis.CloudOSLogin.v1alpha.UsersResource+ProjectsResource+DeleteRequest.OperatingSystemTypeEnum": [
+    "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+    "LINUX",
+    "WINDOWS"
+  ]
+}

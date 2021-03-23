@@ -135,11 +135,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -155,15 +155,15 @@ namespace Google.Apis.SQLAdmin.v1beta4
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -2866,17 +2866,17 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 {
                     /// <summary>Unknown external sync mode, will be defaulted to ONLINE mode</summary>
                     [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
-                    EXTERNALSYNCMODEUNSPECIFIED,
+                    EXTERNALSYNCMODEUNSPECIFIED = 0,
 
                     /// <summary>Online external sync will set up replication after initial data external sync</summary>
                     [Google.Apis.Util.StringValueAttribute("ONLINE")]
-                    ONLINE,
+                    ONLINE = 1,
 
                     /// <summary>
                     /// Offline external sync only dumps and loads a one-time snapshot of the primary instance's data
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OFFLINE")]
-                    OFFLINE,
+                    OFFLINE = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2963,17 +2963,17 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 {
                     /// <summary>Unknown external sync mode, will be defaulted to ONLINE mode</summary>
                     [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
-                    EXTERNALSYNCMODEUNSPECIFIED,
+                    EXTERNALSYNCMODEUNSPECIFIED = 0,
 
                     /// <summary>Online external sync will set up replication after initial data external sync</summary>
                     [Google.Apis.Util.StringValueAttribute("ONLINE")]
-                    ONLINE,
+                    ONLINE = 1,
 
                     /// <summary>
                     /// Offline external sync only dumps and loads a one-time snapshot of the primary instance's data
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OFFLINE")]
-                    OFFLINE,
+                    OFFLINE = 2,
                 }
 
                 /// <summary>Flag to enable verifying connection only</summary>

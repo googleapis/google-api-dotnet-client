@@ -1,0 +1,55 @@
+{
+  "Google.Apis.Classroom.v1.ClassroomBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Classroom.v1.ClassroomBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+AnnouncementsResource+ListRequest.AnnouncementStatesEnum": [
+    "ANNOUNCEMENT_STATE_UNSPECIFIED",
+    "PUBLISHED",
+    "DRAFT",
+    "DELETED"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+CourseWorkMaterialsResource+ListRequest.CourseWorkMaterialStatesEnum": [
+    "COURSEWORK_MATERIAL_STATE_UNSPECIFIED",
+    "PUBLISHED",
+    "DRAFT",
+    "DELETED"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+CourseWorkResource+ListRequest.CourseWorkStatesEnum": [
+    "COURSE_WORK_STATE_UNSPECIFIED",
+    "PUBLISHED",
+    "DRAFT",
+    "DELETED"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+CourseWorkResource+StudentSubmissionsResource+ListRequest.LateEnum": [
+    "LATE_VALUES_UNSPECIFIED",
+    "LATE_ONLY",
+    "NOT_LATE_ONLY"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+CourseWorkResource+StudentSubmissionsResource+ListRequest.StatesEnum": [
+    "SUBMISSION_STATE_UNSPECIFIED",
+    "NEW",
+    "CREATED",
+    "TURNED_IN",
+    "RETURNED",
+    "RECLAIMED_BY_STUDENT"
+  ],
+  "Google.Apis.Classroom.v1.CoursesResource+ListRequest.CourseStatesEnum": [
+    "COURSE_STATE_UNSPECIFIED",
+    "ACTIVE",
+    "ARCHIVED",
+    "PROVISIONED",
+    "DECLINED",
+    "SUSPENDED"
+  ],
+  "Google.Apis.Classroom.v1.UserProfilesResource+GuardianInvitationsResource+ListRequest.StatesEnum": [
+    "GUARDIAN_INVITATION_STATE_UNSPECIFIED",
+    "PENDING",
+    "COMPLETE"
+  ]
+}

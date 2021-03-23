@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PolicySimulator.v1beta1.PolicySimulatorBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PolicySimulator.v1beta1.PolicySimulatorBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

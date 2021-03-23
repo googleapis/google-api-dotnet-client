@@ -1,0 +1,27 @@
+{
+  "Google.Apis.Area120Tables.v1alpha1.Area120TablesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Area120Tables.v1alpha1.Area120TablesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Area120Tables.v1alpha1.TablesResource+RowsResource+CreateRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "COLUMN_ID_VIEW"
+  ],
+  "Google.Apis.Area120Tables.v1alpha1.TablesResource+RowsResource+GetRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "COLUMN_ID_VIEW"
+  ],
+  "Google.Apis.Area120Tables.v1alpha1.TablesResource+RowsResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "COLUMN_ID_VIEW"
+  ],
+  "Google.Apis.Area120Tables.v1alpha1.TablesResource+RowsResource+PatchRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "COLUMN_ID_VIEW"
+  ]
+}

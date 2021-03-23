@@ -109,11 +109,11 @@ namespace Google.Apis.Appengine.v1alpha
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -129,15 +129,15 @@ namespace Google.Apis.Appengine.v1alpha
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -469,14 +469,14 @@ namespace Google.Apis.Appengine.v1alpha
                     /// Basic certificate information, including applicable domains and expiration date.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
-                    BASICCERTIFICATE,
+                    BASICCERTIFICATE = 0,
 
                     /// <summary>
                     /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that
                     /// have this certificate mapped.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
-                    FULLCERTIFICATE,
+                    FULLCERTIFICATE = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -561,14 +561,14 @@ namespace Google.Apis.Appengine.v1alpha
                     /// Basic certificate information, including applicable domains and expiration date.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_CERTIFICATE")]
-                    BASICCERTIFICATE,
+                    BASICCERTIFICATE = 0,
 
                     /// <summary>
                     /// The information from BASIC_CERTIFICATE, plus detailed information on the domain mappings that
                     /// have this certificate mapped.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
-                    FULLCERTIFICATE,
+                    FULLCERTIFICATE = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -874,14 +874,14 @@ namespace Google.Apis.Appengine.v1alpha
                 {
                     /// <summary>Strategy unspecified. Defaults to STRICT.</summary>
                     [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY")]
-                    UNSPECIFIEDDOMAINOVERRIDESTRATEGY,
+                    UNSPECIFIEDDOMAINOVERRIDESTRATEGY = 0,
 
                     /// <summary>
                     /// Overrides not allowed. If a mapping already exists for the specified domain, the request will
                     /// return an ALREADY_EXISTS (409).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("STRICT")]
-                    STRICT,
+                    STRICT = 1,
 
                     /// <summary>
                     /// Overrides allowed. If a mapping already exists for the specified domain, the request will
@@ -890,7 +890,7 @@ namespace Google.Apis.Appengine.v1alpha
                     /// domain.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OVERRIDE")]
-                    OVERRIDE__,
+                    OVERRIDE__ = 2,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>

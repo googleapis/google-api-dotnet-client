@@ -147,11 +147,11 @@ namespace Google.Apis.Games.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -167,15 +167,15 @@ namespace Google.Apis.Games.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -547,19 +547,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>List all achievements. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 0,
 
                 /// <summary>List only hidden achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("HIDDEN")]
-                HIDDEN,
+                HIDDEN = 1,
 
                 /// <summary>List only revealed achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("REVEALED")]
-                REVEALED,
+                REVEALED = 2,
 
                 /// <summary>List only unlocked achievements.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNLOCKED")]
-                UNLOCKED,
+                UNLOCKED = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -873,19 +873,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value, don't use.</summary>
                 [Google.Apis.Util.StringValueAttribute("PLATFORM_TYPE_UNSPECIFIED")]
-                PLATFORMTYPEUNSPECIFIED,
+                PLATFORMTYPEUNSPECIFIED = 0,
 
                 /// <summary>Retrieve applications that can be played on Android.</summary>
                 [Google.Apis.Util.StringValueAttribute("ANDROID")]
-                ANDROID,
+                ANDROID = 1,
 
                 /// <summary>Retrieve applications that can be played on iOS.</summary>
                 [Google.Apis.Util.StringValueAttribute("IOS")]
-                IOS,
+                IOS = 2,
 
                 /// <summary>Retrieve applications that can be played on desktop web.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEB_APP")]
-                WEBAPP,
+                WEBAPP = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -956,15 +956,15 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("END_POINT_TYPE_UNSPECIFIED")]
-                ENDPOINTTYPEUNSPECIFIED,
+                ENDPOINTTYPEUNSPECIFIED = 0,
 
                 /// <summary>Request a URL to create a new profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROFILE_CREATION")]
-                PROFILECREATION,
+                PROFILECREATION = 1,
 
                 /// <summary>Request a URL for the Settings view.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROFILE_SETTINGS")]
-                PROFILESETTINGS,
+                PROFILESETTINGS = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1521,11 +1521,11 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("COLLECTION_UNSPECIFIED")]
-                COLLECTIONUNSPECIFIED,
+                COLLECTIONUNSPECIFIED = 0,
 
                 /// <summary>Retrieve data for all categories. This is the default.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 1,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
@@ -1707,17 +1707,17 @@ namespace Google.Apis.Games.v1
                 /// Retrieve a list of players that are also playing this game in reverse chronological order.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("CONNECTED")]
-                CONNECTED,
+                CONNECTED = 0,
 
                 /// <summary>
                 /// Retrieve a list of players in the user's social graph that are visible to this game.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("VISIBLE")]
-                VISIBLE,
+                VISIBLE = 1,
 
                 /// <summary>Retrieve a list of players who are friends of the user in alphabetical order.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS_ALL")]
-                FRIENDSALL,
+                FRIENDSALL = 2,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
@@ -1921,25 +1921,25 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
-                SCORETIMESPANUNSPECIFIED,
+                SCORETIMESPANUNSPECIFIED = 0,
 
                 /// <summary>
                 /// Get the high scores for all time spans. If this is used, maxResults values will be ignored.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 1,
 
                 /// <summary>Get the all time high score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
-                ALLTIME,
+                ALLTIME = 2,
 
                 /// <summary>List the top scores for the current day.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
-                WEEKLY,
+                WEEKLY = 3,
 
                 /// <summary>List the top scores for the current week.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
-                DAILY,
+                DAILY = 4,
             }
 
             /// <summary>The types of ranks to return. If the parameter is omitted, no ranks will be returned.</summary>
@@ -1951,25 +1951,25 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. Should be unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_RANK_TYPE_UNSPECIFIED")]
-                INCLUDERANKTYPEUNSPECIFIED,
+                INCLUDERANKTYPEUNSPECIFIED = 0,
 
                 /// <summary>
                 /// Retrieve all supported ranks. In HTTP, this parameter value can also be specified as `ALL`.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 1,
 
                 /// <summary>Retrieve public ranks, if the player is sharing their gameplay activity publicly.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
+                PUBLIC__ = 2,
 
                 /// <summary>(Obsolete) Retrieve the social rank.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
-                SOCIAL,
+                SOCIAL = 3,
 
                 /// <summary>Retrieve the rank on the friends collection.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
-                FRIENDS,
+                FRIENDS = 4,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
@@ -2093,19 +2093,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
-                SCORECOLLECTIONUNSPECIFIED,
+                SCORECOLLECTIONUNSPECIFIED = 0,
 
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
+                PUBLIC__ = 1,
 
                 /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
-                SOCIAL,
+                SOCIAL = 2,
 
                 /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
-                FRIENDS,
+                FRIENDS = 3,
             }
 
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
@@ -2117,19 +2117,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
-                SCORETIMESPANUNSPECIFIED,
+                SCORETIMESPANUNSPECIFIED = 0,
 
                 /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
-                ALLTIME,
+                ALLTIME = 1,
 
                 /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
-                WEEKLY,
+                WEEKLY = 2,
 
                 /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
-                DAILY,
+                DAILY = 3,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>
@@ -2245,19 +2245,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_COLLECTION_UNSPECIFIED")]
-                SCORECOLLECTIONUNSPECIFIED,
+                SCORECOLLECTIONUNSPECIFIED = 0,
 
                 /// <summary>List all scores in the public leaderboard.</summary>
                 [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                PUBLIC__,
+                PUBLIC__ = 1,
 
                 /// <summary>(Obsolete) Legacy G+ social scores.</summary>
                 [Google.Apis.Util.StringValueAttribute("SOCIAL")]
-                SOCIAL,
+                SOCIAL = 2,
 
                 /// <summary>List only scores of friends.</summary>
                 [Google.Apis.Util.StringValueAttribute("FRIENDS")]
-                FRIENDS,
+                FRIENDS = 3,
             }
 
             /// <summary>The time span for the scores and ranks you're requesting.</summary>
@@ -2269,19 +2269,19 @@ namespace Google.Apis.Games.v1
             {
                 /// <summary>Default value. This value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("SCORE_TIME_SPAN_UNSPECIFIED")]
-                SCORETIMESPANUNSPECIFIED,
+                SCORETIMESPANUNSPECIFIED = 0,
 
                 /// <summary>The score is an all-time score.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL_TIME")]
-                ALLTIME,
+                ALLTIME = 1,
 
                 /// <summary>The score is a weekly score.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
-                WEEKLY,
+                WEEKLY = 2,
 
                 /// <summary>The score is a daily score.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
-                DAILY,
+                DAILY = 3,
             }
 
             /// <summary>The preferred language to use for strings returned by this method.</summary>

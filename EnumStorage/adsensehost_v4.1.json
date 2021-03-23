@@ -1,0 +1,13 @@
+{
+  "Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest<<TResponse>>.AltEnum": [
+    "csv",
+    "json"
+  ],
+  "Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource+StartRequest.ProductCodeEnum": [
+    "AFC",
+    "AFG",
+    "AFMC",
+    "AFS",
+    "AFV"
+  ]
+}

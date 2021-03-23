@@ -1,0 +1,16 @@
+{
+  "Google.Apis.FirebaseRules.v1.FirebaseRulesBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseRules.v1.FirebaseRulesBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.FirebaseRules.v1.ProjectsResource+ReleasesResource+GetExecutableRequest.ExecutableVersionEnum": [
+    "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED",
+    "FIREBASE_RULES_EXECUTABLE_V1",
+    "FIREBASE_RULES_EXECUTABLE_V2"
+  ]
+}

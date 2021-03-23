@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BigQueryConnectionService.v1beta1.BigQueryConnectionServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BigQueryConnectionService.v1beta1.BigQueryConnectionServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

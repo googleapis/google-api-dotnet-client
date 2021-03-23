@@ -1,0 +1,11 @@
+{
+  "Google.Apis.RealTimeBidding.v1alpha.RealTimeBiddingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RealTimeBidding.v1alpha.RealTimeBiddingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

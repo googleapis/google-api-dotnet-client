@@ -345,11 +345,11 @@ namespace Google.Apis.Dfareporting.v3_3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -365,15 +365,15 @@ namespace Google.Apis.Dfareporting.v3_3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1007,11 +1007,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -1023,11 +1023,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only user profiles with the specified subaccount ID.</summary>
@@ -1386,11 +1386,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -1402,11 +1402,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1796,27 +1796,27 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY")]
-                DISPLAY,
+                DISPLAY = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
-                DISPLAYINTERSTITIAL,
+                DISPLAYINTERSTITIAL = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APP")]
-                APP,
+                APP = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
-                APPINTERSTITIAL,
+                APPINTERSTITIAL = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
-                INSTREAMVIDEO,
+                INSTREAMVIDEO = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
-                INSTREAMAUDIO,
+                INSTREAMAUDIO = 5,
             }
 
             /// <summary>Select only ads with these creative IDs assigned.</summary>
@@ -1884,11 +1884,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -1900,11 +1900,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only ads that are SSL-compliant.</summary>
@@ -1924,23 +1924,23 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_STANDARD_AD")]
-                ADSERVINGSTANDARDAD,
+                ADSERVINGSTANDARDAD = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_DEFAULT_AD")]
-                ADSERVINGDEFAULTAD,
+                ADSERVINGDEFAULTAD = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_CLICK_TRACKER")]
-                ADSERVINGCLICKTRACKER,
+                ADSERVINGCLICKTRACKER = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_TRACKING")]
-                ADSERVINGTRACKING,
+                ADSERVINGTRACKING = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("AD_SERVING_BRAND_SAFE_AD")]
-                ADSERVINGBRANDSAFEAD,
+                ADSERVINGBRANDSAFEAD = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2509,11 +2509,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -2525,11 +2525,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2918,11 +2918,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -2934,11 +2934,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only landing pages that belong to this subaccount.</summary>
@@ -3364,11 +3364,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -3380,11 +3380,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only advertisers with the specified status.</summary>
@@ -3396,11 +3396,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APPROVED")]
-                APPROVED,
+                APPROVED = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ON_HOLD")]
-                ONHOLD,
+                ONHOLD = 1,
             }
 
             /// <summary>Select only advertisers with these subaccount IDs.</summary>
@@ -3843,11 +3843,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -4111,11 +4111,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -4127,11 +4127,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only campaigns that belong to this subaccount.</summary>
@@ -4490,71 +4490,71 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_CREATE")]
-                ACTIONCREATE,
+                ACTIONCREATE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_UPDATE")]
-                ACTIONUPDATE,
+                ACTIONUPDATE = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_DELETE")]
-                ACTIONDELETE,
+                ACTIONDELETE = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_ENABLE")]
-                ACTIONENABLE,
+                ACTIONENABLE = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_DISABLE")]
-                ACTIONDISABLE,
+                ACTIONDISABLE = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_ADD")]
-                ACTIONADD,
+                ACTIONADD = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_REMOVE")]
-                ACTIONREMOVE,
+                ACTIONREMOVE = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_MARK_AS_DEFAULT")]
-                ACTIONMARKASDEFAULT,
+                ACTIONMARKASDEFAULT = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_ASSOCIATE")]
-                ACTIONASSOCIATE,
+                ACTIONASSOCIATE = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_ASSIGN")]
-                ACTIONASSIGN,
+                ACTIONASSIGN = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_UNASSIGN")]
-                ACTIONUNASSIGN,
+                ACTIONUNASSIGN = 10,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_SEND")]
-                ACTIONSEND,
+                ACTIONSEND = 11,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_LINK")]
-                ACTIONLINK,
+                ACTIONLINK = 12,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_UNLINK")]
-                ACTIONUNLINK,
+                ACTIONUNLINK = 13,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_PUSH")]
-                ACTIONPUSH,
+                ACTIONPUSH = 14,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_EMAIL_TAGS")]
-                ACTIONEMAILTAGS,
+                ACTIONEMAILTAGS = 15,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTION_SHARE")]
-                ACTIONSHARE,
+                ACTIONSHARE = 16,
             }
 
             /// <summary>Select only change logs with these IDs.</summary>
@@ -4596,163 +4596,163 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
-                OBJECTADVERTISER,
+                OBJECTADVERTISER = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_CONFIGURATION")]
-                OBJECTFLOODLIGHTCONFIGURATION,
+                OBJECTFLOODLIGHTCONFIGURATION = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
+                OBJECTAD = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTVITY")]
-                OBJECTFLOODLIGHTACTVITY,
+                OBJECTFLOODLIGHTACTVITY = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CAMPAIGN")]
-                OBJECTCAMPAIGN,
+                OBJECTCAMPAIGN = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_ACTIVITY_GROUP")]
-                OBJECTFLOODLIGHTACTIVITYGROUP,
+                OBJECTFLOODLIGHTACTIVITYGROUP = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
-                OBJECTCREATIVE,
+                OBJECTCREATIVE = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
-                OBJECTPLACEMENT,
+                OBJECTPLACEMENT = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_DFA_SITE")]
-                OBJECTDFASITE,
+                OBJECTDFASITE = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_USER_ROLE")]
-                OBJECTUSERROLE,
+                OBJECTUSERROLE = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE")]
-                OBJECTUSERPROFILE,
+                OBJECTUSERPROFILE = 10,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER_GROUP")]
-                OBJECTADVERTISERGROUP,
+                OBJECTADVERTISERGROUP = 11,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT")]
-                OBJECTACCOUNT,
+                OBJECTACCOUNT = 12,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SUBACCOUNT")]
-                OBJECTSUBACCOUNT,
+                OBJECTSUBACCOUNT = 13,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_RICHMEDIA_CREATIVE")]
-                OBJECTRICHMEDIACREATIVE,
+                OBJECTRICHMEDIACREATIVE = 14,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_INSTREAM_CREATIVE")]
-                OBJECTINSTREAMCREATIVE,
+                OBJECTINSTREAMCREATIVE = 15,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_MEDIA_ORDER")]
-                OBJECTMEDIAORDER,
+                OBJECTMEDIAORDER = 16,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CONTENT_CATEGORY")]
-                OBJECTCONTENTCATEGORY,
+                OBJECTCONTENTCATEGORY = 17,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT_STRATEGY")]
-                OBJECTPLACEMENTSTRATEGY,
+                OBJECTPLACEMENTSTRATEGY = 18,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SD_SITE")]
-                OBJECTSDSITE,
+                OBJECTSDSITE = 19,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SIZE")]
-                OBJECTSIZE,
+                OBJECTSIZE = 20,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_GROUP")]
-                OBJECTCREATIVEGROUP,
+                OBJECTCREATIVEGROUP = 21,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_ASSET")]
-                OBJECTCREATIVEASSET,
+                OBJECTCREATIVEASSET = 22,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_USER_PROFILE_FILTER")]
-                OBJECTUSERPROFILEFILTER,
+                OBJECTUSERPROFILEFILTER = 23,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_LANDING_PAGE")]
-                OBJECTLANDINGPAGE,
+                OBJECTLANDINGPAGE = 24,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_FIELD")]
-                OBJECTCREATIVEFIELD,
+                OBJECTCREATIVEFIELD = 25,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_REMARKETING_LIST")]
-                OBJECTREMARKETINGLIST,
+                OBJECTREMARKETINGLIST = 26,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PROVIDED_LIST_CLIENT")]
-                OBJECTPROVIDEDLISTCLIENT,
+                OBJECTPROVIDEDLISTCLIENT = 27,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_EVENT_TAG")]
-                OBJECTEVENTTAG,
+                OBJECTEVENTTAG = 28,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE_BUNDLE")]
-                OBJECTCREATIVEBUNDLE,
+                OBJECTCREATIVEBUNDLE = 29,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_ACCOUNT_GROUP")]
-                OBJECTBILLINGACCOUNTGROUP,
+                OBJECTBILLINGACCOUNTGROUP = 30,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_FEATURE")]
-                OBJECTBILLINGFEATURE,
+                OBJECTBILLINGFEATURE = 31,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_RATE_CARD")]
-                OBJECTRATECARD,
+                OBJECTRATECARD = 32,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ACCOUNT_BILLING_FEATURE")]
-                OBJECTACCOUNTBILLINGFEATURE,
+                OBJECTACCOUNTBILLINGFEATURE = 33,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_MINIMUM_FEE")]
-                OBJECTBILLINGMINIMUMFEE,
+                OBJECTBILLINGMINIMUMFEE = 34,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_BILLING_PROFILE")]
-                OBJECTBILLINGPROFILE,
+                OBJECTBILLINGPROFILE = 35,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLAYSTORE_LINK")]
-                OBJECTPLAYSTORELINK,
+                OBJECTPLAYSTORELINK = 36,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_TARGETING_TEMPLATE")]
-                OBJECTTARGETINGTEMPLATE,
+                OBJECTTARGETINGTEMPLATE = 37,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_SEARCH_LIFT_STUDY")]
-                OBJECTSEARCHLIFTSTUDY,
+                OBJECTSEARCHLIFTSTUDY = 38,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_FLOODLIGHT_DV360_LINK")]
-                OBJECTFLOODLIGHTDV360LINK,
+                OBJECTFLOODLIGHTDV360LINK = 39,
             }
 
             /// <summary>Value of the nextPageToken from the previous result page.</summary>
@@ -5338,11 +5338,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -5354,11 +5354,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -5915,11 +5915,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -5935,15 +5935,15 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -6306,11 +6306,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VALUE")]
-                VALUE,
+                VALUE = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -6322,11 +6322,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -6800,11 +6800,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -6816,11 +6816,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -7211,11 +7211,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -7227,11 +7227,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -7655,11 +7655,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -7671,11 +7671,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only creatives corresponding to this Studio creative ID.</summary>
@@ -7691,103 +7691,103 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IMAGE")]
-                IMAGE,
+                IMAGE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_REDIRECT")]
-                DISPLAYREDIRECT,
+                DISPLAYREDIRECT = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY")]
-                CUSTOMDISPLAY,
+                CUSTOMDISPLAY = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INTERNAL_REDIRECT")]
-                INTERNALREDIRECT,
+                INTERNALREDIRECT = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CUSTOM_DISPLAY_INTERSTITIAL")]
-                CUSTOMDISPLAYINTERSTITIAL,
+                CUSTOMDISPLAYINTERSTITIAL = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INTERSTITIAL_INTERNAL_REDIRECT")]
-                INTERSTITIALINTERNALREDIRECT,
+                INTERSTITIALINTERNALREDIRECT = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TRACKING_TEXT")]
-                TRACKINGTEXT,
+                TRACKINGTEXT = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_BANNER")]
-                RICHMEDIADISPLAYBANNER,
+                RICHMEDIADISPLAYBANNER = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_INPAGE_FLOATING")]
-                RICHMEDIAINPAGEFLOATING,
+                RICHMEDIAINPAGEFLOATING = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_IM_EXPAND")]
-                RICHMEDIAIMEXPAND,
+                RICHMEDIAIMEXPAND = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_EXPANDING")]
-                RICHMEDIADISPLAYEXPANDING,
+                RICHMEDIADISPLAYEXPANDING = 10,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_INTERSTITIAL")]
-                RICHMEDIADISPLAYINTERSTITIAL,
+                RICHMEDIADISPLAYINTERSTITIAL = 11,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL")]
-                RICHMEDIADISPLAYMULTIFLOATINGINTERSTITIAL,
+                RICHMEDIADISPLAYMULTIFLOATINGINTERSTITIAL = 12,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_MOBILE_IN_APP")]
-                RICHMEDIAMOBILEINAPP,
+                RICHMEDIAMOBILEINAPP = 13,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("FLASH_INPAGE")]
-                FLASHINPAGE,
+                FLASHINPAGE = 14,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO")]
-                INSTREAMVIDEO,
+                INSTREAMVIDEO = 15,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VPAID_LINEAR_VIDEO")]
-                VPAIDLINEARVIDEO,
+                VPAIDLINEARVIDEO = 16,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("VPAID_NON_LINEAR_VIDEO")]
-                VPAIDNONLINEARVIDEO,
+                VPAIDNONLINEARVIDEO = 17,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO_REDIRECT")]
-                INSTREAMVIDEOREDIRECT,
+                INSTREAMVIDEOREDIRECT = 18,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RICH_MEDIA_PEEL_DOWN")]
-                RICHMEDIAPEELDOWN,
+                RICHMEDIAPEELDOWN = 19,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("HTML5_BANNER")]
-                HTML5BANNER,
+                HTML5BANNER = 20,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY")]
-                DISPLAY,
+                DISPLAY = 21,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_IMAGE_GALLERY")]
-                DISPLAYIMAGEGALLERY,
+                DISPLAYIMAGEGALLERY = 22,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("BRAND_SAFE_DEFAULT_INSTREAM_VIDEO")]
-                BRANDSAFEDEFAULTINSTREAMVIDEO,
+                BRANDSAFEDEFAULTINSTREAMVIDEO = 23,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("INSTREAM_AUDIO")]
-                INSTREAMAUDIO,
+                INSTREAMAUDIO = 24,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -8361,11 +8361,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -8377,11 +8377,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -8561,19 +8561,19 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
-                OBJECTADVERTISER,
+                OBJECTADVERTISER = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
+                OBJECTAD = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
-                OBJECTCREATIVE,
+                OBJECTCREATIVE = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
-                OBJECTPLACEMENT,
+                OBJECTPLACEMENT = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -8727,19 +8727,19 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_ADVERTISER")]
-                OBJECTADVERTISER,
+                OBJECTADVERTISER = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_AD")]
-                OBJECTAD,
+                OBJECTAD = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_CREATIVE")]
-                OBJECTCREATIVE,
+                OBJECTCREATIVE = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("OBJECT_PLACEMENT")]
-                OBJECTPLACEMENT,
+                OBJECTPLACEMENT = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -9054,15 +9054,15 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_IMAGE_EVENT_TAG")]
-                IMPRESSIONIMAGEEVENTTAG,
+                IMPRESSIONIMAGEEVENTTAG = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_JAVASCRIPT_EVENT_TAG")]
-                IMPRESSIONJAVASCRIPTEVENTTAG,
+                IMPRESSIONJAVASCRIPTEVENTTAG = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CLICK_THROUGH_EVENT_TAG")]
-                CLICKTHROUGHEVENTTAG,
+                CLICKTHROUGHEVENTTAG = 2,
             }
 
             /// <summary>Select only event tags with these IDs.</summary>
@@ -9088,11 +9088,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -9104,11 +9104,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -9547,15 +9547,15 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>All files in account.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 0,
 
                 /// <summary>My files.</summary>
                 [Google.Apis.Util.StringValueAttribute("MINE")]
-                MINE,
+                MINE = 1,
 
                 /// <summary>Files shared with me.</summary>
                 [Google.Apis.Util.StringValueAttribute("SHARED_WITH_ME")]
-                SHAREDWITHME,
+                SHAREDWITHME = 2,
             }
 
             /// <summary>The field by which to sort the list.</summary>
@@ -9567,11 +9567,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>Sort by file ID.</summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary>Sort by 'lastmodifiedAt' field.</summary>
                 [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_TIME")]
-                LASTMODIFIEDTIME,
+                LASTMODIFIEDTIME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -9583,11 +9583,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -9952,11 +9952,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("COUNTER")]
-                COUNTER,
+                COUNTER = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SALE")]
-                SALE,
+                SALE = 1,
             }
 
             /// <summary>
@@ -10001,11 +10001,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -10017,11 +10017,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only floodlight activities with the specified tag string.</summary>
@@ -10477,11 +10477,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -10493,11 +10493,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>
@@ -10513,11 +10513,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("COUNTER")]
-                COUNTER,
+                COUNTER = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SALE")]
-                SALE,
+                SALE = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -11138,11 +11138,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -11154,11 +11154,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only inventory items with this type.</summary>
@@ -11170,11 +11170,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLANNING_PLACEMENT_TYPE_REGULAR")]
-                PLANNINGPLACEMENTTYPEREGULAR,
+                PLANNINGPLACEMENTTYPEREGULAR = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLANNING_PLACEMENT_TYPE_CREDIT")]
-                PLANNINGPLACEMENTTYPECREDIT,
+                PLANNINGPLACEMENTTYPECREDIT = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -11505,15 +11505,15 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                UNKNOWN,
+                UNKNOWN = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APPLE_APP_STORE")]
-                APPLEAPPSTORE,
+                APPLEAPPSTORE = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("GOOGLE_PLAY_STORE")]
-                GOOGLEPLAYSTORE,
+                GOOGLEPLAYSTORE = 2,
             }
 
             /// <summary>Select only apps with these IDs.</summary>
@@ -12117,11 +12117,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -12133,11 +12133,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -12393,11 +12393,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -12409,11 +12409,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -12734,11 +12734,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_PACKAGE")]
-                PLACEMENTPACKAGE,
+                PLACEMENTPACKAGE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_ROADBLOCK")]
-                PLACEMENTROADBLOCK,
+                PLACEMENTROADBLOCK = 1,
             }
 
             /// <summary>Select only placement groups that are associated with these placement strategies.</summary>
@@ -12754,27 +12754,27 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM")]
-                PRICINGTYPECPM,
+                PRICINGTYPECPM = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
-                PRICINGTYPECPC,
+                PRICINGTYPECPC = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
-                PRICINGTYPECPA,
+                PRICINGTYPECPA = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_IMPRESSIONS")]
-                PRICINGTYPEFLATRATEIMPRESSIONS,
+                PRICINGTYPEFLATRATEIMPRESSIONS = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
-                PRICINGTYPEFLATRATECLICKS,
+                PRICINGTYPEFLATRATECLICKS = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
-                PRICINGTYPECPMACTIVEVIEW,
+                PRICINGTYPECPMACTIVEVIEW = 5,
             }
 
             /// <summary>
@@ -12800,11 +12800,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -12816,11 +12816,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -13358,11 +13358,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -13374,11 +13374,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -13632,79 +13632,79 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_STANDARD")]
-                PLACEMENTTAGSTANDARD,
+                PLACEMENTTAGSTANDARD = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_JAVASCRIPT")]
-                PLACEMENTTAGIFRAMEJAVASCRIPT,
+                PLACEMENTTAGIFRAMEJAVASCRIPT = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_ILAYER")]
-                PLACEMENTTAGIFRAMEILAYER,
+                PLACEMENTTAGIFRAMEILAYER = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERNAL_REDIRECT")]
-                PLACEMENTTAGINTERNALREDIRECT,
+                PLACEMENTTAGINTERNALREDIRECT = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT")]
-                PLACEMENTTAGJAVASCRIPT,
+                PLACEMENTTAGJAVASCRIPT = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT")]
-                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPT,
+                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPT = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT")]
-                PLACEMENTTAGINTERSTITIALINTERNALREDIRECT,
+                PLACEMENTTAGINTERSTITIALINTERNALREDIRECT = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT")]
-                PLACEMENTTAGINTERSTITIALJAVASCRIPT,
+                PLACEMENTTAGINTERSTITIALJAVASCRIPT = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_CLICK_COMMANDS")]
-                PLACEMENTTAGCLICKCOMMANDS,
+                PLACEMENTTAGCLICKCOMMANDS = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCH,
+                PLACEMENTTAGINSTREAMVIDEOPREFETCH = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING")]
-                PLACEMENTTAGTRACKING,
+                PLACEMENTTAGTRACKING = 10,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING_IFRAME")]
-                PLACEMENTTAGTRACKINGIFRAME,
+                PLACEMENTTAGTRACKINGIFRAME = 11,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_TRACKING_JAVASCRIPT")]
-                PLACEMENTTAGTRACKINGJAVASCRIPT,
+                PLACEMENTTAGTRACKINGJAVASCRIPT = 12,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST3,
+                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST3 = 13,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGIFRAMEJAVASCRIPTLEGACY,
+                PLACEMENTTAGIFRAMEJAVASCRIPTLEGACY = 14,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGJAVASCRIPTLEGACY,
+                PLACEMENTTAGJAVASCRIPTLEGACY = 15,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPTLEGACY,
+                PLACEMENTTAGINTERSTITIALIFRAMEJAVASCRIPTLEGACY = 16,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY")]
-                PLACEMENTTAGINTERSTITIALJAVASCRIPTLEGACY,
+                PLACEMENTTAGINTERSTITIALJAVASCRIPTLEGACY = 17,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4")]
-                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4,
+                PLACEMENTTAGINSTREAMVIDEOPREFETCHVAST4 = 18,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -13922,27 +13922,27 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY")]
-                DISPLAY,
+                DISPLAY = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
-                DISPLAYINTERSTITIAL,
+                DISPLAYINTERSTITIAL = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APP")]
-                APP,
+                APP = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
-                APPINTERSTITIAL,
+                APPINTERSTITIAL = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
-                INSTREAMVIDEO,
+                INSTREAMVIDEO = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
-                INSTREAMAUDIO,
+                INSTREAMAUDIO = 5,
             }
 
             /// <summary>Select only placements that are associated with these content categories.</summary>
@@ -14006,11 +14006,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_AGENCY_PAID")]
-                PLACEMENTAGENCYPAID,
+                PLACEMENTAGENCYPAID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_PUBLISHER_PAID")]
-                PLACEMENTPUBLISHERPAID,
+                PLACEMENTPUBLISHERPAID = 1,
             }
 
             /// <summary>Select only placements that are associated with these placement strategies.</summary>
@@ -14026,27 +14026,27 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM")]
-                PRICINGTYPECPM,
+                PRICINGTYPECPM = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPC")]
-                PRICINGTYPECPC,
+                PRICINGTYPECPC = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPA")]
-                PRICINGTYPECPA,
+                PRICINGTYPECPA = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_IMPRESSIONS")]
-                PRICINGTYPEFLATRATEIMPRESSIONS,
+                PRICINGTYPEFLATRATEIMPRESSIONS = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_FLAT_RATE_CLICKS")]
-                PRICINGTYPEFLATRATECLICKS,
+                PRICINGTYPEFLATRATECLICKS = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRICING_TYPE_CPM_ACTIVEVIEW")]
-                PRICINGTYPECPMACTIVEVIEW,
+                PRICINGTYPECPMACTIVEVIEW = 5,
             }
 
             /// <summary>
@@ -14076,11 +14076,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -14092,11 +14092,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -14787,11 +14787,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -14803,11 +14803,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -15333,11 +15333,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -15349,11 +15349,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -15894,11 +15894,11 @@ namespace Google.Apis.Dfareporting.v3_3
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ID")]
-                    ID,
+                    ID = 0,
 
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_TIME")]
-                    LASTMODIFIEDTIME,
+                    LASTMODIFIEDTIME = 1,
                 }
 
                 /// <summary>Order of sorted results.</summary>
@@ -15910,11 +15910,11 @@ namespace Google.Apis.Dfareporting.v3_3
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                    ASCENDING,
+                    ASCENDING = 0,
 
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                    DESCENDING,
+                    DESCENDING = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -16191,11 +16191,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>All reports in account.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 0,
 
                 /// <summary>My reports.</summary>
                 [Google.Apis.Util.StringValueAttribute("MINE")]
-                MINE,
+                MINE = 1,
             }
 
             /// <summary>The field by which to sort the list.</summary>
@@ -16207,15 +16207,15 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>Sort by report ID.</summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary>Sort by 'lastModifiedTime' field.</summary>
                 [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_TIME")]
-                LASTMODIFIEDTIME,
+                LASTMODIFIEDTIME = 1,
 
                 /// <summary>Sort by name of reports.</summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 2,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -16227,11 +16227,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -16713,11 +16713,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -16729,11 +16729,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only sites with this subaccount ID.</summary>
@@ -17415,11 +17415,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -17431,11 +17431,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -17766,11 +17766,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -17782,11 +17782,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -18056,11 +18056,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -18072,11 +18072,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -18862,11 +18862,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ID")]
-                ID,
+                ID = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME,
+                NAME = 1,
             }
 
             /// <summary>Order of sorted results.</summary>
@@ -18878,11 +18878,11 @@ namespace Google.Apis.Dfareporting.v3_3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING,
+                ASCENDING = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING,
+                DESCENDING = 1,
             }
 
             /// <summary>Select only user roles that belong to this subaccount.</summary>

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Licensing.v1.LicensingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Licensing.v1.LicensingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

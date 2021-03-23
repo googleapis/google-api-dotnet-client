@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SmartDeviceManagement.v1.SmartDeviceManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SmartDeviceManagement.v1.SmartDeviceManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

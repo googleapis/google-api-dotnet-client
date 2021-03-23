@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Workflows.v1beta.WorkflowsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Workflows.v1beta.WorkflowsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -101,11 +101,11 @@ namespace Google.Apis.AccessContextManager.v1beta
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -121,15 +121,15 @@ namespace Google.Apis.AccessContextManager.v1beta
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -468,21 +468,21 @@ namespace Google.Apis.AccessContextManager.v1beta
                 {
                     /// <summary>The format was not specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("LEVEL_FORMAT_UNSPECIFIED")]
-                    LEVELFORMATUNSPECIFIED,
+                    LEVELFORMATUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
                     /// CustomLevels are returned as CustomLevels.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
-                    ASDEFINED,
+                    ASDEFINED = 1,
 
                     /// <summary>
                     /// Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
                     /// CustomLevels are returned as CustomLevels.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
-                    CEL,
+                    CEL = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -559,21 +559,21 @@ namespace Google.Apis.AccessContextManager.v1beta
                 {
                     /// <summary>The format was not specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("LEVEL_FORMAT_UNSPECIFIED")]
-                    LEVELFORMATUNSPECIFIED,
+                    LEVELFORMATUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Uses the format the resource was defined in. BasicLevels are returned as BasicLevels,
                     /// CustomLevels are returned as CustomLevels.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("AS_DEFINED")]
-                    ASDEFINED,
+                    ASDEFINED = 1,
 
                     /// <summary>
                     /// Use Cloud Common Expression Language when returning the resource. Both BasicLevels and
                     /// CustomLevels are returned as CustomLevels.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CEL")]
-                    CEL,
+                    CEL = 2,
                 }
 
                 /// <summary>Number of Access Levels to include in the list. Default 100.</summary>

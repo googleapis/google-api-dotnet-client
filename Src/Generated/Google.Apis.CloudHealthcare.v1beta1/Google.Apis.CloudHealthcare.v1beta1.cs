@@ -97,11 +97,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -567,17 +567,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             {
                                 /// <summary>Same as BASIC.</summary>
                                 [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_UNSPECIFIED")]
-                                ANNOTATIONVIEWUNSPECIFIED,
+                                ANNOTATIONVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Only `name`, `annotation_source` and `custom_data` fields are populated.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_BASIC")]
-                                ANNOTATIONVIEWBASIC,
+                                ANNOTATIONVIEWBASIC = 1,
 
                                 /// <summary>All fields are populated.</summary>
                                 [Google.Apis.Util.StringValueAttribute("ANNOTATION_VIEW_FULL")]
-                                ANNOTATIONVIEWFULL,
+                                ANNOTATIONVIEWFULL = 2,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -9901,35 +9901,35 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// listMessages.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_VIEW_UNSPECIFIED")]
-                                MESSAGEVIEWUNSPECIFIED,
+                                MESSAGEVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except parsed_data, and
                                 /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
-                                RAWONLY,
+                                RAWONLY = 1,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and schematized_data
                                 /// fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
-                                PARSEDONLY,
+                                PARSEDONLY = 2,
 
                                 /// <summary>Server responses include all the message fields.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 3,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and parsed_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
-                                SCHEMATIZEDONLY,
+                                SCHEMATIZEDONLY = 4,
 
                                 /// <summary>Server responses include only the name field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                                BASIC,
+                                BASIC = 5,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -10121,35 +10121,35 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// listMessages.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_VIEW_UNSPECIFIED")]
-                                MESSAGEVIEWUNSPECIFIED,
+                                MESSAGEVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except parsed_data, and
                                 /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
-                                RAWONLY,
+                                RAWONLY = 1,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and schematized_data
                                 /// fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
-                                PARSEDONLY,
+                                PARSEDONLY = 2,
 
                                 /// <summary>Server responses include all the message fields.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 3,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and parsed_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
-                                SCHEMATIZEDONLY,
+                                SCHEMATIZEDONLY = 4,
 
                                 /// <summary>Server responses include only the name field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                                BASIC,
+                                BASIC = 5,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -10366,35 +10366,35 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// listMessages.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("MESSAGE_VIEW_UNSPECIFIED")]
-                                MESSAGEVIEWUNSPECIFIED,
+                                MESSAGEVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except parsed_data, and
                                 /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
-                                RAWONLY,
+                                RAWONLY = 1,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and schematized_data
                                 /// fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
-                                PARSEDONLY,
+                                PARSEDONLY = 2,
 
                                 /// <summary>Server responses include all the message fields.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 3,
 
                                 /// <summary>
                                 /// Server responses include all the message fields except data and parsed_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
-                                SCHEMATIZEDONLY,
+                                SCHEMATIZEDONLY = 4,
 
                                 /// <summary>Server responses include only the name field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                                BASIC,
+                                BASIC = 5,
                             }
 
                             /// <summary>Gets the method name.</summary>

@@ -117,11 +117,11 @@ namespace Google.Apis.AdSenseHost.v4_1
         {
             /// <summary>Responses with Content-Type of text/csv</summary>
             [Google.Apis.Util.StringValueAttribute("csv")]
-            Csv,
+            Csv = 0,
 
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 1,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -1392,23 +1392,23 @@ namespace Google.Apis.AdSenseHost.v4_1
             {
                 /// <summary>AdSense For Content</summary>
                 [Google.Apis.Util.StringValueAttribute("AFC")]
-                AFC,
+                AFC = 0,
 
                 /// <summary>AdSense For Games</summary>
                 [Google.Apis.Util.StringValueAttribute("AFG")]
-                AFG,
+                AFG = 1,
 
                 /// <summary>AdSense For Mobile Content - deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("AFMC")]
-                AFMC,
+                AFMC = 2,
 
                 /// <summary>AdSense For Search - deprecated</summary>
                 [Google.Apis.Util.StringValueAttribute("AFS")]
-                AFS,
+                AFS = 3,
 
                 /// <summary>AdSense For Video</summary>
                 [Google.Apis.Util.StringValueAttribute("AFV")]
-                AFV,
+                AFV = 4,
             }
 
             /// <summary>The URL of the user's hosted website.</summary>

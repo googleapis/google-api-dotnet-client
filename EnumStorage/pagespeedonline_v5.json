@@ -1,0 +1,24 @@
+{
+  "Google.Apis.PagespeedInsights.v5.PagespeedapiResource+RunpagespeedRequest.CategoryEnum": [
+    "CATEGORY_UNSPECIFIED",
+    "ACCESSIBILITY",
+    "BEST_PRACTICES",
+    "PERFORMANCE",
+    "PWA",
+    "SEO"
+  ],
+  "Google.Apis.PagespeedInsights.v5.PagespeedapiResource+RunpagespeedRequest.StrategyEnum": [
+    "STRATEGY_UNSPECIFIED",
+    "DESKTOP",
+    "MOBILE"
+  ],
+  "Google.Apis.PagespeedInsights.v5.PagespeedInsightsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PagespeedInsights.v5.PagespeedInsightsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

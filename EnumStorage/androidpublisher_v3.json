@@ -1,0 +1,164 @@
+{
+  "Google.Apis.AndroidPublisher.v3.AndroidPublisherBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.AndroidPublisherBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ApksResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ApksResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+BundlesResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+BundlesResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+DeobfuscationfilesResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+DeobfuscationfilesResource+UploadMediaUpload.DeobfuscationFileTypeEnum": [
+    "deobfuscationFileTypeUnspecified",
+    "proguard",
+    "nativeCode"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+DeobfuscationfilesResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+DeobfuscationfilesResource+UploadRequest.DeobfuscationFileTypeEnum": [
+    "deobfuscationFileTypeUnspecified",
+    "proguard",
+    "nativeCode"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+GetRequest.ExpansionFileTypeEnum": [
+    "expansionFileTypeUnspecified",
+    "main",
+    "patch"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+PatchRequest.ExpansionFileTypeEnum": [
+    "expansionFileTypeUnspecified",
+    "main",
+    "patch"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+UpdateRequest.ExpansionFileTypeEnum": [
+    "expansionFileTypeUnspecified",
+    "main",
+    "patch"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+UploadMediaUpload.ExpansionFileTypeEnum": [
+    "expansionFileTypeUnspecified",
+    "main",
+    "patch"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ExpansionfilesResource+UploadRequest.ExpansionFileTypeEnum": [
+    "expansionFileTypeUnspecified",
+    "main",
+    "patch"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+DeleteallRequest.ImageTypeEnum": [
+    "appImageTypeUnspecified",
+    "phoneScreenshots",
+    "sevenInchScreenshots",
+    "tenInchScreenshots",
+    "tvScreenshots",
+    "wearScreenshots",
+    "icon",
+    "featureGraphic",
+    "tvBanner"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+DeleteRequest.ImageTypeEnum": [
+    "appImageTypeUnspecified",
+    "phoneScreenshots",
+    "sevenInchScreenshots",
+    "tenInchScreenshots",
+    "tvScreenshots",
+    "wearScreenshots",
+    "icon",
+    "featureGraphic",
+    "tvBanner"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+ListRequest.ImageTypeEnum": [
+    "appImageTypeUnspecified",
+    "phoneScreenshots",
+    "sevenInchScreenshots",
+    "tenInchScreenshots",
+    "tvScreenshots",
+    "wearScreenshots",
+    "icon",
+    "featureGraphic",
+    "tvBanner"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.ImageTypeEnum": [
+    "appImageTypeUnspecified",
+    "phoneScreenshots",
+    "sevenInchScreenshots",
+    "tenInchScreenshots",
+    "tvScreenshots",
+    "wearScreenshots",
+    "icon",
+    "featureGraphic",
+    "tvBanner"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.EditsResource+ImagesResource+UploadRequest.ImageTypeEnum": [
+    "appImageTypeUnspecified",
+    "phoneScreenshots",
+    "sevenInchScreenshots",
+    "tenInchScreenshots",
+    "tvScreenshots",
+    "wearScreenshots",
+    "icon",
+    "featureGraphic",
+    "tvBanner"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadapkMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadapkMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadbundleMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidPublisher.v3.InternalappsharingartifactsResource+UploadbundleMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

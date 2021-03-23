@@ -1,0 +1,21 @@
+{
+  "Google.Apis.Compute.v1.ComputeBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Compute.v1.InstancesResource+UpdateRequest.MinimalActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.v1.InstancesResource+UpdateRequest.MostDisruptiveAllowedActionEnum": [
+    "INVALID",
+    "NO_EFFECT",
+    "REFRESH",
+    "RESTART"
+  ],
+  "Google.Apis.Compute.v1.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
+    "INCOMING",
+    "OUTGOING"
+  ]
+}

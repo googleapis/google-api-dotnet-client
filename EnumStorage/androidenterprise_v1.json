@@ -1,0 +1,19 @@
+{
+  "Google.Apis.AndroidEnterprise.v1.AndroidEnterpriseBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidEnterprise.v1.AndroidEnterpriseBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+GetServiceAccountRequest.KeyTypeEnum": [
+    "googleCredentials",
+    "pkcs12"
+  ],
+  "Google.Apis.AndroidEnterprise.v1.EnterprisesResource+PullNotificationSetRequest.RequestModeEnum": [
+    "waitForNotifications",
+    "returnImmediately"
+  ]
+}

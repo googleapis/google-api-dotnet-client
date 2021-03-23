@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudIAP.v1.CloudIAPBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudIAP.v1.CloudIAPBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

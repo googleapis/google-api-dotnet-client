@@ -1,0 +1,30 @@
+{
+  "Google.Apis.GamesConfiguration.v1configuration.GamesConfigurationBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GamesConfiguration.v1configuration.GamesConfigurationBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.GamesConfiguration.v1configuration.ImageConfigurationsResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GamesConfiguration.v1configuration.ImageConfigurationsResource+UploadMediaUpload.ImageTypeEnum": [
+    "IMAGE_TYPE_UNSPECIFIED",
+    "ACHIEVEMENT_ICON",
+    "LEADERBOARD_ICON"
+  ],
+  "Google.Apis.GamesConfiguration.v1configuration.ImageConfigurationsResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.GamesConfiguration.v1configuration.ImageConfigurationsResource+UploadRequest.ImageTypeEnum": [
+    "IMAGE_TYPE_UNSPECIFIED",
+    "ACHIEVEMENT_ICON",
+    "LEADERBOARD_ICON"
+  ]
+}

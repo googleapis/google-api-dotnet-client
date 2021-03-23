@@ -1,0 +1,15 @@
+{
+  "Google.Apis.Drive.v3.DriveBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Drive.v3.FilesResource+CreateMediaUpload.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Drive.v3.FilesResource+ListRequest.CorpusEnum": [
+    "domain",
+    "user"
+  ],
+  "Google.Apis.Drive.v3.FilesResource+UpdateMediaUpload.AltEnum": [
+    "json"
+  ]
+}

@@ -153,7 +153,7 @@ namespace Google.Apis.Calendar.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -1080,19 +1080,19 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>The user can read free/busy information.</summary>
                 [Google.Apis.Util.StringValueAttribute("freeBusyReader")]
-                FreeBusyReader,
+                FreeBusyReader = 0,
 
                 /// <summary>The user can read and modify events and access control lists.</summary>
                 [Google.Apis.Util.StringValueAttribute("owner")]
-                Owner,
+                Owner = 1,
 
                 /// <summary>The user can read events that are not private.</summary>
                 [Google.Apis.Util.StringValueAttribute("reader")]
-                Reader,
+                Reader = 2,
 
                 /// <summary>The user can read and modify events.</summary>
                 [Google.Apis.Util.StringValueAttribute("writer")]
-                Writer,
+                Writer = 3,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>
@@ -1378,19 +1378,19 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>The user can read free/busy information.</summary>
                 [Google.Apis.Util.StringValueAttribute("freeBusyReader")]
-                FreeBusyReader,
+                FreeBusyReader = 0,
 
                 /// <summary>The user can read and modify events and access control lists.</summary>
                 [Google.Apis.Util.StringValueAttribute("owner")]
-                Owner,
+                Owner = 1,
 
                 /// <summary>The user can read events that are not private.</summary>
                 [Google.Apis.Util.StringValueAttribute("reader")]
-                Reader,
+                Reader = 2,
 
                 /// <summary>The user can read and modify events.</summary>
                 [Google.Apis.Util.StringValueAttribute("writer")]
-                Writer,
+                Writer = 3,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>
@@ -1991,18 +1991,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2325,18 +2325,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>
@@ -2680,11 +2680,11 @@ namespace Google.Apis.Calendar.v3
                 /// the parameter singleEvents is True)
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("startTime")]
-                StartTime,
+                StartTime = 0,
 
                 /// <summary>Order by last modification time (ascending).</summary>
                 [Google.Apis.Util.StringValueAttribute("updated")]
-                Updated,
+                Updated = 1,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>
@@ -2990,18 +2990,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -3140,18 +3140,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>
@@ -3296,18 +3296,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -3438,18 +3438,18 @@ namespace Google.Apis.Calendar.v3
             {
                 /// <summary>Notifications are sent to all guests.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 0,
 
                 /// <summary>Notifications are sent to non-Google Calendar guests only.</summary>
                 [Google.Apis.Util.StringValueAttribute("externalOnly")]
-                ExternalOnly,
+                ExternalOnly = 1,
 
                 /// <summary>
                 /// No notifications are sent. This value should only be used for migration use cases (note that in most
                 /// migration cases the import method should be used).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 2,
             }
 
             /// <summary>
@@ -3617,11 +3617,11 @@ namespace Google.Apis.Calendar.v3
                 /// the parameter singleEvents is True)
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("startTime")]
-                StartTime,
+                StartTime = 0,
 
                 /// <summary>Order by last modification time (ascending).</summary>
                 [Google.Apis.Util.StringValueAttribute("updated")]
-                Updated,
+                Updated = 1,
             }
 
             /// <summary>Token specifying which result page to return. Optional.</summary>

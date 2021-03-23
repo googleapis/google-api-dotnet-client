@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SecurityCommandCenter.v1beta2.SecurityCommandCenterBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SecurityCommandCenter.v1beta2.SecurityCommandCenterBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

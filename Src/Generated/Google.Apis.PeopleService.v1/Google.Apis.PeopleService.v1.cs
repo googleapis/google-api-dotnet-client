@@ -171,11 +171,11 @@ namespace Google.Apis.PeopleService.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -191,15 +191,15 @@ namespace Google.Apis.PeopleService.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1234,19 +1234,19 @@ namespace Google.Apis.PeopleService.v1
                 {
                     /// <summary>Sort people by when they were changed; older entries first.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
+                    LASTMODIFIEDASCENDING = 0,
 
                     /// <summary>Sort people by when they were changed; newer entries first.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_DESCENDING")]
-                    LASTMODIFIEDDESCENDING,
+                    LASTMODIFIEDDESCENDING = 1,
 
                     /// <summary>Sort people by first name.</summary>
                     [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
+                    FIRSTNAMEASCENDING = 2,
 
                     /// <summary>Sort people by last name.</summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
+                    LASTNAMEASCENDING = 3,
                 }
 
                 /// <summary>
@@ -1264,21 +1264,21 @@ namespace Google.Apis.PeopleService.v1
                 {
                     /// <summary>Unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                    READSOURCETYPEUNSPECIFIED,
+                    READSOURCETYPEUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                    READSOURCETYPEPROFILE,
+                    READSOURCETYPEPROFILE = 1,
 
                     /// <summary>Returns SourceType.CONTACT.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                    READSOURCETYPECONTACT,
+                    READSOURCETYPECONTACT = 2,
 
                     /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                    READSOURCETYPEDOMAINCONTACT,
+                    READSOURCETYPEDOMAINCONTACT = 3,
                 }
 
                 /// <summary>
@@ -1556,19 +1556,19 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                READSOURCETYPEUNSPECIFIED,
+                READSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                READSOURCETYPEPROFILE,
+                READSOURCETYPEPROFILE = 1,
 
                 /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                READSOURCETYPECONTACT,
+                READSOURCETYPECONTACT = 2,
 
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                READSOURCETYPEDOMAINCONTACT,
+                READSOURCETYPEDOMAINCONTACT = 3,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1701,19 +1701,19 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                READSOURCETYPEUNSPECIFIED,
+                READSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                READSOURCETYPEPROFILE,
+                READSOURCETYPEPROFILE = 1,
 
                 /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                READSOURCETYPECONTACT,
+                READSOURCETYPECONTACT = 2,
 
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                READSOURCETYPEDOMAINCONTACT,
+                READSOURCETYPEDOMAINCONTACT = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1826,19 +1826,19 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                READSOURCETYPEUNSPECIFIED,
+                READSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                READSOURCETYPEPROFILE,
+                READSOURCETYPEPROFILE = 1,
 
                 /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                READSOURCETYPECONTACT,
+                READSOURCETYPECONTACT = 2,
 
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                READSOURCETYPEDOMAINCONTACT,
+                READSOURCETYPEDOMAINCONTACT = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1958,19 +1958,19 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                READSOURCETYPEUNSPECIFIED,
+                READSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                READSOURCETYPEPROFILE,
+                READSOURCETYPEPROFILE = 1,
 
                 /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                READSOURCETYPECONTACT,
+                READSOURCETYPECONTACT = 2,
 
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                READSOURCETYPEDOMAINCONTACT,
+                READSOURCETYPEDOMAINCONTACT = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2055,11 +2055,11 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
-                DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                DIRECTORYMERGESOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>User owned contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
-                DIRECTORYMERGESOURCETYPECONTACT,
+                DIRECTORYMERGESOURCETYPECONTACT = 1,
             }
 
             /// <summary>
@@ -2104,15 +2104,15 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
-                DIRECTORYSOURCETYPEUNSPECIFIED,
+                DIRECTORYSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>G Suite domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
-                DIRECTORYSOURCETYPEDOMAINCONTACT,
+                DIRECTORYSOURCETYPEDOMAINCONTACT = 1,
 
                 /// <summary>G Suite domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
-                DIRECTORYSOURCETYPEDOMAINPROFILE,
+                DIRECTORYSOURCETYPEDOMAINPROFILE = 2,
             }
 
             /// <summary>
@@ -2313,11 +2313,11 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED")]
-                DIRECTORYMERGESOURCETYPEUNSPECIFIED,
+                DIRECTORYMERGESOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>User owned contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_MERGE_SOURCE_TYPE_CONTACT")]
-                DIRECTORYMERGESOURCETYPECONTACT,
+                DIRECTORYMERGESOURCETYPECONTACT = 1,
             }
 
             /// <summary>
@@ -2362,15 +2362,15 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
-                DIRECTORYSOURCETYPEUNSPECIFIED,
+                DIRECTORYSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>G Suite domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
-                DIRECTORYSOURCETYPEDOMAINCONTACT,
+                DIRECTORYSOURCETYPEDOMAINCONTACT = 1,
 
                 /// <summary>G Suite domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
-                DIRECTORYSOURCETYPEDOMAINPROFILE,
+                DIRECTORYSOURCETYPEDOMAINPROFILE = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2512,19 +2512,19 @@ namespace Google.Apis.PeopleService.v1
             {
                 /// <summary>Unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
-                READSOURCETYPEUNSPECIFIED,
+                READSOURCETYPEUNSPECIFIED = 0,
 
                 /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
-                READSOURCETYPEPROFILE,
+                READSOURCETYPEPROFILE = 1,
 
                 /// <summary>Returns SourceType.CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
-                READSOURCETYPECONTACT,
+                READSOURCETYPECONTACT = 2,
 
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
-                READSOURCETYPEDOMAINCONTACT,
+                READSOURCETYPEDOMAINCONTACT = 3,
             }
 
             /// <summary>

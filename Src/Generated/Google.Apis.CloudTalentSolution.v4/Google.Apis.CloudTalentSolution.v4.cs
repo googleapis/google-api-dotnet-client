@@ -103,11 +103,11 @@ namespace Google.Apis.CloudTalentSolution.v4
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -123,15 +123,15 @@ namespace Google.Apis.CloudTalentSolution.v4
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1248,21 +1248,21 @@ namespace Google.Apis.CloudTalentSolution.v4
                     {
                         /// <summary>Default value.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_UNSPECIFIED")]
-                        JOBVIEWUNSPECIFIED,
+                        JOBVIEWUNSPECIFIED = 0,
 
                         /// <summary>
                         /// A ID only view of job, with following attributes: Job.name, Job.requisition_id,
                         /// Job.language_code.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_ID_ONLY")]
-                        JOBVIEWIDONLY,
+                        JOBVIEWIDONLY = 1,
 
                         /// <summary>
                         /// A minimal view of the job, with the following attributes: Job.name, Job.requisition_id,
                         /// Job.title, Job.company, Job.DerivedInfo.locations, Job.language_code.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_MINIMAL")]
-                        JOBVIEWMINIMAL,
+                        JOBVIEWMINIMAL = 2,
 
                         /// <summary>
                         /// A small view of the job, with the following attributes in the search results: Job.name,
@@ -1270,11 +1270,11 @@ namespace Google.Apis.CloudTalentSolution.v4
                         /// Job.language_code, Job.description.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_SMALL")]
-                        JOBVIEWSMALL,
+                        JOBVIEWSMALL = 3,
 
                         /// <summary>All available attributes are included in the search results.</summary>
                         [Google.Apis.Util.StringValueAttribute("JOB_VIEW_FULL")]
-                        JOBVIEWFULL,
+                        JOBVIEWFULL = 4,
                     }
 
                     /// <summary>
@@ -1635,17 +1635,17 @@ namespace Google.Apis.CloudTalentSolution.v4
                 {
                     /// <summary>Default value.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETION_SCOPE_UNSPECIFIED")]
-                    COMPLETIONSCOPEUNSPECIFIED,
+                    COMPLETIONSCOPEUNSPECIFIED = 0,
 
                     /// <summary>Suggestions are based only on the data provided by the client.</summary>
                     [Google.Apis.Util.StringValueAttribute("TENANT")]
-                    TENANT,
+                    TENANT = 1,
 
                     /// <summary>
                     /// Suggestions are based on all jobs data in the system that's visible to the client
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLIC")]
-                    PUBLIC__,
+                    PUBLIC__ = 2,
                 }
 
                 /// <summary>The completion topic. The default is CompletionType.COMBINED.</summary>
@@ -1657,21 +1657,21 @@ namespace Google.Apis.CloudTalentSolution.v4
                 {
                     /// <summary>Default value.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                    COMPLETIONTYPEUNSPECIFIED,
+                    COMPLETIONTYPEUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Suggest job titles for jobs autocomplete. For CompletionType.JOB_TITLE type, only open jobs with
                     /// the same language_codes are returned.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                    JOBTITLE,
+                    JOBTITLE = 1,
 
                     /// <summary>
                     /// Suggest company names for jobs autocomplete. For CompletionType.COMPANY_NAME type, only
                     /// companies having open jobs with the same language_codes are returned.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                    COMPANYNAME,
+                    COMPANYNAME = 2,
 
                     /// <summary>
                     /// Suggest both job titles and company names for jobs autocomplete. For CompletionType.COMBINED
@@ -1679,7 +1679,7 @@ namespace Google.Apis.CloudTalentSolution.v4
                     /// language_codes are returned.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                    COMBINED,
+                    COMBINED = 3,
                 }
 
                 /// <summary>Gets the method name.</summary>

@@ -83,11 +83,11 @@ namespace Google.Apis.CustomSearchAPI.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -103,15 +103,15 @@ namespace Google.Apis.CustomSearchAPI.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -422,23 +422,23 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>No image color type specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
-                    ImgColorTypeUndefined,
+                    ImgColorTypeUndefined = 0,
 
                     /// <summary>Black and white images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("mono")]
-                    Mono,
+                    Mono = 1,
 
                     /// <summary>Grayscale images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("gray")]
-                    Gray,
+                    Gray = 2,
 
                     /// <summary>Color images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("color")]
-                    Color,
+                    Color = 3,
 
                     /// <summary>Images with transparent background</summary>
                     [Google.Apis.Util.StringValueAttribute("trans")]
-                    Trans,
+                    Trans = 4,
                 }
 
                 /// <summary>
@@ -458,55 +458,55 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>No dominant color specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
-                    ImgDominantColorUndefined,
+                    ImgDominantColorUndefined = 0,
 
                     /// <summary>Predominantly black images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("black")]
-                    Black,
+                    Black = 1,
 
                     /// <summary>Predominantly blue images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("blue")]
-                    Blue,
+                    Blue = 2,
 
                     /// <summary>Predominantly brown images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("brown")]
-                    Brown,
+                    Brown = 3,
 
                     /// <summary>Predominantly gray images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("gray")]
-                    Gray,
+                    Gray = 4,
 
                     /// <summary>Predominantly green images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("green")]
-                    Green,
+                    Green = 5,
 
                     /// <summary>Predominantly orange images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("orange")]
-                    Orange,
+                    Orange = 6,
 
                     /// <summary>Predominantly pink images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("pink")]
-                    Pink,
+                    Pink = 7,
 
                     /// <summary>Predominantly purple images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("purple")]
-                    Purple,
+                    Purple = 8,
 
                     /// <summary>Predominantly red images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("red")]
-                    Red,
+                    Red = 9,
 
                     /// <summary>Predominantly teal images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("teal")]
-                    Teal,
+                    Teal = 10,
 
                     /// <summary>Predominantly white images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("white")]
-                    White,
+                    White = 11,
 
                     /// <summary>Predominantly yellow images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("yellow")]
-                    Yellow,
+                    Yellow = 12,
                 }
 
                 /// <summary>
@@ -524,35 +524,35 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>No image size specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
-                    ImgSizeUndefined,
+                    ImgSizeUndefined = 0,
 
                     /// <summary>Only the largest possible images.</summary>
                     [Google.Apis.Util.StringValueAttribute("HUGE")]
-                    HUGE,
+                    HUGE = 1,
 
                     /// <summary>Only very small icon-sized images.</summary>
                     [Google.Apis.Util.StringValueAttribute("ICON")]
-                    ICON,
+                    ICON = 2,
 
                     /// <summary>Only large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("LARGE")]
-                    LARGE,
+                    LARGE = 3,
 
                     /// <summary>Only medium images.</summary>
                     [Google.Apis.Util.StringValueAttribute("MEDIUM")]
-                    MEDIUM,
+                    MEDIUM = 4,
 
                     /// <summary>Only small images.</summary>
                     [Google.Apis.Util.StringValueAttribute("SMALL")]
-                    SMALL,
+                    SMALL = 5,
 
                     /// <summary>Only very large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("XLARGE")]
-                    XLARGE,
+                    XLARGE = 6,
 
                     /// <summary>Only extremely large images.</summary>
                     [Google.Apis.Util.StringValueAttribute("XXLARGE")]
-                    XXLARGE,
+                    XXLARGE = 7,
                 }
 
                 /// <summary>
@@ -570,31 +570,31 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>No image type specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
-                    ImgTypeUndefined,
+                    ImgTypeUndefined = 0,
 
                     /// <summary>Clipart-style images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("clipart")]
-                    Clipart,
+                    Clipart = 1,
 
                     /// <summary>Images of faces only.</summary>
                     [Google.Apis.Util.StringValueAttribute("face")]
-                    Face,
+                    Face = 2,
 
                     /// <summary>Line art images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("lineart")]
-                    Lineart,
+                    Lineart = 3,
 
                     /// <summary>Stock images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("stock")]
-                    Stock,
+                    Stock = 4,
 
                     /// <summary>Photo images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("photo")]
-                    Photo,
+                    Photo = 5,
 
                     /// <summary>Animated images only.</summary>
                     [Google.Apis.Util.StringValueAttribute("animated")]
-                    Animated,
+                    Animated = 6,
                 }
 
                 /// <summary>Specifies that all search results should contain a link to a particular URL.</summary>
@@ -669,23 +669,23 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>SafeSearch mode unspecified. (Falls back to engine's configuration.)</summary>
                     [Google.Apis.Util.StringValueAttribute("safeUndefined")]
-                    SafeUndefined,
+                    SafeUndefined = 0,
 
                     /// <summary>Turn SafeSearch on.</summary>
                     [Google.Apis.Util.StringValueAttribute("active")]
-                    Active,
+                    Active = 1,
 
                     /// <summary>Deprecated, equivalent to "active".</summary>
                     [Google.Apis.Util.StringValueAttribute("high")]
-                    High,
+                    High = 2,
 
                     /// <summary>Deprecated, equivalent to "active".</summary>
                     [Google.Apis.Util.StringValueAttribute("medium")]
-                    Medium,
+                    Medium = 3,
 
                     /// <summary>Turn SafeSearch off.</summary>
                     [Google.Apis.Util.StringValueAttribute("off")]
-                    Off,
+                    Off = 4,
                 }
 
                 /// <summary>
@@ -703,11 +703,11 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>Search type unspecified (defaults to web search).</summary>
                     [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
-                    SearchTypeUndefined,
+                    SearchTypeUndefined = 0,
 
                     /// <summary>Image search.</summary>
                     [Google.Apis.Util.StringValueAttribute("image")]
-                    Image,
+                    Image = 1,
                 }
 
                 /// <summary>
@@ -732,15 +732,15 @@ namespace Google.Apis.CustomSearchAPI.v1
                 {
                     /// <summary>Filter mode unspecified.</summary>
                     [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
-                    SiteSearchFilterUndefined,
+                    SiteSearchFilterUndefined = 0,
 
                     /// <summary>Exclude results from the listed sites.</summary>
                     [Google.Apis.Util.StringValueAttribute("e")]
-                    E,
+                    E = 1,
 
                     /// <summary>Include only results from the listed sites.</summary>
                     [Google.Apis.Util.StringValueAttribute("i")]
-                    I,
+                    I = 2,
                 }
 
                 /// <summary>
@@ -1168,23 +1168,23 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>No image color type specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgColorTypeUndefined")]
-                ImgColorTypeUndefined,
+                ImgColorTypeUndefined = 0,
 
                 /// <summary>Black and white images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("mono")]
-                Mono,
+                Mono = 1,
 
                 /// <summary>Grayscale images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("gray")]
-                Gray,
+                Gray = 2,
 
                 /// <summary>Color images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("color")]
-                Color,
+                Color = 3,
 
                 /// <summary>Images with transparent background</summary>
                 [Google.Apis.Util.StringValueAttribute("trans")]
-                Trans,
+                Trans = 4,
             }
 
             /// <summary>
@@ -1202,55 +1202,55 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>No dominant color specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgDominantColorUndefined")]
-                ImgDominantColorUndefined,
+                ImgDominantColorUndefined = 0,
 
                 /// <summary>Predominantly black images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("black")]
-                Black,
+                Black = 1,
 
                 /// <summary>Predominantly blue images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("blue")]
-                Blue,
+                Blue = 2,
 
                 /// <summary>Predominantly brown images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("brown")]
-                Brown,
+                Brown = 3,
 
                 /// <summary>Predominantly gray images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("gray")]
-                Gray,
+                Gray = 4,
 
                 /// <summary>Predominantly green images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("green")]
-                Green,
+                Green = 5,
 
                 /// <summary>Predominantly orange images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("orange")]
-                Orange,
+                Orange = 6,
 
                 /// <summary>Predominantly pink images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("pink")]
-                Pink,
+                Pink = 7,
 
                 /// <summary>Predominantly purple images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("purple")]
-                Purple,
+                Purple = 8,
 
                 /// <summary>Predominantly red images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("red")]
-                Red,
+                Red = 9,
 
                 /// <summary>Predominantly teal images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("teal")]
-                Teal,
+                Teal = 10,
 
                 /// <summary>Predominantly white images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("white")]
-                White,
+                White = 11,
 
                 /// <summary>Predominantly yellow images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("yellow")]
-                Yellow,
+                Yellow = 12,
             }
 
             /// <summary>
@@ -1268,35 +1268,35 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>No image size specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgSizeUndefined")]
-                ImgSizeUndefined,
+                ImgSizeUndefined = 0,
 
                 /// <summary>Only the largest possible images.</summary>
                 [Google.Apis.Util.StringValueAttribute("HUGE")]
-                HUGE,
+                HUGE = 1,
 
                 /// <summary>Only very small icon-sized images.</summary>
                 [Google.Apis.Util.StringValueAttribute("ICON")]
-                ICON,
+                ICON = 2,
 
                 /// <summary>Only large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("LARGE")]
-                LARGE,
+                LARGE = 3,
 
                 /// <summary>Only medium images.</summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
-                MEDIUM,
+                MEDIUM = 4,
 
                 /// <summary>Only small images.</summary>
                 [Google.Apis.Util.StringValueAttribute("SMALL")]
-                SMALL,
+                SMALL = 5,
 
                 /// <summary>Only very large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("XLARGE")]
-                XLARGE,
+                XLARGE = 6,
 
                 /// <summary>Only extremely large images.</summary>
                 [Google.Apis.Util.StringValueAttribute("XXLARGE")]
-                XXLARGE,
+                XXLARGE = 7,
             }
 
             /// <summary>
@@ -1314,31 +1314,31 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>No image type specified.</summary>
                 [Google.Apis.Util.StringValueAttribute("imgTypeUndefined")]
-                ImgTypeUndefined,
+                ImgTypeUndefined = 0,
 
                 /// <summary>Clipart-style images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("clipart")]
-                Clipart,
+                Clipart = 1,
 
                 /// <summary>Images of faces only.</summary>
                 [Google.Apis.Util.StringValueAttribute("face")]
-                Face,
+                Face = 2,
 
                 /// <summary>Line art images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("lineart")]
-                Lineart,
+                Lineart = 3,
 
                 /// <summary>Stock images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("stock")]
-                Stock,
+                Stock = 4,
 
                 /// <summary>Photo images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("photo")]
-                Photo,
+                Photo = 5,
 
                 /// <summary>Animated images only.</summary>
                 [Google.Apis.Util.StringValueAttribute("animated")]
-                Animated,
+                Animated = 6,
             }
 
             /// <summary>Specifies that all search results should contain a link to a particular URL.</summary>
@@ -1413,23 +1413,23 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>SafeSearch mode unspecified. (Falls back to engine's configuration.)</summary>
                 [Google.Apis.Util.StringValueAttribute("safeUndefined")]
-                SafeUndefined,
+                SafeUndefined = 0,
 
                 /// <summary>Turn SafeSearch on.</summary>
                 [Google.Apis.Util.StringValueAttribute("active")]
-                Active,
+                Active = 1,
 
                 /// <summary>Deprecated, equivalent to "active".</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
-                High,
+                High = 2,
 
                 /// <summary>Deprecated, equivalent to "active".</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
-                Medium,
+                Medium = 3,
 
                 /// <summary>Turn SafeSearch off.</summary>
                 [Google.Apis.Util.StringValueAttribute("off")]
-                Off,
+                Off = 4,
             }
 
             /// <summary>
@@ -1447,11 +1447,11 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>Search type unspecified (defaults to web search).</summary>
                 [Google.Apis.Util.StringValueAttribute("searchTypeUndefined")]
-                SearchTypeUndefined,
+                SearchTypeUndefined = 0,
 
                 /// <summary>Image search.</summary>
                 [Google.Apis.Util.StringValueAttribute("image")]
-                Image,
+                Image = 1,
             }
 
             /// <summary>
@@ -1476,15 +1476,15 @@ namespace Google.Apis.CustomSearchAPI.v1
             {
                 /// <summary>Filter mode unspecified.</summary>
                 [Google.Apis.Util.StringValueAttribute("siteSearchFilterUndefined")]
-                SiteSearchFilterUndefined,
+                SiteSearchFilterUndefined = 0,
 
                 /// <summary>Exclude results from the listed sites.</summary>
                 [Google.Apis.Util.StringValueAttribute("e")]
-                E,
+                E = 1,
 
                 /// <summary>Include only results from the listed sites.</summary>
                 [Google.Apis.Util.StringValueAttribute("i")]
-                I,
+                I = 2,
             }
 
             /// <summary>

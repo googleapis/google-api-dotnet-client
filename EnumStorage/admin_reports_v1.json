@@ -1,0 +1,66 @@
+{
+  "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+ListRequest.ApplicationNameEnum": [
+    "application_name_undefined",
+    "access_transparency",
+    "admin",
+    "calendar",
+    "chat",
+    "drive",
+    "gcp",
+    "gplus",
+    "groups",
+    "groups_enterprise",
+    "jamboard",
+    "login",
+    "meet",
+    "mobile",
+    "rules",
+    "saml",
+    "token",
+    "user_accounts",
+    "context_aware_access",
+    "chrome",
+    "data_studio"
+  ],
+  "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
+    "application_name_unspecified",
+    "access_transparency",
+    "admin",
+    "calendar",
+    "chat",
+    "drive",
+    "gcp",
+    "gplus",
+    "groups",
+    "groups_enterprise",
+    "jamboard",
+    "login",
+    "meet",
+    "mobile",
+    "rules",
+    "saml",
+    "token",
+    "user_accounts",
+    "context_aware_access",
+    "chrome",
+    "data_studio"
+  ],
+  "Google.Apis.Admin.Reports.reports_v1.EntityUsageReportsResource+GetRequest.EntityKeyEnum": [
+    "entityKeyUndefined",
+    "all",
+    "entityKey"
+  ],
+  "Google.Apis.Admin.Reports.reports_v1.EntityUsageReportsResource+GetRequest.EntityTypeEnum": [
+    "entity_type_undefined",
+    "gplus_communities"
+  ],
+  "Google.Apis.Admin.Reports.reports_v1.ReportsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Admin.Reports.reports_v1.ReportsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "Google.Apis.CivicInfo.v2.CivicInfoBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CivicInfo.v2.CivicInfoBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CivicInfo.v2.RepresentativesResource+RepresentativeInfoByAddressRequest.LevelsEnum": [
+    "international",
+    "country",
+    "administrativeArea1",
+    "regional",
+    "administrativeArea2",
+    "locality",
+    "subLocality1",
+    "subLocality2",
+    "special"
+  ],
+  "Google.Apis.CivicInfo.v2.RepresentativesResource+RepresentativeInfoByAddressRequest.RolesEnum": [
+    "headOfState",
+    "headOfGovernment",
+    "deputyHeadOfGovernment",
+    "governmentOfficer",
+    "executiveCouncil",
+    "legislatorUpperBody",
+    "legislatorLowerBody",
+    "highestCourtJudge",
+    "judge",
+    "schoolBoard",
+    "specialPurposeOfficer"
+  ],
+  "Google.Apis.CivicInfo.v2.RepresentativesResource+RepresentativeInfoByDivisionRequest.LevelsEnum": [
+    "international",
+    "country",
+    "administrativeArea1",
+    "regional",
+    "administrativeArea2",
+    "locality",
+    "subLocality1",
+    "subLocality2",
+    "special"
+  ],
+  "Google.Apis.CivicInfo.v2.RepresentativesResource+RepresentativeInfoByDivisionRequest.RolesEnum": [
+    "headOfState",
+    "headOfGovernment",
+    "deputyHeadOfGovernment",
+    "governmentOfficer",
+    "executiveCouncil",
+    "legislatorUpperBody",
+    "legislatorLowerBody",
+    "highestCourtJudge",
+    "judge",
+    "schoolBoard",
+    "specialPurposeOfficer"
+  ]
+}

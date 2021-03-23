@@ -1,0 +1,93 @@
+{
+  "Google.Apis.Dataflow.v1b3.DataflowBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dataflow.v1b3.DataflowBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+AggregatedRequest.FilterEnum": [
+    "UNKNOWN",
+    "ALL",
+    "TERMINATED",
+    "ACTIVE"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+AggregatedRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+CreateRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+GetRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+ListRequest.FilterEnum": [
+    "UNKNOWN",
+    "ALL",
+    "TERMINATED",
+    "ACTIVE"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+ListRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+JobsResource+MessagesResource+ListRequest.MinimumImportanceEnum": [
+    "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
+    "JOB_MESSAGE_DEBUG",
+    "JOB_MESSAGE_DETAILED",
+    "JOB_MESSAGE_BASIC",
+    "JOB_MESSAGE_WARNING",
+    "JOB_MESSAGE_ERROR"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+JobsResource+CreateRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+JobsResource+GetRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+JobsResource+ListRequest.FilterEnum": [
+    "UNKNOWN",
+    "ALL",
+    "TERMINATED",
+    "ACTIVE"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+JobsResource+ListRequest.ViewEnum": [
+    "JOB_VIEW_UNKNOWN",
+    "JOB_VIEW_SUMMARY",
+    "JOB_VIEW_ALL",
+    "JOB_VIEW_DESCRIPTION"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+JobsResource+MessagesResource+ListRequest.MinimumImportanceEnum": [
+    "JOB_MESSAGE_IMPORTANCE_UNKNOWN",
+    "JOB_MESSAGE_DEBUG",
+    "JOB_MESSAGE_DETAILED",
+    "JOB_MESSAGE_BASIC",
+    "JOB_MESSAGE_WARNING",
+    "JOB_MESSAGE_ERROR"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+LocationsResource+TemplatesResource+GetRequest.ViewEnum": [
+    "METADATA_ONLY"
+  ],
+  "Google.Apis.Dataflow.v1b3.ProjectsResource+TemplatesResource+GetRequest.ViewEnum": [
+    "METADATA_ONLY"
+  ]
+}

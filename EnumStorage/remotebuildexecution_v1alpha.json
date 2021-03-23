@@ -1,0 +1,11 @@
+{
+  "Google.Apis.RemoteBuildExecution.v1alpha.RemoteBuildExecutionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RemoteBuildExecution.v1alpha.RemoteBuildExecutionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

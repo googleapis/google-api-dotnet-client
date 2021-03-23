@@ -119,11 +119,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -139,15 +139,15 @@ namespace Google.Apis.FirebaseHosting.v1beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1501,18 +1501,18 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         {
                             /// <summary>The default status; should not be intentionally used.</summary>
                             [Google.Apis.Util.StringValueAttribute("STATUS_UNSPECIFIED")]
-                            STATUSUNSPECIFIED,
+                            STATUSUNSPECIFIED = 0,
 
                             /// <summary>
                             /// The file has been included in the version and is expected to be uploaded in the near
                             /// future.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("EXPECTED")]
-                            EXPECTED,
+                            EXPECTED = 1,
 
                             /// <summary>The file has already been uploaded to Firebase Hosting.</summary>
                             [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                            ACTIVE,
+                            ACTIVE = 2,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -3602,17 +3602,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     {
                         /// <summary>The default status; should not be intentionally used.</summary>
                         [Google.Apis.Util.StringValueAttribute("STATUS_UNSPECIFIED")]
-                        STATUSUNSPECIFIED,
+                        STATUSUNSPECIFIED = 0,
 
                         /// <summary>
                         /// The file has been included in the version and is expected to be uploaded in the near future.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("EXPECTED")]
-                        EXPECTED,
+                        EXPECTED = 1,
 
                         /// <summary>The file has already been uploaded to Firebase Hosting.</summary>
                         [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                        ACTIVE,
+                        ACTIVE = 2,
                     }
 
                     /// <summary>Gets the method name.</summary>

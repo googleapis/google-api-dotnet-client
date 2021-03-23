@@ -135,11 +135,11 @@ namespace Google.Apis.Monitoring.v3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -155,15 +155,15 @@ namespace Google.Apis.Monitoring.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -397,7 +397,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -405,7 +405,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -413,7 +413,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -421,7 +421,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -429,7 +429,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -437,7 +437,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -445,7 +445,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -453,7 +453,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -461,7 +461,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -469,7 +469,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -477,7 +477,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -485,7 +485,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -493,7 +493,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -501,7 +501,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -550,7 +550,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -559,7 +559,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -571,7 +571,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -579,7 +579,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -587,7 +587,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -595,7 +595,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -603,7 +603,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -611,7 +611,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -619,7 +619,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -627,7 +627,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -635,21 +635,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -657,7 +657,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -666,7 +666,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -675,7 +675,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -684,7 +684,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -693,7 +693,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -708,7 +708,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>
@@ -795,7 +795,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -803,7 +803,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -811,7 +811,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -819,7 +819,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -827,7 +827,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -835,7 +835,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -843,7 +843,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -851,7 +851,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -859,7 +859,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -867,7 +867,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -875,7 +875,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -883,7 +883,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -891,7 +891,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -899,7 +899,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -948,7 +948,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -957,7 +957,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -969,7 +969,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -977,7 +977,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -985,7 +985,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -993,7 +993,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -1001,7 +1001,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -1009,7 +1009,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -1017,7 +1017,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -1025,7 +1025,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -1033,21 +1033,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -1055,7 +1055,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1064,7 +1064,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1073,7 +1073,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1082,7 +1082,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1091,7 +1091,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -1106,7 +1106,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>Required. Specifies which information is returned about the time series.</summary>
@@ -1120,13 +1120,13 @@ namespace Google.Apis.Monitoring.v3
                     /// Returns the identity of the metric(s), the time series, and the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 0,
 
                     /// <summary>
                     /// Returns the identity of the metric and the time series resource, but not the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("HEADERS")]
-                    HEADERS,
+                    HEADERS = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1373,7 +1373,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -1381,7 +1381,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -1389,7 +1389,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -1397,7 +1397,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -1405,7 +1405,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -1413,7 +1413,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -1421,7 +1421,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -1429,7 +1429,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -1437,7 +1437,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -1445,7 +1445,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1453,7 +1453,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1461,7 +1461,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1469,7 +1469,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -1477,7 +1477,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -1526,7 +1526,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -1535,7 +1535,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -1547,7 +1547,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -1555,7 +1555,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -1563,7 +1563,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -1571,7 +1571,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -1579,7 +1579,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -1587,7 +1587,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -1595,7 +1595,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -1603,7 +1603,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -1611,21 +1611,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -1633,7 +1633,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1642,7 +1642,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1651,7 +1651,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1660,7 +1660,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -1669,7 +1669,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -1684,7 +1684,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>
@@ -1771,7 +1771,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -1779,7 +1779,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -1787,7 +1787,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -1795,7 +1795,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -1803,7 +1803,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -1811,7 +1811,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -1819,7 +1819,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -1827,7 +1827,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -1835,7 +1835,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -1843,7 +1843,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1851,7 +1851,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1859,7 +1859,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -1867,7 +1867,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -1875,7 +1875,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -1924,7 +1924,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -1933,7 +1933,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -1945,7 +1945,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -1953,7 +1953,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -1961,7 +1961,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -1969,7 +1969,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -1977,7 +1977,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -1985,7 +1985,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -1993,7 +1993,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -2001,7 +2001,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -2009,21 +2009,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -2031,7 +2031,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -2040,7 +2040,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -2049,7 +2049,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -2058,7 +2058,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -2067,7 +2067,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -2082,7 +2082,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>Required. Specifies which information is returned about the time series.</summary>
@@ -2096,13 +2096,13 @@ namespace Google.Apis.Monitoring.v3
                     /// Returns the identity of the metric(s), the time series, and the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 0,
 
                     /// <summary>
                     /// Returns the identity of the metric and the time series resource, but not the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("HEADERS")]
-                    HEADERS,
+                    HEADERS = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -4698,7 +4698,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -4706,7 +4706,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -4714,7 +4714,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -4722,7 +4722,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -4730,7 +4730,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -4738,7 +4738,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -4746,7 +4746,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -4754,7 +4754,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -4762,7 +4762,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -4770,7 +4770,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -4778,7 +4778,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -4786,7 +4786,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -4794,7 +4794,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -4802,7 +4802,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -4851,7 +4851,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -4860,7 +4860,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -4872,7 +4872,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -4880,7 +4880,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -4888,7 +4888,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -4896,7 +4896,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -4904,7 +4904,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -4912,7 +4912,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -4920,7 +4920,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -4928,7 +4928,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -4936,21 +4936,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -4958,7 +4958,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -4967,7 +4967,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -4976,7 +4976,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -4985,7 +4985,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -4994,7 +4994,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -5009,7 +5009,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>
@@ -5096,7 +5096,7 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>No cross-time series reduction. The output of the Aligner is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_NONE")]
-                    REDUCENONE,
+                    REDUCENONE = 0,
 
                     /// <summary>
                     /// Reduce by computing the mean value across time series for each alignment period. This reducer is
@@ -5104,7 +5104,7 @@ namespace Google.Apis.Monitoring.v3
                     /// output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MEAN")]
-                    REDUCEMEAN,
+                    REDUCEMEAN = 1,
 
                     /// <summary>
                     /// Reduce by computing the minimum value across time series for each alignment period. This reducer
@@ -5112,7 +5112,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MIN")]
-                    REDUCEMIN,
+                    REDUCEMIN = 2,
 
                     /// <summary>
                     /// Reduce by computing the maximum value across time series for each alignment period. This reducer
@@ -5120,7 +5120,7 @@ namespace Google.Apis.Monitoring.v3
                     /// same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_MAX")]
-                    REDUCEMAX,
+                    REDUCEMAX = 3,
 
                     /// <summary>
                     /// Reduce by computing the sum across time series for each alignment period. This reducer is valid
@@ -5128,7 +5128,7 @@ namespace Google.Apis.Monitoring.v3
                     /// is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_SUM")]
-                    REDUCESUM,
+                    REDUCESUM = 4,
 
                     /// <summary>
                     /// Reduce by computing the standard deviation across time series for each alignment period. This
@@ -5136,7 +5136,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_STDDEV")]
-                    REDUCESTDDEV,
+                    REDUCESTDDEV = 5,
 
                     /// <summary>
                     /// Reduce by computing the number of data points across time series for each alignment period. This
@@ -5144,7 +5144,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT")]
-                    REDUCECOUNT,
+                    REDUCECOUNT = 6,
 
                     /// <summary>
                     /// Reduce by computing the number of True-valued data points across time series for each alignment
@@ -5152,7 +5152,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_TRUE")]
-                    REDUCECOUNTTRUE,
+                    REDUCECOUNTTRUE = 7,
 
                     /// <summary>
                     /// Reduce by computing the number of False-valued data points across time series for each alignment
@@ -5160,7 +5160,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_COUNT_FALSE")]
-                    REDUCECOUNTFALSE,
+                    REDUCECOUNTFALSE = 8,
 
                     /// <summary>
                     /// Reduce by computing the ratio of the number of True-valued data points to the total number of
@@ -5168,7 +5168,7 @@ namespace Google.Apis.Monitoring.v3
                     /// Boolean value_type. The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_FRACTION_TRUE")]
-                    REDUCEFRACTIONTRUE,
+                    REDUCEFRACTIONTRUE = 9,
 
                     /// <summary>
                     /// Reduce by computing the 99th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -5176,7 +5176,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_99")]
-                    REDUCEPERCENTILE99,
+                    REDUCEPERCENTILE99 = 10,
 
                     /// <summary>
                     /// Reduce by computing the 95th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -5184,7 +5184,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_95")]
-                    REDUCEPERCENTILE95,
+                    REDUCEPERCENTILE95 = 11,
 
                     /// <summary>
                     /// Reduce by computing the 50th percentile (https://en.wikipedia.org/wiki/Percentile) of data
@@ -5192,7 +5192,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_50")]
-                    REDUCEPERCENTILE50,
+                    REDUCEPERCENTILE50 = 12,
 
                     /// <summary>
                     /// Reduce by computing the 5th percentile (https://en.wikipedia.org/wiki/Percentile) of data points
@@ -5200,7 +5200,7 @@ namespace Google.Apis.Monitoring.v3
                     /// of numeric and distribution type. The value of the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("REDUCE_PERCENTILE_05")]
-                    REDUCEPERCENTILE05,
+                    REDUCEPERCENTILE05 = 13,
                 }
 
                 /// <summary>
@@ -5249,7 +5249,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NONE")]
-                    ALIGNNONE,
+                    ALIGNNONE = 0,
 
                     /// <summary>
                     /// Align and convert to DELTA. The output is delta = y1 - y0.This alignment is valid for CUMULATIVE
@@ -5258,7 +5258,7 @@ namespace Google.Apis.Monitoring.v3
                     /// result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_DELTA")]
-                    ALIGNDELTA,
+                    ALIGNDELTA = 1,
 
                     /// <summary>
                     /// Align and convert to a rate. The result is computed as rate = (y1 - y0)/(t1 - t0), or "delta
@@ -5270,7 +5270,7 @@ namespace Google.Apis.Monitoring.v3
                     /// ALIGN_PERCENT_CHANGE aligner instead.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_RATE")]
-                    ALIGNRATE,
+                    ALIGNRATE = 2,
 
                     /// <summary>
                     /// Align by interpolating between adjacent points around the alignment period boundary. This
@@ -5278,7 +5278,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_INTERPOLATE")]
-                    ALIGNINTERPOLATE,
+                    ALIGNINTERPOLATE = 3,
 
                     /// <summary>
                     /// Align by moving the most recent data point before the end of the alignment period to the
@@ -5286,7 +5286,7 @@ namespace Google.Apis.Monitoring.v3
                     /// value_type of the aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_NEXT_OLDER")]
-                    ALIGNNEXTOLDER,
+                    ALIGNNEXTOLDER = 4,
 
                     /// <summary>
                     /// Align the time series by returning the minimum value in each alignment period. This aligner is
@@ -5294,7 +5294,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MIN")]
-                    ALIGNMIN,
+                    ALIGNMIN = 5,
 
                     /// <summary>
                     /// Align the time series by returning the maximum value in each alignment period. This aligner is
@@ -5302,7 +5302,7 @@ namespace Google.Apis.Monitoring.v3
                     /// the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MAX")]
-                    ALIGNMAX,
+                    ALIGNMAX = 6,
 
                     /// <summary>
                     /// Align the time series by returning the mean value in each alignment period. This aligner is
@@ -5310,7 +5310,7 @@ namespace Google.Apis.Monitoring.v3
                     /// DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_MEAN")]
-                    ALIGNMEAN,
+                    ALIGNMEAN = 7,
 
                     /// <summary>
                     /// Align the time series by returning the number of values in each alignment period. This aligner
@@ -5318,7 +5318,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT")]
-                    ALIGNCOUNT,
+                    ALIGNCOUNT = 8,
 
                     /// <summary>
                     /// Align the time series by returning the sum of the values in each alignment period. This aligner
@@ -5326,7 +5326,7 @@ namespace Google.Apis.Monitoring.v3
                     /// aligned result is the same as the value_type of the input.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_SUM")]
-                    ALIGNSUM,
+                    ALIGNSUM = 9,
 
                     /// <summary>
                     /// Align the time series by returning the standard deviation of the values in each alignment
@@ -5334,21 +5334,21 @@ namespace Google.Apis.Monitoring.v3
                     /// the output is DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_STDDEV")]
-                    ALIGNSTDDEV,
+                    ALIGNSTDDEV = 10,
 
                     /// <summary>
                     /// Align the time series by returning the number of True values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_TRUE")]
-                    ALIGNCOUNTTRUE,
+                    ALIGNCOUNTTRUE = 11,
 
                     /// <summary>
                     /// Align the time series by returning the number of False values in each alignment period. This
                     /// aligner is valid for GAUGE metrics with Boolean values. The value_type of the output is INT64.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_COUNT_FALSE")]
-                    ALIGNCOUNTFALSE,
+                    ALIGNCOUNTFALSE = 12,
 
                     /// <summary>
                     /// Align the time series by returning the ratio of the number of True values to the total number of
@@ -5356,7 +5356,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output value is in the range 0.0, 1.0 and has value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_FRACTION_TRUE")]
-                    ALIGNFRACTIONTRUE,
+                    ALIGNFRACTIONTRUE = 13,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -5365,7 +5365,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_99")]
-                    ALIGNPERCENTILE99,
+                    ALIGNPERCENTILE99 = 14,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -5374,7 +5374,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_95")]
-                    ALIGNPERCENTILE95,
+                    ALIGNPERCENTILE95 = 15,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -5383,7 +5383,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_50")]
-                    ALIGNPERCENTILE50,
+                    ALIGNPERCENTILE50 = 16,
 
                     /// <summary>
                     /// Align the time series by using percentile aggregation
@@ -5392,7 +5392,7 @@ namespace Google.Apis.Monitoring.v3
                     /// metrics with distribution values. The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENTILE_05")]
-                    ALIGNPERCENTILE05,
+                    ALIGNPERCENTILE05 = 17,
 
                     /// <summary>
                     /// Align and convert to a percentage change. This aligner is valid for GAUGE and DELTA metrics with
@@ -5407,7 +5407,7 @@ namespace Google.Apis.Monitoring.v3
                     /// The output is a GAUGE metric with value_type DOUBLE.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGN_PERCENT_CHANGE")]
-                    ALIGNPERCENTCHANGE,
+                    ALIGNPERCENTCHANGE = 18,
                 }
 
                 /// <summary>Required. Specifies which information is returned about the time series.</summary>
@@ -5421,13 +5421,13 @@ namespace Google.Apis.Monitoring.v3
                     /// Returns the identity of the metric(s), the time series, and the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 0,
 
                     /// <summary>
                     /// Returns the identity of the metric and the time series resource, but not the time series data.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("HEADERS")]
-                    HEADERS,
+                    HEADERS = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -6204,14 +6204,14 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>Same as FULL.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Return the embedded ServiceLevelIndicator in the form in which it was defined. If it was defined
                     /// using a BasicSli, return that BasicSli.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 1,
 
                     /// <summary>
                     /// For ServiceLevelIndicators using BasicSli articulation, instead return the ServiceLevelIndicator
@@ -6219,7 +6219,7 @@ namespace Google.Apis.Monitoring.v3
                     /// using RequestBasedSli or WindowsBasedSli, return the ServiceLevelIndicator as it was provided.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
-                    EXPLICIT__,
+                    EXPLICIT__ = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -6319,14 +6319,14 @@ namespace Google.Apis.Monitoring.v3
                 {
                     /// <summary>Same as FULL.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Return the embedded ServiceLevelIndicator in the form in which it was defined. If it was defined
                     /// using a BasicSli, return that BasicSli.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 1,
 
                     /// <summary>
                     /// For ServiceLevelIndicators using BasicSli articulation, instead return the ServiceLevelIndicator
@@ -6334,7 +6334,7 @@ namespace Google.Apis.Monitoring.v3
                     /// using RequestBasedSli or WindowsBasedSli, return the ServiceLevelIndicator as it was provided.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("EXPLICIT")]
-                    EXPLICIT__,
+                    EXPLICIT__ = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>

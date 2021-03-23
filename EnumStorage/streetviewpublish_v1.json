@@ -1,0 +1,23 @@
+{
+  "Google.Apis.StreetViewPublish.v1.PhotoResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "INCLUDE_DOWNLOAD_URL"
+  ],
+  "Google.Apis.StreetViewPublish.v1.PhotosResource+BatchGetRequest.ViewEnum": [
+    "BASIC",
+    "INCLUDE_DOWNLOAD_URL"
+  ],
+  "Google.Apis.StreetViewPublish.v1.PhotosResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "INCLUDE_DOWNLOAD_URL"
+  ],
+  "Google.Apis.StreetViewPublish.v1.StreetViewPublishBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.StreetViewPublish.v1.StreetViewPublishBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

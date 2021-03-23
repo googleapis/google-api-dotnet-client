@@ -1,0 +1,22 @@
+{
+  "Google.Apis.PolyService.v1.AssetsResource+ListRequest.MaxComplexityEnum": [
+    "COMPLEXITY_UNSPECIFIED",
+    "COMPLEX",
+    "MEDIUM",
+    "SIMPLE"
+  ],
+  "Google.Apis.PolyService.v1.PolyServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PolyService.v1.PolyServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.PolyService.v1.UsersResource+AssetsResource+ListRequest.VisibilityEnum": [
+    "VISIBILITY_UNSPECIFIED",
+    "PUBLISHED",
+    "PRIVATE"
+  ]
+}

@@ -135,11 +135,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -155,15 +155,15 @@ namespace Google.Apis.Area120Tables.v1alpha1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -534,11 +534,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 {
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
-                    COLUMNIDVIEW,
+                    COLUMNIDVIEW = 1,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -654,11 +654,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 {
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
-                    COLUMNIDVIEW,
+                    COLUMNIDVIEW = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -745,11 +745,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 {
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
-                    COLUMNIDVIEW,
+                    COLUMNIDVIEW = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -850,11 +850,11 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 {
                     /// <summary>Defaults to user entered text.</summary>
                     [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                    VIEWUNSPECIFIED,
+                    VIEWUNSPECIFIED = 0,
 
                     /// <summary>Uses internally generated column id to identify values.</summary>
                     [Google.Apis.Util.StringValueAttribute("COLUMN_ID_VIEW")]
-                    COLUMNIDVIEW,
+                    COLUMNIDVIEW = 1,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>

@@ -133,11 +133,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -153,15 +153,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1825,21 +1825,21 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 /// <summary>Default value. The value is unused.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED,
+                VIEWUNSPECIFIED = 0,
 
                 /// <summary>
                 /// This view contains all devices imported by the company admin. Each device in the response contains
                 /// all information specified by the company admin when importing the device (i.e. asset tags).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("COMPANY_INVENTORY")]
-                COMPANYINVENTORY,
+                COMPANYINVENTORY = 1,
 
                 /// <summary>
                 /// This view contains all devices with at least one user registered on the device. Each device in the
                 /// response contains all device information, except for asset tags.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("USER_ASSIGNED_DEVICES")]
-                USERASSIGNEDDEVICES,
+                USERASSIGNEDDEVICES = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2377,11 +2377,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 {
                     /// <summary>Default. Only basic resource information is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
-                    BASIC,
+                    BASIC = 0,
 
                     /// <summary>All resource information is returned.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2800,19 +2800,19 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 /// <summary>Default. Should not be used.</summary>
                 [Google.Apis.Util.StringValueAttribute("INITIAL_GROUP_CONFIG_UNSPECIFIED")]
-                INITIALGROUPCONFIGUNSPECIFIED,
+                INITIALGROUPCONFIGUNSPECIFIED = 0,
 
                 /// <summary>
                 /// The end user making the request will be added as the initial owner of the `Group`.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("WITH_INITIAL_OWNER")]
-                WITHINITIALOWNER,
+                WITHINITIALOWNER = 1,
 
                 /// <summary>
                 /// An empty group is created without any initial owners. This can only be used by admins of the domain.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("EMPTY")]
-                EMPTY,
+                EMPTY = 2,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2993,15 +2993,15 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 /// <summary>Default. Should not be used.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED,
+                VIEWUNSPECIFIED = 0,
 
                 /// <summary>Only basic resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 1,
 
                 /// <summary>All resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -3243,11 +3243,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             {
                 /// <summary>Default. Only basic resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 0,
 
                 /// <summary>All resource information is returned.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
             }
 
             /// <summary>Gets the method name.</summary>

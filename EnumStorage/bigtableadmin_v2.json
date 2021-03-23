@@ -1,0 +1,25 @@
+{
+  "Google.Apis.BigtableAdmin.v2.BigtableAdminBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BigtableAdmin.v2.BigtableAdminBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+GetRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "NAME_ONLY",
+    "SCHEMA_VIEW",
+    "REPLICATION_VIEW",
+    "FULL"
+  ],
+  "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "NAME_ONLY",
+    "SCHEMA_VIEW",
+    "REPLICATION_VIEW",
+    "FULL"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BinaryAuthorization.v1beta1.BinaryAuthorizationBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BinaryAuthorization.v1beta1.BinaryAuthorizationBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AndroidProvisioningPartner.v1.AndroidProvisioningPartnerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AndroidProvisioningPartner.v1.AndroidProvisioningPartnerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

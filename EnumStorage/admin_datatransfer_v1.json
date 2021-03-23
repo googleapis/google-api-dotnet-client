@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Admin.DataTransfer.datatransfer_v1.DataTransferBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Admin.DataTransfer.datatransfer_v1.DataTransferBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Datastore.v1beta1.DatastoreBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Datastore.v1beta1.DatastoreBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

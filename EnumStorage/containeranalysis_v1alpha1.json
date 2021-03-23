@@ -1,0 +1,22 @@
+{
+  "Google.Apis.ContainerAnalysis.v1alpha1.ContainerAnalysisBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ContainerAnalysis.v1alpha1.ContainerAnalysisBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ContainerAnalysis.v1alpha1.ProjectsResource+OccurrencesResource+ListRequest.KindEnum": [
+    "KIND_UNSPECIFIED",
+    "PACKAGE_VULNERABILITY",
+    "BUILD_DETAILS",
+    "IMAGE_BASIS",
+    "PACKAGE_MANAGER",
+    "DEPLOYABLE",
+    "DISCOVERY",
+    "ATTESTATION_AUTHORITY",
+    "UPGRADE"
+  ]
+}

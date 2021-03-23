@@ -175,11 +175,11 @@ namespace Google.Apis.DisplayVideo.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -195,15 +195,15 @@ namespace Google.Apis.DisplayVideo.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -482,11 +482,11 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     /// <summary>v1 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("1")]
-                    Value1,
+                    Value1 = 0,
 
                     /// <summary>v2 error format</summary>
                     [Google.Apis.Util.StringValueAttribute("2")]
-                    Value2,
+                    Value2 = 1,
                 }
 
                 /// <summary>OAuth access token.</summary>
@@ -502,15 +502,15 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     /// <summary>Responses with Content-Type of application/json</summary>
                     [Google.Apis.Util.StringValueAttribute("json")]
-                    Json,
+                    Json = 0,
 
                     /// <summary>Media download with context-dependent Content-Type</summary>
                     [Google.Apis.Util.StringValueAttribute("media")]
-                    Media,
+                    Media = 1,
 
                     /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                     [Google.Apis.Util.StringValueAttribute("proto")]
-                    Proto,
+                    Proto = 2,
                 }
 
                 /// <summary>JSONP</summary>
@@ -2264,183 +2264,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>
@@ -2546,183 +2546,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>
@@ -3480,183 +3480,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -3755,183 +3755,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -4037,183 +4037,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>
@@ -4315,183 +4315,183 @@ namespace Google.Apis.DisplayVideo.v1
                             /// Default value when type is not specified or is unknown in this version.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                            TARGETINGTYPEUNSPECIFIED,
+                            TARGETINGTYPEUNSPECIFIED = 0,
 
                             /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                            TARGETINGTYPECHANNEL,
+                            TARGETINGTYPECHANNEL = 1,
 
                             /// <summary>Target an app category (for example, education or puzzle games).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                            TARGETINGTYPEAPPCATEGORY,
+                            TARGETINGTYPEAPPCATEGORY = 2,
 
                             /// <summary>Target a specific app (for example, Angry Birds).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                            TARGETINGTYPEAPP,
+                            TARGETINGTYPEAPP = 3,
 
                             /// <summary>Target a specific url (for example, quora.com).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                            TARGETINGTYPEURL,
+                            TARGETINGTYPEURL = 4,
 
                             /// <summary>Target ads during a chosen time period on a specific day.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                            TARGETINGTYPEDAYANDTIME,
+                            TARGETINGTYPEDAYANDTIME = 5,
 
                             /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                            TARGETINGTYPEAGERANGE,
+                            TARGETINGTYPEAGERANGE = 6,
 
                             /// <summary>Target ads to the specified regions on a regional location list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                            TARGETINGTYPEREGIONALLOCATIONLIST,
+                            TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                             /// <summary>
                             /// Target ads to the specified points of interest on a proximity location list.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                            TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                            TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                             /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                            TARGETINGTYPEGENDER,
+                            TARGETINGTYPEGENDER = 9,
 
                             /// <summary>Target a specific video player size for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                            TARGETINGTYPEVIDEOPLAYERSIZE,
+                            TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                             /// <summary>Target user rewarded content for video ads.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                            TARGETINGTYPEUSERREWARDEDCONTENT,
+                            TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                             /// <summary>
                             /// Target ads to a specific parental status (for example, parent or not a parent).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                            TARGETINGTYPEPARENTALSTATUS,
+                            TARGETINGTYPEPARENTALSTATUS = 12,
 
                             /// <summary>
                             /// Target video or audio ads in a specific content instream position (for example,
                             /// pre-roll, mid-roll, or post-roll).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTINSTREAMPOSITION,
+                            TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                             /// <summary>Target ads in a specific content outstream position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                            TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                            TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                             /// <summary>
                             /// Target ads to a specific device type (for example, tablet or connected TV).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                            TARGETINGTYPEDEVICETYPE,
+                            TARGETINGTYPEDEVICETYPE = 15,
 
                             /// <summary>
                             /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist
                             /// on a single Lineitem at a time.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                            TARGETINGTYPEAUDIENCEGROUP,
+                            TARGETINGTYPEAUDIENCEGROUP = 16,
 
                             /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                            TARGETINGTYPEBROWSER,
+                            TARGETINGTYPEBROWSER = 17,
 
                             /// <summary>
                             /// Target ads to a specific household income range (for example, top 10%).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                            TARGETINGTYPEHOUSEHOLDINCOME,
+                            TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                             /// <summary>Target ads in a specific on screen position.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                            TARGETINGTYPEONSCREENPOSITION,
+                            TARGETINGTYPEONSCREENPOSITION = 19,
 
                             /// <summary>
                             /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                            TARGETINGTYPETHIRDPARTYVERIFIER,
+                            TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                             /// <summary>
                             /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                             /// only for mature audiences).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                            TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                             /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                            TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                             /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                            TARGETINGTYPEENVIRONMENT,
+                            TARGETINGTYPEENVIRONMENT = 23,
 
                             /// <summary>
                             /// Target ads to a specific network carrier or internet service provider (ISP) (for
                             /// example, Comcast or Orange).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                            TARGETINGTYPECARRIERANDISP,
+                            TARGETINGTYPECARRIERANDISP = 24,
 
                             /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                            TARGETINGTYPEOPERATINGSYSTEM,
+                            TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                             /// <summary>
                             /// Target ads to a specific device make or model (for example, Roku or Samsung).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                            TARGETINGTYPEDEVICEMAKEMODEL,
+                            TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                             /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                            TARGETINGTYPEKEYWORD,
+                            TARGETINGTYPEKEYWORD = 27,
 
                             /// <summary>Target ads to a specific negative keyword list.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                            TARGETINGTYPENEGATIVEKEYWORDLIST,
+                            TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                             /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                            TARGETINGTYPEVIEWABILITY,
+                            TARGETINGTYPEVIEWABILITY = 29,
 
                             /// <summary>
                             /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                            TARGETINGTYPECATEGORY,
+                            TARGETINGTYPECATEGORY = 30,
 
                             /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                            TARGETINGTYPEINVENTORYSOURCE,
+                            TARGETINGTYPEINVENTORYSOURCE = 31,
 
                             /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                            TARGETINGTYPELANGUAGE,
+                            TARGETINGTYPELANGUAGE = 32,
 
                             /// <summary>Target ads to ads.txt authorized sellers.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                            TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                             /// <summary>
                             /// Target ads to a specific regional location (for example, a city or state).
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                            TARGETINGTYPEGEOREGION,
+                            TARGETINGTYPEGEOREGION = 34,
 
                             /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                            TARGETINGTYPEINVENTORYSOURCEGROUP,
+                            TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                             /// <summary>Purchase impressions from specific exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                            TARGETINGTYPEEXCHANGE,
+                            TARGETINGTYPEEXCHANGE = 36,
 
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                            TARGETINGTYPESUBEXCHANGE,
+                            TARGETINGTYPESUBEXCHANGE = 37,
                         }
 
                         /// <summary>
@@ -7260,181 +7260,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -7523,181 +7523,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -7793,181 +7793,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>
@@ -8061,181 +8061,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>
@@ -12190,181 +12190,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -12450,181 +12450,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -12717,181 +12717,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>
@@ -12982,181 +12982,181 @@ namespace Google.Apis.DisplayVideo.v1
                     {
                         /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                        TARGETINGTYPEUNSPECIFIED,
+                        TARGETINGTYPEUNSPECIFIED = 0,
 
                         /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                        TARGETINGTYPECHANNEL,
+                        TARGETINGTYPECHANNEL = 1,
 
                         /// <summary>Target an app category (for example, education or puzzle games).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                        TARGETINGTYPEAPPCATEGORY,
+                        TARGETINGTYPEAPPCATEGORY = 2,
 
                         /// <summary>Target a specific app (for example, Angry Birds).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                        TARGETINGTYPEAPP,
+                        TARGETINGTYPEAPP = 3,
 
                         /// <summary>Target a specific url (for example, quora.com).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                        TARGETINGTYPEURL,
+                        TARGETINGTYPEURL = 4,
 
                         /// <summary>Target ads during a chosen time period on a specific day.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                        TARGETINGTYPEDAYANDTIME,
+                        TARGETINGTYPEDAYANDTIME = 5,
 
                         /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                        TARGETINGTYPEAGERANGE,
+                        TARGETINGTYPEAGERANGE = 6,
 
                         /// <summary>Target ads to the specified regions on a regional location list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                        TARGETINGTYPEREGIONALLOCATIONLIST,
+                        TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                         /// <summary>
                         /// Target ads to the specified points of interest on a proximity location list.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                        TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                        TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                         /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                        TARGETINGTYPEGENDER,
+                        TARGETINGTYPEGENDER = 9,
 
                         /// <summary>Target a specific video player size for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                        TARGETINGTYPEVIDEOPLAYERSIZE,
+                        TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                         /// <summary>Target user rewarded content for video ads.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                        TARGETINGTYPEUSERREWARDEDCONTENT,
+                        TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                         /// <summary>
                         /// Target ads to a specific parental status (for example, parent or not a parent).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                        TARGETINGTYPEPARENTALSTATUS,
+                        TARGETINGTYPEPARENTALSTATUS = 12,
 
                         /// <summary>
                         /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                         /// mid-roll, or post-roll).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTINSTREAMPOSITION,
+                        TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                         /// <summary>Target ads in a specific content outstream position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                        TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                        TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                         /// <summary>
                         /// Target ads to a specific device type (for example, tablet or connected TV).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                        TARGETINGTYPEDEVICETYPE,
+                        TARGETINGTYPEDEVICETYPE = 15,
 
                         /// <summary>
                         /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on
                         /// a single Lineitem at a time.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                        TARGETINGTYPEAUDIENCEGROUP,
+                        TARGETINGTYPEAUDIENCEGROUP = 16,
 
                         /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                        TARGETINGTYPEBROWSER,
+                        TARGETINGTYPEBROWSER = 17,
 
                         /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                        TARGETINGTYPEHOUSEHOLDINCOME,
+                        TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                         /// <summary>Target ads in a specific on screen position.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                        TARGETINGTYPEONSCREENPOSITION,
+                        TARGETINGTYPEONSCREENPOSITION = 19,
 
                         /// <summary>
                         /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                        TARGETINGTYPETHIRDPARTYVERIFIER,
+                        TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                         /// <summary>
                         /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable
                         /// only for mature audiences).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                        TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                         /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                        TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                         /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                        TARGETINGTYPEENVIRONMENT,
+                        TARGETINGTYPEENVIRONMENT = 23,
 
                         /// <summary>
                         /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                         /// Comcast or Orange).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                        TARGETINGTYPECARRIERANDISP,
+                        TARGETINGTYPECARRIERANDISP = 24,
 
                         /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                        TARGETINGTYPEOPERATINGSYSTEM,
+                        TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                         /// <summary>
                         /// Target ads to a specific device make or model (for example, Roku or Samsung).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                        TARGETINGTYPEDEVICEMAKEMODEL,
+                        TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                         /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                        TARGETINGTYPEKEYWORD,
+                        TARGETINGTYPEKEYWORD = 27,
 
                         /// <summary>Target ads to a specific negative keyword list.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                        TARGETINGTYPENEGATIVEKEYWORDLIST,
+                        TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                         /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                        TARGETINGTYPEVIEWABILITY,
+                        TARGETINGTYPEVIEWABILITY = 29,
 
                         /// <summary>
                         /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                        TARGETINGTYPECATEGORY,
+                        TARGETINGTYPECATEGORY = 30,
 
                         /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                        TARGETINGTYPEINVENTORYSOURCE,
+                        TARGETINGTYPEINVENTORYSOURCE = 31,
 
                         /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                        TARGETINGTYPELANGUAGE,
+                        TARGETINGTYPELANGUAGE = 32,
 
                         /// <summary>Target ads to ads.txt authorized sellers.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                        TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                         /// <summary>
                         /// Target ads to a specific regional location (for example, a city or state).
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                        TARGETINGTYPEGEOREGION,
+                        TARGETINGTYPEGEOREGION = 34,
 
                         /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                        TARGETINGTYPEINVENTORYSOURCEGROUP,
+                        TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                         /// <summary>Purchase impressions from specific exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                        TARGETINGTYPEEXCHANGE,
+                        TARGETINGTYPEEXCHANGE = 36,
 
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                        TARGETINGTYPESUBEXCHANGE,
+                        TARGETINGTYPESUBEXCHANGE = 37,
                     }
 
                     /// <summary>
@@ -13663,173 +13663,173 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                    TARGETINGTYPEUNSPECIFIED,
+                    TARGETINGTYPEUNSPECIFIED = 0,
 
                     /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                    TARGETINGTYPECHANNEL,
+                    TARGETINGTYPECHANNEL = 1,
 
                     /// <summary>Target an app category (for example, education or puzzle games).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                    TARGETINGTYPEAPPCATEGORY,
+                    TARGETINGTYPEAPPCATEGORY = 2,
 
                     /// <summary>Target a specific app (for example, Angry Birds).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                    TARGETINGTYPEAPP,
+                    TARGETINGTYPEAPP = 3,
 
                     /// <summary>Target a specific url (for example, quora.com).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                    TARGETINGTYPEURL,
+                    TARGETINGTYPEURL = 4,
 
                     /// <summary>Target ads during a chosen time period on a specific day.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                    TARGETINGTYPEDAYANDTIME,
+                    TARGETINGTYPEDAYANDTIME = 5,
 
                     /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                    TARGETINGTYPEAGERANGE,
+                    TARGETINGTYPEAGERANGE = 6,
 
                     /// <summary>Target ads to the specified regions on a regional location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                    TARGETINGTYPEREGIONALLOCATIONLIST,
+                    TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                     /// <summary>Target ads to the specified points of interest on a proximity location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                    TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                    TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                     /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                    TARGETINGTYPEGENDER,
+                    TARGETINGTYPEGENDER = 9,
 
                     /// <summary>Target a specific video player size for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                    TARGETINGTYPEVIDEOPLAYERSIZE,
+                    TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                     /// <summary>Target user rewarded content for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                    TARGETINGTYPEUSERREWARDEDCONTENT,
+                    TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                     /// <summary>
                     /// Target ads to a specific parental status (for example, parent or not a parent).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                    TARGETINGTYPEPARENTALSTATUS,
+                    TARGETINGTYPEPARENTALSTATUS = 12,
 
                     /// <summary>
                     /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                     /// mid-roll, or post-roll).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTINSTREAMPOSITION,
+                    TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                     /// <summary>Target ads in a specific content outstream position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                    TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                     /// <summary>Target ads to a specific device type (for example, tablet or connected TV).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                    TARGETINGTYPEDEVICETYPE,
+                    TARGETINGTYPEDEVICETYPE = 15,
 
                     /// <summary>
                     /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a
                     /// single Lineitem at a time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                    TARGETINGTYPEAUDIENCEGROUP,
+                    TARGETINGTYPEAUDIENCEGROUP = 16,
 
                     /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                    TARGETINGTYPEBROWSER,
+                    TARGETINGTYPEBROWSER = 17,
 
                     /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                    TARGETINGTYPEHOUSEHOLDINCOME,
+                    TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                     /// <summary>Target ads in a specific on screen position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                    TARGETINGTYPEONSCREENPOSITION,
+                    TARGETINGTYPEONSCREENPOSITION = 19,
 
                     /// <summary>
                     /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                    TARGETINGTYPETHIRDPARTYVERIFIER,
+                    TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                     /// <summary>
                     /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only
                     /// for mature audiences).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                     /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                    TARGETINGTYPEENVIRONMENT,
+                    TARGETINGTYPEENVIRONMENT = 23,
 
                     /// <summary>
                     /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                     /// Comcast or Orange).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                    TARGETINGTYPECARRIERANDISP,
+                    TARGETINGTYPECARRIERANDISP = 24,
 
                     /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                    TARGETINGTYPEOPERATINGSYSTEM,
+                    TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                     /// <summary>Target ads to a specific device make or model (for example, Roku or Samsung).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                    TARGETINGTYPEDEVICEMAKEMODEL,
+                    TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                     /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                    TARGETINGTYPEKEYWORD,
+                    TARGETINGTYPEKEYWORD = 27,
 
                     /// <summary>Target ads to a specific negative keyword list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                    TARGETINGTYPENEGATIVEKEYWORDLIST,
+                    TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                     /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                    TARGETINGTYPEVIEWABILITY,
+                    TARGETINGTYPEVIEWABILITY = 29,
 
                     /// <summary>
                     /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                    TARGETINGTYPECATEGORY,
+                    TARGETINGTYPECATEGORY = 30,
 
                     /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE,
+                    TARGETINGTYPEINVENTORYSOURCE = 31,
 
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                    TARGETINGTYPELANGUAGE,
+                    TARGETINGTYPELANGUAGE = 32,
 
                     /// <summary>Target ads to ads.txt authorized sellers.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                     /// <summary>Target ads to a specific regional location (for example, a city or state).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                    TARGETINGTYPEGEOREGION,
+                    TARGETINGTYPEGEOREGION = 34,
 
                     /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                    TARGETINGTYPEINVENTORYSOURCEGROUP,
+                    TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                     /// <summary>Purchase impressions from specific exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                    TARGETINGTYPEEXCHANGE,
+                    TARGETINGTYPEEXCHANGE = 36,
 
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                    TARGETINGTYPESUBEXCHANGE,
+                    TARGETINGTYPESUBEXCHANGE = 37,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -13906,173 +13906,173 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                    TARGETINGTYPEUNSPECIFIED,
+                    TARGETINGTYPEUNSPECIFIED = 0,
 
                     /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                    TARGETINGTYPECHANNEL,
+                    TARGETINGTYPECHANNEL = 1,
 
                     /// <summary>Target an app category (for example, education or puzzle games).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                    TARGETINGTYPEAPPCATEGORY,
+                    TARGETINGTYPEAPPCATEGORY = 2,
 
                     /// <summary>Target a specific app (for example, Angry Birds).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                    TARGETINGTYPEAPP,
+                    TARGETINGTYPEAPP = 3,
 
                     /// <summary>Target a specific url (for example, quora.com).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                    TARGETINGTYPEURL,
+                    TARGETINGTYPEURL = 4,
 
                     /// <summary>Target ads during a chosen time period on a specific day.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                    TARGETINGTYPEDAYANDTIME,
+                    TARGETINGTYPEDAYANDTIME = 5,
 
                     /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                    TARGETINGTYPEAGERANGE,
+                    TARGETINGTYPEAGERANGE = 6,
 
                     /// <summary>Target ads to the specified regions on a regional location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                    TARGETINGTYPEREGIONALLOCATIONLIST,
+                    TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                     /// <summary>Target ads to the specified points of interest on a proximity location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                    TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                    TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                     /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                    TARGETINGTYPEGENDER,
+                    TARGETINGTYPEGENDER = 9,
 
                     /// <summary>Target a specific video player size for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                    TARGETINGTYPEVIDEOPLAYERSIZE,
+                    TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                     /// <summary>Target user rewarded content for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                    TARGETINGTYPEUSERREWARDEDCONTENT,
+                    TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                     /// <summary>
                     /// Target ads to a specific parental status (for example, parent or not a parent).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                    TARGETINGTYPEPARENTALSTATUS,
+                    TARGETINGTYPEPARENTALSTATUS = 12,
 
                     /// <summary>
                     /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                     /// mid-roll, or post-roll).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTINSTREAMPOSITION,
+                    TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                     /// <summary>Target ads in a specific content outstream position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                    TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                     /// <summary>Target ads to a specific device type (for example, tablet or connected TV).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                    TARGETINGTYPEDEVICETYPE,
+                    TARGETINGTYPEDEVICETYPE = 15,
 
                     /// <summary>
                     /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a
                     /// single Lineitem at a time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                    TARGETINGTYPEAUDIENCEGROUP,
+                    TARGETINGTYPEAUDIENCEGROUP = 16,
 
                     /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                    TARGETINGTYPEBROWSER,
+                    TARGETINGTYPEBROWSER = 17,
 
                     /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                    TARGETINGTYPEHOUSEHOLDINCOME,
+                    TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                     /// <summary>Target ads in a specific on screen position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                    TARGETINGTYPEONSCREENPOSITION,
+                    TARGETINGTYPEONSCREENPOSITION = 19,
 
                     /// <summary>
                     /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                    TARGETINGTYPETHIRDPARTYVERIFIER,
+                    TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                     /// <summary>
                     /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only
                     /// for mature audiences).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                     /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                    TARGETINGTYPEENVIRONMENT,
+                    TARGETINGTYPEENVIRONMENT = 23,
 
                     /// <summary>
                     /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                     /// Comcast or Orange).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                    TARGETINGTYPECARRIERANDISP,
+                    TARGETINGTYPECARRIERANDISP = 24,
 
                     /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                    TARGETINGTYPEOPERATINGSYSTEM,
+                    TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                     /// <summary>Target ads to a specific device make or model (for example, Roku or Samsung).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                    TARGETINGTYPEDEVICEMAKEMODEL,
+                    TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                     /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                    TARGETINGTYPEKEYWORD,
+                    TARGETINGTYPEKEYWORD = 27,
 
                     /// <summary>Target ads to a specific negative keyword list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                    TARGETINGTYPENEGATIVEKEYWORDLIST,
+                    TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                     /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                    TARGETINGTYPEVIEWABILITY,
+                    TARGETINGTYPEVIEWABILITY = 29,
 
                     /// <summary>
                     /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                    TARGETINGTYPECATEGORY,
+                    TARGETINGTYPECATEGORY = 30,
 
                     /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE,
+                    TARGETINGTYPEINVENTORYSOURCE = 31,
 
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                    TARGETINGTYPELANGUAGE,
+                    TARGETINGTYPELANGUAGE = 32,
 
                     /// <summary>Target ads to ads.txt authorized sellers.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                     /// <summary>Target ads to a specific regional location (for example, a city or state).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                    TARGETINGTYPEGEOREGION,
+                    TARGETINGTYPEGEOREGION = 34,
 
                     /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                    TARGETINGTYPEINVENTORYSOURCEGROUP,
+                    TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                     /// <summary>Purchase impressions from specific exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                    TARGETINGTYPEEXCHANGE,
+                    TARGETINGTYPEEXCHANGE = 36,
 
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                    TARGETINGTYPESUBEXCHANGE,
+                    TARGETINGTYPESUBEXCHANGE = 37,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -14218,173 +14218,173 @@ namespace Google.Apis.DisplayVideo.v1
                 {
                     /// <summary>Default value when type is not specified or is unknown in this version.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_UNSPECIFIED")]
-                    TARGETINGTYPEUNSPECIFIED,
+                    TARGETINGTYPEUNSPECIFIED = 0,
 
                     /// <summary>Target a channel (a custom group of related websites or apps).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CHANNEL")]
-                    TARGETINGTYPECHANNEL,
+                    TARGETINGTYPECHANNEL = 1,
 
                     /// <summary>Target an app category (for example, education or puzzle games).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP_CATEGORY")]
-                    TARGETINGTYPEAPPCATEGORY,
+                    TARGETINGTYPEAPPCATEGORY = 2,
 
                     /// <summary>Target a specific app (for example, Angry Birds).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_APP")]
-                    TARGETINGTYPEAPP,
+                    TARGETINGTYPEAPP = 3,
 
                     /// <summary>Target a specific url (for example, quora.com).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_URL")]
-                    TARGETINGTYPEURL,
+                    TARGETINGTYPEURL = 4,
 
                     /// <summary>Target ads during a chosen time period on a specific day.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DAY_AND_TIME")]
-                    TARGETINGTYPEDAYANDTIME,
+                    TARGETINGTYPEDAYANDTIME = 5,
 
                     /// <summary>Target ads to a specific age range (for example, 18-24).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AGE_RANGE")]
-                    TARGETINGTYPEAGERANGE,
+                    TARGETINGTYPEAGERANGE = 6,
 
                     /// <summary>Target ads to the specified regions on a regional location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_REGIONAL_LOCATION_LIST")]
-                    TARGETINGTYPEREGIONALLOCATIONLIST,
+                    TARGETINGTYPEREGIONALLOCATIONLIST = 7,
 
                     /// <summary>Target ads to the specified points of interest on a proximity location list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PROXIMITY_LOCATION_LIST")]
-                    TARGETINGTYPEPROXIMITYLOCATIONLIST,
+                    TARGETINGTYPEPROXIMITYLOCATIONLIST = 8,
 
                     /// <summary>Target ads to a specific gender (for example, female or male).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GENDER")]
-                    TARGETINGTYPEGENDER,
+                    TARGETINGTYPEGENDER = 9,
 
                     /// <summary>Target a specific video player size for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIDEO_PLAYER_SIZE")]
-                    TARGETINGTYPEVIDEOPLAYERSIZE,
+                    TARGETINGTYPEVIDEOPLAYERSIZE = 10,
 
                     /// <summary>Target user rewarded content for video ads.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_USER_REWARDED_CONTENT")]
-                    TARGETINGTYPEUSERREWARDEDCONTENT,
+                    TARGETINGTYPEUSERREWARDEDCONTENT = 11,
 
                     /// <summary>
                     /// Target ads to a specific parental status (for example, parent or not a parent).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_PARENTAL_STATUS")]
-                    TARGETINGTYPEPARENTALSTATUS,
+                    TARGETINGTYPEPARENTALSTATUS = 12,
 
                     /// <summary>
                     /// Target video or audio ads in a specific content instream position (for example, pre-roll,
                     /// mid-roll, or post-roll).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_INSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTINSTREAMPOSITION,
+                    TARGETINGTYPECONTENTINSTREAMPOSITION = 13,
 
                     /// <summary>Target ads in a specific content outstream position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION")]
-                    TARGETINGTYPECONTENTOUTSTREAMPOSITION,
+                    TARGETINGTYPECONTENTOUTSTREAMPOSITION = 14,
 
                     /// <summary>Target ads to a specific device type (for example, tablet or connected TV).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_TYPE")]
-                    TARGETINGTYPEDEVICETYPE,
+                    TARGETINGTYPEDEVICETYPE = 15,
 
                     /// <summary>
                     /// Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a
                     /// single Lineitem at a time.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUDIENCE_GROUP")]
-                    TARGETINGTYPEAUDIENCEGROUP,
+                    TARGETINGTYPEAUDIENCEGROUP = 16,
 
                     /// <summary>Target ads to specific web browsers (for example, Chrome).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_BROWSER")]
-                    TARGETINGTYPEBROWSER,
+                    TARGETINGTYPEBROWSER = 17,
 
                     /// <summary>Target ads to a specific household income range (for example, top 10%).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_HOUSEHOLD_INCOME")]
-                    TARGETINGTYPEHOUSEHOLDINCOME,
+                    TARGETINGTYPEHOUSEHOLDINCOME = 18,
 
                     /// <summary>Target ads in a specific on screen position.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ON_SCREEN_POSITION")]
-                    TARGETINGTYPEONSCREENPOSITION,
+                    TARGETINGTYPEONSCREENPOSITION = 19,
 
                     /// <summary>
                     /// Filter web sites through third party verification (for example, IAS or DoubleVerify).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_THIRD_PARTY_VERIFIER")]
-                    TARGETINGTYPETHIRDPARTYVERIFIER,
+                    TARGETINGTYPETHIRDPARTYVERIFIER = 20,
 
                     /// <summary>
                     /// Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only
                     /// for mature audiences).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION")]
-                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION,
+                    TARGETINGTYPEDIGITALCONTENTLABELEXCLUSION = 21,
 
                     /// <summary>Filter website content by sensitive categories (for example, adult).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION")]
-                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION,
+                    TARGETINGTYPESENSITIVECATEGORYEXCLUSION = 22,
 
                     /// <summary>Target ads to a specific environment (for example, web or app).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_ENVIRONMENT")]
-                    TARGETINGTYPEENVIRONMENT,
+                    TARGETINGTYPEENVIRONMENT = 23,
 
                     /// <summary>
                     /// Target ads to a specific network carrier or internet service provider (ISP) (for example,
                     /// Comcast or Orange).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CARRIER_AND_ISP")]
-                    TARGETINGTYPECARRIERANDISP,
+                    TARGETINGTYPECARRIERANDISP = 24,
 
                     /// <summary>Target ads to a specific operating system (for example, macOS).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_OPERATING_SYSTEM")]
-                    TARGETINGTYPEOPERATINGSYSTEM,
+                    TARGETINGTYPEOPERATINGSYSTEM = 25,
 
                     /// <summary>Target ads to a specific device make or model (for example, Roku or Samsung).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_DEVICE_MAKE_MODEL")]
-                    TARGETINGTYPEDEVICEMAKEMODEL,
+                    TARGETINGTYPEDEVICEMAKEMODEL = 26,
 
                     /// <summary>Target ads to a specific keyword (for example, dog or retriever).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_KEYWORD")]
-                    TARGETINGTYPEKEYWORD,
+                    TARGETINGTYPEKEYWORD = 27,
 
                     /// <summary>Target ads to a specific negative keyword list.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NEGATIVE_KEYWORD_LIST")]
-                    TARGETINGTYPENEGATIVEKEYWORDLIST,
+                    TARGETINGTYPENEGATIVEKEYWORDLIST = 28,
 
                     /// <summary>Target ads to a specific viewability (for example, 80% viewable).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_VIEWABILITY")]
-                    TARGETINGTYPEVIEWABILITY,
+                    TARGETINGTYPEVIEWABILITY = 29,
 
                     /// <summary>
                     /// Target ads to a specific content category (for example, arts &amp;amp; entertainment).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_CATEGORY")]
-                    TARGETINGTYPECATEGORY,
+                    TARGETINGTYPECATEGORY = 30,
 
                     /// <summary>Purchase impressions from specific deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE")]
-                    TARGETINGTYPEINVENTORYSOURCE,
+                    TARGETINGTYPEINVENTORYSOURCE = 31,
 
                     /// <summary>Target ads to a specific language (for example, English or Japanese).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_LANGUAGE")]
-                    TARGETINGTYPELANGUAGE,
+                    TARGETINGTYPELANGUAGE = 32,
 
                     /// <summary>Target ads to ads.txt authorized sellers.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_AUTHORIZED_SELLER_STATUS")]
-                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS,
+                    TARGETINGTYPEAUTHORIZEDSELLERSTATUS = 33,
 
                     /// <summary>Target ads to a specific regional location (for example, a city or state).</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_GEO_REGION")]
-                    TARGETINGTYPEGEOREGION,
+                    TARGETINGTYPEGEOREGION = 34,
 
                     /// <summary>Purchase impressions from a group of deals and auction packages.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_INVENTORY_SOURCE_GROUP")]
-                    TARGETINGTYPEINVENTORYSOURCEGROUP,
+                    TARGETINGTYPEINVENTORYSOURCEGROUP = 35,
 
                     /// <summary>Purchase impressions from specific exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_EXCHANGE")]
-                    TARGETINGTYPEEXCHANGE,
+                    TARGETINGTYPEEXCHANGE = 36,
 
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
-                    TARGETINGTYPESUBEXCHANGE,
+                    TARGETINGTYPESUBEXCHANGE = 37,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>

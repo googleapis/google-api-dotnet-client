@@ -83,11 +83,11 @@ namespace Google.Apis.Webfonts.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -103,15 +103,15 @@ namespace Google.Apis.Webfonts.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -285,27 +285,27 @@ namespace Google.Apis.Webfonts.v1
             {
                 /// <summary>No sorting specified, use the default sorting method.</summary>
                 [Google.Apis.Util.StringValueAttribute("SORT_UNDEFINED")]
-                SORTUNDEFINED,
+                SORTUNDEFINED = 0,
 
                 /// <summary>Sort alphabetically</summary>
                 [Google.Apis.Util.StringValueAttribute("ALPHA")]
-                ALPHA,
+                ALPHA = 1,
 
                 /// <summary>Sort by date added</summary>
                 [Google.Apis.Util.StringValueAttribute("DATE")]
-                DATE,
+                DATE = 2,
 
                 /// <summary>Sort by popularity</summary>
                 [Google.Apis.Util.StringValueAttribute("POPULARITY")]
-                POPULARITY,
+                POPULARITY = 3,
 
                 /// <summary>Sort by number of styles</summary>
                 [Google.Apis.Util.StringValueAttribute("STYLE")]
-                STYLE,
+                STYLE = 4,
 
                 /// <summary>Sort by trending</summary>
                 [Google.Apis.Util.StringValueAttribute("TRENDING")]
-                TRENDING,
+                TRENDING = 5,
             }
 
             /// <summary>Gets the method name.</summary>

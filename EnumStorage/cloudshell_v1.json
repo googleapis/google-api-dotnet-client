@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudShell.v1.CloudShellBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudShell.v1.CloudShellBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

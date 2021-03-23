@@ -1,0 +1,71 @@
+{
+  "Google.Apis.Sheets.v4.SheetsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Sheets.v4.SheetsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+AppendRequest.InsertDataOptionEnum": [
+    "OVERWRITE",
+    "INSERT_ROWS"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+AppendRequest.ResponseDateTimeRenderOptionEnum": [
+    "SERIAL_NUMBER",
+    "FORMATTED_STRING"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+AppendRequest.ResponseValueRenderOptionEnum": [
+    "FORMATTED_VALUE",
+    "UNFORMATTED_VALUE",
+    "FORMULA"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+AppendRequest.ValueInputOptionEnum": [
+    "INPUT_VALUE_OPTION_UNSPECIFIED",
+    "RAW",
+    "USER_ENTERED"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+BatchGetRequest.DateTimeRenderOptionEnum": [
+    "SERIAL_NUMBER",
+    "FORMATTED_STRING"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+BatchGetRequest.MajorDimensionEnum": [
+    "DIMENSION_UNSPECIFIED",
+    "ROWS",
+    "COLUMNS"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+BatchGetRequest.ValueRenderOptionEnum": [
+    "FORMATTED_VALUE",
+    "UNFORMATTED_VALUE",
+    "FORMULA"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+GetRequest.DateTimeRenderOptionEnum": [
+    "SERIAL_NUMBER",
+    "FORMATTED_STRING"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+GetRequest.MajorDimensionEnum": [
+    "DIMENSION_UNSPECIFIED",
+    "ROWS",
+    "COLUMNS"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+GetRequest.ValueRenderOptionEnum": [
+    "FORMATTED_VALUE",
+    "UNFORMATTED_VALUE",
+    "FORMULA"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+UpdateRequest.ResponseDateTimeRenderOptionEnum": [
+    "SERIAL_NUMBER",
+    "FORMATTED_STRING"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+UpdateRequest.ResponseValueRenderOptionEnum": [
+    "FORMATTED_VALUE",
+    "UNFORMATTED_VALUE",
+    "FORMULA"
+  ],
+  "Google.Apis.Sheets.v4.SpreadsheetsResource+ValuesResource+UpdateRequest.ValueInputOptionEnum": [
+    "INPUT_VALUE_OPTION_UNSPECIFIED",
+    "RAW",
+    "USER_ENTERED"
+  ]
+}

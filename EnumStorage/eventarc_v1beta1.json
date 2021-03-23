@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Eventarc.v1beta1.EventarcBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Eventarc.v1beta1.EventarcBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

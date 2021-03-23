@@ -105,11 +105,11 @@ namespace Google.Apis.CloudKMS.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -125,15 +125,15 @@ namespace Google.Apis.CloudKMS.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -837,13 +837,13 @@ namespace Google.Apis.CloudKMS.v1
                                 /// Default view for each CryptoKeyVersion. Does not include the attestation field.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
-                                CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                                CRYPTOKEYVERSIONVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Provides all fields in each CryptoKeyVersion, including the attestation.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 1,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -1462,13 +1462,13 @@ namespace Google.Apis.CloudKMS.v1
                             /// Default view for each CryptoKeyVersion. Does not include the attestation field.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED")]
-                            CRYPTOKEYVERSIONVIEWUNSPECIFIED,
+                            CRYPTOKEYVERSIONVIEWUNSPECIFIED = 0,
 
                             /// <summary>
                             /// Provides all fields in each CryptoKeyVersion, including the attestation.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("FULL")]
-                            FULL,
+                            FULL = 1,
                         }
 
                         /// <summary>Gets the method name.</summary>

@@ -1,0 +1,22 @@
+{
+  "Google.Apis.Analytics.v3.AnalyticsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Analytics.v3.DataResource+GaResource+GetRequest.OutputEnum": [
+    "dataTable",
+    "json"
+  ],
+  "Google.Apis.Analytics.v3.DataResource+GaResource+GetRequest.SamplingLevelEnum": [
+    "DEFAULT",
+    "FASTER",
+    "HIGHER_PRECISION"
+  ],
+  "Google.Apis.Analytics.v3.DataResource+McfResource+GetRequest.SamplingLevelEnum": [
+    "DEFAULT",
+    "FASTER",
+    "HIGHER_PRECISION"
+  ],
+  "Google.Apis.Analytics.v3.ManagementResource+UploadsResource+UploadDataMediaUpload.AltEnum": [
+    "json"
+  ]
+}

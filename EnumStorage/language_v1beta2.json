@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudNaturalLanguage.v1beta2.CloudNaturalLanguageBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudNaturalLanguage.v1beta2.CloudNaturalLanguageBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AIPlatformNotebooks.v1.AIPlatformNotebooksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AIPlatformNotebooks.v1.AIPlatformNotebooksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

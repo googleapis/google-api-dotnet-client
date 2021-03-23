@@ -1,0 +1,25 @@
+{
+  "Google.Apis.AdExchangeBuyerII.v2beta1.AccountsResource+CreativesResource+CreateRequest.DuplicateIdModeEnum": [
+    "NO_DUPLICATES",
+    "FORCE_ENABLE_DUPLICATE_IDS"
+  ],
+  "Google.Apis.AdExchangeBuyerII.v2beta1.AccountsResource+FinalizedProposalsResource+ListRequest.FilterSyntaxEnum": [
+    "FILTER_SYNTAX_UNSPECIFIED",
+    "PQL",
+    "LIST_FILTER"
+  ],
+  "Google.Apis.AdExchangeBuyerII.v2beta1.AccountsResource+ProposalsResource+ListRequest.FilterSyntaxEnum": [
+    "FILTER_SYNTAX_UNSPECIFIED",
+    "PQL",
+    "LIST_FILTER"
+  ],
+  "Google.Apis.AdExchangeBuyerII.v2beta1.AdExchangeBuyerIIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AdExchangeBuyerII.v2beta1.AdExchangeBuyerIIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

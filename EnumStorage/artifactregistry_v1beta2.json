@@ -1,0 +1,21 @@
+{
+  "Google.Apis.ArtifactRegistry.v1beta2.ArtifactRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ArtifactRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+PackagesResource+VersionsResource+GetRequest.ViewEnum": [
+    "VERSION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ArtifactRegistry.v1beta2.ProjectsResource+LocationsResource+RepositoriesResource+PackagesResource+VersionsResource+ListRequest.ViewEnum": [
+    "VERSION_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

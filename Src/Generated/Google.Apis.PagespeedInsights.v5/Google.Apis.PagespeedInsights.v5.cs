@@ -97,11 +97,11 @@ namespace Google.Apis.PagespeedInsights.v5
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.PagespeedInsights.v5
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -319,36 +319,36 @@ namespace Google.Apis.PagespeedInsights.v5
             {
                 /// <summary>Default UNDEFINED category.</summary>
                 [Google.Apis.Util.StringValueAttribute("CATEGORY_UNSPECIFIED")]
-                CATEGORYUNSPECIFIED,
+                CATEGORYUNSPECIFIED = 0,
 
                 /// <summary>
                 /// Accessibility (a11y), category pertaining to a website's capacity to be accessible to all users.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ACCESSIBILITY")]
-                ACCESSIBILITY,
+                ACCESSIBILITY = 1,
 
                 /// <summary>
                 /// Best Practices, category pertaining to a website's conformance to web best practice.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BEST_PRACTICES")]
-                BESTPRACTICES,
+                BESTPRACTICES = 2,
 
                 /// <summary>Performance, category pertaining to a website's performance.</summary>
                 [Google.Apis.Util.StringValueAttribute("PERFORMANCE")]
-                PERFORMANCE,
+                PERFORMANCE = 3,
 
                 /// <summary>
                 /// Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PWA")]
-                PWA,
+                PWA = 4,
 
                 /// <summary>
                 /// Search Engine Optimization (SEO), category pertaining to a website's ability to be indexed by search
                 /// engines.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("SEO")]
-                SEO,
+                SEO = 5,
             }
 
             /// <summary>The locale used to localize formatted results</summary>
@@ -364,15 +364,15 @@ namespace Google.Apis.PagespeedInsights.v5
             {
                 /// <summary>UNDEFINED.</summary>
                 [Google.Apis.Util.StringValueAttribute("STRATEGY_UNSPECIFIED")]
-                STRATEGYUNSPECIFIED,
+                STRATEGYUNSPECIFIED = 0,
 
                 /// <summary>Fetch and analyze the URL for desktop browsers.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESKTOP")]
-                DESKTOP,
+                DESKTOP = 1,
 
                 /// <summary>Fetch and analyze the URL for mobile devices.</summary>
                 [Google.Apis.Util.StringValueAttribute("MOBILE")]
-                MOBILE,
+                MOBILE = 2,
             }
 
             /// <summary>Campaign name for analytics.</summary>

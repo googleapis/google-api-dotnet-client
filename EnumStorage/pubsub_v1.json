@@ -1,0 +1,21 @@
+{
+  "Google.Apis.Pubsub.v1.ProjectsResource+SchemasResource+GetRequest.ViewEnum": [
+    "SCHEMA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Pubsub.v1.ProjectsResource+SchemasResource+ListRequest.ViewEnum": [
+    "SCHEMA_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Pubsub.v1.PubsubBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Pubsub.v1.PubsubBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

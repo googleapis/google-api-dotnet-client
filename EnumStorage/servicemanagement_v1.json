@@ -1,0 +1,19 @@
+{
+  "Google.Apis.ServiceManagement.v1.ServiceManagementBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ServiceManagement.v1.ServiceManagementBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.ServiceManagement.v1.ServicesResource+ConfigsResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.ServiceManagement.v1.ServicesResource+GetConfigRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ]
+}

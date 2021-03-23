@@ -1,0 +1,16 @@
+{
+  "Google.Apis.Reseller.v1.ResellerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Reseller.v1.ResellerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Reseller.v1.SubscriptionsResource+DeleteRequest.DeletionTypeEnum": [
+    "deletion_type_undefined",
+    "cancel",
+    "transfer_to_direct"
+  ]
+}

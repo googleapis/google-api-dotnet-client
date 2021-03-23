@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudOSLogin.v1.CloudOSLoginBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudOSLogin.v1.CloudOSLoginBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

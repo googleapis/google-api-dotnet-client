@@ -157,11 +157,11 @@ namespace Google.Apis.AndroidEnterprise.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -177,15 +177,15 @@ namespace Google.Apis.AndroidEnterprise.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1208,7 +1208,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 /// <summary>Google Credentials File format.</summary>
                 [Google.Apis.Util.StringValueAttribute("googleCredentials")]
-                GoogleCredentials,
+                GoogleCredentials = 0,
 
                 /// <summary>
                 /// PKCS12 format. The password for the PKCS12 file is 'notasecret'. For more information, see
@@ -1216,7 +1216,7 @@ namespace Google.Apis.AndroidEnterprise.v1
                 /// RFC 4648 Section 4. See http://tools.ietf.org/html/rfc4648#section-4.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("pkcs12")]
-                Pkcs12,
+                Pkcs12 = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1415,11 +1415,11 @@ namespace Google.Apis.AndroidEnterprise.v1
             {
                 /// <summary>Wait until one or more notifications are present.</summary>
                 [Google.Apis.Util.StringValueAttribute("waitForNotifications")]
-                WaitForNotifications,
+                WaitForNotifications = 0,
 
                 /// <summary>Returns immediately whether notifications are present or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("returnImmediately")]
-                ReturnImmediately,
+                ReturnImmediately = 1,
             }
 
             /// <summary>Gets the method name.</summary>

@@ -255,11 +255,11 @@ namespace Google.Apis.YouTube.v3
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -275,15 +275,15 @@ namespace Google.Apis.YouTube.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1097,11 +1097,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -1117,15 +1117,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -1478,11 +1478,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -1498,15 +1498,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -1751,11 +1751,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -1771,15 +1771,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -2705,19 +2705,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>The comment is available for public display.</summary>
                 [Google.Apis.Util.StringValueAttribute("published")]
-                Published,
+                Published = 0,
 
                 /// <summary>The comment is awaiting review by a moderator.</summary>
                 [Google.Apis.Util.StringValueAttribute("heldForReview")]
-                HeldForReview,
+                HeldForReview = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("likelySpam")]
-                LikelySpam,
+                LikelySpam = 2,
 
                 /// <summary>The comment is unfit for display.</summary>
                 [Google.Apis.Util.StringValueAttribute("rejected")]
-                Rejected,
+                Rejected = 3,
             }
 
             [Google.Apis.Util.RequestParameterAttribute("order", Google.Apis.Util.RequestParameterType.Query)]
@@ -2727,15 +2727,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("orderUnspecified")]
-                OrderUnspecified,
+                OrderUnspecified = 0,
 
                 /// <summary>Order by time.</summary>
                 [Google.Apis.Util.StringValueAttribute("time")]
-                Time,
+                Time = 1,
 
                 /// <summary>Order by relevance.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
-                Relevance,
+                Relevance = 2,
             }
 
             /// <summary>
@@ -2762,15 +2762,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("textFormatUnspecified")]
-                TextFormatUnspecified,
+                TextFormatUnspecified = 0,
 
                 /// <summary>Returns the comments in HTML format. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("html")]
-                Html,
+                Html = 1,
 
                 /// <summary>Returns the comments in plain text format.</summary>
                 [Google.Apis.Util.StringValueAttribute("plainText")]
-                PlainText,
+                PlainText = 2,
             }
 
             /// <summary>Returns the comment threads of the specified video.</summary>
@@ -3122,15 +3122,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("textFormatUnspecified")]
-                TextFormatUnspecified,
+                TextFormatUnspecified = 0,
 
                 /// <summary>Returns the comments in HTML format. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("html")]
-                Html,
+                Html = 1,
 
                 /// <summary>Returns the comments in plain text format.</summary>
                 [Google.Apis.Util.StringValueAttribute("plainText")]
-                PlainText,
+                PlainText = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -3286,19 +3286,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>The comment is available for public display.</summary>
                 [Google.Apis.Util.StringValueAttribute("published")]
-                Published,
+                Published = 0,
 
                 /// <summary>The comment is awaiting review by a moderator.</summary>
                 [Google.Apis.Util.StringValueAttribute("heldForReview")]
-                HeldForReview,
+                HeldForReview = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("likelySpam")]
-                LikelySpam,
+                LikelySpam = 2,
 
                 /// <summary>The comment is unfit for display.</summary>
                 [Google.Apis.Util.StringValueAttribute("rejected")]
-                Rejected,
+                Rejected = 3,
             }
 
             /// <summary>
@@ -3933,23 +3933,23 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("broadcastStatusFilterUnspecified")]
-                BroadcastStatusFilterUnspecified,
+                BroadcastStatusFilterUnspecified = 0,
 
                 /// <summary>Return all broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 1,
 
                 /// <summary>Return current live broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("active")]
-                Active,
+                Active = 2,
 
                 /// <summary>Return broadcasts that have not yet started.</summary>
                 [Google.Apis.Util.StringValueAttribute("upcoming")]
-                Upcoming,
+                Upcoming = 3,
 
                 /// <summary>Return broadcasts that have already ended.</summary>
                 [Google.Apis.Util.StringValueAttribute("completed")]
-                Completed,
+                Completed = 4,
             }
 
             /// <summary>Return only broadcasts with the selected type.</summary>
@@ -3961,19 +3961,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("broadcastTypeFilterUnspecified")]
-                BroadcastTypeFilterUnspecified,
+                BroadcastTypeFilterUnspecified = 0,
 
                 /// <summary>Return all broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
-                All,
+                All = 1,
 
                 /// <summary>Return only scheduled event broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("event")]
-                Event__,
+                Event__ = 2,
 
                 /// <summary>Return only persistent broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("persistent")]
-                Persistent,
+                Persistent = 3,
             }
 
             /// <summary>Return broadcasts with the given ids from Stubby or Apiary.</summary>
@@ -4148,7 +4148,7 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("statusUnspecified")]
-                StatusUnspecified,
+                StatusUnspecified = 0,
 
                 /// <summary>
                 /// Start testing the broadcast. YouTube transmits video to the broadcast's monitor stream. Note that
@@ -4156,15 +4156,15 @@ namespace Google.Apis.YouTube.v3
                 /// contentDetails.monitorStream.enableMonitorStream property is set to true.",
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("testing")]
-                Testing,
+                Testing = 1,
 
                 /// <summary>Return only persistent broadcasts.</summary>
                 [Google.Apis.Util.StringValueAttribute("live")]
-                Live,
+                Live = 2,
 
                 /// <summary>The broadcast is over. YouTube stops transmitting video.</summary>
                 [Google.Apis.Util.StringValueAttribute("complete")]
-                Complete,
+                Complete = 3,
             }
 
             /// <summary>Broadcast to transition.</summary>
@@ -5492,15 +5492,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("listMembersModeUnknown")]
-                ListMembersModeUnknown,
+                ListMembersModeUnknown = 0,
 
                 /// <summary>Return only members that joined after the first call with this mode was made.</summary>
                 [Google.Apis.Util.StringValueAttribute("updates")]
-                Updates,
+                Updates = 1,
 
                 /// <summary>Return all current members, from newest to oldest.</summary>
                 [Google.Apis.Util.StringValueAttribute("all_current")]
-                AllCurrent,
+                AllCurrent = 2,
             }
 
             /// <summary>
@@ -6540,15 +6540,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("channelTypeUnspecified")]
-                ChannelTypeUnspecified,
+                ChannelTypeUnspecified = 0,
 
                 /// <summary>Return all channels.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only retrieve shows.</summary>
                 [Google.Apis.Util.StringValueAttribute("show")]
-                Show,
+                Show = 2,
             }
 
             /// <summary>Filter on the livestream status of the videos.</summary>
@@ -6560,19 +6560,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 0,
 
                 /// <summary>The live broadcast is upcoming.</summary>
                 [Google.Apis.Util.StringValueAttribute("upcoming")]
-                Upcoming,
+                Upcoming = 1,
 
                 /// <summary>The live broadcast is active.</summary>
                 [Google.Apis.Util.StringValueAttribute("live")]
-                Live,
+                Live = 2,
 
                 /// <summary>The live broadcast has been completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("completed")]
-                Completed,
+                Completed = 3,
             }
 
             /// <summary>Search owned by a content owner.</summary>
@@ -6625,36 +6625,36 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("searchSortUnspecified")]
-                SearchSortUnspecified,
+                SearchSortUnspecified = 0,
 
                 /// <summary>
                 /// Resources are sorted in reverse chronological order based on the date they were created.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("date")]
-                Date,
+                Date = 1,
 
                 /// <summary>Resources are sorted from highest to lowest rating.</summary>
                 [Google.Apis.Util.StringValueAttribute("rating")]
-                Rating,
+                Rating = 2,
 
                 /// <summary>Resources are sorted from highest to lowest number of views.</summary>
                 [Google.Apis.Util.StringValueAttribute("viewCount")]
-                ViewCount,
+                ViewCount = 3,
 
                 /// <summary>
                 /// Resources are sorted based on their relevance to the search query. This is the default value for
                 /// this parameter.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
-                Relevance,
+                Relevance = 4,
 
                 /// <summary>Resources are sorted alphabetically by title.</summary>
                 [Google.Apis.Util.StringValueAttribute("title")]
-                Title,
+                Title = 5,
 
                 /// <summary>Channels are sorted in descending order of their number of uploaded videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("videoCount")]
-                VideoCount,
+                VideoCount = 6,
             }
 
             /// <summary>
@@ -6702,11 +6702,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("safeSearchSettingUnspecified")]
-                SafeSearchSettingUnspecified,
+                SafeSearchSettingUnspecified = 0,
 
                 /// <summary>YouTube will not filter the search result set.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 1,
 
                 /// <summary>
                 /// YouTube will filter some content from search results and, at the least, will filter content that is
@@ -6714,14 +6714,14 @@ namespace Google.Apis.YouTube.v3
                 /// results or demoted in search results. This is the default parameter value.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("moderate")]
-                Moderate,
+                Moderate = 2,
 
                 /// <summary>
                 /// YouTube will try to exclude all restricted content from the search result set. Based on their
                 /// content, search results could be removed from search results or demoted in search results.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("strict")]
-                Strict,
+                Strict = 3,
             }
 
             /// <summary>Restrict results to a particular topic.</summary>
@@ -6741,19 +6741,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("videoCaptionUnspecified")]
-                VideoCaptionUnspecified,
+                VideoCaptionUnspecified = 0,
 
                 /// <summary>Do not filter results based on caption availability.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only include videos that have captions.</summary>
                 [Google.Apis.Util.StringValueAttribute("closedCaption")]
-                ClosedCaption,
+                ClosedCaption = 2,
 
                 /// <summary>Only include videos that do not have captions.</summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 3,
             }
 
             /// <summary>Filter on videos in a specific category.</summary>
@@ -6769,15 +6769,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Return all videos, regardless of their resolution.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 0,
 
                 /// <summary>Only retrieve videos in standard definition.</summary>
                 [Google.Apis.Util.StringValueAttribute("standard")]
-                Standard,
+                Standard = 1,
 
                 /// <summary>Only retrieve HD videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("high")]
-                High,
+                High = 2,
             }
 
             /// <summary>Filter on 3d videos.</summary>
@@ -6789,15 +6789,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 0,
 
                 /// <summary>Restrict search results to exclude 3D videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("2d")]
-                Value2d,
+                Value2d = 1,
 
                 /// <summary>Restrict search results to only include 3D videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("3d")]
-                Value3d,
+                Value3d = 2,
             }
 
             /// <summary>Filter on the duration of the videos.</summary>
@@ -6809,25 +6809,25 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("videoDurationUnspecified")]
-                VideoDurationUnspecified,
+                VideoDurationUnspecified = 0,
 
                 /// <summary>
                 /// Do not filter video search results based on their duration. This is the default value.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only include videos that are less than four minutes long.</summary>
                 [Google.Apis.Util.StringValueAttribute("short")]
-                Short__,
+                Short__ = 2,
 
                 /// <summary>Only include videos that are between four and 20 minutes long (inclusive).</summary>
                 [Google.Apis.Util.StringValueAttribute("medium")]
-                Medium,
+                Medium = 3,
 
                 /// <summary>Only include videos longer than 20 minutes.</summary>
                 [Google.Apis.Util.StringValueAttribute("long")]
-                Long__,
+                Long__ = 4,
             }
 
             /// <summary>Filter on embeddable videos.</summary>
@@ -6839,15 +6839,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("videoEmbeddableUnspecified")]
-                VideoEmbeddableUnspecified,
+                VideoEmbeddableUnspecified = 0,
 
                 /// <summary>Return all videos, embeddable or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only retrieve embeddable videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("true")]
-                True__,
+                True__ = 2,
             }
 
             /// <summary>Filter on the license of the videos.</summary>
@@ -6861,18 +6861,18 @@ namespace Google.Apis.YouTube.v3
                 /// Return all videos, regardless of which license they have, that match the query parameters.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 0,
 
                 /// <summary>Only return videos that have the standard YouTube license.</summary>
                 [Google.Apis.Util.StringValueAttribute("youtube")]
-                Youtube,
+                Youtube = 1,
 
                 /// <summary>
                 /// Only return videos that have a Creative Commons license. Users can reuse videos with this license in
                 /// other videos that they create. Learn more.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("creativeCommon")]
-                CreativeCommon,
+                CreativeCommon = 2,
             }
 
             /// <summary>Filter on syndicated videos.</summary>
@@ -6884,15 +6884,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("videoSyndicatedUnspecified")]
-                VideoSyndicatedUnspecified,
+                VideoSyndicatedUnspecified = 0,
 
                 /// <summary>Return all videos, syndicated or not.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only retrieve syndicated videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("true")]
-                True__,
+                True__ = 2,
             }
 
             /// <summary>Filter on videos of a specific type.</summary>
@@ -6904,19 +6904,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("videoTypeUnspecified")]
-                VideoTypeUnspecified,
+                VideoTypeUnspecified = 0,
 
                 /// <summary>Return all videos.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
-                Any,
+                Any = 1,
 
                 /// <summary>Only retrieve movies.</summary>
                 [Google.Apis.Util.StringValueAttribute("movie")]
-                Movie,
+                Movie = 2,
 
                 /// <summary>Only retrieve episodes of shows.</summary>
                 [Google.Apis.Util.StringValueAttribute("episode")]
-                Episode,
+                Episode = 3,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -7403,19 +7403,19 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("subscriptionOrderUnspecified")]
-                SubscriptionOrderUnspecified,
+                SubscriptionOrderUnspecified = 0,
 
                 /// <summary>Sort by relevance.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
-                Relevance,
+                Relevance = 1,
 
                 /// <summary>Sort by order of activity.</summary>
                 [Google.Apis.Util.StringValueAttribute("unread")]
-                Unread,
+                Unread = 2,
 
                 /// <summary>Sort alphabetically.</summary>
                 [Google.Apis.Util.StringValueAttribute("alphabetical")]
-                Alphabetical,
+                Alphabetical = 3,
             }
 
             /// <summary>
@@ -7761,14 +7761,14 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("linkUnspecified")]
-                LinkUnspecified,
+                LinkUnspecified = 0,
 
                 /// <summary>
                 /// A link that is connecting (or about to connect) a channel with a store on a merchandising platform
                 /// in order to enable retail commerce capabilities for that channel on YouTube.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("channelToStoreLink")]
-                ChannelToStoreLink,
+                ChannelToStoreLink = 1,
             }
 
             /// <summary>Do not use. Required for compatibility.</summary>
@@ -7914,14 +7914,14 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("linkUnspecified")]
-                LinkUnspecified,
+                LinkUnspecified = 0,
 
                 /// <summary>
                 /// A link that is connecting (or about to connect) a channel with a store on a merchandising platform
                 /// in order to enable retail commerce capabilities for that channel on YouTube.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("channelToStoreLink")]
-                ChannelToStoreLink,
+                ChannelToStoreLink = 1,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -8150,11 +8150,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -8170,15 +8170,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -8776,11 +8776,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -8796,15 +8796,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>
@@ -8967,13 +8967,13 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("chartUnspecified")]
-                ChartUnspecified,
+                ChartUnspecified = 0,
 
                 /// <summary>
                 /// Return the most popular videos for the specified content region and video category.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("mostPopular")]
-                MostPopular,
+                MostPopular = 1,
             }
 
             /// <summary>
@@ -9020,15 +9020,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 0,
 
                 /// <summary>The entity is liked.</summary>
                 [Google.Apis.Util.StringValueAttribute("like")]
-                Like,
+                Like = 1,
 
                 /// <summary>The entity is disliked.</summary>
                 [Google.Apis.Util.StringValueAttribute("dislike")]
-                Dislike,
+                Dislike = 2,
             }
 
             /// <summary>
@@ -9209,15 +9209,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
-                None,
+                None = 0,
 
                 /// <summary>The entity is liked.</summary>
                 [Google.Apis.Util.StringValueAttribute("like")]
-                Like,
+                Like = 1,
 
                 /// <summary>The entity is disliked.</summary>
                 [Google.Apis.Util.StringValueAttribute("dislike")]
-                Dislike,
+                Dislike = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -9535,11 +9535,11 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>v1 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("1")]
-                Value1,
+                Value1 = 0,
 
                 /// <summary>v2 error format</summary>
                 [Google.Apis.Util.StringValueAttribute("2")]
-                Value2,
+                Value2 = 1,
             }
 
             /// <summary>OAuth access token.</summary>
@@ -9555,15 +9555,15 @@ namespace Google.Apis.YouTube.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
 
                 /// <summary>Media download with context-dependent Content-Type</summary>
                 [Google.Apis.Util.StringValueAttribute("media")]
-                Media,
+                Media = 1,
 
                 /// <summary>Responses with Content-Type of application/x-protobuf</summary>
                 [Google.Apis.Util.StringValueAttribute("proto")]
-                Proto,
+                Proto = 2,
             }
 
             /// <summary>JSONP</summary>

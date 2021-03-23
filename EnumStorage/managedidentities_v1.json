@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

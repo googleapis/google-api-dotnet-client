@@ -1,0 +1,34 @@
+{
+  "Google.Apis.CloudIdentity.v1beta1.CloudIdentityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.CloudIdentityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.DevicesResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "COMPANY_INVENTORY",
+    "USER_ASSIGNED_DEVICES"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.GroupsResource+CreateRequest.InitialGroupConfigEnum": [
+    "INITIAL_GROUP_CONFIG_UNSPECIFIED",
+    "WITH_INITIAL_OWNER",
+    "EMPTY"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.GroupsResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.GroupsResource+MembershipsResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.CloudIdentity.v1beta1.GroupsResource+SearchRequest.ViewEnum": [
+    "BASIC",
+    "FULL"
+  ]
+}

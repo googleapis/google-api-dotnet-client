@@ -1,0 +1,21 @@
+{
+  "Google.Apis.AccessContextManager.v1.AccessContextManagerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessContextManagerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessPoliciesResource+AccessLevelsResource+GetRequest.AccessLevelFormatEnum": [
+    "LEVEL_FORMAT_UNSPECIFIED",
+    "AS_DEFINED",
+    "CEL"
+  ],
+  "Google.Apis.AccessContextManager.v1.AccessPoliciesResource+AccessLevelsResource+ListRequest.AccessLevelFormatEnum": [
+    "LEVEL_FORMAT_UNSPECIFIED",
+    "AS_DEFINED",
+    "CEL"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ChromeUXReport.v1.ChromeUXReportBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ChromeUXReport.v1.ChromeUXReportBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

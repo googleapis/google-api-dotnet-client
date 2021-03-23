@@ -107,11 +107,11 @@ namespace Google.Apis.Vault.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -127,15 +127,15 @@ namespace Google.Apis.Vault.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1020,18 +1020,18 @@ namespace Google.Apis.Vault.v1
                 {
                     /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
-                    HOLDVIEWUNSPECIFIED,
+                    HOLDVIEWUNSPECIFIED = 0,
 
                     /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
-                    BASICHOLD,
+                    BASICHOLD = 1,
 
                     /// <summary>
                     /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
                     /// applies to, such as accounts, or OU.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
-                    FULLHOLD,
+                    FULLHOLD = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1121,18 +1121,18 @@ namespace Google.Apis.Vault.v1
                 {
                     /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
-                    HOLDVIEWUNSPECIFIED,
+                    HOLDVIEWUNSPECIFIED = 0,
 
                     /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
-                    BASICHOLD,
+                    BASICHOLD = 1,
 
                     /// <summary>
                     /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
                     /// applies to, such as accounts, or OU.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
-                    FULLHOLD,
+                    FULLHOLD = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1892,17 +1892,17 @@ namespace Google.Apis.Vault.v1
             {
                 /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED,
+                VIEWUNSPECIFIED = 0,
 
                 /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 1,
 
                 /// <summary>
                 /// Full representation of matter is returned. Everything above and including MatterPermissions list.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 2,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1973,19 +1973,19 @@ namespace Google.Apis.Vault.v1
             {
                 /// <summary>The matter has no specified state.</summary>
                 [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
-                STATEUNSPECIFIED,
+                STATEUNSPECIFIED = 0,
 
                 /// <summary>This matter is open.</summary>
                 [Google.Apis.Util.StringValueAttribute("OPEN")]
-                OPEN,
+                OPEN = 1,
 
                 /// <summary>This matter is closed.</summary>
                 [Google.Apis.Util.StringValueAttribute("CLOSED")]
-                CLOSED,
+                CLOSED = 2,
 
                 /// <summary>This matter is deleted.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
-                DELETED,
+                DELETED = 3,
             }
 
             /// <summary>Specifies which parts of the matter to return in response.</summary>
@@ -1997,17 +1997,17 @@ namespace Google.Apis.Vault.v1
             {
                 /// <summary>There is no specified view.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED,
+                VIEWUNSPECIFIED = 0,
 
                 /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 1,
 
                 /// <summary>
                 /// Full representation of matter is returned. Everything above and including MatterPermissions list.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 2,
             }
 
             /// <summary>Gets the method name.</summary>

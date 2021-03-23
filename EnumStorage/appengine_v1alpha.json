@@ -1,0 +1,24 @@
+{
+  "Google.Apis.Appengine.v1alpha.AppengineBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Appengine.v1alpha.AppengineBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Appengine.v1alpha.AppsResource+AuthorizedCertificatesResource+GetRequest.ViewEnum": [
+    "BASIC_CERTIFICATE",
+    "FULL_CERTIFICATE"
+  ],
+  "Google.Apis.Appengine.v1alpha.AppsResource+AuthorizedCertificatesResource+ListRequest.ViewEnum": [
+    "BASIC_CERTIFICATE",
+    "FULL_CERTIFICATE"
+  ],
+  "Google.Apis.Appengine.v1alpha.AppsResource+DomainMappingsResource+CreateRequest.OverrideStrategyEnum": [
+    "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY",
+    "STRICT",
+    "OVERRIDE"
+  ]
+}

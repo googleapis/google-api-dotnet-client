@@ -109,11 +109,11 @@ namespace Google.Apis.Spanner.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -129,15 +129,15 @@ namespace Google.Apis.Spanner.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -966,7 +966,7 @@ namespace Google.Apis.Spanner.v1
                     {
                         /// <summary>Unspecified. Do not use.</summary>
                         [Google.Apis.Util.StringValueAttribute("ENCRYPTION_TYPE_UNSPECIFIED")]
-                        ENCRYPTIONTYPEUNSPECIFIED,
+                        ENCRYPTIONTYPEUNSPECIFIED = 0,
 
                         /// <summary>
                         /// Use the same encryption configuration as the database. This is the default option when
@@ -975,18 +975,18 @@ namespace Google.Apis.Spanner.v1
                         /// database.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("USE_DATABASE_ENCRYPTION")]
-                        USEDATABASEENCRYPTION,
+                        USEDATABASEENCRYPTION = 1,
 
                         /// <summary>Use Google default encryption.</summary>
                         [Google.Apis.Util.StringValueAttribute("GOOGLE_DEFAULT_ENCRYPTION")]
-                        GOOGLEDEFAULTENCRYPTION,
+                        GOOGLEDEFAULTENCRYPTION = 2,
 
                         /// <summary>
                         /// Use customer managed encryption. If specified, `kms_key_name` must contain a valid Cloud KMS
                         /// key.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CUSTOMER_MANAGED_ENCRYPTION")]
-                        CUSTOMERMANAGEDENCRYPTION,
+                        CUSTOMERMANAGEDENCRYPTION = 3,
                     }
 
                     /// <summary>

@@ -211,11 +211,11 @@ namespace Google.Apis.Script.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -231,15 +231,15 @@ namespace Google.Apis.Script.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -474,39 +474,39 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>Unspecified status.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
-                PROCESSSTATUSUNSPECIFIED,
+                PROCESSSTATUSUNSPECIFIED = 0,
 
                 /// <summary>The process is currently running.</summary>
                 [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                RUNNING,
+                RUNNING = 1,
 
                 /// <summary>The process has paused.</summary>
                 [Google.Apis.Util.StringValueAttribute("PAUSED")]
-                PAUSED,
+                PAUSED = 2,
 
                 /// <summary>The process has completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
-                COMPLETED,
+                COMPLETED = 3,
 
                 /// <summary>The process was cancelled.</summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
-                CANCELED,
+                CANCELED = 4,
 
                 /// <summary>The process failed.</summary>
                 [Google.Apis.Util.StringValueAttribute("FAILED")]
-                FAILED,
+                FAILED = 5,
 
                 /// <summary>The process timed out.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
-                TIMEDOUT,
+                TIMEDOUT = 6,
 
                 /// <summary>Process status unknown.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                UNKNOWN,
+                UNKNOWN = 7,
 
                 /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
-                DELAYED,
+                DELAYED = 8,
             }
 
             /// <summary>
@@ -522,43 +522,43 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>Unspecified type.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
-                PROCESSTYPEUNSPECIFIED,
+                PROCESSTYPEUNSPECIFIED = 0,
 
                 /// <summary>The process was started from an add-on entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("ADD_ON")]
-                ADDON,
+                ADDON = 1,
 
                 /// <summary>The process was started using the Apps Script API.</summary>
                 [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
-                EXECUTIONAPI,
+                EXECUTIONAPI = 2,
 
                 /// <summary>The process was started from a time-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
-                TIMEDRIVEN,
+                TIMEDRIVEN = 3,
 
                 /// <summary>The process was started from an event-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TRIGGER")]
-                TRIGGER,
+                TRIGGER = 4,
 
                 /// <summary>The process was started from a web app entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEBAPP")]
-                WEBAPP,
+                WEBAPP = 5,
 
                 /// <summary>The process was started using the Apps Script IDE.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
-                EDITOR,
+                EDITOR = 6,
 
                 /// <summary>The process was started from a G Suite simple trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE_TRIGGER")]
-                SIMPLETRIGGER,
+                SIMPLETRIGGER = 7,
 
                 /// <summary>The process was started from a G Suite menu item.</summary>
                 [Google.Apis.Util.StringValueAttribute("MENU")]
-                MENU,
+                MENU = 8,
 
                 /// <summary>The process was started as a task in a batch job.</summary>
                 [Google.Apis.Util.StringValueAttribute("BATCH_TASK")]
-                BATCHTASK,
+                BATCHTASK = 9,
             }
 
             /// <summary>
@@ -574,23 +574,23 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>User access level unspecified</summary>
                 [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
-                USERACCESSLEVELUNSPECIFIED,
+                USERACCESSLEVELUNSPECIFIED = 0,
 
                 /// <summary>The user has no access.</summary>
                 [Google.Apis.Util.StringValueAttribute("NONE")]
-                NONE,
+                NONE = 1,
 
                 /// <summary>The user has read-only access.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ")]
-                READ,
+                READ = 2,
 
                 /// <summary>The user has write access.</summary>
                 [Google.Apis.Util.StringValueAttribute("WRITE")]
-                WRITE,
+                WRITE = 3,
 
                 /// <summary>The user is an owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("OWNER")]
-                OWNER,
+                OWNER = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -772,39 +772,39 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>Unspecified status.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
-                PROCESSSTATUSUNSPECIFIED,
+                PROCESSSTATUSUNSPECIFIED = 0,
 
                 /// <summary>The process is currently running.</summary>
                 [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                RUNNING,
+                RUNNING = 1,
 
                 /// <summary>The process has paused.</summary>
                 [Google.Apis.Util.StringValueAttribute("PAUSED")]
-                PAUSED,
+                PAUSED = 2,
 
                 /// <summary>The process has completed.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
-                COMPLETED,
+                COMPLETED = 3,
 
                 /// <summary>The process was cancelled.</summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
-                CANCELED,
+                CANCELED = 4,
 
                 /// <summary>The process failed.</summary>
                 [Google.Apis.Util.StringValueAttribute("FAILED")]
-                FAILED,
+                FAILED = 5,
 
                 /// <summary>The process timed out.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
-                TIMEDOUT,
+                TIMEDOUT = 6,
 
                 /// <summary>Process status unknown.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
-                UNKNOWN,
+                UNKNOWN = 7,
 
                 /// <summary>The process is delayed, waiting for quota.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELAYED")]
-                DELAYED,
+                DELAYED = 8,
             }
 
             /// <summary>
@@ -820,43 +820,43 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>Unspecified type.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
-                PROCESSTYPEUNSPECIFIED,
+                PROCESSTYPEUNSPECIFIED = 0,
 
                 /// <summary>The process was started from an add-on entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("ADD_ON")]
-                ADDON,
+                ADDON = 1,
 
                 /// <summary>The process was started using the Apps Script API.</summary>
                 [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
-                EXECUTIONAPI,
+                EXECUTIONAPI = 2,
 
                 /// <summary>The process was started from a time-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
-                TIMEDRIVEN,
+                TIMEDRIVEN = 3,
 
                 /// <summary>The process was started from an event-based trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("TRIGGER")]
-                TRIGGER,
+                TRIGGER = 4,
 
                 /// <summary>The process was started from a web app entry point.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEBAPP")]
-                WEBAPP,
+                WEBAPP = 5,
 
                 /// <summary>The process was started using the Apps Script IDE.</summary>
                 [Google.Apis.Util.StringValueAttribute("EDITOR")]
-                EDITOR,
+                EDITOR = 6,
 
                 /// <summary>The process was started from a G Suite simple trigger.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE_TRIGGER")]
-                SIMPLETRIGGER,
+                SIMPLETRIGGER = 7,
 
                 /// <summary>The process was started from a G Suite menu item.</summary>
                 [Google.Apis.Util.StringValueAttribute("MENU")]
-                MENU,
+                MENU = 8,
 
                 /// <summary>The process was started as a task in a batch job.</summary>
                 [Google.Apis.Util.StringValueAttribute("BATCH_TASK")]
-                BATCHTASK,
+                BATCHTASK = 9,
             }
 
             /// <summary>
@@ -872,23 +872,23 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>User access level unspecified</summary>
                 [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
-                USERACCESSLEVELUNSPECIFIED,
+                USERACCESSLEVELUNSPECIFIED = 0,
 
                 /// <summary>The user has no access.</summary>
                 [Google.Apis.Util.StringValueAttribute("NONE")]
-                NONE,
+                NONE = 1,
 
                 /// <summary>The user has read-only access.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ")]
-                READ,
+                READ = 2,
 
                 /// <summary>The user has write access.</summary>
                 [Google.Apis.Util.StringValueAttribute("WRITE")]
-                WRITE,
+                WRITE = 3,
 
                 /// <summary>The user is an owner.</summary>
                 [Google.Apis.Util.StringValueAttribute("OWNER")]
-                OWNER,
+                OWNER = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -1715,15 +1715,15 @@ namespace Google.Apis.Script.v1
             {
                 /// <summary>Default metric granularity used to query no metrics.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_GRANULARITY")]
-                UNSPECIFIEDGRANULARITY,
+                UNSPECIFIEDGRANULARITY = 0,
 
                 /// <summary>Represents weekly metrics.</summary>
                 [Google.Apis.Util.StringValueAttribute("WEEKLY")]
-                WEEKLY,
+                WEEKLY = 1,
 
                 /// <summary>Represents daily metrics over a period of 7 days.</summary>
                 [Google.Apis.Util.StringValueAttribute("DAILY")]
-                DAILY,
+                DAILY = 2,
             }
 
             /// <summary>Gets the method name.</summary>

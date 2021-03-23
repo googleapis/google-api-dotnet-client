@@ -87,11 +87,11 @@ namespace Google.Apis.PolyService.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -107,15 +107,15 @@ namespace Google.Apis.PolyService.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -377,19 +377,19 @@ namespace Google.Apis.PolyService.v1
             {
                 /// <summary>No complexity specified. This is equivalent to omitting the filter.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEXITY_UNSPECIFIED")]
-                COMPLEXITYUNSPECIFIED,
+                COMPLEXITYUNSPECIFIED = 0,
 
                 /// <summary>Highly-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLEX")]
-                COMPLEX,
+                COMPLEX = 1,
 
                 /// <summary>Averagely-complex.</summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
-                MEDIUM,
+                MEDIUM = 2,
 
                 /// <summary>Simple.</summary>
                 [Google.Apis.Util.StringValueAttribute("SIMPLE")]
-                SIMPLE,
+                SIMPLE = 3,
             }
 
             /// <summary>
@@ -604,15 +604,15 @@ namespace Google.Apis.PolyService.v1
                 {
                     /// <summary>No visibility specified. Returns all assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("VISIBILITY_UNSPECIFIED")]
-                    VISIBILITYUNSPECIFIED,
+                    VISIBILITYUNSPECIFIED = 0,
 
                     /// <summary>Returns only published assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
+                    PUBLISHED = 1,
 
                     /// <summary>Returns only private assets.</summary>
                     [Google.Apis.Util.StringValueAttribute("PRIVATE")]
-                    PRIVATE__,
+                    PRIVATE__ = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>

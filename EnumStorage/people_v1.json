@@ -1,0 +1,71 @@
+{
+  "Google.Apis.PeopleService.v1.PeopleResource+ConnectionsResource+ListRequest.SortOrderEnum": [
+    "LAST_MODIFIED_ASCENDING",
+    "LAST_MODIFIED_DESCENDING",
+    "FIRST_NAME_ASCENDING",
+    "LAST_NAME_ASCENDING"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+ConnectionsResource+ListRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+CreateContactRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+DeleteContactPhotoRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+GetBatchGetRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+GetRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+ListDirectoryPeopleRequest.MergeSourcesEnum": [
+    "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+    "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+ListDirectoryPeopleRequest.SourcesEnum": [
+    "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+    "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+    "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+SearchDirectoryPeopleRequest.MergeSourcesEnum": [
+    "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+    "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+SearchDirectoryPeopleRequest.SourcesEnum": [
+    "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+    "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+    "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleResource+UpdateContactRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PeopleService.v1.PeopleServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

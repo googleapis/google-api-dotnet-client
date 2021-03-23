@@ -115,11 +115,11 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -135,15 +135,15 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -352,15 +352,15 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                     /// The operating system type associated with the user account information is unspecified.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("OPERATING_SYSTEM_TYPE_UNSPECIFIED")]
-                    OPERATINGSYSTEMTYPEUNSPECIFIED,
+                    OPERATINGSYSTEMTYPEUNSPECIFIED = 0,
 
                     /// <summary>Linux user account information.</summary>
                     [Google.Apis.Util.StringValueAttribute("LINUX")]
-                    LINUX,
+                    LINUX = 1,
 
                     /// <summary>Windows user account information.</summary>
                     [Google.Apis.Util.StringValueAttribute("WINDOWS")]
-                    WINDOWS,
+                    WINDOWS = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -630,15 +630,15 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 /// The operating system type associated with the user account information is unspecified.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("OPERATING_SYSTEM_TYPE_UNSPECIFIED")]
-                OPERATINGSYSTEMTYPEUNSPECIFIED,
+                OPERATINGSYSTEMTYPEUNSPECIFIED = 0,
 
                 /// <summary>Linux user account information.</summary>
                 [Google.Apis.Util.StringValueAttribute("LINUX")]
-                LINUX,
+                LINUX = 1,
 
                 /// <summary>Windows user account information.</summary>
                 [Google.Apis.Util.StringValueAttribute("WINDOWS")]
-                WINDOWS,
+                WINDOWS = 2,
             }
 
             /// <summary>The project ID of the Google Cloud Platform project.</summary>

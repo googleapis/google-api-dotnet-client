@@ -97,11 +97,11 @@ namespace Google.Apis.ChromeManagement.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.ChromeManagement.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -553,27 +553,27 @@ namespace Google.Apis.ChromeManagement.v1
                 {
                     /// <summary>App type not specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("APP_TYPE_UNSPECIFIED")]
-                    APPTYPEUNSPECIFIED,
+                    APPTYPEUNSPECIFIED = 0,
 
                     /// <summary>Chrome extension.</summary>
                     [Google.Apis.Util.StringValueAttribute("EXTENSION")]
-                    EXTENSION,
+                    EXTENSION = 1,
 
                     /// <summary>Chrome app.</summary>
                     [Google.Apis.Util.StringValueAttribute("APP")]
-                    APP,
+                    APP = 2,
 
                     /// <summary>Chrome theme.</summary>
                     [Google.Apis.Util.StringValueAttribute("THEME")]
-                    THEME,
+                    THEME = 3,
 
                     /// <summary>Chrome hosted app.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOSTED_APP")]
-                    HOSTEDAPP,
+                    HOSTEDAPP = 4,
 
                     /// <summary>ARC++ app.</summary>
                     [Google.Apis.Util.StringValueAttribute("ANDROID_APP")]
-                    ANDROIDAPP,
+                    ANDROIDAPP = 5,
                 }
 
                 /// <summary>

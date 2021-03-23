@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Indexing.v3.IndexingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Indexing.v3.IndexingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

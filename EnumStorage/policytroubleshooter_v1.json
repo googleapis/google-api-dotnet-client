@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PolicyTroubleshooter.v1.PolicyTroubleshooterBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PolicyTroubleshooter.v1.PolicyTroubleshooterBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

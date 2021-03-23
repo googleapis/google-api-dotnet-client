@@ -1,0 +1,18 @@
+{
+  "Google.Apis.ToolResults.v1beta3.ProjectsResource+HistoriesResource+ExecutionsResource+StepsResource+PerfSampleSeriesResource+ListRequest.FilterEnum": [
+    "perfMetricTypeUnspecified",
+    "memory",
+    "cpu",
+    "network",
+    "graphics"
+  ],
+  "Google.Apis.ToolResults.v1beta3.ToolResultsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ToolResults.v1beta3.ToolResultsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

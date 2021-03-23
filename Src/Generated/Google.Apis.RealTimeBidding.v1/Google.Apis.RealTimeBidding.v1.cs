@@ -105,11 +105,11 @@ namespace Google.Apis.RealTimeBidding.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -125,15 +125,15 @@ namespace Google.Apis.RealTimeBidding.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -384,18 +384,18 @@ namespace Google.Apis.RealTimeBidding.v1
                 {
                     /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
-                    CREATIVEVIEWUNSPECIFIED,
+                    CREATIVEVIEWUNSPECIFIED = 0,
 
                     /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
-                    SERVINGDECISIONONLY,
+                    SERVINGDECISIONONLY = 1,
 
                     /// <summary>
                     /// The entire creative resource (including the declared fields and the creative content) is
                     /// included in the response.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1723,18 +1723,18 @@ namespace Google.Apis.RealTimeBidding.v1
                 {
                     /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
-                    CREATIVEVIEWUNSPECIFIED,
+                    CREATIVEVIEWUNSPECIFIED = 0,
 
                     /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
-                    SERVINGDECISIONONLY,
+                    SERVINGDECISIONONLY = 1,
 
                     /// <summary>
                     /// The entire creative resource (including the declared fields and the creative content) is
                     /// included in the response.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -1850,18 +1850,18 @@ namespace Google.Apis.RealTimeBidding.v1
                 {
                     /// <summary>Not specified, equivalent to SERVING_DECISION_ONLY.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATIVE_VIEW_UNSPECIFIED")]
-                    CREATIVEVIEWUNSPECIFIED,
+                    CREATIVEVIEWUNSPECIFIED = 0,
 
                     /// <summary>Only creativeServingDecision is included in the response.</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVING_DECISION_ONLY")]
-                    SERVINGDECISIONONLY,
+                    SERVINGDECISIONONLY = 1,
 
                     /// <summary>
                     /// The entire creative resource (including the declared fields and the creative content) is
                     /// included in the response.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 2,
                 }
 
                 /// <summary>Gets the method name.</summary>

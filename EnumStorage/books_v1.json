@@ -1,0 +1,142 @@
+{
+  "Google.Apis.Books.v1.BooksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Books.v1.BooksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Books.v1.MyconfigResource+RequestAccessRequest.LicenseTypesEnum": [
+    "LICENSE_TYPES_UNDEFINED",
+    "BOTH",
+    "CONCURRENT",
+    "DOWNLOAD"
+  ],
+  "Google.Apis.Books.v1.MyconfigResource+SyncVolumeLicensesRequest.FeaturesEnum": [
+    "FEATURES_UNDEFINED",
+    "RENTALS"
+  ],
+  "Google.Apis.Books.v1.MylibraryResource+BookshelvesResource+AddVolumeRequest.ReasonEnum": [
+    "REASON_UNDEFINED",
+    "IOS_PREX",
+    "IOS_SEARCH",
+    "ONBOARDING"
+  ],
+  "Google.Apis.Books.v1.MylibraryResource+BookshelvesResource+RemoveVolumeRequest.ReasonEnum": [
+    "REASON_UNDEFINED",
+    "ONBOARDING"
+  ],
+  "Google.Apis.Books.v1.MylibraryResource+BookshelvesResource+VolumesResource+ListRequest.ProjectionEnum": [
+    "PROJECTION_UNDEFINED",
+    "FULL",
+    "LITE"
+  ],
+  "Google.Apis.Books.v1.MylibraryResource+ReadingpositionsResource+SetPositionRequest.ActionEnum": [
+    "ACTION_UNDEFINED",
+    "bookmark",
+    "chapter",
+    "next-page",
+    "prev-page",
+    "scroll",
+    "search"
+  ],
+  "Google.Apis.Books.v1.OnboardingResource+ListCategoryVolumesRequest.MaxAllowedMaturityRatingEnum": [
+    "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+    "MATURE",
+    "not-mature"
+  ],
+  "Google.Apis.Books.v1.PersonalizedstreamResource+GetRequest.MaxAllowedMaturityRatingEnum": [
+    "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+    "MATURE",
+    "not-mature"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+AssociatedResource+ListRequest.AssociationEnum": [
+    "ASSOCIATION_UNDEFINED",
+    "end-of-sample",
+    "end-of-volume",
+    "related-for-play"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+AssociatedResource+ListRequest.MaxAllowedMaturityRatingEnum": [
+    "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+    "MATURE",
+    "not-mature"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+GetRequest.ProjectionEnum": [
+    "PROJECTION_UNDEFINED",
+    "FULL",
+    "LITE"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.DownloadEnum": [
+    "DOWNLOAD_UNDEFINED",
+    "EPUB"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.FilterEnum": [
+    "FILTER_UNDEFINED",
+    "ebooks",
+    "free-ebooks",
+    "full",
+    "paid-ebooks",
+    "partial"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.LibraryRestrictEnum": [
+    "LIBRARY_RESTRICT_UNDEFINED",
+    "my-library",
+    "no-restrict"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.MaxAllowedMaturityRatingEnum": [
+    "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+    "MATURE",
+    "not-mature"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.OrderByEnum": [
+    "ORDER_BY_UNDEFINED",
+    "newest",
+    "relevance"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.PrintTypeEnum": [
+    "PRINT_TYPE_UNDEFINED",
+    "ALL",
+    "BOOKS",
+    "MAGAZINES"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+ListRequest.ProjectionEnum": [
+    "PROJECTION_UNDEFINED",
+    "FULL",
+    "LITE"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+MybooksResource+ListRequest.AcquireMethodEnum": [
+    "ACQUIRE_METHOD_UNDEFINED",
+    "FAMILY_SHARED",
+    "PREORDERED",
+    "PREVIOUSLY_RENTED",
+    "PUBLIC_DOMAIN",
+    "PURCHASED",
+    "RENTED",
+    "SAMPLE",
+    "UPLOADED"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+MybooksResource+ListRequest.ProcessingStateEnum": [
+    "PROCESSING_STATE_UNDEFINED",
+    "COMPLETED_FAILED",
+    "COMPLETED_SUCCESS",
+    "RUNNING"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+RecommendedResource+ListRequest.MaxAllowedMaturityRatingEnum": [
+    "MAX_ALLOWED_MATURITY_RATING_UNDEFINED",
+    "MATURE",
+    "not-mature"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+RecommendedResource+RateRequest.RatingEnum": [
+    "RATING_UNDEFINED",
+    "HAVE_IT",
+    "NOT_INTERESTED"
+  ],
+  "Google.Apis.Books.v1.VolumesResource+UseruploadedResource+ListRequest.ProcessingStateEnum": [
+    "PROCESSING_STATE_UNDEFINED",
+    "COMPLETED_FAILED",
+    "COMPLETED_SUCCESS",
+    "RUNNING"
+  ]
+}

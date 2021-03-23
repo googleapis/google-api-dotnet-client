@@ -1,0 +1,11 @@
+{
+  "Google.Apis.HangoutsChat.v1.HangoutsChatBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.HangoutsChat.v1.HangoutsChatBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

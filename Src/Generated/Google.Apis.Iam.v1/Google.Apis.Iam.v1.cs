@@ -115,11 +115,11 @@ namespace Google.Apis.Iam.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -135,15 +135,15 @@ namespace Google.Apis.Iam.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -766,11 +766,11 @@ namespace Google.Apis.Iam.v1
                 {
                     /// <summary>Omits the `included_permissions` field. This is the default value.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
-                    BASIC,
+                    BASIC = 0,
 
                     /// <summary>Returns all fields.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2431,11 +2431,11 @@ namespace Google.Apis.Iam.v1
                 {
                     /// <summary>Omits the `included_permissions` field. This is the default value.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC")]
-                    BASIC,
+                    BASIC = 0,
 
                     /// <summary>Returns all fields.</summary>
                     [Google.Apis.Util.StringValueAttribute("FULL")]
-                    FULL,
+                    FULL = 1,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -2872,15 +2872,15 @@ namespace Google.Apis.Iam.v1
                     {
                         /// <summary>Unspecified. Returns nothing here.</summary>
                         [Google.Apis.Util.StringValueAttribute("TYPE_NONE")]
-                        TYPENONE,
+                        TYPENONE = 0,
 
                         /// <summary>X509 PEM format.</summary>
                         [Google.Apis.Util.StringValueAttribute("TYPE_X509_PEM_FILE")]
-                        TYPEX509PEMFILE,
+                        TYPEX509PEMFILE = 1,
 
                         /// <summary>Raw public key.</summary>
                         [Google.Apis.Util.StringValueAttribute("TYPE_RAW_PUBLIC_KEY")]
-                        TYPERAWPUBLICKEY,
+                        TYPERAWPUBLICKEY = 2,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -2964,15 +2964,15 @@ namespace Google.Apis.Iam.v1
                         /// error.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("KEY_TYPE_UNSPECIFIED")]
-                        KEYTYPEUNSPECIFIED,
+                        KEYTYPEUNSPECIFIED = 0,
 
                         /// <summary>User-managed keys (managed and rotated by the user).</summary>
                         [Google.Apis.Util.StringValueAttribute("USER_MANAGED")]
-                        USERMANAGED,
+                        USERMANAGED = 1,
 
                         /// <summary>System-managed keys (managed and rotated by Google).</summary>
                         [Google.Apis.Util.StringValueAttribute("SYSTEM_MANAGED")]
-                        SYSTEMMANAGED,
+                        SYSTEMMANAGED = 2,
                     }
 
                     /// <summary>Gets the method name.</summary>
@@ -4253,11 +4253,11 @@ namespace Google.Apis.Iam.v1
             {
                 /// <summary>Omits the `included_permissions` field. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
+                BASIC = 0,
 
                 /// <summary>Returns all fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
             }
 
             /// <summary>Gets the method name.</summary>

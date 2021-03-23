@@ -153,11 +153,11 @@ namespace Google.Apis.ShoppingContent.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -173,15 +173,15 @@ namespace Google.Apis.ShoppingContent.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -3714,11 +3714,11 @@ namespace Google.Apis.ShoppingContent.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RETURN_CREATION_TIME_DESC")]
-                RETURNCREATIONTIMEDESC,
+                RETURNCREATIONTIMEDESC = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RETURN_CREATION_TIME_ASC")]
-                RETURNCREATIONTIMEASC,
+                RETURNCREATIONTIMEASC = 1,
             }
 
             /// <summary>The token returned by the previous request.</summary>
@@ -4468,23 +4468,23 @@ namespace Google.Apis.ShoppingContent.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1")]
-                TEMPLATE1,
+                TEMPLATE1 = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE2")]
-                TEMPLATE2,
+                TEMPLATE2 = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1A")]
-                TEMPLATE1A,
+                TEMPLATE1A = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1B")]
-                TEMPLATE1B,
+                TEMPLATE1B = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE3")]
-                TEMPLATE3,
+                TEMPLATE3 = 4,
             }
 
             /// <summary>The country of the template to retrieve. Defaults to `US`.</summary>
@@ -4689,47 +4689,47 @@ namespace Google.Apis.ShoppingContent.v2
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ACTIVE")]
-                ACTIVE,
+                ACTIVE = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
-                COMPLETED,
+                COMPLETED = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
-                CANCELED,
+                CANCELED = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("IN_PROGRESS")]
-                INPROGRESS,
+                INPROGRESS = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING_SHIPMENT")]
-                PENDINGSHIPMENT,
+                PENDINGSHIPMENT = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_SHIPPED")]
-                PARTIALLYSHIPPED,
+                PARTIALLYSHIPPED = 5,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("SHIPPED")]
-                SHIPPED,
+                SHIPPED = 6,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_DELIVERED")]
-                PARTIALLYDELIVERED,
+                PARTIALLYDELIVERED = 7,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DELIVERED")]
-                DELIVERED,
+                DELIVERED = 8,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_RETURNED")]
-                PARTIALLYRETURNED,
+                PARTIALLYRETURNED = 9,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("RETURNED")]
-                RETURNED,
+                RETURNED = 10,
             }
 
             /// <summary>Gets the method name.</summary>

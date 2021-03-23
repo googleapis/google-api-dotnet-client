@@ -1,0 +1,21 @@
+{
+  "Google.Apis.CloudTasks.v2beta2.CloudTasksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudTasks.v2beta2.CloudTasksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudTasks.v2beta2.ProjectsResource+LocationsResource+QueuesResource+TasksResource+GetRequest.ResponseViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.CloudTasks.v2beta2.ProjectsResource+LocationsResource+QueuesResource+TasksResource+ListRequest.ResponseViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

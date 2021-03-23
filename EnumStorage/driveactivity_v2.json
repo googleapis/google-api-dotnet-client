@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DriveActivity.v2.DriveActivityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DriveActivity.v2.DriveActivityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

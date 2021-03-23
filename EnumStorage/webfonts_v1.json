@@ -1,0 +1,19 @@
+{
+  "Google.Apis.Webfonts.v1.WebfontsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Webfonts.v1.WebfontsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Webfonts.v1.WebfontsResource+ListRequest.SortEnum": [
+    "SORT_UNDEFINED",
+    "ALPHA",
+    "DATE",
+    "POPULARITY",
+    "STYLE",
+    "TRENDING"
+  ]
+}

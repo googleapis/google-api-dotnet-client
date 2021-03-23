@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Libraryagent.v1.LibraryagentBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Libraryagent.v1.LibraryagentBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

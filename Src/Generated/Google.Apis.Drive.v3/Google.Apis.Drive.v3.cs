@@ -179,7 +179,7 @@ namespace Google.Apis.Drive.v3
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -2049,7 +2049,7 @@ namespace Google.Apis.Drive.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -2734,14 +2734,14 @@ namespace Google.Apis.Drive.v3
             {
                 /// <summary>Files shared to the user's domain.</summary>
                 [Google.Apis.Util.StringValueAttribute("domain")]
-                Domain,
+                Domain = 0,
 
                 /// <summary>
                 /// Files owned by or shared to the user. If a user has permissions on a Shared Drive, the files inside
                 /// it won't be retrieved unless the user has created, opened, or shared the file.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("user")]
-                User,
+                User = 1,
             }
 
             /// <summary>ID of the shared drive to search.</summary>
@@ -3147,7 +3147,7 @@ namespace Google.Apis.Drive.v3
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>

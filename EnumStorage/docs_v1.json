@@ -1,0 +1,17 @@
+{
+  "Google.Apis.Docs.v1.DocsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Docs.v1.DocsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Docs.v1.DocumentsResource+GetRequest.SuggestionsViewModeEnum": [
+    "DEFAULT_FOR_CURRENT_ACCESS",
+    "SUGGESTIONS_INLINE",
+    "PREVIEW_SUGGESTIONS_ACCEPTED",
+    "PREVIEW_WITHOUT_SUGGESTIONS"
+  ]
+}

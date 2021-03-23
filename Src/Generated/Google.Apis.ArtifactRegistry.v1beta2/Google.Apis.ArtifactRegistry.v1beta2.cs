@@ -103,11 +103,11 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -123,15 +123,15 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -1107,17 +1107,17 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                                 /// The default / unset value. The API will default to the BASIC view.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("VERSION_VIEW_UNSPECIFIED")]
-                                VERSIONVIEWUNSPECIFIED,
+                                VERSIONVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Includes basic information about the version, but not any related tags.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                                BASIC,
+                                BASIC = 1,
 
                                 /// <summary>Include everything.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 2,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -1200,17 +1200,17 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                                 /// The default / unset value. The API will default to the BASIC view.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("VERSION_VIEW_UNSPECIFIED")]
-                                VERSIONVIEWUNSPECIFIED,
+                                VERSIONVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
                                 /// Includes basic information about the version, but not any related tags.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
-                                BASIC,
+                                BASIC = 1,
 
                                 /// <summary>Include everything.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                                FULL,
+                                FULL = 2,
                             }
 
                             /// <summary>Gets the method name.</summary>

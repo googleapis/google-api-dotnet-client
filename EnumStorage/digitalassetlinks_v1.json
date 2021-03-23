@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Digitalassetlinks.v1.DigitalassetlinksBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Digitalassetlinks.v1.DigitalassetlinksBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

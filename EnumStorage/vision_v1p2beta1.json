@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Vision.v1p2beta1.VisionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Vision.v1p2beta1.VisionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

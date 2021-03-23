@@ -97,11 +97,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -117,15 +117,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -366,37 +366,37 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     /// <summary>Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_UNSPECIFIED")]
-                    PERIODUNSPECIFIED,
+                    PERIODUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Retrieve data for the last hour. Recommended minimum timed count duration: 1 min.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_HOUR")]
-                    PERIOD1HOUR,
+                    PERIOD1HOUR = 1,
 
                     /// <summary>
                     /// Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_6_HOURS")]
-                    PERIOD6HOURS,
+                    PERIOD6HOURS = 2,
 
                     /// <summary>
                     /// Retrieve data for the last day. Recommended minimum timed count duration: 1 hour.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_DAY")]
-                    PERIOD1DAY,
+                    PERIOD1DAY = 3,
 
                     /// <summary>
                     /// Retrieve data for the last week. Recommended minimum timed count duration: 6 hours.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_WEEK")]
-                    PERIOD1WEEK,
+                    PERIOD1WEEK = 4,
 
                     /// <summary>
                     /// Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
-                    PERIOD30DAYS,
+                    PERIOD30DAYS = 5,
                 }
 
                 /// <summary>Gets the method name.</summary>
@@ -618,7 +618,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     /// <summary>No alignment specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("ERROR_COUNT_ALIGNMENT_UNSPECIFIED")]
-                    ERRORCOUNTALIGNMENTUNSPECIFIED,
+                    ERRORCOUNTALIGNMENTUNSPECIFIED = 0,
 
                     /// <summary>
                     /// The time periods shall be consecutive, have width equal to the requested duration, and be
@@ -628,7 +628,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     /// the first or the last time period.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGNMENT_EQUAL_ROUNDED")]
-                    ALIGNMENTEQUALROUNDED,
+                    ALIGNMENTEQUALROUNDED = 1,
 
                     /// <summary>
                     /// The time periods shall be consecutive, have width equal to the requested duration, and be
@@ -636,7 +636,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     /// first time period.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALIGNMENT_EQUAL_AT_END")]
-                    ALIGNMENTEQUALATEND,
+                    ALIGNMENTEQUALATEND = 2,
                 }
 
                 /// <summary>
@@ -663,25 +663,25 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     /// <summary>No group order specified.</summary>
                     [Google.Apis.Util.StringValueAttribute("GROUP_ORDER_UNSPECIFIED")]
-                    GROUPORDERUNSPECIFIED,
+                    GROUPORDERUNSPECIFIED = 0,
 
                     /// <summary>Total count of errors in the given time window in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("COUNT_DESC")]
-                    COUNTDESC,
+                    COUNTDESC = 1,
 
                     /// <summary>
                     /// Timestamp when the group was last seen in the given time window in descending order.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("LAST_SEEN_DESC")]
-                    LASTSEENDESC,
+                    LASTSEENDESC = 2,
 
                     /// <summary>Timestamp when the group was created in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("CREATED_DESC")]
-                    CREATEDDESC,
+                    CREATEDDESC = 3,
 
                     /// <summary>Number of affected users in the given time window in descending order.</summary>
                     [Google.Apis.Util.StringValueAttribute("AFFECTED_USERS_DESC")]
-                    AFFECTEDUSERSDESC,
+                    AFFECTEDUSERSDESC = 4,
                 }
 
                 /// <summary>Optional. The maximum number of results to return per response. Default is 20.</summary>
@@ -725,37 +725,37 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 {
                     /// <summary>Do not use.</summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_UNSPECIFIED")]
-                    PERIODUNSPECIFIED,
+                    PERIODUNSPECIFIED = 0,
 
                     /// <summary>
                     /// Retrieve data for the last hour. Recommended minimum timed count duration: 1 min.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_HOUR")]
-                    PERIOD1HOUR,
+                    PERIOD1HOUR = 1,
 
                     /// <summary>
                     /// Retrieve data for the last 6 hours. Recommended minimum timed count duration: 10 min.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_6_HOURS")]
-                    PERIOD6HOURS,
+                    PERIOD6HOURS = 2,
 
                     /// <summary>
                     /// Retrieve data for the last day. Recommended minimum timed count duration: 1 hour.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_DAY")]
-                    PERIOD1DAY,
+                    PERIOD1DAY = 3,
 
                     /// <summary>
                     /// Retrieve data for the last week. Recommended minimum timed count duration: 6 hours.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_1_WEEK")]
-                    PERIOD1WEEK,
+                    PERIOD1WEEK = 4,
 
                     /// <summary>
                     /// Retrieve data for the last 30 days. Recommended minimum timed count duration: 1 day.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("PERIOD_30_DAYS")]
-                    PERIOD30DAYS,
+                    PERIOD30DAYS = 5,
                 }
 
                 /// <summary>

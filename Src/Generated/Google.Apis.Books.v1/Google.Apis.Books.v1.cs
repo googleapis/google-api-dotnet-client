@@ -145,11 +145,11 @@ namespace Google.Apis.Books.v1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -165,15 +165,15 @@ namespace Google.Apis.Books.v1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -2126,19 +2126,19 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LICENSE_TYPES_UNDEFINED")]
-                LICENSETYPESUNDEFINED,
+                LICENSETYPESUNDEFINED = 0,
 
                 /// <summary>Both concurrent and download licenses.</summary>
                 [Google.Apis.Util.StringValueAttribute("BOTH")]
-                BOTH,
+                BOTH = 1,
 
                 /// <summary>Concurrent access license.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONCURRENT")]
-                CONCURRENT,
+                CONCURRENT = 2,
 
                 /// <summary>Offline download access license.</summary>
                 [Google.Apis.Util.StringValueAttribute("DOWNLOAD")]
-                DOWNLOAD,
+                DOWNLOAD = 3,
             }
 
             /// <summary>ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.</summary>
@@ -2251,11 +2251,11 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("FEATURES_UNDEFINED")]
-                FEATURESUNDEFINED,
+                FEATURESUNDEFINED = 0,
 
                 /// <summary>Client supports rentals.</summary>
                 [Google.Apis.Util.StringValueAttribute("RENTALS")]
-                RENTALS,
+                RENTALS = 1,
             }
 
             /// <summary>Set to true to include non-comics series. Defaults to false.</summary>
@@ -2934,15 +2934,15 @@ namespace Google.Apis.Books.v1
                     {
                         /// <summary></summary>
                         [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
-                        PROJECTIONUNDEFINED,
+                        PROJECTIONUNDEFINED = 0,
 
                         /// <summary>Includes all volume data.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
-                        FULL,
+                        FULL = 1,
 
                         /// <summary>Includes a subset of fields in volumeInfo and accessInfo.</summary>
                         [Google.Apis.Util.StringValueAttribute("LITE")]
-                        LITE,
+                        LITE = 2,
                     }
 
                     /// <summary>Full-text search query string in this bookshelf.</summary>
@@ -3078,19 +3078,19 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("REASON_UNDEFINED")]
-                    REASONUNDEFINED,
+                    REASONUNDEFINED = 0,
 
                     /// <summary>Volumes added from the PREX flow on iOS.</summary>
                     [Google.Apis.Util.StringValueAttribute("IOS_PREX")]
-                    IOSPREX,
+                    IOSPREX = 1,
 
                     /// <summary>Volumes added from the Search flow on iOS.</summary>
                     [Google.Apis.Util.StringValueAttribute("IOS_SEARCH")]
-                    IOSSEARCH,
+                    IOSSEARCH = 2,
 
                     /// <summary>Volumes added from the Onboarding flow.</summary>
                     [Google.Apis.Util.StringValueAttribute("ONBOARDING")]
-                    ONBOARDING,
+                    ONBOARDING = 3,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -3429,11 +3429,11 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("REASON_UNDEFINED")]
-                    REASONUNDEFINED,
+                    REASONUNDEFINED = 0,
 
                     /// <summary>Samples removed from the Onboarding flow.</summary>
                     [Google.Apis.Util.StringValueAttribute("ONBOARDING")]
-                    ONBOARDING,
+                    ONBOARDING = 1,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -3617,31 +3617,31 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ACTION_UNDEFINED")]
-                    ACTIONUNDEFINED,
+                    ACTIONUNDEFINED = 0,
 
                     /// <summary>User chose bookmark within volume.</summary>
                     [Google.Apis.Util.StringValueAttribute("bookmark")]
-                    Bookmark,
+                    Bookmark = 1,
 
                     /// <summary>User selected chapter from list.</summary>
                     [Google.Apis.Util.StringValueAttribute("chapter")]
-                    Chapter,
+                    Chapter = 2,
 
                     /// <summary>Next page event.</summary>
                     [Google.Apis.Util.StringValueAttribute("next-page")]
-                    NextPage,
+                    NextPage = 3,
 
                     /// <summary>Previous page event.</summary>
                     [Google.Apis.Util.StringValueAttribute("prev-page")]
-                    PrevPage,
+                    PrevPage = 4,
 
                     /// <summary>User navigated to page.</summary>
                     [Google.Apis.Util.StringValueAttribute("scroll")]
-                    Scroll,
+                    Scroll = 5,
 
                     /// <summary>User chose search results within volume.</summary>
                     [Google.Apis.Util.StringValueAttribute("search")]
-                    Search,
+                    Search = 6,
                 }
 
                 /// <summary>Volume content version for which this reading position applies.</summary>
@@ -3912,15 +3912,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("MAX_ALLOWED_MATURITY_RATING_UNDEFINED")]
-                MAXALLOWEDMATURITYRATINGUNDEFINED,
+                MAXALLOWEDMATURITYRATINGUNDEFINED = 0,
 
                 /// <summary>Show books which are rated mature or lower.</summary>
                 [Google.Apis.Util.StringValueAttribute("MATURE")]
-                MATURE,
+                MATURE = 1,
 
                 /// <summary>Show books which are rated not mature.</summary>
                 [Google.Apis.Util.StringValueAttribute("not-mature")]
-                NotMature,
+                NotMature = 2,
             }
 
             /// <summary>Number of maximum results per page to be included in the response.</summary>
@@ -4038,15 +4038,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("MAX_ALLOWED_MATURITY_RATING_UNDEFINED")]
-                MAXALLOWEDMATURITYRATINGUNDEFINED,
+                MAXALLOWEDMATURITYRATINGUNDEFINED = 0,
 
                 /// <summary>Show books which are rated mature or lower.</summary>
                 [Google.Apis.Util.StringValueAttribute("MATURE")]
-                MATURE,
+                MATURE = 1,
 
                 /// <summary>Show books which are rated not mature.</summary>
                 [Google.Apis.Util.StringValueAttribute("not-mature")]
-                NotMature,
+                NotMature = 2,
             }
 
             /// <summary>String to identify the originator of this request.</summary>
@@ -4666,19 +4666,19 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ASSOCIATION_UNDEFINED")]
-                    ASSOCIATIONUNDEFINED,
+                    ASSOCIATIONUNDEFINED = 0,
 
                     /// <summary>Recommendations for display end-of-sample.</summary>
                     [Google.Apis.Util.StringValueAttribute("end-of-sample")]
-                    EndOfSample,
+                    EndOfSample = 1,
 
                     /// <summary>Recommendations for display end-of-volume.</summary>
                     [Google.Apis.Util.StringValueAttribute("end-of-volume")]
-                    EndOfVolume,
+                    EndOfVolume = 2,
 
                     /// <summary>Related volumes for Play Store.</summary>
                     [Google.Apis.Util.StringValueAttribute("related-for-play")]
-                    RelatedForPlay,
+                    RelatedForPlay = 3,
                 }
 
                 /// <summary>
@@ -4702,15 +4702,15 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("MAX_ALLOWED_MATURITY_RATING_UNDEFINED")]
-                    MAXALLOWEDMATURITYRATINGUNDEFINED,
+                    MAXALLOWEDMATURITYRATINGUNDEFINED = 0,
 
                     /// <summary>Show books which are rated mature or lower.</summary>
                     [Google.Apis.Util.StringValueAttribute("MATURE")]
-                    MATURE,
+                    MATURE = 1,
 
                     /// <summary>Show books which are rated not mature.</summary>
                     [Google.Apis.Util.StringValueAttribute("not-mature")]
-                    NotMature,
+                    NotMature = 2,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -4815,39 +4815,39 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("ACQUIRE_METHOD_UNDEFINED")]
-                    ACQUIREMETHODUNDEFINED,
+                    ACQUIREMETHODUNDEFINED = 0,
 
                     /// <summary>Books acquired via Family Sharing</summary>
                     [Google.Apis.Util.StringValueAttribute("FAMILY_SHARED")]
-                    FAMILYSHARED,
+                    FAMILYSHARED = 1,
 
                     /// <summary>Preordered books (not yet available)</summary>
                     [Google.Apis.Util.StringValueAttribute("PREORDERED")]
-                    PREORDERED,
+                    PREORDERED = 2,
 
                     /// <summary>User-rented books past their expiration time</summary>
                     [Google.Apis.Util.StringValueAttribute("PREVIOUSLY_RENTED")]
-                    PREVIOUSLYRENTED,
+                    PREVIOUSLYRENTED = 3,
 
                     /// <summary>Public domain books</summary>
                     [Google.Apis.Util.StringValueAttribute("PUBLIC_DOMAIN")]
-                    PUBLICDOMAIN,
+                    PUBLICDOMAIN = 4,
 
                     /// <summary>Purchased books</summary>
                     [Google.Apis.Util.StringValueAttribute("PURCHASED")]
-                    PURCHASED,
+                    PURCHASED = 5,
 
                     /// <summary>User-rented books</summary>
                     [Google.Apis.Util.StringValueAttribute("RENTED")]
-                    RENTED,
+                    RENTED = 6,
 
                     /// <summary>Sample books</summary>
                     [Google.Apis.Util.StringValueAttribute("SAMPLE")]
-                    SAMPLE,
+                    SAMPLE = 7,
 
                     /// <summary>User uploaded books</summary>
                     [Google.Apis.Util.StringValueAttribute("UPLOADED")]
-                    UPLOADED,
+                    UPLOADED = 8,
                 }
 
                 /// <summary>ISO-3166-1 code to override the IP-based location.</summary>
@@ -4879,19 +4879,19 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("PROCESSING_STATE_UNDEFINED")]
-                    PROCESSINGSTATEUNDEFINED,
+                    PROCESSINGSTATEUNDEFINED = 0,
 
                     /// <summary>The volume processing hase failed.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETED_FAILED")]
-                    COMPLETEDFAILED,
+                    COMPLETEDFAILED = 1,
 
                     /// <summary>The volume processing was completed.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETED_SUCCESS")]
-                    COMPLETEDSUCCESS,
+                    COMPLETEDSUCCESS = 2,
 
                     /// <summary>The volume processing is not completed.</summary>
                     [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                    RUNNING,
+                    RUNNING = 3,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -5028,15 +5028,15 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("MAX_ALLOWED_MATURITY_RATING_UNDEFINED")]
-                    MAXALLOWEDMATURITYRATINGUNDEFINED,
+                    MAXALLOWEDMATURITYRATINGUNDEFINED = 0,
 
                     /// <summary>Show books which are rated mature or lower.</summary>
                     [Google.Apis.Util.StringValueAttribute("MATURE")]
-                    MATURE,
+                    MATURE = 1,
 
                     /// <summary>Show books which are rated not mature.</summary>
                     [Google.Apis.Util.StringValueAttribute("not-mature")]
-                    NotMature,
+                    NotMature = 2,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -5111,15 +5111,15 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("RATING_UNDEFINED")]
-                    RATINGUNDEFINED,
+                    RATINGUNDEFINED = 0,
 
                     /// <summary>Rating indicating a dismissal due to ownership.</summary>
                     [Google.Apis.Util.StringValueAttribute("HAVE_IT")]
-                    HAVEIT,
+                    HAVEIT = 1,
 
                     /// <summary>Rating indicating a negative dismissal of a volume.</summary>
                     [Google.Apis.Util.StringValueAttribute("NOT_INTERESTED")]
-                    NOTINTERESTED,
+                    NOTINTERESTED = 2,
                 }
 
                 /// <summary>ID of the source volume.</summary>
@@ -5236,19 +5236,19 @@ namespace Google.Apis.Books.v1
                 {
                     /// <summary></summary>
                     [Google.Apis.Util.StringValueAttribute("PROCESSING_STATE_UNDEFINED")]
-                    PROCESSINGSTATEUNDEFINED,
+                    PROCESSINGSTATEUNDEFINED = 0,
 
                     /// <summary>The volume processing hase failed.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETED_FAILED")]
-                    COMPLETEDFAILED,
+                    COMPLETEDFAILED = 1,
 
                     /// <summary>The volume processing was completed.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLETED_SUCCESS")]
-                    COMPLETEDSUCCESS,
+                    COMPLETEDSUCCESS = 2,
 
                     /// <summary>The volume processing is not completed.</summary>
                     [Google.Apis.Util.StringValueAttribute("RUNNING")]
-                    RUNNING,
+                    RUNNING = 3,
                 }
 
                 /// <summary>String to identify the originator of this request.</summary>
@@ -5373,15 +5373,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
-                PROJECTIONUNDEFINED,
+                PROJECTIONUNDEFINED = 0,
 
                 /// <summary>Includes all volume data.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
 
                 /// <summary>Includes a subset of fields in volumeInfo and accessInfo.</summary>
                 [Google.Apis.Util.StringValueAttribute("LITE")]
-                LITE,
+                LITE = 2,
             }
 
             /// <summary>string to identify the originator of this request.</summary>
@@ -5493,11 +5493,11 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("DOWNLOAD_UNDEFINED")]
-                DOWNLOADUNDEFINED,
+                DOWNLOADUNDEFINED = 0,
 
                 /// <summary>All volumes with epub.</summary>
                 [Google.Apis.Util.StringValueAttribute("EPUB")]
-                EPUB,
+                EPUB = 1,
             }
 
             /// <summary>Filter search results.</summary>
@@ -5509,27 +5509,27 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("FILTER_UNDEFINED")]
-                FILTERUNDEFINED,
+                FILTERUNDEFINED = 0,
 
                 /// <summary>All Google eBooks.</summary>
                 [Google.Apis.Util.StringValueAttribute("ebooks")]
-                Ebooks,
+                Ebooks = 1,
 
                 /// <summary>Google eBook with full volume text viewability.</summary>
                 [Google.Apis.Util.StringValueAttribute("free-ebooks")]
-                FreeEbooks,
+                FreeEbooks = 2,
 
                 /// <summary>Public can view entire volume text.</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 3,
 
                 /// <summary>Google eBook with a price.</summary>
                 [Google.Apis.Util.StringValueAttribute("paid-ebooks")]
-                PaidEbooks,
+                PaidEbooks = 4,
 
                 /// <summary>Public able to see parts of text.</summary>
                 [Google.Apis.Util.StringValueAttribute("partial")]
-                Partial,
+                Partial = 5,
             }
 
             /// <summary>Restrict results to books with this language code.</summary>
@@ -5545,15 +5545,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("LIBRARY_RESTRICT_UNDEFINED")]
-                LIBRARYRESTRICTUNDEFINED,
+                LIBRARYRESTRICTUNDEFINED = 0,
 
                 /// <summary>Restrict to the user's library, any shelf.</summary>
                 [Google.Apis.Util.StringValueAttribute("my-library")]
-                MyLibrary,
+                MyLibrary = 1,
 
                 /// <summary>Do not restrict based on user's library.</summary>
                 [Google.Apis.Util.StringValueAttribute("no-restrict")]
-                NoRestrict,
+                NoRestrict = 2,
             }
 
             /// <summary>
@@ -5571,15 +5571,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("MAX_ALLOWED_MATURITY_RATING_UNDEFINED")]
-                MAXALLOWEDMATURITYRATINGUNDEFINED,
+                MAXALLOWEDMATURITYRATINGUNDEFINED = 0,
 
                 /// <summary>Show books which are rated mature or lower.</summary>
                 [Google.Apis.Util.StringValueAttribute("MATURE")]
-                MATURE,
+                MATURE = 1,
 
                 /// <summary>Show books which are rated not mature.</summary>
                 [Google.Apis.Util.StringValueAttribute("not-mature")]
-                NotMature,
+                NotMature = 2,
             }
 
             /// <summary>Maximum number of results to return.</summary>
@@ -5595,15 +5595,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("ORDER_BY_UNDEFINED")]
-                ORDERBYUNDEFINED,
+                ORDERBYUNDEFINED = 0,
 
                 /// <summary>Most recently published.</summary>
                 [Google.Apis.Util.StringValueAttribute("newest")]
-                Newest,
+                Newest = 1,
 
                 /// <summary>Relevance to search terms.</summary>
                 [Google.Apis.Util.StringValueAttribute("relevance")]
-                Relevance,
+                Relevance = 2,
             }
 
             /// <summary>Restrict and brand results for partner ID.</summary>
@@ -5619,19 +5619,19 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PRINT_TYPE_UNDEFINED")]
-                PRINTTYPEUNDEFINED,
+                PRINTTYPEUNDEFINED = 0,
 
                 /// <summary>All volume content types.</summary>
                 [Google.Apis.Util.StringValueAttribute("ALL")]
-                ALL,
+                ALL = 1,
 
                 /// <summary>Just books.</summary>
                 [Google.Apis.Util.StringValueAttribute("BOOKS")]
-                BOOKS,
+                BOOKS = 2,
 
                 /// <summary>Just magazines.</summary>
                 [Google.Apis.Util.StringValueAttribute("MAGAZINES")]
-                MAGAZINES,
+                MAGAZINES = 3,
             }
 
             /// <summary>Restrict information returned to a set of selected fields.</summary>
@@ -5643,15 +5643,15 @@ namespace Google.Apis.Books.v1
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("PROJECTION_UNDEFINED")]
-                PROJECTIONUNDEFINED,
+                PROJECTIONUNDEFINED = 0,
 
                 /// <summary>Includes all volume data.</summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
-                FULL,
+                FULL = 1,
 
                 /// <summary>Includes a subset of fields in volumeInfo and accessInfo.</summary>
                 [Google.Apis.Util.StringValueAttribute("LITE")]
-                LITE,
+                LITE = 2,
             }
 
             /// <summary>Set to true to show books available for preorder. Defaults to false.</summary>

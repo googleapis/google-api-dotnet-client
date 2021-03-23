@@ -1,0 +1,16 @@
+{
+  "Google.Apis.Apigateway.v1.ApigatewayBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Apigateway.v1.ApigatewayBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Apigateway.v1.ProjectsResource+LocationsResource+ApisResource+ConfigsResource+GetRequest.ViewEnum": [
+    "CONFIG_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

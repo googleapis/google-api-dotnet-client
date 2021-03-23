@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudMemorystoreforMemcached.v1.CloudMemorystoreforMemcachedBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudMemorystoreforMemcached.v1.CloudMemorystoreforMemcachedBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

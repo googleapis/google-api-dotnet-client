@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ArtifactRegistry.v1.ArtifactRegistryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1.ArtifactRegistryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

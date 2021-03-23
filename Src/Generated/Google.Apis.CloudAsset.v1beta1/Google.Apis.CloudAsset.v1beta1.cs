@@ -105,11 +105,11 @@ namespace Google.Apis.CloudAsset.v1beta1
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -125,15 +125,15 @@ namespace Google.Apis.CloudAsset.v1beta1
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -567,15 +567,15 @@ namespace Google.Apis.CloudAsset.v1beta1
             {
                 /// <summary>Unspecified content type.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONTENT_TYPE_UNSPECIFIED")]
-                CONTENTTYPEUNSPECIFIED,
+                CONTENTTYPEUNSPECIFIED = 0,
 
                 /// <summary>Resource metadata.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESOURCE")]
-                RESOURCE,
+                RESOURCE = 1,
 
                 /// <summary>The actual IAM policy set on a resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("IAM_POLICY")]
-                IAMPOLICY,
+                IAMPOLICY = 2,
             }
 
             /// <summary>
@@ -858,15 +858,15 @@ namespace Google.Apis.CloudAsset.v1beta1
             {
                 /// <summary>Unspecified content type.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONTENT_TYPE_UNSPECIFIED")]
-                CONTENTTYPEUNSPECIFIED,
+                CONTENTTYPEUNSPECIFIED = 0,
 
                 /// <summary>Resource metadata.</summary>
                 [Google.Apis.Util.StringValueAttribute("RESOURCE")]
-                RESOURCE,
+                RESOURCE = 1,
 
                 /// <summary>The actual IAM policy set on a resource.</summary>
                 [Google.Apis.Util.StringValueAttribute("IAM_POLICY")]
-                IAMPOLICY,
+                IAMPOLICY = 2,
             }
 
             /// <summary>

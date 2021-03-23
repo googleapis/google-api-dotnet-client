@@ -1,0 +1,11 @@
+{
+  "Google.Apis.TrafficDirectorService.v2.TrafficDirectorServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.TrafficDirectorService.v2.TrafficDirectorServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

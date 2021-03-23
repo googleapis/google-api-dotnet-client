@@ -107,11 +107,11 @@ namespace Google.Apis.CloudDebugger.v2
         {
             /// <summary>v1 error format</summary>
             [Google.Apis.Util.StringValueAttribute("1")]
-            Value1,
+            Value1 = 0,
 
             /// <summary>v2 error format</summary>
             [Google.Apis.Util.StringValueAttribute("2")]
-            Value2,
+            Value2 = 1,
         }
 
         /// <summary>OAuth access token.</summary>
@@ -127,15 +127,15 @@ namespace Google.Apis.CloudDebugger.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
 
             /// <summary>Media download with context-dependent Content-Type</summary>
             [Google.Apis.Util.StringValueAttribute("media")]
-            Media,
+            Media = 1,
 
             /// <summary>Responses with Content-Type of application/x-protobuf</summary>
             [Google.Apis.Util.StringValueAttribute("proto")]
-            Proto,
+            Proto = 2,
         }
 
         /// <summary>JSONP</summary>
@@ -793,13 +793,13 @@ namespace Google.Apis.CloudDebugger.v2
                         /// After that the breakpoint is set in a final state.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CAPTURE")]
-                        CAPTURE,
+                        CAPTURE = 0,
 
                         /// <summary>
                         /// Log each breakpoint hit. The breakpoint remains active until deleted or expired.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("LOG")]
-                        LOG,
+                        LOG = 1,
                     }
 
                     /// <summary>
@@ -943,21 +943,21 @@ namespace Google.Apis.CloudDebugger.v2
                     {
                         /// <summary>Depends on the canary_mode of the debuggee.</summary>
                         [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_UNSPECIFIED")]
-                        CANARYOPTIONUNSPECIFIED,
+                        CANARYOPTIONUNSPECIFIED = 0,
 
                         /// <summary>
                         /// Enable the canary for this breakpoint if the canary_mode of the debuggee is not
                         /// CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_TRY_ENABLE")]
-                        CANARYOPTIONTRYENABLE,
+                        CANARYOPTIONTRYENABLE = 1,
 
                         /// <summary>
                         /// Disable the canary for this breakpoint if the canary_mode of the debuggee is not
                         /// CANARY_MODE_ALWAYS_ENABLED or CANARY_MODE_ALWAYS_DISABLED.
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("CANARY_OPTION_TRY_DISABLE")]
-                        CANARYOPTIONTRYDISABLE,
+                        CANARYOPTIONTRYDISABLE = 2,
                     }
 
                     /// <summary>

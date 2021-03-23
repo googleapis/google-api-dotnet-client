@@ -1,0 +1,11 @@
+{
+  "Google.Apis.FirebaseHosting.v1.FirebaseHostingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.FirebaseHosting.v1.FirebaseHostingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

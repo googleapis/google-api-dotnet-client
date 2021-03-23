@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudRedis.v1beta1.CloudRedisBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudRedis.v1beta1.CloudRedisBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

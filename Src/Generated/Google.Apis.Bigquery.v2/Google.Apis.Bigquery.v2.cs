@@ -167,7 +167,7 @@ namespace Google.Apis.Bigquery.v2
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -1112,7 +1112,7 @@ namespace Google.Apis.Bigquery.v2
             {
                 /// <summary>Responses with Content-Type of application/json</summary>
                 [Google.Apis.Util.StringValueAttribute("json")]
-                Json,
+                Json = 0,
             }
 
             /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -1246,11 +1246,11 @@ namespace Google.Apis.Bigquery.v2
             {
                 /// <summary>Includes all job data</summary>
                 [Google.Apis.Util.StringValueAttribute("full")]
-                Full,
+                Full = 0,
 
                 /// <summary>Does not include the job configuration</summary>
                 [Google.Apis.Util.StringValueAttribute("minimal")]
-                Minimal,
+                Minimal = 1,
             }
 
             /// <summary>Filter for job state</summary>
@@ -1262,15 +1262,15 @@ namespace Google.Apis.Bigquery.v2
             {
                 /// <summary>Finished jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("done")]
-                Done,
+                Done = 0,
 
                 /// <summary>Pending jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("pending")]
-                Pending,
+                Pending = 1,
 
                 /// <summary>Running jobs</summary>
                 [Google.Apis.Util.StringValueAttribute("running")]
-                Running,
+                Running = 2,
             }
 
             /// <summary>Gets the method name.</summary>

@@ -1,0 +1,165 @@
+{
+  "Google.Apis.Storage.v1.BucketsResource+GetRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+InsertRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "private",
+    "projectPrivate",
+    "publicRead",
+    "publicReadWrite"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+InsertRequest.PredefinedDefaultObjectAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+InsertRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+ListRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+PatchRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "private",
+    "projectPrivate",
+    "publicRead",
+    "publicReadWrite"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+PatchRequest.PredefinedDefaultObjectAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+PatchRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+UpdateRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "private",
+    "projectPrivate",
+    "publicRead",
+    "publicReadWrite"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+UpdateRequest.PredefinedDefaultObjectAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.BucketsResource+UpdateRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+ComposeRequest.DestinationPredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+CopyRequest.DestinationPredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+CopyRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+GetRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+InsertMediaUpload.AltEnum": [
+    "json"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+InsertMediaUpload.PredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+InsertMediaUpload.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+InsertRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+InsertRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+ListRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+PatchRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+PatchRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+RewriteRequest.DestinationPredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+RewriteRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+UpdateRequest.PredefinedAclEnum": [
+    "authenticatedRead",
+    "bucketOwnerFullControl",
+    "bucketOwnerRead",
+    "private",
+    "projectPrivate",
+    "publicRead"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+UpdateRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.ObjectsResource+WatchAllRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
+  "Google.Apis.Storage.v1.StorageBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AdMob.v1.AdMobBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AdMob.v1.AdMobBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

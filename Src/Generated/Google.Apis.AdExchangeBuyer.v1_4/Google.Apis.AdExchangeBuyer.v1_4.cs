@@ -141,7 +141,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
         {
             /// <summary>Responses with Content-Type of application/json</summary>
             [Google.Apis.Util.StringValueAttribute("json")]
-            Json,
+            Json = 0,
         }
 
         /// <summary>Selector specifying which fields to include in a partial response.</summary>
@@ -995,19 +995,19 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             {
                 /// <summary>Creatives which have been approved for serving on deals.</summary>
                 [Google.Apis.Util.StringValueAttribute("approved")]
-                Approved,
+                Approved = 0,
 
                 /// <summary>Creatives which have been conditionally approved for serving on deals.</summary>
                 [Google.Apis.Util.StringValueAttribute("conditionally_approved")]
-                ConditionallyApproved,
+                ConditionallyApproved = 1,
 
                 /// <summary>Creatives which have been disapproved for serving on deals.</summary>
                 [Google.Apis.Util.StringValueAttribute("disapproved")]
-                Disapproved,
+                Disapproved = 2,
 
                 /// <summary>Creatives whose deals status is not yet checked.</summary>
                 [Google.Apis.Util.StringValueAttribute("not_checked")]
-                NotChecked,
+                NotChecked = 3,
             }
 
             /// <summary>
@@ -1025,19 +1025,19 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             {
                 /// <summary>Creatives which have been approved for serving on the open auction.</summary>
                 [Google.Apis.Util.StringValueAttribute("approved")]
-                Approved,
+                Approved = 0,
 
                 /// <summary>Creatives which have been conditionally approved for serving on the open auction.</summary>
                 [Google.Apis.Util.StringValueAttribute("conditionally_approved")]
-                ConditionallyApproved,
+                ConditionallyApproved = 1,
 
                 /// <summary>Creatives which have been disapproved for serving on the open auction.</summary>
                 [Google.Apis.Util.StringValueAttribute("disapproved")]
-                Disapproved,
+                Disapproved = 2,
 
                 /// <summary>Creatives whose open auction status is not yet checked.</summary>
                 [Google.Apis.Util.StringValueAttribute("not_checked")]
-                NotChecked,
+                NotChecked = 3,
             }
 
             /// <summary>
@@ -2421,27 +2421,27 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("accept")]
-                Accept,
+                Accept = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("cancel")]
-                Cancel,
+                Cancel = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("propose")]
-                Propose,
+                Propose = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("proposeAndAccept")]
-                ProposeAndAccept,
+                ProposeAndAccept = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
-                UnknownAction,
+                UnknownAction = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("updateNonTerms")]
-                UpdateNonTerms,
+                UpdateNonTerms = 5,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2635,27 +2635,27 @@ namespace Google.Apis.AdExchangeBuyer.v1_4
             {
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("accept")]
-                Accept,
+                Accept = 0,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("cancel")]
-                Cancel,
+                Cancel = 1,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("propose")]
-                Propose,
+                Propose = 2,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("proposeAndAccept")]
-                ProposeAndAccept,
+                ProposeAndAccept = 3,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("unknownAction")]
-                UnknownAction,
+                UnknownAction = 4,
 
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("updateNonTerms")]
-                UpdateNonTerms,
+                UpdateNonTerms = 5,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>

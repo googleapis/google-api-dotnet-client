@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Blogger.v2.BloggerBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Blogger.v2.BloggerBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
