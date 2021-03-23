@@ -124,7 +124,7 @@ if [ -z ${SKIPGENERATE+x} ]; then
         ;;
       *)
         echo Generating: \'$name\'
-        run_csharp_generator "$jsonfile" "$CODE_GENERATION_DIR" features.json
+        run_csharp_generator "$jsonfile" "$CODE_GENERATION_DIR" features.json "EnumStorage/$name.json"
         if [[ -f $(pwd)/PostGeneration/$name.sh ]]
         then
           echo "Running post-generation step for $name"
