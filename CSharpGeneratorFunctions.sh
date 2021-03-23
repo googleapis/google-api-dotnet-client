@@ -35,8 +35,9 @@ install_csharp_generator() {
 # - Discovery doc
 # - Output directory (a subdirectory will be created under this)
 # - Features file
+# - Enum storage file
 run_csharp_generator() {
   dotnet run --no-build -c Release \
     -p $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest \
-    -- "$1" "$2" "$3"
+    -- "$1" "$2" "$3" "$4"
 }
