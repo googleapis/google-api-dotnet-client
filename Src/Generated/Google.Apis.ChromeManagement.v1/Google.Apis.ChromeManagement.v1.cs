@@ -583,9 +583,7 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>
-                /// Field used to order results. Supported order by fields: * machine_name * device_id
-                /// </summary>
+                /// <summary>Field used to order results. Supported order by fields: * machine * device_id</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 

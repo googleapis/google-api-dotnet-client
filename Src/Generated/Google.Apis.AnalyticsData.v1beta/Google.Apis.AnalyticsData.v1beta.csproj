@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.AnalyticsData.v1alpha Client Library</Title>
-    <Version>1.51.0.2266</Version>
+    <Title>Google.Apis.AnalyticsData.v1beta Client Library</Title>
+    <Version>1.51.0.2272</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2021 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Analyticsdata v1alpha.
+      Google APIs Client Library for working with Analyticsdata v1beta.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -33,7 +33,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/analyticsdata/v1alpha
+      https://developers.google.com/api-client-library/dotnet/apis/analyticsdata/v1beta
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

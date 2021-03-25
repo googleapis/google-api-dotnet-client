@@ -68,7 +68,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             /// <summary>View and manage your Google Cloud Platform billing accounts</summary>
             public static string CloudBilling = "https://www.googleapis.com/auth/cloud-billing";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -78,7 +78,7 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
             /// <summary>View and manage your Google Cloud Platform billing accounts</summary>
             public const string CloudBilling = "https://www.googleapis.com/auth/cloud-billing";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 

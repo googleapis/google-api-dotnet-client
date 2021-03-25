@@ -14,13 +14,13 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.AnalyticsData.v1alpha
+namespace Google.Apis.AnalyticsData.v1beta
 {
     /// <summary>The AnalyticsData Service.</summary>
     public class AnalyticsDataService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1alpha";
+        public const string Version = "v1beta";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
@@ -35,7 +35,6 @@ namespace Google.Apis.AnalyticsData.v1alpha
         public AnalyticsDataService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Properties = new PropertiesResource(this);
-            V1alpha = new V1alphaResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -85,9 +84,6 @@ namespace Google.Apis.AnalyticsData.v1alpha
 
         /// <summary>Gets the Properties resource.</summary>
         public virtual PropertiesResource Properties { get; }
-
-        /// <summary>Gets the V1alpha resource.</summary>
-        public virtual V1alphaResource V1alpha { get; }
     }
 
     /// <summary>A base abstract class for AnalyticsData requests.</summary>
@@ -285,6 +281,136 @@ namespace Google.Apis.AnalyticsData.v1alpha
             this.service = service;
         }
 
+        /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be
+        /// specified for the batch. The property within RunPivotReportRequest may either be unspecified or consistent
+        /// with this property. Example: properties/1234
+        /// </param>
+        public virtual BatchRunPivotReportsRequest BatchRunPivotReports(Google.Apis.AnalyticsData.v1beta.Data.BatchRunPivotReportsRequest body, string property)
+        {
+            return new BatchRunPivotReportsRequest(service, body, property);
+        }
+
+        /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.</summary>
+        public class BatchRunPivotReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.BatchRunPivotReportsResponse>
+        {
+            /// <summary>Constructs a new BatchRunPivotReports request.</summary>
+            public BatchRunPivotReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.BatchRunPivotReportsRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not
+            /// the body. To learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must
+            /// be specified for the batch. The property within RunPivotReportRequest may either be unspecified or
+            /// consistent with this property. Example: properties/1234
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsData.v1beta.Data.BatchRunPivotReportsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchRunPivotReports";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+property}:batchRunPivotReports";
+
+            /// <summary>Initializes BatchRunPivotReports parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Returns multiple reports in a batch. All reports must be for the same GA4 Property.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be
+        /// specified for the batch. The property within RunReportRequest may either be unspecified or consistent with
+        /// this property. Example: properties/1234
+        /// </param>
+        public virtual BatchRunReportsRequest BatchRunReports(Google.Apis.AnalyticsData.v1beta.Data.BatchRunReportsRequest body, string property)
+        {
+            return new BatchRunReportsRequest(service, body, property);
+        }
+
+        /// <summary>Returns multiple reports in a batch. All reports must be for the same GA4 Property.</summary>
+        public class BatchRunReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.BatchRunReportsResponse>
+        {
+            /// <summary>Constructs a new BatchRunReports request.</summary>
+            public BatchRunReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.BatchRunReportsRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not
+            /// the body. To learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must
+            /// be specified for the batch. The property within RunReportRequest may either be unspecified or consistent
+            /// with this property. Example: properties/1234
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsData.v1beta.Data.BatchRunReportsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "batchRunReports";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+property}:batchRunReports";
+
+            /// <summary>Initializes BatchRunReports parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>
         /// Returns metadata for dimensions and metrics available in reporting methods. Used to explore the dimensions
         /// and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the request, and the
@@ -314,7 +440,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics applicable to any
         /// property such as `country` and `totalUsers`.
         /// </summary>
-        public class GetMetadataRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.Metadata>
+        public class GetMetadataRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.Metadata>
         {
             /// <summary>Constructs a new GetMetadata request.</summary>
             public GetMetadataRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -341,7 +467,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+name}";
+            public override string RestPath => "v1beta/{+name}";
 
             /// <summary>Initializes GetMetadata parameter list.</summary>
             protected override void InitParameters()
@@ -359,6 +485,79 @@ namespace Google.Apis.AnalyticsData.v1alpha
         }
 
         /// <summary>
+        /// Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and
+        /// expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included
+        /// in a pivot. Multiple pivots can be specified to further dissect your data.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="property">
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+        /// request, this property should either be unspecified or consistent with the batch-level property. Example:
+        /// properties/1234
+        /// </param>
+        public virtual RunPivotReportRequest RunPivotReport(Google.Apis.AnalyticsData.v1beta.Data.RunPivotReportRequest body, string property)
+        {
+            return new RunPivotReportRequest(service, body, property);
+        }
+
+        /// <summary>
+        /// Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and
+        /// expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included
+        /// in a pivot. Multiple pivots can be specified to further dissect your data.
+        /// </summary>
+        public class RunPivotReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunPivotReportResponse>
+        {
+            /// <summary>Constructs a new RunPivotReport request.</summary>
+            public RunPivotReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.RunPivotReportRequest body, string property) : base(service)
+            {
+                Property = property;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not
+            /// the body. To learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+            /// request, this property should either be unspecified or consistent with the batch-level property.
+            /// Example: properties/1234
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AnalyticsData.v1beta.Data.RunPivotReportRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "runPivotReport";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+property}:runPivotReport";
+
+            /// <summary>Initializes RunPivotReport parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
         /// These reports show events and usage from the last 30 minutes.
         /// </summary>
@@ -369,7 +568,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example:
         /// properties/1234
         /// </param>
-        public virtual RunRealtimeReportRequest RunRealtimeReport(Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest body, string property)
+        public virtual RunRealtimeReportRequest RunRealtimeReport(Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportRequest body, string property)
         {
             return new RunRealtimeReportRequest(service, body, property);
         }
@@ -378,10 +577,10 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// The Google Analytics Realtime API returns a customized report of realtime event data for your property.
         /// These reports show events and usage from the last 30 minutes.
         /// </summary>
-        public class RunRealtimeReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportResponse>
+        public class RunRealtimeReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportResponse>
         {
             /// <summary>Constructs a new RunRealtimeReport request.</summary>
-            public RunRealtimeReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest body, string property) : base(service)
+            public RunRealtimeReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportRequest body, string property) : base(service)
             {
                 Property = property;
                 Body = body;
@@ -398,7 +597,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
             public virtual string Property { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AnalyticsData.v1alpha.Data.RunRealtimeReportRequest Body { get; set; }
+            Google.Apis.AnalyticsData.v1beta.Data.RunRealtimeReportRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -410,7 +609,7 @@ namespace Google.Apis.AnalyticsData.v1alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+property}:runRealtimeReport";
+            public override string RestPath => "v1beta/{+property}:runRealtimeReport";
 
             /// <summary>Initializes RunRealtimeReport parameter list.</summary>
             protected override void InitParameters()
@@ -426,146 +625,6 @@ namespace Google.Apis.AnalyticsData.v1alpha
                 });
             }
         }
-    }
-
-    /// <summary>The "v1alpha" collection of methods.</summary>
-    public class V1alphaResource
-    {
-        private const string Resource = "v1alpha";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public V1alphaResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same Entity.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual BatchRunPivotReportsRequest BatchRunPivotReports(Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest body)
-        {
-            return new BatchRunPivotReportsRequest(service, body);
-        }
-
-        /// <summary>Returns multiple pivot reports in a batch. All reports must be for the same Entity.</summary>
-        public class BatchRunPivotReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsResponse>
-        {
-            /// <summary>Constructs a new BatchRunPivotReports request.</summary>
-            public BatchRunPivotReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AnalyticsData.v1alpha.Data.BatchRunPivotReportsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "batchRunPivotReports";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha:batchRunPivotReports";
-
-            /// <summary>Initializes BatchRunPivotReports parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>Returns multiple reports in a batch. All reports must be for the same Entity.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual BatchRunReportsRequest BatchRunReports(Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest body)
-        {
-            return new BatchRunReportsRequest(service, body);
-        }
-
-        /// <summary>Returns multiple reports in a batch. All reports must be for the same Entity.</summary>
-        public class BatchRunReportsRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsResponse>
-        {
-            /// <summary>Constructs a new BatchRunReports request.</summary>
-            public BatchRunReportsRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AnalyticsData.v1alpha.Data.BatchRunReportsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "batchRunReports";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha:batchRunReports";
-
-            /// <summary>Initializes BatchRunReports parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>
-        /// Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and
-        /// expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included
-        /// in a pivot. Multiple pivots can be specified to further dissect your data.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual RunPivotReportRequest RunPivotReport(Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest body)
-        {
-            return new RunPivotReportRequest(service, body);
-        }
-
-        /// <summary>
-        /// Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and
-        /// expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included
-        /// in a pivot. Multiple pivots can be specified to further dissect your data.
-        /// </summary>
-        public class RunPivotReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportResponse>
-        {
-            /// <summary>Constructs a new RunPivotReport request.</summary>
-            public RunPivotReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AnalyticsData.v1alpha.Data.RunPivotReportRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "runPivotReport";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha:runPivotReport";
-
-            /// <summary>Initializes RunPivotReport parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
 
         /// <summary>
         /// Returns a customized report of your Google Analytics event data. Reports contain statistics derived from
@@ -575,9 +634,16 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// criteria, such as country or event name.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        public virtual RunReportRequest RunReport(Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest body)
+        /// <param name="property">
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+        /// request, this property should either be unspecified or consistent with the batch-level property. Example:
+        /// properties/1234
+        /// </param>
+        public virtual RunReportRequest RunReport(Google.Apis.AnalyticsData.v1beta.Data.RunReportRequest body, string property)
         {
-            return new RunReportRequest(service, body);
+            return new RunReportRequest(service, body, property);
         }
 
         /// <summary>
@@ -587,17 +653,28 @@ namespace Google.Apis.AnalyticsData.v1alpha
         /// your property, such as active users or event count. Dimensions break down metrics across some common
         /// criteria, such as country or event name.
         /// </summary>
-        public class RunReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1alpha.Data.RunReportResponse>
+        public class RunReportRequest : AnalyticsDataBaseServiceRequest<Google.Apis.AnalyticsData.v1beta.Data.RunReportResponse>
         {
             /// <summary>Constructs a new RunReport request.</summary>
-            public RunReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest body) : base(service)
+            public RunReportRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsData.v1beta.Data.RunReportRequest body, string property) : base(service)
             {
+                Property = property;
                 Body = body;
                 InitParameters();
             }
 
+            /// <summary>
+            /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not
+            /// the body. To learn more, see [where to find your Property
+            /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+            /// request, this property should either be unspecified or consistent with the batch-level property.
+            /// Example: properties/1234
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("property", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Property { get; private set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AnalyticsData.v1alpha.Data.RunReportRequest Body { get; set; }
+            Google.Apis.AnalyticsData.v1beta.Data.RunReportRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -609,28 +686,29 @@ namespace Google.Apis.AnalyticsData.v1alpha
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha:runReport";
+            public override string RestPath => "v1beta/{+property}:runReport";
 
             /// <summary>Initializes RunReport parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("property", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "property",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^properties/[^/]+$",
+                });
             }
         }
     }
 }
-namespace Google.Apis.AnalyticsData.v1alpha.Data
+namespace Google.Apis.AnalyticsData.v1beta.Data
 {
     /// <summary>The batch request containing multiple pivot report requests.</summary>
     public class BatchRunPivotReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A property whose events are tracked. This entity must be specified for the batch. The entity within
-        /// RunPivotReportRequest may either be unspecified or consistent with this entity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; }
-
         /// <summary>
         /// Individual requests. Each request has a separate pivot report response. Each batch request is allowed up to
         /// 5 requests.
@@ -663,13 +741,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
     /// <summary>The batch request containing multiple report requests.</summary>
     public class BatchRunReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A property whose events are tracked. This entity must be specified for the batch. The entity within
-        /// RunReportRequest may either be unspecified or consistent with this entity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; }
-
         /// <summary>
         /// Individual requests. Each request has a separate report response. Each batch request is allowed up to 5
         /// requests.
@@ -925,8 +996,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// The name of the dimension. See the [API
         /// Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for
         /// the list of dimension names. If `dimensionExpression` is specified, `name` can be any string that you would
-        /// like. For example if a `dimensionExpression` concatenates `country` and `city`, you could call that
-        /// dimension `countryAndCity`. Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
+        /// like within the allowed character set. For example if a `dimensionExpression` concatenates `country` and
+        /// `city`, you could call that dimension `countryAndCity`. Dimension names that you choose must match the
+        /// regular expression "^[a-zA-Z0-9_]$". Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`,
         /// `dimensionExpression`, and `pivots`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1032,20 +1104,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>Value as a string if the dimension type is a string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The unique identifier of the property whose events are tracked.</summary>
-    public class Entity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A Google Analytics GA4 property id. To learn more, see [where to find your Property
-        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("propertyId")]
-        public virtual string PropertyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1175,9 +1233,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>
         /// The name of the metric. See the [API
         /// Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the
-        /// list of metric names. If `expression` is specified, `name` can be any string that you would like. For
-        /// example if `expression` is `screenPageViews/sessions`, you could call that metric's name =
-        /// `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric `expression`.
+        /// list of metric names. If `expression` is specified, `name` can be any string that you would like within the
+        /// allowed character set. For example if `expression` is `screenPageViews/sessions`, you could call that
+        /// metric's name = `viewsPerSession`. Metric names that you choose must match the regular expression
+        /// "^[a-zA-Z0-9_]$". Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric `expression`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1336,10 +1395,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<string> FieldNames { get; set; }
 
         /// <summary>
-        /// The number of rows to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common
-        /// for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not
-        /// exceed 100,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the
-        /// product is `1,000,000`.
+        /// The number of unique combinations of dimension values to return in this pivot. The `limit` parameter is
+        /// required. A `limit` of 10,000 is common for single pivot requests. The product of the `limit` for each
+        /// `pivot` in a `RunPivotReportRequest` must not exceed 100,000. For example, a two pivot request with `limit:
+        /// 1000` in each pivot will fail because the product is `1,000,000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1550,7 +1609,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
         /// <summary>
         /// A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the
-        /// entity's default currency.
+        /// property's default currency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
@@ -1577,13 +1636,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
-
-        /// <summary>
-        /// A property whose events are tracked. Within a batch request, this entity should either be unspecified or
-        /// consistent with the batch-level entity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; }
 
         /// <summary>
         /// If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will
@@ -1613,6 +1665,16 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pivots")]
         public virtual System.Collections.Generic.IList<Pivot> Pivots { get; set; }
+
+        /// <summary>
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+        /// request, this property should either be unspecified or consistent with the batch-level property. Example:
+        /// properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
 
         /// <summary>
         /// Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in
@@ -1699,8 +1761,11 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>
-        /// The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API
-        /// returns a maximum of 100,000 rows per request, no matter how many you ask for.
+        /// The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 100,000
+        /// rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer
+        /// rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance,
+        /// there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`,
+        /// you can't get more than 300 rows, even if you set `limit` to a higher value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
@@ -1775,9 +1840,9 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual PropertyQuota PropertyQuota { get; set; }
 
         /// <summary>
-        /// The total number of rows in the query result, regardless of the number of rows returned in the response. For
-        /// example if a query returns 175 rows and includes limit = 50 in the API request, the response will contain
-        /// row_count = 175 but only 50 rows.
+        /// The total number of rows in the query result. `rowCount` is independent of the number of rows returned in
+        /// the response and the `limit` request parameter. For example if a query returns 175 rows and includes `limit`
+        /// of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; }
@@ -1806,7 +1871,7 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
 
         /// <summary>
         /// A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the
-        /// entity's default currency.
+        /// property's default currency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
         public virtual string CurrencyCode { get; set; }
@@ -1831,13 +1896,6 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
 
         /// <summary>
-        /// A property whose events are tracked. Within a batch request, this entity should either be unspecified or
-        /// consistent with the batch-level entity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual Entity Entity { get; set; }
-
-        /// <summary>
         /// If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will
         /// be returned if they are not separately removed by a filter.
         /// </summary>
@@ -1845,8 +1903,11 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Nullable<bool> KeepEmptyRows { get; set; }
 
         /// <summary>
-        /// The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API
-        /// returns a maximum of 100,000 rows per request, no matter how many you ask for. To learn more about this
+        /// The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 100,000
+        /// rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer
+        /// rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance,
+        /// there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`,
+        /// you can't get more than 300 rows, even if you set `limit` to a higher value. To learn more about this
         /// pagination parameter, see
         /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
         /// </summary>
@@ -1872,8 +1933,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
 
         /// <summary>
-        /// The row count of the start row. The first row is counted as row 0. To learn more about this pagination
-        /// parameter, see
+        /// The row count of the start row. The first row is counted as row 0. When paging, the first request does not
+        /// specify offset; or equivalently, sets offset to 0; the first request returns the first `limit` of rows. The
+        /// second request sets offset to the `limit` of the first request; the second request returns the second
+        /// `limit` of rows. To learn more about this pagination parameter, see
         /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
@@ -1882,6 +1945,16 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         /// <summary>Specifies how rows are ordered in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]
         public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; }
+
+        /// <summary>
+        /// A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the
+        /// body. To learn more, see [where to find your Property
+        /// ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch
+        /// request, this property should either be unspecified or consistent with the batch-level property. Example:
+        /// properties/1234
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
 
         /// <summary>
         /// Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in
@@ -1935,9 +2008,10 @@ namespace Google.Apis.AnalyticsData.v1alpha.Data
         public virtual PropertyQuota PropertyQuota { get; set; }
 
         /// <summary>
-        /// The total number of rows in the query result, regardless of the number of rows returned in the response. For
-        /// example if a query returns 175 rows and includes limit = 50 in the API request, the response will contain
-        /// row_count = 175 but only 50 rows. To learn more about this pagination parameter, see
+        /// The total number of rows in the query result. `rowCount` is independent of the number of rows returned in
+        /// the response, the `limit` request parameter, and the `offset` request parameter. For example if a query
+        /// returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175
+        /// but only 50 rows. To learn more about this pagination parameter, see
         /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]

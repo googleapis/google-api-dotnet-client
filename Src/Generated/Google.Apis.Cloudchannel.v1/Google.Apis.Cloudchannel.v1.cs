@@ -301,6 +301,387 @@ namespace Google.Apis.Cloudchannel.v1
             public ChannelPartnerLinksResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Customers = new CustomersResource(service);
+            }
+
+            /// <summary>Gets the Customers resource.</summary>
+            public virtual CustomersResource Customers { get; }
+
+            /// <summary>The "customers" collection of methods.</summary>
+            public class CustomersResource
+            {
+                private const string Resource = "customers";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
+                /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
+                /// the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain
+                /// field value doesn't match the primary email domain. Return value: The newly created Customer
+                /// resource.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of reseller account in which to create the customer. Parent uses the
+                /// format: accounts/{account_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
+                /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
+                /// the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain
+                /// field value doesn't match the primary email domain. Return value: The newly created Customer
+                /// resource.
+                /// </summary>
+                public class CreateRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of reseller account in which to create the customer. Parent uses the
+                    /// format: accounts/{account_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customers";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED:
+                /// The account making the request does not own this customer. * INVALID_ARGUMENT: Required request
+                /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. *
+                /// NOT_FOUND: No Customer resource found for the name in the request.
+                /// </summary>
+                /// <param name="name">Required. The resource name of the customer to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED:
+                /// The account making the request does not own this customer. * INVALID_ARGUMENT: Required request
+                /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. *
+                /// NOT_FOUND: No Customer resource found for the name in the request.
+                /// </summary>
+                public class DeleteRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name of the customer to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// account making the request is different from the reseller account in the API request. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer
+                /// resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer
+                /// resource.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the customer to retrieve. Name uses the format:
+                /// accounts/{account_id}/customers/{customer_id}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// account making the request is different from the reseller account in the API request. *
+                /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer
+                /// resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer
+                /// resource.
+                /// </summary>
+                public class GetRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the customer to retrieve. Name uses the format:
+                    /// accounts/{account_id}/customers/{customer_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+                /// is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request
+                /// parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no
+                /// customers.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the reseller account to list customers from. Parent uses the format:
+                /// accounts/{account_id}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// List Customers. Possible error codes: * PERMISSION_DENIED: The reseller account making the request
+                /// is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request
+                /// parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no
+                /// customers.
+                /// </summary>
+                public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListCustomersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the reseller account to list customers from. Parent uses the
+                    /// format: accounts/{account_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of customers to return. The service may return fewer than this
+                    /// value. If unspecified, returns at most 10 customers. The maximum value is 50.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying a page of results other than the first page. Obtained through
+                    /// ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customers";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates an existing Customer resource for the reseller or distributor. Possible error codes: *
+                /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
+                /// the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+                /// NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated
+                /// Customer resource.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an existing Customer resource for the reseller or distributor. Possible error codes: *
+                /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
+                /// the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+                /// NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated
+                /// Customer resource.
+                /// </summary>
+                public class PatchRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the customer. Format:
+                    /// accounts/{account_id}/customers/{customer_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The update mask that applies to the resource. Optional.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/channelPartnerLinks/[^/]+/customers/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>

@@ -65,14 +65,14 @@ namespace Google.Apis.CloudBuild.v1alpha2
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Build API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Build API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1681,6 +1681,12 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
         public virtual StorageSource StorageSource { get; set; }
 
+        /// <summary>
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
+        public virtual StorageSourceManifest StorageSourceManifest { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1707,6 +1713,13 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
         public virtual StorageSource ResolvedStorageSource { get; set; }
+
+        /// <summary>
+        /// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature
+        /// is in Preview.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSourceManifest")]
+        public virtual StorageSourceManifest ResolvedStorageSourceManifest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1761,6 +1774,33 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>
         /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`)
         /// containing source to build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source manifest in Google Cloud Storage. This feature is in Preview.</summary>
+    public class StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }

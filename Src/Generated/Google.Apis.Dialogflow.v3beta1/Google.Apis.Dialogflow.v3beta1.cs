@@ -65,7 +65,7 @@ namespace Google.Apis.Dialogflow.v3beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Dialogflow API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View, manage and query your Dialogflow agents</summary>
@@ -75,7 +75,7 @@ namespace Google.Apis.Dialogflow.v3beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Dialogflow API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View, manage and query your Dialogflow agents</summary>
@@ -8988,7 +8988,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for a webhook call.</summary>
+    /// <summary>
+    /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
+    /// presented in camel cases.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -12562,7 +12565,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for a webhook call.</summary>
+    /// <summary>
+    /// The request message for a webhook call. The request is sent as a JSON object and the field names will be
+    /// presented in camel cases.
+    /// </summary>
     public class GoogleCloudDialogflowCxV3beta1WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
