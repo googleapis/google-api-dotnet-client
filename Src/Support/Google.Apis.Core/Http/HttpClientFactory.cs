@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Logging;
 using System.Net;
 using System.Net.Http;
+using System.Security.Authentication;
 
 namespace Google.Apis.Http
 {
@@ -99,6 +100,11 @@ namespace Google.Apis.Http
             {
                 handler.AutomaticDecompression = DecompressionMethods.None;
             }
+            //fix：Add some ssl when some matchine has not add environment will error sometimes
+            //like: System.IO.IOException: Authentication failed because the remote party has closed the transport stream
+            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            handler.SslProtocols = SslProtocols.Ssl3 | SslProtocols.Tls12 | SslProtocols.Tls11 | SslProtocols.Tls;
+            handler.ClientCertificateOptions = ClientCertificateOption.Manual;
             return handler;
         }
 
