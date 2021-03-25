@@ -65,14 +65,14 @@ namespace Google.Apis.Transcoder.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Transcoder API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Transcoder API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1833,11 +1833,19 @@ namespace Google.Apis.Transcoder.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; }
 
-        /// <summary>Required. The height of sprite in pixels. Must be an even integer.</summary>
+        /// <summary>
+        /// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set
+        /// the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the
+        /// API will automatically calculate the missing field).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spriteHeightPixels")]
         public virtual System.Nullable<int> SpriteHeightPixels { get; set; }
 
-        /// <summary>Required. The width of sprite in pixels. Must be an even integer.</summary>
+        /// <summary>
+        /// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set
+        /// the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the
+        /// API will automatically calculate the missing field).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spriteWidthPixels")]
         public virtual System.Nullable<int> SpriteWidthPixels { get; set; }
 

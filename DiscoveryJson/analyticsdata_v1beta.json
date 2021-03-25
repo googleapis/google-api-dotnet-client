@@ -23,7 +23,7 @@
   "x16": "http://www.google.com/images/icons/product/search-16.gif",
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
- "id": "analyticsdata:v1alpha",
+ "id": "analyticsdata:v1beta",
  "kind": "discovery#restDescription",
  "mtlsRootUrl": "https://analyticsdata.mtls.googleapis.com/",
  "name": "analyticsdata",
@@ -110,9 +110,67 @@
  "resources": {
   "properties": {
    "methods": {
+    "batchRunPivotReports": {
+     "description": "Returns multiple pivot reports in a batch. All reports must be for the same GA4 Property.",
+     "flatPath": "v1beta/properties/{propertiesId}:batchRunPivotReports",
+     "httpMethod": "POST",
+     "id": "analyticsdata.properties.batchRunPivotReports",
+     "parameterOrder": [
+      "property"
+     ],
+     "parameters": {
+      "property": {
+       "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunPivotReportRequest may either be unspecified or consistent with this property. Example: properties/1234",
+       "location": "path",
+       "pattern": "^properties/[^/]+$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1beta/{+property}:batchRunPivotReports",
+     "request": {
+      "$ref": "BatchRunPivotReportsRequest"
+     },
+     "response": {
+      "$ref": "BatchRunPivotReportsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/analytics",
+      "https://www.googleapis.com/auth/analytics.readonly"
+     ]
+    },
+    "batchRunReports": {
+     "description": "Returns multiple reports in a batch. All reports must be for the same GA4 Property.",
+     "flatPath": "v1beta/properties/{propertiesId}:batchRunReports",
+     "httpMethod": "POST",
+     "id": "analyticsdata.properties.batchRunReports",
+     "parameterOrder": [
+      "property"
+     ],
+     "parameters": {
+      "property": {
+       "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunReportRequest may either be unspecified or consistent with this property. Example: properties/1234",
+       "location": "path",
+       "pattern": "^properties/[^/]+$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1beta/{+property}:batchRunReports",
+     "request": {
+      "$ref": "BatchRunReportsRequest"
+     },
+     "response": {
+      "$ref": "BatchRunReportsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/analytics",
+      "https://www.googleapis.com/auth/analytics.readonly"
+     ]
+    },
     "getMetadata": {
      "description": "Returns metadata for dimensions and metrics available in reporting methods. Used to explore the dimensions and metrics. In this method, a Google Analytics GA4 Property Identifier is specified in the request, and the metadata response includes Custom dimensions and metrics as well as Universal metadata. For example if a custom metric with parameter name `levels_unlocked` is registered to a property, the Metadata response will contain `customEvent:levels_unlocked`. Universal metadata are dimensions and metrics applicable to any property such as `country` and `totalUsers`.",
-     "flatPath": "v1alpha/properties/{propertiesId}/metadata",
+     "flatPath": "v1beta/properties/{propertiesId}/metadata",
      "httpMethod": "GET",
      "id": "analyticsdata.properties.getMetadata",
      "parameterOrder": [
@@ -127,7 +185,7 @@
        "type": "string"
       }
      },
-     "path": "v1alpha/{+name}",
+     "path": "v1beta/{+name}",
      "response": {
       "$ref": "Metadata"
      },
@@ -136,9 +194,38 @@
       "https://www.googleapis.com/auth/analytics.readonly"
      ]
     },
+    "runPivotReport": {
+     "description": "Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included in a pivot. Multiple pivots can be specified to further dissect your data.",
+     "flatPath": "v1beta/properties/{propertiesId}:runPivotReport",
+     "httpMethod": "POST",
+     "id": "analyticsdata.properties.runPivotReport",
+     "parameterOrder": [
+      "property"
+     ],
+     "parameters": {
+      "property": {
+       "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234",
+       "location": "path",
+       "pattern": "^properties/[^/]+$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1beta/{+property}:runPivotReport",
+     "request": {
+      "$ref": "RunPivotReportRequest"
+     },
+     "response": {
+      "$ref": "RunPivotReportResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/analytics",
+      "https://www.googleapis.com/auth/analytics.readonly"
+     ]
+    },
     "runRealtimeReport": {
      "description": "The Google Analytics Realtime API returns a customized report of realtime event data for your property. These reports show events and usage from the last 30 minutes.",
-     "flatPath": "v1alpha/properties/{propertiesId}:runRealtimeReport",
+     "flatPath": "v1beta/properties/{propertiesId}:runRealtimeReport",
      "httpMethod": "POST",
      "id": "analyticsdata.properties.runRealtimeReport",
      "parameterOrder": [
@@ -153,7 +240,7 @@
        "type": "string"
       }
      },
-     "path": "v1alpha/{+property}:runRealtimeReport",
+     "path": "v1beta/{+property}:runRealtimeReport",
      "request": {
       "$ref": "RunRealtimeReportRequest"
      },
@@ -164,76 +251,25 @@
       "https://www.googleapis.com/auth/analytics",
       "https://www.googleapis.com/auth/analytics.readonly"
      ]
-    }
-   }
-  },
-  "v1alpha": {
-   "methods": {
-    "batchRunPivotReports": {
-     "description": "Returns multiple pivot reports in a batch. All reports must be for the same Entity.",
-     "flatPath": "v1alpha:batchRunPivotReports",
-     "httpMethod": "POST",
-     "id": "analyticsdata.batchRunPivotReports",
-     "parameterOrder": [],
-     "parameters": {},
-     "path": "v1alpha:batchRunPivotReports",
-     "request": {
-      "$ref": "BatchRunPivotReportsRequest"
-     },
-     "response": {
-      "$ref": "BatchRunPivotReportsResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/analytics",
-      "https://www.googleapis.com/auth/analytics.readonly"
-     ]
-    },
-    "batchRunReports": {
-     "description": "Returns multiple reports in a batch. All reports must be for the same Entity.",
-     "flatPath": "v1alpha:batchRunReports",
-     "httpMethod": "POST",
-     "id": "analyticsdata.batchRunReports",
-     "parameterOrder": [],
-     "parameters": {},
-     "path": "v1alpha:batchRunReports",
-     "request": {
-      "$ref": "BatchRunReportsRequest"
-     },
-     "response": {
-      "$ref": "BatchRunReportsResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/analytics",
-      "https://www.googleapis.com/auth/analytics.readonly"
-     ]
-    },
-    "runPivotReport": {
-     "description": "Returns a customized pivot report of your Google Analytics event data. Pivot reports are more advanced and expressive formats than regular reports. In a pivot report, dimensions are only visible if they are included in a pivot. Multiple pivots can be specified to further dissect your data.",
-     "flatPath": "v1alpha:runPivotReport",
-     "httpMethod": "POST",
-     "id": "analyticsdata.runPivotReport",
-     "parameterOrder": [],
-     "parameters": {},
-     "path": "v1alpha:runPivotReport",
-     "request": {
-      "$ref": "RunPivotReportRequest"
-     },
-     "response": {
-      "$ref": "RunPivotReportResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/analytics",
-      "https://www.googleapis.com/auth/analytics.readonly"
-     ]
     },
     "runReport": {
      "description": "Returns a customized report of your Google Analytics event data. Reports contain statistics derived from data collected by the Google Analytics tracking code. The data returned from the API is as a table with columns for the requested dimensions and metrics. Metrics are individual measurements of user activity on your property, such as active users or event count. Dimensions break down metrics across some common criteria, such as country or event name.",
-     "flatPath": "v1alpha:runReport",
+     "flatPath": "v1beta/properties/{propertiesId}:runReport",
      "httpMethod": "POST",
-     "id": "analyticsdata.runReport",
-     "parameterOrder": [],
-     "parameters": {},
-     "path": "v1alpha:runReport",
+     "id": "analyticsdata.properties.runReport",
+     "parameterOrder": [
+      "property"
+     ],
+     "parameters": {
+      "property": {
+       "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234",
+       "location": "path",
+       "pattern": "^properties/[^/]+$",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "v1beta/{+property}:runReport",
      "request": {
       "$ref": "RunReportRequest"
      },
@@ -248,17 +284,13 @@
    }
   }
  },
- "revision": "20210316",
+ "revision": "20210322",
  "rootUrl": "https://analyticsdata.googleapis.com/",
  "schemas": {
   "BatchRunPivotReportsRequest": {
    "description": "The batch request containing multiple pivot report requests.",
    "id": "BatchRunPivotReportsRequest",
    "properties": {
-    "entity": {
-     "$ref": "Entity",
-     "description": "A property whose events are tracked. This entity must be specified for the batch. The entity within RunPivotReportRequest may either be unspecified or consistent with this entity."
-    },
     "requests": {
      "description": "Individual requests. Each request has a separate pivot report response. Each batch request is allowed up to 5 requests.",
      "items": {
@@ -291,10 +323,6 @@
    "description": "The batch request containing multiple report requests.",
    "id": "BatchRunReportsRequest",
    "properties": {
-    "entity": {
-     "$ref": "Entity",
-     "description": "A property whose events are tracked. This entity must be specified for the batch. The entity within RunReportRequest may either be unspecified or consistent with this entity."
-    },
     "requests": {
      "description": "Individual requests. Each request has a separate report response. Each batch request is allowed up to 5 requests.",
      "items": {
@@ -480,7 +508,7 @@
      "description": "One dimension can be the result of an expression of multiple dimensions. For example, dimension \"country, city\": concatenate(country, \", \", city)."
     },
     "name": {
-     "description": "The name of the dimension. See the [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for the list of dimension names. If `dimensionExpression` is specified, `name` can be any string that you would like. For example if a `dimensionExpression` concatenates `country` and `city`, you could call that dimension `countryAndCity`. Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and `pivots`.",
+     "description": "The name of the dimension. See the [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#dimensions) for the list of dimension names. If `dimensionExpression` is specified, `name` can be any string that you would like within the allowed character set. For example if a `dimensionExpression` concatenates `country` and `city`, you could call that dimension `countryAndCity`. Dimension names that you choose must match the regular expression \"^[a-zA-Z0-9_]$\". Dimensions are referenced by `name` in `dimensionFilter`, `orderBys`, `dimensionExpression`, and `pivots`.",
      "type": "string"
     }
    },
@@ -579,17 +607,6 @@
    "properties": {
     "value": {
      "description": "Value as a string if the dimension type is a string.",
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "Entity": {
-   "description": "The unique identifier of the property whose events are tracked.",
-   "id": "Entity",
-   "properties": {
-    "propertyId": {
-     "description": "A Google Analytics GA4 property id. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).",
      "type": "string"
     }
    },
@@ -715,7 +732,7 @@
      "type": "boolean"
     },
     "name": {
-     "description": "The name of the metric. See the [API Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the list of metric names. If `expression` is specified, `name` can be any string that you would like. For example if `expression` is `screenPageViews/sessions`, you could call that metric's name = `viewsPerSession`. Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric `expression`.",
+     "description": "The name of the metric. See the [API Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema#metrics) for the list of metric names. If `expression` is specified, `name` can be any string that you would like within the allowed character set. For example if `expression` is `screenPageViews/sessions`, you could call that metric's name = `viewsPerSession`. Metric names that you choose must match the regular expression \"^[a-zA-Z0-9_]$\". Metrics are referenced by `name` in `metricFilter`, `orderBys`, and metric `expression`.",
      "type": "string"
     }
    },
@@ -939,7 +956,7 @@
      "type": "array"
     },
     "limit": {
-     "description": "The number of rows to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 100,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is `1,000,000`.",
+     "description": "The number of unique combinations of dimension values to return in this pivot. The `limit` parameter is required. A `limit` of 10,000 is common for single pivot requests. The product of the `limit` for each `pivot` in a `RunPivotReportRequest` must not exceed 100,000. For example, a two pivot request with `limit: 1000` in each pivot will fail because the product is `1,000,000`.",
      "format": "int64",
      "type": "string"
     },
@@ -1130,7 +1147,7 @@
      "description": "Cohort group associated with this request. If there is a cohort group in the request the 'cohort' dimension must be present."
     },
     "currencyCode": {
-     "description": "A currency code in ISO4217 format, such as \"AED\", \"USD\", \"JPY\". If the field is empty, the report uses the entity's default currency.",
+     "description": "A currency code in ISO4217 format, such as \"AED\", \"USD\", \"JPY\". If the field is empty, the report uses the property's default currency.",
      "type": "string"
     },
     "dateRanges": {
@@ -1150,10 +1167,6 @@
       "$ref": "Dimension"
      },
      "type": "array"
-    },
-    "entity": {
-     "$ref": "Entity",
-     "description": "A property whose events are tracked. Within a batch request, this entity should either be unspecified or consistent with the batch-level entity."
     },
     "keepEmptyRows": {
      "description": "If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter.",
@@ -1176,6 +1189,10 @@
       "$ref": "Pivot"
      },
      "type": "array"
+    },
+    "property": {
+     "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234",
+     "type": "string"
     },
     "returnPropertyQuota": {
      "description": "Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in [PropertyQuota](#PropertyQuota).",
@@ -1254,7 +1271,7 @@
      "type": "array"
     },
     "limit": {
-     "description": "The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for.",
+     "description": "The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance, there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`, you can't get more than 300 rows, even if you set `limit` to a higher value.",
      "format": "int64",
      "type": "string"
     },
@@ -1345,7 +1362,7 @@
      "description": "This Analytics Property's Realtime quota state including this request."
     },
     "rowCount": {
-     "description": "The total number of rows in the query result, regardless of the number of rows returned in the response. For example if a query returns 175 rows and includes limit = 50 in the API request, the response will contain row_count = 175 but only 50 rows.",
+     "description": "The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response and the `limit` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows.",
      "format": "int32",
      "type": "integer"
     },
@@ -1375,7 +1392,7 @@
      "description": "Cohort group associated with this request. If there is a cohort group in the request the 'cohort' dimension must be present."
     },
     "currencyCode": {
-     "description": "A currency code in ISO4217 format, such as \"AED\", \"USD\", \"JPY\". If the field is empty, the report uses the entity's default currency.",
+     "description": "A currency code in ISO4217 format, such as \"AED\", \"USD\", \"JPY\". If the field is empty, the report uses the property's default currency.",
      "type": "string"
     },
     "dateRanges": {
@@ -1396,16 +1413,12 @@
      },
      "type": "array"
     },
-    "entity": {
-     "$ref": "Entity",
-     "description": "A property whose events are tracked. Within a batch request, this entity should either be unspecified or consistent with the batch-level entity."
-    },
     "keepEmptyRows": {
      "description": "If false or unspecified, each row with all metrics equal to 0 will not be returned. If true, these rows will be returned if they are not separately removed by a filter.",
      "type": "boolean"
     },
     "limit": {
-     "description": "The number of rows to return. If the `limit` parameter is unspecified, 10,000 rows are returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+     "description": "The number of rows to return. If unspecified, 10,000 rows are returned. The API returns a maximum of 100,000 rows per request, no matter how many you ask for. `limit` must be positive. The API can also return fewer rows than the requested `limit`, if there aren't as many dimension values as the `limit`. For instance, there are fewer than 300 possible values for the dimension `country`, so when reporting on only `country`, you can't get more than 300 rows, even if you set `limit` to a higher value. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
      "format": "int64",
      "type": "string"
     },
@@ -1442,7 +1455,7 @@
      "type": "array"
     },
     "offset": {
-     "description": "The row count of the start row. The first row is counted as row 0. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+     "description": "The row count of the start row. The first row is counted as row 0. When paging, the first request does not specify offset; or equivalently, sets offset to 0; the first request returns the first `limit` of rows. The second request sets offset to the `limit` of the first request; the second request returns the second `limit` of rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
      "format": "int64",
      "type": "string"
     },
@@ -1452,6 +1465,10 @@
       "$ref": "OrderBy"
      },
      "type": "array"
+    },
+    "property": {
+     "description": "A Google Analytics GA4 property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234",
+     "type": "string"
     },
     "returnPropertyQuota": {
      "description": "Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in [PropertyQuota](#PropertyQuota).",
@@ -1505,7 +1522,7 @@
      "description": "This Analytics Property's quota state including this request."
     },
     "rowCount": {
-     "description": "The total number of rows in the query result, regardless of the number of rows returned in the response. For example if a query returns 175 rows and includes limit = 50 in the API request, the response will contain row_count = 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
+     "description": "The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).",
      "format": "int32",
      "type": "integer"
     },
@@ -1566,6 +1583,6 @@
  },
  "servicePath": "",
  "title": "Google Analytics Data API",
- "version": "v1alpha",
+ "version": "v1beta",
  "version_module": true
 }

@@ -313,8 +313,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 }
 
                 /// <summary>
-                /// ApplyParameters will restart the set of specified nodes in order to update them to the current set
-                /// of parameters for the Memcached Instance.
+                /// `ApplyParameters` restarts the set of specified nodes in order to update them to the current set of
+                /// parameters for the Memcached Instance.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -327,8 +327,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 }
 
                 /// <summary>
-                /// ApplyParameters will restart the set of specified nodes in order to update them to the current set
-                /// of parameters for the Memcached Instance.
+                /// `ApplyParameters` restarts the set of specified nodes in order to update them to the current set of
+                /// parameters for the Memcached Instance.
                 /// </summary>
                 public class ApplyParametersRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
                 {
@@ -410,8 +410,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                     /// Required. The logical name of the Memcached instance in the user project with the following
                     /// restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a
                     /// letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be
-                    /// unique within the user project / location If any of the above are not met, will raise an invalid
-                    /// argument error.
+                    /// unique within the user project / location. If any of the above are not met, the API raises an
+                    /// invalid argument error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string InstanceId { get; set; }
@@ -589,7 +589,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
 
                     /// <summary>
                     /// List filter. For example, exclude all Memcached instances with name as my-instance by specifying
-                    /// "name != my-instance".
+                    /// `"name != my-instance"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -600,14 +600,14 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
 
                     /// <summary>
                     /// The maximum number of items to return. If not specified, a default value of 1000 will be used by
-                    /// the service. Regardless of the page_size value, the response may include a partial list and a
-                    /// caller should only rely on response's next_page_token to determine if there are more instances
+                    /// the service. Regardless of the `page_size` value, the response may include a partial list and a
+                    /// caller should only rely on response's `next_page_token` to determine if there are more instances
                     /// left to be queried.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -672,9 +672,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 /// <param name="name">
                 /// Required. Unique name of the resource in this scope including project and location using the form:
                 /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances
-                /// are managed and addressed at regional level so location_id here refers to a GCP region; however,
-                /// users may choose which zones Memcached nodes within an instances should be provisioned in. Refer to
-                /// [zones] field for more details.
+                /// are managed and addressed at the regional level so `location_id` here refers to a Google Cloud
+                /// region; however, users may choose which zones Memcached nodes should be provisioned in within an
+                /// instance. Refer to zones field for more details.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudMemorystoreforMemcached.v1.Data.Instance body, string name)
                 {
@@ -695,9 +695,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                     /// <summary>
                     /// Required. Unique name of the resource in this scope including project and location using the
                     /// form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached
-                    /// instances are managed and addressed at regional level so location_id here refers to a GCP
-                    /// region; however, users may choose which zones Memcached nodes within an instances should be
-                    /// provisioned in. Refer to [zones] field for more details.
+                    /// instances are managed and addressed at the regional level so `location_id` here refers to a
+                    /// Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned
+                    /// in within an instance. Refer to zones field for more details.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -745,9 +745,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 }
 
                 /// <summary>
-                /// Updates the defined Memcached Parameters for an existing Instance. This method only stages the
-                /// parameters, it must be followed by ApplyParameters to apply the parameters to nodes of the Memcached
-                /// Instance.
+                /// Updates the defined Memcached parameters for an existing instance. This method only stages the
+                /// parameters, it must be followed by `ApplyParameters` to apply the parameters to nodes of the
+                /// Memcached instance.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -759,9 +759,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 }
 
                 /// <summary>
-                /// Updates the defined Memcached Parameters for an existing Instance. This method only stages the
-                /// parameters, it must be followed by ApplyParameters to apply the parameters to nodes of the Memcached
-                /// Instance.
+                /// Updates the defined Memcached parameters for an existing instance. This method only stages the
+                /// parameters, it must be followed by `ApplyParameters` to apply the parameters to nodes of the
+                /// Memcached instance.
                 /// </summary>
                 public class UpdateParametersRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1.Data.Operation>
                 {
@@ -1162,15 +1162,23 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -1230,13 +1238,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
     public class ApplyParametersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to apply instance-level parameter group to all nodes. If set to true, will explicitly restrict users
-        /// from specifying any nodes, and apply parameter group updates to all nodes within the instance.
+        /// Whether to apply instance-level parameter group to all nodes. If set to true, users are restricted from
+        /// specifying individual nodes, and `ApplyParameters` updates all nodes within the instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyAll")]
         public virtual System.Nullable<bool> ApplyAll { get; set; }
 
-        /// <summary>Nodes to which we should apply the instance-level parameter group.</summary>
+        /// <summary>Nodes to which the instance-level parameter group is applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeIds")]
         public virtual System.Collections.Generic.IList<string> NodeIds { get; set; }
 
@@ -1340,6 +1348,20 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for the given google.cloud.location.Location.</summary>
+    public class GoogleCloudMemcacheV1LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The set of available zones in the location. The map is keyed by the lowercase ID of each zone,
+        /// as defined by GCE. These keys can be specified in the `zones` field when creating a Memcached instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableZones")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudMemcacheV1ZoneMetadata> AvailableZones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of a long-running operation.</summary>
     public class GoogleCloudMemcacheV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1375,6 +1397,12 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudMemcacheV1ZoneMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1486,8 +1514,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
     public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Can this scheduled update be rescheduled? By default, it's true and API needs to do explicitly check whether
-        /// it's set, if it's set as false explicitly, it's false
+        /// This field will be deprecated, and will be always set to true since reschedule can happen multiple times
+        /// now.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
         public virtual System.Nullable<bool> CanReschedule { get; set; }
@@ -1505,9 +1533,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
 
         /// <summary>
         /// schedule_deadline_time is the time deadline any schedule start time cannot go beyond, including reschedule.
-        /// It's normally the initial schedule start time plus a week. If the reschedule type is next window, simply
-        /// take this value as start time. If reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
-        /// go beyond this deadline.
+        /// It's normally the initial schedule start time plus maintenance window length (1 day or 1 week). Maintenance
+        /// cannot be scheduled to start beyond this deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
         public virtual object ScheduleDeadlineTime { get; set; }
@@ -1578,6 +1605,26 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
+    public class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The
+        /// SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an
+        /// error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined
+        /// in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will
+        /// not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data
+        /// produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI
+        /// which has not been declared in the binary flags, there will be an error message emitted in the Eligibility
+        /// Exporter log and the metric for the SLI in question will not be emitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilities")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility> Eligibilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes provisioned dataplane resources.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1641,7 +1688,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
 
         /// <summary>
         /// Name of an SLI that this exclusion applies to. Can be left empty, signaling that the instance should be
-        /// excluded from all SLIs defined in the service SLO configuration.
+        /// excluded from all SLIs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sliName")]
         public virtual string SliName { get; set; }
@@ -1657,7 +1704,10 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
     /// <summary>SloMetadata contains resources required for proper SLO classification of the instance.</summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. User-defined instance eligibility.</summary>
+        /// <summary>
+        /// Optional. Global per-instance SLI eligibility which applies to all defined SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
         public virtual GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility Eligibility { get; set; }
 
@@ -1682,6 +1732,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata> Nodes { get; set; }
 
         /// <summary>
+        /// Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. Exactly one of
+        /// 'eligibility' and 'per_sli_eligibility' fields must be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSliEligibility")]
+        public virtual GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility PerSliEligibility { get; set; }
+
+        /// <summary>
         /// Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the
         /// service SLO configuration. Field is mandatory and must not be empty.
         /// </summary>
@@ -1692,6 +1749,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Memorystore for Memcached instance</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1705,17 +1763,18 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. Endpoint for Discovery API</summary>
+        /// <summary>Output only. Endpoint for the Discovery API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveryEndpoint")]
         public virtual string DiscoveryEndpoint { get; set; }
 
         /// <summary>
-        /// User provided name for the instance only used for display purposes. Cannot be more than 80 characters.
+        /// User provided name for the instance, which is only used for display purposes. Cannot be more than 80
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>List of messages that describe current statuses of memcached instance.</summary>
+        /// <summary>List of messages that describe the current state of the Memcached instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceMessages")]
         public virtual System.Collections.Generic.IList<InstanceMessage> InstanceMessages { get; set; }
 
@@ -1734,13 +1793,13 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memcacheFullVersion")]
         public virtual string MemcacheFullVersion { get; set; }
 
-        /// <summary>Output only. List of Memcached nodes. Refer to [Node] message for more details.</summary>
+        /// <summary>Output only. List of Memcached nodes. Refer to Node message for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memcacheNodes")]
         public virtual System.Collections.Generic.IList<Node> MemcacheNodes { get; set; }
 
         /// <summary>
         /// The major version of Memcached software. If not provided, latest supported version will be used. Currently
-        /// the latest supported major version is MEMCACHE_1_5. The minor version will be automatically determined by
+        /// the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by
         /// our system based on the latest supported minor version.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memcacheVersion")]
@@ -1749,9 +1808,9 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// <summary>
         /// Required. Unique name of the resource in this scope including project and location using the form:
         /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are
-        /// managed and addressed at regional level so location_id here refers to a GCP region; however, users may
-        /// choose which zones Memcached nodes within an instances should be provisioned in. Refer to [zones] field for
-        /// more details.
+        /// managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however,
+        /// users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones
+        /// field for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1777,7 +1836,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual object UpdateTime { get; set; }
 
         /// <summary>
-        /// Zones where Memcached nodes should be provisioned in. Memcached nodes will be equally distributed across
+        /// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across
         /// these zones. If not provided, the service will by default create nodes in all zones in the region for the
         /// instance.
         /// </summary>
@@ -1965,13 +2024,14 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The unique ID associated with this set of parameters. Users can use this id to determine if the parameters
+    /// associated with the instance differ from the parameters associated with the nodes. A discrepancy between
+    /// parameter ids can inform users that they may need to take action to apply parameters on nodes.
+    /// </summary>
     public class MemcacheParameters : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The unique ID associated with this set of parameters. Users can use this id to determine if the
-        /// parameters associated with the instance differ from the parameters associated with the nodes and any action
-        /// needs to be taken to apply parameters on nodes.
-        /// </summary>
+        /// <summary>Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 

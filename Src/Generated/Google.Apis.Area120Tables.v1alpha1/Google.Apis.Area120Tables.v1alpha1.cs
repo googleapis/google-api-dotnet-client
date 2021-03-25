@@ -70,7 +70,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
@@ -94,7 +94,7 @@ namespace Google.Apis.Area120Tables.v1alpha1
             public const string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
 

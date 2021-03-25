@@ -73,7 +73,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// <summary>View your Google Cloud Platform billing accounts</summary>
             public static string CloudBillingReadonly = "https://www.googleapis.com/auth/cloud-billing.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -86,7 +86,7 @@ namespace Google.Apis.Cloudbilling.v1
             /// <summary>View your Google Cloud Platform billing accounts</summary>
             public const string CloudBillingReadonly = "https://www.googleapis.com/auth/cloud-billing.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -402,12 +402,15 @@ namespace Google.Apis.Cloudbilling.v1
         }
 
         /// <summary>
-        /// Creates a billing account. This method can only be used to create [billing
-        /// subaccounts](https://cloud.google.com/billing/docs/concepts) by Google Cloud resellers. When creating a
-        /// subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the
-        /// master account, which is typically given to billing account
+        /// This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts).
+        /// Google Cloud resellers should use the Channel Services APIs,
+        /// [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create)
+        /// and
+        /// [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create).
+        /// When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM
+        /// permission on the parent account, which is typically given to billing account
         /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an
-        /// error if the master account has not been provisioned as a reseller account.
+        /// error if the parent account has not been provisioned as a reseller account.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body)
@@ -416,12 +419,15 @@ namespace Google.Apis.Cloudbilling.v1
         }
 
         /// <summary>
-        /// Creates a billing account. This method can only be used to create [billing
-        /// subaccounts](https://cloud.google.com/billing/docs/concepts) by Google Cloud resellers. When creating a
-        /// subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the
-        /// master account, which is typically given to billing account
+        /// This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts).
+        /// Google Cloud resellers should use the Channel Services APIs,
+        /// [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create)
+        /// and
+        /// [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create).
+        /// When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM
+        /// permission on the parent account, which is typically given to billing account
         /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an
-        /// error if the master account has not been provisioned as a reseller account.
+        /// error if the parent account has not been provisioned as a reseller account.
         /// </summary>
         public class CreateRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.BillingAccount>
         {
@@ -1347,7 +1353,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
 
         /// <summary>
         /// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the
-        /// resource name of the master billing account that it is being resold through. Otherwise this will be empty.
+        /// resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterBillingAccount")]
         public virtual string MasterBillingAccount { get; set; }

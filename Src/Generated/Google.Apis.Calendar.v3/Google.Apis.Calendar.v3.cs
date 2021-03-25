@@ -4193,7 +4193,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Identifier of the ACL rule.</summary>
+        /// <summary>Identifier of the Access Control List (ACL) rule. See Sharing calendars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -4212,11 +4212,11 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
-        /// <summary>The scope of the rule.</summary>
+        /// <summary>The extent to which calendar access is granted by this ACL rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual ScopeData Scope { get; set; }
 
-        /// <summary>The scope of the rule.</summary>
+        /// <summary>The extent to which calendar access is granted by this ACL rule.</summary>
         public class ScopeData
         {
             /// <summary>

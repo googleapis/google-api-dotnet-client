@@ -505,9 +505,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// A filter on the type of approval requests to retrieve. Must be one of the following values: * [not
                 /// set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only
                 /// pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
-                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
-                /// dismissed and expired requests.
+                /// requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED:
+                /// Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed
+                /// and expired requests.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -990,9 +990,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// A filter on the type of approval requests to retrieve. Must be one of the following values: * [not
                 /// set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only
                 /// pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
-                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
-                /// dismissed and expired requests.
+                /// requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED:
+                /// Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed
+                /// and expired requests.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1475,9 +1475,9 @@ namespace Google.Apis.AccessApproval.v1
                 /// A filter on the type of approval requests to retrieve. Must be one of the following values: * [not
                 /// set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only
                 /// pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only
-                /// requests that have been dismissed, or requests that . are not approved and past expiration. *
-                /// EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active,
-                /// dismissed and expired requests.
+                /// requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED:
+                /// Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed
+                /// and expired requests.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1931,14 +1931,15 @@ namespace Google.Apis.AccessApproval.v1.Data
         /// <summary>
         /// The product for which Access Approval will be enrolled. Allowed values are listed below (case-sensitive): *
         /// all * App Engine * BigQuery * Cloud Bigtable * Cloud Key Management Service * Compute Engine * Cloud
-        /// Dataflow * Cloud Identity and Access Management * Cloud Pub/Sub * Cloud Storage * Persistent Disk Note:
-        /// These values are supported as input for legacy purposes, but will not be returned from the API. * all *
-        /// appengine.googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com * cloudkms.googleapis.com *
-        /// compute.googleapis.com * dataflow.googleapis.com * iam.googleapis.com * pubsub.googleapis.com *
-        /// storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com
-        /// will be translated to the associated product name ('all', 'App Engine', etc.). Note: 'all' will enroll the
-        /// resource in all products supported at both 'GA' and 'Preview' levels. More information about levels of
-        /// support is available at https://cloud.google.com/access-approval/docs/supported-services
+        /// Dataflow * Cloud Identity and Access Management * Cloud Logging * Cloud Pub/Sub * Cloud Spanner * Cloud
+        /// Storage * Persistent Disk Note: These values are supported as input for legacy purposes, but will not be
+        /// returned from the API. * all * appengine.googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com
+        /// * cloudkms.googleapis.com * compute.googleapis.com * dataflow.googleapis.com * iam.googleapis.com *
+        /// logging.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com * storage.googleapis.com Calls to
+        /// UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com will be translated to the
+        /// associated product name ('all', 'App Engine', etc.). Note: 'all' will enroll the resource in all products
+        /// supported at both 'GA' and 'Preview' levels. More information about levels of support is available at
+        /// https://cloud.google.com/access-approval/docs/supported-services
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProduct")]
         public virtual string CloudProduct { get; set; }

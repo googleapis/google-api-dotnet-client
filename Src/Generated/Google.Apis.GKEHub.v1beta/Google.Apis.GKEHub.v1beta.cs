@@ -292,6 +292,7 @@ namespace Google.Apis.GKEHub.v1beta
             {
                 this.service = service;
                 Features = new FeaturesResource(service);
+                Global = new GlobalResource(service);
                 Memberships = new MembershipsResource(service);
                 Operations = new OperationsResource(service);
             }
@@ -520,6 +521,477 @@ namespace Google.Apis.GKEHub.v1beta
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/features/[^/]+$",
                         });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Global resource.</summary>
+            public virtual GlobalResource Global { get; }
+
+            /// <summary>The "global" collection of methods.</summary>
+            public class GlobalResource
+            {
+                private const string Resource = "global";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GlobalResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Features = new FeaturesResource(service);
+                }
+
+                /// <summary>Gets the Features resource.</summary>
+                public virtual FeaturesResource Features { get; }
+
+                /// <summary>The "features" collection of methods.</summary>
+                public class FeaturesResource
+                {
+                    private const string Resource = "features";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public FeaturesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Adds a new Feature.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The parent (project and location) where the Feature will be created. Specified in the format
+                    /// `projects/*/locations/global`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.GKEHub.v1beta.Data.Feature body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Adds a new Feature.</summary>
+                    public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1beta.Data.Feature body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The parent (project and location) where the Feature will be created. Specified in the format
+                        /// `projects/*/locations/global`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>The ID of the feature to create.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string FeatureId { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes after the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEHub.v1beta.Data.Feature Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/features";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("featureId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Removes a Feature.</summary>
+                    /// <param name="name">
+                    /// The Feature resource name in the format `projects/*/locations/global/features/*`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Removes a Feature.</summary>
+                    public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The Feature resource name in the format `projects/*/locations/global/features/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// If set to true, the delete will ignore any outstanding resources for this Feature (that is,
+                        /// `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or
+                        /// modified in any way.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes after the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/features/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single Feature.</summary>
+                    /// <param name="name">
+                    /// The Feature resource name in the format `projects/*/locations/global/features/*`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single Feature.</summary>
+                    public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Feature>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The Feature resource name in the format `projects/*/locations/global/features/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/features/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists Features in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// The parent (project and location) where the Features will be listed. Specified in the format
+                    /// `projects/*/locations/global`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists Features in a given project and location.</summary>
+                    public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.ListFeaturesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The parent (project and location) where the Features will be listed. Specified in the format
+                        /// `projects/*/locations/global`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Lists Features that match the filter expression, following the syntax outlined in
+                        /// https://google.aip.dev/160. Examples: - Feature with the name "servicemesh" in project
+                        /// "foo-proj": name = "projects/foo-proj/locations/global/features/servicemesh" - Features that
+                        /// have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose
+                        /// value is `bar`: labels.foo = bar
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// One or more fields to compare and use to sort the output. See
+                        /// https://google.aip.dev/132#ordering.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// When requesting a 'page' of resources, `page_size` specifies number of resources to return.
+                        /// If unspecified or set to 0, all resources will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Token returned by previous call to `ListFeatures` which specifies the position in the list
+                        /// from where to continue listing the resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/features";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing Feature.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The Feature resource name in the format `projects/*/locations/global/features/*`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.GKEHub.v1beta.Data.Feature body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates an existing Feature.</summary>
+                    public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1beta.Data.Feature body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The Feature resource name in the format `projects/*/locations/global/features/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server will guarantee that for at least 60 minutes after the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Mask of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEHub.v1beta.Data.Feature Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/features/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
                     }
                 }
             }
@@ -1281,6 +1753,554 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
+    public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Multicluster Ingress-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiclusteringress")]
+        public virtual MultiClusterIngressFeatureSpec Multiclusteringress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CommonFeatureState contains Hub-wide Feature status information.</summary>
+    public class CommonFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The "running state" of the Feature in this Hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual FeatureState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Binauthz</summary>
+    public class ConfigManagementBinauthzConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether binauthz is enabled in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State for Binauthz</summary>
+    public class ConfigManagementBinauthzState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version of binauthz that is installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ConfigManagementBinauthzVersion Version { get; set; }
+
+        /// <summary>The state of the binauthz webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhook")]
+        public virtual string Webhook { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The version of binauthz.</summary>
+    public class ConfigManagementBinauthzVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version of the binauthz webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookVersion")]
+        public virtual string WebhookVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Config Sync</summary>
+    public class ConfigManagementConfigSync : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Git repo configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("git")]
+        public virtual ConfigManagementGitConfig Git { get; set; }
+
+        /// <summary>Specifies whether the Config Sync Repo is in “hierarchical” or “unstructured” mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
+        public virtual string SourceFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of ConfigSync's deployment on a cluster</summary>
+    public class ConfigManagementConfigSyncDeploymentState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Deployment state of the git-sync pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSync")]
+        public virtual string GitSync { get; set; }
+
+        /// <summary>Deployment state of the importer pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importer")]
+        public virtual string Importer { get; set; }
+
+        /// <summary>Deployment state of the monitor pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitor")]
+        public virtual string Monitor { get; set; }
+
+        /// <summary>Deployment state of reconciler-manager pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconcilerManager")]
+        public virtual string ReconcilerManager { get; set; }
+
+        /// <summary>Deployment state of root-reconciler</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootReconciler")]
+        public virtual string RootReconciler { get; set; }
+
+        /// <summary>Deployment state of the syncer pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncer")]
+        public virtual string Syncer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State information for ConfigSync</summary>
+    public class ConfigManagementConfigSyncState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Information about the deployment of ConfigSync, including the version of the various Pods deployed
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
+        public virtual ConfigManagementConfigSyncDeploymentState DeploymentState { get; set; }
+
+        /// <summary>The state of ConfigSync's process to sync configs to a cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
+        public virtual ConfigManagementSyncState SyncState { get; set; }
+
+        /// <summary>The version of ConfigSync deployed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ConfigManagementConfigSyncVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific versioning information pertaining to ConfigSync's Pods</summary>
+    public class ConfigManagementConfigSyncVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Version of the deployed git-sync pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSync")]
+        public virtual string GitSync { get; set; }
+
+        /// <summary>Version of the deployed importer pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importer")]
+        public virtual string Importer { get; set; }
+
+        /// <summary>Version of the deployed monitor pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitor")]
+        public virtual string Monitor { get; set; }
+
+        /// <summary>Version of the deployed reconciler-manager pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reconcilerManager")]
+        public virtual string ReconcilerManager { get; set; }
+
+        /// <summary>Version of the deployed reconciler container in root-reconciler pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootReconciler")]
+        public virtual string RootReconciler { get; set; }
+
+        /// <summary>Version of the deployed syncer pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncer")]
+        public virtual string Syncer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Model for a config file in the git repo with an associated Sync error</summary>
+    public class ConfigManagementErrorResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Group/version/kind of the resource that is causing an error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGvk")]
+        public virtual ConfigManagementGroupVersionKind ResourceGvk { get; set; }
+
+        /// <summary>Metadata name of the resource that is causing an error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Namespace of the resource that is causing an error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNamespace")]
+        public virtual string ResourceNamespace { get; set; }
+
+        /// <summary>Path in the git repo of the erroneous config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePath")]
+        public virtual string SourcePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of Policy Controller installation.</summary>
+    public class ConfigManagementGatekeeperDeploymentState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of gatekeeper-audit deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperAudit")]
+        public virtual string GatekeeperAudit { get; set; }
+
+        /// <summary>Status of gatekeeper-controller-manager pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperControllerManagerState")]
+        public virtual string GatekeeperControllerManagerState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Git repo configuration for a single cluster.</summary>
+    public class ConfigManagementGitConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
+        public virtual string GcpServiceAccountEmail { get; set; }
+
+        /// <summary>URL for the HTTPS proxy to be used when communicating with the Git repo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpsProxy")]
+        public virtual string HttpsProxy { get; set; }
+
+        /// <summary>
+        /// The path within the Git repository that represents the top level of the repo to sync. Default: the root
+        /// directory of the repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDir")]
+        public virtual string PolicyDir { get; set; }
+
+        /// <summary>Type of secret configured for access to the Git repo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
+        public virtual string SecretType { get; set; }
+
+        /// <summary>The branch of the repository to sync from. Default: master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncBranch")]
+        public virtual string SyncBranch { get; set; }
+
+        /// <summary>The URL of the Git repository to use as the source of truth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncRepo")]
+        public virtual string SyncRepo { get; set; }
+
+        /// <summary>Git revision (tag or hash) to check out. Default HEAD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncRev")]
+        public virtual string SyncRev { get; set; }
+
+        /// <summary>Period in seconds between consecutive syncs. Default: 15.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncWaitSecs")]
+        public virtual System.Nullable<long> SyncWaitSecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Kubernetes object's GVK</summary>
+    public class ConfigManagementGroupVersionKind : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Kubernetes Group</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Kubernetes Kind</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Kubernetes Version</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Hierarchy Controller</summary>
+    public class ConfigManagementHierarchyControllerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether hierarchical resource quota is enabled in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHierarchicalResourceQuota")]
+        public virtual System.Nullable<bool> EnableHierarchicalResourceQuota { get; set; }
+
+        /// <summary>Whether pod tree labels are enabled in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePodTreeLabels")]
+        public virtual System.Nullable<bool> EnablePodTreeLabels { get; set; }
+
+        /// <summary>Whether Hierarchy Controller is enabled in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deployment state for Hierarchy Controller</summary>
+    public class ConfigManagementHierarchyControllerDeploymentState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extension")]
+        public virtual string Extension { get; set; }
+
+        /// <summary>The deployment state for open source HNC (e.g. v0.7.0-hc.0)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hnc")]
+        public virtual string Hnc { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State for Hierarchy Controller</summary>
+    public class ConfigManagementHierarchyControllerState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment state for Hierarchy Controller</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual ConfigManagementHierarchyControllerDeploymentState State { get; set; }
+
+        /// <summary>The version for Hierarchy Controller</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ConfigManagementHierarchyControllerVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Version for Hierarchy Controller</summary>
+    public class ConfigManagementHierarchyControllerVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Version for Hierarchy Controller extension</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extension")]
+        public virtual string Extension { get; set; }
+
+        /// <summary>Version for open source HNC</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hnc")]
+        public virtual string Hnc { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Errors pertaining to the installation of ACM</summary>
+    public class ConfigManagementInstallError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string representing the user facing error message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a single cluster. Intended to parallel the ConfigManagement CR.</summary>
+    public class ConfigManagementMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Binauthz conifguration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
+        public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
+
+        /// <summary>Config Sync configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSync")]
+        public virtual ConfigManagementConfigSync ConfigSync { get; set; }
+
+        /// <summary>Hierarchy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
+        public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
+
+        /// <summary>Policy Controller configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
+        public virtual ConfigManagementPolicyController PolicyController { get; set; }
+
+        /// <summary>Version of ACM installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State for Anthos Config Management</summary>
+    public class ConfigManagementMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Binauthz status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binauthzState")]
+        public virtual ConfigManagementBinauthzState BinauthzState { get; set; }
+
+        /// <summary>
+        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
+        /// Membership's membership_name, unless the user installed ACM on the cluster manually prior to enabling the
+        /// ACM hub feature. Unique within a Anthos Config Management installation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
+        public virtual string ClusterName { get; set; }
+
+        /// <summary>Current sync status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSyncState")]
+        public virtual ConfigManagementConfigSyncState ConfigSyncState { get; set; }
+
+        /// <summary>Hierarchy Controller status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hierarchyControllerState")]
+        public virtual ConfigManagementHierarchyControllerState HierarchyControllerState { get; set; }
+
+        /// <summary>
+        /// Membership configuration in the cluster. This represents the actual state in the cluster, while the
+        /// MembershipSpec in the FeatureSpec represents the intended state
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpec")]
+        public virtual ConfigManagementMembershipSpec MembershipSpec { get; set; }
+
+        /// <summary>Current install status of ACM's Operator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatorState")]
+        public virtual ConfigManagementOperatorState OperatorState { get; set; }
+
+        /// <summary>PolicyController status</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyControllerState")]
+        public virtual ConfigManagementPolicyControllerState PolicyControllerState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State information for an ACM's Operator</summary>
+    public class ConfigManagementOperatorState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state of the Operator's deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
+        public virtual string DeploymentState { get; set; }
+
+        /// <summary>Install errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ConfigManagementInstallError> Errors { get; set; }
+
+        /// <summary>The semenatic version number of the operator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for Policy Controller</summary>
+    public class ConfigManagementPolicyController : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit
+        /// functionality altogether.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditIntervalSeconds")]
+        public virtual System.Nullable<long> AuditIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently
+        /// exist on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptableNamespaces")]
+        public virtual System.Collections.Generic.IList<string> ExemptableNamespaces { get; set; }
+
+        /// <summary>Logs all denies and dry run failures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
+        public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
+
+        /// <summary>
+        /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
+        /// being evaluated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
+        public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
+
+        /// <summary>Installs the default template library along with Policy Controller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryInstalled")]
+        public virtual System.Nullable<bool> TemplateLibraryInstalled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State for PolicyControllerState.</summary>
+    public class ConfigManagementPolicyControllerState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The state about the policy controller installation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
+        public virtual ConfigManagementGatekeeperDeploymentState DeploymentState { get; set; }
+
+        /// <summary>The version of Gatekeeper Policy Controller deployed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ConfigManagementPolicyControllerVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The build version of Gatekeeper Policy Controller is using.</summary>
+    public class ConfigManagementPolicyControllerVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The gatekeeper image tag that is composed of ACM version, git tag, build number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An ACM created error representing a problem syncing configurations</summary>
+    public class ConfigManagementSyncError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An ACM defined error code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A description of the error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>A list of config(s) associated with the error, if any</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorResources")]
+        public virtual System.Collections.Generic.IList<ConfigManagementErrorResource> ErrorResources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State indicating an ACM's progress syncing configurations to a cluster</summary>
+    public class ConfigManagementSyncState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sync status code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>
+        /// A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although
+        /// it is unlikely for that many errors to simultaneously exist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ConfigManagementSyncError> Errors { get; set; }
+
+        /// <summary>Token indicating the state of the importer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importToken")]
+        public virtual string ImportToken { get; set; }
+
+        /// <summary>
+        /// Timestamp of when ACM last successfully synced the repo The time format is specified in
+        /// https://golang.org/pkg/time/#Time.String This field is being deprecated. Use last_sync_time instead.
+        /// (b/154053616)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
+        public virtual string LastSync { get; set; }
+
+        /// <summary>Timestamp type of when ACM last successfully synced the repo</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
+        public virtual object LastSyncTime { get; set; }
+
+        /// <summary>Token indicating the state of the repo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
+
+        /// <summary>Token indicating the state of the syncer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncToken")]
+        public virtual string SyncToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1337,6 +2357,106 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Feature represents the settings and status of any Hub Feature.</summary>
+    public class Feature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. When the Feature resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. When the Feature resource was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>GCP labels for this Feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Membership-specific configuration for this Feature. If this Feature does not support any
+        /// per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration
+        /// is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a
+        /// valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's
+        /// project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipSpecs")]
+        public virtual System.Collections.Generic.IDictionary<string, MembershipFeatureSpec> MembershipSpecs { get; set; }
+
+        /// <summary>
+        /// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this
+        /// field may be unused. The keys indicate which Membership the state is for, in the form:
+        /// projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m}
+        /// is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipStates")]
+        public virtual System.Collections.Generic.IDictionary<string, MembershipFeatureState> MembershipStates { get; set; }
+
+        /// <summary>
+        /// Output only. The full, unique name of this Feature resource in the format
+        /// `projects/*/locations/global/features/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the Feature resource itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
+        public virtual FeatureResourceState ResourceState { get; set; }
+
+        /// <summary>
+        /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this
+        /// field may be unused.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual CommonFeatureSpec Spec { get; set; }
+
+        /// <summary>Output only. The Hub-wide Feature state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual CommonFeatureState State { get; set; }
+
+        /// <summary>Output only. When the Feature resource was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the
+    /// "running state" of the Feature in the Hub and across Memberships.
+    /// </summary>
+    public class FeatureResourceState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current state of the Feature resource in the Hub API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the
+    /// environ-level, or per-membershop, depending on the context.
+    /// </summary>
+    public class FeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The high-level, machine-readable status of this Feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A human-readable description of the current status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The time this status and any related Feature-specific details were updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1361,6 +2481,24 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `GkeHub.ListFeatures` method.</summary>
+    public class ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the `ListFeatures` method. The value of an empty string
+        /// means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of matching Features</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<Feature> Resources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1423,6 +2561,67 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
+    public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Config Management-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
+        public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MembershipFeatureState contains Feature status information for a single Membership.</summary>
+    public class MembershipFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Config Management-specific state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
+        public virtual ConfigManagementMembershipState Configmanagement { get; set; }
+
+        /// <summary>Metering-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metering")]
+        public virtual MeteringMembershipState Metering { get; set; }
+
+        /// <summary>The high-level state of this Feature for a single membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual FeatureState State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metering per-Membership Feature State.</summary>
+    public class MeteringMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time stamp of the most recent measurement of the number of vCPUs in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastMeasurementTime")]
+        public virtual object LastMeasurementTime { get; set; }
+
+        /// <summary>
+        /// The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preciseLastMeasuredClusterVcpuCapacity")]
+        public virtual System.Nullable<float> PreciseLastMeasuredClusterVcpuCapacity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>FeatureSpec contains the input for the MultiClusterIngress feature.</summary>
+    public class MultiClusterIngressFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example:
+        /// `projects/foo-proj/locations/global/memberships/bar`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configMembership")]
+        public virtual string ConfigMembership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

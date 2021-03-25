@@ -2120,6 +2120,13 @@ namespace Google.Apis.Reseller.v1.Data
         public class TransferInfoData
         {
             /// <summary>
+            /// Sku id of the current resold subscription. This is populated only when customer has subscription with
+            /// legacy sku and the subscription resource is populated with recommeded sku for transfer in.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("currentLegacySkuId")]
+            public virtual string CurrentLegacySkuId { get; set; }
+
+            /// <summary>
             /// When inserting a subscription, this is the minimum number of seats listed in the transfer order for this
             /// product. For example, if the customer has 20 users, the reseller cannot place a transfer order of 15
             /// seats. The minimum is 20 seats.

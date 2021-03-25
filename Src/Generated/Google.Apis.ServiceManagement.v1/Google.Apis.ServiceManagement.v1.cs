@@ -1382,70 +1382,6 @@ namespace Google.Apis.ServiceManagement.v1
         }
 
         /// <summary>
-        /// Enables a service for a project, so it can be used for the project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information. Operation
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="serviceName">
-        /// Required. Name of the service to enable. Specifying an unknown service name will cause the request to fail.
-        /// </param>
-        public virtual EnableRequest Enable(Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest body, string serviceName)
-        {
-            return new EnableRequest(service, body, serviceName);
-        }
-
-        /// <summary>
-        /// Enables a service for a project, so it can be used for the project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information. Operation
-        /// </summary>
-        public class EnableRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
-        {
-            /// <summary>Constructs a new Enable request.</summary>
-            public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest body, string serviceName) : base(service)
-            {
-                ServiceName = serviceName;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. Name of the service to enable. Specifying an unknown service name will cause the request to
-            /// fail.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string ServiceName { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceManagement.v1.Data.EnableServiceRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "enable";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/services/{serviceName}:enable";
-
-            /// <summary>Initializes Enable parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("serviceName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "serviceName",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
         /// Generates and returns a report (errors, warnings and changes from existing configurations) associated with
         /// GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified,
         /// GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between
@@ -2811,21 +2747,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for EnableService method.</summary>
-    public class EnableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The identity of consumer resource which service enablement will be applied to. The Google Service
-        /// Management implementation accepts the following forms: - "project:" Note: this is made compatible with
-        /// google.api.servicecontrol.v1.Operation.consumer_id.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consumerId")]
-        public virtual string ConsumerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

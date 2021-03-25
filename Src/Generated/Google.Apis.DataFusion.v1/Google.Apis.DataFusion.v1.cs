@@ -1701,6 +1701,10 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Option to enable granular role-based access control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRbac")]
+        public virtual System.Nullable<bool> EnableRbac { get; set; }
+
         /// <summary>Option to enable Stackdriver Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
