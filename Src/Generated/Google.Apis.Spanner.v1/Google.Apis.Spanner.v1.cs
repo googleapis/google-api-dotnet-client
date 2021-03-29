@@ -4720,6 +4720,14 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual TransactionOptions Options { get; set; }
 
+        /// <summary>
+        /// Common options for this request. Priority is ignored for this request. Setting the priority in this
+        /// request_options struct will not do anything. To set the priority for a transaction, set it on the reads and
+        /// writes that are part of this transaction instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4809,6 +4817,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
         public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
+
+        /// <summary>Common options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// If `true`, then statistics related to the transaction will be included in the CommitResponse. Default value
@@ -5137,6 +5149,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for ExecuteBatchDml.</summary>
     public class ExecuteBatchDmlRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Common options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>
         /// Required. A per-transaction sequence number used to identify this request. This field makes each request
         /// idempotent such that if the request is received multiple times, at most one will succeed. The sequence
@@ -5243,6 +5259,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Query optimizer configuration to use for the given query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryOptions")]
         public virtual QueryOptions QueryOptions { get; set; }
+
+        /// <summary>Common options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
 
         /// <summary>
         /// If this request is resuming a previously interrupted SQL statement execution, `resume_token` should be
@@ -6176,14 +6196,15 @@ namespace Google.Apis.Spanner.v1.Data
     public class QueryOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Query optimizer statistics package to use. This parameter allows individual queries to use a different query
-        /// optimizer statistics. Specifying `latest` as a value instructs Cloud Spanner to use the latest generated
-        /// statistics package. If not specified, Cloud Spanner uses statistics package set at the database level
-        /// options, or latest if the database option is not set. The statistics package requested by the query has to
-        /// be exempt from garbage collection. This can be achieved with the following DDL statement: ``` ALTER
-        /// STATISTICS SET OPTIONS (allow_gc=false) ``` The list of available statistics packages can be queried from
-        /// `SPANNER_SYS.OPTIMIZER_STATISTICS_PACKAGES`. Executing a SQL statement with an invalid optimizer statistics
-        /// package or with statistics package that allows garbage collection fails with an `INVALID_ARGUMENT` error.
+        /// An option to control the selection of optimizer statistics package. This parameter allows individual queries
+        /// to use a different query optimizer statistics package. Specifying `latest` as a value instructs Cloud
+        /// Spanner to use the latest generated statistics package. If not specified, Cloud Spanner uses the statistics
+        /// package set at the database level options, or the latest package if the database option is not set. The
+        /// statistics package requested by the query has to be exempt from garbage collection. This can be achieved
+        /// with the following DDL statement: ``` ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of
+        /// available statistics packages can be queried from `INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL
+        /// statement with an invalid optimizer statistics package or with a statistics package that allows garbage
+        /// collection fails with an `INVALID_ARGUMENT` error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimizerStatisticsPackage")]
         public virtual string OptimizerStatisticsPackage { get; set; }
@@ -6320,6 +6341,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
         public virtual string PartitionToken { get; set; }
 
+        /// <summary>Common options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
         /// <summary>
         /// If this request is resuming a previously interrupted read, `resume_token` should be copied from the last
         /// PartialResultSet yielded before the interruption. Doing this enables the new read to resume where the last
@@ -6369,6 +6394,17 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The type of replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common request options for various APIs.</summary>
+    public class RequestOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Priority for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6460,7 +6496,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// Optional. An encryption configuration describing the encryption type and key resources in Cloud KMS used to
         /// encrypt/decrypt the database to restore to. If this field is not specified, the restored database will use
         /// the same encryption configuration as the backup by default, namely encryption_type =
-        /// `USE_CONFIG_DEFAULT_OR_DATABASE_ENCRYPTION`.
+        /// `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual RestoreDatabaseEncryptionConfig EncryptionConfig { get; set; }

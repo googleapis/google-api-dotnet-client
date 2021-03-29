@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Bigquery.v2 Client Library</Title>
-    <Version>1.51.0.2253</Version>
+    <Version>1.51.0.2263</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2021 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

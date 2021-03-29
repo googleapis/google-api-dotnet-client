@@ -68,7 +68,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>View and manage your applications deployed on Google App Engine</summary>
             public static string AppengineAdmin = "https://www.googleapis.com/auth/appengine.admin";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -81,7 +81,7 @@ namespace Google.Apis.Appengine.v1beta
             /// <summary>View and manage your applications deployed on Google App Engine</summary>
             public const string AppengineAdmin = "https://www.googleapis.com/auth/appengine.admin";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>

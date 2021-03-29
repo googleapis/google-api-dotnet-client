@@ -71,7 +71,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>View your data in Google BigQuery</summary>
             public static string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -87,7 +87,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>View your data in Google BigQuery</summary>
             public const string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>

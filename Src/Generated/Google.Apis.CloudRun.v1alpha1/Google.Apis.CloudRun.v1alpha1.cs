@@ -6033,7 +6033,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
 
         /// <summary>
         /// Kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }

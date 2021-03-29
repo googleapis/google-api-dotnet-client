@@ -832,7 +832,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Evaluate an Annotation store against a ground truth Annotation store. When the operation
                     /// finishes successfully, a detailed response is returned of type EvaluateAnnotationStoreResponse,
                     /// contained in the response. The metadata field type is OperationMetadata. Errors are logged to
-                    /// Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+                    /// Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -848,7 +849,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Evaluate an Annotation store against a ground truth Annotation store. When the operation
                     /// finishes successfully, a detailed response is returned of type EvaluateAnnotationStoreResponse,
                     /// contained in the response. The metadata field type is OperationMetadata. Errors are logged to
-                    /// Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+                    /// Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     public class EvaluateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -901,7 +903,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Export Annotations from the Annotation store. If the request is successful, a detailed response
                     /// is returned of type ExportAnnotationsResponse, contained in the response field when the
                     /// operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud
-                    /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+                    /// Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -917,7 +920,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Export Annotations from the Annotation store. If the request is successful, a detailed response
                     /// is returned of type ExportAnnotationsResponse, contained in the response field when the
                     /// operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud
-                    /// Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)).
+                    /// Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -1095,8 +1099,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Import Annotations to the Annotation store by loading data from the specified sources. If the
                     /// request is successful, a detailed response is returned as of type ImportAnnotationsResponse,
                     /// contained in the response field when the operation finishes. The metadata field type is
-                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)).
+                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -1112,8 +1116,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Import Annotations to the Annotation store by loading data from the specified sources. If the
                     /// request is successful, a detailed response is returned as of type ImportAnnotationsResponse,
                     /// contained in the response field when the operation finishes. The metadata field type is
-                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)).
+                    /// OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
                     /// </summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -3920,9 +3924,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Queries all data_ids that are consented for a specified use in the given consent store and
                     /// writes them to a specified destination. The returned Operation includes a progress counter for
                     /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
-                    /// logs] (cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following sample log
-                    /// entry shows a `failed to evaluate consent policy` error that occurred during a
-                    /// QueryAccessibleData call to consent store
+                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For
+                    /// example, the following sample log entry shows a `failed to evaluate consent policy` error that
+                    /// occurred during a QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -3949,9 +3953,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Queries all data_ids that are consented for a specified use in the given consent store and
                     /// writes them to a specified destination. The returned Operation includes a progress counter for
                     /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
-                    /// logs] (cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following sample log
-                    /// entry shows a `failed to evaluate consent policy` error that occurred during a
-                    /// QueryAccessibleData call to consent store
+                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For
+                    /// example, the following sample log entry shows a `failed to evaluate consent policy` error that
+                    /// occurred during a QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -5720,7 +5724,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// DeidentifyDicomStoreSummary. The LRO result may still be successful if de-identification fails
                     /// for some DICOM instances. The output DICOM store will not contain these failed resources. The
                     /// number of resources processed are tracked in Operation.metadata. Error details are logged to
-                    /// Cloud Logging. For more information, see [Viewing logs](/healthcare/docs/how-tos/logging).
+                    /// Cloud Logging. For more information, see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="sourceStore">
@@ -5738,7 +5743,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// DeidentifyDicomStoreSummary. The LRO result may still be successful if de-identification fails
                     /// for some DICOM instances. The output DICOM store will not contain these failed resources. The
                     /// number of resources processed are tracked in Operation.metadata. Error details are logged to
-                    /// Cloud Logging. For more information, see [Viewing logs](/healthcare/docs/how-tos/logging).
+                    /// Cloud Logging. For more information, see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                     /// </summary>
                     public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -5838,8 +5844,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Exports data to the specified destination by copying it from the DICOM store. Errors are also
-                    /// logged to Cloud Logging. For more information, see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging). The metadata field type is OperationMetadata.
+                    /// logged to Cloud Logging. For more information, see [Viewing errors in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is
+                    /// OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -5853,8 +5860,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Exports data to the specified destination by copying it from the DICOM store. Errors are also
-                    /// logged to Cloud Logging. For more information, see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging). The metadata field type is OperationMetadata.
+                    /// logged to Cloud Logging. For more information, see [Viewing errors in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is
+                    /// OperationMetadata.
                     /// </summary>
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -6026,8 +6034,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Imports data into the DICOM store by copying it from the specified source. Errors are logged to
-                    /// Cloud Logging. For more information, see [Viewing logs](/healthcare/docs/how-tos/logging). The
-                    /// metadata field type is OperationMetadata.
+                    /// Cloud Logging. For more information, see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is
+                    /// OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -6041,8 +6050,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>
                     /// Imports data into the DICOM store by copying it from the specified source. Errors are logged to
-                    /// Cloud Logging. For more information, see [Viewing logs](/healthcare/docs/how-tos/logging). The
-                    /// metadata field type is OperationMetadata.
+                    /// Cloud Logging. For more information, see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is
+                    /// OperationMetadata.
                     /// </summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -7807,11 +7817,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// an `id`, and the FHIR store has enable_update_create set, creates the resource with the
                         /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
                         /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
-                        /// resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications. Those IDs can
-                        /// also be contained in reference fields within other resources. If the search criteria
-                        /// identify zero matches, and the supplied resource body does not contain an `id`, the resource
-                        /// is created with a server-assigned ID as per the create method. The request body must contain
-                        /// a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. If the search criteria identify zero
+                        /// matches, and the supplied resource body does not contain an `id`, the resource is created
+                        /// with a server-assigned ID as per the create method. The request body must contain a
+                        /// JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. On success, the response body contains a JSON-encoded representation
                         /// of the updated resource, including the server-assigned version ID. Errors generated by the
                         /// FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the
@@ -7850,11 +7860,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// an `id`, and the FHIR store has enable_update_create set, creates the resource with the
                         /// client-specified ID. It is strongly advised not to include or encode any sensitive data such
                         /// as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR
-                        /// resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications. Those IDs can
-                        /// also be contained in reference fields within other resources. If the search criteria
-                        /// identify zero matches, and the supplied resource body does not contain an `id`, the resource
-                        /// is created with a server-assigned ID as per the create method. The request body must contain
-                        /// a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
+                        /// resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be
+                        /// contained in reference fields within other resources. If the search criteria identify zero
+                        /// matches, and the supplied resource body does not contain an `id`, the resource is created
+                        /// with a server-assigned ID as per the create method. The request body must contain a
+                        /// JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
                         /// application/fhir+json`. On success, the response body contains a JSON-encoded representation
                         /// of the updated resource, including the server-assigned version ID. Errors generated by the
                         /// FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the
@@ -8819,16 +8829,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource does not exist and the FHIR store has enable_update_create set, creates the
                         /// resource with the client-specified ID. It is strongly advised not to include or encode any
                         /// sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are
-                        /// part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
-                        /// Those IDs can also be contained in reference fields within other resources. The request body
-                        /// must contain a JSON-encoded FHIR resource, and the request headers must contain
-                        /// `Content-Type: application/fhir+json`. The resource must contain an `id` element having an
-                        /// identical value to the ID in the REST path of the request. On success, the response body
-                        /// contains a JSON-encoded representation of the updated resource, including the
-                        /// server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded
-                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
-                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
-                        /// For samples that show how to call `update`, see [Updating a FHIR
+                        /// part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those
+                        /// IDs can also be contained in reference fields within other resources. The request body must
+                        /// contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
+                        /// application/fhir+json`. The resource must contain an `id` element having an identical value
+                        /// to the ID in the REST path of the request. On success, the response body contains a
+                        /// JSON-encoded representation of the updated resource, including the server-assigned version
+                        /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+                        /// describing the reason for the error. If the request cannot be mapped to a valid API method
+                        /// on a FHIR store, a generic GCP error might be returned instead. For samples that show how to
+                        /// call `update`, see [Updating a FHIR
                         /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
@@ -8846,16 +8856,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// resource does not exist and the FHIR store has enable_update_create set, creates the
                         /// resource with the client-specified ID. It is strongly advised not to include or encode any
                         /// sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are
-                        /// part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub notifications.
-                        /// Those IDs can also be contained in reference fields within other resources. The request body
-                        /// must contain a JSON-encoded FHIR resource, and the request headers must contain
-                        /// `Content-Type: application/fhir+json`. The resource must contain an `id` element having an
-                        /// identical value to the ID in the REST path of the request. On success, the response body
-                        /// contains a JSON-encoded representation of the updated resource, including the
-                        /// server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded
-                        /// `OperationOutcome` resource describing the reason for the error. If the request cannot be
-                        /// mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead.
-                        /// For samples that show how to call `update`, see [Updating a FHIR
+                        /// part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those
+                        /// IDs can also be contained in reference fields within other resources. The request body must
+                        /// contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type:
+                        /// application/fhir+json`. The resource must contain an `id` element having an identical value
+                        /// to the ID in the REST path of the request. On success, the response body contains a
+                        /// JSON-encoded representation of the updated resource, including the server-assigned version
+                        /// ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource
+                        /// describing the reason for the error. If the request cannot be mapped to a valid API method
+                        /// on a FHIR store, a generic GCP error might be returned instead. For samples that show how to
+                        /// call `update`, see [Updating a FHIR
                         /// resource](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         public class UpdateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.HttpBody>
@@ -9044,8 +9054,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// De-identifies data from the source store and writes it to the destination store. The metadata
                     /// field type is OperationMetadata. If the request is successful, the response field type is
                     /// DeidentifyFhirStoreSummary. The number of resources processed are tracked in Operation.metadata.
-                    /// Error details are logged to Cloud Logging. For more information, see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging).
+                    /// Error details are logged to Cloud Logging. For more information, see [Viewing error logs in
+                    /// Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="sourceStore">
@@ -9061,8 +9071,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// De-identifies data from the source store and writes it to the destination store. The metadata
                     /// field type is OperationMetadata. If the request is successful, the response field type is
                     /// DeidentifyFhirStoreSummary. The number of resources processed are tracked in Operation.metadata.
-                    /// Error details are logged to Cloud Logging. For more information, see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging).
+                    /// Error details are logged to Cloud Logging. For more information, see [Viewing error logs in
+                    /// Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                     /// </summary>
                     public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -9160,9 +9170,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Export resources from the FHIR store to the specified destination. This method returns an
                     /// Operation that can be used to track the status of the export by calling GetOperation. Immediate
                     /// fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
-                    /// finishes, a detailed response of type ExportResourcesResponse is returned in the response field.
-                    /// The metadata field type for this operation is OperationMetadata.
+                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+                    /// Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -9178,9 +9188,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// Export resources from the FHIR store to the specified destination. This method returns an
                     /// Operation that can be used to track the status of the export by calling GetOperation. Immediate
                     /// fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](/healthcare/docs/how-tos/logging)). Otherwise, when the operation
-                    /// finishes, a detailed response of type ExportResourcesResponse is returned in the response field.
-                    /// The metadata field type for this operation is OperationMetadata.
+                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+                    /// Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     public class ExportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -9359,7 +9369,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// input must contain a client-supplied ID. Each resource is stored using the supplied ID
                     /// regardless of the enable_update_create setting on the FHIR store. It is strongly advised not to
                     /// include or encode any sensitive data such as patient identifiers in client-specified resource
-                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Cloud Pub/Sub
                     /// notifications. Those IDs can also be contained in reference fields within other resources. The
                     /// import process does not enforce referential integrity, regardless of the
                     /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
@@ -9390,10 +9400,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// `Bundle.entry.request`. As an example, this allows the import of `searchset` bundles produced by
                     /// a FHIR search or Patient-everything operation. This method returns an Operation that can be used
                     /// to track the status of the import by calling GetOperation. Immediate fatal errors appear in the
-                    /// error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed
-                    /// response of type ImportResourcesResponse is returned in the response field. The metadata field
-                    /// type for this operation is OperationMetadata.
+                    /// error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -9414,7 +9424,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// input must contain a client-supplied ID. Each resource is stored using the supplied ID
                     /// regardless of the enable_update_create setting on the FHIR store. It is strongly advised not to
                     /// include or encode any sensitive data such as patient identifiers in client-specified resource
-                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
+                    /// IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Cloud Pub/Sub
                     /// notifications. Those IDs can also be contained in reference fields within other resources. The
                     /// import process does not enforce referential integrity, regardless of the
                     /// disable_referential_integrity setting on the FHIR store. This allows the import of resources
@@ -9445,10 +9455,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// `Bundle.entry.request`. As an example, this allows the import of `searchset` bundles produced by
                     /// a FHIR search or Patient-everything operation. This method returns an Operation that can be used
                     /// to track the status of the import by calling GetOperation. Immediate fatal errors appear in the
-                    /// error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed
-                    /// response of type ImportResourcesResponse is returned in the response field. The metadata field
-                    /// type for this operation is OperationMetadata.
+                    /// error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -9974,10 +9984,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any
-                        /// Cloud Pub/Sub topic configured in
-                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
-                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
-                        /// adapter transmits the message when a notification is received.
+                        /// Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the
+                        /// message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter
+                        /// transmits the message when a notification is received.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the dataset this message belongs to.</param>
@@ -9988,10 +9997,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any
-                        /// Cloud Pub/Sub topic configured in
-                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
-                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
-                        /// adapter transmits the message when a notification is received.
+                        /// Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the
+                        /// message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter
+                        /// transmits the message when a notification is received.
                         /// </summary>
                         public class CreateRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Message>
                         {
@@ -10186,13 +10194,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any
-                        /// Cloud Pub/Sub topic configured in
-                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
-                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
-                        /// adapter transmits the message when a notification is received. This method also generates a
-                        /// response containing an HL7v2 acknowledgement (`ACK`) message when successful or a negative
-                        /// acknowledgement (`NACK`) message in case of error, suitable for replying to HL7v2 interface
-                        /// systems that expect these acknowledgements.
+                        /// Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the
+                        /// message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter
+                        /// transmits the message when a notification is received. If the method is successful, it
+                        /// generates a response containing an HL7v2 acknowledgment (`ACK`) message. If the method
+                        /// encounters an error, it returns a negative acknowledgment (`NACK`) message. This behavior is
+                        /// suitable for replying to HL7v2 interface systems that expect these acknowledgments.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
@@ -10203,13 +10210,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any
-                        /// Cloud Pub/Sub topic configured in
-                        /// projects.locations.datasets.hl7V2Stores.Hl7V2NotificationConfig, if the filtering matches
-                        /// the message. If an MLLP adapter is configured to listen to a Cloud Pub/Sub topic, the
-                        /// adapter transmits the message when a notification is received. This method also generates a
-                        /// response containing an HL7v2 acknowledgement (`ACK`) message when successful or a negative
-                        /// acknowledgement (`NACK`) message in case of error, suitable for replying to HL7v2 interface
-                        /// systems that expect these acknowledgements.
+                        /// Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the
+                        /// message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter
+                        /// transmits the message when a notification is received. If the method is successful, it
+                        /// generates a response containing an HL7v2 acknowledgment (`ACK`) message. If the method
+                        /// encounters an error, it returns a negative acknowledgment (`NACK`) message. This behavior is
+                        /// suitable for replying to HL7v2 interface systems that expect these acknowledgments.
                         /// </summary>
                         public class IngestRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.IngestMessageResponse>
                         {
@@ -10871,10 +10877,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// in the HL7v2 store. If some messages fail to import, for example due to parsing errors,
                     /// successfully imported messages are not rolled back. This method returns an Operation that can be
                     /// used to track the status of the import by calling GetOperation. Immediate fatal errors appear in
-                    /// the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a response of
-                    /// type ImportMessagesResponse is returned in the response field. The metadata field type for this
-                    /// operation is OperationMetadata.
+                    /// the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a response of type ImportMessagesResponse is returned in the response field.
+                    /// The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -10902,10 +10908,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// in the HL7v2 store. If some messages fail to import, for example due to parsing errors,
                     /// successfully imported messages are not rolled back. This method returns an Operation that can be
                     /// used to track the status of the import by calling GetOperation. Immediate fatal errors appear in
-                    /// the error field, errors are also logged to Cloud Logging (see [Viewing
-                    /// logs](/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a response of
-                    /// type ImportMessagesResponse is returned in the response field. The metadata field type for this
-                    /// operation is OperationMetadata.
+                    /// the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a response of type ImportMessagesResponse is returned in the response field.
+                    /// The metadata field type for this operation is OperationMetadata.
                     /// </summary>
                     public class ImportRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -11593,7 +11599,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// The LRO result may still be successful if de-identification fails for some resources. The new
                 /// de-identified dataset will not contain these failed resources. The number of resources processed are
                 /// tracked in Operation.metadata. Error details are logged to Cloud Logging. For more information, see
-                /// [Viewing logs](/healthcare/docs/how-tos/logging).
+                /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="sourceDataset">
@@ -11611,7 +11617,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// The LRO result may still be successful if de-identification fails for some resources. The new
                 /// de-identified dataset will not contain these failed resources. The number of resources processed are
                 /// tracked in Operation.metadata. Error details are logged to Cloud Logging. For more information, see
-                /// [Viewing logs](/healthcare/docs/how-tos/logging).
+                /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
                 /// </summary>
                 public class DeidentifyRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                 {
@@ -12299,15 +12305,23 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -13782,7 +13796,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent
         /// resource return errors. It is strongly advised not to include or encode any sensitive data such as patient
         /// identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud
-        /// audit logs and Cloud Pub/Sub notifications. Those IDs can also be contained in reference fields within other
+        /// audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other
         /// resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
@@ -13806,9 +13820,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Cloud Pub/Sub
-        /// message attributes contain a map with a string describing the action that has triggered the notification.
-        /// For example, "action":"CreateResource".
+        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message
+        /// attributes contain a map with a string describing the action that has triggered the notification. For
+        /// example, "action":"CreateResource".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
@@ -14180,11 +14194,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the following format:
         /// `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple
-        /// files. Supported wildcards: '*' to match 0 or more non-separator characters '**' to match 0 or more
+        /// files. Supported wildcards: * '*' to match 0 or more non-separator characters * '**' to match 0 or more
         /// characters (including separators). Must be used at the end of a path and with no other wildcards in the
         /// path. Can also be used with a file extension (such as .dcm), which imports all files with the extension in
         /// the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.dcm` imports
-        /// all files with .dcm extensions in `my-directory/` and its sub-directories. '?' to match 1 character All
+        /// all files with .dcm extensions in `my-directory/` and its sub-directories. * '?' to match 1 character. All
         /// other URI formats are invalid. Files matching the wildcard are expected to contain content only, no
         /// metadata.
         /// </summary>
@@ -14212,7 +14226,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// server recreate one, though the newly created table only contains data after the table recreation. BigQuery
         /// imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of
         /// BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to
-        /// Cloud Logging (see [Viewing logs](/healthcare/docs/how- [Viewing logs](/healthcare/docs/how-tos/logging)).
+        /// Cloud Logging (see [Viewing error logs in Cloud
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1DicomBigQueryDestination BigqueryDestination { get; set; }
@@ -14399,16 +14414,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published
-        /// on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
+        /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on.
+        /// Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
         /// `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification.
         /// It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message
         /// was published. Note that notifications are only sent if the topic is non-empty. [Topic
         /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare
         /// API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate
-        /// permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud
+        /// permissions causes the calls that send notifications to fail. If a notification can't be published to
         /// Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud
-        /// Logging](/healthcare/docs/how-tos/logging).
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
@@ -15131,17 +15146,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class NotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published
-        /// on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID
-        /// of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at
-        /// which the message was published. Notifications are only sent if the topic is non-empty. [Topic
+        /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on.
+        /// Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of
+        /// this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which
+        /// the message was published. Notifications are only sent if the topic is non-empty. [Topic
         /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare
-        /// API service account must have publisher permissions on the given Cloud Pub/Sub topic. Not having adequate
-        /// permissions causes the calls that send notifications to fail. If a notification can't be published to Cloud
-        /// Pub/Sub, errors are logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-tos/logging)). If the
-        /// number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger
-        /// notifications, see [Configuring Pub/Sub
-        /// notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
+        /// API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate
+        /// permissions causes the calls that send notifications to fail. If a notification can't be published to
+        /// Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a
+        /// certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring
+        /// Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
@@ -15220,7 +15235,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// A link to audit and error logs in the log viewer. Error logs are generated only by some operations, listed
-        /// at [Viewing logs](/healthcare/docs/how-tos/logging).
+        /// at [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logsUrl")]
         public virtual string LogsUrl { get; set; }
@@ -15369,8 +15384,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>
     /// Queries all data_ids that are consented for a given use in the given consent store and writes them to a
     /// specified destination. The returned Operation includes a progress counter for the number of User data mappings
-    /// processed. Errors are logged to Cloud Logging (see [Viewing logs] (/healthcare/docs/how-tos/logging) and
-    /// [QueryAccessibleData] for a sample log entry).
+    /// processed. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging]
+    /// (https://cloud.google.com/healthcare/docs/how-tos/logging) and [QueryAccessibleData] for a sample log entry).
     /// </summary>
     public class QueryAccessibleDataRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15776,7 +15791,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an
         /// id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out
         /// duplicates. If a resource mutation cannot be streamed to BigQuery, errors will be logged to Cloud Logging
-        /// (see [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
+        /// (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1FhirBigQueryDestination BigqueryDestination { get; set; }

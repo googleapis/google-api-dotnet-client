@@ -5416,7 +5416,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Kind of the referent. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -6013,7 +6013,15 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Metadata associated with this Service, including name, namespace, labels, and annotations.
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully
+        /// managed) uses the following annotation keys to configure features on a Service: *
+        /// `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings
+        /// documentation](/run/docs/securing/ingress) for details on configuring ingress settings. *
+        /// `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for
+        /// the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the
+        /// system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to
+        /// `run.googleapis.com/ingress`. When the system has processed all changes successfully
+        /// `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }
@@ -6150,7 +6158,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Standard list metadata. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ListMeta Metadata { get; set; }
@@ -6165,7 +6173,8 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Status of the operation. One of: "Success" or "Failure". More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+        /// +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string StatusValue { get; set; }
@@ -6229,7 +6238,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// The kind attribute of the resource associated with the status StatusReason. On some operations may differ
         /// from the requested resource Kind. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds +optional
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
