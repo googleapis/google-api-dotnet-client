@@ -4181,7 +4181,11 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eduData")]
         public virtual GoogleCloudChannelV1EduData EduData { get; set; }
 
-        /// <summary>Whether the domain is verified.</summary>
+        /// <summary>
+        /// Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info
+        /// resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the
+        /// PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDomainVerified")]
         public virtual System.Nullable<bool> IsDomainVerified { get; set; }
 
@@ -5478,6 +5482,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Data type and value of a parameter.</summary>
     public class GoogleCloudChannelV1Value : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
         /// <summary>Represents a double value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; }
@@ -5823,6 +5831,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Data type and value of a parameter.</summary>
     public class GoogleCloudChannelV1alpha1Value : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Represents a boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
         /// <summary>Represents a double value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; }

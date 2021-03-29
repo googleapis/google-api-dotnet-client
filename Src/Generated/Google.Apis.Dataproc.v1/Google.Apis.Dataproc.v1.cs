@@ -5821,6 +5821,14 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual GceClusterConfig GceClusterConfig { get; set; }
 
         /// <summary>
+        /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is
+        /// considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config,
+        /// worker_config, secondary_worker_config, and autoscaling_config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterConfig")]
+        public virtual GkeClusterConfig GkeClusterConfig { get; set; }
+
+        /// <summary>
         /// Optional. Commands to execute on each node after config is completed. By default, executables are run on
         /// master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker
         /// node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google
@@ -6290,6 +6298,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The GKE config for this cluster.</summary>
+    public class GkeClusterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A target for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespacedGkeDeploymentTarget")]
+        public virtual NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Dataproc job for running Apache Hadoop MapReduce
     /// (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
@@ -6392,6 +6411,19 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> ScriptVariables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Identity related configuration, including service account based secure multi-tenancy user mappings.
+    /// </summary>
+    public class IdentityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Map of user to service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userServiceAccountMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserServiceAccountMapping { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7106,6 +7138,24 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A full, namespace-isolated deployment target for an existing GKE cluster.</summary>
+    public class NamespacedGkeDeploymentTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A namespace within the GKE cluster to deploy into.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterNamespace")]
+        public virtual string ClusterNamespace { get; set; }
+
+        /// <summary>
+        /// Optional. The target GKE cluster to deploy to. Format:
+        /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetGkeCluster")]
+        public virtual string TargetGkeCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node Group Affinity for clusters using sole-tenant node groups.</summary>
     public class NodeGroupAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7536,6 +7586,13 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Security related configuration, including encryption, Kerberos, etc.</summary>
     public class SecurityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Identity related configuration, including service account based secure multi-tenancy user
+        /// mappings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityConfig")]
+        public virtual IdentityConfig IdentityConfig { get; set; }
+
         /// <summary>Optional. Kerberos related configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kerberosConfig")]
         public virtual KerberosConfig KerberosConfig { get; set; }

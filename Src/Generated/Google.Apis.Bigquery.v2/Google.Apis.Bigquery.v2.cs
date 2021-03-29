@@ -81,7 +81,7 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>View your data in Google BigQuery</summary>
             public static string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -109,7 +109,7 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>View your data in Google BigQuery</summary>
             public const string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -6231,6 +6231,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scriptStatistics")]
         public virtual ScriptStatistics ScriptStatistics { get; set; }
 
+        /// <summary>[Output-only] [Preview] Information of the session if this job is part of one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfoTemplate")]
+        public virtual SessionInfo SessionInfoTemplate { get; set; }
+
         /// <summary>
         /// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the
         /// job transitions from the PENDING state to either RUNNING or DONE.
@@ -7205,6 +7209,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
 
+        /// <summary>[Output-only] [Preview] Information of the session if this job is part of one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfoTemplate")]
+        public virtual SessionInfo SessionInfoTemplate { get; set; }
+
         /// <summary>
         /// The total number of bytes processed for this query. If this query was a dry run, this is the number of bytes
         /// that would be processed if the query were run.
@@ -7578,6 +7586,16 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackFrames")]
         public virtual System.Collections.Generic.IList<ScriptStackFrame> StackFrames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SessionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] // [Preview] Id of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8019,6 +8037,15 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
 
         /// <summary>
+        /// [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no
+        /// maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the
+        /// maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum
+        /// number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
+        public virtual System.Nullable<long> MaxLength { get; set; }
+
+        /// <summary>
         /// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is
         /// NULLABLE.
         /// </summary>
@@ -8034,6 +8061,26 @@ namespace Google.Apis.Bigquery.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("policyTags")]
         public virtual PolicyTagsData PolicyTags { get; set; }
+
+        /// <summary>
+        /// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the
+        /// fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to
+        /// set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no
+        /// value range constraint is imposed on this field insofar as values are permitted by the type. Values of this
+        /// NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S
+        /// + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal
+        /// to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type =
+        /// "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤
+        /// 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and
+        /// thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type =
+        /// "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<long> Precision { get; set; }
+
+        /// <summary>[Optional] See documentation for precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<long> Scale { get; set; }
 
         /// <summary>
         /// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),

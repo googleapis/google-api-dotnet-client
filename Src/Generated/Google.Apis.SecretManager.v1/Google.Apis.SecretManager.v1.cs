@@ -65,14 +65,14 @@ namespace Google.Apis.SecretManager.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Secret Manager API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Secret Manager API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1927,6 +1927,31 @@ namespace Google.Apis.SecretManager.v1.Data
     }
 
     /// <summary>
+    /// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub
+    /// notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
+    /// </summary>
+    public class Rotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. next_rotation_time MUST be set if
+        /// rotation_period is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
+        public virtual object NextRotationTime { get; set; }
+
+        /// <summary>
+        /// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at
+        /// most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time
+        /// will be advanced by this period when the service automatically sends rotation notifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
+        public virtual object RotationPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A Secret is a logical secret whose value and versions can be accessed. A Secret is made up of zero or more
     /// SecretVersions that represent the secret data.
     /// </summary>
@@ -1963,6 +1988,12 @@ namespace Google.Apis.SecretManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
         public virtual Replication Replication { get; set; }
+
+        /// <summary>
+        /// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotation")]
+        public virtual Rotation Rotation { get; set; }
 
         /// <summary>
         /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations

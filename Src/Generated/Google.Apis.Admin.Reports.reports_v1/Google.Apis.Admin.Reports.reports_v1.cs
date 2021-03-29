@@ -344,10 +344,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Application name for which the events are to be retrieved.</summary>
             public enum ApplicationNameEnum
             {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("application_name_undefined")]
-                ApplicationNameUndefined = 0,
-
                 /// <summary>
                 /// The Google Workspace Access Transparency activity reports return information about different types
                 /// of Access Transparency activity events.
@@ -750,10 +746,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Application name for which the events are to be retrieved.</summary>
             public enum ApplicationNameEnum
             {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("application_name_unspecified")]
-                ApplicationNameUnspecified = 0,
-
                 /// <summary>
                 /// The Google Workspace Access Transparency activity reports return information about different types
                 /// of Access Transparency activity events.
@@ -1351,10 +1343,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Represents the type of entity for the report.</summary>
             public enum EntityTypeEnum
             {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("entity_type_undefined")]
-                EntityTypeUndefined = 0,
-
                 /// <summary>Returns a report on Google+ communities.</summary>
                 [Google.Apis.Util.StringValueAttribute("gplus_communities")]
                 GplusCommunities = 1,
@@ -1367,10 +1355,6 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>Represents the key of the object to filter the data with.</summary>
             public enum EntityKeyEnum
             {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("entityKeyUndefined")]
-                EntityKeyUndefined = 0,
-
                 /// <summary>Returns activity events for all users.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All = 1,
