@@ -1031,7 +1031,9 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query.
+        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query. The
+        /// query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the
+        /// OTHER_CONTACT source.
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -1039,7 +1041,9 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query.
+        /// Provides a list of contacts in the authenticated user's other contacts that matches the search query. The
+        /// query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the
+        /// OTHER_CONTACT source.
         /// </summary>
         public class SearchRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
         {
@@ -1381,7 +1385,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts.
+        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts. Limited to 10
+        /// parallel requests per user.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchCreateContactsRequest BatchCreateContacts(Google.Apis.PeopleService.v1.Data.BatchCreateContactsRequest body)
@@ -1390,7 +1395,8 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts.
+        /// Create a batch of new contacts and return the PersonResponses for the newly created contacts. Limited to 10
+        /// parallel requests per user.
         /// </summary>
         public class BatchCreateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchCreateContactsResponse>
         {
@@ -1423,14 +1429,20 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Delete a batch of contacts. Any non-contact data will not be deleted.</summary>
+        /// <summary>
+        /// Delete a batch of contacts. Any non-contact data will not be deleted. Limited to 10 parallel requests per
+        /// user.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchDeleteContactsRequest BatchDeleteContacts(Google.Apis.PeopleService.v1.Data.BatchDeleteContactsRequest body)
         {
             return new BatchDeleteContactsRequest(service, body);
         }
 
-        /// <summary>Delete a batch of contacts. Any non-contact data will not be deleted.</summary>
+        /// <summary>
+        /// Delete a batch of contacts. Any non-contact data will not be deleted. Limited to 10 parallel requests per
+        /// user.
+        /// </summary>
         public class BatchDeleteContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
         {
             /// <summary>Constructs a new BatchDeleteContacts request.</summary>
@@ -1464,6 +1476,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
+        /// Limited to 10 parallel requests per user.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateContactsRequest BatchUpdateContacts(Google.Apis.PeopleService.v1.Data.BatchUpdateContactsRequest body)
@@ -1473,6 +1486,7 @@ namespace Google.Apis.PeopleService.v1
 
         /// <summary>
         /// Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts.
+        /// Limited to 10 parallel requests per user.
         /// </summary>
         public class BatchUpdateContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchUpdateContactsResponse>
         {
@@ -2196,7 +2210,9 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query.
+        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The
+        /// query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations`
+        /// fields that are from the CONTACT" source.
         /// </summary>
         public virtual SearchContactsRequest SearchContacts()
         {
@@ -2204,7 +2220,9 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>
-        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query.
+        /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The
+        /// query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations`
+        /// fields that are from the CONTACT" source.
         /// </summary>
         public class SearchContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
         {

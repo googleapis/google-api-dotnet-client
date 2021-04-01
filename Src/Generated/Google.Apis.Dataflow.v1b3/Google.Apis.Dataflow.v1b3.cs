@@ -65,7 +65,7 @@ namespace Google.Apis.Dataflow.v1b3
         /// <summary>Available OAuth 2.0 scopes for use with the Dataflow API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
@@ -81,7 +81,7 @@ namespace Google.Apis.Dataflow.v1b3
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataflow API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
@@ -4157,7 +4157,7 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string Location { get; private set; }
 
                     /// <summary>
-                    /// Path to dynamic template spec file on GCS. The file must be a Json serialized
+                    /// Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized
                     /// DynamicTemplateFieSpec object.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
@@ -4675,8 +4675,8 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>
-                /// Path to dynamic template spec file on GCS. The file must be a Json serialized DynamicTemplateFieSpec
-                /// object.
+                /// Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized
+                /// DynamicTemplateFieSpec object.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateGcsPath { get; set; }
@@ -5065,7 +5065,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a BigTable connector used by the job.</summary>
+    /// <summary>Metadata for a Cloud BigTable connector used by the job.</summary>
     public class BigTableIODetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>InstanceId accessed in the connection.</summary>
@@ -5816,7 +5816,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputSource")]
         public virtual System.Collections.Generic.IList<StageSource> InputSource { get; set; }
 
-        /// <summary>Type of tranform this stage is executing.</summary>
+        /// <summary>Type of transform this stage is executing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -6354,7 +6354,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<Step> Steps { get; set; }
 
-        /// <summary>The GCS location where the steps are stored.</summary>
+        /// <summary>The Cloud Storage location where the steps are stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepsLocation")]
         public virtual string StepsLocation { get; set; }
 
@@ -6455,7 +6455,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// </summary>
     public class JobMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identification of a BigTable source used in the Dataflow job.</summary>
+        /// <summary>Identification of a Cloud BigTable source used in the Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigTableDetails")]
         public virtual System.Collections.Generic.IList<BigTableIODetails> BigTableDetails { get; set; }
 
@@ -6580,7 +6580,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerSpec")]
         public virtual ContainerSpec ContainerSpec { get; set; }
 
-        /// <summary>Gcs path to a file with json serialized ContainerSpec as content.</summary>
+        /// <summary>Cloud Storage path to a file with json serialized ContainerSpec as content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerSpecGcsPath")]
         public virtual string ContainerSpecGcsPath { get; set; }
 
@@ -7292,7 +7292,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for a PubSub connector used by the job.</summary>
+    /// <summary>Metadata for a Pub/Sub connector used by the job.</summary>
     public class PubSubIODetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Subscription used in the connection.</summary>
@@ -9066,7 +9066,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// </summary>
     public class WorkerHealthReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A message describing any unusual health reports.</summary>
+        /// <summary>Message describing any unusual health reports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("msg")]
         public virtual string Msg { get; set; }
 
@@ -9084,6 +9084,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportInterval")]
         public virtual object ReportInterval { get; set; }
+
+        /// <summary>Code to describe a specific reason, if known, that a VM has reported broken state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmBrokenCode")]
+        public virtual string VmBrokenCode { get; set; }
 
         /// <summary>
         /// Whether the VM is in a permanently broken state. Broken VMs should be abandoned or deleted ASAP to avoid
@@ -9198,9 +9202,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// The code is a string intended for consumption by a machine that identifies the type of message being sent.
         /// Examples: 1. "HARNESS_STARTED" might be used to indicate the worker harness has started. 2.
-        /// "GCS_DOWNLOAD_ERROR" might be used to indicate an error downloading a GCS file as part of the boot process
-        /// of one of the worker containers. This is a string and not an enum to make it easy to add new codes without
-        /// waiting for an API change.
+        /// "GCS_DOWNLOAD_ERROR" might be used to indicate an error downloading a Cloud Storage file as part of the boot
+        /// process of one of the worker containers. This is a string and not an enum to make it easy to add new codes
+        /// without waiting for an API change.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
@@ -9209,11 +9213,11 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// Parameters contains specific information about the code. This is a struct to allow parameters of different
         /// types. Examples: 1. For a "HARNESS_STARTED" message parameters might provide the name of the worker and
         /// additional data like timing information. 2. For a "GCS_DOWNLOAD_ERROR" parameters might contain fields
-        /// listing the GCS objects being downloaded and fields containing errors. In general complex data structures
-        /// should be avoided. If a worker needs to send a specific and complicated data structure then please consider
-        /// defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions: Parameters
-        /// should only be used for information that isn't typically passed as a label. hostname and other worker
-        /// identifiers should almost always be passed as labels since they will be included on most messages.
+        /// listing the Cloud Storage objects being downloaded and fields containing errors. In general complex data
+        /// structures should be avoided. If a worker needs to send a specific and complicated data structure then
+        /// please consider defining a new proto and adding it to the data oneof in WorkerMessageResponse. Conventions:
+        /// Parameters should only be used for information that isn't typically passed as a label. hostname and other
+        /// worker identifiers should almost always be passed as labels since they will be included on most messages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }

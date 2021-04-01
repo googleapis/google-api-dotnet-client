@@ -8140,7 +8140,7 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which conditions caused the current cluster state.</summary>
+        /// <summary>Which conditions caused the current cluster state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterConditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> ClusterConditions { get; set; }
 
@@ -8155,6 +8155,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual string EndTime { get; set; }
 
+        /// <summary>The error result of the operation in case of failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
         /// <summary>
         /// [Output only] The name of the Google Compute Engine
         /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or
@@ -8168,7 +8172,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Which conditions caused the current node pool state.</summary>
+        /// <summary>Which conditions caused the current node pool state. Deprecated. Use field error instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodepoolConditions")]
         public virtual System.Collections.Generic.IList<StatusCondition> NodepoolConditions { get; set; }
 
@@ -8195,7 +8199,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Output only. If an error has occurred, a textual description of the error.</summary>
+        /// <summary>
+        /// Output only. If an error has occurred, a textual description of the error. Deprecated. Use the field error
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
@@ -9157,11 +9164,44 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
     /// </summary>
     public class StatusCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Machine-friendly representation of the condition</summary>
+        /// <summary>Canonical code of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual string CanonicalCode { get; set; }
+
+        /// <summary>Machine-friendly representation of the condition Deprecated. Use canonical_code instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 

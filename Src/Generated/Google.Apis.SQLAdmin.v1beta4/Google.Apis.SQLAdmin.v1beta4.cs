@@ -3425,7 +3425,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-standard-1. For related
+        /// Lists all available machine types (tiers) for Cloud SQL, for example, db-custom-1-3840. For related
         /// information, see Pricing.
         /// </summary>
         /// <param name="project">Project ID of the project for which to list tiers.</param>
@@ -3435,7 +3435,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Lists all available machine types (tiers) for Cloud SQL, for example, db-n1-standard-1. For related
+        /// Lists all available machine types (tiers) for Cloud SQL, for example, db-custom-1-3840. For related
         /// information, see Pricing.
         /// </summary>
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.TiersListResponse>
@@ -4171,8 +4171,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>
         /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation.
         /// MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*,
-        /// *POSTGRES_10*, *POSTGRES_11* or *POSTGRES_12* (default). SQL Server instances: *SQLSERVER_2017_STANDARD*
-        /// (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        /// *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances:
+        /// *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or
+        /// *SQLSERVER_2017_WEB*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
@@ -5530,10 +5531,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageAutoResizeLimit")]
         public virtual System.Nullable<long> StorageAutoResizeLimit { get; set; }
 
-        /// <summary>
-        /// The tier (or machine type) for this instance, for example *db-n1-standard-1* (MySQL instances) or
-        /// *db-custom-1-3840* (PostgreSQL instances).
-        /// </summary>
+        /// <summary>The tier (or machine type) for this instance, for example *db-custom-1-3840* .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
 
@@ -5812,7 +5810,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Collections.Generic.IList<string> Region { get; set; }
 
         /// <summary>
-        /// An identifier for the machine type, for example, db-n1-standard-1. For related information, see Pricing.
+        /// An identifier for the machine type, for example, db-custom-1-3840. For related information, see Pricing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string TierValue { get; set; }

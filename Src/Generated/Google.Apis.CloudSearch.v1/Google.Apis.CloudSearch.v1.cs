@@ -3320,6 +3320,92 @@ namespace Google.Apis.CloudSearch.v1
                 }
             }
         }
+
+        /// <summary>Get customer settings. **Note:** This API requires an admin account to execute.</summary>
+        public virtual GetCustomerRequest GetCustomer()
+        {
+            return new GetCustomerRequest(service);
+        }
+
+        /// <summary>Get customer settings. **Note:** This API requires an admin account to execute.</summary>
+        public class GetCustomerRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.CustomerSettings>
+        {
+            /// <summary>Constructs a new GetCustomer request.</summary>
+            public GetCustomerRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getCustomer";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/settings/customer";
+
+            /// <summary>Initializes GetCustomer parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>Update customer settings. **Note:** This API requires an admin account to execute.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual UpdateCustomerRequest UpdateCustomer(Google.Apis.CloudSearch.v1.Data.CustomerSettings body)
+        {
+            return new UpdateCustomerRequest(service, body);
+        }
+
+        /// <summary>Update customer settings. **Note:** This API requires an admin account to execute.</summary>
+        public class UpdateCustomerRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateCustomer request.</summary>
+            public UpdateCustomerRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.CustomerSettings body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Update mask to control which fields get updated. If you specify a field in the update_mask but don't
+            /// specify its value here, that field will be cleared. If the mask is not present or empty, all fields will
+            /// be updated. Currently supported field paths: vpc_settings and audit_logging_settings
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSearch.v1.Data.CustomerSettings Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateCustomer";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/settings/customer";
+
+            /// <summary>Initializes UpdateCustomer parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "stats" collection of methods.</summary>
@@ -4540,6 +4626,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The count of search sessions on the day</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchSessionsCount")]
         public virtual System.Nullable<long> SearchSessionsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents settings at a customer level.</summary>
+    public class CustomerSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// VPC SC settings for the customer. If update_mask is empty then this field will be updated based on
+        /// UpdateCustomerSettings request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcSettings")]
+        public virtual VPCSettings VpcSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7605,6 +7705,20 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Name of the content reference. The maximum length is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class VPCSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the GCP Project to be used for VPC SC policy check. VPC security settings on this
+        /// project will be honored for Cloud Search APIs after project_name has been updated through CustomerService.
+        /// Format: projects/{project_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

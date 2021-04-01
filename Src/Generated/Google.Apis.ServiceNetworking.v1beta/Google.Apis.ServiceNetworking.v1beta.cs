@@ -2950,7 +2950,10 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
         public virtual Billing Billing { get; set; }
 
-        /// <summary>Deprecated. The service config compiler always sets this field to `3`.</summary>
+        /// <summary>
+        /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field
+        /// to `3`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
         public virtual System.Nullable<long> ConfigVersion { get; set; }
 

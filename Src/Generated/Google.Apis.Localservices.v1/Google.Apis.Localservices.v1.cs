@@ -637,7 +637,7 @@ namespace Google.Apis.Localservices.v1.Data
 {
     /// <summary>
     /// An Account Report of a GLS account identified by their account id containing aggregate data gathered from a
-    /// particular date range.
+    /// particular date range. Next ID: 18
     /// </summary>
     public class GoogleAdsHomeservicesLocalservicesV1AccountReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -684,6 +684,10 @@ namespace Google.Apis.Localservices.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPeriodTotalCost")]
         public virtual System.Nullable<double> CurrentPeriodTotalCost { get; set; }
+
+        /// <summary>Number of impressions that customers have had in the past 2 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionsLastTwoDays")]
+        public virtual System.Nullable<long> ImpressionsLastTwoDays { get; set; }
 
         /// <summary>
         /// Phone lead responsiveness of the account for the past 90 days from current date. This is computed by taking

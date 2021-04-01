@@ -8450,6 +8450,15 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual GoogleCloudDialogflowCxV3NluSettings NluSettings { get; set; }
 
         /// <summary>
+        /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first
+        /// utterances in the flow. * They are inherited by every page's transition route groups. Transition route
+        /// groups defined in the page have higher priority than those defined in the flow.
+        /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
+        public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
+
+        /// <summary>
         /// A flow's transition routes serve two purposes: * They are responsible for matching the user's first
         /// utterances in the flow. * They are inherited by every page's transition routes and can support use cases
         /// such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless
@@ -9724,6 +9733,15 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyzeQueryTextSentiment")]
         public virtual System.Nullable<bool> AnalyzeQueryTextSentiment { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the page to override the current page in the session. Format:
+        /// `projects//locations//agents//pages/`. If `current_page` is specified, the previous state of the session
+        /// will be ignored by Dialogflow, including the previous page and the previous session parameters. In most
+        /// cases, current_page and parameters should be configured together to direct a session to a specific state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
+        public virtual string CurrentPage { get; set; }
 
         /// <summary>Whether to disable webhook calls for this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableWebhook")]
@@ -11024,6 +11042,30 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Information about session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3SessionInfo SessionInfo { get; set; }
+
+        /// <summary>
+        /// If natural language text was provided as input, this field will contain a copy of the text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
+
+        /// <summary>If an event was provided as input, this field will contain the name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
+        public virtual string TriggerIntent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12610,6 +12652,30 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Information about session status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; }
+
+        /// <summary>
+        /// If natural language text was provided as input, this field will contain a copy of the text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
+
+        /// <summary>If an event was provided as input, this field will contain the name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
+        public virtual string TriggerIntent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

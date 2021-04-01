@@ -2377,7 +2377,9 @@ namespace Google.Apis.Firestore.v1
             /// such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export
             /// occurs in the background and its progress can be monitored and managed via the Operation resource that
             /// is created. The output of an export may only be used once the associated operation is done. If an export
-            /// operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
+            /// operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For
+            /// more details on export behavior and output format, refer to:
+            /// https://cloud.google.com/firestore/docs/manage-data/export-import
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2393,7 +2395,9 @@ namespace Google.Apis.Firestore.v1
             /// such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export
             /// occurs in the background and its progress can be monitored and managed via the Operation resource that
             /// is created. The output of an export may only be used once the associated operation is done. If an export
-            /// operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
+            /// operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For
+            /// more details on export behavior and output format, refer to:
+            /// https://cloud.google.com/firestore/docs/manage-data/export-import
             /// </summary>
             public class ExportDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
             {
@@ -2595,15 +2599,23 @@ namespace Google.Apis.Firestore.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 

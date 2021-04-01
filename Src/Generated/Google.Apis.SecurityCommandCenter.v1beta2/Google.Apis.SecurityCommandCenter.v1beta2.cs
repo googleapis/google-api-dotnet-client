@@ -67,14 +67,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Available OAuth 2.0 scopes for use with the Security Command Center API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Security Command Center API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -3261,6 +3261,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The canonical name of the finding. It's either
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+        /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
+        /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor
+        /// of the resource associated with the finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
+        /// <summary>
         /// The additional taxonomy group within findings from a given source. This field is immutable after creation
         /// time. Example: "XSS_FLASH_INJECTION"
         /// </summary>
@@ -3275,7 +3285,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// The time at which the event took place, or when an update to the finding occurred. For example, if the
         /// finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
-        /// would reflect when the finding was resolved.
+        /// would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
@@ -3452,6 +3462,16 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class GoogleCloudSecuritycenterV1p1beta1Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The canonical name of the finding. It's either
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+        /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or
+        /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor
+        /// of the resource associated with the finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
+        /// <summary>
         /// The additional taxonomy group within findings from a given source. This field is immutable after creation
         /// time. Example: "XSS_FLASH_INJECTION"
         /// </summary>
@@ -3466,7 +3486,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// The time at which the event took place, or when an update to the finding occurred. For example, if the
         /// finding represents an open firewall it would capture the time the detector believes the firewall became
         /// open. The accuracy is determined by the detector. If the finding were to be resolved afterward, this time
-        /// would reflect when the finding was resolved.
+        /// would reflect when the finding was resolved. Must not be set to a value greater than the current timestamp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual object EventTime { get; set; }
@@ -3628,6 +3648,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class GoogleCloudSecuritycenterV1p1beta1SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+        /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
+        /// "projects/{project_number}/assets/{asset_id}/securityMarks"
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
+        /// <summary>
         /// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys
         /// and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must
         /// be letters, numbers, underscores, or dashes * Values have leading and trailing whitespace trimmed, remaining
@@ -3719,6 +3750,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// </summary>
     public class SecurityMarks : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The canonical name of the marks. Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+        /// "folders/{folder_id}/assets/{asset_id}/securityMarks"
+        /// "projects/{project_number}/assets/{asset_id}/securityMarks"
+        /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// "projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
         /// <summary>
         /// Mutable user specified security marks belonging to the parent resource. Constraints are as follows: * Keys
         /// and values are treated as case insensitive * Keys must be between 1 - 256 characters (inclusive) * Keys must

@@ -15438,6 +15438,30 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3SessionInfo SessionInfo { get; set; }
 
+        /// <summary>
+        /// If natural language text was provided as input, this field will contain a copy of the text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
+
+        /// <summary>If an event was provided as input, this field will contain the name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
+        public virtual string TriggerIntent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17024,6 +17048,30 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1SessionInfo SessionInfo { get; set; }
 
+        /// <summary>
+        /// If natural language text was provided as input, this field will contain a copy of the text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// If natural language speech audio was provided as input, this field will contain the transcript for the
+        /// audio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
+        public virtual string Transcript { get; set; }
+
+        /// <summary>If an event was provided as input, this field will contain the name of the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        /// <summary>
+        /// If an intent was provided as input, this field will contain a copy of the intent identifier. Format:
+        /// `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
+        public virtual string TriggerIntent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17885,6 +17933,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfig HumanAgentAssistantConfig { get; set; }
 
         /// <summary>
+        /// Configuration for connecting to a live agent. Currently, this feature is not general available, please
+        /// contact Google to get access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentHandoffConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfig HumanAgentHandoffConfig { get; set; }
+
+        /// <summary>
         /// Language which represents the conversationProfile. If unspecified, the default language code en-us applies.
         /// Users need to create a ConversationProfile for each language they want to support.
         /// </summary>
@@ -18420,6 +18475,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Defines the Human Agent Assist to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Configuration for agent assistance of end user participant. Currently, this feature is not general
+        /// available, please contact Google to get access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endUserSuggestionConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig EndUserSuggestionConfig { get; set; }
+
         /// <summary>Configuration for agent assistance of human agent participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanAgentSuggestionConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig HumanAgentSuggestionConfig { get; set; }
@@ -18453,6 +18515,14 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Configuration for analyses to run on each conversation message.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enable entity extraction in conversation messages on [agent assist
+        /// stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults
+        /// to false. Currently, this feature is not general available, please contact Google to get access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableEntityExtraction")]
+        public virtual System.Nullable<bool> EnableEntityExtraction { get; set; }
+
         /// <summary>
         /// Enable sentiment analysis in conversation messages on [agent assist
         /// stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults
@@ -18672,6 +18742,65 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The suggestion results payload that this notification refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SuggestionResult> SuggestionResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a
+    /// conversation. Currently, this feature is not general available, please contact Google to get access.
+    /// </summary>
+    public class GoogleCloudDialogflowV2HumanAgentHandoffConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uses LivePerson (https://www.liveperson.com).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("livePersonConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig LivePersonConfig { get; set; }
+
+        /// <summary>Uses Salesforce Live Agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceLiveAgentConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig SalesforceLiveAgentConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to LivePerson (https://www.liveperson.com).</summary>
+    public class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Account number of the LivePerson account to connect. This is the account number you input at the
+        /// login page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountNumber")]
+        public virtual string AccountNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration specific to Salesforce Live Agent.</summary>
+    public class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Live Agent chat button ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonId")]
+        public virtual string ButtonId { get; set; }
+
+        /// <summary>Required. Live Agent deployment ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; }
+
+        /// <summary>
+        /// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent
+        /// settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should
+        /// fill in d.la4-c2-phx.salesforceliveagent.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointDomain")]
+        public virtual string EndpointDomain { get; set; }
+
+        /// <summary>Required. The organization ID of the Salesforce account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual string OrganizationId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

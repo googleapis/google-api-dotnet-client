@@ -65,7 +65,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         /// <summary>Available OAuth 2.0 scopes for use with the Firebase Realtime Database Management API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -83,7 +83,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta
         /// </summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>

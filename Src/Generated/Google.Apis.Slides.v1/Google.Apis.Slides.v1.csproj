@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Slides.v1 Client Library</Title>
-    <Version>1.51.0.2251</Version>
+    <Version>1.51.0.2272</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2021 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
