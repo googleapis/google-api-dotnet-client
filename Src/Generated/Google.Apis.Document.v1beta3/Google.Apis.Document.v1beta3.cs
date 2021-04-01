@@ -1029,17 +1029,6 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for SampleDataset.</summary>
-    public class GoogleCloudDocumentaiUiv1beta3SampleDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The basic metadata of the long running operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
-        public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The long running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2239,7 +2228,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<float> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<float> Y { get; set; }
 
@@ -2323,7 +2312,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<int> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<int> Y { get; set; }
 
@@ -3325,7 +3314,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<float> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<float> Y { get; set; }
 
@@ -3409,7 +3398,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<int> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<int> Y { get; set; }
 
@@ -4568,7 +4557,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<float> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<float> Y { get; set; }
 
@@ -4703,7 +4692,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
         public virtual System.Nullable<int> X { get; set; }
 
-        /// <summary>Y coordinate.</summary>
+        /// <summary>Y coordinate (starts from the top of the image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("y")]
         public virtual System.Nullable<int> Y { get; set; }
 

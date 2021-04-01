@@ -1,0 +1,11 @@
+{
+  "Google.Apis.OnDemandScanning.v1.OnDemandScanningBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.OnDemandScanning.v1.OnDemandScanningBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

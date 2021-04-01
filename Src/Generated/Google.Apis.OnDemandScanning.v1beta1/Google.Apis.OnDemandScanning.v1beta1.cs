@@ -855,6 +855,21 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AnalyzePackagesMetadata contains metadata for an active scan of a container image.</summary>
+    public class AnalyzePackagesMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When the scan was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The resource URI of the container image being scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// AnalyzePackagesRequest is the request to analyze a list of packages and create Vulnerability Occurrences for it.
     /// </summary>
@@ -876,6 +891,19 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// AnalyzePackagesResponse contains the information necessary to find results for the given scan.
     /// </summary>
     public class AnalyzePackagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the scan resource created by this successful scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scan")]
+        public virtual string Scan { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AnalyzePackagesResponse contains the information necessary to find results for the given scan.
+    /// </summary>
+    public class AnalyzePackagesResponseV1 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the scan resource created by this successful scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scan")]

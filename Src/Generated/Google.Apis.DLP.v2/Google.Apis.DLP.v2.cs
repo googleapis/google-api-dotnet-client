@@ -9683,7 +9683,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; }
 
-        /// <summary>The key used by the encryption function.</summary>
+        /// <summary>
+        /// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is
+        /// internally expanded to 64 bytes prior to use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual GooglePrivacyDlpV2CryptoKey CryptoKey { get; set; }
 

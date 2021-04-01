@@ -2368,6 +2368,10 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW = 3,
 
+                        /// <summary>Only populates 'name' and fields related to the table's encryption state.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
+                        ENCRYPTIONVIEW = 5,
+
                         /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL = 4,
@@ -2541,6 +2545,10 @@ namespace Google.Apis.BigtableAdmin.v2
                         /// </summary>
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW = 3,
+
+                        /// <summary>Only populates 'name' and fields related to the table's encryption state.</summary>
+                        [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
+                        ENCRYPTIONVIEW = 5,
 
                         /// <summary>Populates all fields.</summary>
                         [Google.Apis.Util.StringValueAttribute("FULL")]
@@ -3635,6 +3643,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The encryption information for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
         /// <summary>
         /// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no
         /// newer than this timestamp.
@@ -3799,6 +3811,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
         public virtual string DefaultStorageType { get; set; }
 
+        /// <summary>Immutable. The encryption configuration for CMEK-protected clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
         /// <summary>
         /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should
         /// be located as close as possible to this cluster. Currently only zones are supported, so values should be of
@@ -3832,6 +3848,14 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>The state of a table's data in a particular cluster.</summary>
     public class ClusterState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The encryption information for the table in this cluster. If the encryption key protecting this
+        /// resource is customer managed, then its version can be rotated in Cloud Key Management Service (Cloud KMS).
+        /// The primary version of the key and its status will be reflected here when changes propagate from Cloud KMS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual System.Collections.Generic.IList<EncryptionInfo> EncryptionInfo { get; set; }
+
         /// <summary>Output only. The state of replication for the table in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationState")]
         public virtual string ReplicationState { get; set; }
@@ -4036,6 +4060,52 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The
+        /// requirements for this key are: 1) The Cloud Bigtable service account associated with the project that
+        /// contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2)
+        /// Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All
+        /// clusters within an instance must use the same CMEK key. Values are of the form
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encryption information for a given resource. If this resource is protected with customer managed encryption, the
+    /// in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+    /// </summary>
+    public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status,
+        /// the existing data is always encrypted at rest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
+        public virtual Status EncryptionStatus { get; set; }
+
+        /// <summary>Output only. The type of encryption used to protect this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data
+        /// underlying this table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4778,7 +4848,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not
         /// the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an
-        /// entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `FULL`
+        /// entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`,
+        /// `FULL`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterStates")]
         public virtual System.Collections.Generic.IDictionary<string, ClusterState> ClusterStates { get; set; }

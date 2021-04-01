@@ -68,7 +68,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             /// <summary>View and manage your data in Google BigQuery</summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -78,7 +78,7 @@ namespace Google.Apis.BigQueryReservation.v1beta1
             /// <summary>View and manage your data in Google BigQuery</summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1828,20 +1828,6 @@ namespace Google.Apis.BigQueryReservation.v1beta1.Data
         /// <summary>Output only. State of the commitment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The metadata for operation returned from ReservationService.CreateSlotPool.</summary>
-    public class CreateSlotPoolMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Resource name of the slot pool that is being created. E.g.,
-        /// projects/myproject/locations/us-central1/reservations/foo/slotPools/123
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slotPool")]
-        public virtual string SlotPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

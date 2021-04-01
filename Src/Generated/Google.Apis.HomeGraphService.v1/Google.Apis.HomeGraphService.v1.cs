@@ -468,53 +468,6 @@ namespace Google.Apis.HomeGraphService.v1
         }
 
         /// <summary>
-        /// Sends an account linking suggestion to users associated with any potential Cast devices detected by
-        /// third-party devices. This request must be authorized using service account credentials from your Actions
-        /// console project.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual RequestLinkRequest RequestLink(Google.Apis.HomeGraphService.v1.Data.RequestLinkRequest body)
-        {
-            return new RequestLinkRequest(service, body);
-        }
-
-        /// <summary>
-        /// Sends an account linking suggestion to users associated with any potential Cast devices detected by
-        /// third-party devices. This request must be authorized using service account credentials from your Actions
-        /// console project.
-        /// </summary>
-        public class RequestLinkRequest : HomeGraphServiceBaseServiceRequest<Google.Apis.HomeGraphService.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new RequestLink request.</summary>
-            public RequestLinkRequest(Google.Apis.Services.IClientService service, Google.Apis.HomeGraphService.v1.Data.RequestLinkRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.HomeGraphService.v1.Data.RequestLinkRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "requestLink";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/devices:requestLink";
-
-            /// <summary>Initializes RequestLink parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>
         /// Requests Google to send an `action.devices.SYNC`
         /// [intent](https://developers.google.com/assistant/smarthome/reference/intent/sync) to your smart home Action
         /// to update device metadata for the given user. The third-party user's identity is passed via the
@@ -917,11 +870,7 @@ namespace Google.Apis.HomeGraphService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
         public virtual string EventId { get; set; }
 
-        /// <summary>
-        /// Token to maintain state in the follow up notification response. Deprecated. See the [notifications
-        /// guide](https://developers.google.com/assistant/smarthome/develop/notifications) for details on implementing
-        /// follow up notifications.
-        /// </summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("followUpToken")]
         public virtual string FollowUpToken { get; set; }
 
@@ -946,38 +895,6 @@ namespace Google.Apis.HomeGraphService.v1.Data
         /// <summary>Request ID copied from ReportStateAndNotificationRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request type for the [`RequestLink`](#google.home.graph.v1.HomeGraphApiService.RequestLink) call.
-    /// </summary>
-    public class RequestLinkRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. ID(s) and detection time of potential Cast devices.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual RequestLinkRequestPayload Payload { get; set; }
-
-        /// <summary>Required. Request ID used for debugging.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Payload containing potential devices detected and when they were detected.</summary>
-    public class RequestLinkRequestPayload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Time at which devices represented in `potential_cast_device_ids` were detected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detectionTime")]
-        public virtual object DetectionTime { get; set; }
-
-        /// <summary>Required. List of device IDs detected that may potentially be for Cast devices.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("potentialCastDeviceIds")]
-        public virtual System.Collections.Generic.IList<string> PotentialCastDeviceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

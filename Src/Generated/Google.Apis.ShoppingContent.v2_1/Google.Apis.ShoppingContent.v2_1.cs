@@ -12068,8 +12068,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string LinkedAccountId { get; set; }
 
         /// <summary>
-        ///  Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingAdsOther`" -
-        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`shoppingActionsOther`"
+        ///  Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" -
+        /// "`shoppingActionsOrderManagement`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
@@ -17657,6 +17657,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Additional URLs of images of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalImageLinks")]
         public virtual System.Collections.Generic.IList<string> AdditionalImageLinks { get; set; }
+
+        /// <summary>
+        /// Additional cut of the item. Used together with size_type to represent combined size types for apparel items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSizeType")]
+        public virtual string AdditionalSizeType { get; set; }
 
         /// <summary>Used to group items in an arbitrary way. Only for CPA%, discouraged otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsGrouping")]

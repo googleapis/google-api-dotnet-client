@@ -67,14 +67,14 @@ namespace Google.Apis.Speech.v1p1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Speech-to-Text API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Speech-to-Text API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1588,7 +1588,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// <summary>
         /// Speech adaptation configuration improves the accuracy of speech recognition. When speech adaptation is set
         /// it supersedes the `speech_contexts` field. For more information, see the [speech
-        /// adaptation](https://cloud.google.com/speech-to-text/docs/context-strength) documentation.
+        /// adaptation](https://cloud.google.com/speech-to-text/docs/adaptation) documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adaptation")]
         public virtual SpeechAdaptation Adaptation { get; set; }
@@ -1732,7 +1732,7 @@ namespace Google.Apis.Speech.v1p1beta1.Data
 
         /// <summary>
         /// Array of SpeechContext. A means to provide context to assist the speech recognition. For more information,
-        /// see [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
+        /// see [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechContexts")]
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; }

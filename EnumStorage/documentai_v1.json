@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Document.v1.DocumentBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Document.v1.DocumentBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

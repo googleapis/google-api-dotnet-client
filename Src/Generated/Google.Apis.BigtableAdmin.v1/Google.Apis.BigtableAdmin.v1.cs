@@ -248,6 +248,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
     /// <summary>A backup of a Cloud Bigtable table.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The encryption information for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual EncryptionInfo EncryptionInfo { get; set; }
+
         /// <summary>
         /// Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no
         /// newer than this timestamp.
@@ -339,6 +343,10 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageType")]
         public virtual string DefaultStorageType { get; set; }
+
+        /// <summary>Immutable. The encryption configuration for CMEK-protected clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
 
         /// <summary>
         /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should
@@ -498,6 +506,52 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.</summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The
+        /// requirements for this key are: 1) The Cloud Bigtable service account associated with the project that
+        /// contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2)
+        /// Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All
+        /// clusters within an instance must use the same CMEK key. Values are of the form
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encryption information for a given resource. If this resource is protected with customer managed encryption, the
+    /// in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+    /// </summary>
+    public class EncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status,
+        /// the existing data is always encrypted at rest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
+        public virtual Status EncryptionStatus { get; set; }
+
+        /// <summary>Output only. The type of encryption used to protect this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data
+        /// underlying this table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Added to the error payload.</summary>
     public class FailureTrace : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -646,6 +700,35 @@ namespace Google.Apis.BigtableAdmin.v1.Data
         /// <summary>The type of the restore source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

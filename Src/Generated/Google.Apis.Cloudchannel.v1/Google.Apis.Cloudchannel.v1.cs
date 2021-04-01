@@ -5404,6 +5404,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// </summary>
     public class GoogleCloudChannelV1TransferableSku : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The customer to transfer has an entitlement with the populated legacy SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("legacySku")]
+        public virtual GoogleCloudChannelV1Sku LegacySku { get; set; }
+
         /// <summary>The SKU pertaining to the provisioning resource as specified in the Offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
         public virtual GoogleCloudChannelV1Sku Sku { get; set; }

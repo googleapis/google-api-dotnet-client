@@ -67,14 +67,14 @@ namespace Google.Apis.CloudAsset.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Asset API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Asset API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -4000,7 +4000,11 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentAssetType")]
         public virtual string ParentAssetType { get; set; }
 
-        /// <summary>The full resource name of this resource's parent, if it has one.</summary>
+        /// <summary>
+        /// The full resource name of this resource's parent, if it has one. To search against the
+        /// `parent_full_resource_name`: * use a field query. Example: `parentFullResourceName:"project-name"` * use a
+        /// free text query. Example: `project-name`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFullResourceName")]
         public virtual string ParentFullResourceName { get; set; }
 

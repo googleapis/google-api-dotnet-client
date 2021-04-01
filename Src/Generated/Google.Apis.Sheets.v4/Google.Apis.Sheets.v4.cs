@@ -69,7 +69,7 @@ namespace Google.Apis.Sheets.v4
             public static string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
@@ -90,7 +90,7 @@ namespace Google.Apis.Sheets.v4
             public const string Drive = "https://www.googleapis.com/auth/drive";
 
             /// <summary>
-            /// View and manage Google Drive files and folders that you have opened or created with this app
+            /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
@@ -5831,6 +5831,17 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An external or local reference.</summary>
+    public class Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The link identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Allows you to manually organize the values in a source data column into buckets with names of your choosing. For
     /// example, a pivot table that aggregates population by state: +-------+-------------------+ | State | SUM of
@@ -7529,6 +7540,15 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>True if the text is italicized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("italic")]
         public virtual System.Nullable<bool> Italic { get; set; }
+
+        /// <summary>
+        /// The link destination of the text, if any. Setting a link in a format run will clear an existing cell-level
+        /// link. When a link is set, the text foreground color will be set to the default link color and the text will
+        /// be underlined. If these fields are modified in the same request, those values will be used instead of the
+        /// link defaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual Link Link { get; set; }
 
         /// <summary>True if the text has a strikethrough.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strikethrough")]
