@@ -31,10 +31,7 @@ namespace DiscoveryDocPatcher
                 // No longer required as on 2020-07-09. The offending resource is no longer present at all.
                 // PatchGames(discoveryDocPath);
 
-                // No need to generate (or patch) while an internal issue is being fixed.
-                // We'll need to review patching once we have the new discovery doc produced by that fix.
-                // I've let a comment on the script as well.
-                // PatchDirectory(discoveryDocPath);
+                PatchDirectory(discoveryDocPath);
 
                 return 0;
             }
@@ -69,14 +66,14 @@ namespace DiscoveryDocPatcher
                 return;
             }
             // Strongly-type properties that are defined without typing.
-            patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any', 'description': 'Addresses of User'}", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' }, 'description': 'Addresses of User' }");
-            patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any', 'description': 'Emails of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' }, 'description': 'Emails of User' }");
-            patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any', 'description': 'The external Ids of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' }, 'description': 'The external Ids of User *' }");
-            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'User&s Instant Messenger' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'User&s Instant Messenger' }");
-            patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any', 'description': 'Organizations of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' }, 'description': 'Organizations of User' }");
-            patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any', 'description': 'Phone numbers of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' }, 'description': 'Phone numbers of User' }");
-            patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any', 'description': 'The Relations of User *' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' }, 'description': 'The Relations of User *' }");
-            patcher.Replace("schemas.User.properties.websites", "{ 'type': 'any', 'description': 'Websites of User' }", "{ 'type': 'array', 'items': { '$ref': 'UserWebsite' }, 'description': 'Websites of User' }");
+            patcher.Replace("schemas.User.properties.addresses", "{ 'type': 'any', 'description': 'A list of the user&s addresses. The maximum allowed data size for this field is 10Kb.'}", "{ 'type': 'array', 'items': { '$ref': 'UserAddress' }, 'description': 'A list of the user&s addresses. The maximum allowed data size for this field is 10Kb.' }");
+            patcher.Replace("schemas.User.properties.emails", "{ 'type': 'any', 'description': 'A list of the user&s email addresses. The maximum allowed data size for this field is 10Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserEmail' }, 'description': 'A list of the user&s email addresses. The maximum allowed data size for this field is 10Kb.' }");
+            patcher.Replace("schemas.User.properties.externalIds", "{ 'type': 'any', 'description': 'A list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserExternalId' }, 'description': 'A list of external IDs for the user, such as an employee or network ID. The maximum allowed data size for this field is 2Kb.' }");
+            patcher.Replace("schemas.User.properties.ims", "{ 'type': 'any', 'description': 'The user&s Instant Messenger (IM) accounts. A user account can have multiple ims properties. But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserIm' }, 'description': 'The user&s Instant Messenger (IM) accounts. A user account can have multiple ims properties. But, only one of these ims properties can be the primary IM contact. The maximum allowed data size for this field is 2Kb.' }");
+            patcher.Replace("schemas.User.properties.organizations", "{ 'type': 'any', 'description': 'A list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserOrganization' }, 'description': 'A list of organizations the user belongs to. The maximum allowed data size for this field is 10Kb.' }");
+            patcher.Replace("schemas.User.properties.phones", "{ 'type': 'any', 'description': 'A list of the user&s phone numbers. The maximum allowed data size for this field is 1Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserPhone' }, 'description': 'A list of the user&s phone numbers. The maximum allowed data size for this field is 1Kb.' }");
+            patcher.Replace("schemas.User.properties.relations", "{ 'type': 'any', 'description': 'A list of the user&s relationships to other users. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserRelation' }, 'description': 'A list of the user&s relationships to other users. The maximum allowed data size for this field is 2Kb.' }");
+            patcher.Replace("schemas.User.properties.websites", "{ 'type': 'any', 'description': 'The user&s websites. The maximum allowed data size for this field is 2Kb.' }", "{ 'type': 'array', 'items': { '$ref': 'UserWebsite' }, 'description': 'The user&s websites. The maximum allowed data size for this field is 2Kb.' }");
             patcher.Replace("schemas.Aliases.properties.aliases.items", "{ 'type': 'any' }", "{ '$ref': 'Alias' }");
             patcher.SaveWithBackup();
 
