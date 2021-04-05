@@ -816,6 +816,92 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
+        /// Requests that a job is deleted. This call will return when the job is deleted. This method is available in
+        /// limited preview.
+        /// </summary>
+        /// <param name="projectId">Required. Project ID of the job to be deleted.</param>
+        /// <param name="jobId">
+        /// Required. Job ID of the job to be deleted. If this is a parent job which has child jobs, all child jobs will
+        /// be deleted as well. Deletion of child jobs directly is not allowed.
+        /// </param>
+        public virtual DeleteRequest Delete(string projectId, string jobId)
+        {
+            return new DeleteRequest(service, projectId, jobId);
+        }
+
+        /// <summary>
+        /// Requests that a job is deleted. This call will return when the job is deleted. This method is available in
+        /// limited preview.
+        /// </summary>
+        public class DeleteRequest : BigqueryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string jobId) : base(service)
+            {
+                ProjectId = projectId;
+                JobId = jobId;
+                InitParameters();
+            }
+
+            /// <summary>Required. Project ID of the job to be deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+            /// <summary>
+            /// Required. Job ID of the job to be deleted. If this is a parent job which has child jobs, all child jobs
+            /// will be deleted as well. Deletion of child jobs directly is not allowed.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string JobId { get; private set; }
+
+            /// <summary>
+            /// The geographic location of the job. Required. See details at:
+            /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "projects/{+projectId}/jobs/{+jobId}/delete";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projectId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("jobId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "jobId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Returns information about a specific job. Job information is available for a six month period after
         /// creation. Requires that you're the person who ran the job, or have the Is Owner project role.
         /// </summary>
@@ -7407,10 +7493,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
-        /// <summary>
-        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type
-        /// documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
-        /// </summary>
+        /// <summary>Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnTableType")]
         public virtual StandardSqlTableType ReturnTableType { get; set; }
 
@@ -8085,8 +8168,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
         /// FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME,
-        /// DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as
-        /// RECORD).
+        /// DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same
+        /// as RECORD).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

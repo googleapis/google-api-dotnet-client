@@ -333,8 +333,9 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
             /// <param name="name">
-            /// Required. The project, organization or folder on which to execute the request. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
+            /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -352,8 +353,9 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project, organization or folder on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+                /// folder on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1309,8 +1311,9 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
             /// <param name="name">
-            /// Required. The project, organization or folder on which to execute the request. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
+            /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -1328,8 +1331,9 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project, organization or folder on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+                /// folder on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2294,12 +2298,12 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new alerting policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project in which to create the alerting policy. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting
-            /// policy will be written, not the name of the created policy. |name| must be a host project of a
-            /// workspace, otherwise INVALID_ARGUMENT error will return. The alerting policy that is returned will have
-            /// a name that contains a normalized representation of this name as a prefix but adds a suffix of the form
-            /// /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the
+            /// alerting policy. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent
+            /// container in which the alerting policy will be written, not the name of the created policy. |name| must
+            /// be a host project of a workspace, otherwise INVALID_ARGUMENT error will return. The alerting policy that
+            /// is returned will have a name that contains a normalized representation of this name as a prefix but adds
+            /// a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
             {
@@ -2318,12 +2322,13 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project in which to create the alerting policy. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the
-                /// alerting policy will be written, not the name of the created policy. |name| must be a host project
-                /// of a workspace, otherwise INVALID_ARGUMENT error will return. The alerting policy that is returned
-                /// will have a name that contains a normalized representation of this name as a prefix but adds a
-                /// suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create
+                /// the alerting policy. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
+                /// parent container in which the alerting policy will be written, not the name of the created policy.
+                /// |name| must be a host project of a workspace, otherwise INVALID_ARGUMENT error will return. The
+                /// alerting policy that is returned will have a name that contains a normalized representation of this
+                /// name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID], identifying the
+                /// policy in the container.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2463,10 +2468,10 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the existing alerting policies for the workspace.</summary>
             /// <param name="name">
-            /// Required. The project whose alert policies are to be listed. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the alerting
-            /// policies to be listed are stored. To retrieve a single alerting policy by name, use the GetAlertPolicy
-            /// operation, instead.
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose alert policies are
+            /// to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent
+            /// container in which the alerting policies to be listed are stored. To retrieve a single alerting policy
+            /// by name, use the GetAlertPolicy operation, instead.
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -2484,10 +2489,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project whose alert policies are to be listed. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] Note that this field names the parent container in which the
-                /// alerting policies to be listed are stored. To retrieve a single alerting policy by name, use the
-                /// GetAlertPolicy operation, instead.
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose alert policies
+                /// are to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
+                /// parent container in which the alerting policies to be listed are stored. To retrieve a single
+                /// alerting policy by name, use the GetAlertPolicy operation, instead.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2697,7 +2702,8 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The project in which to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the time
+            /// series. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
             {
@@ -2719,7 +2725,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// The project in which to create the time series. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the time
+                /// series. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2917,7 +2924,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new group.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project in which to create the group. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the
+            /// group. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Group body, string name)
             {
@@ -2936,7 +2944,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project in which to create the group. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create
+                /// the group. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3098,7 +3107,8 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the existing groups.</summary>
             /// <param name="name">
-            /// Required. The project whose groups are to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose groups are to be
+            /// listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -3116,7 +3126,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project whose groups are to be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose groups are to
+                /// be listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3319,7 +3330,8 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: 4 projects/PROJECT_ID_OR_NUMBER
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.MetricDescriptor body, string name)
             {
@@ -3341,8 +3353,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: 4 projects/PROJECT_ID_OR_NUMBER
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3493,7 +3505,8 @@ namespace Google.Apis.Monitoring.v3
             /// Lists metric descriptors that match a filter. This method does not require a Workspace.
             /// </summary>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -3513,8 +3526,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3668,7 +3681,8 @@ namespace Google.Apis.Monitoring.v3
             /// Lists monitored resource descriptors that match a filter. This method does not require a Workspace.
             /// </summary>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -3688,8 +3702,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3844,9 +3858,10 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="name">
             /// Required. The REST resource name of the parent from which to retrieve the notification channel
-            /// descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names the parent
-            /// container in which to look for the descriptors; to retrieve a single descriptor by name, use the
-            /// GetNotificationChannelDescriptor operation, instead.
+            /// descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names
+            /// (https://cloud.google.com/monitoring/api/v3#project_name) the parent container in which to look for the
+            /// descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor
+            /// operation, instead.
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -3868,9 +3883,10 @@ namespace Google.Apis.Monitoring.v3
 
                 /// <summary>
                 /// Required. The REST resource name of the parent from which to retrieve the notification channel
-                /// descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names the parent
-                /// container in which to look for the descriptors; to retrieve a single descriptor by name, use the
-                /// GetNotificationChannelDescriptor operation, instead.
+                /// descriptors. The expected syntax is: projects/[PROJECT_ID_OR_NUMBER] Note that this names
+                /// (https://cloud.google.com/monitoring/api/v3#project_name) the parent container in which to look for
+                /// the descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor
+                /// operation, instead.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3953,10 +3969,11 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
-            /// This names the container into which the channel will be written, this does not name the newly created
-            /// channel. The resulting channel's name will have a normalized version of this field as a prefix, but will
-            /// add /notificationChannels/[CHANNEL_ID] to identify the channel.
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container into which the channel
+            /// will be written, this does not name the newly created channel. The resulting channel's name will have a
+            /// normalized version of this field as a prefix, but will add /notificationChannels/[CHANNEL_ID] to
+            /// identify the channel.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
             {
@@ -3978,11 +3995,11 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] This names the container into which the channel will be written,
-                /// this does not name the newly created channel. The resulting channel's name will have a normalized
-                /// version of this field as a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify the
-                /// channel.
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container into which the
+                /// channel will be written, this does not name the newly created channel. The resulting channel's name
+                /// will have a normalized version of this field as a prefix, but will add
+                /// /notificationChannels/[CHANNEL_ID] to identify the channel.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4238,9 +4255,10 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists the notification channels that have been created for the project.</summary>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
-            /// This names the container in which to look for the notification channels; it does not name a specific
-            /// channel. To query a specific channel by REST resource name, use the GetNotificationChannel operation.
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container in which to look for
+            /// the notification channels; it does not name a specific channel. To query a specific channel by REST
+            /// resource name, use the GetNotificationChannel operation.
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -4258,10 +4276,10 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] This names the container in which to look for the notification
-                /// channels; it does not name a specific channel. To query a specific channel by REST resource name,
-                /// use the GetNotificationChannel operation.
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER] This names the container in which to
+                /// look for the notification channels; it does not name a specific channel. To query a specific channel
+                /// by REST resource name, use the GetNotificationChannel operation.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4573,7 +4591,8 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.CreateTimeSeriesRequest body, string name)
             {
@@ -4596,8 +4615,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4634,8 +4653,9 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Lists time series that match a filter. This method does not require a Workspace.</summary>
             /// <param name="name">
-            /// Required. The project, organization or folder on which to execute the request. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or folder
+            /// on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
             /// </param>
             public virtual ListRequest List(string name)
             {
@@ -4653,8 +4673,9 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project, organization or folder on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER] organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name), organization or
+                /// folder on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+                /// organizations/[ORGANIZATION_ID] folders/[FOLDER_ID]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5579,7 +5600,8 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute the
+            /// request. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual QueryRequest Query(Google.Apis.Monitoring.v3.Data.QueryTimeSeriesRequest body, string name)
             {
@@ -5600,8 +5622,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project on which to execute the request. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) on which to execute
+                /// the request. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5657,8 +5679,8 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Creates a new Uptime check configuration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The project in which to create the Uptime check. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create the
+            /// Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.UptimeCheckConfig body, string parent)
             {
@@ -5677,8 +5699,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project in which to create the Uptime check. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) in which to create
+                /// the Uptime check. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5828,8 +5850,8 @@ namespace Google.Apis.Monitoring.v3
             /// configurations).
             /// </summary>
             /// <param name="parent">
-            /// Required. The project whose Uptime check configurations are listed. The format is:
-            /// projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose Uptime check
+            /// configurations are listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -5850,8 +5872,8 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required. The project whose Uptime check configurations are listed. The format is:
-                /// projects/[PROJECT_ID_OR_NUMBER]
+                /// Required. The project (https://cloud.google.com/monitoring/api/v3#project_name) whose Uptime check
+                /// configurations are listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6468,7 +6490,8 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Create a Service.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
+        /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent workspace.
+        /// The format is: projects/[PROJECT_ID_OR_NUMBER]
         /// </param>
         public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.Service body, string parent)
         {
@@ -6487,7 +6510,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Required. Resource name of the parent workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
+            /// Required. Resource name (https://cloud.google.com/monitoring/api/v3#project_name) of the parent
+            /// workspace. The format is: projects/[PROJECT_ID_OR_NUMBER]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -6641,8 +6665,9 @@ namespace Google.Apis.Monitoring.v3
 
         /// <summary>List Services for this workspace.</summary>
         /// <param name="parent">
-        /// Required. Resource name of the parent containing the listed services, either a project or a Monitoring
-        /// Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
+        /// Required. Resource name of the parent containing the listed services, either a project
+        /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Workspace. The formats are:
+        /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
         /// </param>
         public virtual ListRequest List(string parent)
         {
@@ -6660,8 +6685,9 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Required. Resource name of the parent containing the listed services, either a project or a Monitoring
-            /// Workspace. The formats are: projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
+            /// Required. Resource name of the parent containing the listed services, either a project
+            /// (https://cloud.google.com/monitoring/api/v3#project_name) or a Monitoring Workspace. The formats are:
+            /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -9554,7 +9580,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// The associated monitored resource. Custom metrics can use only certain monitored resource types in their
-        /// time series data.
+        /// time series data. For more information, see Monitored resources for custom metrics
+        /// (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual MonitoredResource Resource { get; set; }

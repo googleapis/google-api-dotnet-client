@@ -634,8 +634,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -710,8 +710,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string ApiVersion { get; set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -1031,8 +1031,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string ApiVersion { get; set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -1565,8 +1565,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -1647,8 +1647,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string ApiVersion { get; set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -1956,8 +1956,8 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// DryRun is a query string parameter which indicates that the server should run validation without
-                /// persisting the request.
+                /// Indicates that the server should validate the request and populate default values without persisting
+                /// the request. Supported values: `all`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DryRun { get; set; }
@@ -2478,8 +2478,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -2554,8 +2554,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string ApiVersion { get; set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -2876,8 +2876,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string ApiVersion { get; set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -3412,8 +3412,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -3494,8 +3494,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string ApiVersion { get; set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -3880,8 +3880,8 @@ namespace Google.Apis.CloudRun.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// DryRun is a query string parameter which indicates that the server should run validation without
-                    /// persisting the request.
+                    /// Indicates that the server should validate the request and populate default values without
+                    /// persisting the request. Supported values: `all`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DryRun { get; set; }
@@ -4527,7 +4527,10 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; }
 
-        /// <summary>(Optional) Name of the container specified as a DNS_LABEL.</summary>
+        /// <summary>
+        /// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info:
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4584,8 +4587,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string TerminationMessagePolicy { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into
-        /// the container's filesystem.
+        /// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports
+        /// SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
         public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; }
@@ -4767,8 +4770,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Value { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment
-        /// variable's value. Cannot be used if value is not empty.
+        /// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports
+        /// secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used
+        /// if value is not empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrom")]
         public virtual EnvVarSource ValueFrom { get; set; }
@@ -4791,8 +4795,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual ConfigMapKeySelector ConfigMapKeyRef { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret
-        /// in the pod's namespace
+        /// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud
+        /// Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretKeyRef")]
         public virtual SecretKeySelector SecretKeyRef { get; set; }
@@ -4961,13 +4965,13 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a
-    /// volume.
+    /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
     /// </summary>
     public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+        /// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest
+        /// value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -4982,9 +4986,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> Mode { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map
-        /// the key to. May not be an absolute path. May not contain the path element '..'. May not start with the
-        /// string '..'.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the
+        /// key to. May not be an absolute path. May not contain the path element '..'. May not start with the string
+        /// '..'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -5363,11 +5367,12 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; }
 
         /// <summary>
-        /// (Optional) An opaque value that represents the internal version of this object that can be used by clients
-        /// to determine when objects have changed. May be used for optimistic concurrency, change detection, and the
-        /// watch operation on a resource or set of resources. Clients must treat these values as opaque and passed
-        /// unmodified back to the server. They may only be valid for a particular resource or set of resources.
-        /// Populated by the system. Read-only. Value must be treated as opaque by clients. More info:
+        /// Optional. An opaque value that represents the internal version of this object that can be used by clients to
+        /// determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch
+        /// operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified
+        /// back to the server or omit the value to disable conflict-detection. They may only be valid for a particular
+        /// resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients
+        /// or omitted. More info:
         /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
@@ -5897,8 +5902,9 @@ namespace Google.Apis.CloudRun.v1.Data
     public class SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from.
-        /// Must be a valid secret key.
+        /// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest
+        /// version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to
+        /// select from. Must be a valid secret key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -5911,8 +5917,11 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's
-        /// namespace to select from.
+        /// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is
+        /// assumed to be in the same project. If the secret is in another project, you must define an alias. An alias
+        /// definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be
+        /// separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud
+        /// Run for Anthos: supported The name of the secret in the pod's namespace to select from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5929,8 +5938,10 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data
-    /// field will be presented in a volume as files using the keys in the Data field as the file names.
+    /// Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is
+    /// defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for
+    /// Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using
+    /// the keys in the Data field as the file names.
     /// </summary>
     public class SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5946,11 +5957,14 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> DefaultMode { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each
-        /// key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose
-        /// name is the key and content is the value. If specified, the listed keys will be projected into the specified
-        /// paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the
-        /// volume setup will error unless it is marked optional.
+        /// (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is
+        /// the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and
+        /// the path will be the name of the file exposed in the volume. When items are defined, they must specify a key
+        /// and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the
+        /// referenced Secret will be projected into the volume as a file whose name is the key and content is the
+        /// value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not
+        /// be present. If a key is specified which is not present in the Secret, the volume setup will error unless it
+        /// is marked optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<KeyToPath> Items { get; set; }
@@ -5963,8 +5977,11 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<bool> Optional { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's
-        /// namespace to use.
+        /// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is
+        /// assumed to be in the same project. If the secret is in another project, you must define an alias. An alias
+        /// definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be
+        /// separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud
+        /// Run for Anthos: supported Name of the secret in the container's namespace to use.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretName")]
         public virtual string SecretName { get; set; }
@@ -6384,11 +6401,11 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
         public virtual ConfigMapVolumeSource ConfigMap { get; set; }
 
-        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.</summary>
+        /// <summary>Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Cloud Run fully managed: not supported Cloud Run for Anthos: supported</summary>
+        /// <summary>Cloud Run fully managed: supported Cloud Run for Anthos: supported</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secret")]
         public virtual SecretVolumeSource Secret { get; set; }
 
@@ -6403,20 +6420,20 @@ namespace Google.Apis.CloudRun.v1.Data
     public class VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which
-        /// the volume should be mounted. Must not contain ':'.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the
+        /// volume should be mounted. Must not contain ':'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted.
+        /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted.
         /// Defaults to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]

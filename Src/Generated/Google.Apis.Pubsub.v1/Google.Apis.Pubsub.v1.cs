@@ -65,7 +65,7 @@ namespace Google.Apis.Pubsub.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Pub/Sub API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage Pub/Sub topics and subscriptions</summary>
@@ -75,7 +75,7 @@ namespace Google.Apis.Pubsub.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Pub/Sub API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View and manage Pub/Sub topics and subscriptions</summary>
@@ -4161,8 +4161,9 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>
         /// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
-        /// `message_retention_duration` window. This must be true if you would like to [Seek to a timestamp]
-        /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
+        /// `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp]
+        /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay
+        /// previously-acknowledged messages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; }

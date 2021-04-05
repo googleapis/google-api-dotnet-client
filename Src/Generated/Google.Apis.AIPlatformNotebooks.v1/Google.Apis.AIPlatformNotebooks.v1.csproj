@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.AIPlatformNotebooks.v1 Client Library</Title>
-    <Version>1.51.0.2255</Version>
+    <Version>1.51.0.2273</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2021 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
