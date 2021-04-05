@@ -65,14 +65,14 @@ namespace Google.Apis.AIPlatformNotebooks.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Notebooks API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Notebooks API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -295,6 +295,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 Executions = new ExecutionsResource(service);
                 Instances = new InstancesResource(service);
                 Operations = new OperationsResource(service);
+                Runtimes = new RuntimesResource(service);
                 Schedules = new SchedulesResource(service);
             }
 
@@ -1857,6 +1858,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Updates the Shielded instance configuration of a single Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual UpdateShieldedInstanceConfigRequest UpdateShieldedInstanceConfig(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateShieldedInstanceConfigRequest body, string name)
+                {
+                    return new UpdateShieldedInstanceConfigRequest(service, body, name);
+                }
+
+                /// <summary>Updates the Shielded instance configuration of a single Instance.</summary>
+                public class UpdateShieldedInstanceConfigRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateShieldedInstanceConfig request.</summary>
+                    public UpdateShieldedInstanceConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.UpdateShieldedInstanceConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.UpdateShieldedInstanceConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateShieldedInstanceConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:updateShieldedInstanceConfig";
+
+                    /// <summary>Initializes UpdateShieldedInstanceConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Upgrades a notebook instance to the latest version.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2264,6 +2322,506 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 }
             }
 
+            /// <summary>Gets the Runtimes resource.</summary>
+            public virtual RuntimesResource Runtimes { get; }
+
+            /// <summary>The "runtimes" collection of methods.</summary>
+            public class RuntimesResource
+            {
+                private const string Resource = "runtimes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RuntimesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new Runtime in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v1.Data.Runtime body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Runtime in a given project and location.</summary>
+                public class CreateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.Runtime body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-defined unique ID of this Runtime.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("runtimeId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RuntimeId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.Runtime Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/runtimes";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("runtimeId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "runtimeId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Runtime.</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single Runtime.</summary>
+                public class DeleteRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets details of a single Runtime. The location must be a regional endpoint rather than zonal.
+                /// </summary>
+                public class GetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Runtime>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Runtimes in a given project and location.</summary>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Runtimes in a given project and location.</summary>
+                public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.ListRuntimesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Maximum return size of the list call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A previous returned page token that can be used to continue listing from the last result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/runtimes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resets a Managed Notebook Runtime.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual ResetRequest Reset(Google.Apis.AIPlatformNotebooks.v1.Data.ResetRuntimeRequest body, string name)
+                {
+                    return new ResetRequest(service, body, name);
+                }
+
+                /// <summary>Resets a Managed Notebook Runtime.</summary>
+                public class ResetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reset request.</summary>
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.ResetRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.ResetRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reset";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:reset";
+
+                    /// <summary>Initializes Reset parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Starts a Managed Notebook Runtime. Perform "Start" on GPU instances; "Resume" on CPU instances See:
+                /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+                /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual StartRequest Start(Google.Apis.AIPlatformNotebooks.v1.Data.StartRuntimeRequest body, string name)
+                {
+                    return new StartRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Starts a Managed Notebook Runtime. Perform "Start" on GPU instances; "Resume" on CPU instances See:
+                /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+                /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+                /// </summary>
+                public class StartRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.StartRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.StartRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Stops a Managed Notebook Runtime. Perform "Stop" on GPU instances; "Suspend" on CPU instances See:
+                /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+                /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.AIPlatformNotebooks.v1.Data.StopRuntimeRequest body, string name)
+                {
+                    return new StopRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Stops a Managed Notebook Runtime. Perform "Stop" on GPU instances; "Suspend" on CPU instances See:
+                /// https://cloud.google.com/compute/docs/instances/stop-start-instance
+                /// https://cloud.google.com/compute/docs/instances/suspend-resume-instance
+                /// </summary>
+                public class StopRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.StopRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.StopRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Switch a Managed Notebook Runtime.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                /// </param>
+                public virtual AIPlatformNotebooksSwitchRequest AIPlatformNotebooksSwitch(Google.Apis.AIPlatformNotebooks.v1.Data.SwitchRuntimeRequest body, string name)
+                {
+                    return new AIPlatformNotebooksSwitchRequest(service, body, name);
+                }
+
+                /// <summary>Switch a Managed Notebook Runtime.</summary>
+                public class AIPlatformNotebooksSwitchRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new AIPlatformNotebooksSwitch request.</summary>
+                    public AIPlatformNotebooksSwitchRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.SwitchRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.SwitchRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "switch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:switch";
+
+                    /// <summary>Initializes AIPlatformNotebooksSwitch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/runtimes/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Schedules resource.</summary>
             public virtual SchedulesResource Schedules { get; }
 
@@ -2663,15 +3221,23 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// "displayName=tokyo", and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The standard list page size.</summary>
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service will select a default.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>The standard list page token.</summary>
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2912,6 +3478,24 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks
+    /// in Virtual Machine.
+    /// </summary>
+    public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as
+        /// a disks. It has the following format:
+        /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3477,6 +4061,30 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for listing Managed Notebook Runtimes.</summary>
+    public class ListRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Page token that can be used to continue listing from the last result in the next list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of returned Runtimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimes")]
+        public virtual System.Collections.Generic.IList<Runtime> Runtimes { get; set; }
+
+        /// <summary>
+        /// Locations that could not be reached. For example, ['us-west1', 'us-central1']. A ListRuntimesResponse will
+        /// only contain either runtimes or unreachables,
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for listing scheduled notebook job.</summary>
     public class ListSchedulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3497,6 +4105,139 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An Local attached disk resource.</summary>
+    public class LocalDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the
+        /// disk is detached from the instance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
+        public virtual System.Nullable<bool> AutoDelete { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the
+        /// disk for its root filesystem.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boot")]
+        public virtual System.Nullable<bool> Boot { get; set; }
+
+        /// <summary>
+        /// Output only. Specifies a unique device name of your choice that is reflected into the
+        /// /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used
+        /// to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the
+        /// server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a
+        /// number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
+        public virtual string DeviceName { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates a list of features to enable on the guest operating system. Applicable only for
+        /// bootable images. Read Enabling guest operating system features to see a list of available options.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<RuntimeGuestOsFeature> GuestOsFeatures { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you
+        /// have many disks attached to an instance, each disk would have a unique index number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>
+        /// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new
+        /// instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
+        /// This property is mutually exclusive with the source property; you can only define one or the other, but not
+        /// both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializeParams")]
+        public virtual LocalDiskInitializeParams InitializeParams { get; set; }
+
+        /// <summary>
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is
+        /// SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent
+        /// disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics
+        /// of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interface")]
+        public virtual string Interface__ { get; set; }
+
+        /// <summary>Output only. Type of the resource. Always compute#attachedDisk for attached disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Output only. [Output Only] Any valid publicly visible licenses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
+        public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
+
+        /// <summary>
+        /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to
+        /// attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
+        /// Valid values: PERSISTENT SCRATCH
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use
+    /// initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is
+    /// mutually exclusive with the source property; you can only define one or the other, but not both.
+    /// </summary>
+    public class LocalDiskInitializeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Provide this property when creating the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the
+        /// disk with the instance name exists already in the given zone/region, a new name will be automatically
+        /// generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
+        public virtual string DiskName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as
+        /// the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk
+        /// (`PD_STANDARD`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This
+        /// field is only applicable for persistent disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3722,6 +4463,209 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for reseting a Managed Notebook Runtime.</summary>
+    public class ResetRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of a Runtime for a managed notebook instance.</summary>
+    public class Runtime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The config settings for accessing runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessConfig")]
+        public virtual RuntimeAccessConfig AccessConfig { get; set; }
+
+        /// <summary>Output only. Runtime creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. Runtime health_state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
+        public virtual string HealthState { get; set; }
+
+        /// <summary>Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual RuntimeMetrics Metrics { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the runtime. Format:
+        /// `projects/{project}/locations/{location}/runtimes/{runtime}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The config settings for software inside the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
+        public virtual RuntimeSoftwareConfig SoftwareConfig { get; set; }
+
+        /// <summary>Output only. Runtime state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Runtime update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>Use a Compute Engine VM image to start the managed notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualMachine")]
+        public virtual VirtualMachine VirtualMachine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware
+    /// accelerators that can be used. See [Compute Engine
+    /// AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: *
+    /// `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` *
+    /// `nvidia-tesla-a100`
+    /// </summary>
+    public class RuntimeAcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of cores of this accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<long> CoreCount { get; set; }
+
+        /// <summary>Accelerator model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the login configuration for Runtime</summary>
+    public class RuntimeAccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of access mode this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
+        /// <summary>Output only. The proxy endpoint that is used to access the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
+        public virtual string ProxyUri { get; set; }
+
+        /// <summary>
+        /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeOwner")]
+        public virtual string RuntimeOwner { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling
+    /// guest operating system features to see a list of available options. Guest OS features for boot disk.
+    /// </summary>
+    public class RuntimeGuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available
+        /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE
+        /// VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains runtime daemon metrics, such as OS and kernels and sessions stats.</summary>
+    public class RuntimeMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The system metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemMetrics")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SystemMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are
+    /// valid.
+    /// </summary>
+    public class RuntimeShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+        /// boot integrity of the instance. The attestation is performed against the integrity policy baseline. This
+        /// baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled
+        /// by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+        /// authentic software by verifying the digital signature of all boot components, and halting the boot process
+        /// if signature verification fails. Disabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>Defines whether the instance has the vTPM enabled. Enabled by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the selection and config of software inside the runtime. / The properties to set on runtime.
+    /// Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true *
+    /// idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+    /// </summary>
+    public class RuntimeSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically
+        /// choose from official GPU drivers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGpuDriverPath")]
+        public virtual string CustomGpuDriverPath { get; set; }
+
+        /// <summary>Verifies core internal services are running. Default: True</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHealthMonitoring")]
+        public virtual System.Nullable<bool> EnableHealthMonitoring { get; set; }
+
+        /// <summary>Runtime will automatically shutdown after idle_shutdown_time. Default: False</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleShutdown")]
+        public virtual System.Nullable<bool> IdleShutdown { get; set; }
+
+        /// <summary>Time in minutes to wait before shuting down runtime. Default: 90 minutes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownTimeout")]
+        public virtual System.Nullable<int> IdleShutdownTimeout { get; set; }
+
+        /// <summary>Install Nvidia Driver automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installGpuDriver")]
+        public virtual System.Nullable<bool> InstallGpuDriver { get; set; }
+
+        /// <summary>
+        /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron
+        /// format](https://en.wikipedia.org/wiki/Cron).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookUpgradeSchedule")]
+        public virtual string NotebookUpgradeSchedule { get; set; }
+
+        /// <summary>
+        /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a
+        /// URL or Cloud Storage path (gs://path-to-file/file-name).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
+        public virtual string PostStartupScript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The definition of a schedule.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3899,6 +4843,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for starting a Managed Notebook Runtime.</summary>
+    public class StartRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -3935,6 +4886,28 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for stopping a Managed Notebook Runtime.</summary>
+    public class StopRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for switching a Managed Notebook Runtime.</summary>
+    public class SwitchRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>accelerator config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
+        public virtual RuntimeAcceleratorConfig AcceleratorConfig { get; set; }
+
+        /// <summary>machine type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3964,6 +4937,20 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for created scheduled notebooks</summary>
     public class TriggerScheduleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request for updating the Shielded Instance config for a notebook instance. You can only use this method on a
+    /// stopped instance
+    /// </summary>
+    public class UpdateShieldedInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ShieldedInstance configuration to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4032,6 +5019,129 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for upgrading a notebook instance</summary>
     public class UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime using Virtual Machine for computing.</summary>
+    public class VirtualMachine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The unique identifier of the Managed Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>Output only. The user-friendly name of the Managed Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; }
+
+        /// <summary>Virtual Machine configuration settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualMachineConfig")]
+        public virtual VirtualMachineConfig VirtualMachineConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config settings for virtual machine.</summary>
+    public class VirtualMachineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Compute Engine accelerator configuration for this runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
+        public virtual RuntimeAcceleratorConfig AcceleratorConfig { get; set; }
+
+        /// <summary>Optional. Use a list of container images to start the notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImages")]
+        public virtual System.Collections.Generic.IList<ContainerImage> ContainerImages { get; set; }
+
+        /// <summary>Required. Data disk option configuration settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDisk")]
+        public virtual LocalDisk DataDisk { get; set; }
+
+        /// <summary>Optional. Encryption settings for virtual machine data disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual EncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The Compute Engine guest attributes. (see [Project and instance guest
+        /// attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> GuestAttributes { get; set; }
+
+        /// <summary>
+        /// Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to
+        /// internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This
+        /// `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies
+        /// must be configured to be accessible without external IP addresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
+        public virtual System.Nullable<bool> InternalIpOnly { get; set; }
+
+        /// <summary>
+        /// Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and
+        /// must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if
+        /// present, must contain 1 to 63 characters, and must conform to [RFC
+        /// 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: *
+        /// `n1-standard-2` * `e2-standard-8`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance
+        /// metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with
+        /// subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if
+        /// it exists. A full URL or partial URI. Examples: *
+        /// `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` *
+        /// `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure.
+        /// Runtimes support the following network configurations: * Google Managed Network (Network &amp;amp; subnet
+        /// are empty) * Consumer Project VPC (network &amp;amp; subnet are required). Requires configuring Private
+        /// Service Access. * Shared VPC (network &amp;amp; subnet are required). Requires configuring Private Service
+        /// Access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Optional. Shielded VM Instance configuration settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual RuntimeShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with
+        /// network. A full URL or partial URI are valid. Examples: *
+        /// `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` *
+        /// `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
+        /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// Output only. The zone where the virtual machine is located. If using regional request, the notebooks service
+        /// will pick a location in the corresponding runtime region. On a get request, zone will always be present.
+        /// Example: * `us-central1-b`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

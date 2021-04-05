@@ -2976,8 +2976,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to
-        /// work until the project creation is complete.
+        /// True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed
+        /// to work until the project creation is complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
         public virtual System.Nullable<bool> Gettable { get; set; }
@@ -3005,7 +3005,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteFolder.
+    /// A status object which is used as the `metadata` field for the `Operation` returned by `DeleteFolder`.
     /// </summary>
     public class DeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3014,7 +3014,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteOrganization.
+    /// A status object which is used as the `metadata` field for the operation returned by DeleteOrganization.
     /// </summary>
     public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3023,7 +3023,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteProject.
+    /// A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.
     /// </summary>
     public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3495,7 +3495,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata pertaining to the Folder move process.</summary>
+    /// <summary>Metadata pertaining to the folder move process.</summary>
     public class MoveFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the folder or organization to move the folder to.</summary>
@@ -3990,7 +3990,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteFolder.
+    /// A status object which is used as the `metadata` field for the `Operation` returned by `UndeleteFolder`.
     /// </summary>
     public class UndeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4008,7 +4008,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteProject.
+    /// A status object which is used as the `metadata` field for the Operation returned by `UndeleteProject`.
     /// </summary>
     public class UndeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

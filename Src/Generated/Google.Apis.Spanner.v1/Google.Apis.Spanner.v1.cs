@@ -65,7 +65,7 @@ namespace Google.Apis.Spanner.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Spanner API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Administer your Spanner databases</summary>
@@ -78,7 +78,7 @@ namespace Google.Apis.Spanner.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Spanner API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Administer your Spanner databases</summary>
@@ -6406,6 +6406,24 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
+        /// <summary>
+        /// A per-request tag which can be applied to queries or reads, used for statistics collection. Both request_tag
+        /// and transaction_tag can be specified for a read or query that belongs to a transaction. This field is
+        /// ignored for requests where it's not applicable (e.g. CommitRequest). `request_tag` must be a valid
+        /// identifier of the form: `a-zA-Z` between 2 and 64 characters in length
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTag")]
+        public virtual string RequestTag { get; set; }
+
+        /// <summary>
+        /// A tag used for statistics collection about this transaction. Both request_tag and transaction_tag can be
+        /// specified for a read or query that belongs to a transaction. The value of transaction_tag should be the same
+        /// for all requests belonging to the same transaction. If this request doesn’t belong to any transaction,
+        /// transaction_tag will be ignored. `transaction_tag` must be a valid identifier of the format: `a-zA-Z{0,49}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionTag")]
+        public virtual string TransactionTag { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7002,6 +7020,15 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The database being modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
+
+        /// <summary>
+        /// The progress of the UpdateDatabaseDdl operations. Currently, only index creation statements will have a
+        /// continuously updating progress. For non-index creation statements, `progress[i]` will have start time and
+        /// end time populated with commit timestamp of operation, as well as a progress of 100% once the operation has
+        /// completed. `progress[i]` is the operation progress for `statements[i]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progress")]
+        public virtual System.Collections.Generic.IList<OperationProgress> Progress { get; set; }
 
         /// <summary>
         /// For an update this list contains all the statements. For an individual statement, this list contains only

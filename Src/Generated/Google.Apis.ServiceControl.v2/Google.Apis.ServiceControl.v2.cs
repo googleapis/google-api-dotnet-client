@@ -65,7 +65,7 @@ namespace Google.Apis.ServiceControl.v2
         /// <summary>Available OAuth 2.0 scopes for use with the Service Control API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google Service Control data</summary>
@@ -75,7 +75,7 @@ namespace Google.Apis.ServiceControl.v2
         /// <summary>Available OAuth 2.0 scope constants for use with the Service Control API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage your Google Service Control data</summary>
@@ -815,8 +815,8 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Headers { get; set; }
 
         /// <summary>
-        /// An 'OK' status allows the operation. Any other status indicates a denial; [google.rpc.Status.details]()
-        /// would contain additional details about the denial.
+        /// Operation is allowed when this field is not set. Any non-'OK' status indicates a denial;
+        /// [google.rpc.Status.details]() would contain additional details about the denial.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }

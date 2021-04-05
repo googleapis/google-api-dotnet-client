@@ -66,7 +66,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Service Management API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -82,7 +82,7 @@ namespace Google.Apis.ServiceManagement.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Service Management API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -4220,7 +4220,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("billing")]
         public virtual Billing Billing { get; set; }
 
-        /// <summary>Deprecated. The service config compiler always sets this field to `3`.</summary>
+        /// <summary>
+        /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field
+        /// to `3`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
         public virtual System.Nullable<long> ConfigVersion { get; set; }
 

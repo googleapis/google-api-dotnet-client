@@ -310,18 +310,19 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of
-        /// the folder creation workflow. Upon success the Operation.response field will be populated with the created
-        /// Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or
-        /// fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its
-        /// parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10.
-        /// Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
-        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
-        /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
-        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
-        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
-        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
-        /// The caller must have `resourcemanager.folders.create` permission on the identified parent.
+        /// Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress
+        /// of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the
+        /// created Folder. In order to succeed, the addition of this new folder must not violate the folder naming,
+        /// height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that
+        /// share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height
+        /// of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the folder must not
+        /// cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the `CreateFolder` request, with status code
+        /// `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in
+        /// the `Operation`, with the specific `PreconditionFailure` returned in the details list in the
+        /// `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified
+        /// parent.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Folder body)
@@ -330,18 +331,19 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of
-        /// the folder creation workflow. Upon success the Operation.response field will be populated with the created
-        /// Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or
-        /// fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its
-        /// parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10.
-        /// Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides
-        /// additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not
-        /// cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder
-        /// constraint violation, some errors may be returned by the CreateFolder request, with status code
-        /// FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the
-        /// Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field.
-        /// The caller must have `resourcemanager.folders.create` permission on the identified parent.
+        /// Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress
+        /// of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the
+        /// created Folder. In order to succeed, the addition of this new folder must not violate the folder naming,
+        /// height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that
+        /// share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height
+        /// of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides
+        /// additional headroom when moving folders that contain deleted folders. + The addition of the folder must not
+        /// cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder
+        /// constraint violation, some errors may be returned by the `CreateFolder` request, with status code
+        /// `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in
+        /// the `Operation`, with the specific `PreconditionFailure` returned in the details list in the
+        /// `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified
+        /// parent.
         /// </summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -375,14 +377,14 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is
-        /// deleted approximately 30 days later. This method may only be called on an empty Folder, where a Folder is
-        /// empty if it doesn't contain any Folders or Projects in the ACTIVE state. If called on a folder in
-        /// DELETE_REQUESTED state the result will be a no-op success. The caller must have
+        /// Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state immediately, and is
+        /// deleted approximately 30 days later. This method may only be called on an empty folder, where a folder is
+        /// empty if it doesn't contain any folders or projects in the ACTIVE state. If called on a folder in
+        /// DELETE_REQUESTED state the operation will result in a no-op success. The caller must have
         /// `resourcemanager.folders.delete` permission on the identified folder.
         /// </summary>
         /// <param name="name">
-        /// Required. The resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`.
+        /// Required. The resource name of the folder to be deleted. Must be of the form `folders/{folder_id}`.
         /// </param>
         public virtual DeleteRequest Delete(string name)
         {
@@ -390,10 +392,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is
-        /// deleted approximately 30 days later. This method may only be called on an empty Folder, where a Folder is
-        /// empty if it doesn't contain any Folders or Projects in the ACTIVE state. If called on a folder in
-        /// DELETE_REQUESTED state the result will be a no-op success. The caller must have
+        /// Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state immediately, and is
+        /// deleted approximately 30 days later. This method may only be called on an empty folder, where a folder is
+        /// empty if it doesn't contain any folders or projects in the ACTIVE state. If called on a folder in
+        /// DELETE_REQUESTED state the operation will result in a no-op success. The caller must have
         /// `resourcemanager.folders.delete` permission on the identified folder.
         /// </summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
@@ -406,7 +408,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Required. The resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`.
+            /// Required. The resource name of the folder to be deleted. Must be of the form `folders/{folder_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -436,12 +438,12 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format
+        /// Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format
         /// `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get`
         /// permission on the identified folder.
         /// </summary>
         /// <param name="name">
-        /// Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`.
+        /// Required. The resource name of the folder to retrieve. Must be of the form `folders/{folder_id}`.
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -449,7 +451,7 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format
+        /// Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format
         /// `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get`
         /// permission on the identified folder.
         /// </summary>
@@ -463,7 +465,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`.
+            /// Required. The resource name of the folder to retrieve. Must be of the form `folders/{folder_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -493,9 +495,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource
-        /// exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have
-        /// `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+        /// Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource
+        /// exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller
+        /// must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -508,9 +510,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource
-        /// exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have
-        /// `resourcemanager.folders.getIamPolicy` permission on the identified folder.
+        /// Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource
+        /// exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller
+        /// must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
         /// </summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -560,9 +562,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly
-        /// consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based
-        /// upon the (ascending) lexical ordering of their display_name. The caller must have
+        /// Lists the folders that are direct descendants of supplied parent resource. `list()` provides a strongly
+        /// consistent view of the folders underneath the specified parent resource. `list()` returns folders sorted
+        /// based upon the (ascending) lexical ordering of their display_name. The caller must have
         /// `resourcemanager.folders.list` permission on the identified parent.
         /// </summary>
         public virtual ListRequest List()
@@ -571,9 +573,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly
-        /// consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based
-        /// upon the (ascending) lexical ordering of their display_name. The caller must have
+        /// Lists the folders that are direct descendants of supplied parent resource. `list()` provides a strongly
+        /// consistent view of the folders underneath the specified parent resource. `list()` returns folders sorted
+        /// based upon the (ascending) lexical ordering of their display_name. The caller must have
         /// `resourcemanager.folders.list` permission on the identified parent.
         /// </summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListFoldersResponse>
@@ -585,7 +587,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of Folders to return in the response. If unspecified, server picks an
+            /// Optional. The maximum number of folders to return in the response. If unspecified, server picks an
             /// appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -599,7 +601,7 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the
+            /// Required. The resource name of the organization or folder whose folders are being listed. Must be of the
             /// form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking
             /// the `resourcemanager.folders.list` permission on the `parent`.
             /// </summary>
@@ -607,7 +609,7 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string Parent { get; set; }
 
             /// <summary>
-            /// Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
+            /// Optional. Controls whether folders in the DELETE_REQUESTED state should be returned. Defaults to false.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
@@ -661,15 +663,15 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of
-        /// the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder.
-        /// Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs
-        /// synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs
-        /// asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the
-        /// Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients.
-        /// Folder moves will be rejected if they violate either the naming, height or fanout constraints described in
-        /// the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the
-        /// folder's current and proposed new parent.
+        /// Moves a folder under a new resource parent. Returns an `Operation` which can be used to track the progress
+        /// of the folder move workflow. Upon success, the `Operation.response` field will be populated with the moved
+        /// folder. Upon failure, a `FolderOperationError` categorizing the failure cause will be returned - if the
+        /// failure occurs synchronously then the `FolderOperationError` will be returned in the `Status.details` field.
+        /// If it occurs asynchronously, then the FolderOperation will be returned in the `Operation.error` field. In
+        /// addition, the `Operation.metadata` field will be populated with a `FolderOperation` message as an aid to
+        /// stateless clients. Folder moves will be rejected if they violate either the naming, height, or fanout
+        /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
+        /// permission on the folder's current and proposed new parent.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -681,15 +683,15 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Moves a Folder under a new resource parent. Returns an Operation which can be used to track the progress of
-        /// the folder move workflow. Upon success the Operation.response field will be populated with the moved Folder.
-        /// Upon failure, a FolderOperationError categorizing the failure cause will be returned - if the failure occurs
-        /// synchronously then the FolderOperationError will be returned via the Status.details field and if it occurs
-        /// asynchronously then the FolderOperation will be returned via the Operation.error field. In addition, the
-        /// Operation.metadata field will be populated with a FolderOperation message as an aid to stateless clients.
-        /// Folder moves will be rejected if they violate either the naming, height or fanout constraints described in
-        /// the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the
-        /// folder's current and proposed new parent.
+        /// Moves a folder under a new resource parent. Returns an `Operation` which can be used to track the progress
+        /// of the folder move workflow. Upon success, the `Operation.response` field will be populated with the moved
+        /// folder. Upon failure, a `FolderOperationError` categorizing the failure cause will be returned - if the
+        /// failure occurs synchronously then the `FolderOperationError` will be returned in the `Status.details` field.
+        /// If it occurs asynchronously, then the FolderOperation will be returned in the `Operation.error` field. In
+        /// addition, the `Operation.metadata` field will be populated with a `FolderOperation` message as an aid to
+        /// stateless clients. Folder moves will be rejected if they violate either the naming, height, or fanout
+        /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
+        /// permission on the folder's current and proposed new parent.
         /// </summary>
         public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -738,17 +740,17 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they
-        /// violate either the display_name formatting rules or naming constraints described in the CreateFolder
-        /// documentation. The Folder's display_name must start and end with a letter or digit, may contain letters,
+        /// Updates a folder, changing its `display_name`. Changes to the folder `display_name` will be rejected if they
+        /// violate either the `display_name` formatting rules or the naming constraints described in the CreateFolder
+        /// documentation. The folder's `display_name` must start and end with a letter or digit, may contain letters,
         /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
         /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
         /// permission on the identified folder. If the update fails due to the unique name constraint then a
-        /// PreconditionFailure explaining this violation will be returned in the Status.details field.
+        /// `PreconditionFailure` explaining this violation will be returned in the Status.details field.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+        /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Folder body, string name)
@@ -757,13 +759,13 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if they
-        /// violate either the display_name formatting rules or naming constraints described in the CreateFolder
-        /// documentation. The Folder's display_name must start and end with a letter or digit, may contain letters,
+        /// Updates a folder, changing its `display_name`. Changes to the folder `display_name` will be rejected if they
+        /// violate either the `display_name` formatting rules or the naming constraints described in the CreateFolder
+        /// documentation. The folder's `display_name` must start and end with a letter or digit, may contain letters,
         /// digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the
         /// regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update`
         /// permission on the identified folder. If the update fails due to the unique name constraint then a
-        /// PreconditionFailure explaining this violation will be returned in the Status.details field.
+        /// `PreconditionFailure` explaining this violation will be returned in the Status.details field.
         /// </summary>
         public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -776,7 +778,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+            /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
             /// "folders/1234".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -825,8 +827,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for folders that match specific filter criteria. Search provides an eventually consistent view of the
-        /// folders a user has access to which meet the specified filter criteria. This will only return folders on
+        /// Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of
+        /// the folders a user has access to which meet the specified filter criteria. This will only return folders on
         /// which the caller has the permission `resourcemanager.folders.get`.
         /// </summary>
         public virtual SearchRequest Search()
@@ -835,8 +837,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for folders that match specific filter criteria. Search provides an eventually consistent view of the
-        /// folders a user has access to which meet the specified filter criteria. This will only return folders on
+        /// Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of
+        /// the folders a user has access to which meet the specified filter criteria. This will only return folders on
         /// which the caller has the permission `resourcemanager.folders.get`.
         /// </summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchFoldersResponse>
@@ -862,19 +864,19 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Optional. Search criteria used to select the Folders to return. If no search criteria is specified then
+            /// Optional. Search criteria used to select the folders to return. If no search criteria is specified then
             /// all accessible folders will be returned. Query expressions can be used to restrict results based upon
             /// displayName, state and parent, where the operators `=` (`:`) `NOT`, `AND` and `OR` can be used along
-            /// with the suffix wildcard symbol `*`. The displayName field in a query expression should use escaped
+            /// with the suffix wildcard symbol `*`. The `displayName` field in a query expression should use escaped
             /// quotes for values that include whitespace to prevent unexpected behavior. | Field | Description |
             /// |-------------------------|----------------------------------------| | displayName | Filters by
-            /// displayName. | | parent | Filters by parent (e.g. folders/123). | | state, lifecycleState | Filters by
-            /// state. | Some example queries are: * Query `displayName=Test*` returns Folder resources whose display
-            /// name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set to `ACTIVE`. *
-            /// Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent resource. *
-            /// Query `parent=folders/123 AND state=ACTIVE` returns active Folder resources that have `folders/123` as a
-            /// parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources with display names
-            /// that include both "Test" and "String".
+            /// displayName. | | parent | Filters by parent (for example: folders/123). | | state, lifecycleState |
+            /// Filters by state. | Some example queries are: * Query `displayName=Test*` returns Folder resources whose
+            /// display name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set to
+            /// `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent
+            /// resource. * Query `parent=folders/123 AND state=ACTIVE` returns active Folder resources that have
+            /// `folders/123` as a parent resource. * Query `displayName=\\"Test String\\"` returns Folder resources
+            /// with display names that include both "Test" and "String".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -920,9 +922,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be
-        /// the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy`
-        /// permission on the identified folder.
+        /// Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be
+        /// the folder's resource name, for example: "folders/1234". The caller must have
+        /// `resourcemanager.folders.setIamPolicy` permission on the identified folder.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -935,9 +937,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be
-        /// the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy`
-        /// permission on the identified folder.
+        /// Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be
+        /// the folder's resource name, for example: "folders/1234". The caller must have
+        /// `resourcemanager.folders.setIamPolicy` permission on the identified folder.
         /// </summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -987,8 +989,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's
-        /// resource name, e.g. "folders/1234". There are no permissions required for making this API call.
+        /// Returns permissions that a caller has on the specified folder. The `resource` field should be the folder's
+        /// resource name, for example: "folders/1234". There are no permissions required for making this API call.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -1001,8 +1003,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's
-        /// resource name, e.g. "folders/1234". There are no permissions required for making this API call.
+        /// Returns permissions that a caller has on the specified folder. The `resource` field should be the folder's
+        /// resource name, for example: "folders/1234". There are no permissions required for making this API call.
         /// </summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
         {
@@ -1052,15 +1054,15 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Cancels the deletion request for a Folder. This method may be called on a Folder in any state. If Folder is
-        /// in ACTIVE state the result will be a no-op success. In order to succeed, the Folder's parent must be in the
-        /// ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and
-        /// fanout constraints described in the CreateFolder documentation. The caller must have
+        /// Cancels the deletion request for a folder. This method may be called on a folder in any state. If the folder
+        /// is in the ACTIVE state the result will be a no-op success. In order to succeed, the folder's parent must be
+        /// in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming,
+        /// height, and fanout constraints described in the CreateFolder documentation. The caller must have
         /// `resourcemanager.folders.undelete` permission on the identified folder.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`.
+        /// Required. The resource name of the folder to undelete. Must be of the form `folders/{folder_id}`.
         /// </param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v3.Data.UndeleteFolderRequest body, string name)
         {
@@ -1068,10 +1070,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Cancels the deletion request for a Folder. This method may be called on a Folder in any state. If Folder is
-        /// in ACTIVE state the result will be a no-op success. In order to succeed, the Folder's parent must be in the
-        /// ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height and
-        /// fanout constraints described in the CreateFolder documentation. The caller must have
+        /// Cancels the deletion request for a folder. This method may be called on a folder in any state. If the folder
+        /// is in the ACTIVE state the result will be a no-op success. In order to succeed, the folder's parent must be
+        /// in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming,
+        /// height, and fanout constraints described in the CreateFolder documentation. The caller must have
         /// `resourcemanager.folders.undelete` permission on the identified folder.
         /// </summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
@@ -1085,7 +1087,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`.
+            /// Required. The resource name of the folder to undelete. Must be of the form `folders/{folder_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1448,7 +1450,7 @@ namespace Google.Apis.CloudResourceManager.v3
             this.service = service;
         }
 
-        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
+        /// <summary>Fetches an organization resource identified by the specified resource name.</summary>
         /// <param name="name">
         /// Required. The resource name of the Organization to fetch. This is the organization's relative path in the
         /// API, formatted as "organizations/[organizationId]". For example, "organizations/1234".
@@ -1458,7 +1460,7 @@ namespace Google.Apis.CloudResourceManager.v3
             return new GetRequest(service, name);
         }
 
-        /// <summary>Fetches an Organization resource identified by the specified resource name.</summary>
+        /// <summary>Fetches an organization resource identified by the specified resource name.</summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Organization>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1500,10 +1502,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource
-        /// exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
-        /// specified organization
+        /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or
+        /// resource exists. The `resource` field should be the organization's resource name, for example:
+        /// "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy`
+        /// on the specified organization.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -1516,10 +1518,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Gets the access control policy for an Organization resource. May be empty if no such policy or resource
-        /// exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
-        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
-        /// specified organization
+        /// Gets the access control policy for an organization resource. The policy may be empty if no such policy or
+        /// resource exists. The `resource` field should be the organization's resource name, for example:
+        /// "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy`
+        /// on the specified organization.
         /// </summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -1569,8 +1571,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Searches Organization resources that are visible to the user and satisfy the specified filter. This method
-        /// returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the
+        /// Searches organization resources that are visible to the user and satisfy the specified filter. This method
+        /// returns organizations in an unspecified order. New organizations do not necessarily appear at the end of the
         /// results, and may take a small amount of time to appear. Search will only return organizations on which the
         /// user has the permission `resourcemanager.organizations.get`
         /// </summary>
@@ -1580,8 +1582,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Searches Organization resources that are visible to the user and satisfy the specified filter. This method
-        /// returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the
+        /// Searches organization resources that are visible to the user and satisfy the specified filter. This method
+        /// returns organizations in an unspecified order. New organizations do not necessarily appear at the end of the
         /// results, and may take a small amount of time to appear. Search will only return organizations on which the
         /// user has the permission `resourcemanager.organizations.get`
         /// </summary>
@@ -1594,7 +1596,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of Organizations to return in the response. If unspecified, server picks an
+            /// Optional. The maximum number of organizations to return in the response. If unspecified, server picks an
             /// appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1661,9 +1663,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource`
-        /// field should be the organization's resource name, e.g. "organizations/123". Authorization requires the
-        /// Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization
+        /// Sets the access control policy on an organization resource. Replaces any existing policy. The `resource`
+        /// field should be the organization's resource name, for example: "organizations/123". Authorization requires
+        /// the IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -1676,9 +1678,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource`
-        /// field should be the organization's resource name, e.g. "organizations/123". Authorization requires the
-        /// Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization
+        /// Sets the access control policy on an organization resource. Replaces any existing policy. The `resource`
+        /// field should be the organization's resource name, for example: "organizations/123". Authorization requires
+        /// the IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization.
         /// </summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -1728,9 +1730,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified Organization. The `resource` field should be the
-        /// organization's resource name, e.g. "organizations/123". There are no permissions required for making this
-        /// API call.
+        /// Returns the permissions that a caller has on the specified organization. The `resource` field should be the
+        /// organization's resource name, for example: "organizations/123". There are no permissions required for making
+        /// this API call.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -1743,9 +1745,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns permissions that a caller has on the specified Organization. The `resource` field should be the
-        /// organization's resource name, e.g. "organizations/123". There are no permissions required for making this
-        /// API call.
+        /// Returns the permissions that a caller has on the specified organization. The `resource` field should be the
+        /// organization's resource name, for example: "organizations/123". There are no permissions required for making
+        /// this API call.
         /// </summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
         {
@@ -1810,9 +1812,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Request that a new Project be created. The result is an Operation which can be used to track the creation
+        /// Request that a new project be created. The result is an `Operation` which can be used to track the creation
         /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
-        /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        /// `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v3.Data.Project body)
@@ -1821,9 +1823,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Request that a new Project be created. The result is an Operation which can be used to track the creation
+        /// Request that a new project be created. The result is an `Operation` which can be used to track the creation
         /// process. This process usually takes a few seconds, but can sometimes take much longer. The tracking
-        /// Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
+        /// `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
         /// </summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -1857,15 +1859,15 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Marks the Project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
-        /// This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the
+        /// Marks the project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
+        /// This method will only affect the project if it has a lifecycle state of ACTIVE. This method changes the
         /// Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at
         /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
-        /// state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects.
-        /// However, you cannot update the project. After the deletion completes, the Project is not retrievable by the
-        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently (eg., deleting a
-        /// `DELETE_REQUESTED` project will not be an error, but also won't do anything). The caller must have delete
-        /// permissions for this Project.
+        /// state checked by retrieving the project with GetProject, and the project remains visible to ListProjects.
+        /// However, you cannot update the project. After the deletion completes, the project is not retrievable by the
+        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently, such that deleting a
+        /// `DELETE_REQUESTED` project will not cause an error, but also won't do anything. The caller must have
+        /// `resourcemanager.projects.delete` permissions for this project.
         /// </summary>
         /// <param name="name">Required. The name of the Project (for example, `projects/415104041262`).</param>
         public virtual DeleteRequest Delete(string name)
@@ -1874,15 +1876,15 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Marks the Project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
-        /// This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the
+        /// Marks the project identified by the specified `name` (for example, `projects/415104041262`) for deletion.
+        /// This method will only affect the project if it has a lifecycle state of ACTIVE. This method changes the
         /// Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at
         /// which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle
-        /// state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects.
-        /// However, you cannot update the project. After the deletion completes, the Project is not retrievable by the
-        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently (eg., deleting a
-        /// `DELETE_REQUESTED` project will not be an error, but also won't do anything). The caller must have delete
-        /// permissions for this Project.
+        /// state checked by retrieving the project with GetProject, and the project remains visible to ListProjects.
+        /// However, you cannot update the project. After the deletion completes, the project is not retrievable by the
+        /// GetProject, ListProjects, and SearchProjects methods. This method behaves idempotently, such that deleting a
+        /// `DELETE_REQUESTED` project will not cause an error, but also won't do anything. The caller must have
+        /// `resourcemanager.projects.delete` permissions for this project.
         /// </summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -1922,8 +1924,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves the Project identified by the specified `name` (for example, `projects/415104041262`). The caller
-        /// must have read permissions for this Project.
+        /// Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller
+        /// must have `resourcemanager.projects.get` permission for this project.
         /// </summary>
         /// <param name="name">Required. The name of the project (for example, `projects/415104041262`).</param>
         public virtual GetRequest Get(string name)
@@ -1932,8 +1934,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Retrieves the Project identified by the specified `name` (for example, `projects/415104041262`). The caller
-        /// must have read permissions for this Project.
+        /// Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller
+        /// must have `resourcemanager.projects.get` permission for this project.
         /// </summary>
         public class GetRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Project>
         {
@@ -1973,8 +1975,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the
-        /// resource does not exist.
+        /// Returns the IAM access control policy for the specified project. Permission is denied if the policy or the
+        /// resource do not exist.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
@@ -1987,8 +1989,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the
-        /// resource does not exist.
+        /// Returns the IAM access control policy for the specified project. Permission is denied if the policy or the
+        /// resource do not exist.
         /// </summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
         {
@@ -2038,9 +2040,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists Projects that are direct children of the specified folder or organization resource. List provides a
-        /// strongly consistent view of the Projects underneath the specified parent resource. List returns Projects
-        /// sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
+        /// Lists projects that are direct children of the specified folder or organization resource. `list()` provides
+        /// a strongly consistent view of the projects underneath the specified parent resource. `list()` returns
+        /// projects sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
         /// `resourcemanager.projects.list` permission on the identified parent.
         /// </summary>
         public virtual ListRequest List()
@@ -2049,9 +2051,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Lists Projects that are direct children of the specified folder or organization resource. List provides a
-        /// strongly consistent view of the Projects underneath the specified parent resource. List returns Projects
-        /// sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
+        /// Lists projects that are direct children of the specified folder or organization resource. `list()` provides
+        /// a strongly consistent view of the projects underneath the specified parent resource. `list()` returns
+        /// projects sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have
         /// `resourcemanager.projects.list` permission on the identified parent.
         /// </summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.ListProjectsResponse>
@@ -2063,7 +2065,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// Optional. The maximum number of projects to return in the response. The server can return fewer projects
             /// than requested. If unspecified, server picks an appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2084,7 +2086,7 @@ namespace Google.Apis.CloudResourceManager.v3
             public virtual string Parent { get; set; }
 
             /// <summary>
-            /// Optional. Indicate that Projects in the `DELETE_REQUESTED` state should also be returned. Normally only
+            /// Optional. Indicate that projects in the `DELETE_REQUESTED` state should also be returned. Normally only
             /// `ACTIVE` projects are returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
@@ -2139,10 +2141,11 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Move a Project under a new resource parent. Returns an operation which can be used to track the process of
-        /// the Project move workflow. Upon success, the Operation.response field will be populated with the moved
-        /// Project. The caller must have `resourcemanager.projects.update` permission on the Project and have
-        /// `resourcemanager.projects.move` permission on the Project's current and proposed new parent.
+        /// Move a project to another place in your resource hierarchy, under a new resource parent. Returns an
+        /// operation which can be used to track the process of the project move workflow. Upon success, the
+        /// `Operation.response` field will be populated with the moved project. The caller must have
+        /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
+        /// permission on the project's current and proposed new parent.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The name of the project to move.</param>
@@ -2152,10 +2155,11 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Move a Project under a new resource parent. Returns an operation which can be used to track the process of
-        /// the Project move workflow. Upon success, the Operation.response field will be populated with the moved
-        /// Project. The caller must have `resourcemanager.projects.update` permission on the Project and have
-        /// `resourcemanager.projects.move` permission on the Project's current and proposed new parent.
+        /// Move a project to another place in your resource hierarchy, under a new resource parent. Returns an
+        /// operation which can be used to track the process of the project move workflow. Upon success, the
+        /// `Operation.response` field will be populated with the moved project. The caller must have
+        /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
+        /// permission on the project's current and proposed new parent.
         /// </summary>
         public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -2202,14 +2206,13 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Updates the attributes of the Project identified by the specified `name` (for example,
-        /// `projects/415104041262`). At present this is only useful for updating the display_name and labels. Deleting
-        /// all labels requires an update mask for labels field. The caller must have modify permissions for this
-        /// Project.
+        /// Updates the `display_name` and labels of the project identified by the specified `name` (for example,
+        /// `projects/415104041262`). Deleting all labels requires an update mask for labels field. The caller must have
+        /// `resourcemanager.projects.update` permission for this project.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+        /// Output only. The unique resource name of the project. It is an int64 generated number prefixed by
         /// "projects/". Example: `projects/415104041262`
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.CloudResourceManager.v3.Data.Project body, string name)
@@ -2218,10 +2221,9 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Updates the attributes of the Project identified by the specified `name` (for example,
-        /// `projects/415104041262`). At present this is only useful for updating the display_name and labels. Deleting
-        /// all labels requires an update mask for labels field. The caller must have modify permissions for this
-        /// Project.
+        /// Updates the `display_name` and labels of the project identified by the specified `name` (for example,
+        /// `projects/415104041262`). Deleting all labels requires an update mask for labels field. The caller must have
+        /// `resourcemanager.projects.update` permission for this project.
         /// </summary>
         public class PatchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -2234,7 +2236,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+            /// Output only. The unique resource name of the project. It is an int64 generated number prefixed by
             /// "projects/". Example: `projects/415104041262`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2283,10 +2285,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
-        /// specified query. This method returns Projects in an unspecified order. This method is eventually consistent
-        /// with project mutations; this means that a newly created project may not appear in the results or recent
-        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// Search for projects that the caller has both `resourcemanager.projects.get` permission on, and also satisfy
+        /// the specified query. This method returns projects in an unspecified order. This method is eventually
+        /// consistent with project mutations; this means that a newly created project may not appear in the results or
+        /// recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a
         /// project, use the GetProject method.
         /// </summary>
         public virtual SearchRequest Search()
@@ -2295,10 +2297,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Search for Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the
-        /// specified query. This method returns Projects in an unspecified order. This method is eventually consistent
-        /// with project mutations; this means that a newly created project may not appear in the results or recent
-        /// updates to an existing project may not be reflected in the results. To retrieve the latest state of a
+        /// Search for projects that the caller has both `resourcemanager.projects.get` permission on, and also satisfy
+        /// the specified query. This method returns projects in an unspecified order. This method is eventually
+        /// consistent with project mutations; this means that a newly created project may not appear in the results or
+        /// recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a
         /// project, use the GetProject method.
         /// </summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.SearchProjectsResponse>
@@ -2310,7 +2312,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
 
             /// <summary>
-            /// Optional. The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// Optional. The maximum number of projects to return in the response. The server can return fewer projects
             /// than requested. If unspecified, server picks an appropriate default.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -2328,9 +2330,9 @@ namespace Google.Apis.CloudResourceManager.v3
             /// permission to. If multiple fields are included in the query, the it will return results that match any
             /// of the fields. Some eligible fields are: | Field | Description |
             /// |-------------------------|----------------------------------------------| | displayName, name | Filters
-            /// by displayName. | | parent | Project's parent. (e.g. folders/123, organizations/*) Prefer parent field
-            /// over parent.type and parent.id. | | parent.type | Parent's type: `folder` or `organization`. | |
-            /// parent.id | Parent's id number (e.g. 123) | | id, projectId | Filters by projectId. | | state,
+            /// by displayName. | | parent | Project's parent. (for example: folders/123, organizations/*) Prefer parent
+            /// field over parent.type and parent.id. | | parent.type | Parent's type: `folder` or `organization`. | |
+            /// parent.id | Parent's id number (for example: 123) | | id, projectId | Filters by projectId. | | state,
             /// lifecycleState | Filters by state. | | labels | Filters by label name or value. | | labels. (where *key*
             /// is the name of a label) | Filters by label name. | Search expressions are case insensitive. Some
             /// examples queries: | Query | Description |
@@ -2386,8 +2388,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing
-        /// policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies
+        /// Sets the IAM access control policy for the specified project. CAUTION: This method will replace the existing
+        /// policy, and cannot be used to append additional IAM settings. Note: Removing service accounts from policies
         /// or changing their roles can render services completely inoperable. It is important to understand how the
         /// service account is being used before removing or updating its roles. The following constraints apply when
         /// using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
@@ -2395,15 +2397,15 @@ namespace Google.Apis.CloudResourceManager.v3
         /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
         /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
         /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
-        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
-        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
-        /// Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be
-        /// sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership changes
-        /// that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. +
-        /// If the project is not part of an organization, there must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// owner, a user must be invited using the Cloud Platform console and must accept the invitation. + A user
+        /// cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the
+        /// Cloud Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role
+        /// cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership
+        /// changes that leave the project without any owners that have accepted the Terms of Service (ToS) will be
+        /// rejected. + If the project is not part of an organization, there must be at least one owner who has accepted
+        /// the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted
+        /// owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners
+        /// who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
         /// rectified. + Calling this method requires enabling the App Engine Admin API.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2417,8 +2419,8 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing
-        /// policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies
+        /// Sets the IAM access control policy for the specified project. CAUTION: This method will replace the existing
+        /// policy, and cannot be used to append additional IAM settings. Note: Removing service accounts from policies
         /// or changing their roles can render services completely inoperable. It is important to understand how the
         /// service account is being used before removing or updating its roles. The following constraints apply when
         /// using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a
@@ -2426,15 +2428,15 @@ namespace Google.Apis.CloudResourceManager.v3
         /// part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project
         /// in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service
         /// accounts can be made owners of a project directly without any restrictions. However, to be added as an
-        /// owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be
-        /// granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud
-        /// Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be
-        /// sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership changes
-        /// that leave the project without any owners that have accepted the Terms of Service (ToS) will be rejected. +
-        /// If the project is not part of an organization, there must be at least one owner who has accepted the Terms
-        /// of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner
-        /// from the policy will fail. This restriction also applies to legacy projects that no longer have owners who
-        /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
+        /// owner, a user must be invited using the Cloud Platform console and must accept the invitation. + A user
+        /// cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the
+        /// Cloud Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role
+        /// cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + Membership
+        /// changes that leave the project without any owners that have accepted the Terms of Service (ToS) will be
+        /// rejected. + If the project is not part of an organization, there must be at least one owner who has accepted
+        /// the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted
+        /// owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners
+        /// who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
         /// rectified. + Calling this method requires enabling the App Engine Admin API.
         /// </summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Policy>
@@ -2484,7 +2486,7 @@ namespace Google.Apis.CloudResourceManager.v3
             }
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        /// <summary>Returns permissions that a caller has on the specified project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">
         /// REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for
@@ -2495,7 +2497,7 @@ namespace Google.Apis.CloudResourceManager.v3
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        /// <summary>Returns permissions that a caller has on the specified project.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2544,13 +2546,14 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Restores the Project identified by the specified `name` (for example, `projects/415104041262`). You can only
-        /// use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
-        /// Project cannot be restored. The caller must have undelete permissions for this Project.
+        /// Restores the project identified by the specified `name` (for example, `projects/415104041262`). You can only
+        /// use this method for a project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
+        /// project cannot be restored. The caller must have `resourcemanager.projects.undelete` permission for this
+        /// project.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The name of the Project (for example, `projects/415104041262`). Required.
+        /// Required. The name of the project (for example, `projects/415104041262`). Required.
         /// </param>
         public virtual UndeleteRequest Undelete(Google.Apis.CloudResourceManager.v3.Data.UndeleteProjectRequest body, string name)
         {
@@ -2558,9 +2561,10 @@ namespace Google.Apis.CloudResourceManager.v3
         }
 
         /// <summary>
-        /// Restores the Project identified by the specified `name` (for example, `projects/415104041262`). You can only
-        /// use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
-        /// Project cannot be restored. The caller must have undelete permissions for this Project.
+        /// Restores the project identified by the specified `name` (for example, `projects/415104041262`). You can only
+        /// use this method for a project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the
+        /// project cannot be restored. The caller must have `resourcemanager.projects.undelete` permission for this
+        /// project.
         /// </summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -2572,7 +2576,7 @@ namespace Google.Apis.CloudResourceManager.v3
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the Project (for example, `projects/415104041262`). Required.</summary>
+            /// <summary>Required. The name of the project (for example, `projects/415104041262`). Required.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -4129,8 +4133,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to
-        /// work until the project creation is complete.
+        /// True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed
+        /// to work until the project creation is complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gettable")]
         public virtual System.Nullable<bool> Gettable { get; set; }
@@ -4158,7 +4162,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteFolder.
+    /// A status object which is used as the `metadata` field for the `Operation` returned by `DeleteFolder`.
     /// </summary>
     public class DeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4167,7 +4171,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteOrganization.
+    /// A status object which is used as the `metadata` field for the operation returned by DeleteOrganization.
     /// </summary>
     public class DeleteOrganizationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4176,7 +4180,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by DeleteProject.
+    /// A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.
     /// </summary>
     public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4255,56 +4259,56 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A Folder in an Organization's resource hierarchy, used to organize that Organization's resources.
+    /// A folder in an organization's resource hierarchy, used to organize that organization's resources.
     /// </summary>
     public class Folder : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Timestamp when the Folder was created.</summary>
+        /// <summary>Output only. Timestamp when the folder was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Output only. Timestamp when the Folder was requested to be deleted.</summary>
+        /// <summary>Output only. Timestamp when the folder was requested to be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual object DeleteTime { get; set; }
 
         /// <summary>
-        /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders
-        /// with the same parent can share the same display name. The display name must start and end with a letter or
-        /// digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
-        /// This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        /// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two
+        /// folders with the same parent can share the same display name. The display name must start and end with a
+        /// letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30
+        /// characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. A checksum computed by the server based on the current value of the Folder resource. This may
+        /// Output only. A checksum computed by the server based on the current value of the folder resource. This may
         /// be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example:
+        /// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example:
         /// "folders/1234".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via
+        /// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using
         /// MoveFolder.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Output only. The lifecycle state of the folder. Updates to the state must be performed via DeleteFolder and
-        /// UndeleteFolder.
+        /// Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder
+        /// and UndeleteFolder.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Timestamp when the Folder was last modified.</summary>
+        /// <summary>Output only. Timestamp when the folder was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
     }
@@ -4424,7 +4428,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     public class ListFoldersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A possibly paginated list of Folders that are direct descendants of the specified parent resource.
+        /// A possibly paginated list of folders that are direct descendants of the specified parent resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
@@ -4542,7 +4546,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata pertaining to the Folder move process.</summary>
+    /// <summary>Metadata pertaining to the folder move process.</summary>
     public class MoveFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the folder or organization to move the folder to.</summary>
@@ -4565,8 +4569,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     public class MoveFolderRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form
-        /// `folders/{folder_id}` or `organizations/{org_id}`.
+        /// Required. The resource name of the folder or organization which should be the folder's new parent. Must be
+        /// of the form `folders/{folder_id}` or `organizations/{org_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationParent")]
         public virtual string DestinationParent { get; set; }
@@ -4639,7 +4643,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// The root node in the resource hierarchy to which a particular entity's (e.g., company) resources belong.
+    /// The root node in the resource hierarchy to which a particular entity's (a company, for example) resources
+    /// belong.
     /// </summary>
     public class Organization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4656,9 +4661,9 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string DirectoryCustomerId { get; set; }
 
         /// <summary>
-        /// Output only. A human-readable string that refers to the Organization in the GCP Console UI. This string is
-        /// set by the server and cannot be changed. The string will be set to the primary domain (for example,
-        /// "google.com") of the G Suite customer that owns the organization.
+        /// Output only. A human-readable string that refers to the organization in the Google Cloud Console. This
+        /// string is set by the server and cannot be changed. The string will be set to the primary domain (for
+        /// example, "google.com") of the Google Workspace customer that owns the organization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -4751,8 +4756,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A Project is a high-level Google Cloud Platform entity. It is a container for ACLs, APIs, App Engine Apps, VMs,
-    /// and other Google Cloud Platform resources.
+    /// A project is a high-level Google Cloud entity. It is a container for ACLs, APIs, App Engine Apps, VMs, and other
+    /// Google Cloud Platform resources.
     /// </summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4765,7 +4770,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual object DeleteTime { get; set; }
 
         /// <summary>
-        /// Optional. A user-assigned display name of the Project. When present it must be between 4 to 30 characters.
+        /// Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters.
         /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space,
         /// and exclamation point. Example: `My Project`
         /// </summary>
@@ -4780,7 +4785,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. The labels associated with this Project. Label keys must be between 1 and 63 characters long and
+        /// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and
         /// must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be
         /// between 0 and 63 characters long and must conform to the regular expression
         /// (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource.
@@ -4791,7 +4796,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The unique resource name of the Project. It is an int64 generated number prefixed by
+        /// Output only. The unique resource name of the project. It is an int64 generated number prefixed by
         /// "projects/". Example: `projects/415104041262`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4802,13 +4807,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// Immutable. The unique, user-assigned id of the Project. It must be 6 to 30 lowercase ASCII letters, digits,
+        /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits,
         /// or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Output only. The Project lifecycle state.</summary>
+        /// <summary>Output only. The project lifecycle state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -5117,7 +5122,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteFolder.
+    /// A status object which is used as the `metadata` field for the `Operation` returned by `UndeleteFolder`.
     /// </summary>
     public class UndeleteFolderMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5142,7 +5147,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     }
 
     /// <summary>
-    /// A status object which is used as the `metadata` field for the Operation returned by UndeleteProject.
+    /// A status object which is used as the `metadata` field for the Operation returned by `UndeleteProject`.
     /// </summary>
     public class UndeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -65,14 +65,14 @@ namespace Google.Apis.CloudRetail.v2alpha
         /// <summary>Available OAuth 2.0 scopes for use with the Retail API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Retail API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1531,9 +1531,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Indicates which fields in the provided Catalog to update. If not set, will only update the
-                    /// Catalog.product_level_config field, which is also the only currently supported field to update.
-                    /// If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned.
+                    /// Indicates which fields in the provided Catalog to update. If an unsupported or unknown field is
+                    /// provided, an INVALID_ARGUMENT error is returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2697,7 +2696,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Immutable. The type of the product. This field is output-only.</summary>
+        /// <summary>
+        /// Immutable. The type of the product. This field is output-only. Default to
+        /// Catalog.product_level_config.ingestion_product_type if unset.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2782,8 +2784,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// or set to the same value as Product.id. * `variant`: You can only ingest Product.Type.VARIANT Products. This
         /// means Product.primary_product_id cannot be empty. If this field is set to an invalid value other than these,
         /// an INVALID_ARGUMENT error is returned. If this field is `variant` and merchant_center_product_id_field is
-        /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Using catalog
-        /// levels](/retail/recommendations-ai/docs/catalog#catalog-levels) for more details.
+        /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See [Using product
+        /// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionProductType")]
         public virtual string IngestionProductType { get; set; }
@@ -2794,8 +2796,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// `itemGroupId`: Import `itemGroupId` as the product ID. Notice that Retail API will choose one item from the
         /// ones with the same `itemGroupId`, and use it to represent the item group. If this field is set to an invalid
         /// value other than these, an INVALID_ARGUMENT error is returned. If this field is `itemGroupId` and
-        /// ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Using catalog
-        /// levels](/retail/recommendations-ai/docs/catalog#catalog-levels) for more details.
+        /// ingestion_product_type is `variant`, an INVALID_ARGUMENT error is returned. See [Using product
+        /// levels](https://cloud.google.com/retail/recommendations-ai/docs/catalog#product-levels) for more details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterProductIdField")]
         public virtual string MerchantCenterProductIdField { get; set; }

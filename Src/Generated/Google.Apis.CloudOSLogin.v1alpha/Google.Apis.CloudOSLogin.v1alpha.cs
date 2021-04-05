@@ -65,7 +65,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud OS Login API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -81,7 +81,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud OS Login API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -649,6 +649,26 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SystemId { get; set; }
 
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            public enum ViewEnum
+            {
+                /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED = 0,
+
+                /// <summary>Includes POSIX and SSH key information.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 1,
+
+                /// <summary>Include security key information for the user.</summary>
+                [Google.Apis.Util.StringValueAttribute("SECURITY_KEY")]
+                SECURITYKEY = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getLoginProfile";
 
@@ -694,6 +714,14 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 
@@ -730,6 +758,26 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            public enum ViewEnum
+            {
+                /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED = 0,
+
+                /// <summary>Includes POSIX and SSH key information.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 1,
+
+                /// <summary>Include security key information for the user.</summary>
+                [Google.Apis.Util.StringValueAttribute("SECURITY_KEY")]
+                SECURITYKEY = 2,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey Body { get; set; }
 
@@ -760,6 +808,14 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
