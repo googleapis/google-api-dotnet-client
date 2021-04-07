@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Title>Google.Apis.ServiceUsage.v1beta1 Client Library</Title>
     <Version>1.51.0.2280</Version>
-    <Authors>Google Inc.</Authors>
-    <Copyright>Copyright 2021 Google Inc.</Copyright>
+    <Authors>Google LLC</Authors>
+    <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
     <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
