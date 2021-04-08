@@ -526,6 +526,10 @@
      "description": "Whether this method requires an ETag to be specified. The ETag is sent as an HTTP If-Match or If-None-Match header.",
      "type": "boolean"
     },
+    "flatPath": {
+     "description": "The URI path of this REST method in (RFC 6570) format without level 2 features ({+var}). Supplementary to the path property.",
+     "type": "string"
+    },
     "httpMethod": {
      "description": "HTTP method used by this method.",
      "type": "string"

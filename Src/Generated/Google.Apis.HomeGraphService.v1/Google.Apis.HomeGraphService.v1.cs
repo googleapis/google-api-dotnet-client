@@ -624,14 +624,6 @@ namespace Google.Apis.HomeGraphService.v1.Data
         public virtual DeviceNames Name { get; set; }
 
         /// <summary>
-        /// See description for "traits". For Smart Home Entertainment Devices (SHED) devices, some traits can only be
-        /// executed on 3P cloud, e.g. "non_local_traits": [ { "trait": "action.devices.traits.MediaInitiation" }, {
-        /// "trait": "action.devices.traits.Channel" } ] go/shed-per-trait-routing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nonLocalTraits")]
-        public virtual System.Collections.Generic.IList<NonLocalTrait> NonLocalTraits { get; set; }
-
-        /// <summary>
         /// Indicates whether your smart home Action will report notifications to Google for this device via
         /// ReportStateAndNotification. If your smart home Action enables users to control device notifications, you
         /// should update this field and call RequestSyncDevices.
@@ -736,23 +728,6 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// LINT.IfChange go/shed-per-trait-routing. Making it object to allow for extendible design, where we can add
-    /// attributes in future.
-    /// </summary>
-    public class NonLocalTrait : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Trait name, e.g., "action.devices.traits.MediaInitiation". See [device
-        /// traits](https://developers.google.com/assistant/smarthome/traits).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trait")]
-        public virtual string Trait { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

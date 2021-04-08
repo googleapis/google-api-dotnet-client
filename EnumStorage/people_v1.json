@@ -44,6 +44,12 @@
     "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
     "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
   ],
+  "Google.Apis.PeopleService.v1.PeopleResource+SearchContactsRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
   "Google.Apis.PeopleService.v1.PeopleResource+SearchDirectoryPeopleRequest.MergeSourcesEnum": [
     "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
     "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"

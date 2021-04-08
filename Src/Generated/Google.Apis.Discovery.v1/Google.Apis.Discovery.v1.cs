@@ -709,6 +709,13 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etagRequired")]
         public virtual System.Nullable<bool> EtagRequired { get; set; }
 
+        /// <summary>
+        /// The URI path of this REST method in (RFC 6570) format without level 2 features ({+var}). Supplementary to
+        /// the path property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatPath")]
+        public virtual string FlatPath { get; set; }
+
         /// <summary>HTTP method used by this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; }

@@ -14499,8 +14499,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> Clicks { get; set; }
 
         /// <summary>
-        /// Number of clicks merchant's products receive (clicks) divided by the number of times the products are shown
-        /// (impressions).
+        /// Click-through rate - the number of clicks merchant's products receive (clicks) divided by the number of
+        /// times the products are shown (impressions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ctr")]
         public virtual System.Nullable<double> Ctr { get; set; }
@@ -19931,7 +19931,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// Dimensions according to which metrics are segmented in the response. Values of product dimensions, e.g., offer
     /// id, reflect the state of a product at the time of the corresponding event, e.g., impression or order. Segment
     /// fields cannot be selected in queries without also selecting at least one metric field. Values are only set for
-    /// dimensions requested explicitly in the request's search query.
+    /// dimensions requested explicitly in the request's search query. Next id: 22
     /// </summary>
     public class Segments : Google.Apis.Requests.IDirectResponseSchema
     {

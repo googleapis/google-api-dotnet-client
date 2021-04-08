@@ -662,7 +662,8 @@ namespace Google.Apis.CloudBillingBudget.v1.Data
         public virtual GoogleCloudBillingBudgetsV1BudgetAmount Amount { get; set; }
 
         /// <summary>
-        /// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        /// Optional. Filters that define which resources are used to compute the actual spend against the budget
+        /// amount, such as projects, services, and the budget's time period, as well as other filters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("budgetFilter")]
         public virtual GoogleCloudBillingBudgetsV1Filter BudgetFilter { get; set; }
@@ -701,7 +702,8 @@ namespace Google.Apis.CloudBillingBudget.v1.Data
     public class GoogleCloudBillingBudgetsV1BudgetAmount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with
+        /// Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set
+        /// when the budget's time period is a Filter.calendar_period. It cannot be set in combination with
         /// Filter.custom_period.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPeriodAmount")]
@@ -809,9 +811,10 @@ namespace Google.Apis.CloudBillingBudget.v1.Data
     }
 
     /// <summary>
-    /// Describes a budget amount targeted to last period's spend. At this time, the amount is automatically 100% of
-    /// last period's spend; that is, there are no other options yet. Future configuration will be described here (for
-    /// example, configuring a percentage of last period's spend).
+    /// Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is
+    /// automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future
+    /// configuration options will be described here (for example, configuring a percentage of last period's spend).
+    /// LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
     /// </summary>
     public class GoogleCloudBillingBudgetsV1LastPeriodAmount : Google.Apis.Requests.IDirectResponseSchema
     {

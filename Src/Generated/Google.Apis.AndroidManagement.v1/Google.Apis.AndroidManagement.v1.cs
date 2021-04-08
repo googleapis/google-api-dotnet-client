@@ -2235,6 +2235,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string CommonCriteriaMode { get; set; }
 
         /// <summary>
+        /// Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled
+        /// (deprecated) and debuggingFeaturesAllowed (deprecated).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerSettings")]
+        public virtual string DeveloperSettings { get; set; }
+
+        /// <summary>
+        /// Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced.
+        /// Replaces ensureVerifyAppsEnabled (deprecated).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googlePlayProtectVerifyApps")]
+        public virtual string GooglePlayProtectVerifyApps { get; set; }
+
+        /// <summary>
         /// The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces
         /// install_unknown_sources_allowed (deprecated).
         /// </summary>
@@ -3014,8 +3028,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> UnknownSourcesEnabled { get; set; }
 
         /// <summary>
-        /// Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is enabled
-        /// on the device.
+        /// Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced on
+        /// the device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyAppsEnabled")]
         public virtual System.Nullable<bool> VerifyAppsEnabled { get; set; }

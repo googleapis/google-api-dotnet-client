@@ -44,7 +44,6 @@ namespace Google.Apis.Games.v1
             Revisions = new RevisionsResource(this);
             Scores = new ScoresResource(this);
             Snapshots = new SnapshotsResource(this);
-            SnapshotsExtended = new SnapshotsExtendedResource(this);
             Stats = new StatsResource(this);
         }
 
@@ -122,9 +121,6 @@ namespace Google.Apis.Games.v1
 
         /// <summary>Gets the Snapshots resource.</summary>
         public virtual SnapshotsResource Snapshots { get; }
-
-        /// <summary>Gets the SnapshotsExtended resource.</summary>
-        public virtual SnapshotsExtendedResource SnapshotsExtended { get; }
 
         /// <summary>Gets the Stats resource.</summary>
         public virtual StatsResource Stats { get; }
@@ -2703,80 +2699,6 @@ namespace Google.Apis.Games.v1
         }
     }
 
-    /// <summary>The "snapshotsExtended" collection of methods.</summary>
-    public class SnapshotsExtendedResource
-    {
-        private const string Resource = "snapshotsExtended";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public SnapshotsExtendedResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Resolves any potential conflicts according to the resolution policy specified in the request and returns the
-        /// snapshot head after the resolution.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="snapshotName">Required. Name of the snapshot.</param>
-        public virtual ResolveSnapshotHeadRequest ResolveSnapshotHead(Google.Apis.Games.v1.Data.ResolveSnapshotHeadRequest body, string snapshotName)
-        {
-            return new ResolveSnapshotHeadRequest(service, body, snapshotName);
-        }
-
-        /// <summary>
-        /// Resolves any potential conflicts according to the resolution policy specified in the request and returns the
-        /// snapshot head after the resolution.
-        /// </summary>
-        public class ResolveSnapshotHeadRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.ResolveSnapshotHeadResponse>
-        {
-            /// <summary>Constructs a new ResolveSnapshotHead request.</summary>
-            public ResolveSnapshotHeadRequest(Google.Apis.Services.IClientService service, Google.Apis.Games.v1.Data.ResolveSnapshotHeadRequest body, string snapshotName) : base(service)
-            {
-                SnapshotName = snapshotName;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. Name of the snapshot.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("snapshotName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string SnapshotName { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Games.v1.Data.ResolveSnapshotHeadRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "resolveSnapshotHead";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "games/v1/snapshotsExtended/{snapshotName}:resolveHead";
-
-            /// <summary>Initializes ResolveSnapshotHead parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("snapshotName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "snapshotName",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
     /// <summary>The "stats" collection of methods.</summary>
     public class StatsResource
     {
@@ -4387,40 +4309,6 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request for ResolveSnapshotHead RPC.</summary>
-    public class ResolveSnapshotHeadRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The maximum number of SnapshotRevision resources for `conflictingRevisions` to return per SnapshotExtended
-        /// resource in the response. For any response, the actual number of resources returned may be less than
-        /// specified by `maxConflictsPerSnapshot`. The value provided should be greater or equal to 0. If no value is
-        /// provided, the server will use a sensible default.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxConflictsPerSnapshot")]
-        public virtual System.Nullable<int> MaxConflictsPerSnapshot { get; set; }
-
-        /// <summary>
-        /// Required. The automatic resolution policy. All conflicts are resolved in chronological order, starting from
-        /// the/ least recent. If the comparison metric is equal for the tentative head and the conflict, the head wins.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resolutionPolicy")]
-        public virtual string ResolutionPolicy { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for ResolveSnapshotHead RPC.</summary>
-    public class ResolveSnapshotHeadResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The state of the snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
-        public virtual SnapshotExtended Snapshot { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A third party checking a revision response.</summary>
     public class RevisionCheckResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4531,126 +4419,6 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Identifies a snapshot cover image resource. The image is provided by the game.</summary>
-    public class SnapshotCoverImageResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Hash-like weak identifier of the uploaded image bytes, consistent per player per application.
-        /// The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare
-        /// circumstances, the content_hash for matching binary data will be the same within a given player and
-        /// application.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual string ContentHash { get; set; }
-
-        /// <summary>
-        /// Output only. A URL the client can use to download the image. May vary across requests, and only guaranteed
-        /// to be valid for a short time after it is returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; }
-
-        /// <summary>The height of the image in pixels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; }
-
-        /// <summary>Output only. The MIME type of the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        /// <summary>
-        /// The ID of the image resource. It's guaranteed that if two IDs are equal then the contents are equal as well.
-        /// It's not guaranteed that two identical blobs coming from separate uploads have the same ID. The resource ID
-        /// can only be used within the application, user and resource type it was originally returned for. For example,
-        /// it's not possible to use SnapshotDataResource's resource ID as the resource_id of a
-        /// SnapshotCoverImageResource, even if the blob is a valid image file.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>The width of the image in pixels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Identifies a snapshot data resource. The data is provided by the game.</summary>
-    public class SnapshotDataResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Hash-like weak identifier of the uploaded blob bytes, consistent per player per application.
-        /// The content hash for a given resource will not change if the binary data hasn't changed. Except in very rare
-        /// circumstances, the content_hash for matching binary data will be the same within a given player and
-        /// application.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentHash")]
-        public virtual string ContentHash { get; set; }
-
-        /// <summary>
-        /// Output only. A URL that the client can use to download the blob. May vary across requests, and only
-        /// guaranteed to be valid for a short time after it is returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
-        public virtual string DownloadUrl { get; set; }
-
-        /// <summary>
-        /// The ID of the blob resource. It's guaranteed that if two IDs are equal then the contents are equal as well.
-        /// It's not guaranteed that two identical blobs coming from separate uploads have the same resource ID. The
-        /// resource ID can only be used within the application, user and resource type it was originally returned for.
-        /// For example, it's not possible to use SnapshotDataResource's resource ID as the resource_id of a
-        /// SnapshotCoverImageResource, even if the blob is a valid image file.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>Output only. Size of the saved game blob in bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A snapshot represents a saved game state referred to using the developer-provided snapshot_name. The set of
-    /// attributes and binary data for a specific state is called a revision. Each revision is itself immutable, and
-    /// referred to by a snapshot revision id. At any time, a snapshot has a "head" revision, and updates are made
-    /// against that revision. If a snapshot update is received that isn't against the current head revision, then
-    /// instead of changing the head revision it will result in a conflicting revision that must be specifically
-    /// resolved.
-    /// </summary>
-    public class SnapshotExtended : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of conflicting revisions. Only set if explicitly requested (e.g. using a field mask or a request
-        /// flag), or if the RPC guarantees that this field is set. The conflicting revisions are sorted chronologically
-        /// by their server creation time (oldest first). If there are too many conflicting revisions to return all of
-        /// them in a single request this will only contain the first batch. In such case, the presented conflicting
-        /// revisions must be resolved first in order to fetch the next batch.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conflictingRevisions")]
-        public virtual System.Collections.Generic.IList<SnapshotRevision> ConflictingRevisions { get; set; }
-
-        /// <summary>An indicator whether the snapshot has any conflicting revisions or not. Always set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hasConflictingRevisions")]
-        public virtual System.Nullable<bool> HasConflictingRevisions { get; set; }
-
-        /// <summary>The current head revision (the canonical revision as understood by the server).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headRevision")]
-        public virtual SnapshotRevision HeadRevision { get; set; }
-
-        /// <summary>
-        /// An identifier of the snapshot, developer-specified. It must match the pattern [0-9a-zA-Z-._~]{1,100}.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotName")]
-        public virtual string SnapshotName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>An image of a snapshot.</summary>
     public class SnapshotImage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4699,65 +4467,6 @@ namespace Google.Apis.Games.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata about a snapshot revision. Snapshot metadata is immutable - a metadata change corresponds to a new
-    /// snapshot revision.
-    /// </summary>
-    public class SnapshotMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The description of this snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>The device that created the current revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
-        public virtual string DeviceName { get; set; }
-
-        /// <summary>
-        /// The duration associated with this snapshot. Values with sub-millisecond precision can be rounded or trimmed
-        /// to the closest millisecond.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gameplayDuration")]
-        public virtual object GameplayDuration { get; set; }
-
-        /// <summary>
-        /// The timestamp of the last modification to this snapshot as provided by the client. Values with
-        /// sub-millisecond precision can be rounded or trimmed to the closest millisecond.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastModifyTime")]
-        public virtual object LastModifyTime { get; set; }
-
-        /// <summary>The progress value (64-bit integer set by developer) associated with this snapshot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("progressValue")]
-        public virtual System.Nullable<long> ProgressValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A Snapshot revision resource. Snapshot revisions are immutable.</summary>
-    public class SnapshotRevision : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Reference to the game provided blob for this revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
-        public virtual SnapshotDataResource Blob { get; set; }
-
-        /// <summary>Reference to the cover image for this revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coverImage")]
-        public virtual SnapshotCoverImageResource CoverImage { get; set; }
-
-        /// <summary>Output only. A server generated identifier of the snapshot revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Metadata for this snapshot revision.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual SnapshotMetadata Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
