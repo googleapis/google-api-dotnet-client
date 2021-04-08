@@ -918,7 +918,7 @@ namespace Google.Apis.CloudBuild.v1alpha2.Data
         /// <summary>
         /// IAM service account whose credentials will be used at build runtime. Must be of the format
         /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service
-        /// account. This field is in beta.
+        /// account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

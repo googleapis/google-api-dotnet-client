@@ -3929,7 +3929,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
         /// if the target is not found, or is not an GA4 Property.
         /// </summary>
-        public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+        public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -5042,11 +5042,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string CurrencyCode { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether this Property is soft-deleted or not. Deleted properties are excluded from
-        /// List results unless specifically requested.
+        /// Output only. If set, the time at which this property was trashed. If not set, then this property is not
+        /// currently in the trash can.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>
         /// Required. Human-readable display name for this property. The max allowed display name length is 100 UTF-16
@@ -5054,6 +5054,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. If set, the time at which this trashed property will be permanently deleted. If not set, then
+        /// this property is not currently in the trash can and is not slated to be deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Industry associated with this property Example: AUTOMOTIVE, FOOD_AND_DRINK</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryCategory")]

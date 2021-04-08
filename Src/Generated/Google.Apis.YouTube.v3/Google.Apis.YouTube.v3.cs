@@ -8525,7 +8525,7 @@ namespace Google.Apis.YouTube.v3
         }
 
         /// <summary>Retrieves the ratings that the authorized user gave to a list of specified videos.</summary>
-        public class GetRatingRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.VideoRatingListResponse>
+        public class GetRatingRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.VideoGetRatingResponse>
         {
             /// <summary>Constructs a new GetRating request.</summary>
             public GetRatingRequest(Google.Apis.Services.IClientService service, Google.Apis.Util.Repeatable<string> id) : base(service)
@@ -15097,6 +15097,31 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class VideoGetRatingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Etag of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Serialized EventId of the request which produced this response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        /// <summary>A list of ratings that match the request criteria.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<VideoRating> Items { get; set; }
+
+        /// <summary>
+        /// Identifies what kind of resource this is. Value: the fixed string "youtube#videoGetRatingResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The visitorId identifies the visitor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
+        public virtual string VisitorId { get; set; }
+    }
+
     public class VideoListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Etag of this resource.</summary>
@@ -15387,31 +15412,6 @@ namespace Google.Apis.YouTube.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
-    }
-
-    public class VideoRatingListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Etag of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; }
-
-        /// <summary>Serialized EventId of the request which produced this response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; }
-
-        /// <summary>A list of ratings that match the request criteria.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<VideoRating> Items { get; set; }
-
-        /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "youtube#videoGetRatingResponse".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>The visitorId identifies the visitor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; }
     }
 
     /// <summary>Recording information associated with the video.</summary>

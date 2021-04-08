@@ -689,6 +689,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual Google.Apis.Util.Repeatable<string> AnalysisQueryAccessSelectorRoles { get; set; }
 
             /// <summary>
+            /// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier
+            /// than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.conditionContext.accessTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object AnalysisQueryConditionContextAccessTime { get; set; }
+
+            /// <summary>
             /// Required. The identity appear in the form of members in [IAM policy
             /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). The examples of supported forms are:
             /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -812,6 +819,14 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("analysisQuery.accessSelector.roles", new Google.Apis.Discovery.Parameter
                 {
                     Name = "analysisQuery.accessSelector.roles",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("analysisQuery.conditionContext.accessTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "analysisQuery.conditionContext.accessTime",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1844,6 +1859,31 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The IAM conditions context.</summary>
+    public class ConditionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than
+        /// the current time; otherwise, an INVALID_ARGUMENT error will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessTime")]
+        public virtual object AccessTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Condition evaluation.</summary>
+    public class ConditionEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The evaluation result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationValue")]
+        public virtual string EvaluationValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Create asset feed request.</summary>
     public class CreateFeedRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2111,6 +2151,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accesses")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssetV1Access> Accesses { get; set; }
+
+        /// <summary>
+        /// Condition evaluation for this AccessControlList, if there is a condition defined in the above IAM policy
+        /// binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionEvaluation")]
+        public virtual ConditionEvaluation ConditionEvaluation { get; set; }
 
         /// <summary>
         /// Resource edges of the graph starting from the policy attached resource to any descendant resources. The
@@ -3328,6 +3375,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Optional. Specifies roles or permissions for analysis. This is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessSelector")]
         public virtual AccessSelector AccessSelector { get; set; }
+
+        /// <summary>Optional. The hypothetical context for IAM conditions evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionContext")]
+        public virtual ConditionContext ConditionContext { get; set; }
 
         /// <summary>Optional. Specifies an identity for analysis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identitySelector")]

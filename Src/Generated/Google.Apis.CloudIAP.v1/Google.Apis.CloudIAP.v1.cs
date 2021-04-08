@@ -1608,8 +1608,17 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An internal name for an IAM policy, based on the resource to which the policy applies. Not to be confused with a
+    /// resource's external full resource name. For more information on this distinction, see
+    /// go/iam-full-resource-names.
+    /// </summary>
     public class PolicyName : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Identifies an instance of the type. ID format varies by type. The ID format is defined in the IAM .service
+        /// file that defines the type, either in path_mapping or in a comment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -1621,7 +1630,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.</summary>
+        /// <summary>
+        /// Resource type. Types are defined in IAM's .service files. Valid values for type might be 'gce', 'gcs',
+        /// 'project', 'account' etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

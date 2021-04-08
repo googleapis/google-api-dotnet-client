@@ -2255,6 +2255,34 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
 
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            public enum SourcesEnum
+            {
+                /// <summary>Unspecified.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED = 0,
+
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE = 1,
+
+                /// <summary>Returns SourceType.CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT = 2,
+
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT = 3,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchContacts";
 
@@ -2287,6 +2315,14 @@ namespace Google.Apis.PeopleService.v1
                 RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
                 {
                     Name = "readMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sources", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sources",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

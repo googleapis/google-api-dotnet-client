@@ -66,14 +66,14 @@ namespace Google.Apis.FactCheckTools.v1alpha1
         /// <summary>Available OAuth 2.0 scopes for use with the Fact Check Tools API.</summary>
         public class Scope
         {
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Fact Check Tools API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 

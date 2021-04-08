@@ -957,6 +957,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ProvisionedResourcesParent { get; set; }
 
         /// <summary>
+        /// Input only. Resource properties that are used to customize workload resources. These properties (such as
+        /// custom project id) will be used to create workload resources if possible. This field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings> ResourceSettings { get; set; }
+
+        /// <summary>
         /// Output only. The resources associated with this workload. These resources will be created when creating the
         /// workload. If any of the projects already exist, the workload creation will fail. Always read only.
         /// </summary>
@@ -993,6 +1000,27 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual System.Nullable<long> ResourceId { get; set; }
 
         /// <summary>Indicates the type of resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the custom settings for the resources to be created.</summary>
+    public class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource identifier. For a project this represents project_id. If the project is already taken, the workload
+        /// creation will fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>
+        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
+        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
