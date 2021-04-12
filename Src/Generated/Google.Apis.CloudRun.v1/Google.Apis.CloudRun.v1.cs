@@ -4567,6 +4567,15 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual SecurityContext SecurityContext { get; set; }
 
         /// <summary>
+        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of
+        /// application within the container. All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual Probe StartupProbe { get; set; }
+
+        /// <summary>
         /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to
         /// which the container's termination message will be written is mounted into the container's filesystem.
         /// Message written is intended to be brief final status, such as an assertion failure message. Will be

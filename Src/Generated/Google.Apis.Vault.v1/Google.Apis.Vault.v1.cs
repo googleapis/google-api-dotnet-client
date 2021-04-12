@@ -2866,7 +2866,11 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An export</summary>
+    /// <summary>
+    /// An export To work with Vault resources, the account must have the [required Vault privileges]
+    /// (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must
+    /// have created the matter, have the matter shared with them, or have the **View All Matters** privilege.
+    /// </summary>
     public class Export : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Export sink for cloud storage files.</summary>
@@ -3039,7 +3043,10 @@ namespace Google.Apis.Vault.v1.Data
 
     /// <summary>
     /// An account being held in a particular hold. This structure is immutable. This can be either a single user or a
-    /// google group, depending on the corpus.
+    /// google group, depending on the corpus. To work with Vault resources, the account must have the [required Vault
+    /// privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
+    /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
+    /// privilege.
     /// </summary>
     public class HeldAccount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3176,7 +3183,10 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>
     /// Represents a hold within Vault. A hold restricts purging of artifacts based on the combination of the query and
     /// accounts restrictions. A hold can be configured to either apply to an explicitly configured set of accounts, or
-    /// can be applied to all members of an organizational unit.
+    /// can be applied to all members of an organizational unit. To work with Vault resources, the account must have the
+    /// [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To
+    /// access a matter, the account must have created the matter, have the matter shared with them, or have the **View
+    /// All Matters** privilege.
     /// </summary>
     public class Hold : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3363,7 +3373,11 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a matter.</summary>
+    /// <summary>
+    /// Represents a matter. To work with Vault resources, the account must have the [required Vault privileges]
+    /// (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must
+    /// have created the matter, have the matter shared with them, or have the **View All Matters** privilege.
+    /// </summary>
     public class Matter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The description of the matter.</summary>
@@ -3608,7 +3622,12 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Definition of the saved query.</summary>
+    /// <summary>
+    /// Definition of the saved query. To work with Vault resources, the account must have the [required Vault
+    /// privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
+    /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
+    /// privilege.
+    /// </summary>
     public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The server generated timestamp at which saved query was created.</summary>

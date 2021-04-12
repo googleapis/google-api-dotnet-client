@@ -78,9 +78,6 @@ namespace Google.Apis.Bigquery.v2
             /// <summary>Insert data into Google BigQuery</summary>
             public static string BigqueryInsertdata = "https://www.googleapis.com/auth/bigquery.insertdata";
 
-            /// <summary>View your data in Google BigQuery</summary>
-            public static string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
-
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -105,9 +102,6 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>Insert data into Google BigQuery</summary>
             public const string BigqueryInsertdata = "https://www.googleapis.com/auth/bigquery.insertdata";
-
-            /// <summary>View your data in Google BigQuery</summary>
-            public const string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
@@ -3815,6 +3809,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
         public virtual System.Nullable<bool> HasDrift { get; set; }
 
+        /// <summary>If true, holiday_effect is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasHolidayEffect")]
+        public virtual System.Nullable<bool> HasHolidayEffect { get; set; }
+
+        /// <summary>If true, spikes_and_dips is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasSpikesAndDips")]
+        public virtual System.Nullable<bool> HasSpikesAndDips { get; set; }
+
+        /// <summary>If true, step_changes is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasStepChanges")]
+        public virtual System.Nullable<bool> HasStepChanges { get; set; }
+
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
         public virtual ArimaOrder NonSeasonalOrder { get; set; }
@@ -3830,6 +3836,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
         public virtual string TimeSeriesId { get; set; }
+
+        /// <summary>
+        /// The tuple of time_series_ids identifying this time series. It will be one of the unique tuples of values
+        /// present in the time_series_id_columns specified during ARIMA model training. Only present when
+        /// time_series_id_columns training option was used and the order of values here are same as the order of
+        /// time_series_id_columns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIds")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3886,6 +3901,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hasDrift")]
         public virtual System.Nullable<bool> HasDrift { get; set; }
 
+        /// <summary>If true, holiday_effect is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasHolidayEffect")]
+        public virtual System.Nullable<bool> HasHolidayEffect { get; set; }
+
+        /// <summary>If true, spikes_and_dips is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasSpikesAndDips")]
+        public virtual System.Nullable<bool> HasSpikesAndDips { get; set; }
+
+        /// <summary>If true, step_changes is a part of time series decomposition result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasStepChanges")]
+        public virtual System.Nullable<bool> HasStepChanges { get; set; }
+
         /// <summary>Non-seasonal order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonSeasonalOrder")]
         public virtual ArimaOrder NonSeasonalOrder { get; set; }
@@ -3901,6 +3928,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesId")]
         public virtual string TimeSeriesId { get; set; }
+
+        /// <summary>
+        /// The tuple of time_series_ids identifying this time series. It will be one of the unique tuples of values
+        /// present in the time_series_id_columns specified during ARIMA model training. Only present when
+        /// time_series_id_columns training option was used and the order of values here are same as the order of
+        /// time_series_id_columns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIds")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4868,17 +4904,6 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Model evaluation metrics for dimensionality reduction models.</summary>
-    public class DimensionalityReductionMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Total percentage of variance explained by the selected principal components.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalExplainedVarianceRatio")]
-        public virtual System.Nullable<double> TotalExplainedVarianceRatio { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4949,12 +4974,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Populated for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusteringMetrics")]
         public virtual ClusteringMetrics ClusteringMetrics { get; set; }
-
-        /// <summary>
-        /// Evaluation metrics when the model is a dimensionality reduction model, which currently includes PCA.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensionalityReductionMetrics")]
-        public virtual DimensionalityReductionMetrics DimensionalityReductionMetrics { get; set; }
 
         /// <summary>Populated for multi-class classification/classifier models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiClassClassificationMetrics")]
@@ -5504,10 +5523,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Learn rate used for this iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learnRate")]
         public virtual System.Nullable<double> LearnRate { get; set; }
-
-        /// <summary>The information of the principal components.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principalComponentInfos")]
-        public virtual System.Collections.Generic.IList<PrincipalComponentInfo> PrincipalComponentInfos { get; set; }
 
         /// <summary>Loss computed on the training data at the end of iteration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingLoss")]
@@ -6944,35 +6959,6 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>
-    /// Principal component infos, used only for eigen decomposition based models, e.g., PCA. Ordered by
-    /// explained_variance in the descending order.
-    /// </summary>
-    public class PrincipalComponentInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance
-        /// ratio.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cumulativeExplainedVarianceRatio")]
-        public virtual System.Nullable<double> CumulativeExplainedVarianceRatio { get; set; }
-
-        /// <summary>Explained variance by this principal component, which is simply the eigenvalue.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explainedVariance")]
-        public virtual System.Nullable<double> ExplainedVariance { get; set; }
-
-        /// <summary>Explained_variance over the total explained variance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explainedVarianceRatio")]
-        public virtual System.Nullable<double> ExplainedVarianceRatio { get; set; }
-
-        /// <summary>Id of the principal component.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principalComponentId")]
-        public virtual System.Nullable<long> PrincipalComponentId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class ProjectList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A hash of the page of results</summary>
@@ -8389,6 +8375,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Options used in model training.</summary>
     public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, detect step changes and make data adjustment in the input time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adjustStepChanges")]
+        public virtual System.Nullable<bool> AdjustStepChanges { get; set; }
+
         /// <summary>Whether to enable auto ARIMA or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoArima")]
         public virtual System.Nullable<bool> AutoArima { get; set; }
@@ -8400,6 +8390,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Batch size for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<long> BatchSize { get; set; }
+
+        /// <summary>If true, clean spikes and dips in the input time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanSpikesAndDips")]
+        public virtual System.Nullable<bool> CleanSpikesAndDips { get; set; }
 
         /// <summary>The data frequency of a time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFrequency")]
@@ -8426,6 +8420,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The data split type for training and evaluation, e.g. RANDOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSplitMethod")]
         public virtual string DataSplitMethod { get; set; }
+
+        /// <summary>If true, perform decompose time series and save the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decomposeTimeSeries")]
+        public virtual System.Nullable<bool> DecomposeTimeSeries { get; set; }
 
         /// <summary>Distance type for clustering models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceType")]
@@ -8581,6 +8579,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The time series id column that was used during ARIMA model training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumn")]
         public virtual string TimeSeriesIdColumn { get; set; }
+
+        /// <summary>The time series id columns that were used during ARIMA model training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumns")]
+        public virtual System.Collections.Generic.IList<string> TimeSeriesIdColumns { get; set; }
 
         /// <summary>Column to be designated as time series timestamp for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesTimestampColumn")]
