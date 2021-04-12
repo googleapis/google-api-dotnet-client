@@ -2884,6 +2884,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     }
 
     /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by CreateAdminQuotaPolicy.
+    /// </summary>
+    public class CreateAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Customize service error responses. For example, list any service specific protobuf types that can appear in
     /// error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError -
     /// google.foo.v1.AnotherError
@@ -2934,6 +2944,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by DeleteAdminQuotaPolicy.
+    /// </summary>
+    public class DeleteAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3235,6 +3255,13 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `GetServiceIdentity` method.</summary>
+    public class GetServiceIdentityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3736,6 +3763,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportAdminOverrides.
+    /// </summary>
+    public class ImportAdminOverridesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ImportAdminOverrides</summary>
     public class ImportAdminOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3773,6 +3810,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportAdminQuotaPolicies.
+    /// </summary>
+    public class ImportAdminQuotaPoliciesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ImportAdminQuotaPolicies</summary>
     public class ImportAdminQuotaPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3780,6 +3827,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<AdminQuotaPolicy> Policies { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportConsumerOverrides.
+    /// </summary>
+    public class ImportConsumerOverridesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5017,6 +5074,16 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by UpdateAdminQuotaPolicy.
+    /// </summary>
+    public class UpdateAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

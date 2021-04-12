@@ -2990,6 +2990,13 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Runtime operation information for creating a TagValue.</summary>
+    public class CreateTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for creating a TagKey.</summary>
     public class CreateTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3026,6 +3033,13 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.
     /// </summary>
     public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime operation information for deleting a TagBinding.</summary>
+    public class DeleteTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
