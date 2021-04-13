@@ -57,9 +57,10 @@ the request and want to put work into it.
   want to add a Polly dependency just for this, and it doesn't seem
   worth creating a new library.
 
-## Server-Side Blazor and Google OAuth2
+## Blazor support
 
-- Issue [#1427](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
+- Issue [#1427 Server side Blazor and OAuth](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
+- Issue [#1830 Blazor WebAssembly and OAuth](https://github.com/googleapis/google-api-dotnet-client/issues/1830)
 - Status: unclear right now, but we don't test on Blazor
 - Action: keep an eye; if Blazor becomes very popular or we get multiple requests, we may revisit.
 
