@@ -71,7 +71,6 @@ the request and want to put work into it.
 - Issue [#1326 Support for "server-side" OAuth flow](https://github.com/googleapis/google-api-dotnet-client/issues/1326)
 - Issue [#1312 Impersonated credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1312)
 - Issue [#1812 Support for limited input device flow](https://github.com/googleapis/google-api-dotnet-client/issues/1812)
-- Issue [#1814 Helper method that read client secrets from file](https://github.com/googleapis/google-api-dotnet-client/issues/1814)
 - Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
 - Action: bring these issues up for consideration as part of consolidation work.
