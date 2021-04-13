@@ -14,16 +14,24 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
 {
     public class Startup
     {
+        // Set the TEST_WEB_CLIENT_SECRET_FILENAME configuration key to point to the client ID json file.
+        // This can be set on appsettings.json or as an environment variable.
+        // You can read more about configuring ASP.NET Core applications here:
+        // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1
+        private const string ClientSecretFilenameKey = "TEST_WEB_CLIENT_SECRET_FILENAME";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -40,7 +48,7 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
             // This loads the OAuth 2.0 client ID used by this application from a client ID json file.
             // You can use any mechanism you want to store and retrieve your client ID information, as long
             // as it is secured. If your client ID information is leaked any other app can pose as your own.
-            ClientInfo clientInfo = ClientInfo.Load();
+            var clientSecrets = GoogleClientSecrets.FromFile(Configuration[ClientSecretFilenameKey]).Secrets;
 
             // This configures Google.Apis.Auth.AspNetCore3 for use in this app.
             services
@@ -59,8 +67,8 @@ namespace Google.Apis.Auth.AspNetCore3.IntegrationTests
                 .AddCookie()
                 .AddGoogleOpenIdConnect(options =>
                 {
-                    options.ClientId = clientInfo.ClientId;
-                    options.ClientSecret = clientInfo.ClientSecret;
+                    options.ClientId = clientSecrets.ClientId;
+                    options.ClientSecret = clientSecrets.ClientSecret;
                 });
         }
 

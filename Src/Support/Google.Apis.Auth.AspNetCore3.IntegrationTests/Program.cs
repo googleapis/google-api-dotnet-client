@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Google.Apis.Auth.AspNetCore3.IntegrationTests

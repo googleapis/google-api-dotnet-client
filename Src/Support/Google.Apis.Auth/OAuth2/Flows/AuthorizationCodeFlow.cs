@@ -159,7 +159,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
                 using (initializer.ClientSecretsStream)
                 {
-                    clientSecrets = GoogleClientSecrets.Load(initializer.ClientSecretsStream).Secrets;
+                    clientSecrets = GoogleClientSecrets.FromStream(initializer.ClientSecretsStream).Secrets;
                 }
             }
             else if (initializer.ClientSecretsStream != null)
