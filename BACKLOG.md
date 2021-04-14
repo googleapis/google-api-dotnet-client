@@ -70,6 +70,7 @@ the request and want to put work into it.
 - Issue [#1447 Support for key rotation](https://github.com/googleapis/google-api-dotnet-client/issues/1447)
 - Issue [#1326 Support for "server-side" OAuth flow](https://github.com/googleapis/google-api-dotnet-client/issues/1326)
 - Issue [#1312 Impersonated credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1312)
+- Issue [#1803 OIDC support for user credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1803)
 - Issue [#1812 Support for limited input device flow](https://github.com/googleapis/google-api-dotnet-client/issues/1812)
 - Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
