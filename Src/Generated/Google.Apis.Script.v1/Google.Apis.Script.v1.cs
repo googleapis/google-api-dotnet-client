@@ -120,7 +120,7 @@ namespace Google.Apis.Script.v1
             /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
             public static string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
@@ -180,7 +180,7 @@ namespace Google.Apis.Script.v1
             /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
             public const string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 

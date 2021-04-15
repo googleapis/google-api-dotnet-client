@@ -721,6 +721,10 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>Optional. Sorting order for the list of rows on createTime/updateTime.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>
                 /// The maximum number of rows to return. The service may return fewer than this value. If unspecified,
                 /// at most 50 rows are returned. The maximum value is 1,000; values above 1,000 are coerced to 1,000.
@@ -776,6 +780,14 @@ namespace Google.Apis.Area120Tables.v1alpha1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -964,6 +976,10 @@ namespace Google.Apis.Area120Tables.v1alpha1
                 InitParameters();
             }
 
+            /// <summary>Optional. Sorting order for the list of tables on createTime/updateTime.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
             /// <summary>
             /// The maximum number of tables to return. The service may return fewer than this value. If unspecified, at
             /// most 20 tables are returned. The maximum value is 100; values above 100 are coerced to 100.
@@ -992,6 +1008,14 @@ namespace Google.Apis.Area120Tables.v1alpha1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -1233,6 +1257,13 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lookupDetails")]
         public virtual LookupDetails LookupDetails { get; set; }
 
+        /// <summary>
+        /// Optional. Indicates whether or not multiple values are allowed for array types where such a restriction is
+        /// possible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleValuesDisallowed")]
+        public virtual System.Nullable<bool> MultipleValuesDisallowed { get; set; }
+
         /// <summary>column name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1402,7 +1433,22 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single table.</summary>
+    /// <summary>A saved view of a table. NextId: 3</summary>
+    public class SavedView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Internal id associated with the saved view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Display name of the saved view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single table. NextId: 7</summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of columns in this table. Order of columns matches the display order.</summary>
@@ -1420,6 +1466,10 @@ namespace Google.Apis.Area120Tables.v1alpha1.Data
         /// <summary>The resource name of the table. Table names have the form `tables/{table}`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Saved views for this table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedViews")]
+        public virtual System.Collections.Generic.IList<SavedView> SavedViews { get; set; }
 
         /// <summary>Time when the table was last updated excluding updates to individual rows</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]

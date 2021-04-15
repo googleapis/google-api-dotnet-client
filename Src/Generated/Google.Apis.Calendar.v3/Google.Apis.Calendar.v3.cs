@@ -1998,8 +1998,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,
@@ -2332,8 +2332,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,
@@ -2997,8 +2997,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,
@@ -3147,8 +3147,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,
@@ -3303,8 +3303,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,
@@ -3445,8 +3445,8 @@ namespace Google.Apis.Calendar.v3
                 ExternalOnly = 1,
 
                 /// <summary>
-                /// No notifications are sent. This value should only be used for migration use cases (note that in most
-                /// migration cases the import method should be used).
+                /// No notifications are sent. For calendar migration tasks, consider using the Events.import method
+                /// instead.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("none")]
                 None = 2,

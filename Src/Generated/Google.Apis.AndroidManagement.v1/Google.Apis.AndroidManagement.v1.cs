@@ -4265,7 +4265,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// hatch prompts the user to temporarily connect to a network in order to refresh the device policy. After
         /// applying policy, the temporary network will be forgotten and the device will continue booting. This prevents
         /// being unable to connect to a network if there is no suitable network in the last policy and the device boots
-        /// into an app in lock task mode, or the user is otherwise unable to reach device settings.
+        /// into an app in lock task mode, or the user is otherwise unable to reach device settings.Note: Setting
+        /// wifiConfigDisabled to true will override this setting under specific circumstances. Please see
+        /// wifiConfigDisabled for further details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEscapeHatchEnabled")]
         public virtual System.Nullable<bool> NetworkEscapeHatchEnabled { get; set; }
@@ -4466,7 +4468,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vpnConfigDisabled")]
         public virtual System.Nullable<bool> VpnConfigDisabled { get; set; }
 
-        /// <summary>Whether configuring Wi-Fi access points is disabled.</summary>
+        /// <summary>
+        /// Whether configuring Wi-Fi access points is disabled.Note: If a network connection can't be made at boot time
+        /// and configuring Wi-Fi is disabled then network escape hatch will be shown in order to refresh the device
+        /// policy (see networkEscapeHatchEnabled).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
         public virtual System.Nullable<bool> WifiConfigDisabled { get; set; }
 
