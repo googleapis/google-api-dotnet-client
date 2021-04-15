@@ -279,8 +279,204 @@ namespace Google.Apis.AdMob.v1
         public AccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AdUnits = new AdUnitsResource(service);
+            Apps = new AppsResource(service);
             MediationReport = new MediationReportResource(service);
             NetworkReport = new NetworkReportResource(service);
+        }
+
+        /// <summary>Gets the AdUnits resource.</summary>
+        public virtual AdUnitsResource AdUnits { get; }
+
+        /// <summary>The "adUnits" collection of methods.</summary>
+        public class AdUnitsResource
+        {
+            private const string Resource = "adUnits";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdUnitsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>List the ad units under the specified AdMob account.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the account to list ad units for. Example: accounts/pub-9876543210987654
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List the ad units under the specified AdMob account.</summary>
+            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.ListAdUnitsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to list ad units for. Example: accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of ad units to return. If unspecified or 0, at most 1000 ad units will be
+                /// returned. The maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a
+                /// prior `ListAdUnits` call, and that the system should return the next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/adUnits";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Apps resource.</summary>
+        public virtual AppsResource Apps { get; }
+
+        /// <summary>The "apps" collection of methods.</summary>
+        public class AppsResource
+        {
+            private const string Resource = "apps";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AppsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>List the apps under the specified AdMob account.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List the apps under the specified AdMob account.</summary>
+            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.ListAppsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of apps to return. If unspecified or 0, at most 1000 apps will be returned. The
+                /// maximum value is 10,000; values above 10,000 will be coerced to 10,000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior
+                /// `ListApps` call, and that the system should return the next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/apps";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the MediationReport resource.</summary>
@@ -561,6 +757,139 @@ namespace Google.Apis.AdMob.v1
 }
 namespace Google.Apis.AdMob.v1.Data
 {
+    /// <summary>Describes an AdMob ad unit.</summary>
+    public class AdUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// AdFormat of the ad unit. Possible values are as follows: "BANNER" - Banner ad format. "BANNER_INTERSTITIAL"
+        /// - Legacy format that can be used as either banner or interstitial. This format can no longer be created but
+        /// can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types are "RICH_MEDIA"
+        /// and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once viewed, gets a callback verifying
+        /// the view so that a reward can be given to the user. Supported ad types are "RICH_MEDIA" (interactive) and
+        /// video where video can not be excluded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adFormat")]
+        public virtual string AdFormat { get; set; }
+
+        /// <summary>
+        /// Ad media type supported by this ad unit. Possible values as follows: "RICH_MEDIA" - Text, image, and other
+        /// non-video media. "VIDEO" - Video media.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTypes")]
+        public virtual System.Collections.Generic.IList<string> AdTypes { get; set; }
+
+        /// <summary>
+        /// The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read
+        /// only property. Example: ca-app-pub-9876543210987654/0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitId")]
+        public virtual string AdUnitId { get; set; }
+
+        /// <summary>
+        /// The externally visible ID of the app this ad unit is associated with. Example:
+        /// ca-app-pub-9876543210987654~0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// The display name of the ad unit as shown in the AdMob UI, which is provided by the user. The maximum length
+        /// allowed is 80 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name for this ad unit. Format is accounts/{publisher_id}/adUnits/{ad_unit_id_fragment} Example:
+        /// accounts/pub-9876543210987654/adUnits/0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an AdMob app for a specific platform (For example: Android or iOS).</summary>
+    public class App : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The externally visible ID of the app which can be used to integrate with the AdMob SDK. This is a read only
+        /// property. Example: ca-app-pub-9876543210987654~0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>
+        /// Immutable. The information for an app that is linked to an app store. This field is present if and only if
+        /// the app is linked to an app store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedAppInfo")]
+        public virtual AppLinkedAppInfo LinkedAppInfo { get; set; }
+
+        /// <summary>
+        /// The information for an app that is not linked to any app store. After an app is linked, this information is
+        /// still retrivable. If no name is provided for the app upon creation, a placeholder name will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualAppInfo")]
+        public virtual AppManualAppInfo ManualAppInfo { get; set; }
+
+        /// <summary>
+        /// Resource name for this app. Format is accounts/{publisher_id}/apps/{app_id_fragment} Example:
+        /// accounts/pub-9876543210987654/apps/0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Describes the platform of the app. Limited to "IOS" and "ANDROID".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information from the app store if the app is linked to an app store.</summary>
+    public class AppLinkedAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The app store ID of the app; present if and only if the app is linked to an app store. If the app is added
+        /// to the Google Play store, it will be the application ID of the app. For example: "com.example.myapp". See
+        /// https://developer.android.com/studio/build/application-id. If the app is added to the Apple App Store, it
+        /// will be app store ID. For example "105169111". Note that setting the app store id is considered an
+        /// irreversible action. Once an app is linked, it cannot be unlinked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appStoreId")]
+        public virtual string AppStoreId { get; set; }
+
+        /// <summary>
+        /// Output only. Display name of the app as it appears in the app store. This is an output-only field, and may
+        /// be empty if the app cannot be found in the store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information provided for manual apps which are not linked to an application store (Example: Google Play, App
+    /// Store).
+    /// </summary>
+    public class AppManualAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The display name of the app as shown in the AdMob UI, which is provided by the user. The maximum length
+        /// allowed is 80 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -682,6 +1011,42 @@ namespace Google.Apis.AdMob.v1.Data
         /// <summary>Actual report data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("row")]
         public virtual ReportRow Row { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ad units list request.</summary>
+    public class ListAdUnitsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting ad units for the requested account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnits")]
+        public virtual System.Collections.Generic.IList<AdUnit> AdUnits { get; set; }
+
+        /// <summary>
+        /// If not empty, indicates that there may be more ad units for the request; this value should be passed in a
+        /// new `ListAdUnitsRequest`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the apps list request.</summary>
+    public class ListAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting apps for the requested account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apps")]
+        public virtual System.Collections.Generic.IList<App> Apps { get; set; }
+
+        /// <summary>
+        /// If not empty, indicates that there may be more apps for the request; this value should be passed in a new
+        /// `ListAppsRequest`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

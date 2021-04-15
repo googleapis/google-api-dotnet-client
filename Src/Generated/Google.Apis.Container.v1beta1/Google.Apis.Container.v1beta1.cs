@@ -65,14 +65,14 @@ namespace Google.Apis.Container.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Kubernetes Engine API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Kubernetes Engine API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -6602,6 +6602,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTime { get; set; }
 
+        /// <summary>Output only. Unique id for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>
         /// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions
         /// returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in
@@ -6846,6 +6850,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling VerticalPodAutoscaling { get; set; }
 
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadCertificates")]
+        public virtual WorkloadCertificates WorkloadCertificates { get; set; }
+
         /// <summary>Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityConfig")]
         public virtual WorkloadIdentityConfig WorkloadIdentityConfig { get; set; }
@@ -7064,6 +7072,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Cluster-level Vertical Pod Autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredVerticalPodAutoscaling")]
         public virtual VerticalPodAutoscaling DesiredVerticalPodAutoscaling { get; set; }
+
+        /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadCertificates")]
+        public virtual WorkloadCertificates DesiredWorkloadCertificates { get; set; }
 
         /// <summary>Configuration for Workload Identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadIdentityConfig")]
@@ -8051,7 +8063,7 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
-    /// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags`
+    /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags`
     /// field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
     /// </summary>
     public class NetworkTags : Google.Apis.Requests.IDirectResponseSchema
@@ -10009,6 +10021,22 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enables vertical pod autoscaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for issuance of mTLS keys and certificates to Kubernetes pods.</summary>
+    public class WorkloadCertificates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity
+        /// Certificates controller and node agent will be deployed in the cluster, which can then be configured by
+        /// creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be
+        /// non-empty).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCertificates")]
+        public virtual System.Nullable<bool> EnableCertificates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

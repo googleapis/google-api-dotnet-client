@@ -2311,7 +2311,86 @@ namespace Google.Apis.ShoppingContent.v2_1
             this.service = service;
         }
 
-        /// <summary>Retrieves a status of BoG program for your Merchant Center account.</summary>
+        /// <summary>
+        /// Reactivates the BoG program in your Merchant Center account. Moves the program to the active state when
+        /// allowed, e.g. when paused. Important: This method is only whitelisted for selected merchants.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+        /// only US is available.
+        /// </param>
+        public virtual ActivateRequest Activate(Google.Apis.ShoppingContent.v2_1.Data.ActivateBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
+        {
+            return new ActivateRequest(service, body, merchantId, regionCode);
+        }
+
+        /// <summary>
+        /// Reactivates the BoG program in your Merchant Center account. Moves the program to the active state when
+        /// allowed, e.g. when paused. Important: This method is only whitelisted for selected merchants.
+        /// </summary>
+        public class ActivateRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Activate request.</summary>
+            public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ActivateBuyOnGoogleProgramRequest body, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+            /// Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.ActivateBuyOnGoogleProgramRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "activate";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}/activate";
+
+            /// <summary>Initializes Activate parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves a status of the BoG program for your Merchant Center account.</summary>
         /// <param name="merchantId">Required. The ID of the account.</param>
         /// <param name="regionCode">
         /// The Program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
@@ -2322,7 +2401,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new GetRequest(service, merchantId, regionCode);
         }
 
-        /// <summary>Retrieves a status of BoG program for your Merchant Center account.</summary>
+        /// <summary>Retrieves a status of the BoG program for your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.BuyOnGoogleProgramStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2377,7 +2456,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
+        /// Onboards the BoG program in your Merchant Center account. By using this method, you agree to the [Terms of
         /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only
         /// possible if the authenticated account is the same as the merchant id in the request. Calling this method
         /// multiple times will only accept Terms of Service if the latest version is not currently signed.
@@ -2394,7 +2473,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Onboards BoG in your Merchant Center account. By using this method, you agree to the [Terms of
+        /// Onboards the BoG program in your Merchant Center account. By using this method, you agree to the [Terms of
         /// Service](https://merchants.google.com/mc/termsofservice/transactions/US/latest). Calling this method is only
         /// possible if the authenticated account is the same as the merchant id in the request. Calling this method
         /// multiple times will only accept Terms of Service if the latest version is not currently signed.
@@ -2437,6 +2516,164 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}/onboard";
 
             /// <summary>Initializes Onboard parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for
+        /// selected merchants.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+        /// only US is available.
+        /// </param>
+        public virtual PauseRequest Pause(Google.Apis.ShoppingContent.v2_1.Data.PauseBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
+        {
+            return new PauseRequest(service, body, merchantId, regionCode);
+        }
+
+        /// <summary>
+        /// Pauses the BoG program in your Merchant Center account. Important: This method is only whitelisted for
+        /// selected merchants.
+        /// </summary>
+        public class PauseRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Pause request.</summary>
+            public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.PauseBuyOnGoogleProgramRequest body, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+            /// Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.PauseBuyOnGoogleProgramRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "pause";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}/pause";
+
+            /// <summary>Initializes Pause parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Requests review and then activates the BoG program in your Merchant Center account for the first time. Moves
+        /// the program to the REVIEW_PENDING state. Important: This method is only whitelisted for selected merchants.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        /// <param name="regionCode">
+        /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Currently
+        /// only US is available.
+        /// </param>
+        public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewBuyOnGoogleProgramRequest body, long merchantId, string regionCode)
+        {
+            return new RequestreviewRequest(service, body, merchantId, regionCode);
+        }
+
+        /// <summary>
+        /// Requests review and then activates the BoG program in your Merchant Center account for the first time. Moves
+        /// the program to the REVIEW_PENDING state. Important: This method is only whitelisted for selected merchants.
+        /// </summary>
+        public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Requestreview request.</summary>
+            public RequestreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RequestReviewBuyOnGoogleProgramRequest body, long merchantId, string regionCode) : base(service)
+            {
+                MerchantId = merchantId;
+                RegionCode = regionCode;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// The program region code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+            /// Currently only US is available.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string RegionCode { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RequestReviewBuyOnGoogleProgramRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "requestreview";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/buyongoogleprograms/{regionCode}/requestreview";
+
+            /// <summary>Initializes Requestreview parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -12344,6 +12581,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the ActivateProgram method.</summary>
+    public class ActivateBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Amount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[required] The pre-tax or post-tax price depending on the location of the order.</summary>
@@ -17097,6 +17341,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the PauseProgram method.</summary>
+    public class PauseBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class PickupCarrierService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the pickup carrier (e.g., `"UPS"`). Required.</summary>
@@ -18092,6 +18343,39 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual System.Nullable<long> LocationId { get; set; }
+
+        /// <summary>
+        /// Maximum handling time (inclusive) between when the order is received and shipped in business days. 0 means
+        /// that the order is shipped on the same day as it is received if it happens before the cut-off time. Both
+        /// maxHandlingTime and maxTransitTime are required if providing shipping speeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingTime")]
+        public virtual System.Nullable<long> MaxHandlingTime { get; set; }
+
+        /// <summary>
+        /// Maximum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// days. 0 means that the order is delivered on the same day as it ships. Both maxHandlingTime and
+        /// maxTransitTime are required if providing shipping speeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTime")]
+        public virtual System.Nullable<long> MaxTransitTime { get; set; }
+
+        /// <summary>
+        /// Minimum handling time (inclusive) between when the order is received and shipped in business days. 0 means
+        /// that the order is shipped on the same day as it is received if it happens before the cut-off time.
+        /// minHandlingTime can only be present together with maxHandlingTime; but it is not required if maxHandlingTime
+        /// is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHandlingTime")]
+        public virtual System.Nullable<long> MinHandlingTime { get; set; }
+
+        /// <summary>
+        /// Minimum transit time (inclusive) between when the order has shipped and when it is delivered in business
+        /// days. 0 means that the order is delivered on the same day as it ships. minTransitTime can only be present
+        /// together with maxTransitTime; but it is not required if maxTransitTime is present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitTime")]
+        public virtual System.Nullable<long> MinTransitTime { get; set; }
 
         /// <summary>
         /// The postal code range that the shipping rate applies to, represented by a postal code, a postal code prefix
@@ -19272,6 +19556,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the RequestReviewProgram method.</summary>
+    public class RequestReviewBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Return address resource.</summary>
     public class ReturnAddress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19931,7 +20222,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// Dimensions according to which metrics are segmented in the response. Values of product dimensions, e.g., offer
     /// id, reflect the state of a product at the time of the corresponding event, e.g., impression or order. Segment
     /// fields cannot be selected in queries without also selecting at least one metric field. Values are only set for
-    /// dimensions requested explicitly in the request's search query. Next id: 22
+    /// dimensions requested explicitly in the request's search query.
     /// </summary>
     public class Segments : Google.Apis.Requests.IDirectResponseSchema
     {
