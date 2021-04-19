@@ -16,12 +16,14 @@
   "Google.Apis.CloudOSLogin.v1alpha.UsersResource+GetLoginProfileRequest.ViewEnum": [
     "VIEW_UNSPECIFIED",
     "BASIC",
-    "SECURITY_KEY"
+    "SECURITY_KEY",
+    "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   ],
   "Google.Apis.CloudOSLogin.v1alpha.UsersResource+ImportSshPublicKeyRequest.ViewEnum": [
     "VIEW_UNSPECIFIED",
     "BASIC",
-    "SECURITY_KEY"
+    "SECURITY_KEY",
+    "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   ],
   "Google.Apis.CloudOSLogin.v1alpha.UsersResource+ProjectsResource+DeleteRequest.OperatingSystemTypeEnum": [
     "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
