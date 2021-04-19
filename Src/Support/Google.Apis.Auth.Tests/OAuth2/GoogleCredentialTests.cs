@@ -476,5 +476,40 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             string quotaProject = Assert.Single(headerValues.Value);
             Assert.Equal(expectedValue, quotaProject);
         }
+
+        [Fact]
+        public void TestImpersonatedCredential()
+        {
+            var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
+            var delegates = new string[] {"delegate"};
+            var scopes = new string[] {"scope"};
+            var targetPrincipal = "foo";
+            var credential = sourceCredential.Impersonate(targetPrincipal, delegates, scopes, 4000);
+            var impersonatedCredential = credential.UnderlyingCredential as ImpersonatedCredential;
+            Assert.Equal(delegates, impersonatedCredential.Delegates);
+            Assert.Equal(scopes, impersonatedCredential.Scopes);
+            Assert.Equal(targetPrincipal, impersonatedCredential.TargetPrincipal);
+            Assert.Equal(scopes, impersonatedCredential.Scopes);
+            Assert.Equal(4000, impersonatedCredential.LifetimeInSeconds);
+        }
+
+        [Fact]
+        public void TestImpersonatedCredential_CreateScoped()
+        {
+            var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
+            var scopes = new string[] {"new_scope"};
+            var credential = sourceCredential.Impersonate("foo").CreateScoped(scopes);
+            var impersonatedCredential = credential.UnderlyingCredential as ImpersonatedCredential;
+            Assert.Equal(scopes, impersonatedCredential.Scopes);
+        }
+
+        [Fact]
+        public void TestImpersonatedCredential_CreateWithQuotaProject()
+        {
+            var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
+            var credential = sourceCredential.Impersonate("foo").CreateWithQuotaProject("new_project");
+            var impersonatedCredential = credential.UnderlyingCredential as ImpersonatedCredential;
+            Assert.Equal("new_project", impersonatedCredential.QuotaProject);
+        }
     }
 }

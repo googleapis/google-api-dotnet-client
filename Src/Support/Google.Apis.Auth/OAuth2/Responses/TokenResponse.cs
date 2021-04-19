@@ -93,6 +93,21 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Newtonsoft.Json.JsonPropertyAttribute(Order = 2)]
         public DateTime IssuedUtc { get; set; }
 
+        /// <summary>Access token for impersonated credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        private string ImpersonatedAccessToken { set { AccessToken = value; } }
+
+        /// <summary>ID token for impersonated credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        private string ImpersonatedIdToken { set { IdToken = value; } }
+
+        /// <summary>
+        /// Access token expiration time for impersonated credentials. It has the RFC3339
+        /// format: "yyyy-MM-dd'T'HH:mm:ss'Z'".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        private string ImpersonatedAccessTokenExpireTime { get; set; }
+
         // Note: ideally this would be called ShouldRefresh or similar.
         /// <summary>
         /// Returns true if the token is expired or it's going to expire soon.
@@ -137,6 +152,14 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 if (!response.IsSuccessStatusCode)
                 {
                     typeName = nameof(TokenErrorResponse);
+                    // For impersonated credential, the error field is not a string so it cannot be parsed
+                    // as TokenErrorResponse. Since the content has nothing but a single error field, We
+                    // just use the content itself as the error. For example:
+                    // "{"error": {"code": 404, "message": "...", "errors": [{"message": "...", ...}], "status": "NOT_FOUND"}}" 
+                    if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceAccountEndpointCommonPrefix) == true)
+                    {
+                        throw new TokenResponseException(new TokenErrorResponse() {Error = content}, response.StatusCode);
+                    }
                     var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
                     throw new TokenResponseException(error, response.StatusCode);
                 }
@@ -164,6 +187,12 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 // If no access token was specified, then we're probably receiving
                 // and OIDC token for IAP. The IdToken is used for access in that case.
                 newToken.AccessToken ??= newToken.IdToken;
+
+                // For impersonated credentials access token we need to convert expire time to seconds.
+                if (!String.IsNullOrEmpty(newToken.ImpersonatedAccessTokenExpireTime)) {
+                    var date = DateTime.Parse(newToken.ImpersonatedAccessTokenExpireTime).ToUniversalTime();
+                    newToken.ExpiresInSeconds = (long) date.Subtract(clock.UtcNow).TotalSeconds;        
+                }
 
                 // If no expiry is specified, maybe the IdToken has it specified.
                 // We can try and get it from there.

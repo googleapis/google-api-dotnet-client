@@ -326,6 +326,45 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public ICredential UnderlyingCredential => credential;
 
+        /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ImpersonatedCredential"/>.</summary>
+        /// <param name="TargetPrincipal">The service account to impersonate.</param>
+        /// <param name="Delegates">The chained list of delegates.</param>
+        /// <param name="Scopes">The scopes to request during the authorization grant.</param>
+        /// <param name="LifetimeInSeconds">
+        /// The number of seconds the delegated credential should be valid.
+        /// By default this value should be at most 3600. However, you can follow
+        /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
+        /// to set up the service account and extend the maximum lifetime to 43200 (12 hours).
+        /// If the given lifetime is 0, default value 3600 will be used instead when creating the credentials.
+        /// </param>
+        public GoogleCredential Impersonate(string TargetPrincipal, IEnumerable<string> Delegates = null, 
+                IEnumerable<string> Scopes = null, int LifetimeInSeconds = 3600) 
+        {
+            var initializer = new ImpersonatedCredential.Initializer(this, TargetPrincipal, Delegates, Scopes, LifetimeInSeconds);
+            var impersonatedCredential = new ImpersonatedCredential(initializer);
+            return new ImpersonatedGoogleCredential(impersonatedCredential);
+        }
+
+        /// <summary>
+        /// Wraps <c>ImpersonatedCredential</c> as <c>GoogleCredential</c>.
+        /// We need this subclass because wrapping <c>ImpersonatedCredential</c> (unlike other wrapped credential
+        /// types) requires special handling for <c>CreateScoped</c> member.
+        /// </summary>
+        internal class ImpersonatedGoogleCredential : GoogleCredential {
+            public ImpersonatedGoogleCredential(ImpersonatedCredential credential)
+                : base(credential) { }
+
+            public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
+            {
+                var impersonatedCredential = credential as ImpersonatedCredential;
+                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential)
+                {
+                    Scopes = scopes
+                };
+                return new ImpersonatedGoogleCredential(new ImpersonatedCredential(initializer));
+            }
+        }
+
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         public static GoogleCredential FromServiceAccountCredential(ServiceAccountCredential credential)
         {
