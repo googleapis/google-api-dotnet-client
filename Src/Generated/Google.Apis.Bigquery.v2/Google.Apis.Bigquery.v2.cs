@@ -8123,7 +8123,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_),
-        /// and must start with a letter or underscore. The maximum length is 128 characters.
+        /// and must start with a letter or underscore. The maximum length is 300 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

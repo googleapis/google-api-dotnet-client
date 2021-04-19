@@ -335,7 +335,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The parent catalog resource name, such as
-                    /// "projects/*/locations/global/catalogs/default_catalog".
+                    /// `projects/*/locations/global/catalogs/default_catalog`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string parent)
                     {
@@ -355,7 +355,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>
                         /// Required. The parent catalog resource name, such as
-                        /// "projects/*/locations/global/catalogs/default_catalog".
+                        /// `projects/*/locations/global/catalogs/default_catalog`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -393,7 +393,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <summary>Deletes a catalog item.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of catalog item, such as
-                    /// "projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+                    /// `projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -412,7 +412,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>
                         /// Required. Full resource name of catalog item, such as
-                        /// "projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+                        /// `projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -444,7 +444,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <summary>Gets a specific catalog item.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of catalog item, such as
-                    /// "projects/*/locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id".
+                    /// `projects/*/locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -463,7 +463,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>
                         /// Required. Full resource name of catalog item, such as
-                        /// "projects/*/locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id".
+                        /// `projects/*/locations/global/catalogs/default_catalog/catalogitems/some_catalog_item_id`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -499,7 +499,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. "projects/1234/locations/global/catalogs/default_catalog" If no updateMask is
+                    /// Required. `projects/1234/locations/global/catalogs/default_catalog` If no updateMask is
                     /// specified, requires catalogItems.create permission. If updateMask is specified, requires
                     /// catalogItems.update permission.
                     /// </param>
@@ -524,7 +524,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. "projects/1234/locations/global/catalogs/default_catalog" If no updateMask is
+                        /// Required. `projects/1234/locations/global/catalogs/default_catalog` If no updateMask is
                         /// specified, requires catalogItems.create permission. If updateMask is specified, requires
                         /// catalogItems.update permission.
                         /// </summary>
@@ -564,7 +564,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <summary>Gets a list of catalog items.</summary>
                     /// <param name="parent">
                     /// Required. The parent catalog resource name, such as
-                    /// "projects/*/locations/global/catalogs/default_catalog".
+                    /// `projects/*/locations/global/catalogs/default_catalog`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -583,7 +583,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>
                         /// Required. The parent catalog resource name, such as
-                        /// "projects/*/locations/global/catalogs/default_catalog".
+                        /// `projects/*/locations/global/catalogs/default_catalog`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -657,7 +657,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. Full resource name of catalog item, such as
-                    /// "projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+                    /// `projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CatalogItem body, string name)
                     {
@@ -679,7 +679,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                         /// <summary>
                         /// Required. Full resource name of catalog item, such as
-                        /// "projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id".
+                        /// `projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -944,7 +944,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Required. Full resource name of the format:
-                        /// {name=projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements/*}
+                        /// `{name=projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements/*}`
                         /// The id of the recommendation engine placement. This id is used to identify the set of models
                         /// that will be used to make the prediction. We currently support three placements with the
                         /// following IDs by default: * `shopping_cart`: Predicts items frequently bought together with
@@ -983,7 +983,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. Full resource name of the format:
-                            /// {name=projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements/*}
+                            /// `{name=projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/placements/*}`
                             /// The id of the recommendation engine placement. This id is used to identify the set of
                             /// models that will be used to make the prediction. We currently support three placements
                             /// with the following IDs by default: * `shopping_cart`: Predicts items frequently bought
@@ -1056,7 +1056,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The parent resource path.
-                        /// "projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store".
+                        /// `projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest body, string parent)
                         {
@@ -1076,7 +1076,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. The parent resource path.
-                            /// "projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store".
+                            /// `projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1114,7 +1114,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <summary>Unregister an apiKey from using for predict method.</summary>
                         /// <param name="name">
                         /// Required. The API key to unregister including full resource path.
-                        /// "projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/"
+                        /// `projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -1133,7 +1133,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. The API key to unregister including full resource path.
-                            /// "projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/"
+                            /// `projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store/predictionApiKeyRegistrations/`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1165,7 +1165,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <summary>List the registered apiKeys for use with predict method.</summary>
                         /// <param name="parent">
                         /// Required. The parent placement resource name such as
-                        /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+                        /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1184,7 +1184,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. The parent placement resource name such as
-                            /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+                            /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1267,7 +1267,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </summary>
                         /// <param name="parent">
                         /// Required. The parent eventStore name, such as
-                        /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store".
+                        /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`.
                         /// </param>
                         public virtual CollectRequest Collect(string parent)
                         {
@@ -1290,7 +1290,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. The parent eventStore name, such as
-                            /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store".
+                            /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1372,7 +1372,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required.
-                        /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+                        /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
                         /// </param>
                         public virtual ImportRequest Import(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest body, string parent)
                         {
@@ -1397,7 +1397,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required.
-                            /// "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store"
+                            /// `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1441,7 +1441,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// </summary>
                         /// <param name="parent">
                         /// Required. The parent eventStore resource name, such as
-                        /// "projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store".
+                        /// `projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1466,7 +1466,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. The parent eventStore resource name, such as
-                            /// "projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store".
+                            /// `projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1561,7 +1561,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="parent">
                         /// Required. The resource name of the event_store under which the events are created. The
                         /// format is
-                        /// "projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}"
+                        /// `projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}`
                         /// </param>
                         public virtual PurgeRequest Purge(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest body, string parent)
                         {
@@ -1586,7 +1586,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                             /// <summary>
                             /// Required. The resource name of the event_store under which the events are created. The
                             /// format is
-                            /// "projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}"
+                            /// `projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1632,7 +1632,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. Full resource name of user event, such as
-                        /// "projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store".
+                        /// `projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store`.
                         /// </param>
                         public virtual RejoinRequest Rejoin(Google.Apis.RecommendationsAI.v1beta1.Data.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest body, string parent)
                         {
@@ -1659,7 +1659,7 @@ namespace Google.Apis.RecommendationsAI.v1beta1
 
                             /// <summary>
                             /// Required. Full resource name of user event, such as
-                            /// "projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store".
+                            /// `projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2446,8 +2446,8 @@ namespace Google.Apis.RecommendationsAI.v1beta1.Data
     {
         /// <summary>
         /// Required. Google Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match
-        /// the full object path (for example, gs://bucket/directory/object.json) or a pattern matching one or more
-        /// files, such as gs://bucket/directory/*.json. A request can contain at most 100 files, and each file can be
+        /// the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more
+        /// files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be
         /// up to 2 GB. See [Importing catalog information](/recommendations-ai/docs/upload-catalog) for the expected
         /// file format and setup instructions.
         /// </summary>
