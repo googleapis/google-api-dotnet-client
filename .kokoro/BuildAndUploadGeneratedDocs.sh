@@ -2,7 +2,11 @@
 
 set -e
 
-declare -r docs_credentials="$KOKORO_KEYSTORE_DIR/73713_docuploader_service_account"
+# Make sure secrets are loaded in a well known localtion before running releasetool
+source ./populatesecrets.sh
+populate_all_secrets
+
+declare -r docs_credentials="$SECRETS_LOCATION/docuploader_service_account"
 
 ./BuildGeneratedDocs.sh
 
