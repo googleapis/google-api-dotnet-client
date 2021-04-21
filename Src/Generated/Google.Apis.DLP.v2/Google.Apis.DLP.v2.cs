@@ -12743,7 +12743,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-    /// https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to learn more.
+    /// https://cloud.google.com/dlp/docs/inspecting-structured-text#inspecting_a_table to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2Table : Google.Apis.Requests.IDirectResponseSchema
     {

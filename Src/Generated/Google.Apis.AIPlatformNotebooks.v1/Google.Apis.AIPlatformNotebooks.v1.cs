@@ -1439,6 +1439,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Rollbacks a notebook instance to the previous version.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual RollbackRequest Rollback(Google.Apis.AIPlatformNotebooks.v1.Data.RollbackInstanceRequest body, string name)
+                {
+                    return new RollbackRequest(service, body, name);
+                }
+
+                /// <summary>Rollbacks a notebook instance to the previous version.</summary>
+                public class RollbackRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Rollback request.</summary>
+                    public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.RollbackInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.RollbackInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rollback";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:rollback";
+
+                    /// <summary>Initializes Rollback parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the guest accelerators of a single Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3655,6 +3712,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scaleTier")]
         public virtual string ScaleTier { get; set; }
 
+        /// <summary>
+        /// The email address of a service account to use when running the execution. You must have the
+        /// `iam.serviceAccounts.actAs` permission for the specified service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3849,6 +3913,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nicType")]
+        public virtual string NicType { get; set; }
 
         /// <summary>If true, the notebook instance will not register with the proxy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noProxyAccess")]
@@ -4466,6 +4534,19 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for reseting a Managed Notebook Runtime.</summary>
     public class ResetRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for rollbacking a notebook instance</summary>
+    public class RollbackInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The snapshot for rollback. Example: "projects/test-project/global/snapshots/krwlzipynril".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshot")]
+        public virtual string TargetSnapshot { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5113,6 +5194,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nicType")]
+        public virtual string NicType { get; set; }
 
         /// <summary>Optional. Shielded VM Instance configuration settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]

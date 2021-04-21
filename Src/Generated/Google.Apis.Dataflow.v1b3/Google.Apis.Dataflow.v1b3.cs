@@ -74,7 +74,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>View your Google Compute Engine resources</summary>
             public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
 
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
@@ -90,7 +90,7 @@ namespace Google.Apis.Dataflow.v1b3
             /// <summary>View your Google Compute Engine resources</summary>
             public const string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
 
-            /// <summary>View your email address</summary>
+            /// <summary>See your primary Google Account email address</summary>
             public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
@@ -5935,6 +5935,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The email address of the service account to run the job as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage path for staging local files. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stagingLocation")]
+        public virtual string StagingLocation { get; set; }
 
         /// <summary>
         /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete

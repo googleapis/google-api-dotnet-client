@@ -57,9 +57,10 @@ the request and want to put work into it.
   want to add a Polly dependency just for this, and it doesn't seem
   worth creating a new library.
 
-## Server-Side Blazor and Google OAuth2
+## Blazor support
 
-- Issue [#1427](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
+- Issue [#1427 Server side Blazor and OAuth](https://github.com/googleapis/google-api-dotnet-client/issues/1427)
+- Issue [#1830 Blazor WebAssembly and OAuth](https://github.com/googleapis/google-api-dotnet-client/issues/1830)
 - Status: unclear right now, but we don't test on Blazor
 - Action: keep an eye; if Blazor becomes very popular or we get multiple requests, we may revisit.
 
@@ -68,5 +69,8 @@ the request and want to put work into it.
 - Issue [#1548 OIDC support for gRPC credentilas](https://github.com/googleapis/google-api-dotnet-client/issues/1548)
 - Issue [#1447 Support for key rotation](https://github.com/googleapis/google-api-dotnet-client/issues/1447)
 - Issue [#1326 Support for "server-side" OAuth flow](https://github.com/googleapis/google-api-dotnet-client/issues/1326)
+- Issue [#1803 OIDC support for user credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1803)
+- Issue [#1812 Support for limited input device flow](https://github.com/googleapis/google-api-dotnet-client/issues/1812)
+- Issue [#1827 PCKE flow should no require client_secret](https://github.com/googleapis/google-api-dotnet-client/issues/1827)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
 - Action: bring these issues up for consideration as part of consolidation work.

@@ -1375,7 +1375,7 @@ namespace Google.Apis.NetworkManagement.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1555,6 +1555,37 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Cloud SQL instance.</summary>
+    public class CloudSQLInstanceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>External IP address of Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual string ExternalIp { get; set; }
+
+        /// <summary>Internal IP address of Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
+
+        /// <summary>URI of a Cloud SQL instance network or empty string if instance does not have one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
+        public virtual string NetworkUri { get; set; }
+
+        /// <summary>Region in which the Cloud SQL instance is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>URI of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1915,6 +1946,29 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>VIP of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vip")]
         public virtual string Vip { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with a Google Kubernetes Engine cluster master.</summary>
+    public class GKEMasterInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of a Google Kubernetes Engine cluster network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterNetworkUri")]
+        public virtual string ClusterNetworkUri { get; set; }
+
+        /// <summary>URI of a Google Kubernetes Engine cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterUri")]
+        public virtual string ClusterUri { get; set; }
+
+        /// <summary>External IP address of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual string ExternalIp { get; set; }
+
+        /// <summary>Internal IP address of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2401,6 +2455,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
 
+        /// <summary>Display info of a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
+        public virtual CloudSQLInstanceInfo CloudSqlInstance { get; set; }
+
         /// <summary>Display info of the final state "deliver" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliver")]
         public virtual DeliverInfo Deliver { get; set; }
@@ -2431,6 +2489,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display info of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual ForwardingRuleInfo ForwardingRule { get; set; }
+
+        /// <summary>Display info of a Google Kubernetes Engine cluster master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
+        public virtual GKEMasterInfo GkeMaster { get; set; }
 
         /// <summary>Display info of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
@@ -2495,7 +2557,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     }
 
     /// <summary>
-    /// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step
+    /// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step
     /// is in a particular state with associated configuration. * State is categorized as final or non-final states. *
     /// Each final state has a reason associated. * Each trace must end with a final state (the last step). ```
     /// |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```

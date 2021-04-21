@@ -2951,7 +2951,7 @@ namespace Google.Apis.GameServices.v1beta
                 public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }

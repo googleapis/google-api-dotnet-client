@@ -657,8 +657,8 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             public enum ViewEnum
             {
                 /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
-                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED = 0,
+                [Google.Apis.Util.StringValueAttribute("LOGIN_PROFILE_VIEW_UNSPECIFIED")]
+                LOGINPROFILEVIEWUNSPECIFIED = 3,
 
                 /// <summary>Includes POSIX and SSH key information.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -766,8 +766,8 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             public enum ViewEnum
             {
                 /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
-                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
-                VIEWUNSPECIFIED = 0,
+                [Google.Apis.Util.StringValueAttribute("LOGIN_PROFILE_VIEW_UNSPECIFIED")]
+                LOGINPROFILEVIEWUNSPECIFIED = 3,
 
                 /// <summary>Includes POSIX and SSH key information.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]

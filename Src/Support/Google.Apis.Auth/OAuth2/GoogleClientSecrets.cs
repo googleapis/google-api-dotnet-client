@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-
 using Google.Apis.Json;
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -50,9 +50,32 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>Loads the Google client secret from the input stream.</summary>
-        public static GoogleClientSecrets Load(Stream stream)
+        /// <remarks>This method has been made obsolete in favour of <see cref="FromStream(Stream)"/>
+        /// which only differs in name.</remarks>
+        [Obsolete("Please use GoogleClientSecrets.FromStream which is an equivalent alternative.")]
+        public static GoogleClientSecrets Load(Stream stream) =>
+            FromStream(stream);
+
+        /// <summary>Loads the Google client secret from the input stream.</summary>
+        public static GoogleClientSecrets FromStream(Stream stream) =>
+            NewtonsoftJsonSerializer.Instance.Deserialize<GoogleClientSecrets>(stream);
+
+        /// <summary>Asynchronously loads the Google client secret from the input stream.</summary>
+        public static Task<GoogleClientSecrets> FromStreamAsync(Stream stream, CancellationToken cancellationToken = default) =>
+            NewtonsoftJsonSerializer.Instance.DeserializeAsync<GoogleClientSecrets>(stream, cancellationToken);
+
+        /// <summary>Loads the Google client secret from a JSON file.</summary>
+        public static GoogleClientSecrets FromFile(string clientSecretsFilePath)
         {
-            return NewtonsoftJsonSerializer.Instance.Deserialize<GoogleClientSecrets>(stream);
+            using var stream = new FileStream(clientSecretsFilePath, FileMode.Open, FileAccess.Read);
+            return FromStream(stream);
+        }
+
+        /// <summary>Asynchronously loads the Google client secret from a JSON file.</summary>
+        public static async Task<GoogleClientSecrets> FromFileAsync(string clientSecretsFilePath, CancellationToken cancellationToken = default)
+        {
+            using var stream = new FileStream(clientSecretsFilePath, FileMode.Open, FileAccess.Read);
+            return await FromStreamAsync(stream, cancellationToken).ConfigureAwait(false);
         }
     }
 }

@@ -404,7 +404,7 @@ namespace Google.Apis.Recommender.v1
                     /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
                     /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
                     /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
-                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -432,7 +432,7 @@ namespace Google.Apis.Recommender.v1
                         /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
                         /// INSIGHT_TYPE_ID refers to supported insight types:
-                        /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+                        /// https://cloud.google.com/recommender/docs/insights/insight-types.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1108,7 +1108,7 @@ namespace Google.Apis.Recommender.v1
                     /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
                     /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
                     /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
-                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1136,7 +1136,7 @@ namespace Google.Apis.Recommender.v1
                         /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
                         /// INSIGHT_TYPE_ID refers to supported insight types:
-                        /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+                        /// https://cloud.google.com/recommender/docs/insights/insight-types.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1812,7 +1812,7 @@ namespace Google.Apis.Recommender.v1
                     /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
                     /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
                     /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
-                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -1840,7 +1840,7 @@ namespace Google.Apis.Recommender.v1
                         /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
                         /// INSIGHT_TYPE_ID refers to supported insight types:
-                        /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+                        /// https://cloud.google.com/recommender/docs/insights/insight-types.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2516,7 +2516,7 @@ namespace Google.Apis.Recommender.v1
                     /// `folders/[FOLDER_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` 4.
                     /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]` LOCATION
                     /// here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers
-                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)
+                    /// to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2544,7 +2544,7 @@ namespace Google.Apis.Recommender.v1
                         /// `organizations/[ORGANIZATION_ID]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]`
                         /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
                         /// INSIGHT_TYPE_ID refers to supported insight types:
-                        /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+                        /// https://cloud.google.com/recommender/docs/insights/insight-types.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }

@@ -1243,7 +1243,7 @@ namespace Google.Apis.CloudFunctions.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1907,6 +1907,13 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual string BuildId { get; set; }
+
+        /// <summary>
+        /// The Cloud Build Name of the function deployment. This field is only populated for Create and Update
+        /// operations. projects//locations//builds/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
 
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]

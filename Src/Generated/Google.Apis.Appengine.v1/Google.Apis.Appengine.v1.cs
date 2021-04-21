@@ -1794,7 +1794,7 @@ namespace Google.Apis.Appengine.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -4346,6 +4346,28 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRange")]
         public virtual string SourceRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the given google.cloud.location.Location.</summary>
+    public class GoogleAppengineV1betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App Engine flexible environment is available in the given location.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flexibleEnvironmentAvailable")]
+        public virtual System.Nullable<bool> FlexibleEnvironmentAvailable { get; set; }
+
+        /// <summary>
+        /// Output only. Search API (https://cloud.google.com/appengine/docs/standard/python/search) is available in the
+        /// given location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchApiAvailable")]
+        public virtual System.Nullable<bool> SearchApiAvailable { get; set; }
+
+        /// <summary>App Engine standard environment is available in the given location.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardEnvironmentAvailable")]
+        public virtual System.Nullable<bool> StandardEnvironmentAvailable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

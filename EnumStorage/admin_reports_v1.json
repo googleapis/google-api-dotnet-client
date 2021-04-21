@@ -20,7 +20,8 @@
     "user_accounts",
     "context_aware_access",
     "chrome",
-    "data_studio"
+    "data_studio",
+    "keep"
   ],
   "Google.Apis.Admin.Reports.reports_v1.ActivitiesResource+WatchRequest.ApplicationNameEnum": [
     "application_name_unspecified",
@@ -43,7 +44,8 @@
     "user_accounts",
     "context_aware_access",
     "chrome",
-    "data_studio"
+    "data_studio",
+    "keep"
   ],
   "Google.Apis.Admin.Reports.reports_v1.EntityUsageReportsResource+GetRequest.EntityKeyEnum": [
     "entityKeyUndefined",

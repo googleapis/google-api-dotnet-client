@@ -87,7 +87,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Administer your Cloud Bigtable tables</summary>
             public static string CloudBigtableAdminTable = "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
@@ -118,7 +118,7 @@ namespace Google.Apis.BigtableAdmin.v2
             /// <summary>Administer your Cloud Bigtable tables</summary>
             public const string CloudBigtableAdminTable = "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>View your data across Google Cloud Platform services</summary>
