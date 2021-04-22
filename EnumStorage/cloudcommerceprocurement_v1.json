@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudCommercePartnerProcurementService.v1.CloudCommercePartnerProcurementServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudCommercePartnerProcurementService.v1.CloudCommercePartnerProcurementServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

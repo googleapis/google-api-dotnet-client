@@ -1442,11 +1442,12 @@ namespace Google.Apis.CloudAsset.v1
             /// to find Cloud resources that have a label "env" and its value is "prod". * `labels.env:*` to find Cloud
             /// resources that have a label "env". * `kmsKey:key` to find Cloud resources encrypted with a
             /// customer-managed encryption key whose name contains the word "key". * `state:ACTIVE` to find Cloud
-            /// resources whose state contains "ACTIVE" as a word. * `createTime&amp;lt;1609459200` to find Cloud
-            /// resources that were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
-            /// "2021-01-01 00:00:00 UTC" in seconds. * `updateTime&amp;gt;1609459200` to find Cloud resources that were
-            /// updated after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC"
-            /// in seconds. * `Important` to find Cloud resources that contain "Important" as a word in any of the
+            /// resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to find {{gcp_name}} resources
+            /// whose state doesn't contain "ACTIVE" as a word. * `createTime&amp;lt;1609459200` to find Cloud resources
+            /// that were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01
+            /// 00:00:00 UTC" in seconds. * `updateTime&amp;gt;1609459200` to find Cloud resources that were updated
+            /// after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in
+            /// seconds. * `Important` to find Cloud resources that contain "Important" as a word in any of the
             /// searchable fields. * `Impor*` to find Cloud resources that contain "Impor" as a prefix of any word in
             /// any of the searchable fields. * `Important location:(us-west1 OR global)` to find Cloud resources that
             /// contain "Important" as a word in any of the searchable fields and are also located in the "us-west1"
@@ -2955,8 +2956,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     /// <summary>
     /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the
-    /// source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that
-    /// ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+    /// source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then
+    /// that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3007,22 +3008,24 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// <summary>
     /// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about
     /// the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the
-    /// request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows
-    /// access in order for this request to succeed.
+    /// request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which
+    /// allows access in order for this request to succeed. The request must match `operations` AND `resources` fields
+    /// in order to be allowed egress out of the perimeter.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1EgressTo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of ApiOperations that this egress rule applies to. A request matches if it contains an
-        /// operation/service in this list.
+        /// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A
+        /// request matches if it uses an operation/service in this list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ApiOperation> Operations { get; set; }
 
         /// <summary>
-        /// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request
-        /// matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule
-        /// will authorize access to all resources outside the perimeter.
+        /// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by
+        /// sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list.
+        /// If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside
+        /// the perimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
@@ -3033,7 +3036,8 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     /// <summary>
     /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about
-    /// the source of the request.
+    /// the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in
+    /// order to match.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1IngressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3092,8 +3096,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent
         /// AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only
         /// be accessed via Google Cloud calls with request origins within the perimeter. Example:
-        /// `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be
-        /// allowed.
+        /// `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all
+        /// IngressSources will be allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual string AccessLevel { get; set; }
@@ -3113,22 +3117,22 @@ namespace Google.Apis.CloudAsset.v1.Data
 
     /// <summary>
     /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about
-    /// the ApiOperation intended to be performed on the destination of the request.
+    /// the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what
+    /// is defined in `operations` AND `resources` in order to match.
     /// </summary>
     public class GoogleIdentityAccesscontextmanagerV1IngressTo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this
-        /// ServicePerimeter.
+        /// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in
+        /// this ServicePerimeter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1ApiOperation> Operations { get; set; }
 
         /// <summary>
         /// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter
-        /// that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it
-        /// contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize
-        /// access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+        /// that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is
+        /// specified, then access to all resources inside the perimeter are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<string> Resources { get; set; }
