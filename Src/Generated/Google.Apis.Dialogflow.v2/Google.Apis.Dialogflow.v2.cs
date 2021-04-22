@@ -19928,7 +19928,8 @@ namespace Google.Apis.Dialogflow.v2.Data
     {
         /// <summary>
         /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to
-        /// false.
+        /// false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web
+        /// service now.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCloudFunction")]
         public virtual System.Nullable<bool> IsCloudFunction { get; set; }
