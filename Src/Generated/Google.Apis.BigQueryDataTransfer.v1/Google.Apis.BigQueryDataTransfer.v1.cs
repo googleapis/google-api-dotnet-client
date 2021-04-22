@@ -68,9 +68,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>View and manage your data in Google BigQuery</summary>
             public static string Bigquery = "https://www.googleapis.com/auth/bigquery";
 
-            /// <summary>View your data in Google BigQuery</summary>
-            public static string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
-
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -83,9 +80,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         {
             /// <summary>View and manage your data in Google BigQuery</summary>
             public const string Bigquery = "https://www.googleapis.com/auth/bigquery";
-
-            /// <summary>View your data in Google BigQuery</summary>
-            public const string BigqueryReadonly = "https://www.googleapis.com/auth/bigquery.readonly";
 
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
@@ -1868,7 +1862,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
