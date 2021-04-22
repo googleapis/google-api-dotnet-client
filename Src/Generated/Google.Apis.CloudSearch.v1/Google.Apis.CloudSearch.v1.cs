@@ -4527,37 +4527,6 @@ namespace Google.Apis.CloudSearch.v1
 }
 namespace Google.Apis.CloudSearch.v1.Data
 {
-    /// <summary>Represents the settings for Cloud audit logging</summary>
-    public class AuditLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates whether audit logging is on/off for admin activity read APIs i.e. Get/List DataSources, Get/List
-        /// SearchApplications etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logAdminReadActions")]
-        public virtual System.Nullable<bool> LogAdminReadActions { get; set; }
-
-        /// <summary>
-        /// Indicates whether audit logging is on/off for data access read APIs i.e. ListItems, GetItem etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logDataReadActions")]
-        public virtual System.Nullable<bool> LogDataReadActions { get; set; }
-
-        /// <summary>Indicates whether audit logging is on/off for data access write APIs i.e. IndexItem etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logDataWriteActions")]
-        public virtual System.Nullable<bool> LogDataWriteActions { get; set; }
-
-        /// <summary>
-        /// The resource name of the GCP Project to store audit logs. Cloud audit logging will be enabled after
-        /// project_name has been updated through CustomerService. Format: projects/{project_id}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("project")]
-        public virtual string Project { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Used to provide a search operator for boolean properties. This is optional. Search operators let users restrict
     /// the query to specific fields relevant to the type of item being searched.
@@ -4615,31 +4584,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A named attribute associated with an item which can be used for influencing the ranking of the item based on the
-    /// context in the request.
-    /// </summary>
-    public class ContextAttribute : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start
-        /// with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized
-        /// (lower-cased) before being matched.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the
-        /// array is 32 characters. The value will be normalized (lower-cased) before being matched.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Aggregation of items by status code as of the specified date.</summary>
     public class CustomerIndexStats : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4690,13 +4634,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Represents settings at a customer level.</summary>
     public class CustomerSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Audit Logging settings for the customer. If update_mask is empty then this field will be updated based on
-        /// UpdateCustomerSettings request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("auditLoggingSettings")]
-        public virtual AuditLoggingSettings AuditLoggingSettings { get; set; }
-
         /// <summary>
         /// VPC SC settings for the customer. If update_mask is empty then this field will be updated based on
         /// UpdateCustomerSettings request.
@@ -5809,13 +5746,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; }
-
-        /// <summary>
-        /// A set of named attributes associated with the item. This can be used for influencing the ranking of the item
-        /// based on the context in the request. The maximum number of elements is 10.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contextAttributes")]
-        public virtual System.Collections.Generic.IList<ContextAttribute> ContextAttributes { get; set; }
 
         /// <summary>The time when the item was created in the source repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -7045,12 +6975,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableAuditLog")]
-        public virtual System.Nullable<bool> EnableAuditLog { get; set; }
-
         /// <summary>Name of the Search Application. Format: searchapplications/{application_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7182,13 +7106,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>The search API request.</summary>
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Context attributes for the request which will be used to adjust ranking of search results. The maximum
-        /// number of elements is 10.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contextAttributes")]
-        public virtual System.Collections.Generic.IList<ContextAttribute> ContextAttributes { get; set; }
-
         /// <summary>
         /// The sources to use for querying. If not specified, all data sources from the current search application are
         /// used.

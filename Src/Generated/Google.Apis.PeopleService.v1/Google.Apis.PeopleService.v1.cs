@@ -1054,8 +1054,7 @@ namespace Google.Apis.PeopleService.v1
             }
 
             /// <summary>
-            /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values
-            /// greater than 10 will be capped to 10.
+            /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2233,10 +2232,7 @@ namespace Google.Apis.PeopleService.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values
-            /// greater than 10 will be capped to 10.
-            /// </summary>
+            /// <summary>Optional. The number of results to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3626,10 +3622,6 @@ namespace Google.Apis.PeopleService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherContacts")]
         public virtual System.Collections.Generic.IList<Person> OtherContacts { get; set; }
-
-        /// <summary>The total number of other contacts in the list without pagination.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
-        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

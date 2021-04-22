@@ -65,7 +65,7 @@ namespace Google.Apis.CloudTalentSolution.v3
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Talent Solution API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -75,7 +75,7 @@ namespace Google.Apis.CloudTalentSolution.v3
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Talent Solution API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
             /// <summary>Manage job postings</summary>
@@ -2247,12 +2247,7 @@ namespace Google.Apis.CloudTalentSolution.v3.Data
         /// requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name,
         /// language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom
         /// field should be used for storage. It is also suggested to group the locations that close to each other in
-        /// the same job for better search experience. Jobs with multiple addresses must have their addresses with the
-        /// same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600
-        /// Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied
-        /// correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a
-        /// LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple
-        /// jobs with same LocationTypes. The maximum number of allowed characters is 500.
+        /// the same job for better search experience. The maximum number of allowed characters is 500.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<string> Addresses { get; set; }

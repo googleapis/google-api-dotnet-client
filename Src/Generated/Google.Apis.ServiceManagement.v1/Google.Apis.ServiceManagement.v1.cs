@@ -2152,11 +2152,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     }
 
     /// <summary>
-    /// `Authentication` defines the authentication configuration for API methods provided by an API service. Example:
-    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external
+    /// use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
     /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
-    /// requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes:
-    /// https://www.googleapis.com/auth/calendar.read
+    /// requirements: provider_id: google_calendar_auth
     /// </summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {

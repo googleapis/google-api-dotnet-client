@@ -2145,9 +2145,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
-        /// permission on the project's current and proposed new parent. If project has no current parent, or it
-        /// currently does not have an associated organization resource, you will also need the
-        /// `resourcemanager.projects.setIamPolicy` permission in the project.
+        /// permission on the project's current and proposed new parent.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The name of the project to move.</param>
@@ -2161,9 +2159,7 @@ namespace Google.Apis.CloudResourceManager.v3
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
-        /// permission on the project's current and proposed new parent. If project has no current parent, or it
-        /// currently does not have an associated organization resource, you will also need the
-        /// `resourcemanager.projects.setIamPolicy` permission in the project.
+        /// permission on the project's current and proposed new parent.
         /// </summary>
         public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
