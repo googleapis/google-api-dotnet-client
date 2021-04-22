@@ -2995,14 +2995,14 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Gets a file's metadata or content by ID.</summary>
+        /// <summary>Gets a file's metadata by ID.</summary>
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual GetRequest Get(string fileId)
         {
             return new GetRequest(service, fileId);
         }
 
-        /// <summary>Gets a file's metadata or content by ID.</summary>
+        /// <summary>Gets a file's metadata by ID.</summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -8584,8 +8584,8 @@ namespace Google.Apis.Drive.v2.Data
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A region of the document represented as a JSON string. For details on defining anchor properties, refer to
-        /// Add comments and replies.
+        /// A region of the document represented as a JSON string. See anchor documentation for details on how to define
+        /// and interpret anchor properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; }

@@ -1619,10 +1619,6 @@ namespace Google.Apis.WebSecurityScanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exportToSecurityCommandCenter")]
         public virtual string ExportToSecurityCommandCenter { get; set; }
 
-        /// <summary>Whether to keep scanning even if most requests return HTTP error codes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoreHttpStatusErrors")]
-        public virtual System.Nullable<bool> IgnoreHttpStatusErrors { get; set; }
-
         /// <summary>Whether the scan config is managed by Web Security Scanner, output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedScan")]
         public virtual System.Nullable<bool> ManagedScan { get; set; }

@@ -351,7 +351,7 @@
    }
   }
  },
- "revision": "20210415",
+ "revision": "20210408",
  "rootUrl": "https://assuredworkloads.googleapis.com/",
  "schemas": {
   "GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata": {
@@ -530,14 +530,12 @@
      "enum": [
       "RESOURCE_TYPE_UNSPECIFIED",
       "CONSUMER_PROJECT",
-      "ENCRYPTION_KEYS_PROJECT",
-      "KEYRING"
+      "ENCRYPTION_KEYS_PROJECT"
      ],
      "enumDescriptions": [
       "Unknown resource type.",
       "Consumer project.",
-      "Consumer project containing encryption keys.",
-      "Keyring resource that hosts encryption keys."
+      "Consumer project containing encryption keys."
      ],
      "type": "string"
     }
@@ -557,14 +555,12 @@
      "enum": [
       "RESOURCE_TYPE_UNSPECIFIED",
       "CONSUMER_PROJECT",
-      "ENCRYPTION_KEYS_PROJECT",
-      "KEYRING"
+      "ENCRYPTION_KEYS_PROJECT"
      ],
      "enumDescriptions": [
       "Unknown resource type.",
       "Consumer project.",
-      "Consumer project containing encryption keys.",
-      "Keyring resource that hosts encryption keys."
+      "Consumer project containing encryption keys."
      ],
      "type": "string"
     }
@@ -789,14 +785,12 @@
      "enum": [
       "RESOURCE_TYPE_UNSPECIFIED",
       "CONSUMER_PROJECT",
-      "ENCRYPTION_KEYS_PROJECT",
-      "KEYRING"
+      "ENCRYPTION_KEYS_PROJECT"
      ],
      "enumDescriptions": [
       "Unknown resource type.",
       "Consumer project.",
-      "Consumer project containing encryption keys.",
-      "Keyring resource that hosts encryption keys."
+      "Consumer project containing encryption keys."
      ],
      "type": "string"
     }
@@ -816,14 +810,12 @@
      "enum": [
       "RESOURCE_TYPE_UNSPECIFIED",
       "CONSUMER_PROJECT",
-      "ENCRYPTION_KEYS_PROJECT",
-      "KEYRING"
+      "ENCRYPTION_KEYS_PROJECT"
      ],
      "enumDescriptions": [
       "Unknown resource type.",
       "Consumer project.",
-      "Consumer project containing encryption keys.",
-      "Keyring resource that hosts encryption keys."
+      "Consumer project containing encryption keys."
      ],
      "type": "string"
     }
