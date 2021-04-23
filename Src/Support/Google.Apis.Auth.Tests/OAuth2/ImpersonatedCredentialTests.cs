@@ -33,40 +33,40 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class ImpersonatedCredentialTests
     {
-        private IClock clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
+        private static readonly IClock clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
 
-        private string errorResponseContent = "{\"error\": {\"code\": 404, \"message\": \"...\", \"status\": \"NOT_FOUND\"}}";
+        private const string ErrorResponseContent = "{\"error\": {\"code\": 404, \"message\": \"...\", \"status\": \"NOT_FOUND\"}}";
 
-        internal class MockHttpMessageHandler : HttpMessageHandler
+        internal class FakeHttpMessageHandler : HttpMessageHandler
         {
             private string content;
             private HttpStatusCode statusCode;
 
-            public MockHttpMessageHandler(HttpStatusCode statusCode, string content) {
+            public FakeHttpMessageHandler(HttpStatusCode statusCode, string content) {
                 this.content = content;
                 this.statusCode = statusCode;
             }
 
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                HttpResponseMessage response = new HttpResponseMessage(this.statusCode)
+                HttpResponseMessage response = new HttpResponseMessage(statusCode)
                 {
-                    Content = new StringContent(this.content),
+                    Content = new StringContent(content),
                     RequestMessage = request
                 };
                 return Task.FromResult(response);
             }
         }
 
-        private GoogleCredential CreateSourceCredential()
+        private static GoogleCredential CreateSourceCredential()
         {
             var tokenResponse = new TokenResponse
-                {
-                    AccessToken = "ACCESS_TOKEN",
-                    ExpiresInSeconds = 60 * 10,
-                    IssuedUtc = clock.UtcNow,
-                    RefreshToken = "REFRESH_TOKEN",
-                };
+            {
+                AccessToken = "ACCESS_TOKEN",
+                ExpiresInSeconds = 60 * 10,
+                IssuedUtc = clock.UtcNow,
+                RefreshToken = "REFRESH_TOKEN",
+            };
             var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
             flowMock
                 .Setup(flow => flow.Clock)
@@ -77,13 +77,20 @@ namespace Google.Apis.Auth.Tests.OAuth2
             return new GoogleCredential(new UserCredential(flowMock.Object, "my.user.id", tokenResponse));
         }
 
-        private ImpersonatedCredential CreateImpersonatedCredentialWithIdTokenResponse()
+        private static ImpersonatedCredential CreateImpersonatedCredentialForBody(object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK)
         {
             var sourceCredential = CreateSourceCredential();
-            var body = new { token = OidcComputeSuccessMessageHandler.FirstCallToken };
-            var content = NewtonsoftJsonSerializer.Instance.Serialize(body);
-            var messageHandler = new MockHttpMessageHandler(HttpStatusCode.OK, content);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "foo", new string[] {"scope"})
+            var content = "";
+            if (serializeBody)
+            {
+                content = NewtonsoftJsonSerializer.Instance.Serialize(body);
+            }
+            else
+            {
+                content = (string)body;
+            }
+            var messageHandler = new FakeHttpMessageHandler(status, content);
+            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "principal", null, null, new[] {"scope"})
             {
                 Clock = clock,
                 HttpClientFactory = new MockHttpClientFactory(messageHandler)
@@ -91,90 +98,57 @@ namespace Google.Apis.Auth.Tests.OAuth2
             return new ImpersonatedCredential(initializer);
         }
 
-        private ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse()
-        {
-            var sourceCredential = CreateSourceCredential();
-            var body = new {
-                accessToken = "access_token",
-                expireTime = "2020-05-13T16:00:00.045123456Z"
-            };
-            var content = NewtonsoftJsonSerializer.Instance.Serialize(body);
-            var messageHandler = new MockHttpMessageHandler(HttpStatusCode.OK, content);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "foo", new string[] {"scope"})
-            {
-                Clock = clock,
-                HttpClientFactory = new MockHttpClientFactory(messageHandler)
-            };
-            return new ImpersonatedCredential(initializer);
-        }
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithIdTokenResponse() =>
+            CreateImpersonatedCredentialForBody(new { token = OidcComputeSuccessMessageHandler.FirstCallToken });
 
-        private ImpersonatedCredential CreateImpersonatedCredentialWithSignBlobResponse()
-        {
-            var sourceCredential = CreateSourceCredential();
-            // Use signedBlob = base64("foo") = "Zm9v"
-            var body = new { keyId = "1", signedBlob = "Zm9v" };
-            var content = NewtonsoftJsonSerializer.Instance.Serialize(body);
-            var messageHandler = new MockHttpMessageHandler(HttpStatusCode.OK, content);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "foo", new string[] {"scope"})
-            {
-                Clock = clock,
-                HttpClientFactory = new MockHttpClientFactory(messageHandler)
-            };
-            return new ImpersonatedCredential(initializer);
-        }
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse() =>
+            CreateImpersonatedCredentialForBody(new { accessToken = "access_token", expireTime = "2020-05-13T16:00:00.045123456Z" });
 
-        private ImpersonatedCredential CreateImpersonatedCredentialWithErrorResponse()
-        {
-            var sourceCredential = CreateSourceCredential();
-            var content = errorResponseContent;
-            var messageHandler = new MockHttpMessageHandler(HttpStatusCode.NotFound, content);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "foo", new string[] {"scope"})
-            {
-                Clock = clock,
-                HttpClientFactory = new MockHttpClientFactory(messageHandler)
-            };
-            return new ImpersonatedCredential(initializer);
-        }
+        // Use signedBlob = base64("principal") = "Zm9v"
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithSignBlobResponse() =>
+            CreateImpersonatedCredentialForBody(new { keyId = "1", signedBlob = "Zm9v" });
+
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithErrorResponse() =>
+            CreateImpersonatedCredentialForBody(ErrorResponseContent, false, HttpStatusCode.NotFound);
 
         [Fact]
-        public void TestConstructorInvalidSourceCredential()
+        public void Constructor_InvalidSourceCredential()
         {
             var sourceCredential = GoogleCredential.FromComputeCredential();
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "foo");
+            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "principal", null, null, null);
             var ex = Assert.Throws<InvalidOperationException>(() => new ImpersonatedCredential(initializer));
             Assert.Equal("The underlying credential of source credential must be UserCredential or ServiceAccountCredential.", ex.Message);
         }
 
         [Fact]
-        public void TestConstructorMissingTargetPrincipal()
+        public void Constructor_MissingTargetPrincipal()
         {
-            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "");
+            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "", null, null, null);
             Assert.Throws<ArgumentException>(() => new ImpersonatedCredential(initializer));
         }
 
         [Fact]
-        public void TestConstructorInvalidLifetime()
+        public void Constructor_InvalidLifetime()
         {
-            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "foo", null, null, 50000);
-            var ex = Assert.Throws<InvalidOperationException>(() => new ImpersonatedCredential(initializer));
-            Assert.Equal("Lifetime must be less than or equal to 43200.", ex.Message);
+            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new ImpersonatedCredential.Initializer(CreateSourceCredential(), "principal", new TimeSpan(20, 0, 0), null, null));
+            Assert.True(ex.Message.StartsWith("Lifetime must be less than or equal to"));
         }
 
         [Fact]
-        public void TestConstructor()
+        public void Constructor()
         {
-            var delegates = new string[] {"delegate"};
-            var scopes = new string[] {"scope"};
-            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "foo", delegates, scopes);
+            var delegates = new[] {"delegate"};
+            var scopes = new[] {"scope"};
+            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "principal", null, delegates, scopes);
             var credential = new ImpersonatedCredential(initializer);
-            Assert.Equal(3600, credential.LifetimeInSeconds);
-            Assert.Equal(delegates, credential.Delegates);
+            Assert.Equal(new TimeSpan(1, 0, 0), credential.Lifetime);
+            Assert.Equal(delegates, credential.DelegateAccounts);
             Assert.Equal(scopes, credential.Scopes);
-            Assert.Equal("foo", credential.TargetPrincipal);
+            Assert.Equal("principal", credential.TargetPrincipal);
         }
 
         [Fact]
-        public async Task TestFetchesOidcToken()
+        public async Task GetOidcTokenAsync()
         {
             var credential = CreateImpersonatedCredentialWithIdTokenResponse();
             var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
@@ -184,16 +158,16 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public async Task TestFetchesOidcTokenFailure()
+        public async Task GetOidcTokenAsync_Failure()
         {
             var credential = CreateImpersonatedCredentialWithErrorResponse();
             var oidcToken = await credential.GetOidcTokenAsync(OidcTokenOptions.FromTargetAudience("will.be.ignored"));
-            var ex = await Assert.ThrowsAsync<TokenResponseException>(async () =>{var result = await oidcToken.GetAccessTokenAsync();});
-            Assert.Equal(errorResponseContent, ex.Error.Error);
+            var ex = await Assert.ThrowsAsync<TokenResponseException>(() => oidcToken.GetAccessTokenAsync());
+            Assert.Equal(ErrorResponseContent, ex.Error.Error);
         }
 
         [Fact]
-        public async Task TestFetchesAccessToken()
+        public async Task RequestAccessTokenAsync()
         {
             var credential = CreateImpersonatedCredentialWithAccessTokenResponse();
             var success = await credential.RequestAccessTokenAsync(CancellationToken.None).ConfigureAwait(false);
@@ -203,28 +177,28 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public async Task TestFetchesAccessTokenFailure()
+        public async Task RequestAccessTokenAsync_Failure()
         {
             var credential = CreateImpersonatedCredentialWithErrorResponse();
-            var ex = await Assert.ThrowsAsync<TokenResponseException>(async () =>{await credential.RequestAccessTokenAsync(CancellationToken.None).ConfigureAwait(false);});
-            Assert.Equal(errorResponseContent, ex.Error.Error);
+            var ex = await Assert.ThrowsAsync<TokenResponseException>(() => credential.RequestAccessTokenAsync(CancellationToken.None));
+            Assert.Equal(ErrorResponseContent, ex.Error.Error);
         }
 
         [Fact]
-        public async Task TestSignBlob()
+        public async Task SignBytes()
         {
             var credential = CreateImpersonatedCredentialWithSignBlobResponse();
             var bytes = await credential.SignBytes(Encoding.ASCII.GetBytes("toSign")).ConfigureAwait(false);
-            // Signature is "foo" whose byte array is {102, 111, 111}.
+            // Signature is "principal" whose byte array is {102, 111, 111}.
             Assert.Equal(new byte[] {102, 111, 111}, bytes);
         }
 
         [Fact]
-        public async Task TestSignBlobFailure()
+        public async Task SignBytes_Failure()
         {
             var credential = CreateImpersonatedCredentialWithErrorResponse();
-            var ex = await Assert.ThrowsAsync<ImpersonatedCredential.SignBlobResponseException>(async () =>{await credential.SignBytes(Encoding.ASCII.GetBytes("toSign")).ConfigureAwait(false);});
-            Assert.Equal(errorResponseContent, ex.Error);
+            var ex = await Assert.ThrowsAsync<ImpersonatedCredential.SignBlobResponseException>(() => credential.SignBytes(Encoding.ASCII.GetBytes("toSign")));
+            Assert.Equal(ErrorResponseContent, ex.Error);
         }
     }
 }

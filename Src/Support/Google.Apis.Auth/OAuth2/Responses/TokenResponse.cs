@@ -95,11 +95,11 @@ namespace Google.Apis.Auth.OAuth2.Responses
 
         /// <summary>Access token for impersonated credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
-        private string ImpersonatedAccessToken { set { AccessToken = value; } }
+        private string ImpersonatedAccessToken { set => AccessToken = value; }
 
         /// <summary>ID token for impersonated credentials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        private string ImpersonatedIdToken { set { IdToken = value; } }
+        private string ImpersonatedIdToken { set => IdToken = value; }
 
         /// <summary>
         /// Access token expiration time for impersonated credentials. It has the RFC3339
@@ -189,7 +189,9 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 newToken.AccessToken ??= newToken.IdToken;
 
                 // For impersonated credentials access token we need to convert expire time to seconds.
-                if (!String.IsNullOrEmpty(newToken.ImpersonatedAccessTokenExpireTime)) {
+                // Example of the expire time: "2020-05-13T16:00:00.045123456Z"
+                if (!String.IsNullOrEmpty(newToken.ImpersonatedAccessTokenExpireTime))
+                {
                     var date = DateTime.Parse(newToken.ImpersonatedAccessTokenExpireTime).ToUniversalTime();
                     newToken.ExpiresInSeconds = (long) date.Subtract(clock.UtcNow).TotalSeconds;        
                 }

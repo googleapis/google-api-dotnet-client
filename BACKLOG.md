@@ -68,6 +68,5 @@ the request and want to put work into it.
 - Issue [#1548 OIDC support for gRPC credentilas](https://github.com/googleapis/google-api-dotnet-client/issues/1548)
 - Issue [#1447 Support for key rotation](https://github.com/googleapis/google-api-dotnet-client/issues/1447)
 - Issue [#1326 Support for "server-side" OAuth flow](https://github.com/googleapis/google-api-dotnet-client/issues/1326)
-- Issue [#1312 Impersonated credentials](https://github.com/googleapis/google-api-dotnet-client/issues/1312)
 - Status: ongoing internal effort to consolidate and standardize OAuth features across language libraries.
 - Action: bring these issues up for consideration as part of consolidation work.

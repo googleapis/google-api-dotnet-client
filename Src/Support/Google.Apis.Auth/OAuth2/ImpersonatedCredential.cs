@@ -52,9 +52,9 @@ namespace Google.Apis.Auth.OAuth2
             public string TargetPrincipal { get; set; }
 
             /// <summary>
-            /// Gets or sets the chained list of delegates.
+            /// Gets or sets the chained list of delegate service accounts.
             /// </summary>
-            public IEnumerable<string> Delegates { get; set; }
+            public IEnumerable<string> DelegateAccounts { get; set; }
 
             /// <summary>
             /// Gets or sets the scopes to request during the authorization grant.
@@ -62,39 +62,44 @@ namespace Google.Apis.Auth.OAuth2
             public IEnumerable<string> Scopes { get; set; }
 
             /// <summary>
-            /// Gets or sets the number of seconds the delegated credential should be valid.
+            /// Gets or sets the how long the delegated credential should be valid.
             /// </summary>
-            public int LifetimeInSeconds { get; set; }
+            public TimeSpan Lifetime { get; set; }
 
             /// <summary>Constructs a new initializer.</summary>
-            /// <param name="SourceCredential">The source credential used as to acquire the impersonated credentials.</param>
-            /// <param name="TargetPrincipal">The service account to impersonate.</param>
-            /// <param name="Delegates">The chained list of delegates.</param>
-            /// <param name="Scopes">The scopes to request during the authorization grant.</param>
-            /// <param name="LifetimeInSeconds">
-            /// The number of seconds the delegated credential should be valid.
-            /// By default this value should be at most 3600. However, you can follow
+            /// <param name="sourceCredential">The source credential used as to acquire the impersonated credentials.</param>
+            /// <param name="targetPrincipal">The service account to impersonate.</param>
+            /// <param name="lifetime">
+            /// The life time of the delegated credential should be valid.
+            /// By default this value should be at most 3600 seconds. However, you can follow
             /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
-            /// to set up the service account and extend the maximum lifetime to 43200 (12 hours).
-            /// If the given lifetime is 0, default value 3600 will be used instead when creating the credentials.
+            /// to set up the service account and extend the maximum lifetime to 43200 seconds or 12 hours).
+            /// If lifetime is not given, 3600 seconds will be used by default.
             /// </param>
-            public Initializer(GoogleCredential SourceCredential, string TargetPrincipal,
-                IEnumerable<string> Delegates = null, IEnumerable<string> Scopes = null, int LifetimeInSeconds = 3600)
-                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpoint, TargetPrincipal)) { 
-                    this.SourceCredential = SourceCredential;
-                    this.TargetPrincipal = TargetPrincipal;
-                    this.Delegates = Delegates;
-                    this.Scopes = Scopes;
-                    this.LifetimeInSeconds = LifetimeInSeconds;
+            /// <param name="delegateAccounts">The chained list of delegate service accounts.</param>
+            /// <param name="scopes">The scopes to request during the authorization grant.</param>
+            public Initializer(GoogleCredential sourceCredential, string targetPrincipal, TimeSpan? lifetime,
+                IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
+                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpoint, targetPrincipal))
+            { 
+                SourceCredential = sourceCredential;
+                TargetPrincipal = targetPrincipal;
+                DelegateAccounts = delegateAccounts;
+                Scopes = scopes;
+                Lifetime = lifetime.HasValue ? lifetime.Value : new TimeSpan(1, 0, 0);
+                if (Lifetime > new TimeSpan(12, 0, 0))
+                {
+                    throw new ArgumentOutOfRangeException("lifetime", "Lifetime must be less than or equal to 43200 seconds or 12 hours.");
                 }
+            }
 
             internal Initializer(ImpersonatedCredential other) : base(other.TokenServerUrl)
             {
-                this.SourceCredential = other.SourceCredential;
-                this.TargetPrincipal = other.TargetPrincipal;
-                this.Delegates = other.Delegates;
-                this.Scopes = other.Scopes;
-                this.LifetimeInSeconds = other.LifetimeInSeconds;
+                SourceCredential = other.SourceCredential;
+                TargetPrincipal = other.TargetPrincipal;
+                DelegateAccounts = other.DelegateAccounts;
+                Scopes = other.Scopes;
+                Lifetime = other.Lifetime;
             }
         }
 
@@ -109,9 +114,9 @@ namespace Google.Apis.Auth.OAuth2
         public string TargetPrincipal { get; }
 
         /// <summary>
-        /// Gets the chained list of delegates.
+        /// Gets the chained list of delegate service accounts.
         /// </summary>
-        public IEnumerable<string> Delegates { get; }
+        public IEnumerable<string> DelegateAccounts { get; }
 
         /// <summary>
         /// Gets the scopes to request during the authorization grant.
@@ -119,9 +124,9 @@ namespace Google.Apis.Auth.OAuth2
         public IEnumerable<string> Scopes { get; }
 
         /// <summary>
-        /// Gets the number of seconds the delegated credential should be valid.
+        /// Gets how long the delegated credential should be valid.
         /// </summary>
-        public int LifetimeInSeconds { get; }
+        public TimeSpan Lifetime { get; }
 
         /// <summary>Constructs a new impersonated credential using the given initializer.</summary>
         internal ImpersonatedCredential(Initializer initializer) : base(initializer)
@@ -135,21 +140,9 @@ namespace Google.Apis.Auth.OAuth2
             HttpClient.MessageHandler.Credential = SourceCredential.UnderlyingCredential as Http.IHttpExecuteInterceptor;
             
             TargetPrincipal = initializer.TargetPrincipal.ThrowIfNullOrEmpty("initializer.TargetPrincipal");
-            Delegates = initializer.Delegates;
+            DelegateAccounts = initializer.DelegateAccounts;
             Scopes = initializer.Scopes;
-            
-            if (initializer.LifetimeInSeconds > 43200)
-            {
-                throw new InvalidOperationException("Lifetime must be less than or equal to 43200.");
-            }
-            if (initializer.LifetimeInSeconds == 0)
-            {
-                LifetimeInSeconds = 3600;
-            }
-            else
-            {
-                LifetimeInSeconds = initializer.LifetimeInSeconds;
-            }
+            Lifetime = initializer.Lifetime;
         }
 
         /// <inheritdoc/>
@@ -159,10 +152,11 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            var bodyJson = new {
-                delegates = this.Delegates,
-                scope = this.Scopes,
-                lifetime = this.LifetimeInSeconds.ToString() + "s"
+            var bodyJson = new
+            {
+                delegates = DelegateAccounts,
+                scope = Scopes,
+                lifetime = ((int)Lifetime.TotalSeconds).ToString() + "s"
             };
             var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
@@ -187,8 +181,9 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
         {
-            var bodyJson = new {
-                delegates = this.Delegates,
+            var bodyJson = new
+            {
+                delegates = DelegateAccounts,
                 audience = options.TargetAudience,
                 includeEmail = true
             };
@@ -209,9 +204,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>The signed bytes.</returns>
         /// <exception cref="SignBlobResponseException">When signing request fails.</exception>
         public async Task<byte[]> SignBytes(byte[] bytesToSign, CancellationToken cancellationToken = default) {
-            var bodyJson = new {
-                delegates = this.Delegates,
-                payload = Convert.ToBase64String(bytesToSign)
+            var bodyJson = new
+            {
+                delegates = DelegateAccounts,
+                payload = bytesToSign
             };
             var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(bodyJson), Encoding.UTF8, "application/json");
             
@@ -230,7 +226,7 @@ namespace Google.Apis.Auth.OAuth2
             }
             catch (Newtonsoft.Json.JsonException)
             {
-                throw new SignBlobResponseException("Server response does not contain a JSON object. Response content is: {content}", response.StatusCode);
+                throw new SignBlobResponseException("Server response does not contain a JSON object.", response.StatusCode);
             }
         }
 

@@ -76,19 +76,19 @@ namespace Google.Apis.Auth.OAuth2
         public const string LocalhostRedirectUri = "http://localhost";
 
         /// <summary>IAM access token endpoint for service account.</summary>
-        public const string IamServiceAccountEndpointCommonPrefix = "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/";
+        internal const string IamServiceAccountEndpointCommonPrefix = "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/";
 
         /// <summary>IAM access token endpoint for service account.</summary>
-        public const string IamAccessTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateAccessToken";
+        internal const string IamAccessTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateAccessToken";
 
         /// <summary>IAM signBlob endpoint for service account.</summary>
-        public const string IamSignEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:signBlob";
+        internal const string IamSignEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:signBlob";
 
         /// <summary>IAM ID token endpoint for service account.</summary>
-        public const string IamIdTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateIdToken";
+        internal const string IamIdTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateIdToken";
 
-        /// <summary>IAM scope.</summary>
-        public const string IamScope = "https://www.googleapis.com/auth/iam";
+        /// <summary>Scope needed for source credential in impersonated credential.</summary>
+        internal const string IamScope = "https://www.googleapis.com/auth/iam";
 
         /// <summary>
         /// The effective Compute Engine authorization token server URL.
