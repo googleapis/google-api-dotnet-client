@@ -2145,7 +2145,9 @@ namespace Google.Apis.CloudResourceManager.v3
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
-        /// permission on the project's current and proposed new parent.
+        /// permission on the project's current and proposed new parent. If project has no current parent, or it
+        /// currently does not have an associated organization resource, you will also need the
+        /// `resourcemanager.projects.setIamPolicy` permission in the project.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The name of the project to move.</param>
@@ -2159,7 +2161,9 @@ namespace Google.Apis.CloudResourceManager.v3
         /// operation which can be used to track the process of the project move workflow. Upon success, the
         /// `Operation.response` field will be populated with the moved project. The caller must have
         /// `resourcemanager.projects.update` permission on the project and have `resourcemanager.projects.move`
-        /// permission on the project's current and proposed new parent.
+        /// permission on the project's current and proposed new parent. If project has no current parent, or it
+        /// currently does not have an associated organization resource, you will also need the
+        /// `resourcemanager.projects.setIamPolicy` permission in the project.
         /// </summary>
         public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v3.Data.Operation>
         {
@@ -2330,18 +2334,18 @@ namespace Google.Apis.CloudResourceManager.v3
             /// permission to. If multiple fields are included in the query, the it will return results that match any
             /// of the fields. Some eligible fields are: | Field | Description |
             /// |-------------------------|----------------------------------------------| | displayName, name | Filters
-            /// by displayName. | | parent | Project's parent. (for example: folders/123, organizations/*) Prefer parent
-            /// field over parent.type and parent.id. | | parent.type | Parent's type: `folder` or `organization`. | |
+            /// by displayName. | | parent | Project's parent (for example: folders/123, organizations/*). Prefer parent
+            /// field over parent.type and parent.id.| | parent.type | Parent's type: `folder` or `organization`. | |
             /// parent.id | Parent's id number (for example: 123) | | id, projectId | Filters by projectId. | | state,
-            /// lifecycleState | Filters by state. | | labels | Filters by label name or value. | | labels. (where *key*
-            /// is the name of a label) | Filters by label name. | Search expressions are case insensitive. Some
+            /// lifecycleState | Filters by state. | | labels | Filters by label name or value. | | labels.\ (where
+            /// *key* is the name of a label) | Filters by label name.| Search expressions are case insensitive. Some
             /// examples queries: | Query | Description |
             /// |------------------|-----------------------------------------------------| | name:how* | The project's
             /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
             /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
             /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
             /// labels.size:big | The project's label `color` has the value `red` and its label `size` has the value
-            /// `big`. | If no query is specified, the call will return projects for which the user has the
+            /// `big`.| If no query is specified, the call will return projects for which the user has the
             /// `resourcemanager.projects.get` permission.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -4147,6 +4151,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Runtime operation information for creating a TagValue.</summary>
+    public class CreateTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation information for creating a TagKey.</summary>
     public class CreateTagKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4183,6 +4194,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     /// A status object which is used as the `metadata` field for the Operation returned by `DeleteProject`.
     /// </summary>
     public class DeleteProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime operation information for deleting a TagBinding.</summary>
+    public class DeleteTagBindingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

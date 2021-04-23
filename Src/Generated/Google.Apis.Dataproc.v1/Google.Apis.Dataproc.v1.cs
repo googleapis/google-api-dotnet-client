@@ -6026,6 +6026,20 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Confidential Instance Config for clusters using Confidential VMs
+    /// (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+    /// </summary>
+    public class ConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Defines whether the instance should have confidential compute enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to collect cluster diagnostic information.</summary>
     public class DiagnoseClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6171,6 +6185,13 @@ namespace Google.Apis.Dataproc.v1.Data
     /// </summary>
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Confidential Instance Config for clusters using Confidential VMs
+        /// (https://cloud.google.com/compute/confidential-vm/docs)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
+        public virtual ConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
+
         /// <summary>
         /// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters
         /// are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each

@@ -2444,10 +2444,11 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     }
 
     /// <summary>
-    /// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external
-    /// use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// `Authentication` defines the authentication configuration for API methods provided by an API service. Example:
+    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
     /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
-    /// requirements: provider_id: google_calendar_auth
+    /// requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes:
+    /// https://www.googleapis.com/auth/calendar.read
     /// </summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3112,13 +3113,6 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     /// </summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
-        /// google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
-        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
-
         /// <summary>
         /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic,
         /// would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The

@@ -2270,11 +2270,16 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` *
+                            /// `Page.entry_fulfillment.conditional_cases` *
+                            /// `Page.event_handlers.trigger_fulfillment.messages` *
+                            /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
+                            /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+                            /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` *
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
-                            /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
-                            /// specified, the agent's default language is used. [Many
+                            /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the
+                            /// agent's default language is used. [Many
                             /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
                             /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
@@ -2415,12 +2420,16 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// The language to retrieve the page for. The following fields are language dependent: *
-                            /// `Page.entry_fulfillment.messages` *
+                            /// `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` *
+                            /// `Page.event_handlers.trigger_fulfillment.messages` *
+                            /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
+                            /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+                            /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` *
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
-                            /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
-                            /// specified, the agent's default language is used. [Many
+                            /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the
+                            /// agent's default language is used. [Many
                             /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
                             /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
@@ -2486,12 +2495,16 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// The language to list pages for. The following fields are language dependent: *
-                            /// `Page.entry_fulfillment.messages` *
+                            /// `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` *
+                            /// `Page.event_handlers.trigger_fulfillment.messages` *
+                            /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
+                            /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+                            /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` *
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
-                            /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
-                            /// specified, the agent's default language is used. [Many
+                            /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the
+                            /// agent's default language is used. [Many
                             /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
                             /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
@@ -2589,11 +2602,16 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` *
+                            /// `Page.entry_fulfillment.conditional_cases` *
+                            /// `Page.event_handlers.trigger_fulfillment.messages` *
+                            /// `Page.event_handlers.trigger_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` *
+                            /// `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` *
                             /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` *
+                            /// `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` *
                             /// `Page.transition_routes.trigger_fulfillment.messages` *
-                            /// `Page.transition_route_groups.transition_routes.trigger_fulfillment.messages` If not
-                            /// specified, the agent's default language is used. [Many
+                            /// `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the
+                            /// agent's default language is used. [Many
                             /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
                             /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
@@ -2701,10 +2719,12 @@ namespace Google.Apis.Dialogflow.v3
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The language to list transition route groups for. The field `messages` in
-                            /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-                            /// are supported. Note: languages must be enabled in the agent before they can be used.
+                            /// The language of the following fields in `TransitionRouteGroup`: *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                            /// specified, the agent's default language is used. [Many
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2844,10 +2864,13 @@ namespace Google.Apis.Dialogflow.v3
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The language to list transition route groups for. The field `messages` in
-                            /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-                            /// are supported. Note: languages must be enabled in the agent before they can be used.
+                            /// The language to retrieve the transition route group for. The following fields are
+                            /// language dependent: *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                            /// specified, the agent's default language is used. [Many
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -2912,10 +2935,12 @@ namespace Google.Apis.Dialogflow.v3
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The language to list transition route groups for. The field `messages` in
-                            /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-                            /// are supported. Note: languages must be enabled in the agent before they can be used.
+                            /// The language to list transition route groups for. The following fields are language
+                            /// dependent: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                            /// specified, the agent's default language is used. [Many
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -3010,10 +3035,12 @@ namespace Google.Apis.Dialogflow.v3
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The language to list transition route groups for. The field `messages` in
-                            /// TransitionRoute is language dependent. If not specified, the agent's default language is
-                            /// used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-                            /// are supported. Note: languages must be enabled in the agent before they can be used.
+                            /// The language of the following fields in `TransitionRouteGroup`: *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                            /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                            /// specified, the agent's default language is used. [Many
+                            /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are
+                            /// supported. Note: languages must be enabled in the agent before they can be used.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string LanguageCode { get; set; }
@@ -3321,10 +3348,10 @@ namespace Google.Apis.Dialogflow.v3
                             }
                         }
 
-                        /// <summary>Loads a specified version to draft version.</summary>
+                        /// <summary>Loads resources in the specified version to the draft flow.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Required. The Version to be loaded to draft version. Format:
+                        /// Required. The Version to be loaded to draft flow. Format:
                         /// `projects//locations//agents//flows//versions/`.
                         /// </param>
                         public virtual LoadRequest Load(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3LoadVersionRequest body, string name)
@@ -3332,7 +3359,7 @@ namespace Google.Apis.Dialogflow.v3
                             return new LoadRequest(service, body, name);
                         }
 
-                        /// <summary>Loads a specified version to draft version.</summary>
+                        /// <summary>Loads resources in the specified version to the draft flow.</summary>
                         public class LoadRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
                         {
                             /// <summary>Constructs a new Load request.</summary>
@@ -3344,7 +3371,7 @@ namespace Google.Apis.Dialogflow.v3
                             }
 
                             /// <summary>
-                            /// Required. The Version to be loaded to draft version. Format:
+                            /// Required. The Version to be loaded to draft flow. Format:
                             /// `projects//locations//agents//flows//versions/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3485,8 +3512,10 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>
                         /// The language of the following fields in `flow`: *
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
-                        /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
-                        /// language is used. [Many
+                        /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+                        /// `Flow.transition_routes.trigger_fulfillment.messages` *
+                        /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's
+                        /// default language is used. [Many
                         /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
                         /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
@@ -3626,8 +3655,10 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>
                         /// The language to retrieve the flow for. The following fields are language dependent: *
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
-                        /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
-                        /// language is used. [Many
+                        /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+                        /// `Flow.transition_routes.trigger_fulfillment.messages` *
+                        /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's
+                        /// default language is used. [Many
                         /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
                         /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
@@ -3761,8 +3792,10 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>
                         /// The language to list flows for. The following fields are language dependent: *
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
-                        /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
-                        /// language is used. [Many
+                        /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+                        /// `Flow.transition_routes.trigger_fulfillment.messages` *
+                        /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's
+                        /// default language is used. [Many
                         /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
                         /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
@@ -3857,8 +3890,10 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>
                         /// The language of the following fields in `flow`: *
                         /// `Flow.event_handlers.trigger_fulfillment.messages` *
-                        /// `Flow.transition_routes.trigger_fulfillment.messages` If not specified, the agent's default
-                        /// language is used. [Many
+                        /// `Flow.event_handlers.trigger_fulfillment.conditional_cases` *
+                        /// `Flow.transition_routes.trigger_fulfillment.messages` *
+                        /// `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's
+                        /// default language is used. [Many
                         /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
                         /// Note: languages must be enabled in the agent before they can be used.
                         /// </summary>
@@ -8889,8 +8924,8 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowCxV3Intent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Human readable description for better understanding an intent like its scope, content, result etc.
-        /// Maximum character limit: 140 characters.
+        /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum
+        /// character limit: 140 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -8909,12 +8944,12 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Nullable<bool> IsFallback { get; set; }
 
         /// <summary>
-        /// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the
-        /// symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys
-        /// must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
-        /// Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels
-        /// include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a
-        /// head intent. "sys.contextual" means the intent is a contextual intent.
+        /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-'
+        /// and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start
+        /// with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys."
+        /// is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head *
+        /// sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent.
+        /// "sys.contextual" means the intent is a contextual intent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -9356,9 +9391,9 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowCxV3LoadVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This field is used to prevent accidental overwrite of other agent resources in the draft version, which can
-        /// potentially impact other flow's behavior. If `allow_override_agent_resources` is false, conflicted
-        /// agent-level resources will not be overridden (i.e. intents, entities, webhooks).
+        /// This field is used to prevent accidental overwrite of other agent resources, which can potentially impact
+        /// other flow's behavior. If `allow_override_agent_resources` is false, conflicted agent-level resources will
+        /// not be overridden (i.e. intents, entities, webhooks).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOverrideAgentResources")]
         public virtual System.Nullable<bool> AllowOverrideAgentResources { get; set; }
@@ -11017,6 +11052,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intentInfo")]
         public virtual GoogleCloudDialogflowCxV3WebhookRequestIntentInfo IntentInfo { get; set; }
 
+        /// <summary>The language code specified in the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
         /// <summary>
         /// The list of rich message responses to present to the user. Webhook can choose to append or replace this list
         /// in WebhookResponse.fulfillment_response;
@@ -11784,8 +11823,8 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowCxV3beta1Intent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Human readable description for better understanding an intent like its scope, content, result etc.
-        /// Maximum character limit: 140 characters.
+        /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum
+        /// character limit: 140 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -11804,12 +11843,12 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual System.Nullable<bool> IsFallback { get; set; }
 
         /// <summary>
-        /// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the
-        /// symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys
-        /// must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
-        /// Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels
-        /// include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a
-        /// head intent. "sys-contextual" means the intent is a contextual intent.
+        /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-'
+        /// and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start
+        /// with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-"
+        /// is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head *
+        /// sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent.
+        /// "sys-contextual" means the intent is a contextual intent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -12626,6 +12665,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Information about the last matched intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentInfo")]
         public virtual GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo IntentInfo { get; set; }
+
+        /// <summary>The language code specified in the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
 
         /// <summary>
         /// The list of rich message responses to present to the user. Webhook can choose to append or replace this list

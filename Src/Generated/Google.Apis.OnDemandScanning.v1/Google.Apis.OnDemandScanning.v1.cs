@@ -1586,13 +1586,8 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
         public virtual string Package { get; set; }
 
-        /// <summary>
-        /// The projectId of the package to which this data belongs. Most of Drydock's code does not set or use this
-        /// field. This is added specifically so we can group packages by projects and decide whether or not to apply
-        /// NVD data to the packages belonging to a specific project.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("unused")]
+        public virtual string Unused { get; set; }
 
         /// <summary>The version of the package being analysed</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

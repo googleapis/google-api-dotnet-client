@@ -1546,6 +1546,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
     }
 
     /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by CreateAdminQuotaPolicy.
+    /// </summary>
+    public class CreateAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Customize service error responses. For example, list any service specific protobuf types that can appear in
     /// error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError -
     /// google.foo.v1.AnotherError
@@ -1596,6 +1606,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by DeleteAdminQuotaPolicy.
+    /// </summary>
+    public class DeleteAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1783,13 +1803,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
-        /// google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
-        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
-
-        /// <summary>
         /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic,
         /// would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The
         /// response will be used by the browser to determine whether the subsequent cross-origin request is allowed to
@@ -1909,6 +1922,13 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the `GetServiceIdentity` method.</summary>
+    public class GetServiceIdentityMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2410,6 +2430,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportAdminOverrides.
+    /// </summary>
+    public class ImportAdminOverridesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ImportAdminOverrides</summary>
     public class ImportAdminOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2421,6 +2451,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportAdminQuotaPolicies.
+    /// </summary>
+    public class ImportAdminQuotaPoliciesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ImportAdminQuotaPolicies</summary>
     public class ImportAdminQuotaPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2428,6 +2468,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<AdminQuotaPolicy> Policies { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by ImportConsumerOverrides.
+    /// </summary>
+    public class ImportConsumerOverridesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3452,6 +3502,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata message that provides information such as progress, partial failures, and similar information on each
+    /// GetOperation call of LRO returned by UpdateAdminQuotaPolicy.
+    /// </summary>
+    public class UpdateAdminQuotaPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

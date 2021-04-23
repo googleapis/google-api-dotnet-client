@@ -65,14 +65,14 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Memorystore for Memcached API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Memorystore for Memcached API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -1591,8 +1591,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
     public class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This field will be deprecated, and will be always set to true since reschedule can happen multiple times
-        /// now.
+        /// This field is deprecated, and will be always set to true since reschedule can happen multiple times now.
+        /// This field should not be removed until all service producers remove this for their customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
         public virtual System.Nullable<bool> CanReschedule { get; set; }

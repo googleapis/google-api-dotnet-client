@@ -943,7 +943,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The HTTP URL path.</summary>
+        /// <summary>The HTTP URL path, excluding the query parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
@@ -1186,7 +1186,7 @@ namespace Google.Apis.ServiceControl.v2.Data
     public class Response : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The length of time it takes the backend service to fully respond to a request. Measured from when the
+        /// The amount of time it takes the backend service to fully respond to a request. Measured from when the
         /// destination service starts to send the request to the backend until when the destination service receives
         /// the complete response from the backend.
         /// </summary>

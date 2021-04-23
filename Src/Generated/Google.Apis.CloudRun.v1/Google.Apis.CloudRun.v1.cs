@@ -4082,7 +4082,7 @@ namespace Google.Apis.CloudRun.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -4565,6 +4565,15 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
         public virtual SecurityContext SecurityContext { get; set; }
+
+        /// <summary>
+        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of
+        /// application within the container. All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual Probe StartupProbe { get; set; }
 
         /// <summary>
         /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to

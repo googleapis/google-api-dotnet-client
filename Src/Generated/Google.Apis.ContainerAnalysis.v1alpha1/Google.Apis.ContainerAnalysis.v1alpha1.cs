@@ -66,14 +66,14 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
         /// <summary>Available OAuth 2.0 scopes for use with the Container Analysis API.</summary>
         public class Scope
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Container Analysis API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -3259,6 +3259,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The source from which the information in this Detail was obtained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
+
+        /// <summary>The vendor of the product. e.g. "google"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vendor")]
+        public virtual string Vendor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

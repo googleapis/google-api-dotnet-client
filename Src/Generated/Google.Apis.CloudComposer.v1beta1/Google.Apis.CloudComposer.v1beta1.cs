@@ -1747,7 +1747,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver
-        /// processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+        /// processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; }

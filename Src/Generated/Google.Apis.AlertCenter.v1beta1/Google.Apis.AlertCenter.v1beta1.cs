@@ -304,7 +304,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="alertId">Required. The identifier of the alert this feedback belongs to.</param>
-            public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId)
+            public virtual CreateRequest Create(Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1AlertFeedback body, string alertId)
             {
                 return new CreateRequest(service, body, alertId);
             }
@@ -314,10 +314,10 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns
             /// `FAILED_PRECONDITION' error.
             /// </summary>
-            public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback>
+            public class CreateRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1AlertFeedback>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback body, string alertId) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1AlertFeedback body, string alertId) : base(service)
                 {
                     AlertId = alertId;
                     Body = body;
@@ -336,7 +336,7 @@ namespace Google.Apis.AlertCenter.v1beta1
                 public virtual string CustomerId { get; set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.AlertCenter.v1beta1.Data.AlertFeedback Body { get; set; }
+                Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1AlertFeedback Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -389,7 +389,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             /// Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns
             /// `NOT_FOUND` error.
             /// </summary>
-            public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertFeedbackResponse>
+            public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1ListAlertFeedbackResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
@@ -462,23 +462,23 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         /// <summary>Performs batch delete operation on alerts.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual BatchDeleteRequest BatchDelete(Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body)
+        public virtual BatchDeleteRequest BatchDelete(Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest body)
         {
             return new BatchDeleteRequest(service, body);
         }
 
         /// <summary>Performs batch delete operation on alerts.</summary>
-        public class BatchDeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsResponse>
+        public class BatchDeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchDeleteAlertsResponse>
         {
             /// <summary>Constructs a new BatchDelete request.</summary>
-            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest body) : base(service)
+            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AlertCenter.v1beta1.Data.BatchDeleteAlertsRequest Body { get; set; }
+            Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -501,23 +501,23 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         /// <summary>Performs batch undelete operation on alerts.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual BatchUndeleteRequest BatchUndelete(Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body)
+        public virtual BatchUndeleteRequest BatchUndelete(Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest body)
         {
             return new BatchUndeleteRequest(service, body);
         }
 
         /// <summary>Performs batch undelete operation on alerts.</summary>
-        public class BatchUndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsResponse>
+        public class BatchUndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsResponse>
         {
             /// <summary>Constructs a new BatchUndelete request.</summary>
-            public BatchUndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest body) : base(service)
+            public BatchUndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest body) : base(service)
             {
                 Body = body;
                 InitParameters();
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AlertCenter.v1beta1.Data.BatchUndeleteAlertsRequest Body { get; set; }
+            Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -554,7 +554,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been marked
         /// for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND` error.
         /// </summary>
-        public class DeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Empty>
+        public class DeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleProtobufEmpty>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
@@ -618,7 +618,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// <summary>
         /// Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND` error.
         /// </summary>
-        public class GetRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
+        public class GetRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Alert>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
@@ -684,7 +684,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND`
         /// error.
         /// </summary>
-        public class GetMetadataRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.AlertMetadata>
+        public class GetMetadataRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1AlertMetadata>
         {
             /// <summary>Constructs a new GetMetadata request.</summary>
             public GetMetadataRequest(Google.Apis.Services.IClientService service, string alertId) : base(service)
@@ -743,7 +743,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         }
 
         /// <summary>Lists the alerts.</summary>
-        public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.ListAlertsResponse>
+        public class ListRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1ListAlertsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -854,7 +854,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="alertId">Required. The identifier of the alert to undelete.</param>
-        public virtual UndeleteRequest Undelete(Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId)
+        public virtual UndeleteRequest Undelete(Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1UndeleteAlertRequest body, string alertId)
         {
             return new UndeleteRequest(service, body, alertId);
         }
@@ -865,10 +865,10 @@ namespace Google.Apis.AlertCenter.v1beta1
         /// Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which
         /// has not been marked for deletion has no effect.
         /// </summary>
-        public class UndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Alert>
+        public class UndeleteRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Alert>
         {
             /// <summary>Constructs a new Undelete request.</summary>
-            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest body, string alertId) : base(service)
+            public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1UndeleteAlertRequest body, string alertId) : base(service)
             {
                 AlertId = alertId;
                 Body = body;
@@ -880,7 +880,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string AlertId { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AlertCenter.v1beta1.Data.UndeleteAlertRequest Body { get; set; }
+            Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1UndeleteAlertRequest Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -931,7 +931,7 @@ namespace Google.Apis.AlertCenter.v1beta1
         }
 
         /// <summary>Returns customer-level settings.</summary>
-        public class GetSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
+        public class GetSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Settings>
         {
             /// <summary>Constructs a new GetSettings request.</summary>
             public GetSettingsRequest(Google.Apis.Services.IClientService service) : base(service)
@@ -972,16 +972,16 @@ namespace Google.Apis.AlertCenter.v1beta1
 
         /// <summary>Updates the customer-level settings.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.AlertCenter.v1beta1.Data.Settings body)
+        public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Settings body)
         {
             return new UpdateSettingsRequest(service, body);
         }
 
         /// <summary>Updates the customer-level settings.</summary>
-        public class UpdateSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.Settings>
+        public class UpdateSettingsRequest : AlertCenterBaseServiceRequest<Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Settings>
         {
             /// <summary>Constructs a new UpdateSettings request.</summary>
-            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.Settings body) : base(service)
+            public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Settings body) : base(service)
             {
                 Body = body;
                 InitParameters();
@@ -995,7 +995,7 @@ namespace Google.Apis.AlertCenter.v1beta1
             public virtual string CustomerId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AlertCenter.v1beta1.Data.Settings Body { get; set; }
+            Google.Apis.AlertCenter.v1beta1.Data.GoogleAppsAlertcenterV1beta1Settings Body { get; set; }
 
             /// <summary>Returns the body of the request.</summary>
             protected override object GetBody() => Body;
@@ -1028,7 +1028,7 @@ namespace Google.Apis.AlertCenter.v1beta1
 namespace Google.Apis.AlertCenter.v1beta1.Data
 {
     /// <summary>Alerts for user account warning events.</summary>
-    public class AccountWarning : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterTypeAccountWarning : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The email of the user that this event belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
@@ -1040,21 +1040,35 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// (suspicious activity)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginDetails")]
-        public virtual LoginDetails LoginDetails { get; set; }
+        public virtual GoogleAppsAlertcenterTypeAccountWarningLoginDetails LoginDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata related to the action.</summary>
-    public class ActionInfo : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The details of the login action.</summary>
+    public class GoogleAppsAlertcenterTypeAccountWarningLoginDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The human-readable IP address (for example, `11.22.33.44`) that is associated with the warning
+        /// event.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Optional. The successful login time that is associated with the warning event. This isn't present for
+        /// blocked login attempts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginTime")]
+        public virtual object LoginTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Alerts from Google Workspace Security Center rules service configured by an admin.</summary>
-    public class ActivityRule : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterTypeActivityRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of action names associated with the rule threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionNames")]
@@ -1114,8 +1128,565 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Alerts from App Maker to notify admins to set up default SQL instance.</summary>
+    public class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of applications with requests for default SQL set up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestInfo")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo> RequestInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Requests for one application that needs default SQL setup.</summary>
+    public class GoogleAppsAlertcenterTypeAppMakerSqlSetupNotificationRequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of app developers who triggered notifications for above application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDeveloperEmail")]
+        public virtual System.Collections.Generic.IList<string> AppDeveloperEmail { get; set; }
+
+        /// <summary>Required. The application that requires the SQL setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appKey")]
+        public virtual string AppKey { get; set; }
+
+        /// <summary>Required. Number of requests sent for this application to set up default SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfRequests")]
+        public virtual System.Nullable<long> NumberOfRequests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Attachment with application-specific information about an alert.</summary>
+    public class GoogleAppsAlertcenterTypeAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A CSV file attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csv")]
+        public virtual GoogleAppsAlertcenterTypeAttachmentCsv Csv { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A representation of a CSV file attachment, as a list of column headers and a list of data rows.
+    /// </summary>
+    public class GoogleAppsAlertcenterTypeAttachmentCsv : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRows")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeAttachmentCsvCsvRow> DataRows { get; set; }
+
+        /// <summary>The list of headers for data columns in a CSV file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of a single data row in a CSV file.</summary>
+    public class GoogleAppsAlertcenterTypeAttachmentCsvCsvRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The data entries in a CSV file row, as a string array rather than a single comma-separated string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<string> Entries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Alert for setting the domain or IP that malicious email comes from as whitelisted domain or IP in Gmail advanced
+    /// settings.
+    /// </summary>
+    public class GoogleAppsAlertcenterTypeBadWhitelist : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
+        public virtual GoogleAppsAlertcenterTypeDomainId DomainId { get; set; }
+
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
+        public virtual GoogleAppsAlertcenterTypeMaliciousEntity MaliciousEntity { get; set; }
+
+        /// <summary>The list of messages contained by this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeGmailMessageInfo> Messages { get; set; }
+
+        /// <summary>The source IP address of the malicious email, for example, `127.0.0.1`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
+        public virtual string SourceIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A mobile device compromised alert. Derived from audit logs.</summary>
+    public class GoogleAppsAlertcenterTypeDeviceCompromised : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of the user this alert was created for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Required. The list of security events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail> Events { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed information of a single MDM device compromised event.</summary>
+    public class GoogleAppsAlertcenterTypeDeviceCompromisedDeviceCompromisedSecurityDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device compromised state. Possible values are "`Compromised`" or "`Not Compromised`".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceCompromisedState")]
+        public virtual string DeviceCompromisedState { get; set; }
+
+        /// <summary>Required. The device ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>The model of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
+
+        /// <summary>The type of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>Required for iOS, empty for others.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
+        public virtual string IosVendorId { get; set; }
+
+        /// <summary>The device resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The serial number of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.</summary>
+    public class GoogleAppsAlertcenterTypeDlpRuleViolation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Details about the violated DLP rule. Admins can use the predefined detectors provided by Google Cloud DLP
+        /// https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP detectors in this violation if
+        /// any will be captured in the MatchInfo.predefined_detector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleViolationInfo")]
+        public virtual GoogleAppsAlertcenterTypeRuleViolationInfo RuleViolationInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Domain ID of Gmail phishing alerts.</summary>
+    public class GoogleAppsAlertcenterTypeDomainId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The primary domain for the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerPrimaryDomain")]
+        public virtual string CustomerPrimaryDomain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A takeout operation for the entire domain was initiated by an admin. Derived from audit logs.</summary>
+    public class GoogleAppsAlertcenterTypeDomainWideTakeoutInitiated : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of the admin who initiated the takeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The takeout request ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("takeoutRequestId")]
+        public virtual string TakeoutRequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a message in phishing spike alert.</summary>
+    public class GoogleAppsAlertcenterTypeGmailMessageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The `SHA256` hash of email's attachment and all MIME parts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentsSha256Hash")]
+        public virtual System.Collections.Generic.IList<string> AttachmentsSha256Hash { get; set; }
+
+        /// <summary>The date the malicious email was sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual object Date { get; set; }
+
+        /// <summary>The hash of the message body text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5HashMessageBody")]
+        public virtual string Md5HashMessageBody { get; set; }
+
+        /// <summary>The MD5 Hash of email's subject (only available for reported emails).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5HashSubject")]
+        public virtual string Md5HashSubject { get; set; }
+
+        /// <summary>The snippet of the message body text (only available for reported emails).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageBodySnippet")]
+        public virtual string MessageBodySnippet { get; set; }
+
+        /// <summary>The message ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual string MessageId { get; set; }
+
+        /// <summary>The recipient of this email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
+        public virtual string Recipient { get; set; }
+
+        /// <summary>The email subject text (only available for reported emails).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectText")]
+        public virtual string SubjectText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An incident reported by Google Operations for a Google Workspace application.</summary>
+    public class GoogleAppsAlertcenterTypeGoogleOperations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of emails which correspond to the users directly affected by the incident.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedUserEmails")]
+        public virtual System.Collections.Generic.IList<string> AffectedUserEmails { get; set; }
+
+        /// <summary>
+        /// Optional. Application-specific data for an incident, provided when the Google Workspace application which
+        /// reported the incident cannot be completely restored to a valid state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentData")]
+        public virtual GoogleAppsAlertcenterTypeAttachment AttachmentData { get; set; }
+
+        /// <summary>A detailed, freeform incident description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// A header to display above the incident message. Typically used to attach a localized notice on the timeline
+        /// for followup comms translations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>A one-line incident description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Proto for all phishing alerts with common payload. Supported types are any of the following: * User reported
+    /// phishing * User reported spam spike * Suspicious message reported * Phishing reclassification * Malware
+    /// reclassification * Gmail potential employee spoofing
+    /// </summary>
+    public class GoogleAppsAlertcenterTypeMailPhishing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
+        public virtual GoogleAppsAlertcenterTypeDomainId DomainId { get; set; }
+
+        /// <summary>If `true`, the email originated from within the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
+        public virtual System.Nullable<bool> IsInternal { get; set; }
+
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
+        public virtual GoogleAppsAlertcenterTypeMaliciousEntity MaliciousEntity { get; set; }
+
+        /// <summary>The list of messages contained by this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeGmailMessageInfo> Messages { get; set; }
+
+        /// <summary>System actions on the messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemActionType")]
+        public virtual string SystemActionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
+    public class GoogleAppsAlertcenterTypeMaliciousEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The header from display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The actor who triggered a gmail phishing alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual GoogleAppsAlertcenterTypeUser Entity { get; set; }
+
+        /// <summary>The sender email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
+        public virtual string FromHeader { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Alert for a spike in user reported phishing. *Warning*: This type has been deprecated. Use
+    /// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.
+    /// </summary>
+    public class GoogleAppsAlertcenterTypePhishingSpike : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The domain ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
+        public virtual GoogleAppsAlertcenterTypeDomainId DomainId { get; set; }
+
+        /// <summary>If `true`, the email originated from within the organization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
+        public virtual System.Nullable<bool> IsInternal { get; set; }
+
+        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
+        public virtual GoogleAppsAlertcenterTypeMaliciousEntity MaliciousEntity { get; set; }
+
+        /// <summary>The list of messages contained by this alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeGmailMessageInfo> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Common alert information about violated rules that are configured by Google Workspace administrators.
+    /// </summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>List of matches that were found in the resource content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo> MatchInfo { get; set; }
+
+        /// <summary>
+        /// Resource recipients. For Drive, they are grantees that the Drive file was shared with at the time of rule
+        /// triggering. Valid values include user emails, group emails, domains, or 'anyone' if the file was publicly
+        /// accessible. If the file was private the recipients list will be empty. For Gmail, they are emails of the
+        /// users or groups that the Gmail message was sent to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual System.Collections.Generic.IList<string> Recipients { get; set; }
+
+        /// <summary>Details of the resource which violated the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceInfo")]
+        public virtual GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo ResourceInfo { get; set; }
+
+        /// <summary>Details of the violated rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleInfo")]
+        public virtual GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo RuleInfo { get; set; }
+
+        /// <summary>Actions suppressed due to other actions with higher priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suppressedActionTypes")]
+        public virtual System.Collections.Generic.IList<string> SuppressedActionTypes { get; set; }
+
+        /// <summary>Trigger of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>Metadata related to the triggered actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionInfo")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo> TriggeredActionInfo { get; set; }
+
+        /// <summary>Actions applied as a consequence of the rule being triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionTypes")]
+        public virtual System.Collections.Generic.IList<string> TriggeredActionTypes { get; set; }
+
+        /// <summary>
+        /// Email of the user who caused the violation. Value could be empty if not applicable, for example, a violation
+        /// found by drive continuous scan.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggeringUserEmail")]
+        public virtual string TriggeringUserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to the action.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoActionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto that contains match information from the condition part of the rule.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For matched detector predefined by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predefinedDetector")]
+        public virtual GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo PredefinedDetector { get; set; }
+
+        /// <summary>For matched detector defined by administrators.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedDetector")]
+        public virtual GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo UserDefinedDetector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detector provided by Google.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoPredefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name that uniquely identifies the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectorName")]
+        public virtual string DetectorName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detector defined by administrators.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoMatchInfoUserDefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Resource name that uniquely identifies the detector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto that contains resource information.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Drive file ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>Title of the resource, for example email subject, or document title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
+        public virtual string ResourceTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto that contains rule information.</summary>
+    public class GoogleAppsAlertcenterTypeRuleViolationInfoRuleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User provided name of the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Resource name that uniquely identifies the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A state-sponsored attack alert. Derived from audit logs.</summary>
+    public class GoogleAppsAlertcenterTypeStateSponsoredAttack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of the user this incident was created for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A mobile suspicious activity alert. Derived from audit logs.</summary>
+    public class GoogleAppsAlertcenterTypeSuspiciousActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of the user this alert was created for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Required. The list of security events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail> Events { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed information of a single MDM suspicious activity event.</summary>
+    public class GoogleAppsAlertcenterTypeSuspiciousActivitySuspiciousActivitySecurityDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The device ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>The model of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
+
+        /// <summary>The device property which was changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceProperty")]
+        public virtual string DeviceProperty { get; set; }
+
+        /// <summary>The type of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>Required for iOS, empty for others.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
+        public virtual string IosVendorId { get; set; }
+
+        /// <summary>The new value of the device property after the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
+        public virtual string NewValue { get; set; }
+
+        /// <summary>The old value of the device property before the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
+        public virtual string OldValue { get; set; }
+
+        /// <summary>The device resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The serial number of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user.</summary>
+    public class GoogleAppsAlertcenterTypeUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display name of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Email address of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An alert affecting a customer.</summary>
-    public class Alert : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1Alert : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier for the alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
@@ -1159,7 +1730,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
         /// <summary>Output only. The metadata associated with this alert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual AlertMetadata Metadata { get; set; }
+        public virtual GoogleAppsAlertcenterV1beta1AlertMetadata Metadata { get; set; }
 
         /// <summary>
         /// Output only. An optional [Security Investigation Tool](https://support.google.com/a/answer/7575955) query
@@ -1193,7 +1764,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>A customer feedback about an alert.</summary>
-    public class AlertFeedback : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1AlertFeedback : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The alert identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
@@ -1224,7 +1795,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>An alert metadata.</summary>
-    public class AlertMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1AlertMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The alert identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
@@ -1270,56 +1841,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual object UpdateTime { get; set; }
     }
 
-    /// <summary>Alerts from App Maker to notify admins to set up default SQL instance.</summary>
-    public class AppMakerSqlSetupNotification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of applications with requests for default SQL set up.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestInfo")]
-        public virtual System.Collections.Generic.IList<RequestInfo> RequestInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attachment with application-specific information about an alert.</summary>
-    public class Attachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A CSV file attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("csv")]
-        public virtual Csv Csv { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Alert for setting the domain or IP that malicious email comes from as whitelisted domain or IP in Gmail advanced
-    /// settings.
-    /// </summary>
-    public class BadWhitelist : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The domain ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
-        public virtual DomainId DomainId { get; set; }
-
-        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
-        public virtual MaliciousEntity MaliciousEntity { get; set; }
-
-        /// <summary>The list of messages contained by this alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; }
-
-        /// <summary>The source IP address of the malicious email, for example, `127.0.0.1`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
-        public virtual string SourceIp { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A request to perform batch delete on alerts.</summary>
-    public class BatchDeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
@@ -1337,11 +1860,11 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>Response to batch delete operation on alerts.</summary>
-    public class BatchDeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1BatchDeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status details for each failed alert_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
-        public virtual System.Collections.Generic.IDictionary<string, Status> FailedAlertStatus { get; set; }
+        public virtual System.Collections.Generic.IDictionary<string, GoogleRpcStatus> FailedAlertStatus { get; set; }
 
         /// <summary>The successful list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
@@ -1352,7 +1875,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>A request to perform batch undelete on alerts.</summary>
-    public class BatchUndeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alertId")]
@@ -1370,11 +1893,11 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>Response to batch undelete operation on alerts.</summary>
-    public class BatchUndeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1BatchUndeleteAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status details for each failed alert_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failedAlertStatus")]
-        public virtual System.Collections.Generic.IDictionary<string, Status> FailedAlertStatus { get; set; }
+        public virtual System.Collections.Generic.IDictionary<string, GoogleRpcStatus> FailedAlertStatus { get; set; }
 
         /// <summary>The successful list of alert IDs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successAlertIds")]
@@ -1384,11 +1907,68 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for an alert feedback listing request.</summary>
+    public class GoogleAppsAlertcenterV1beta1ListAlertFeedbackResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of alert feedback. Feedback entries for each alert are ordered by creation time descending.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterV1beta1AlertFeedback> Feedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for an alert listing request.</summary>
+    public class GoogleAppsAlertcenterV1beta1ListAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alerts")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterV1beta1Alert> Alerts { get; set; }
+
+        /// <summary>
+        /// The token for the next page. If not empty, indicates that there may be more alerts that match the listing
+        /// request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result
+        /// of the current list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-level settings.</summary>
+    public class GoogleAppsAlertcenterV1beta1Settings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of notifications.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
+        public virtual System.Collections.Generic.IList<GoogleAppsAlertcenterV1beta1SettingsNotification> Notifications { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings for callback notifications. For more details see [Google Workspace Alert
+    /// Notification](/admin-sdk/alertcenter/guides/notifications).
+    /// </summary>
+    public class GoogleAppsAlertcenterV1beta1SettingsNotification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Google Cloud Pub/sub topic destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
+        public virtual GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic CloudPubsubTopic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant
     /// `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission.
     /// </summary>
-    public class CloudPubsubTopic : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleAppsAlertcenterV1beta1SettingsNotificationCloudPubsubTopic : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. The format of the payload that would be sent. If not specified the format will be JSON.
@@ -1407,124 +1987,15 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A representation of a CSV file attachment, as a list of column headers and a list of data rows.
-    /// </summary>
-    public class Csv : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A request to undelete a specific alert that was marked for deletion.</summary>
+    public class GoogleAppsAlertcenterV1beta1UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string.
+        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert is
+        /// associated with. Inferred from the caller identity if not provided.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataRows")]
-        public virtual System.Collections.Generic.IList<CsvRow> DataRows { get; set; }
-
-        /// <summary>The list of headers for data columns in a CSV file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IList<string> Headers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A representation of a single data row in a CSV file.</summary>
-    public class CsvRow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The data entries in a CSV file row, as a string array rather than a single comma-separated string.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual System.Collections.Generic.IList<string> Entries { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A mobile device compromised alert. Derived from audit logs.</summary>
-    public class DeviceCompromised : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The email of the user this alert was created for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>Required. The list of security events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<DeviceCompromisedSecurityDetail> Events { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Detailed information of a single MDM device compromised event.</summary>
-    public class DeviceCompromisedSecurityDetail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The device compromised state. Possible values are "`Compromised`" or "`Not Compromised`".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceCompromisedState")]
-        public virtual string DeviceCompromisedState { get; set; }
-
-        /// <summary>Required. The device ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; }
-
-        /// <summary>The model of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
-        public virtual string DeviceModel { get; set; }
-
-        /// <summary>The type of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
-        public virtual string DeviceType { get; set; }
-
-        /// <summary>Required for iOS, empty for others.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
-        public virtual string IosVendorId { get; set; }
-
-        /// <summary>The device resource ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>The serial number of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
-        public virtual string SerialNumber { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.</summary>
-    public class DlpRuleViolation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Details about the violated DLP rule. Admins can use the predefined detectors provided by Google Cloud DLP
-        /// https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP detectors in this violation if
-        /// any will be captured in the MatchInfo.predefined_detector.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleViolationInfo")]
-        public virtual RuleViolationInfo RuleViolationInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Domain ID of Gmail phishing alerts.</summary>
-    public class DomainId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The primary domain for the customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customerPrimaryDomain")]
-        public virtual string CustomerPrimaryDomain { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A takeout operation for the entire domain was initiated by an admin. Derived from audit logs.</summary>
-    public class DomainWideTakeoutInitiated : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The email of the admin who initiated the takeout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>The takeout request ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("takeoutRequestId")]
-        public virtual string TakeoutRequestId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1536,377 +2007,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
     /// object `{}`.
     /// </summary>
-    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of a message in phishing spike alert.</summary>
-    public class GmailMessageInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The `SHA256` hash of email's attachment and all MIME parts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentsSha256Hash")]
-        public virtual System.Collections.Generic.IList<string> AttachmentsSha256Hash { get; set; }
-
-        /// <summary>The date the malicious email was sent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("date")]
-        public virtual object Date { get; set; }
-
-        /// <summary>The hash of the message body text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("md5HashMessageBody")]
-        public virtual string Md5HashMessageBody { get; set; }
-
-        /// <summary>The MD5 Hash of email's subject (only available for reported emails).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("md5HashSubject")]
-        public virtual string Md5HashSubject { get; set; }
-
-        /// <summary>The snippet of the message body text (only available for reported emails).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageBodySnippet")]
-        public virtual string MessageBodySnippet { get; set; }
-
-        /// <summary>The message ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual string MessageId { get; set; }
-
-        /// <summary>The recipient of this email.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recipient")]
-        public virtual string Recipient { get; set; }
-
-        /// <summary>The email subject text (only available for reported emails).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subjectText")]
-        public virtual string SubjectText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An incident reported by Google Operations for a Google Workspace application.</summary>
-    public class GoogleOperations : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of emails which correspond to the users directly affected by the incident.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedUserEmails")]
-        public virtual System.Collections.Generic.IList<string> AffectedUserEmails { get; set; }
-
-        /// <summary>
-        /// Optional. Application-specific data for an incident, provided when the Google Workspace application which
-        /// reported the incident cannot be completely restored to a valid state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentData")]
-        public virtual Attachment AttachmentData { get; set; }
-
-        /// <summary>A detailed, freeform incident description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// A header to display above the incident message. Typically used to attach a localized notice on the timeline
-        /// for followup comms translations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; }
-
-        /// <summary>A one-line incident description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for an alert feedback listing request.</summary>
-    public class ListAlertFeedbackResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The list of alert feedback. Feedback entries for each alert are ordered by creation time descending.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedback")]
-        public virtual System.Collections.Generic.IList<AlertFeedback> Feedback { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for an alert listing request.</summary>
-    public class ListAlertsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of alerts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alerts")]
-        public virtual System.Collections.Generic.IList<Alert> Alerts { get; set; }
-
-        /// <summary>
-        /// The token for the next page. If not empty, indicates that there may be more alerts that match the listing
-        /// request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result
-        /// of the current list call.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The details of the login action.</summary>
-    public class LoginDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The human-readable IP address (for example, `11.22.33.44`) that is associated with the warning
-        /// event.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
-
-        /// <summary>
-        /// Optional. The successful login time that is associated with the warning event. This isn't present for
-        /// blocked login attempts.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loginTime")]
-        public virtual object LoginTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Proto for all phishing alerts with common payload. Supported types are any of the following: * User reported
-    /// phishing * User reported spam spike * Suspicious message reported * Phishing reclassification * Malware
-    /// reclassification * Gmail potential employee spoofing
-    /// </summary>
-    public class MailPhishing : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The domain ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
-        public virtual DomainId DomainId { get; set; }
-
-        /// <summary>If `true`, the email originated from within the organization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
-        public virtual System.Nullable<bool> IsInternal { get; set; }
-
-        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
-        public virtual MaliciousEntity MaliciousEntity { get; set; }
-
-        /// <summary>The list of messages contained by this alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; }
-
-        /// <summary>System actions on the messages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemActionType")]
-        public virtual string SystemActionType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Entity whose actions triggered a Gmail phishing alert.</summary>
-    public class MaliciousEntity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The header from display name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The actor who triggered a gmail phishing alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
-        public virtual User Entity { get; set; }
-
-        /// <summary>The sender email address.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
-        public virtual string FromHeader { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Proto that contains match information from the condition part of the rule.</summary>
-    public class MatchInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>For matched detector predefined by Google.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predefinedDetector")]
-        public virtual PredefinedDetectorInfo PredefinedDetector { get; set; }
-
-        /// <summary>For matched detector defined by administrators.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedDetector")]
-        public virtual UserDefinedDetectorInfo UserDefinedDetector { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Settings for callback notifications. For more details see [Google Workspace Alert
-    /// Notification](/admin-sdk/alertcenter/guides/notifications).
-    /// </summary>
-    public class Notification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A Google Cloud Pub/sub topic destination.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
-        public virtual CloudPubsubTopic CloudPubsubTopic { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Alert for a spike in user reported phishing. *Warning*: This type has been deprecated. Use
-    /// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.
-    /// </summary>
-    public class PhishingSpike : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The domain ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domainId")]
-        public virtual DomainId DomainId { get; set; }
-
-        /// <summary>If `true`, the email originated from within the organization.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isInternal")]
-        public virtual System.Nullable<bool> IsInternal { get; set; }
-
-        /// <summary>The entity whose actions triggered a Gmail phishing alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maliciousEntity")]
-        public virtual MaliciousEntity MaliciousEntity { get; set; }
-
-        /// <summary>The list of messages contained by this alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
-        public virtual System.Collections.Generic.IList<GmailMessageInfo> Messages { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Detector provided by Google.</summary>
-    public class PredefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name that uniquely identifies the detector.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detectorName")]
-        public virtual string DetectorName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Requests for one application that needs default SQL setup.</summary>
-    public class RequestInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of app developers who triggered notifications for above application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appDeveloperEmail")]
-        public virtual System.Collections.Generic.IList<string> AppDeveloperEmail { get; set; }
-
-        /// <summary>Required. The application that requires the SQL setup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appKey")]
-        public virtual string AppKey { get; set; }
-
-        /// <summary>Required. Number of requests sent for this application to set up default SQL instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberOfRequests")]
-        public virtual System.Nullable<long> NumberOfRequests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Proto that contains resource information.</summary>
-    public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Drive file ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
-        public virtual string DocumentId { get; set; }
-
-        /// <summary>Title of the resource, for example email subject, or document title.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceTitle")]
-        public virtual string ResourceTitle { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Proto that contains rule information.</summary>
-    public class RuleInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>User provided name of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Resource name that uniquely identifies the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Common alert information about violated rules that are configured by Google Workspace administrators.
-    /// </summary>
-    public class RuleViolationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Source of the data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
-        public virtual string DataSource { get; set; }
-
-        /// <summary>List of matches that were found in the resource content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
-        public virtual System.Collections.Generic.IList<MatchInfo> MatchInfo { get; set; }
-
-        /// <summary>
-        /// Resource recipients. For Drive, they are grantees that the Drive file was shared with at the time of rule
-        /// triggering. Valid values include user emails, group emails, domains, or 'anyone' if the file was publicly
-        /// accessible. If the file was private the recipients list will be empty. For Gmail, they are emails of the
-        /// users or groups that the Gmail message was sent to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
-        public virtual System.Collections.Generic.IList<string> Recipients { get; set; }
-
-        /// <summary>Details of the resource which violated the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceInfo")]
-        public virtual ResourceInfo ResourceInfo { get; set; }
-
-        /// <summary>Details of the violated rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ruleInfo")]
-        public virtual RuleInfo RuleInfo { get; set; }
-
-        /// <summary>Actions suppressed due to other actions with higher priority.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suppressedActionTypes")]
-        public virtual System.Collections.Generic.IList<string> SuppressedActionTypes { get; set; }
-
-        /// <summary>Trigger of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
-        public virtual string Trigger { get; set; }
-
-        /// <summary>Metadata related to the triggered actions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionInfo")]
-        public virtual System.Collections.Generic.IList<ActionInfo> TriggeredActionInfo { get; set; }
-
-        /// <summary>Actions applied as a consequence of the rule being triggered.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggeredActionTypes")]
-        public virtual System.Collections.Generic.IList<string> TriggeredActionTypes { get; set; }
-
-        /// <summary>
-        /// Email of the user who caused the violation. Value could be empty if not applicable, for example, a violation
-        /// found by drive continuous scan.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggeringUserEmail")]
-        public virtual string TriggeringUserEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Customer-level settings.</summary>
-    public class Settings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of notifications.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
-        public virtual System.Collections.Generic.IList<Notification> Notifications { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A state-sponsored attack alert. Derived from audit logs.</summary>
-    public class StateSponsoredAttack : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The email of the user this incident was created for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1917,7 +2019,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// three pieces of data: error code, error message, and error details. You can find out more about this error model
     /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
     /// </summary>
-    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
@@ -1935,108 +2037,6 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A mobile suspicious activity alert. Derived from audit logs.</summary>
-    public class SuspiciousActivity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The email of the user this alert was created for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>Required. The list of security events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<SuspiciousActivitySecurityDetail> Events { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Detailed information of a single MDM suspicious activity event.</summary>
-    public class SuspiciousActivitySecurityDetail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The device ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; }
-
-        /// <summary>The model of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
-        public virtual string DeviceModel { get; set; }
-
-        /// <summary>The device property which was changed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceProperty")]
-        public virtual string DeviceProperty { get; set; }
-
-        /// <summary>The type of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
-        public virtual string DeviceType { get; set; }
-
-        /// <summary>Required for iOS, empty for others.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
-        public virtual string IosVendorId { get; set; }
-
-        /// <summary>The new value of the device property after the change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
-        public virtual string NewValue { get; set; }
-
-        /// <summary>The old value of the device property before the change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
-        public virtual string OldValue { get; set; }
-
-        /// <summary>The device resource ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
-        public virtual string ResourceId { get; set; }
-
-        /// <summary>The serial number of the device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
-        public virtual string SerialNumber { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A request to undelete a specific alert that was marked for deletion.</summary>
-    public class UndeleteAlertRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The unique identifier of the Google Workspace organization account of the customer the alert is
-        /// associated with. Inferred from the caller identity if not provided.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A user.</summary>
-    public class User : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Display name of the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Email address of the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Detector defined by administrators.</summary>
-    public class UserDefinedDetectorInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Display name of the detector.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Resource name that uniquely identifies the detector.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

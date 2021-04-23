@@ -6787,7 +6787,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>Filter on 3d videos.</summary>
             public enum VideoDimensionEnum
             {
-                /// <summary></summary>
+                /// <summary>Include both 3D and non-3D videos in returned results. This is the default value.</summary>
                 [Google.Apis.Util.StringValueAttribute("any")]
                 Any = 0,
 
@@ -12402,7 +12402,7 @@ namespace Google.Apis.YouTube.v3.Data
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>The date and time that the broadcast is scheduled to start.</summary>
+        /// <summary>The date and time that the broadcast is scheduled to end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
         public virtual string ScheduledEndTimeRaw { get; set; }
 
@@ -12414,7 +12414,7 @@ namespace Google.Apis.YouTube.v3.Data
             set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
-        /// <summary>The date and time that the broadcast is scheduled to end.</summary>
+        /// <summary>The date and time that the broadcast is scheduled to start.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
         public virtual string ScheduledStartTimeRaw { get; set; }
 

@@ -5523,8 +5523,8 @@ namespace Google.Apis.Drive.v3.Data
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A region of the document represented as a JSON string. See anchor documentation for details on how to define
-        /// and interpret anchor properties.
+        /// A region of the document represented as a JSON string. For details on defining anchor properties, refer to
+        /// Add comments and replies.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anchor")]
         public virtual string Anchor { get; set; }

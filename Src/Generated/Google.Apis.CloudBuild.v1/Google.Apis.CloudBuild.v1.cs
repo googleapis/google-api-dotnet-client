@@ -2370,6 +2370,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 
+        /// <summary>Optional. A Common Expression Language string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
         /// <summary>
         /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is
         /// received. Mutually exclusive with `trigger_template`.
@@ -2407,6 +2411,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub
+        /// message is published.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfig")]
+        public virtual PubsubConfig PubsubConfig { get; set; }
 
         /// <summary>
         /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
@@ -2824,6 +2835,39 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is
+    /// published.
+    /// </summary>
+    public class PubsubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Service account that will make the push request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual string Subscription { get; set; }
+
+        /// <summary>
+        /// The name of the topic from which this subscription is receiving messages. Format is
+        /// `projects/{project}/topics/{topic}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
