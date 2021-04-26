@@ -6015,21 +6015,22 @@ namespace Google.Apis.DisplayVideo.v1
                 /// * The operator used on `flight.dateRange.endDate` must be LESS THAN (&amp;lt;). * The operator used
                 /// on `updateTime` must be `GREATER THAN OR EQUAL TO (&amp;gt;=)` or `LESS THAN OR EQUAL TO
                 /// (&amp;lt;=)`. * The operator used on `warningMessages` must be `HAS (:)`. * The operators used on
-                /// all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` -
+                /// all other fields must be `EQUALS (=)`. * Supported properties: - `campaignId` - `displayName` -
                 /// `insertionOrderId` - `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate`
                 /// (input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `updateTime` (input in
-                /// ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * The operator can be `NO LESS THAN (&amp;gt;=)` or `NO
-                /// GREATER THAN (&amp;lt;=)`. - `updateTime` (format of ISO 8601) Examples: * All line items under an
-                /// insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
-                /// and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
-                /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND
-                /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight dates end before March
-                /// 28, 2019: `flight.dateRange.endDate&amp;lt;"2019-03-28"` * All line items that have
+                /// ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) - `targetedChannelId` - `targetedNegativeKeywordListId`
+                /// Examples: * All line items under an insertion order: `insertionOrderId="1234"` * All
+                /// `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items
+                /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED")
+                /// AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose flight dates end before
+                /// March 28, 2019: `flight.dateRange.endDate&amp;lt;"2019-03-28"` * All line items that have
                 /// `NO_VALID_CREATIVE` in `warningMessages`: `warningMessages:"NO_VALID_CREATIVE"` * All line items
                 /// with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
                 /// `updateTime&amp;lt;="2020-11-04T18:54:47Z"` * All line items with an update time greater than or
-                /// equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime&amp;gt;="2020-11-04T18:54:47Z"`
-                /// The length of this field should be no more than 500 characters.
+                /// equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime&amp;gt;="2020-11-04T18:54:47Z"` *
+                /// All line items that are using both the specified channel and specified negative keyword list in
+                /// their targeting: `targetedNegativeKeywordListId=789 AND targetedChannelId=12345` The length of this
+                /// field should be no more than 500 characters.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -17501,9 +17502,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Number of line items that are directly targeting this channel negatively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativelyTargetedLineItemCount")]
+        public virtual System.Nullable<long> NegativelyTargetedLineItemCount { get; set; }
+
         /// <summary>The ID of the partner that owns the channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
         public virtual System.Nullable<long> PartnerId { get; set; }
+
+        /// <summary>Output only. Number of line items that are directly targeting this channel positively.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positivelyTargetedLineItemCount")]
+        public virtual System.Nullable<long> PositivelyTargetedLineItemCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20754,6 +20763,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The unique ID of the negative keyword list. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeKeywordListId")]
         public virtual System.Nullable<long> NegativeKeywordListId { get; set; }
+
+        /// <summary>Output only. Number of line items that are directly targeting this negative keyword list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedLineItemCount")]
+        public virtual System.Nullable<long> TargetedLineItemCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

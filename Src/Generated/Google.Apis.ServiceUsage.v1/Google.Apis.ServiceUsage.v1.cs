@@ -1012,18 +1012,18 @@ namespace Google.Apis.ServiceUsage.v1.Data
     {
         /// <summary>
         /// The cloud resource container at which the quota policy is created. The format is
-        /// {container_type}/{container_number}
+        /// `{container_type}/{container_number}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
 
         /// <summary>
         ///  If this map is nonempty, then this policy applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an policy on a limit with the unit 1/{project}/{region} could contain an entry with
-        /// the key "region" and the value "us-east-1"; the policy is only applied to quota consumed in that region.
-        /// This map has the following restrictions: * If "region" appears as a key, its value must be a valid Cloud
-        /// region. * If "zone" appears as a key, its value must be a valid Cloud zone. * Keys other than "region" or
-        /// "zone" are not valid.
+        /// limit unit. For example, an policy on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// with the key `region` and the value `us-east-1`; the policy is only applied to quota consumed in that
+        /// region. This map has the following restrictions: * If `region` appears as a key, its value must be a valid
+        /// Cloud region. * If `zone` appears as a key, its value must be a valid Cloud zone. * Keys other than `region`
+        /// or `zone` are not valid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Dimensions { get; set; }
@@ -1207,10 +1207,11 @@ namespace Google.Apis.ServiceUsage.v1.Data
     }
 
     /// <summary>
-    /// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external
-    /// use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// `Authentication` defines the authentication configuration for API methods provided by an API service. Example:
+    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
     /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
-    /// requirements: provider_id: google_calendar_auth
+    /// requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes:
+    /// https://www.googleapis.com/auth/calendar.read
     /// </summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3271,23 +3272,23 @@ namespace Google.Apis.ServiceUsage.v1.Data
     public class QuotaOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the ancestor that requested the override. For example: "organizations/12345" or
-        /// "folders/67890". Used by admin overrides only.
+        /// The resource name of the ancestor that requested the override. For example: `organizations/12345` or
+        /// `folders/67890`. Used by admin overrides only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminOverrideAncestor")]
         public virtual string AdminOverrideAncestor { get; set; }
 
         /// <summary>
         /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an override on a limit with the unit 1/{project}/{region} could contain an entry
-        /// with the key "region" and the value "us-east-1"; the override is only applied to quota consumed in that
+        /// limit unit. For example, an override on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// with the key `region` and the value `us-east-1`; the override is only applied to quota consumed in that
         /// region. This map has the following restrictions: * Keys that are not defined in the limit's unit are not
-        /// valid keys. Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. *
-        /// "project" is not a valid key; the project is already specified in the parent resource name. * "user" is not
-        /// a valid key; the API does not support quota overrides that apply only to a specific user. * If "region"
-        /// appears as a key, its value must be a valid Cloud region. * If "zone" appears as a key, its value must be a
-        /// valid Cloud zone. * If any valid key other than "region" or "zone" appears in the map, then all valid keys
-        /// other than "region" or "zone" must also appear in the map.
+        /// valid keys. Any string appearing in `{brackets}` in the unit (besides `{project}` or `{user}`) is a defined
+        /// key. * `project` is not a valid key; the project is already specified in the parent resource name. * `user`
+        /// is not a valid key; the API does not support quota overrides that apply only to a specific user. * If
+        /// `region` appears as a key, its value must be a valid Cloud region. * If `zone` appears as a key, its value
+        /// must be a valid Cloud zone. * If any valid key other than `region` or `zone` appears in the map, then all
+        /// valid keys other than `region` or `zone` must also appear in the map.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Dimensions { get; set; }

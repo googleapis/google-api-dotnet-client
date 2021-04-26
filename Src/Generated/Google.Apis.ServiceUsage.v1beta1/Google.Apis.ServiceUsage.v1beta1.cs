@@ -1522,7 +1522,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// <summary>Retrieves a summary of quota information for a specific quota metric</summary>
             /// <param name="name">
             /// The resource name of the quota limit. An example name would be:
-            /// projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests
+            /// `projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1541,7 +1541,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
                 /// <summary>
                 /// The resource name of the quota limit. An example name would be:
-                /// projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests
+                /// `projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.googleapis.com%2Fmutate_requests`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1608,7 +1608,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
             /// <summary>
-            /// Create or update multiple admin overrides atomically, all on the same consumer, but on many different
+            /// Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different
             /// metrics or limits. The name field in the quota override message should not be set.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -1622,7 +1622,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
             /// <summary>
-            /// Create or update multiple admin overrides atomically, all on the same consumer, but on many different
+            /// Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different
             /// metrics or limits. The name field in the quota override message should not be set.
             /// </summary>
             public class ImportAdminOverridesRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
@@ -1673,8 +1673,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
             /// <summary>
-            /// Create or update multiple consumer overrides atomically, all on the same consumer, but on many different
-            /// metrics or limits. The name field in the quota override message should not be set.
+            /// Creates or updates multiple consumer overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1687,8 +1687,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
             /// <summary>
-            /// Create or update multiple consumer overrides atomically, all on the same consumer, but on many different
-            /// metrics or limits. The name field in the quota override message should not be set.
+            /// Creates or updates multiple consumer overrides atomically, all on the same consumer, but on many
+            /// different metrics or limits. The name field in the quota override message should not be set.
             /// </summary>
             public class ImportConsumerOverridesRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
             {
@@ -1745,9 +1745,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// </summary>
             /// <param name="parent">
             /// Parent of the quotas resource. Some example names would be:
-            /// projects/123/services/serviceconsumermanagement.googleapis.com
-            /// folders/345/services/serviceconsumermanagement.googleapis.com
-            /// organizations/456/services/serviceconsumermanagement.googleapis.com
+            /// `projects/123/services/serviceconsumermanagement.googleapis.com`
+            /// `folders/345/services/serviceconsumermanagement.googleapis.com`
+            /// `organizations/456/services/serviceconsumermanagement.googleapis.com`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1771,9 +1771,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
                 /// <summary>
                 /// Parent of the quotas resource. Some example names would be:
-                /// projects/123/services/serviceconsumermanagement.googleapis.com
-                /// folders/345/services/serviceconsumermanagement.googleapis.com
-                /// organizations/456/services/serviceconsumermanagement.googleapis.com
+                /// `projects/123/services/serviceconsumermanagement.googleapis.com`
+                /// `folders/345/services/serviceconsumermanagement.googleapis.com`
+                /// `organizations/456/services/serviceconsumermanagement.googleapis.com`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1865,8 +1865,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the
-        /// entire batch fails, and no state changes occur. Operation
+        /// Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the
+        /// entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -1879,8 +1879,8 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the
-        /// entire batch fails, and no state changes occur. Operation
+        /// Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the
+        /// entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
         /// </summary>
         public class BatchEnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
@@ -1930,10 +1930,10 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// Disable a service so that it can no longer be used with a project. This prevents unintended usage that may
+        /// Disables a service so that it can no longer be used with a project. This prevents unintended usage that may
         /// cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service
         /// that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is
-        /// not currently enabled. Operation
+        /// not currently enabled. Operation response type: `google.protobuf.Empty`
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1947,10 +1947,10 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// Disable a service so that it can no longer be used with a project. This prevents unintended usage that may
+        /// Disables a service so that it can no longer be used with a project. This prevents unintended usage that may
         /// cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service
         /// that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is
-        /// not currently enabled. Operation
+        /// not currently enabled. Operation response type: `google.protobuf.Empty`
         /// </summary>
         public class DisableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
@@ -2000,7 +2000,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
         }
 
-        /// <summary>Enable a service so that it can be used with a project. Operation</summary>
+        /// <summary>
+        /// Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods
@@ -2013,7 +2015,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
             return new EnableRequest(service, body, name);
         }
 
-        /// <summary>Enable a service so that it can be used with a project. Operation</summary>
+        /// <summary>
+        /// Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
+        /// </summary>
         public class EnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
@@ -2063,7 +2067,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
         }
 
-        /// <summary>Generate service identity for service.</summary>
+        /// <summary>Generates service identity for service.</summary>
         /// <param name="parent">
         /// Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods
         /// currently only support projects. An example name would be: `projects/123/services/example.googleapis.com`
@@ -2074,7 +2078,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
             return new GenerateServiceIdentityRequest(service, parent);
         }
 
-        /// <summary>Generate service identity for service.</summary>
+        /// <summary>Generates service identity for service.</summary>
         public class GenerateServiceIdentityRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new GenerateServiceIdentity request.</summary>
@@ -2168,7 +2172,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// List all services available to the specified project, and the current state of those services with respect
+        /// Lists all services available to the specified project, and the current state of those services with respect
         /// to the project. The list includes all public services, all services for which the calling user has the
         /// `servicemanagement.services.bind` permission, and all services that have already been enabled on the
         /// project. The list can be filtered to only include services in a specific state, for example to only include
@@ -2184,7 +2188,7 @@ namespace Google.Apis.ServiceUsage.v1beta1
         }
 
         /// <summary>
-        /// List all services available to the specified project, and the current state of those services with respect
+        /// Lists all services available to the specified project, and the current state of those services with respect
         /// to the project. The list includes all public services, all services for which the calling user has the
         /// `servicemanagement.services.bind` permission, and all services that have already been enabled on the
         /// project. The list can be filtered to only include services in a specific state, for example to only include
@@ -2282,18 +2286,18 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     {
         /// <summary>
         /// The cloud resource container at which the quota policy is created. The format is
-        /// {container_type}/{container_number}
+        /// `{container_type}/{container_number}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
 
         /// <summary>
         ///  If this map is nonempty, then this policy applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an policy on a limit with the unit 1/{project}/{region} could contain an entry with
-        /// the key "region" and the value "us-east-1"; the policy is only applied to quota consumed in that region.
-        /// This map has the following restrictions: * If "region" appears as a key, its value must be a valid Cloud
-        /// region. * If "zone" appears as a key, its value must be a valid Cloud zone. * Keys other than "region" or
-        /// "zone" are not valid.
+        /// limit unit. For example, an policy on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// with the key `region` and the value `us-east-1`; the policy is only applied to quota consumed in that
+        /// region. This map has the following restrictions: * If `region` appears as a key, its value must be a valid
+        /// Cloud region. * If `zone` appears as a key, its value must be a valid Cloud zone. * Keys other than `region`
+        /// or `zone` are not valid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Dimensions { get; set; }
@@ -2477,10 +2481,11 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     }
 
     /// <summary>
-    /// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external
-    /// use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
+    /// `Authentication` defines the authentication configuration for API methods provided by an API service. Example:
+    /// name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri:
     /// https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*"
-    /// requirements: provider_id: google_calendar_auth
+    /// requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes:
+    /// https://www.googleapis.com/auth/calendar.read
     /// </summary>
     public class Authentication : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2784,7 +2789,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("descendantConsumerQuotaLimits")]
         public virtual System.Collections.Generic.IList<ConsumerQuotaLimit> DescendantConsumerQuotaLimits { get; set; }
 
-        /// <summary>The display name of the metric. An example name would be: "CPUs"</summary>
+        /// <summary>The display name of the metric. An example name would be: `CPUs`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -2794,7 +2799,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// The resource name of the quota settings on this metric for this consumer. An example name would be:
-        /// `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus The
+        /// `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus` The
         /// resource name is intended to be opaque and should not be parsed for its component strings, since its
         /// representation could change in the future.
         /// </summary>
@@ -4634,7 +4639,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// The dimensions of this quota bucket. If this map is empty, this is the global bucket, which is the default
         /// quota value applied to all requests that do not have a more specific override. If this map is nonempty, the
         /// default limit, effective limit, and quota overrides apply only to requests that have the dimensions given in
-        /// the map. For example, if the map has key "region" and value "us-east-1", then the specified effective limit
+        /// the map. For example, if the map has key `region` and value `us-east-1`, then the specified effective limit
         /// is only effective in that region, and the specified overrides apply only in that region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
@@ -4748,23 +4753,23 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     public class QuotaOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name of the ancestor that requested the override. For example: "organizations/12345" or
-        /// "folders/67890". Used by admin overrides only.
+        /// The resource name of the ancestor that requested the override. For example: `organizations/12345` or
+        /// `folders/67890`. Used by admin overrides only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminOverrideAncestor")]
         public virtual string AdminOverrideAncestor { get; set; }
 
         /// <summary>
         /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an override on a limit with the unit 1/{project}/{region} could contain an entry
-        /// with the key "region" and the value "us-east-1"; the override is only applied to quota consumed in that
+        /// limit unit. For example, an override on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// with the key `region` and the value `us-east-1`; the override is only applied to quota consumed in that
         /// region. This map has the following restrictions: * Keys that are not defined in the limit's unit are not
-        /// valid keys. Any string appearing in {brackets} in the unit (besides {project} or {user}) is a defined key. *
-        /// "project" is not a valid key; the project is already specified in the parent resource name. * "user" is not
-        /// a valid key; the API does not support quota overrides that apply only to a specific user. * If "region"
-        /// appears as a key, its value must be a valid Cloud region. * If "zone" appears as a key, its value must be a
-        /// valid Cloud zone. * If any valid key other than "region" or "zone" appears in the map, then all valid keys
-        /// other than "region" or "zone" must also appear in the map.
+        /// valid keys. Any string appearing in `{brackets}` in the unit (besides `{project}` or `{user}`) is a defined
+        /// key. * `project` is not a valid key; the project is already specified in the parent resource name. * `user`
+        /// is not a valid key; the API does not support quota overrides that apply only to a specific user. * If
+        /// `region` appears as a key, its value must be a valid Cloud region. * If `zone` appears as a key, its value
+        /// must be a valid Cloud zone. * If any valid key other than `region` or `zone` appears in the map, then all
+        /// valid keys other than `region` or `zone` must also appear in the map.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Dimensions { get; set; }
@@ -4818,12 +4823,12 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// The resource name of the consumer and service. A valid name would be: -
-        /// projects/123/services/serviceusage.googleapis.com
+        /// `projects/123/services/serviceusage.googleapis.com`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The resource name of the consumer. A valid name would be: - projects/123</summary>
+        /// <summary>The resource name of the consumer. A valid name would be: - `projects/123`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 

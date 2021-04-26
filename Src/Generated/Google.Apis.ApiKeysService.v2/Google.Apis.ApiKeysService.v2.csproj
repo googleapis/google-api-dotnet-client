@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.GKEHub.v1alpha Client Library</Title>
-    <Version>1.51.0.2297</Version>
+    <Title>Google.Apis.ApiKeysService.v2 Client Library</Title>
+    <Version>1.51.0.2302</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Gkehub v1alpha.
+      Google APIs Client Library for working with Apikeys v2.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -33,7 +33,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/gkehub/v1alpha
+      https://developers.google.com/api-client-library/dotnet/apis/apikeys/v2
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
