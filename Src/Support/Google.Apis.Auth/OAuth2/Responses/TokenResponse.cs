@@ -18,6 +18,7 @@ using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Util;
 using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -103,7 +104,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
 
         /// <summary>
         /// Access token expiration time for impersonated credentials. It has the RFC3339
-        /// format: "yyyy-MM-dd'T'HH:mm:ss'Z'".
+        /// format: "yyyy-MM-dd'T'HH:mm:sssssssss'Z'". For example: 2020-05-13T16:00:00.045123456Z.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         private string ImpersonatedAccessTokenExpireTime { get; set; }
@@ -192,8 +193,9 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 // Example of the expire time: "2020-05-13T16:00:00.045123456Z"
                 if (!String.IsNullOrEmpty(newToken.ImpersonatedAccessTokenExpireTime))
                 {
-                    var date = DateTime.Parse(newToken.ImpersonatedAccessTokenExpireTime).ToUniversalTime();
-                    newToken.ExpiresInSeconds = (long) date.Subtract(clock.UtcNow).TotalSeconds;        
+                    var expiry = DateTimeOffset.Parse(newToken.ImpersonatedAccessTokenExpireTime, CultureInfo.InvariantCulture);
+                    var timeBeforeExpiry = expiry - clock.UtcNow;
+                    newToken.ExpiresInSeconds = (long) timeBeforeExpiry.TotalSeconds;        
                 }
 
                 // If no expiry is specified, maybe the IdToken has it specified.

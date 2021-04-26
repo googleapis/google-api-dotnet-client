@@ -78,14 +78,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>IAM access token endpoint for service account.</summary>
         internal const string IamServiceAccountEndpointCommonPrefix = "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/";
 
-        /// <summary>IAM access token endpoint for service account.</summary>
-        internal const string IamAccessTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateAccessToken";
+        /// <summary>IAM access token endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamAccessTokenEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:generateAccessToken";
 
-        /// <summary>IAM signBlob endpoint for service account.</summary>
-        internal const string IamSignEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:signBlob";
+        /// <summary>IAM signBlob endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamSignEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:signBlob";
 
-        /// <summary>IAM ID token endpoint for service account.</summary>
-        internal const string IamIdTokenEndpoint = IamServiceAccountEndpointCommonPrefix + "{0}:generateIdToken";
+        /// <summary>IAM ID token endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamIdTokenEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:generateIdToken";
 
         /// <summary>Scope needed for source credential in impersonated credential.</summary>
         internal const string IamScope = "https://www.googleapis.com/auth/iam";

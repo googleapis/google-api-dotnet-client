@@ -20,7 +20,6 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
-using Moq;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -67,14 +66,18 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 IssuedUtc = clock.UtcNow,
                 RefreshToken = "REFRESH_TOKEN",
             };
-            var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
-            flowMock
-                .Setup(flow => flow.Clock)
-                .Returns(clock);
-            flowMock
-                .Setup(flow => flow.AccessMethod)
-                .Returns(new BearerToken.AuthorizationHeaderAccessMethod());
-            return new GoogleCredential(new UserCredential(flowMock.Object, "my.user.id", tokenResponse));
+            var initializer = new GoogleAuthorizationCodeFlow.Initializer
+            {
+                ClientSecrets = new ClientSecrets
+                {
+                    ClientId = "CLIENT_ID",
+                    ClientSecret = "CLIENT_SECRET"
+                },
+                ProjectId = "PROJECT_ID",
+                Clock = clock
+            };
+            var flow = new GoogleAuthorizationCodeFlow(initializer);
+            return new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse));
         }
 
         private static ImpersonatedCredential CreateImpersonatedCredentialForBody(object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK)

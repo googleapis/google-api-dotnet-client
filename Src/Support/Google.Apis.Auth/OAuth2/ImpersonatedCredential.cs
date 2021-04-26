@@ -80,7 +80,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <param name="scopes">The scopes to request during the authorization grant.</param>
             public Initializer(GoogleCredential sourceCredential, string targetPrincipal, TimeSpan? lifetime,
                 IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
-                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpoint, targetPrincipal))
+                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal))
             { 
                 SourceCredential = sourceCredential;
                 TargetPrincipal = targetPrincipal;
@@ -174,8 +174,7 @@ namespace Google.Apis.Auth.OAuth2
             // If at some point some properties are added to OidcToken that depend on the token having been fetched
             // then initialize the token here.
             TokenRefreshManager tokenRefreshManager = null;
-            tokenRefreshManager = new TokenRefreshManager(
-                ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
+            tokenRefreshManager = new TokenRefreshManager(ct => RefreshOidcTokenAsync(tokenRefreshManager, options, ct), Clock, Logger);
             return Task.FromResult(new OidcToken(tokenRefreshManager));
         }
 
@@ -190,7 +189,7 @@ namespace Google.Apis.Auth.OAuth2
             var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
             
-            var oidcTokenUrl = String.Format(GoogleAuthConsts.IamIdTokenEndpoint, TargetPrincipal);
+            var oidcTokenUrl = String.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, TargetPrincipal);
             var response = await HttpClient.PostAsync(oidcTokenUrl, content, cancellationToken).ConfigureAwait(false);
             caller.Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             return true;
@@ -211,7 +210,7 @@ namespace Google.Apis.Auth.OAuth2
             };
             var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(bodyJson), Encoding.UTF8, "application/json");
             
-            var signBlobUrl = String.Format(GoogleAuthConsts.IamSignEndpoint, TargetPrincipal);
+            var signBlobUrl = String.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
             
             var response = await HttpClient.PostAsync(signBlobUrl, body, cancellationToken).ConfigureAwait(false);
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
