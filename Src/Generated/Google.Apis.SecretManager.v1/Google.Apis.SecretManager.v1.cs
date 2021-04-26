@@ -466,10 +466,11 @@ namespace Google.Apis.SecretManager.v1
 
                 /// <summary>
                 /// Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest`
-                /// is an alias to the `latest` SecretVersion.
+                /// is an alias to the most recently created SecretVersion.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.
+                /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
                 /// </param>
                 public virtual AccessRequest Access(string name)
                 {
@@ -478,7 +479,7 @@ namespace Google.Apis.SecretManager.v1
 
                 /// <summary>
                 /// Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest`
-                /// is an alias to the `latest` SecretVersion.
+                /// is an alias to the most recently created SecretVersion.
                 /// </summary>
                 public class AccessRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.AccessSecretVersionResponse>
                 {
@@ -491,7 +492,8 @@ namespace Google.Apis.SecretManager.v1
 
                     /// <summary>
                     /// Required. The resource name of the SecretVersion in the format
-                    /// `projects/*/secrets/*/versions/*`.
+                    /// `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the
+                    /// most recently created SecretVersion.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -704,12 +706,12 @@ namespace Google.Apis.SecretManager.v1
                 }
 
                 /// <summary>
-                /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the
-                /// `latest` SecretVersion.
+                /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most
+                /// recently created SecretVersion.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.
-                /// `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
+                /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -717,8 +719,8 @@ namespace Google.Apis.SecretManager.v1
                 }
 
                 /// <summary>
-                /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the
-                /// `latest` SecretVersion.
+                /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most
+                /// recently created SecretVersion.
                 /// </summary>
                 public class GetRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
                 {
@@ -732,7 +734,7 @@ namespace Google.Apis.SecretManager.v1
                     /// <summary>
                     /// Required. The resource name of the SecretVersion in the format
                     /// `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the
-                    /// `latest` SecretVersion.
+                    /// most recently created SecretVersion.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }

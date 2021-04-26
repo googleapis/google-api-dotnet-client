@@ -7458,9 +7458,29 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
         public virtual System.Nullable<long> GuaranteedLooks { get; set; }
 
+        /// <summary>
+        /// The lifetime impression cap for CPM sponsorship deals. The deal will stop serving when the cap is reached.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionCap")]
+        public virtual System.Nullable<long> ImpressionCap { get; set; }
+
         /// <summary>Daily minimum looks for CPD deal types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumDailyLooks")]
         public virtual System.Nullable<long> MinimumDailyLooks { get; set; }
+
+        /// <summary>
+        /// For sponsorship deals, this is the percentage of the seller's eligible impressions that the deal will serve
+        /// until the cap is reached.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentShareOfVoice")]
+        public virtual System.Nullable<long> PercentShareOfVoice { get; set; }
+
+        /// <summary>
+        /// The reservation type for a Programmatic Guaranteed deal. This indicates whether the number of impressions is
+        /// fixed, or a percent of available impressions. If not specified, the default reservation type is STANDARD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationType")]
+        public virtual string ReservationType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

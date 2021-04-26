@@ -2009,7 +2009,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2652,6 +2652,13 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         /// <summary>Optional. Description of the version, as specified in its metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. Repository-specific Metadata stored against this version. The fields returned are defined by
+        /// the underlying repository-specific resource. Currently, the only resource in use is DockerImage
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
         /// The name of the version, for example:

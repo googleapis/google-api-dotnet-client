@@ -346,6 +346,15 @@ namespace Google.Apis.BigQueryReservation.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if
+                    /// this field is empty. This field must only contain lower case alphanumeric characters or dash.
+                    /// Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or
+                    /// merged.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("capacityCommitmentId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CapacityCommitmentId { get; set; }
+
+                    /// <summary>
                     /// If true, fail the request if another project in the organization has a capacity commitment.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("enforceSingleAdminProjectPerOrg", Google.Apis.Util.RequestParameterType.Query)]
@@ -377,6 +386,14 @@ namespace Google.Apis.BigQueryReservation.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("capacityCommitmentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "capacityCommitmentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("enforceSingleAdminProjectPerOrg", new Google.Apis.Discovery.Parameter
                         {
@@ -885,6 +902,14 @@ namespace Google.Apis.BigQueryReservation.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>
+                        /// The optional assignment ID. Assignment name will be generated automatically if this field is
+                        /// empty. This field must only contain lower case alphanumeric characters or dash. Max length
+                        /// is 64 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("assignmentId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AssignmentId { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.BigQueryReservation.v1.Data.Assignment Body { get; set; }
 
@@ -911,6 +936,14 @@ namespace Google.Apis.BigQueryReservation.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                            });
+                            RequestParameters.Add("assignmentId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "assignmentId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -1138,6 +1171,77 @@ namespace Google.Apis.BigQueryReservation.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing assignment. Only the `priority` field can be updated.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Name of the resource. E.g.:
+                    /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.Assignment body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates an existing assignment. Only the `priority` field can be updated.</summary>
+                    public class PatchRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Assignment>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.Assignment body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Name of the resource. E.g.:
+                        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigQueryReservation.v1.Data.Assignment Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }

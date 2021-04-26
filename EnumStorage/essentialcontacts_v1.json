@@ -1,0 +1,44 @@
+{
+  "Google.Apis.Essentialcontacts.v1.EssentialcontactsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Essentialcontacts.v1.EssentialcontactsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Essentialcontacts.v1.FoldersResource+ContactsResource+ComputeRequest.NotificationCategoriesEnum": [
+    "NOTIFICATION_CATEGORY_UNSPECIFIED",
+    "ALL",
+    "SUSPENSION",
+    "SECURITY",
+    "TECHNICAL",
+    "BILLING",
+    "LEGAL",
+    "PRODUCT_UPDATES",
+    "TECHNICAL_INCIDENTS"
+  ],
+  "Google.Apis.Essentialcontacts.v1.OrganizationsResource+ContactsResource+ComputeRequest.NotificationCategoriesEnum": [
+    "NOTIFICATION_CATEGORY_UNSPECIFIED",
+    "ALL",
+    "SUSPENSION",
+    "SECURITY",
+    "TECHNICAL",
+    "BILLING",
+    "LEGAL",
+    "PRODUCT_UPDATES",
+    "TECHNICAL_INCIDENTS"
+  ],
+  "Google.Apis.Essentialcontacts.v1.ProjectsResource+ContactsResource+ComputeRequest.NotificationCategoriesEnum": [
+    "NOTIFICATION_CATEGORY_UNSPECIFIED",
+    "ALL",
+    "SUSPENSION",
+    "SECURITY",
+    "TECHNICAL",
+    "BILLING",
+    "LEGAL",
+    "PRODUCT_UPDATES",
+    "TECHNICAL_INCIDENTS"
+  ]
+}
