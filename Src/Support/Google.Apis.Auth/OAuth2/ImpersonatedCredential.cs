@@ -14,16 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Requests;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Json;
+using Google.Apis.Util;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Json;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -36,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2
     /// Take a look in https://cloud.google.com/iam/credentials/reference/rest/ for more details.
     /// </para>
     /// </summary>
-    public class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
+    internal class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
         /// <summary>An initializer class for the impersonated credential. </summary>
         new internal class Initializer : ServiceCredential.Initializer
@@ -47,59 +46,24 @@ namespace Google.Apis.Auth.OAuth2
             public GoogleCredential SourceCredential { get; set; }
 
             /// <summary>
-            /// Gets or sets the service account to impersonate.
+            /// Gets or sets the impersonation options.
             /// </summary>
-            public string TargetPrincipal { get; set; }
-
-            /// <summary>
-            /// Gets or sets the chained list of delegate service accounts.
-            /// </summary>
-            public IEnumerable<string> DelegateAccounts { get; set; }
-
-            /// <summary>
-            /// Gets or sets the scopes to request during the authorization grant.
-            /// </summary>
-            public IEnumerable<string> Scopes { get; set; }
-
-            /// <summary>
-            /// Gets or sets the how long the delegated credential should be valid.
-            /// </summary>
-            public TimeSpan Lifetime { get; set; }
+            public ImpersonationOptions Options { get; set; }
 
             /// <summary>Constructs a new initializer.</summary>
             /// <param name="sourceCredential">The source credential used as to acquire the impersonated credentials.</param>
-            /// <param name="targetPrincipal">The service account to impersonate.</param>
-            /// <param name="lifetime">
-            /// The life time of the delegated credential should be valid.
-            /// By default this value should be at most 3600 seconds. However, you can follow
-            /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
-            /// to set up the service account and extend the maximum lifetime to 43200 seconds or 12 hours).
-            /// If lifetime is not given, 3600 seconds will be used by default.
-            /// </param>
-            /// <param name="delegateAccounts">The chained list of delegate service accounts.</param>
-            /// <param name="scopes">The scopes to request during the authorization grant.</param>
-            public Initializer(GoogleCredential sourceCredential, string targetPrincipal, TimeSpan? lifetime,
-                IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
-                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, targetPrincipal))
+            /// <param name="options">The impersonation options.</param>
+            public Initializer(GoogleCredential sourceCredential, ImpersonationOptions options)
+                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, options.TargetPrincipal))
             { 
                 SourceCredential = sourceCredential;
-                TargetPrincipal = targetPrincipal;
-                DelegateAccounts = delegateAccounts;
-                Scopes = scopes;
-                Lifetime = lifetime.HasValue ? lifetime.Value : new TimeSpan(1, 0, 0);
-                if (Lifetime > new TimeSpan(12, 0, 0))
-                {
-                    throw new ArgumentOutOfRangeException("lifetime", "Lifetime must be less than or equal to 43200 seconds or 12 hours.");
-                }
+                Options = options;
             }
 
             internal Initializer(ImpersonatedCredential other) : base(other.TokenServerUrl)
             {
                 SourceCredential = other.SourceCredential;
-                TargetPrincipal = other.TargetPrincipal;
-                DelegateAccounts = other.DelegateAccounts;
-                Scopes = other.Scopes;
-                Lifetime = other.Lifetime;
+                Options = other.Options;
             }
         }
 
@@ -109,24 +73,9 @@ namespace Google.Apis.Auth.OAuth2
         public GoogleCredential SourceCredential { get; }
 
         /// <summary>
-        /// Gets the service account to impersonate.
+        /// Gets the impersonation options.
         /// </summary>
-        public string TargetPrincipal { get; }
-
-        /// <summary>
-        /// Gets the chained list of delegate service accounts.
-        /// </summary>
-        public IEnumerable<string> DelegateAccounts { get; }
-
-        /// <summary>
-        /// Gets the scopes to request during the authorization grant.
-        /// </summary>
-        public IEnumerable<string> Scopes { get; }
-
-        /// <summary>
-        /// Gets how long the delegated credential should be valid.
-        /// </summary>
-        public TimeSpan Lifetime { get; }
+        public ImpersonationOptions Options { get; }
 
         /// <summary>Constructs a new impersonated credential using the given initializer.</summary>
         internal ImpersonatedCredential(Initializer initializer) : base(initializer)
@@ -138,11 +87,7 @@ namespace Google.Apis.Auth.OAuth2
             }
             SourceCredential = SourceCredential.CreateScoped(new string[] {GoogleAuthConsts.IamScope});
             HttpClient.MessageHandler.Credential = SourceCredential.UnderlyingCredential as Http.IHttpExecuteInterceptor;
-            
-            TargetPrincipal = initializer.TargetPrincipal.ThrowIfNullOrEmpty("initializer.TargetPrincipal");
-            DelegateAccounts = initializer.DelegateAccounts;
-            Scopes = initializer.Scopes;
-            Lifetime = initializer.Lifetime;
+            Options = initializer.Options;
         }
 
         /// <inheritdoc/>
@@ -152,11 +97,11 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            var bodyJson = new
+            var bodyJson = new ImpersonationAccessTokenRequest
             {
-                delegates = DelegateAccounts,
-                scope = Scopes,
-                lifetime = ((int)Lifetime.TotalSeconds).ToString() + "s"
+                DelegateAccounts = Options.DelegateAccounts,
+                Scopes = Options.Scopes,
+                Lifetime = ((int)Options.Lifetime.TotalSeconds).ToString() + "s"
             };
             var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
@@ -178,75 +123,47 @@ namespace Google.Apis.Auth.OAuth2
             return Task.FromResult(new OidcToken(tokenRefreshManager));
         }
 
-        private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions options, CancellationToken cancellationToken)
+        private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions oidcTokenOptions, CancellationToken cancellationToken)
         {
-            var bodyJson = new
+            var bodyJson = new ImpersonationOIdCTokenRequest
             {
-                delegates = DelegateAccounts,
-                audience = options.TargetAudience,
-                includeEmail = true
+                DelegateAccounts = Options.DelegateAccounts,
+                Audience = oidcTokenOptions.TargetAudience,
+                IncludeEmail = true
             };
             var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
             
-            var oidcTokenUrl = String.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, TargetPrincipal);
+            var oidcTokenUrl = String.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, Options.TargetPrincipal);
             var response = await HttpClient.PostAsync(oidcTokenUrl, content, cancellationToken).ConfigureAwait(false);
             caller.Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             return true;
         }
 
         /// <summary>
-        /// Signs the provided bytes using the private key associated with the impersonated service account.
+        /// Signs the provided blob using the private key associated with the impersonated service account.
         /// </summary>
-        /// <param name="bytesToSign">The bytes to sign.</param>
+        /// <param name="blob">The blob to sign.</param>
         /// <param name="cancellationToken">Cancellation token to cancel operation.</param>
-        /// <returns>The signed bytes.</returns>
-        /// <exception cref="SignBlobResponseException">When signing request fails.</exception>
-        public async Task<byte[]> SignBytes(byte[] bytesToSign, CancellationToken cancellationToken = default) {
+        /// <returns>The base64 encoded signature.</returns>
+        /// <exception cref="HttpRequestException">When signing request fails.</exception>
+        /// <exception cref="Newtonsoft.Json.JsonException">When signing response is not a valid JSON.</exception>
+        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
+        {
             var bodyJson = new
             {
-                delegates = DelegateAccounts,
-                payload = bytesToSign
+                delegates = Options.DelegateAccounts,
+                payload = blob
             };
             var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(bodyJson), Encoding.UTF8, "application/json");
             
-            var signBlobUrl = String.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
+            var signBlobUrl = String.Format(GoogleAuthConsts.IamSignEndpointFormatString, Options.TargetPrincipal);
             
             var response = await HttpClient.PostAsync(signBlobUrl, body, cancellationToken).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new SignBlobResponseException(content, response.StatusCode);
-            }
-            try
-            {
-                var signBlobResponse = NewtonsoftJsonSerializer.Instance.Deserialize<SignBlobResponse>(content);
-                return Convert.FromBase64String(signBlobResponse.SignedBlob);
-            }
-            catch (Newtonsoft.Json.JsonException)
-            {
-                throw new SignBlobResponseException("Server response does not contain a JSON object.", response.StatusCode);
-            }
-        }
-
-        /// <summary>
-        /// IAM signblob endpoint response exception.
-        /// </summary>
-        public class SignBlobResponseException : Exception
-        {
-            /// <summary>The error information.</summary>
-            public string Error { get; }
-
-            /// <summary>HTTP status code of error.</summary>
-            public HttpStatusCode StatusCode { get; }
-
-            /// <summary>Constructs a new exception instance from the given error and HTTP status code.</summary>
-            public SignBlobResponseException(string error, HttpStatusCode statusCode)
-                : base(error)
-            {
-                Error = error;
-                StatusCode = statusCode;
-            }
+            var signBlobResponse = NewtonsoftJsonSerializer.Instance.Deserialize<SignBlobResponse>(content);
+            return signBlobResponse.SignedBlob;
         }
 
         internal class SignBlobResponse

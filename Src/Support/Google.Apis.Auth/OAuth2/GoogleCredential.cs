@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider, IBlobSigner
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static readonly DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -319,27 +319,29 @@ namespace Google.Apis.Auth.OAuth2
             (credential is IOidcTokenProvider provider) ?
             provider.GetOidcTokenAsync(options, cancellationToken) :
             throw new InvalidOperationException(
-                $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)} are supported OIDC token providers.");
+                $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)}, {nameof(ImpersonatedCredential)} are supported OIDC token providers.");
 
         /// <summary>
         /// Gets the underlying credential instance being wrapped.
         /// </summary>
         public ICredential UnderlyingCredential => credential;
 
-        /// <summary>Creates a <see cref="GoogleCredential"/> wrapping a <see cref="ImpersonatedCredential"/>.</summary>
-        /// <param name="targetPrincipal">The service account to impersonate.</param>
-        /// <param name="lifetime">
-        /// The life time of the delegated credential should be valid.
-        /// By default this value should be at most 3600 seconds. However, you can follow
-        /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
-        /// to set up the service account and extend the maximum lifetime to 43200 seconds or 12 hours).
-        /// If lifetime is not given, 3600 seconds will be used by default.
-        /// </param>
-        /// <param name="delegateAccounts">The chained list of delegate service accounts.</param>
-        /// <param name="scopes">The scopes to request during the authorization grant.</param>
-        public GoogleCredential Impersonate(string targetPrincipal, TimeSpan? lifetime, IEnumerable<string> delegateAccounts = null, IEnumerable<string> scopes = null)
+        /// <inheritdoc/>
+        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
-            var initializer = new ImpersonatedCredential.Initializer(this, targetPrincipal, lifetime, delegateAccounts, scopes);
+            if (UnderlyingCredential is IBlobSigner)
+            {
+                return await (UnderlyingCredential as IBlobSigner).SignBlobAsync(blob, cancellationToken).ConfigureAwait(false);
+            }
+            throw new InvalidOperationException(
+                $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)} are supported blob signers.");
+        }
+
+        /// <summary>Creates a <see cref="GoogleCredential"/> wrapping a <see cref="ImpersonatedCredential"/>.</summary>
+        /// <param name="options">The impersonation options.</param>
+        public GoogleCredential Impersonate(ImpersonationOptions options)
+        {
+            var initializer = new ImpersonatedCredential.Initializer(this, options);
             var impersonatedCredential = new ImpersonatedCredential(initializer);
             return new ImpersonatedGoogleCredential(impersonatedCredential);
         }
@@ -357,10 +359,8 @@ namespace Google.Apis.Auth.OAuth2
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
                 var impersonatedCredential = credential as ImpersonatedCredential;
-                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential)
-                {
-                    Scopes = scopes
-                };
+                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential);
+                initializer.Options = impersonatedCredential.Options.WithScopes(scopes);
                 return new ImpersonatedGoogleCredential(new ImpersonatedCredential(initializer));
             }
         }

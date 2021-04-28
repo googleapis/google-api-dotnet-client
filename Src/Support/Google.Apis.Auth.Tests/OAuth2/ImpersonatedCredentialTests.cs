@@ -32,7 +32,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class ImpersonatedCredentialTests
     {
-        private static readonly IClock clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
+        private static readonly IClock _clock = new MockClock(new DateTime(2020, 5, 13, 15, 0, 0, 0, DateTimeKind.Utc));
 
         private const string ErrorResponseContent = "{\"error\": {\"code\": 404, \"message\": \"...\", \"status\": \"NOT_FOUND\"}}";
 
@@ -41,7 +41,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             private string content;
             private HttpStatusCode statusCode;
 
-            public FakeHttpMessageHandler(HttpStatusCode statusCode, string content) {
+            public FakeHttpMessageHandler(HttpStatusCode statusCode, string content)
+            {
                 this.content = content;
                 this.statusCode = statusCode;
             }
@@ -63,7 +64,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             {
                 AccessToken = "ACCESS_TOKEN",
                 ExpiresInSeconds = 60 * 10,
-                IssuedUtc = clock.UtcNow,
+                IssuedUtc = _clock.UtcNow,
                 RefreshToken = "REFRESH_TOKEN",
             };
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
@@ -74,7 +75,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                     ClientSecret = "CLIENT_SECRET"
                 },
                 ProjectId = "PROJECT_ID",
-                Clock = clock
+                Clock = _clock
             };
             var flow = new GoogleAuthorizationCodeFlow(initializer);
             return new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse));
@@ -93,9 +94,10 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 content = (string)body;
             }
             var messageHandler = new FakeHttpMessageHandler(status, content);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "principal", null, null, new[] {"scope"})
+            var options = new ImpersonationOptions("principal", null, null, new[] {"scope"});
+            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, options)
             {
-                Clock = clock,
+                Clock = _clock,
                 HttpClientFactory = new MockHttpClientFactory(messageHandler)
             };
             return new ImpersonatedCredential(initializer);
@@ -118,36 +120,10 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public void Constructor_InvalidSourceCredential()
         {
             var sourceCredential = GoogleCredential.FromComputeCredential();
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, "principal", null, null, null);
+            var options = new ImpersonationOptions("principal", null, null, null);
+            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, options);
             var ex = Assert.Throws<InvalidOperationException>(() => new ImpersonatedCredential(initializer));
             Assert.Equal("The underlying credential of source credential must be UserCredential or ServiceAccountCredential.", ex.Message);
-        }
-
-        [Fact]
-        public void Constructor_MissingTargetPrincipal()
-        {
-            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "", null, null, null);
-            Assert.Throws<ArgumentException>(() => new ImpersonatedCredential(initializer));
-        }
-
-        [Fact]
-        public void Constructor_InvalidLifetime()
-        {
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new ImpersonatedCredential.Initializer(CreateSourceCredential(), "principal", new TimeSpan(20, 0, 0), null, null));
-            Assert.True(ex.Message.StartsWith("Lifetime must be less than or equal to"));
-        }
-
-        [Fact]
-        public void Constructor()
-        {
-            var delegates = new[] {"delegate"};
-            var scopes = new[] {"scope"};
-            var initializer = new ImpersonatedCredential.Initializer(CreateSourceCredential(), "principal", null, delegates, scopes);
-            var credential = new ImpersonatedCredential(initializer);
-            Assert.Equal(new TimeSpan(1, 0, 0), credential.Lifetime);
-            Assert.Equal(delegates, credential.DelegateAccounts);
-            Assert.Equal(scopes, credential.Scopes);
-            Assert.Equal("principal", credential.TargetPrincipal);
         }
 
         [Fact]
@@ -188,20 +164,19 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public async Task SignBytes()
+        public async Task SignBlobAsync()
         {
             var credential = CreateImpersonatedCredentialWithSignBlobResponse();
-            var bytes = await credential.SignBytes(Encoding.ASCII.GetBytes("toSign")).ConfigureAwait(false);
-            // Signature is "principal" whose byte array is {102, 111, 111}.
-            Assert.Equal(new byte[] {102, 111, 111}, bytes);
+            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")).ConfigureAwait(false);
+            Assert.Equal("Zm9v", signature);
         }
 
         [Fact]
-        public async Task SignBytes_Failure()
+        public async Task SignBlobAsync_Failure()
         {
             var credential = CreateImpersonatedCredentialWithErrorResponse();
-            var ex = await Assert.ThrowsAsync<ImpersonatedCredential.SignBlobResponseException>(() => credential.SignBytes(Encoding.ASCII.GetBytes("toSign")));
-            Assert.Equal(ErrorResponseContent, ex.Error);
+            var ex = await Assert.ThrowsAsync<HttpRequestException>(() => credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
+            Assert.Equal("Response status code does not indicate success: 404 (Not Found).", ex.Message);
         }
     }
 }
