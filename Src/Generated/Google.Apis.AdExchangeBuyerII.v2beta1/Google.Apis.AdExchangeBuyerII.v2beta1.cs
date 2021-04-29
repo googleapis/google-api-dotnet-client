@@ -8142,10 +8142,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Terms for Preferred Deals. Note that Preferred Deals cannot be created via the API at this time, but can be
-    /// returned in a get or list request.
-    /// </summary>
+    /// <summary>Terms for Preferred Deals.</summary>
     public class NonGuaranteedFixedPriceTerms : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Fixed price for the specified buyer.</summary>
@@ -8306,9 +8303,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// Note: this resource requires whitelisting for access. Please contact your account manager for access to
-    /// Marketplace resources. A product is a segment of inventory that a seller wishes to sell. It is associated with
-    /// certain terms and targeting information which helps the buyer know more about the inventory.
+    /// A product is a segment of inventory that a seller wishes to sell. It is associated with certain terms and
+    /// targeting information which helps the buyer know more about the inventory.
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8394,10 +8390,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// Note: this resource requires whitelisting for access. Please contact your account manager for access to
-    /// Marketplace resources. Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a
-    /// seller and a buyer and contains deals which are served. Note: you can not update, create, or otherwise modify
-    /// Private Auction or Preferred Deals deals through the API. Fields are updatable unless noted otherwise.
+    /// Represents a proposal in the Marketplace. A proposal is the unit of negotiation between a seller and a buyer and
+    /// contains deals which are served. Note: You can't update, create, or otherwise modify Private Auction deals
+    /// through the API. Fields are updatable unless noted otherwise.
     /// </summary>
     public class Proposal : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8499,10 +8494,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
     }
 
     /// <summary>
-    /// Note: this resource requires whitelisting for access. Please contact your account manager for access to
-    /// Marketplace resources. Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in
-    /// Marketplace. All fields are read only. All string fields are free-form text entered by the publisher unless
-    /// noted otherwise.
+    /// Represents a publisher profile (https://support.google.com/admanager/answer/6035806) in Marketplace. All fields
+    /// are read only. All string fields are free-form text entered by the publisher unless noted otherwise.
     /// </summary>
     public class PublisherProfile : Google.Apis.Requests.IDirectResponseSchema
     {

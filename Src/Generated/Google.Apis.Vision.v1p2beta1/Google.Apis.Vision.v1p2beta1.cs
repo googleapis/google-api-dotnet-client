@@ -7125,8 +7125,8 @@ namespace Google.Apis.Vision.v1p2beta1.Data
 
     /// <summary>
     /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
-    /// latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must
-    /// be within normalized ranges.
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
     /// </summary>
     public class LatLng : Google.Apis.Requests.IDirectResponseSchema
     {

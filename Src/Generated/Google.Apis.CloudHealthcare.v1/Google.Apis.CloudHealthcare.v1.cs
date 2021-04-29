@@ -9853,7 +9853,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -10856,6 +10856,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Represents a FHIR store.</summary>
     public class FhirStore : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an
+        /// error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient`
+        /// which ignores unrecognized search parameters. The handling can always be changed from the default on an
+        /// individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSearchHandlingStrict")]
+        public virtual System.Nullable<bool> DefaultSearchHandlingStrict { get; set; }
+
         /// <summary>
         /// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR
         /// store creation. The default value is false, meaning that the API enforces referential integrity and fails

@@ -3101,6 +3101,7 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual ResponseHeader Header { get; set; }
 
+        /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

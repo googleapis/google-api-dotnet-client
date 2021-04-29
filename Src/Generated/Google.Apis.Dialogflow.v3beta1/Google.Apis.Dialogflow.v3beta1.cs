@@ -3627,6 +3627,69 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Exports the specified flow to a binary file. Note that resources (e.g. intents, entities,
+                    /// webhooks) that the flow references will also be exported.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the flow to export. Format: `projects//locations//agents//flows/`.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportFlowRequest body, string name)
+                    {
+                        return new ExportRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Exports the specified flow to a binary file. Note that resources (e.g. intents, entities,
+                    /// webhooks) that the flow references will also be exported.
+                    /// </summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportFlowRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the flow to export. Format: `projects//locations//agents//flows/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportFlowRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+name}:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/flows/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the specified flow.</summary>
                     /// <param name="name">
                     /// Required. The name of the flow to get. Format: `projects//locations//agents//flows/`.
@@ -3760,6 +3823,63 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Imports the specified flow to the specified agent from a binary file.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to import the flow into. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportFlowRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>Imports the specified flow to the specified agent from a binary file.</summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportFlowRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to import the flow into. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportFlowRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/flows:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
                             });
                         }
                     }
@@ -7853,6 +7973,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Flows.ExportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
+        public virtual string FlowContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in
+        /// ExportFlowRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8104,6 +8242,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Flows.ImportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3ImportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9299,6 +9448,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string StartFlow { get; set; }
 
         /// <summary>
+        /// The list of all languages supported by the agent (except for the `default_language_code`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> SupportedLanguageCodes { get; set; }
+
+        /// <summary>
         /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
         /// America/New_York, Europe/Paris.
         /// </summary>
@@ -9985,6 +10140,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
 
+        /// <summary>
+        /// Optional. Environment name. If not set, draft environment is assumed. Format:
+        /// `projects//locations//agents//environments/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10002,6 +10164,42 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Flows.ExportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportFlowRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the flow to. The
+        /// format of this URI must be `gs:///`. If left unspecified, the serialized flow is returned inline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
+
+        /// <summary>Optional. Whether to export flows referenced by the specified flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeReferencedFlows")]
+        public virtual System.Nullable<bool> IncludeReferencedFlows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Flows.ExportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
+        public virtual string FlowContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in
+        /// ExportFlowRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10424,6 +10622,39 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Flows.ImportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportFlowRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
+        public virtual string FlowContent { get; set; }
+
+        /// <summary>
+        /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import flow from. The format of
+        /// this URI must be `gs:///`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
+
+        /// <summary>Flow import mode. If not specified, `KEEP` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importOption")]
+        public virtual string ImportOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Flows.ImportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11414,7 +11645,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// This field can be used to pass custom data into the webhook associated with the agent. Arbitrary JSON
-        /// objects are supported.
+        /// objects are supported. Some integrations that query a Dialogflow agent may provide additional information in
+        /// the payload. In particular, for the Dialogflow Phone Gateway integration, this field has the form: {
+        /// "telephony": { "caller_id": "+18558363987" } }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
@@ -16825,8 +17058,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
     /// <summary>
     /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
-    /// latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must
-    /// be within normalized ranges.
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
     /// </summary>
     public class GoogleTypeLatLng : Google.Apis.Requests.IDirectResponseSchema
     {

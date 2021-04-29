@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PaymentsResellerSubscription.v1.PaymentsResellerSubscriptionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PaymentsResellerSubscription.v1.PaymentsResellerSubscriptionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

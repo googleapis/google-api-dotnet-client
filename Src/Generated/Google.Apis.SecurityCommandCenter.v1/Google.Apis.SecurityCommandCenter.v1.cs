@@ -5849,9 +5849,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>
-    /// Information related to the Google Cloud resource that is associated with this finding. LINT.IfChange
-    /// </summary>
+    /// <summary>Information related to the Google Cloud resource that is associated with this finding.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

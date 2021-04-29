@@ -34,10 +34,8 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
         /// <param name="initializer">The service initializer.</param>
         public DoubleClickBidManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-            Lineitems = new LineitemsResource(this);
             Queries = new QueriesResource(this);
             Reports = new ReportsResource(this);
-            Sdf = new SdfResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -79,17 +77,11 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             public const string Doubleclickbidmanager = "https://www.googleapis.com/auth/doubleclickbidmanager";
         }
 
-        /// <summary>Gets the Lineitems resource.</summary>
-        public virtual LineitemsResource Lineitems { get; }
-
         /// <summary>Gets the Queries resource.</summary>
         public virtual QueriesResource Queries { get; }
 
         /// <summary>Gets the Reports resource.</summary>
         public virtual ReportsResource Reports { get; }
-
-        /// <summary>Gets the Sdf resource.</summary>
-        public virtual SdfResource Sdf { get; }
     }
 
     /// <summary>A base abstract class for DoubleClickBidManager requests.</summary>
@@ -270,99 +262,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
                 DefaultValue = null,
                 Pattern = null,
             });
-        }
-    }
-
-    /// <summary>The "lineitems" collection of methods.</summary>
-    public class LineitemsResource
-    {
-        private const string Resource = "lineitems";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public LineitemsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Retrieves line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual DownloadlineitemsRequest Downloadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest body)
-        {
-            return new DownloadlineitemsRequest(service, body);
-        }
-
-        /// <summary>Retrieves line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
-        public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsResponse>
-        {
-            /// <summary>Constructs a new Downloadlineitems request.</summary>
-            public DownloadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadLineItemsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "downloadlineitems";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "lineitems/downloadlineitems";
-
-            /// <summary>Initializes Downloadlineitems parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>Uploads line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual UploadlineitemsRequest Uploadlineitems(Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest body)
-        {
-            return new UploadlineitemsRequest(service, body);
-        }
-
-        /// <summary>Uploads line items in CSV format. YouTube &amp; partners line items are not supported.</summary>
-        public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsResponse>
-        {
-            /// <summary>Constructs a new Uploadlineitems request.</summary>
-            public UploadlineitemsRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DoubleClickBidManager.v1_1.Data.UploadLineItemsRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "uploadlineitems";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "lineitems/uploadlineitems";
-
-            /// <summary>Initializes Uploadlineitems parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
         }
     }
 
@@ -731,60 +630,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1
             }
         }
     }
-
-    /// <summary>The "sdf" collection of methods.</summary>
-    public class SdfResource
-    {
-        private const string Resource = "sdf";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public SdfResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Retrieves entities in SDF format.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual DownloadRequest Download(Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadRequest body)
-        {
-            return new DownloadRequest(service, body);
-        }
-
-        /// <summary>Retrieves entities in SDF format.</summary>
-        public class DownloadRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadResponse>
-        {
-            /// <summary>Constructs a new Download request.</summary>
-            public DownloadRequest(Google.Apis.Services.IClientService service, Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DoubleClickBidManager.v1_1.Data.DownloadRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "download";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "sdf/download";
-
-            /// <summary>Initializes Download parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-    }
 }
 namespace Google.Apis.DoubleClickBidManager.v1_1.Data
 {
@@ -819,114 +664,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Filters. There is a limit of 100 filters that can be set per disjunctive match statement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
         public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to fetch stored line items.</summary>
-    public class DownloadLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// File specification (column names, types, order) in which the line items will be returned. Default to EWF.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileSpec")]
-        public virtual string FileSpec { get; set; }
-
-        /// <summary>
-        /// Ids of the specified filter type used to filter line items to fetch. If omitted, all the line items will be
-        /// returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
-
-        /// <summary>Filter type used to filter line items to fetch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
-        public virtual string FilterType { get; set; }
-
-        /// <summary>Format in which the line items will be returned. Default to CSV.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Download line items response.</summary>
-    public class DownloadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Retrieved line items in CSV format. For more information about file formats, see Entity Write File Format.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request to fetch stored inventory sources, campaigns, insertion orders, line items, YouTube ad groups and ads.
-    /// </summary>
-    public class DownloadRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// File types that will be returned. If INVENTORY_SOURCE is requested, no other file types may be requested.
-        /// Acceptable values are: - "AD" - "AD_GROUP" - "CAMPAIGN" - "INSERTION_ORDER" - "INVENTORY_SOURCE" -
-        /// "LINE_ITEM"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
-        public virtual System.Collections.Generic.IList<string> FileTypes { get; set; }
-
-        /// <summary>
-        /// The IDs of the specified filter type. This is used to filter entities to fetch. At least one ID must be
-        /// specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> FilterIds { get; set; }
-
-        /// <summary>
-        /// Filter type used to filter entities to fetch. PARTNER_ID and INVENTORY_SOURCE_ID may only be used when
-        /// downloading inventory sources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
-        public virtual string FilterType { get; set; }
-
-        /// <summary>
-        /// SDF Version (column names, types, order) in which the entities will be returned. Default to 5.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Download response.</summary>
-    public class DownloadResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Retrieved ad groups in SDF format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adGroups")]
-        public virtual string AdGroups { get; set; }
-
-        /// <summary>Retrieved ads in SDF format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ads")]
-        public virtual string Ads { get; set; }
-
-        /// <summary>Retrieved campaigns in SDF format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual string Campaigns { get; set; }
-
-        /// <summary>Retrieved insertion orders in SDF format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]
-        public virtual string InsertionOrders { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inventorySources")]
-        public virtual string InventorySources { get; set; }
-
-        /// <summary>Retrieved line items in SDF format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1332,37 +1069,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the upload status of a row in the request.</summary>
-    public class RowStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the stored entity is changed as a result of upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("changed")]
-        public virtual System.Nullable<bool> Changed { get; set; }
-
-        /// <summary>Entity Id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual System.Nullable<long> EntityId { get; set; }
-
-        /// <summary>Entity name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityName")]
-        public virtual string EntityName { get; set; }
-
-        /// <summary>Reasons why the entity can't be uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
-
-        /// <summary>Whether the entity is persisted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persisted")]
-        public virtual System.Nullable<bool> Persisted { get; set; }
-
-        /// <summary>Row number.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
-        public virtual System.Nullable<int> RowNumber { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A Rule defines a name, and a boolean expression in [conjunctive normal form](http:
     /// //mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be // applied to a path event to
@@ -1405,53 +1111,6 @@ namespace Google.Apis.DoubleClickBidManager.v1_1.Data
         /// <summary>Canonical timezone code for report data time. Defaults to America/New_York.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneCode")]
         public virtual string TimezoneCode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to upload line items.</summary>
-    public class UploadLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Set to true to get upload status without actually persisting the line items.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
-        public virtual System.Nullable<bool> DryRun { get; set; }
-
-        /// <summary>Format the line items are in. Default to CSV.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual string Format { get; set; }
-
-        /// <summary>
-        /// Line items in CSV to upload. Refer to Entity Write File Format for more information on file format.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
-        public virtual string LineItems { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Upload line items response.</summary>
-    public class UploadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Status of upload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadStatus")]
-        public virtual UploadStatus UploadStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the status of upload.</summary>
-    public class UploadStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Reasons why upload can't be completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
-        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
-
-        /// <summary>Per-row upload status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rowStatus")]
-        public virtual System.Collections.Generic.IList<RowStatus> RowStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
