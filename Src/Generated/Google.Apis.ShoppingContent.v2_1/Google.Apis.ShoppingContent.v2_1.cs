@@ -12295,7 +12295,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" -
-        /// "`eCommercePlatform`"
+        /// "`eCommercePlatform`" - "`paymentServiceProvider`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; }
@@ -12304,9 +12304,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedAccountId")]
         public virtual string LinkedAccountId { get; set; }
 
+        /// <summary>Additional information required for `paymentServiceProvider` link type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentServiceProviderLinkInfo")]
+        public virtual PaymentServiceProviderLinkInfo PaymentServiceProviderLinkInfo { get; set; }
+
         /// <summary>
         ///  Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" -
-        /// "`shoppingActionsOrderManagement`"
+        /// "`shoppingActionsOrderManagement`" - "`paymentProcessing`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
@@ -12679,12 +12683,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; }
 
+        /// <summary>
+        /// A list of services supported for EDD (Estimated Delivery Date) calculation. This is the list of valid values
+        /// for WarehouseBasedDeliveryTime.carrierService.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eddServices")]
+        public virtual System.Collections.Generic.IList<string> EddServices { get; set; }
+
         /// <summary>The name of the carrier (e.g., `"UPS"`). Always present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// A list of supported services (e.g., `"ground"`) for that carrier. Contains at least one service.
+        /// A list of supported services (e.g., `"ground"`) for that carrier. Contains at least one service. This is the
+        /// list of valid values for CarrierRate.carrierService.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }
@@ -13622,6 +13634,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
         public virtual TransitTable TransitTimeTable { get; set; }
 
+        /// <summary>
+        /// Indicates that the delivery time should be calculated per warehouse (shipping origin location) based on the
+        /// settings of the selected carrier. When set, no other transit time related field in DeliveryTime should be
+        /// set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouseBasedDeliveryTimes")]
+        public virtual System.Collections.Generic.IList<WarehouseBasedDeliveryTime> WarehouseBasedDeliveryTimes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14260,7 +14280,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Service provided to or by the linked account. Acceptable values are: - "`shoppingActionsOrderManagement`" -
-        /// "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`"
+        /// "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`" - "`paymentProcessing`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
@@ -17344,6 +17364,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Request message for the PauseProgram method.</summary>
     public class PauseBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information required for PAYMENT_SERVICE_PROVIDER link type.</summary>
+    public class PaymentServiceProviderLinkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The business country of the merchant account as identified by the third party service provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountBusinessCountry")]
+        public virtual string ExternalAccountBusinessCountry { get; set; }
+
+        /// <summary>The id used by the third party service provider to identify the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAccountId")]
+        public virtual string ExternalAccountId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21224,6 +21261,50 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtableName")]
         public virtual string SubtableName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class WarehouseBasedDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Carrier, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved via the
+        /// `listSupportedCarriers` method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; }
+
+        /// <summary>
+        /// Required. Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier
+        /// can be retrieved via the `listSupportedCarriers` method. The name of the service must be in the
+        /// eddSupportedServices list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
+        public virtual string CarrierService { get; set; }
+
+        /// <summary>Required. Shipping origin's state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originAdministrativeArea")]
+        public virtual string OriginAdministrativeArea { get; set; }
+
+        /// <summary>Required. Shipping origin's city.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originCity")]
+        public virtual string OriginCity { get; set; }
+
+        /// <summary>
+        /// Required. Shipping origin's country represented as a [CLDR territory
+        /// code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originCountry")]
+        public virtual string OriginCountry { get; set; }
+
+        /// <summary>Required. Shipping origin.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
+        public virtual string OriginPostalCode { get; set; }
+
+        /// <summary>Shipping origin's street address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originStreetAddress")]
+        public virtual string OriginStreetAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

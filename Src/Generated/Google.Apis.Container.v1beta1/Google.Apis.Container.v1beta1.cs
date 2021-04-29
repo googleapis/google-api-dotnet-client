@@ -6172,6 +6172,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user
+        /// guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuPartitionSize")]
+        public virtual string GpuPartitionSize { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

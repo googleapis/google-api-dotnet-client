@@ -7145,6 +7145,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Metadata for a specific parameter.</summary>
     public class ParameterMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Additional metadata for describing this parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
+
         /// <summary>Required. The help text to display for the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpText")]
         public virtual string HelpText { get; set; }
@@ -7875,6 +7879,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>PubSub snapshot metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubMetadata")]
         public virtual System.Collections.Generic.IList<PubsubSnapshotMetadata> PubsubMetadata { get; set; }
+
+        /// <summary>Cloud region where this snapshot lives in, e.g., "us-central1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>The job this snapshot was created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceJobId")]

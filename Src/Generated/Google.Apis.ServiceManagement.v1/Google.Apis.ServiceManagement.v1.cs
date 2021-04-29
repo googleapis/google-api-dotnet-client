@@ -1646,9 +1646,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>
         /// Lists managed services. Returns all public services. For authenticated users, also returns all services the
-        /// calling user has "servicemanagement.services.get" permission for. **BETA:** If the caller specifies the
-        /// `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must have the format
-        /// of "project:{PROJECT-ID}".
+        /// calling user has "servicemanagement.services.get" permission for.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -1657,9 +1655,7 @@ namespace Google.Apis.ServiceManagement.v1
 
         /// <summary>
         /// Lists managed services. Returns all public services. For authenticated users, also returns all services the
-        /// calling user has "servicemanagement.services.get" permission for. **BETA:** If the caller specifies the
-        /// `consumer_id`, it returns only the services enabled on the consumer. The `consumer_id` must have the format
-        /// of "project:{PROJECT-ID}".
+        /// calling user has "servicemanagement.services.get" permission for.
         /// </summary>
         public class ListRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.ListServicesResponse>
         {
@@ -2771,6 +2767,14 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please
+        /// specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint
+        /// will be hosted on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
+
         /// <summary>
         /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic,
         /// would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The

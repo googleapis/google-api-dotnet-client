@@ -1047,6 +1047,57 @@ namespace Google.Apis.Document.v1beta3
                 }
             }
 
+            /// <summary>Fetches processor types.</summary>
+            /// <param name="parent">
+            /// Required. The project of processor type to list. The available processor types may depend on the
+            /// whitelisting on projects. Format: projects/{project}/locations/{location}
+            /// </param>
+            public virtual FetchProcessorTypesRequest FetchProcessorTypes(string parent)
+            {
+                return new FetchProcessorTypesRequest(service, parent);
+            }
+
+            /// <summary>Fetches processor types.</summary>
+            public class FetchProcessorTypesRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse>
+            {
+                /// <summary>Constructs a new FetchProcessorTypes request.</summary>
+                public FetchProcessorTypesRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project of processor type to list. The available processor types may depend on the
+                /// whitelisting on projects. Format: projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchProcessorTypes";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta3/{+parent}:fetchProcessorTypes";
+
+                /// <summary>Initializes FetchProcessorTypes parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -4812,6 +4863,17 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for fetch processor types.</summary>
+    public class GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of processor types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ProcessorType> ProcessorTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies a document stored on Cloud Storage.</summary>
     public class GoogleCloudDocumentaiV1beta3GcsDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4998,6 +5060,66 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A processor type is responsible for performing a certain document understanding task on a certain type of
+    /// document. All processor types are created by the documentai service internally. User will only list all
+    /// available processor types via UI. For different users (projects), the available processor types may be different
+    /// since we'll expose the access of some types via EAP whitelisting. We make the ProcessorType a resource under
+    /// location so we have a unified API and keep the possibility that UI will load different available processor types
+    /// from different regions. But for alpha the behavior is that the user will always get the union of all available
+    /// processor types among all regions no matter which regionalized endpoint is called, and then we use the
+    /// 'available_locations' field to show under which regions a processor type is available. For example, users can
+    /// call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing'
+    /// processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice
+    /// parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID:
+    /// 7.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the processor type allows creation. If yes, user can create a processor of this processor type.
+        /// Otherwise, user needs to require for whitelisting.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCreation")]
+        public virtual System.Nullable<bool> AllowCreation { get; set; }
+
+        /// <summary>The locations in which this processor is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableLocations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo> AvailableLocations { get; set; }
+
+        /// <summary>The processor category, used by UI to group processor types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>
+        /// The resource name of the processor type. Format: projects/{project}/processorTypes/{processor_type}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The schema of the default version of this processor type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual GoogleCloudDocumentaiV1beta3Schema Schema { get; set; }
+
+        /// <summary>The type of the processor, e.g, "invoice_parsing".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The location information about where the processor is available.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location id, currently must be one of [us, eu].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Payload message of raw document content (bytes).</summary>
     public class GoogleCloudDocumentaiV1beta3RawDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5064,6 +5186,73 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The schema defines the output of the processed document by a processor.</summary>
+    public class GoogleCloudDocumentaiV1beta3Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display name to show to users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Entity types of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3SchemaEntityType> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
+    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of the entity. It must be one of the following: `document` - the entity represents a classification of
+        /// a logical document. `object` - if the entity has properties it is likely an object (or or a document.)
+        /// `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount.
+        /// `number` - the entity is a number - integer or floating point. `string` - the entity is a string value.
+        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
+        public virtual string BaseType { get; set; }
+
+        /// <summary>Description of the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>For some entity types there are only a few possible values. They can be specified here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
+        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
+
+        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
+        public virtual string OccurrenceType { get; set; }
+
+        /// <summary>
+        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
+        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
+        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3SchemaEntityType> Properties { get; set; }
+
+        /// <summary>Source of this entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Name of the type. It must be unique within the set of same level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

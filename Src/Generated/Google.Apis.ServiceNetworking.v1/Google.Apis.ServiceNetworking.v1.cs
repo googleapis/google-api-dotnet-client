@@ -3114,6 +3114,14 @@ namespace Google.Apis.ServiceNetworking.v1.Data
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please
+        /// specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint
+        /// will be hosted on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
+        public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
+
+        /// <summary>
         /// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic,
         /// would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The
         /// response will be used by the browser to determine whether the subsequent cross-origin request is allowed to

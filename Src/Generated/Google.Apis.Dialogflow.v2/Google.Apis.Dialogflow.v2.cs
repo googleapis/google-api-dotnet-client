@@ -15636,6 +15636,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Flows.ExportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
+        public virtual string FlowContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in
+        /// ExportFlowRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15887,6 +15905,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Flows.ImportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3ImportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17250,6 +17279,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Flows.ExportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed raw byte content for flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
+        public virtual string FlowContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported flow. This field is populated only if `flow_uri` is specified in
+        /// ExportFlowRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowUri")]
+        public virtual string FlowUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ExportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17501,6 +17548,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Flows.ImportFlow.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier of the new flow. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flow")]
+        public virtual string Flow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19986,7 +20044,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Conversation model resource name. Format: `projects//conversationModels/`.</summary>
+        /// <summary>Conversation model resource name. Format: `projects//conversationModels/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
@@ -24881,8 +24939,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
     /// <summary>
     /// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees
-    /// latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must
-    /// be within normalized ranges.
+    /// latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.
     /// </summary>
     public class GoogleTypeLatLng : Google.Apis.Requests.IDirectResponseSchema
     {

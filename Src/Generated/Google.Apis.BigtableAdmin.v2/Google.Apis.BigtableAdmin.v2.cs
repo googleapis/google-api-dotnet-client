@@ -1922,7 +1922,87 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
                 }
 
-                /// <summary>Updates a cluster within an instance.</summary>
+                /// <summary>
+                /// Partially updates a cluster within a project. This method is the preferred way to update a Cluster.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The unique name of the cluster. Values are of the form
+                /// `projects/{project}/instances/{instance}/clusters/a-z*`.
+                /// </param>
+                public virtual PartialUpdateClusterRequest PartialUpdateCluster(Google.Apis.BigtableAdmin.v2.Data.Cluster body, string name)
+                {
+                    return new PartialUpdateClusterRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Partially updates a cluster within a project. This method is the preferred way to update a Cluster.
+                /// </summary>
+                public class PartialUpdateClusterRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new PartialUpdateCluster request.</summary>
+                    public PartialUpdateClusterRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.Cluster body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The unique name of the cluster. Values are of the form
+                    /// `projects/{project}/instances/{instance}/clusters/a-z*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The subset of Cluster fields which should be replaced. Must be explicitly set.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigtableAdmin.v2.Data.Cluster Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "partialUpdateCluster";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes PartialUpdateCluster parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/clusters/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates a cluster within an instance. UpdateCluster is deprecated. Please use PartialUpdateCluster
+                /// instead.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The unique name of the cluster. Values are of the form
@@ -1933,7 +2013,10 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new UpdateRequest(service, body, name);
                 }
 
-                /// <summary>Updates a cluster within an instance.</summary>
+                /// <summary>
+                /// Updates a cluster within an instance. UpdateCluster is deprecated. Please use PartialUpdateCluster
+                /// instead.
+                /// </summary>
                 public class UpdateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
                 {
                     /// <summary>Constructs a new Update request.</summary>
@@ -2368,7 +2451,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW = 3,
 
-                        /// <summary>Only populates 'name' and fields related to the table's encryption state.</summary>
+                        /// <summary>Only populates `name` and fields related to the table's encryption state.</summary>
                         [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
                         ENCRYPTIONVIEW = 5,
 
@@ -2546,7 +2629,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         [Google.Apis.Util.StringValueAttribute("REPLICATION_VIEW")]
                         REPLICATIONVIEW = 3,
 
-                        /// <summary>Only populates 'name' and fields related to the table's encryption state.</summary>
+                        /// <summary>Only populates `name` and fields related to the table's encryption state.</summary>
                         [Google.Apis.Util.StringValueAttribute("ENCRYPTION_VIEW")]
                         ENCRYPTIONVIEW = 5,
 

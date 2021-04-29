@@ -4163,6 +4163,7 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual ResponseHeader Header { get; set; }
 
+        /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -4224,12 +4225,33 @@ namespace Google.Apis.Dns.v1beta2.Data
 
     public class ManagedZonePrivateVisibilityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of Google Kubernetes Engine clusters that can see this zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusters")]
+        public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigGKECluster> GkeClusters { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>The list of VPC networks that can see this zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<ManagedZonePrivateVisibilityConfigNetwork> Networks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ManagedZonePrivateVisibilityConfigGKECluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like:
+        /// projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API:
+        /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterName")]
+        public virtual string GkeClusterName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4604,12 +4626,20 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeysPerManagedZone")]
         public virtual System.Nullable<int> DnsKeysPerManagedZone { get; set; }
 
+        /// <summary>Maximum allowed number of GKE clusters to which a privately scoped zone can be attached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerManagedZone")]
+        public virtual System.Nullable<int> GkeClustersPerManagedZone { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>Maximum allowed number of managed zones in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZones")]
         public virtual System.Nullable<int> ManagedZones { get; set; }
+
+        /// <summary>Maximum allowed number of managed zones which can be attached to a GKE cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerGkeCluster")]
+        public virtual System.Nullable<int> ManagedZonesPerGkeCluster { get; set; }
 
         /// <summary>Maximum allowed number of managed zones which can be attached to a network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerNetwork")]
@@ -4797,6 +4827,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>The list of Google Kubernetes Engine clusters to which this response policy is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusters")]
+        public virtual System.Collections.Generic.IList<ResponsePolicyGKECluster> GkeClusters { get; set; }
+
         /// <summary>Unique identifier for the resource; defined by the server (output only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; }
@@ -4811,6 +4845,23 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>User assigned name for this Response Policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyName")]
         public virtual string ResponsePolicyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ResponsePolicyGKECluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the cluster to bind this response policy to. This should be specified in the format
+        /// like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API:
+        /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClusterName")]
+        public virtual string GkeClusterName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

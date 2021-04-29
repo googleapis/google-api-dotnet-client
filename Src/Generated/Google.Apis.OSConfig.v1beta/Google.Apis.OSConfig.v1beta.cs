@@ -1910,6 +1910,39 @@ namespace Google.Apis.OSConfig.v1beta.Data
     }
 
     /// <summary>
+    /// OS policy assignment operation metadata provided by OS policy assignment API methods that return long running
+    /// operations.
+    /// </summary>
+    public class OSPolicyAssignmentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OS policy assignment API method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiMethod")]
+        public virtual string ApiMethod { get; set; }
+
+        /// <summary>
+        /// Reference to the `OSPolicyAssignment` API resource. Format:
+        /// projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignment")]
+        public virtual string OsPolicyAssignment { get; set; }
+
+        /// <summary>Rollout start time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutStartTime")]
+        public virtual object RolloutStartTime { get; set; }
+
+        /// <summary>State of the rollout</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutState")]
+        public virtual string RolloutState { get; set; }
+
+        /// <summary>Rollout update time</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutUpdateTime")]
+        public virtual object RolloutUpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
     /// text format.
     /// </summary>

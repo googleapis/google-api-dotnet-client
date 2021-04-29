@@ -1139,7 +1139,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The encryption options for the Composer environment and its dependencies.</summary>
+    /// <summary>The encryption options for the Cloud Composer environment and its dependencies.</summary>
     public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1225,7 +1225,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual DatabaseConfig DatabaseConfig { get; set; }
 
         /// <summary>
-        /// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -1513,8 +1513,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
 
         /// <summary>
-        /// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not
-        /// specified, the "default" Compute Engine service account is used. Cannot be updated.
+        /// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not
+        /// specified, the "default" Compute Engine service account is used. Cannot be updated .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -1659,7 +1659,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true,
-        /// `IPAllocationPolicy.use_ip_aliases` must be set to true.
+        /// `IPAllocationPolicy.use_ip_aliases` must be set to true .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; }

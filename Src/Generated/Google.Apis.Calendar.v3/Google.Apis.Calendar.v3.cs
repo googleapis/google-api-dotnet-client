@@ -4525,14 +4525,14 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>
         /// A global palette of calendar colors, mapping from the color ID to its definition. A calendarListEntry
-        /// resource refers to one of these color IDs in its color field. Read-only.
+        /// resource refers to one of these color IDs in its colorId field. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendar")]
         public virtual System.Collections.Generic.IDictionary<string, ColorDefinition> Calendar { get; set; }
 
         /// <summary>
         /// A global palette of event colors, mapping from the color ID to its definition. An event resource may refer
-        /// to one of these color IDs in its color field. Read-only.
+        /// to one of these color IDs in its colorId field. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual System.Collections.Generic.IDictionary<string, ColorDefinition> Event__ { get; set; }
