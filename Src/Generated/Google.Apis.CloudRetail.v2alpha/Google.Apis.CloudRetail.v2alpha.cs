@@ -2931,7 +2931,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
-    /// customers' website.
+    /// customers' website. Next tag: 22
     /// </summary>
     public class GoogleCloudRetailV2alphaUserEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3043,6 +3043,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQuery")]
         public virtual string SearchQuery { get; set; }
+
+        /// <summary>
+        /// Represents the user sessions to aggregate user behavior within a time period. If not set, heuristics will be
+        /// used to autogenerate one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
 
         /// <summary>
         /// Complete URL (window.location.href) of the user's current page. When using the client side event reporting

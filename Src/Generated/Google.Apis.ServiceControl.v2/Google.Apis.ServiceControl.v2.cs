@@ -1239,8 +1239,8 @@ namespace Google.Apis.ServiceControl.v2.Data
     }
 
     /// <summary>
-    /// The context of a span, attached to Exemplars in Distribution values during aggregation. It contains the name of
-    /// a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+    /// The context of a span. This is attached to an Exemplar in Distribution values during aggregation. It contains
+    /// the name of a span with format: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
     /// </summary>
     public class SpanContext : Google.Apis.Requests.IDirectResponseSchema
     {

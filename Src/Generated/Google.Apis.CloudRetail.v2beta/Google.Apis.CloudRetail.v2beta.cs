@@ -3142,7 +3142,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
     /// <summary>
     /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
-    /// customers' website.
+    /// customers' website. Next tag: 22
     /// </summary>
     public class GoogleCloudRetailV2betaUserEvent : Google.Apis.Requests.IDirectResponseSchema
     {

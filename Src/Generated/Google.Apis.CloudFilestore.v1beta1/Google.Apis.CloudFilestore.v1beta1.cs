@@ -1602,6 +1602,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
         /// </summary>
@@ -1802,7 +1806,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// <summary>
         /// Unique name of the resource. It uses the form:
         /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}` Note: Either
-        /// project_id or project_number and be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
+        /// project_id or project_number can be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

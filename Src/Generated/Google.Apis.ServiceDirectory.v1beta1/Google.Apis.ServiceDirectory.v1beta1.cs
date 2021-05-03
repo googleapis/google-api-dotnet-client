@@ -2068,6 +2068,15 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Immutable. The Google Compute Engine network (VPC) of the endpoint in the format
+        /// `projects//locations/global/networks/*`. The project must be specified by project number (project id is
+        /// rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field
+        /// (ex. network or project existence, reachability, or permissions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
         /// <summary>Optional. Service Directory rejects values outside of `[0, 65535]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }

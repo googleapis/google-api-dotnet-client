@@ -6933,6 +6933,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
 
+        /// <summary>The desired Autopilot configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilot")]
+        public virtual Autopilot DesiredAutopilot { get; set; }
+
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }
@@ -9878,9 +9882,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("releaseChannel")]
         public virtual ReleaseChannel ReleaseChannel { get; set; }
 
-        /// <summary>
-        /// Optional. Optional relative path to the resource. For example, the relative path of the node pool.
-        /// </summary>
+        /// <summary>Optional relative path to the resource. For example, the relative path of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 

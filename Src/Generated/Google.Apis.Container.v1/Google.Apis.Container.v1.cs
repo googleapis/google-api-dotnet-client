@@ -6784,6 +6784,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
 
+        /// <summary>The desired Autopilot configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilot")]
+        public virtual Autopilot DesiredAutopilot { get; set; }
+
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }

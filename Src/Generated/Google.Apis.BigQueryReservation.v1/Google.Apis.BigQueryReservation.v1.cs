@@ -1174,77 +1174,6 @@ namespace Google.Apis.BigQueryReservation.v1
                             });
                         }
                     }
-
-                    /// <summary>Updates an existing assignment. Only the `priority` field can be updated.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Output only. Name of the resource. E.g.:
-                    /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-                    /// </param>
-                    public virtual PatchRequest Patch(Google.Apis.BigQueryReservation.v1.Data.Assignment body, string name)
-                    {
-                        return new PatchRequest(service, body, name);
-                    }
-
-                    /// <summary>Updates an existing assignment. Only the `priority` field can be updated.</summary>
-                    public class PatchRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Assignment>
-                    {
-                        /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.Assignment body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Output only. Name of the resource. E.g.:
-                        /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Standard field mask for the set of fields to be updated.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object UpdateMask { get; set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.BigQueryReservation.v1.Data.Assignment Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "patch";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "PATCH";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Patch parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$",
-                            });
-                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
                 }
 
                 /// <summary>Creates a new reservation resource.</summary>
@@ -2135,9 +2064,9 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual object CreationTime { get; set; }
 
         /// <summary>
-        /// If false, any query using this reservation will use idle slots from other reservations within the same admin
-        /// project. If true, a query using this reservation will execute with the slot capacity specified above at
-        /// most.
+        /// If false, any query or pipeline job using this reservation will use idle slots from other reservations
+        /// within the same admin project. If true, a query or pipeline job using this reservation will execute with the
+        /// slot capacity specified above at most.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreIdleSlots")]
         public virtual System.Nullable<bool> IgnoreIdleSlots { get; set; }

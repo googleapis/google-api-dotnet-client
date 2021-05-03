@@ -1661,7 +1661,10 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
-        /// <summary>Lists all models in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of
+        /// models, you can get information about a particular model by calling the models.get method.
+        /// </summary>
         /// <param name="projectId">Required. Project ID of the models to list.</param>
         /// <param name="datasetId">Required. Dataset ID of the models to list.</param>
         public virtual ListRequest List(string projectId, string datasetId)
@@ -1669,7 +1672,10 @@ namespace Google.Apis.Bigquery.v2
             return new ListRequest(service, projectId, datasetId);
         }
 
-        /// <summary>Lists all models in the specified dataset. Requires the READER dataset role.</summary>
+        /// <summary>
+        /// Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of
+        /// models, you can get information about a particular model by calling the models.get method.
+        /// </summary>
         public class ListRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.ListModelsResponse>
         {
             /// <summary>Constructs a new List request.</summary>

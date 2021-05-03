@@ -3996,6 +3996,14 @@ namespace Google.Apis.AndroidPublisher.v3
             [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string EditId { get; private set; }
 
+            /// <summary>
+            /// Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review
+            /// from the Google Play Console UI. These changes will be added to any other changes that are not yet sent
+            /// for review.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("changesNotSentForReview", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ChangesNotSentForReview { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "commit";
 
@@ -4022,6 +4030,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "editId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("changesNotSentForReview", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "changesNotSentForReview",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });

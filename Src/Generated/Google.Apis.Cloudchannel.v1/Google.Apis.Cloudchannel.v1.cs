@@ -1753,6 +1753,65 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
+                /// Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement
+                /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or
+                /// invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.
+                /// </summary>
+                /// <param name="entitlement">
+                /// Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the format:
+                /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+                /// </param>
+                public virtual LookupOfferRequest LookupOffer(string entitlement)
+                {
+                    return new LookupOfferRequest(service, entitlement);
+                }
+
+                /// <summary>
+                /// Returns the requested Offer resource. Possible error codes: * PERMISSION_DENIED: The entitlement
+                /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or
+                /// invalid. * NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.
+                /// </summary>
+                public class LookupOfferRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Offer>
+                {
+                    /// <summary>Constructs a new LookupOffer request.</summary>
+                    public LookupOfferRequest(Google.Apis.Services.IClientService service, string entitlement) : base(service)
+                    {
+                        Entitlement = entitlement;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the
+                    /// format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("entitlement", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Entitlement { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "lookupOffer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+entitlement}:lookupOffer";
+
+                    /// <summary>Initializes LookupOffer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("entitlement", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "entitlement",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/customers/[^/]+/entitlements/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Starts paid service for a trial entitlement. Starts paid service for a trial entitlement
                 /// immediately. This method is only applicable if a plan is set up for a trial entitlement but has some
                 /// trial days remaining. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the
