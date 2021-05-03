@@ -7,5 +7,14 @@
   "Google.Apis.ChromePolicy.v1.ChromePolicyBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.ChromePolicy.v1.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ChromePolicy.v1.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ]
 }

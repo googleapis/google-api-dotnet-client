@@ -756,7 +756,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filter applied to resulting executions.</summary>
+                    /// <summary>
+                    /// Filter applied to resulting executions. Currently only supports filtering executions by a
+                    /// specified schedule_id. Format: "schedule_id="
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 

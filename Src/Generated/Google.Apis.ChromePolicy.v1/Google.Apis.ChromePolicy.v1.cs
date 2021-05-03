@@ -35,6 +35,7 @@ namespace Google.Apis.ChromePolicy.v1
         public ChromePolicyService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Customers = new CustomersResource(this);
+            Media = new MediaResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -94,6 +95,9 @@ namespace Google.Apis.ChromePolicy.v1
 
         /// <summary>Gets the Customers resource.</summary>
         public virtual CustomersResource Customers { get; }
+
+        /// <summary>Gets the Media resource.</summary>
+        public virtual MediaResource Media { get; }
     }
 
     /// <summary>A base abstract class for ChromePolicy requests.</summary>
@@ -674,6 +678,219 @@ namespace Google.Apis.ChromePolicy.v1
             }
         }
     }
+
+    /// <summary>The "media" collection of methods.</summary>
+    public class MediaResource
+    {
+        private const string Resource = "media";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MediaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Creates an enterprise file from the content provided by user. Returns a public download url for end user.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customer">Required. The customer for which the file upload will apply.</param>
+        public virtual UploadRequest Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer)
+        {
+            return new UploadRequest(service, body, customer);
+        }
+
+        /// <summary>
+        /// Creates an enterprise file from the content provided by user. Returns a public download url for end user.
+        /// </summary>
+        public class UploadRequest : ChromePolicyBaseServiceRequest<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileResponse>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer) : base(service)
+            {
+                Customer = customer;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The customer for which the file upload will apply.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Customer { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+customer}/policies/files:uploadPolicyFile";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customer",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^customers/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Creates an enterprise file from the content provided by user. Returns a public download url for end user.
+        /// </summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customer">Required. The customer for which the file upload will apply.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, customer, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileResponse>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>Required. The customer for which the file upload will apply.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Customer { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ChromePolicy.v1.Data.GoogleChromePolicyV1UploadPolicyFileRequest body, string customer, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+customer}/policies/files:uploadPolicyFile"), "POST", stream, contentType)
+            {
+                Customer = customer;
+                Body = body;
+            }
+        }
+    }
 }
 namespace Google.Apis.ChromePolicy.v1.Data
 {
@@ -1025,6 +1242,31 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. The resolved value of the policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GoogleChromePolicyV1PolicyValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for uploading a file for a policy. Next ID: 5</summary>
+    public class GoogleChromePolicyV1UploadPolicyFileRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The fully qualified policy schema and field name this file is uploaded for. This information will
+        /// be used to validate the content type of the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyField")]
+        public virtual string PolicyField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for downloading an uploaded file. Next ID: 2</summary>
+    public class GoogleChromePolicyV1UploadPolicyFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uri for end user to download the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
+        public virtual string DownloadUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1331,8 +1331,9 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class AdmissionWhitelistPattern : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` as a
-        /// wildcard, but this is allowed only in text after the `registry/` part.
+        /// An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*`
+        /// wildcard, but this is allowed only in text after the `registry/` part. This also supports a trailing `**`
+        /// wildcard which matches subdirectories of a given entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namePattern")]
         public virtual string NamePattern { get; set; }

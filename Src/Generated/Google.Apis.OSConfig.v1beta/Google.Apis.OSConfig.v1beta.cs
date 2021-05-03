@@ -1921,7 +1921,7 @@ namespace Google.Apis.OSConfig.v1beta.Data
 
         /// <summary>
         /// Reference to the `OSPolicyAssignment` API resource. Format:
-        /// projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}
+        /// `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osPolicyAssignment")]
         public virtual string OsPolicyAssignment { get; set; }
