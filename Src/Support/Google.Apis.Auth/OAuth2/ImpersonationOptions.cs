@@ -76,7 +76,7 @@ namespace Google.Apis.Auth.OAuth2
             new ImpersonationOptions(targetPrincipal, Lifetime, DelegateAccounts, Scopes);
         
         /// <summary>
-        /// Builds a new set of options with the same options as this one, except for the life time.
+        /// Builds a new set of options with the same values as this one, except for the life time.
         /// </summary>
         /// <param name="lifetime">The new life time.</param>
         /// <returns>A new set of options with the given life time.</returns>
