@@ -1290,10 +1290,10 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// manager of the destination account.
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="locationsId"><c>null</c></param>
-        public virtual TransferLocationRequest TransferLocation(Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest body, string locationsId)
+        /// <param name="name">Required. The name of the location to transfer. `locations/{location_id}`.</param>
+        public virtual TransferRequest Transfer(Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest body, string name)
         {
-            return new TransferLocationRequest(service, body, locationsId);
+            return new TransferRequest(service, body, name);
         }
 
         /// <summary>
@@ -1301,18 +1301,19 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
         /// user must be an owner of the account the location is currently associated with and must also be at least a
         /// manager of the destination account.
         /// </summary>
-        public class TransferLocationRequest : MyBusinessAccountManagementBaseServiceRequest<Google.Apis.MyBusinessAccountManagement.v1.Data.Empty>
+        public class TransferRequest : MyBusinessAccountManagementBaseServiceRequest<Google.Apis.MyBusinessAccountManagement.v1.Data.Empty>
         {
-            /// <summary>Constructs a new TransferLocation request.</summary>
-            public TransferLocationRequest(Google.Apis.Services.IClientService service, Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest body, string locationsId) : base(service)
+            /// <summary>Constructs a new Transfer request.</summary>
+            public TransferRequest(Google.Apis.Services.IClientService service, Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest body, string name) : base(service)
             {
-                LocationsId = locationsId;
+                Name = name;
                 Body = body;
                 InitParameters();
             }
 
-            [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string LocationsId { get; private set; }
+            /// <summary>Required. The name of the location to transfer. `locations/{location_id}`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.MyBusinessAccountManagement.v1.Data.TransferLocationRequest Body { get; set; }
@@ -1321,25 +1322,25 @@ namespace Google.Apis.MyBusinessAccountManagement.v1
             protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
-            public override string MethodName => "transferLocation";
+            public override string MethodName => "transfer";
 
             /// <summary>Gets the HTTP method.</summary>
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/locations/{locationsId}:transferLocation";
+            public override string RestPath => "v1/{+name}:transfer";
 
-            /// <summary>Initializes TransferLocation parameter list.</summary>
+            /// <summary>Initializes Transfer parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
-                    Name = "locationsId",
+                    Name = "name",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^locations/[^/]+$",
                 });
             }
         }
@@ -1713,10 +1714,6 @@ namespace Google.Apis.MyBusinessAccountManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationAccount")]
         public virtual string DestinationAccount { get; set; }
-
-        /// <summary>Required. The name of the location to transfer. `locations/{location_id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

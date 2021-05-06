@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Baremetalsolution.v1.BaremetalsolutionBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Baremetalsolution.v1.BaremetalsolutionBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -11646,8 +11646,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>
         /// This field can be used to pass custom data into the webhook associated with the agent. Arbitrary JSON
         /// objects are supported. Some integrations that query a Dialogflow agent may provide additional information in
-        /// the payload. In particular, for the Dialogflow Phone Gateway integration, this field has the form: {
-        /// "telephony": { "caller_id": "+18558363987" } }
+        /// the payload. In particular, for the Dialogflow Phone Gateway integration, this field has the form: ``` {
+        /// "telephony": { "caller_id": "+18558363987" } } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
