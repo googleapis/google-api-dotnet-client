@@ -51,7 +51,7 @@ namespace Google.Apis.Auth.OAuth2
         /// By default this value should be at most 3600 seconds or 1 hour. However, you can follow
         /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
         /// to set up the service account and extend the maximum lifetime to 43200 seconds or 12 hours).
-        /// If lifetime is not given, 3600 seconds will be used by default.
+        /// Defaults to 1 hour.
         /// </param>
         /// <param name="delegateAccounts">The chained list of delegate service accounts.</param>
         /// <param name="scopes">The scopes to request during the authorization grant.</param>
