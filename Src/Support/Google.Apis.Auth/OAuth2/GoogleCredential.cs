@@ -355,8 +355,10 @@ namespace Google.Apis.Auth.OAuth2
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
                 var impersonatedCredential = credential as ImpersonatedCredential;
-                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential);
-                initializer.Options = impersonatedCredential.Options.WithScopes(scopes);
+                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential)
+                {
+                    Options = impersonatedCredential.Options.WithScopes(scopes)
+                };
                 return new ImpersonatedGoogleCredential(new ImpersonatedCredential(initializer));
             }
         }
