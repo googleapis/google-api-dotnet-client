@@ -932,6 +932,79 @@ namespace Google.Apis.Translate.v3beta1
             }
 
             /// <summary>
+            /// Translates a large volume of document in asynchronous batch mode. This function provides real-time
+            /// output as the inputs are being processed. If caller cancels a request, the partial results (for an input
+            /// file, it's all or nothing) may still be available on the specified output location. This call returns
+            /// immediately and you can use google.longrunning.Operation.name to poll the status of the call.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Location to make a regional call. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported for
+            /// batch translation. Only AutoML Translation models or glossaries within the same region (have the same
+            /// location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
+            /// </param>
+            public virtual BatchTranslateDocumentRequest BatchTranslateDocument(Google.Apis.Translate.v3beta1.Data.BatchTranslateDocumentRequest body, string parent)
+            {
+                return new BatchTranslateDocumentRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Translates a large volume of document in asynchronous batch mode. This function provides real-time
+            /// output as the inputs are being processed. If caller cancels a request, the partial results (for an input
+            /// file, it's all or nothing) may still be available on the specified output location. This call returns
+            /// immediately and you can use google.longrunning.Operation.name to poll the status of the call.
+            /// </summary>
+            public class BatchTranslateDocumentRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new BatchTranslateDocument request.</summary>
+                public BatchTranslateDocumentRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3beta1.Data.BatchTranslateDocumentRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Location to make a regional call. Format:
+                /// `projects/{project-number-or-id}/locations/{location-id}`. The `global` location is not supported
+                /// for batch translation. Only AutoML Translation models or glossaries within the same region (have the
+                /// same location-id) can be used, otherwise an INVALID_ARGUMENT (400) error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Translate.v3beta1.Data.BatchTranslateDocumentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchTranslateDocument";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3beta1/{+parent}:batchTranslateDocument";
+
+                /// <summary>Initializes BatchTranslateDocument parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Translates a large volume of text in asynchronous batch mode. This function provides real-time output as
             /// the inputs are being processed. If caller cancels a request, the partial results (for an input file,
             /// it's all or nothing) may still be available on the specified output location. This call returns
@@ -1297,6 +1370,73 @@ namespace Google.Apis.Translate.v3beta1
                 }
             }
 
+            /// <summary>Translates documents in synchronous mode.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Location to make a regional call. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
+            /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global
+            /// location is required for requests using AutoML models or custom glossaries. Models and glossaries must
+            /// be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400) error is
+            /// returned.
+            /// </param>
+            public virtual TranslateDocumentRequest TranslateDocument(Google.Apis.Translate.v3beta1.Data.TranslateDocumentRequest body, string parent)
+            {
+                return new TranslateDocumentRequest(service, body, parent);
+            }
+
+            /// <summary>Translates documents in synchronous mode.</summary>
+            public class TranslateDocumentRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3beta1.Data.TranslateDocumentResponse>
+            {
+                /// <summary>Constructs a new TranslateDocument request.</summary>
+                public TranslateDocumentRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3beta1.Data.TranslateDocumentRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Location to make a regional call. Format:
+                /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
+                /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global
+                /// location is required for requests using AutoML models or custom glossaries. Models and glossaries
+                /// must be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400)
+                /// error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Translate.v3beta1.Data.TranslateDocumentRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "translateDocument";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3beta1/{+parent}:translateDocument";
+
+                /// <summary>Initializes TranslateDocument parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Translates input text and returns translated text.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1592,6 +1732,113 @@ namespace Google.Apis.Translate.v3beta1
 }
 namespace Google.Apis.Translate.v3beta1.Data
 {
+    /// <summary>Input configuration for BatchTranslateDocument request.</summary>
+    public class BatchDocumentInputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage location for the source input. This can be a single file (for example,
+        /// `gs://translation-test/input.docx`) or a wildcard (for example, `gs://translation-test/*`). File mime type
+        /// is determined based on extension. Supported mime type includes: - `pdf`, application/pdf - `docx`,
+        /// application/vnd.openxmlformats-officedocument.wordprocessingml.document - `pptx`,
+        /// application/vnd.openxmlformats-officedocument.presentationml.presentation - `xlsx`,
+        /// application/vnd.openxmlformats-officedocument.spreadsheetml.sheet The max file size to support for `.docx`,
+        /// `.pptx` and `.xlsx` is 100MB. The max file size to support for `.pdf` is 1GB and the max page limit is 1000
+        /// pages. The max file size to support for all input documents is 1GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output configuration for BatchTranslateDocument request.</summary>
+    public class BatchDocumentOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage destination for output content. For every single input document (for example,
+        /// gs://a/b/c.[extension]), we generate at most 2 * n output files. (n is the # of target_language_codes in the
+        /// BatchTranslateDocumentRequest). While the input documents are being processed, we write/update an index file
+        /// `index.csv` under `gcs_destination.output_uri_prefix` (for example, gs://translation_output/index.csv) The
+        /// index file is generated/updated as new files are being translated. The format is:
+        /// input_document,target_language_code,translation_output,error_output,
+        /// glossary_translation_output,glossary_error_output `input_document` is one file we matched using
+        /// gcs_source.input_uri. `target_language_code` is provided in the request. `translation_output` contains the
+        /// translations. (details provided below) `error_output` contains the error message during processing of the
+        /// file. Both translations_file and errors_file could be empty strings if we have no content to output.
+        /// `glossary_translation_output` and `glossary_error_output` are the translated output/error when we apply
+        /// glossaries. They could also be empty if we have no content to output. Once a row is present in index.csv,
+        /// the input/output matching never changes. Callers should also expect all the content in input_file are
+        /// processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be
+        /// keeping updated during the process, please make sure there is no custom retention policy applied on the
+        /// output bucket that may avoid file updating.
+        /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy) The naming format of translation
+        /// output files follows (for target language code [trg]): `translation_output`:
+        /// gs://translation_output/a_b_c_[trg]_translation.[extension] `glossary_translation_output`:
+        /// gs://translation_test/a_b_c_[trg]_glossary_translation.[extension] The output document will maintain the
+        /// same file format as the input document. The naming format of error output files follows (for target language
+        /// code [trg]): `error_output`: gs://translation_test/a_b_c_[trg]_errors.txt `glossary_error_output`:
+        /// gs://translation_test/a_b_c_[trg]_glossary_translation.txt The error output is a txt file containing error
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The BatchTranslateDocument request.</summary>
+    public class BatchTranslateDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Glossaries to be applied. It's keyed by target language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaries")]
+        public virtual System.Collections.Generic.IDictionary<string, TranslateTextGlossaryConfig> Glossaries { get; set; }
+
+        /// <summary>
+        /// Required. Input configurations. The total number of files matched should be &amp;lt;= 100. The total content
+        /// size to translate should be &amp;lt;= 100M Unicode codepoints. The files must use UTF-8 encoding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputConfigs")]
+        public virtual System.Collections.Generic.IList<BatchDocumentInputConfig> InputConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. The models to use for translation. Map's key is target language code. Map's value is the model
+        /// name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on
+        /// model type: - AutoML Translation models:
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models:
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` If the map is empty or a
+        /// specific model is not requested for a language pair, then default google model (nmt) is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Models { get; set; }
+
+        /// <summary>
+        /// Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we
+        /// don't generate output for duplicate inputs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual BatchDocumentOutputConfig OutputConfig { get; set; }
+
+        /// <summary>
+        /// Required. The BCP-47 language code of the input document if known, for example, "en-US" or "sr-Latn".
+        /// Supported language codes are listed in Language Support (https://cloud.google.com/translate/docs/languages).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The BCP-47 language code to use for translation of the input document. Specify up to 10 language
+        /// codes here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> TargetLanguageCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The batch translation request.</summary>
     public class BatchTranslateTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1714,6 +1961,102 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// <summary>The BCP-47 language code of source content in the request, detected automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A document translation request input config.</summary>
+    public class DocumentInputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document's content represented as a stream of bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Google Cloud Storage location. This must be a single file. For example: gs://example_bucket/example_file.pdf
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// Specifies the input document's mime_type. If not specified it will be determined using the file extension
+        /// for gcs_source provided files. For a file provided through bytes content the mime_type must be provided.
+        /// Currently supported mime types are: - application/pdf -
+        /// application/vnd.openxmlformats-officedocument.wordprocessingml.document -
+        /// application/vnd.openxmlformats-officedocument.presentationml.presentation -
+        /// application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A document translation request output config.</summary>
+    public class DocumentOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Google Cloud Storage destination for the translation output, e.g., `gs://my_bucket/my_directory/`.
+        /// The destination directory provided does not have to be empty, but the bucket must exist. If a file with the
+        /// same name as the output file already exists in the destination an error will be returned. For a
+        /// DocumentInputConfig.contents provided document, the output file will have the name
+        /// "output_[trg]_translations.[ext]", where - [trg] corresponds to the translated file's language code, - [ext]
+        /// corresponds to the translated file's extension according to its mime type. For a DocumentInputConfig.gcs_uri
+        /// provided document, the output file will have a name according to its URI. For example: an input file with
+        /// URI: "gs://a/b/c.[extension]" stored in a gcs_destination bucket with name "my_bucket" will have an output
+        /// URI: "gs://my_bucket/a_b_c_[trg]_translations.[ext]", where - [trg] corresponds to the translated file's
+        /// language code, - [ext] corresponds to the translated file's extension according to its mime type. If the
+        /// document was directly provided through the request, then the output document will have the format:
+        /// "gs://my_bucket/translated_document_[trg]_translations.[ext], where - [trg] corresponds to the translated
+        /// file's language code, - [ext] corresponds to the translated file's extension according to its mime type. If
+        /// a glossary was provided, then the output URI for the glossary translation will be equal to the default
+        /// output URI but have `glossary_translations` instead of `translations`. For the previous example, its
+        /// glossary URI would be: "gs://my_bucket/a_b_c_[trg]_glossary_translations.[ext]". Thus the max number of
+        /// output files will be 2 (Translated document, Glossary translated document). Callers should expect no partial
+        /// outputs. If there is any error during document translation, no output will be stored in the Cloud Storage
+        /// bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the translated document's mime_type. If not specified, the translated file's mime type
+        /// will be the same as the input file's mime type. Currently only support the output mime type to be the same
+        /// as input mime type. - application/pdf -
+        /// application/vnd.openxmlformats-officedocument.wordprocessingml.document -
+        /// application/vnd.openxmlformats-officedocument.presentationml.presentation -
+        /// application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A translated document message.</summary>
+    public class DocumentTranslation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The array of translated documents. It is expected to be size 1 for now. We may produce multiple translated
+        /// documents in the future for other type of file formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("byteStreamOutputs")]
+        public virtual System.Collections.Generic.IList<string> ByteStreamOutputs { get; set; }
+
+        /// <summary>
+        /// The detected language for the input document. If the user did not provide the source language for the input
+        /// document, this field will have the language code automatically detected. If the source language was passed,
+        /// auto-detection of the language does not occur and this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageCode")]
+        public virtual string DetectedLanguageCode { get; set; }
+
+        /// <summary>The translated document's mime type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2119,6 +2462,98 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<SupportedLanguage> Languages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A document translation request.</summary>
+    public class TranslateDocumentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentInputConfig")]
+        public virtual DocumentInputConfig DocumentInputConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Output configurations. Defines if the output file should be stored within Cloud Storage as well as
+        /// the desired output format. If not provided the translated file will only be returned through a byte-stream
+        /// and its output mime type will be the same as the input file's mime type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentOutputConfig")]
+        public virtual DocumentOutputConfig DocumentOutputConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as
+        /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
+        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter. See https://cloud.google.com/translate/docs/advanced/labels for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. The `model` type requested for this translation. The format depends on model type: - AutoML
+        /// Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General
+        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` If not provided, the default
+        /// Google model (NMT) will be used for translation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Optional. The BCP-47 language code of the input document if known, for example, "en-US" or "sr-Latn".
+        /// Supported language codes are listed in Language Support. If the source language isn't specified, the API
+        /// attempts to identify the source language automatically and returns the source language within the response.
+        /// Source language must be specified if the request contains a glossary or a custom model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>
+        /// Required. The BCP-47 language code to use for translation of the input document, set to one of the language
+        /// codes listed in Language Support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A translated document response message.</summary>
+    public class TranslateDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Translated document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentTranslation")]
+        public virtual DocumentTranslation DocumentTranslation { get; set; }
+
+        /// <summary>The `glossary_config` used for this translation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
+        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
+
+        /// <summary>
+        /// The document's translation output if a glossary is provided in the request. This can be the same as
+        /// [TranslateDocumentResponse.document_translation] if no glossary terms apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryDocumentTranslation")]
+        public virtual DocumentTranslation GlossaryDocumentTranslation { get; set; }
+
+        /// <summary>
+        /// Only present when 'model' is present in the request. 'model' is normalized to have a project number. For
+        /// example: If the 'model' field in TranslateDocumentRequest is:
+        /// `projects/{project-id}/locations/{location-id}/models/general/nmt` then `model` here would be normalized to
+        /// `projects/{project-number}/locations/{location-id}/models/general/nmt`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

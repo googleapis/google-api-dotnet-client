@@ -4630,6 +4630,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerManagedZone")]
         public virtual System.Nullable<int> GkeClustersPerManagedZone { get; set; }
 
+        /// <summary>Maximum allowed number of GKE clusters per response policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerResponsePolicy")]
+        public virtual System.Nullable<int> GkeClustersPerResponsePolicy { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

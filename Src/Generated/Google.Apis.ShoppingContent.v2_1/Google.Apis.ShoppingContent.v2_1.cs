@@ -5345,6 +5345,102 @@ namespace Google.Apis.ShoppingContent.v2_1
         public OrderreturnsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Labels = new LabelsResource(service);
+        }
+
+        /// <summary>Gets the Labels resource.</summary>
+        public virtual LabelsResource Labels { get; }
+
+        /// <summary>The "labels" collection of methods.</summary>
+        public class LabelsResource
+        {
+            private const string Resource = "labels";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LabelsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Links a return shipping label to a return id. You can only create one return label per return id. Since
+            /// the label is sent to the buyer, the linked return label cannot be updated or deleted. If you try to
+            /// create multiple return shipping labels for a single return id, every create request except the first
+            /// will fail.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="merchantId">Required. The merchant the Return Shipping Label belongs to.</param>
+            /// <param name="returnId">Required. Provide the Google-generated merchant order return ID.</param>
+            public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.ReturnShippingLabel body, long merchantId, string returnId)
+            {
+                return new CreateRequest(service, body, merchantId, returnId);
+            }
+
+            /// <summary>
+            /// Links a return shipping label to a return id. You can only create one return label per return id. Since
+            /// the label is sent to the buyer, the linked return label cannot be updated or deleted. If you try to
+            /// create multiple return shipping labels for a single return id, every create request except the first
+            /// will fail.
+            /// </summary>
+            public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ReturnShippingLabel>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.ReturnShippingLabel body, long merchantId, string returnId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    ReturnId = returnId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The merchant the Return Shipping Label belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Required. Provide the Google-generated merchant order return ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("returnId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ReturnId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ShoppingContent.v2_1.Data.ReturnShippingLabel Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "{merchantId}/orderreturns/{returnId}/labels";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("returnId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "returnId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Acks an order return in your Merchant Center account.</summary>
@@ -19998,6 +20094,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Return shipping label for a Buy on Google merchant-managed return.</summary>
+    public class ReturnShippingLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the carrier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; }
+
+        /// <summary>The URL for the return shipping label in PDF format</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelUri")]
+        public virtual string LabelUri { get; set; }
+
+        /// <summary>The tracking id of this return label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
+        public virtual string TrackingId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

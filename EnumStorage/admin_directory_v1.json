@@ -1,0 +1,155 @@
+{
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+GetRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+ListRequest.OrderByEnum": [
+    "annotatedLocation",
+    "annotatedUser",
+    "lastSync",
+    "notes",
+    "serialNumber",
+    "status",
+    "supportEndDate"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+ListRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+PatchRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+UpdateRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.DirectoryBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.DirectoryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.GroupsResource+ListRequest.OrderByEnum": [
+    "email"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.GroupsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.MobiledevicesResource+GetRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.MobiledevicesResource+ListRequest.OrderByEnum": [
+    "deviceId",
+    "email",
+    "lastSync",
+    "model",
+    "name",
+    "os",
+    "status",
+    "type"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.MobiledevicesResource+ListRequest.ProjectionEnum": [
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.MobiledevicesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.OrgunitsResource+ListRequest.TypeEnum": [
+    "all",
+    "children"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ResourcesResource+BuildingsResource+InsertRequest.CoordinatesSourceEnum": [
+    "CLIENT_SPECIFIED",
+    "RESOLVED_FROM_ADDRESS",
+    "SOURCE_UNSPECIFIED"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ResourcesResource+BuildingsResource+PatchRequest.CoordinatesSourceEnum": [
+    "CLIENT_SPECIFIED",
+    "RESOLVED_FROM_ADDRESS",
+    "SOURCE_UNSPECIFIED"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.ResourcesResource+BuildingsResource+UpdateRequest.CoordinatesSourceEnum": [
+    "CLIENT_SPECIFIED",
+    "RESOLVED_FROM_ADDRESS",
+    "SOURCE_UNSPECIFIED"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+AliasesResource+ListRequest.EventEnum": [
+    "add",
+    "delete"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+AliasesResource+WatchRequest.EventEnum": [
+    "add",
+    "delete"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+GetRequest.ProjectionEnum": [
+    "basic",
+    "custom",
+    "full"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+GetRequest.ViewTypeEnum": [
+    "admin_view",
+    "domain_public"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+ListRequest.EventEnum": [
+    "add",
+    "delete",
+    "makeAdmin",
+    "undelete",
+    "update"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+ListRequest.OrderByEnum": [
+    "email",
+    "familyName",
+    "givenName"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+ListRequest.ProjectionEnum": [
+    "basic",
+    "custom",
+    "full"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+ListRequest.ViewTypeEnum": [
+    "admin_view",
+    "domain_public"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+WatchRequest.EventEnum": [
+    "add",
+    "delete",
+    "makeAdmin",
+    "undelete",
+    "update"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+WatchRequest.OrderByEnum": [
+    "email",
+    "familyName",
+    "givenName"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+WatchRequest.ProjectionEnum": [
+    "basic",
+    "custom",
+    "full"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+WatchRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Admin.Directory.directory_v1.UsersResource+WatchRequest.ViewTypeEnum": [
+    "admin_view",
+    "domain_public"
+  ]
+}

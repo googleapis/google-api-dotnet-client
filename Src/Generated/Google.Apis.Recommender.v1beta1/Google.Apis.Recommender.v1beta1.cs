@@ -3163,6 +3163,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("observationPeriod")]
         public virtual object ObservationPeriod { get; set; }
 
+        /// <summary>Insight's severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
         /// <summary>Information state and metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
         public virtual GoogleCloudRecommenderV1beta1InsightStateInfo StateInfo { get; set; }
@@ -3443,6 +3447,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryImpact")]
         public virtual GoogleCloudRecommenderV1beta1Impact PrimaryImpact { get; set; }
+
+        /// <summary>Recommendation's priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
 
         /// <summary>
         /// Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype is a

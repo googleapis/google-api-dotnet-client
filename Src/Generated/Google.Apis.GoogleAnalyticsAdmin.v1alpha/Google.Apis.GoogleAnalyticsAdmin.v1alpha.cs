@@ -959,7 +959,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>Updates a user link on an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Example format: properties/1234/userLinks/5678</param>
+            /// <param name="name">Output only. Example format: properties/1234/userLinks/5678</param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -976,7 +976,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Example format: properties/1234/userLinks/5678</summary>
+                /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3141,7 +3141,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
             /// <summary>Updates a user link on an account or property.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Example format: properties/1234/userLinks/5678</param>
+            /// <param name="name">Output only. Example format: properties/1234/userLinks/5678</param>
             public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -3158,7 +3158,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Example format: properties/1234/userLinks/5678</summary>
+                /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -5101,11 +5101,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
         public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }
 
-        /// <summary>Email address of the user to link</summary>
+        /// <summary>Immutable. Email address of the user to link</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        /// <summary>Example format: properties/1234/userLinks/5678</summary>
+        /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

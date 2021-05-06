@@ -2354,7 +2354,7 @@ namespace Google.Apis.Networkconnectivity.v1alpha1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2981,7 +2981,10 @@ namespace Google.Apis.Networkconnectivity.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. A list of the URIs of all attached spokes</summary>
+        /// <summary>
+        /// Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in
+        /// future API versions. Call ListSpokes on each region instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spokes")]
         public virtual System.Collections.Generic.IList<string> Spokes { get; set; }
 

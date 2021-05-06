@@ -2178,6 +2178,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1BoundingPoly BoundingPoly { get; set; }
 
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
         /// <summary>Optional. Deprecated. Use PageRef.bounding_poly instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutId")]
         public virtual string LayoutId { get; set; }
@@ -3260,6 +3264,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta1BoundingPoly BoundingPoly { get; set; }
 
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
         /// <summary>Optional. Deprecated. Use PageRef.bounding_poly instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutId")]
         public virtual string LayoutId { get; set; }
@@ -4337,6 +4345,10 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta2BoundingPoly BoundingPoly { get; set; }
+
+        /// <summary>Optional. Confidence of detected page element, if applicable. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>Optional. Deprecated. Use PageRef.bounding_poly instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutId")]
