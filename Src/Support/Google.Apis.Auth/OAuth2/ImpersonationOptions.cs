@@ -45,7 +45,7 @@ namespace Google.Apis.Auth.OAuth2
         public TimeSpan Lifetime { get; }
 
         /// <summary>Constructs a new instace.</summary>
-        /// <param name="targetPrincipal">The service account to impersonate.</param>
+        /// <param name="targetPrincipal">The service account to impersonate. Must not be null.</param>
         /// <param name="lifetime">
         /// The amount of time  the delegated credential should remain valid after emission.
         /// By default this value should be at most 3600 seconds or 1 hour. However, you can follow
