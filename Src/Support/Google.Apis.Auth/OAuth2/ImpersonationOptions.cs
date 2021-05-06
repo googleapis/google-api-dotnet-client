@@ -44,7 +44,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public TimeSpan Lifetime { get; }
 
-        /// <summary>Constructs a new initializer.</summary>
+        /// <summary>Constructs a new instace.</summary>
         /// <param name="targetPrincipal">The service account to impersonate.</param>
         /// <param name="lifetime">
         /// The life time of the delegated credential should be valid.
