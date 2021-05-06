@@ -60,7 +60,7 @@ namespace Google.Apis.Auth.OAuth2
             TargetPrincipal = targetPrincipal.ThrowIfNullOrEmpty(nameof(targetPrincipal));
             DelegateAccounts = delegateAccounts;
             Scopes = scopes;
-            Lifetime = lifetime.HasValue ? lifetime.Value : new TimeSpan(1, 0, 0);
+            Lifetime = lifetime ?? new TimeSpan(1, 0, 0);
             if (Lifetime > new TimeSpan(12, 0, 0))
             {
                 throw new ArgumentOutOfRangeException("lifetime", "Lifetime must be less than or equal to 43200 seconds or 12 hours.");
