@@ -47,7 +47,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Constructs a new instace.</summary>
         /// <param name="targetPrincipal">The service account to impersonate.</param>
         /// <param name="lifetime">
-        /// The life time of the delegated credential should be valid.
+        /// The amount of time  the delegated credential should remain valid after emission.
         /// By default this value should be at most 3600 seconds. However, you can follow
         /// https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth
         /// to set up the service account and extend the maximum lifetime to 43200 seconds or 12 hours).
