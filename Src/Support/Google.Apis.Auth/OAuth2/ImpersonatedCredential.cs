@@ -1,11 +1,11 @@
 /*
-Copyright 2021 Google Inc
+Copyright 2021 Google LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -97,13 +97,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
-            var bodyJson = new ImpersonationAccessTokenRequest
+            var request = new ImpersonationAccessTokenRequest
             {
                 DelegateAccounts = Options.DelegateAccounts,
                 Scopes = Options.Scopes,
                 Lifetime = ((int)Options.Lifetime.TotalSeconds).ToString() + "s"
             };
-            var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
+            var body = NewtonsoftJsonSerializer.Instance.Serialize(request);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
             
             var response = await HttpClient.PostAsync(TokenServerUrl, content, taskCancellationToken).ConfigureAwait(false);
@@ -125,13 +125,13 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<bool> RefreshOidcTokenAsync(TokenRefreshManager caller, OidcTokenOptions oidcTokenOptions, CancellationToken cancellationToken)
         {
-            var bodyJson = new ImpersonationOIdCTokenRequest
+            var request = new ImpersonationOIdCTokenRequest
             {
                 DelegateAccounts = Options.DelegateAccounts,
                 Audience = oidcTokenOptions.TargetAudience,
                 IncludeEmail = true
             };
-            var body = NewtonsoftJsonSerializer.Instance.Serialize(bodyJson);
+            var body = NewtonsoftJsonSerializer.Instance.Serialize(request);
             var content = new StringContent(body, Encoding.UTF8, "application/json");
             
             var oidcTokenUrl = String.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, Options.TargetPrincipal);
@@ -150,12 +150,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <exception cref="Newtonsoft.Json.JsonException">When signing response is not a valid JSON.</exception>
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
-            var bodyJson = new
+            var request = new
             {
                 delegates = Options.DelegateAccounts,
                 payload = blob
             };
-            var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(bodyJson), Encoding.UTF8, "application/json");
+            var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(request), Encoding.UTF8, "application/json");
             
             var signBlobUrl = String.Format(GoogleAuthConsts.IamSignEndpointFormatString, Options.TargetPrincipal);
             

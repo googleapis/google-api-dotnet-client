@@ -1,11 +1,11 @@
 /*
-Copyright 2021 Google Inc
+Copyright 2021 Google LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    https://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,22 +25,22 @@ namespace Google.Apis.Auth.OAuth2
     public class ImpersonationOptions
     {
         /// <summary>
-        /// Gets the service account to impersonate.
+        /// Gets the service account to impersonate. Must not be null.
         /// </summary>
         public string TargetPrincipal { get; }
 
         /// <summary>
-        /// Gets the chained list of delegate service accounts.
+        /// Gets the chained list of delegate service accounts. May be null or empty.
         /// </summary>
         public IEnumerable<string> DelegateAccounts { get; }
 
         /// <summary>
-        /// Gets the scopes to request during the authorization grant.
+        /// Gets the scopes to request during the authorization grant. May be null or empty.
         /// </summary>
         public IEnumerable<string> Scopes { get; }
 
         /// <summary>
-        /// Gets how long the delegated credential should be valid.
+        /// Gets how long the delegated credential should be valid. Defaults to 1 hour or 3600 seconds.
         /// </summary>
         public TimeSpan Lifetime { get; }
 
@@ -55,9 +55,16 @@ namespace Google.Apis.Auth.OAuth2
         /// </param>
         /// <param name="delegateAccounts">The chained list of delegate service accounts.</param>
         /// <param name="scopes">The scopes to request during the authorization grant.</param>
-        public ImpersonationOptions(string targetPrincipal, TimeSpan? lifetime, IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
+        internal ImpersonationOptions(string targetPrincipal, TimeSpan? lifetime, IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
         {
-            TargetPrincipal = targetPrincipal.ThrowIfNullOrEmpty(nameof(targetPrincipal));
+            if (!string.IsNullOrEmpty(targetPrincipal))
+            {
+                TargetPrincipal = targetPrincipal;
+            }
+            else
+            {
+                throw new ArgumentException("Parameter was empty", "targetPrincipal");
+            }
             DelegateAccounts = delegateAccounts;
             Scopes = scopes;
             Lifetime = lifetime ?? new TimeSpan(1, 0, 0);
@@ -66,6 +73,11 @@ namespace Google.Apis.Auth.OAuth2
                 throw new ArgumentOutOfRangeException("lifetime", "Lifetime must be less than or equal to 43200 seconds or 12 hours.");
             }
         }
+
+        /// <summary>Constructs a new instace.</summary>
+        /// <param name="targetPrincipal">The service account to impersonate. Must not be null.</param>
+        public static ImpersonationOptions CreateForTargetPrincipal(string targetPrincipal) =>
+            new ImpersonationOptions(targetPrincipal, null, null, null);
 
         /// <summary>
         /// Builds a new set of options with the same options as this one, except for the target principal.

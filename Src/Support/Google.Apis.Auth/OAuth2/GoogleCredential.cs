@@ -328,8 +328,8 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <inheritdoc/>
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default) =>
-            UnderlyingCredential is IBlobSigner signer ?
-                signer.SignBlobAsync(blob, cancellationToken).ConfigureAwait(false) :
+            UnderlyingCredential is IBlobSigner ?
+                await (UnderlyingCredential as IBlobSigner).SignBlobAsync(blob, cancellationToken).ConfigureAwait(false) :
                 throw new InvalidOperationException(
                     $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)} are supported blob signers.");
 
