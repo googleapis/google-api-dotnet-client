@@ -49,13 +49,6 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public void Constructor_InvalidLifetime()
-        {
-            var ex = Assert.Throws<ArgumentOutOfRangeException>(() => new ImpersonationOptions("principal", new TimeSpan(20, 0, 0), null, null));
-            Assert.StartsWith("Lifetime must be less than or equal to", ex.Message);
-        }
-
-        [Fact]
         public void Constructor()
         {
             var options = CreateDefaultOptions();

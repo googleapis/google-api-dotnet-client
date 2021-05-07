@@ -68,10 +68,6 @@ namespace Google.Apis.Auth.OAuth2
             DelegateAccounts = delegateAccounts;
             Scopes = scopes;
             Lifetime = lifetime ?? new TimeSpan(1, 0, 0);
-            if (Lifetime > new TimeSpan(12, 0, 0))
-            {
-                throw new ArgumentOutOfRangeException("lifetime", "Lifetime must be less than or equal to 43200 seconds or 12 hours.");
-            }
         }
 
         /// <summary>Constructs a new instace.</summary>
