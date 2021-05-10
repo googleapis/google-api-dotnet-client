@@ -1973,6 +1973,42 @@ namespace Google.Apis.GameServices.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
+                        /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
+                        /// state of the referenced Kubernetes cluster such as versions and provider info. The
+                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
+                        /// return the `cluster_state` field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
+                        /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
+                        /// state of the referenced Kubernetes cluster such as versions and provider info. The
+                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
+                        /// return the `cluster_state` field.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
+                            GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
+                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// PreviewCreateGameServerCluster).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1993,6 +2029,14 @@ namespace Google.Apis.GameServices.v1beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/realms/[^/]+/gameServerClusters/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -2050,6 +2094,42 @@ namespace Google.Apis.GameServices.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
+                        /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
+                        /// state of the referenced Kubernetes cluster such as versions and provider info. The
+                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
+                        /// return the `cluster_state` field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. View for the returned GameServerCluster objects. When `FULL` is specified, the
+                        /// `cluster_state` field is also returned in the GameServerCluster object, which includes the
+                        /// state of the referenced Kubernetes cluster such as versions and provider info. The
+                        /// default/unset value is GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED, same as BASIC, which does not
+                        /// return the `cluster_state` field.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
+                            GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
+                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// PreviewCreateGameServerCluster).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -2098,6 +2178,14 @@ namespace Google.Apis.GameServices.v1beta
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2226,6 +2314,34 @@ namespace Google.Apis.GameServices.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("previewTime", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object PreviewTime { get; set; }
 
+                        /// <summary>
+                        /// Optional. This field is deprecated, preview will always return KubernetesClusterState.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. This field is deprecated, preview will always return KubernetesClusterState.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default / unset value. The API will default to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED")]
+                            GAMESERVERCLUSTERVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Include basic information of a GameServerCluster resource and omit `cluster_state`. This
+                            /// is the default value (for ListGameServerClusters, GetGameServerCluster and
+                            /// PreviewCreateGameServerCluster).
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.GameServices.v1beta.Data.GameServerCluster Body { get; set; }
 
@@ -2264,6 +2380,14 @@ namespace Google.Apis.GameServices.v1beta
                             RequestParameters.Add("previewTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "previewTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3464,6 +3588,13 @@ namespace Google.Apis.GameServices.v1beta.Data
         public virtual string AllocationPriority { get; set; }
 
         /// <summary>
+        /// Output only. The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the
+        /// relevant List/Get/Preview request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterState")]
+        public virtual KubernetesClusterState ClusterState { get; set; }
+
+        /// <summary>
         /// The game server cluster connection information. This information is used to manage game server clusters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionInfo")]
@@ -3678,6 +3809,46 @@ namespace Google.Apis.GameServices.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The state of the Kubernetes cluster.</summary>
+    public class KubernetesClusterState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The version of Agones currently installed in the registered Kubernetes cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agonesVersionInstalled")]
+        public virtual string AgonesVersionInstalled { get; set; }
+
+        /// <summary>Output only. The version of Agones that is targeted to be installed in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agonesVersionTargeted")]
+        public virtual string AgonesVersionTargeted { get; set; }
+
+        /// <summary>Output only. The state for the installed versions of Agones/Kubernetes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installationState")]
+        public virtual string InstallationState { get; set; }
+
+        /// <summary>
+        /// Output only. The version of Kubernetes that is currently used in the registered Kubernetes cluster (as
+        /// detected by the Cloud Game Servers service).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesVersionInstalled")]
+        public virtual string KubernetesVersionInstalled { get; set; }
+
+        /// <summary>
+        /// Output only. The cloud provider type reported by the first node's providerID in the list of nodes on the
+        /// Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider
+        /// type will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Output only. The detailed error message for the installed versions of Agones/Kubernetes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionInstalledErrorMessage")]
+        public virtual string VersionInstalledErrorMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4051,6 +4222,13 @@ namespace Google.Apis.GameServices.v1beta.Data
     /// <summary>Response message for GameServerClustersService.PreviewCreateGameServerCluster.</summary>
     public class PreviewCreateGameServerClusterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The state of the Kubernetes cluster in preview, this will be available if 'view' is set to
+        /// `FULL` in the relevant List/Get/Preview request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterState")]
+        public virtual KubernetesClusterState ClusterState { get; set; }
+
         /// <summary>The ETag of the game server cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }

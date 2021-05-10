@@ -5767,8 +5767,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `autoscaling.knative.dev/maxScale` sets the maximum number of instances. *
         /// `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma
         /// separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. *
-        /// `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and
-        /// `private-ranges-only`.
+        /// `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all-traffic`, `all`
+        /// (deprecated), and `private-ranges-only`. `all-traffic` and `all` provide the same functionality. `all` is
+        /// deprecated but will continue to be supported. Prefer `all-traffic`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual ObjectMeta Metadata { get; set; }

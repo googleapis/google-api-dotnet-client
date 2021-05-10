@@ -1566,15 +1566,15 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>External IP address of Cloud SQL instance.</summary>
+        /// <summary>External IP address of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
 
-        /// <summary>Internal IP address of Cloud SQL instance.</summary>
+        /// <summary>Internal IP address of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
 
-        /// <summary>URI of a Cloud SQL instance network or empty string if instance does not have one.</summary>
+        /// <summary>URI of a Cloud SQL instance network or empty string if the instance does not have one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -1714,6 +1714,17 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>Source or destination of the Connectivity Test.</summary>
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A [Cloud SQL](https://cloud.google.com/sql) instance URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
+        public virtual string CloudSqlInstance { get; set; }
+
+        /// <summary>
+        /// A cluster URI for [Google Kubernetes Engine
+        /// master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeMasterCluster")]
+        public virtual string GkeMasterCluster { get; set; }
+
         /// <summary>A Compute Engine instance URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
@@ -1951,22 +1962,22 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>For display only. Metadata associated with a Google Kubernetes Engine cluster master.</summary>
+    /// <summary>For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.</summary>
     public class GKEMasterInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI of a Google Kubernetes Engine cluster network.</summary>
+        /// <summary>URI of a GKE cluster network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterNetworkUri")]
         public virtual string ClusterNetworkUri { get; set; }
 
-        /// <summary>URI of a Google Kubernetes Engine cluster.</summary>
+        /// <summary>URI of a GKE cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUri")]
         public virtual string ClusterUri { get; set; }
 
-        /// <summary>External IP address of a Google Kubernetes Engine cluster master.</summary>
+        /// <summary>External IP address of a GKE cluster master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
 
-        /// <summary>Internal IP address of a Google Kubernetes Engine cluster master.</summary>
+        /// <summary>Internal IP address of a GKE cluster master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
 
@@ -2447,7 +2458,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// </summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Display info of the final state "abort" and reason.</summary>
+        /// <summary>Display information of the final state "abort" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abort")]
         public virtual AbortInfo Abort { get; set; }
 
@@ -2455,11 +2466,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("causesDrop")]
         public virtual System.Nullable<bool> CausesDrop { get; set; }
 
-        /// <summary>Display info of a Cloud SQL instance.</summary>
+        /// <summary>Display information of a Cloud SQL instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual CloudSQLInstanceInfo CloudSqlInstance { get; set; }
 
-        /// <summary>Display info of the final state "deliver" and reason.</summary>
+        /// <summary>Display information of the final state "deliver" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliver")]
         public virtual DeliverInfo Deliver { get; set; }
 
@@ -2467,42 +2478,43 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display info of the final state "drop" and reason.</summary>
+        /// <summary>Display information of the final state "drop" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drop")]
         public virtual DropInfo Drop { get; set; }
 
         /// <summary>
-        /// Display info of the source and destination under analysis. The endpoint info in an intermediate state may
-        /// differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+        /// Display information of the source and destination under analysis. The endpoint information in an
+        /// intermediate state may differ with the initial input, as it might be modified by state like NAT, or
+        /// Connection Proxy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual EndpointInfo Endpoint { get; set; }
 
-        /// <summary>Display info of a Compute Engine firewall rule.</summary>
+        /// <summary>Display information of a Compute Engine firewall rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewall")]
         public virtual FirewallInfo Firewall { get; set; }
 
-        /// <summary>Display info of the final state "forward" and reason.</summary>
+        /// <summary>Display information of the final state "forward" and reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forward")]
         public virtual ForwardInfo Forward { get; set; }
 
-        /// <summary>Display info of a Compute Engine forwarding rule.</summary>
+        /// <summary>Display information of a Compute Engine forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual ForwardingRuleInfo ForwardingRule { get; set; }
 
-        /// <summary>Display info of a Google Kubernetes Engine cluster master.</summary>
+        /// <summary>Display information of a Google Kubernetes Engine cluster master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
         public virtual GKEMasterInfo GkeMaster { get; set; }
 
-        /// <summary>Display info of a Compute Engine instance.</summary>
+        /// <summary>Display information of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual InstanceInfo Instance { get; set; }
 
-        /// <summary>Display info of the load balancers.</summary>
+        /// <summary>Display information of the load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
         public virtual LoadBalancerInfo LoadBalancer { get; set; }
 
-        /// <summary>Display info of a GCP network.</summary>
+        /// <summary>Display information of a Google Cloud network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkInfo Network { get; set; }
 
@@ -2510,7 +2522,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Display info of a Compute Engine route.</summary>
+        /// <summary>Display information of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]
         public virtual RouteInfo Route { get; set; }
 
@@ -2518,11 +2530,11 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Display info of a Compute Engine VPN gateway.</summary>
+        /// <summary>Display information of a Compute Engine VPN gateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnGateway")]
         public virtual VpnGatewayInfo VpnGateway { get; set; }
 
-        /// <summary>Display info of a Compute Engine VPN tunnel.</summary>
+        /// <summary>Display information of a Compute Engine VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnel")]
         public virtual VpnTunnelInfo VpnTunnel { get; set; }
 
@@ -2599,7 +2611,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>Name of a GCP region where this VPN gateway is configured.</summary>
+        /// <summary>Name of a Google Cloud region where this VPN gateway is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
@@ -2629,7 +2641,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
-        /// <summary>Name of a GCP region where this VPN tunnel is configured.</summary>
+        /// <summary>Name of a Google Cloud region where this VPN tunnel is configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 

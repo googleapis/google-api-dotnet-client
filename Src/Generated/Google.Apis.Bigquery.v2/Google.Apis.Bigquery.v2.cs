@@ -6397,6 +6397,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> DdlAffectedRowAccessPolicyCount { get; set; }
 
         /// <summary>
+        /// [Output-only] The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that
+        /// ddl_target_table is used just for its type information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlDestinationTable")]
+        public virtual TableReference DdlDestinationTable { get; set; }
+
+        /// <summary>
         /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new
         /// values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example
         /// cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF
