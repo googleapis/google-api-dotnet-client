@@ -7,5 +7,15 @@
   "Google.Apis.CloudOSLogin.v1beta.CloudOSLoginBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.CloudOSLogin.v1beta.UsersResource+GetLoginProfileRequest.ViewEnum": [
+    "LOGIN_PROFILE_VIEW_UNSPECIFIED",
+    "BASIC",
+    "SECURITY_KEY"
+  ],
+  "Google.Apis.CloudOSLogin.v1beta.UsersResource+ImportSshPublicKeyRequest.ViewEnum": [
+    "LOGIN_PROFILE_VIEW_UNSPECIFIED",
+    "BASIC",
+    "SECURITY_KEY"
   ]
 }

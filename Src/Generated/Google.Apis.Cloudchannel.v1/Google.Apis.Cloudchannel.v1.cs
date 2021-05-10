@@ -393,10 +393,10 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED:
-                /// The account making the request does not own this customer. * INVALID_ARGUMENT: Required request
-                /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. *
-                /// NOT_FOUND: No Customer resource found for the name in the request.
+                /// Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account
+                /// making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are
+                /// missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
+                /// Customer resource found for the name in the request.
                 /// </summary>
                 /// <param name="name">Required. The resource name of the customer to delete.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -405,10 +405,10 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED:
-                /// The account making the request does not own this customer. * INVALID_ARGUMENT: Required request
-                /// parameters are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. *
-                /// NOT_FOUND: No Customer resource found for the name in the request.
+                /// Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account
+                /// making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are
+                /// missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
+                /// Customer resource found for the name in the request.
                 /// </summary>
                 public class DeleteRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
                 {
@@ -448,7 +448,7 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
                 /// account making the request is different from the reseller account in the API request. *
                 /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer
                 /// resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer
@@ -464,7 +464,7 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
+                /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller
                 /// account making the request is different from the reseller account in the API request. *
                 /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer
                 /// resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer
@@ -766,11 +766,11 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Returns a requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible
-            /// error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller
-            /// account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-            /// NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return
-            /// value: The ChannelPartnerLink resource.
+            /// Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method.
+            /// Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the
+            /// reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or
+            /// invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link
+            /// name. Return value: The ChannelPartnerLink resource.
             /// </summary>
             /// <param name="name">
             /// Required. The resource name of the channel partner link to retrieve. Name uses the format:
@@ -782,11 +782,11 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Returns a requested ChannelPartnerLink resource. You must be a distributor to call this method. Possible
-            /// error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller
-            /// account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. *
-            /// NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link name. Return
-            /// value: The ChannelPartnerLink resource.
+            /// Returns the requested ChannelPartnerLink resource. You must be a distributor to call this method.
+            /// Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the
+            /// reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or
+            /// invalid. * NOT_FOUND: ChannelPartnerLink resource not found because of an invalid channel partner link
+            /// name. Return value: The ChannelPartnerLink resource.
             /// </summary>
             public class GetRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ChannelPartnerLink>
             {
@@ -1601,7 +1601,7 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Returns a requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer
+                /// Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer
                 /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or
                 /// invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested
                 /// Entitlement resource.
@@ -1616,7 +1616,7 @@ namespace Google.Apis.Cloudchannel.v1
                 }
 
                 /// <summary>
-                /// Returns a requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer
+                /// Returns the requested Entitlement resource. Possible error codes: * PERMISSION_DENIED: The customer
                 /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or
                 /// invalid. * NOT_FOUND: The customer entitlement was not found. Return value: The requested
                 /// Entitlement resource.
@@ -2040,10 +2040,10 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED: The
-            /// account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters
-            /// are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
-            /// Customer resource found for the name in the request.
+            /// Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making
+            /// the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or
+            /// invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer
+            /// resource found for the name in the request.
             /// </summary>
             /// <param name="name">Required. The resource name of the customer to delete.</param>
             public virtual DeleteRequest Delete(string name)
@@ -2052,10 +2052,10 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Deletes the given Customer permanently and irreversibly. Possible error codes: * PERMISSION_DENIED: The
-            /// account making the request does not own this customer. * INVALID_ARGUMENT: Required request parameters
-            /// are missing or invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No
-            /// Customer resource found for the name in the request.
+            /// Deletes the given Customer permanently. Possible error codes: * PERMISSION_DENIED: The account making
+            /// the request does not own this customer. * INVALID_ARGUMENT: Required request parameters are missing or
+            /// invalid. * FAILED_PRECONDITION: The customer has existing entitlements. * NOT_FOUND: No Customer
+            /// resource found for the name in the request.
             /// </summary>
             public class DeleteRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleProtobufEmpty>
             {
@@ -2095,7 +2095,7 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account
+            /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account
             /// making the request is different from the reseller account in the API request. * INVALID_ARGUMENT:
             /// Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist.
             /// Usually the result of an invalid name parameter. Return value: The Customer resource.
@@ -2110,7 +2110,7 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
-            /// Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account
+            /// Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account
             /// making the request is different from the reseller account in the API request. * INVALID_ARGUMENT:
             /// Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist.
             /// Usually the result of an invalid name parameter. Return value: The Customer resource.
@@ -4298,33 +4298,32 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1ContactInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Display name of the contact in the customer account. Populated by combining customer first name
+        /// Output only. The customer account contact's display name, formatted as a combination of the customer's first
         /// and last name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Email of the contact in the customer account. Email is required for entitlements that need creation of
-        /// admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com
-        /// account.
+        /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and
+        /// serves as the customer's username for those accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>First name of the contact in the customer account.</summary>
+        /// <summary>The customer account contact's first name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
         public virtual string FirstName { get; set; }
 
-        /// <summary>Last name of the contact in the customer account.</summary>
+        /// <summary>The customer account contact's last name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
         public virtual string LastName { get; set; }
 
-        /// <summary>Phone number of the contact in the customer account.</summary>
+        /// <summary>The customer account's contact phone number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phone")]
         public virtual string Phone { get; set; }
 
-        /// <summary>Optional. Job title of the contact in the customer account.</summary>
+        /// <summary>Optional. The customer account contact's job title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -4358,9 +4357,9 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1Customer : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Secondary contact email. Alternate email and primary contact email are required to have different domains if
-        /// primary contact email is present. When creating admin.google.com accounts, users get notified credentials at
-        /// this email. This email address is also used as a recovery email.
+        /// Secondary contact email. You need to provide an alternate email to create different domains if a primary
+        /// contact email already exists. Users will receive a notification with credentials when you create an
+        /// admin.google.com account. Secondary emails are also recovery email addresses.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateEmail")]
         public virtual string AlternateEmail { get; set; }
@@ -4373,8 +4372,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ChannelPartnerId { get; set; }
 
         /// <summary>
-        /// Output only. Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this
-        /// customer.
+        /// Output only. The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudIdentityId")]
         public virtual string CloudIdentityId { get; set; }
@@ -4386,14 +4384,11 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudIdentityInfo")]
         public virtual GoogleCloudChannelV1CloudIdentityInfo CloudIdentityInfo { get; set; }
 
-        /// <summary>Output only. The time at which the customer is created.</summary>
+        /// <summary>Output only. Time when the customer was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>
-        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the
-        /// provided domain.
-        /// </summary>
+        /// <summary>Required. The customer's primary domain. Must match the primary contact email's domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -4415,9 +4410,9 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string OrgDisplayName { get; set; }
 
         /// <summary>
-        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce
-        /// US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use
-        /// the Customer-level language code to set the customer's language.
+        /// Required. The organization address for the customer. To enforce US laws and embargoes, we require a region
+        /// and zip code. You must provide valid addresses for every customer. To set the customer's language, use the
+        /// Customer-level language code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPostalAddress")]
         public virtual GoogleTypePostalAddress OrgPostalAddress { get; set; }
@@ -4426,7 +4421,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContactInfo")]
         public virtual GoogleCloudChannelV1ContactInfo PrimaryContactInfo { get; set; }
 
-        /// <summary>Output only. The time at which the customer is updated.</summary>
+        /// <summary>Output only. Time when the customer was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

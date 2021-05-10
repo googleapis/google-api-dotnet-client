@@ -7,5 +7,20 @@
   "Google.Apis.GameServices.v1beta.GameServicesBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.GameServices.v1beta.ProjectsResource+LocationsResource+RealmsResource+GameServerClustersResource+GetRequest.ViewEnum": [
+    "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GameServices.v1beta.ProjectsResource+LocationsResource+RealmsResource+GameServerClustersResource+ListRequest.ViewEnum": [
+    "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GameServices.v1beta.ProjectsResource+LocationsResource+RealmsResource+GameServerClustersResource+PreviewCreateRequest.ViewEnum": [
+    "GAME_SERVER_CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
   ]
 }

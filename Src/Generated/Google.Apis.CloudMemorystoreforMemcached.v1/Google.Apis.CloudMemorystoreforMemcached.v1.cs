@@ -1170,7 +1170,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1449,7 +1449,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
 
         /// <summary>
         /// Unique name of the resource. It uses the form:
-        /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+        /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}` Note: Either
+        /// project_id or project_number and be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

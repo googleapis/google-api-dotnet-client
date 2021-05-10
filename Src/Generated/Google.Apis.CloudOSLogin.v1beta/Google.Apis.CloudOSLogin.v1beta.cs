@@ -597,6 +597,26 @@ namespace Google.Apis.CloudOSLogin.v1beta
             [Google.Apis.Util.RequestParameterAttribute("systemId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SystemId { get; set; }
 
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            public enum ViewEnum
+            {
+                /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
+                [Google.Apis.Util.StringValueAttribute("LOGIN_PROFILE_VIEW_UNSPECIFIED")]
+                LOGINPROFILEVIEWUNSPECIFIED = 0,
+
+                /// <summary>Includes POSIX and SSH key information.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 1,
+
+                /// <summary>Include security key information for the user.</summary>
+                [Google.Apis.Util.StringValueAttribute("SECURITY_KEY")]
+                SECURITYKEY = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getLoginProfile";
 
@@ -629,6 +649,14 @@ namespace Google.Apis.CloudOSLogin.v1beta
                 RequestParameters.Add("systemId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "systemId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -670,6 +698,26 @@ namespace Google.Apis.CloudOSLogin.v1beta
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The view configures whether to retrieve security keys information.</summary>
+            public enum ViewEnum
+            {
+                /// <summary>The default login profile view. The API defaults to the BASIC view.</summary>
+                [Google.Apis.Util.StringValueAttribute("LOGIN_PROFILE_VIEW_UNSPECIFIED")]
+                LOGINPROFILEVIEWUNSPECIFIED = 0,
+
+                /// <summary>Includes POSIX and SSH key information.</summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 1,
+
+                /// <summary>Include security key information for the user.</summary>
+                [Google.Apis.Util.StringValueAttribute("SECURITY_KEY")]
+                SECURITYKEY = 2,
+            }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudOSLogin.v1beta.Data.SshPublicKey Body { get; set; }
 
@@ -700,6 +748,14 @@ namespace Google.Apis.CloudOSLogin.v1beta
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projectId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

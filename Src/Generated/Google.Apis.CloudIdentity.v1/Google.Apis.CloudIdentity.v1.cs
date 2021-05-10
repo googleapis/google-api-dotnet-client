@@ -80,7 +80,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public static string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -101,7 +101,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// </summary>
             public const string CloudIdentityGroupsReadonly = "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
 
-            /// <summary>View and manage your data across Google Cloud Platform services</summary>
+            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
@@ -2494,9 +2494,9 @@ namespace Google.Apis.CloudIdentity.v1
                 /// <summary>
                 /// Required. A CEL expression that MUST include member specification AND label(s). This is a `required`
                 /// field. Users can search on label attributes of groups. CONTAINS match ('in') is supported on labels.
-                /// Certain groups are uniquely identified by both a 'member_key_id' and a 'member_key_namespace', which
-                /// requires an additional query input: 'member_key_namespace'. Example query: `member_key_id ==
-                /// 'member_key_id_value' &amp;amp;&amp;amp; in labels`
+                /// Identity-mapped groups are uniquely identified by both a `member_key_id` and a
+                /// `member_key_namespace`, which requires an additional query input: `member_key_namespace`. Example
+                /// query: `member_key_id == 'member_key_id_value' &amp;amp;&amp;amp; in labels`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
@@ -2811,13 +2811,13 @@ namespace Google.Apis.CloudIdentity.v1
             }
         }
 
-        /// <summary>Lists the `Group`s under a customer or namespace.</summary>
+        /// <summary>Lists the `Group` resources under a customer or namespace.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists the `Group`s under a customer or namespace.</summary>
+        /// <summary>Lists the `Group` resources under a customer or namespace.</summary>
         public class ListRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.ListGroupsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2841,9 +2841,9 @@ namespace Google.Apis.CloudIdentity.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Required. The parent resource under which to list all `Group`s. Must be of the form
+            /// Required. The parent resource under which to list all `Group` resources. Must be of the form
             /// `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}`
-            /// for Google Groups.
+            /// for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -3060,13 +3060,13 @@ namespace Google.Apis.CloudIdentity.v1
             }
         }
 
-        /// <summary>Searches for `Group`s matching a specified query.</summary>
+        /// <summary>Searches for `Group` resources matching a specified query.</summary>
         public virtual SearchRequest Search()
         {
             return new SearchRequest(service);
         }
 
-        /// <summary>Searches for `Group`s matching a specified query.</summary>
+        /// <summary>Searches for `Group` resources matching a specified query.</summary>
         public class SearchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1.Data.SearchGroupsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -3093,7 +3093,8 @@ namespace Google.Apis.CloudIdentity.v1
             /// Required. The search query. Must be specified in [Common Expression
             /// Language](https://opensource.google/projects/cel). May only contain equality operators on the parent and
             /// inclusion operators on labels (e.g., `parent == 'customers/{customer_id}' &amp;amp;&amp;amp;
-            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`).
+            /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The `customer_id` must begin with
+            /// "C" (for example, 'C046psxkn').
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -3699,8 +3700,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
 
         /// <summary>
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in
-        /// format: `devices/{device_id}/deviceUsers/{user_id}`, where user_id is the ID of the user associated with the
-        /// user session.
+        /// format: `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id` uniquely identifies a
+        /// user's use of a device.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3885,8 +3886,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to
         /// them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups
         /// have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud
-        /// Search have a label with a key of `system/groups/external` and an empty value. Examples:
-        /// {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+        /// Search have a label with a key of `system/groups/external` and an empty value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -3901,7 +3901,8 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// <summary>
         /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity
         /// resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped
-        /// groups or `customers/{customer_id}` for Google Groups.
+        /// groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example,
+        /// 'C046psxkn').
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -4012,7 +4013,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// <summary>Message representing a transitive membership of a group.</summary>
     public class MemberRelation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name for this member if member is a GROUP, otherwise it is empty.</summary>
+        /// <summary>Resource name for this member.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual string Member { get; set; }
 
@@ -4202,7 +4203,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     /// <summary>The response message for GroupsService.SearchGroups.</summary>
     public class SearchGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The `Group`s that match the search query.</summary>
+        /// <summary>The `Group` resources that match the search query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
         public virtual System.Collections.Generic.IList<Group> Groups { get; set; }
 
@@ -4295,7 +4296,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
     public class UpdateMembershipRolesParams : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fully-qualified names of fields to update. May only contain the field `expiry_detail`.
+        /// The fully-qualified names of fields to update. May only contain the field `expiry_detail.expire_time`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; }

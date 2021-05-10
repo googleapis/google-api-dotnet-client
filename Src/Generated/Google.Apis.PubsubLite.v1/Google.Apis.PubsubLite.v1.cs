@@ -1318,6 +1318,59 @@ namespace Google.Apis.PubsubLite.v1
                             }
                         }
                     }
+
+                    /// <summary>Updates the committed cursor.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="subscription">The subscription for which to update the cursor.</param>
+                    public virtual CommitCursorRequest CommitCursor(Google.Apis.PubsubLite.v1.Data.CommitCursorRequest body, string subscription)
+                    {
+                        return new CommitCursorRequest(service, body, subscription);
+                    }
+
+                    /// <summary>Updates the committed cursor.</summary>
+                    public class CommitCursorRequest : PubsubLiteBaseServiceRequest<Google.Apis.PubsubLite.v1.Data.CommitCursorResponse>
+                    {
+                        /// <summary>Constructs a new CommitCursor request.</summary>
+                        public CommitCursorRequest(Google.Apis.Services.IClientService service, Google.Apis.PubsubLite.v1.Data.CommitCursorRequest body, string subscription) : base(service)
+                        {
+                            Subscription = subscription;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The subscription for which to update the cursor.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Subscription { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.PubsubLite.v1.Data.CommitCursorRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "commitCursor";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/cursor/{+subscription}:commitCursor";
+
+                        /// <summary>Initializes CommitCursor parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("subscription", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "subscription",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                            });
+                        }
+                    }
                 }
             }
         }
@@ -1524,6 +1577,31 @@ namespace Google.Apis.PubsubLite.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeMibPerSec")]
         public virtual System.Nullable<int> SubscribeMibPerSec { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CommitCursor.</summary>
+    public class CommitCursorRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new value for the committed cursor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cursor")]
+        public virtual Cursor Cursor { get; set; }
+
+        /// <summary>
+        /// The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the
+        /// range [0, topic.num_partitions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partition")]
+        public virtual System.Nullable<long> Partition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CommitCursor.</summary>
+    public class CommitCursorResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

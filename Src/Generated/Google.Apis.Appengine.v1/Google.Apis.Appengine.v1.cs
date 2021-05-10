@@ -3469,7 +3469,7 @@ namespace Google.Apis.Appengine.v1
         /// <summary>
         /// Updates the specified Application resource. You can update the following fields: auth_domain - Google
         /// authentication domain for controlling user access to the application. default_cookie_expiration - Cookie
-        /// expiration policy for the application.
+        /// expiration policy for the application. iap - Identity-Aware Proxy properties for the application.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="appsId">
@@ -3483,7 +3483,7 @@ namespace Google.Apis.Appengine.v1
         /// <summary>
         /// Updates the specified Application resource. You can update the following fields: auth_domain - Google
         /// authentication domain for controlling user access to the application. default_cookie_expiration - Cookie
-        /// expiration policy for the application.
+        /// expiration policy for the application. iap - Identity-Aware Proxy properties for the application.
         /// </summary>
         public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
         {

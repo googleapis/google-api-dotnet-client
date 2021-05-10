@@ -606,8 +606,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. Identifies the subscription resource on the Partner side. If a subscription was previously
-                /// created with the same subscription_id, we will directly return that one.
+                /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63
+                /// ASCII characters at the maximum. If a subscription was previously created with the same
+                /// subscription_id, we will directly return that one.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SubscriptionId { get; set; }
@@ -879,8 +880,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. Identifies the subscription resource on the Partner side. If a subscription was previously
-                /// created with the same subscription_id, we will directly return that one.
+                /// Required. Identifies the subscription resource on the Partner side. The value is restricted to 63
+                /// ASCII characters at the maximum. If a subscription was previously created with the same
+                /// subscription_id, we will directly return that one.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("subscriptionId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SubscriptionId { get; set; }
@@ -1285,7 +1287,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Identifier of the end-user in partner’s system.</summary>
+        /// <summary>
+        /// Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at
+        /// the maximum.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerUserToken")]
         public virtual string PartnerUserToken { get; set; }
 
