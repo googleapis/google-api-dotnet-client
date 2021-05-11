@@ -27,13 +27,10 @@ using System.Threading.Tasks;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// ImpersonatedCredentials allowing credentials issued to a user or service account to impersonate 
-    /// another. The source project using ImpersonatedCredentials must enable the "IAMCredentials" API.
-    /// Also, the target service account must grant the originating principal the "Service Account Token
-    /// Creator" IAM role. 
-    /// <para>
-    /// Take a look in https://cloud.google.com/iam/credentials/reference/rest/ for more details.
-    /// </para>
+    /// Allows a service account or user credential to impersonate a service account.
+    /// See https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
+    /// and https://cloud.google.com/iam/docs/impersonating-service-accounts
+    /// for more information.
     /// </summary>
     internal class ImpersonatedCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
