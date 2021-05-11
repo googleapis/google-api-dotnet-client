@@ -51,7 +51,7 @@ namespace Google.Apis.Auth.OAuth2
             public ImpersonationOptions Options { get; set; }
 
             /// <summary>Constructs a new initializer.</summary>
-            /// <param name="sourceCredential">The source credential used as to acquire the impersonated credentials.</param>
+            /// <param name="sourceCredential">The source credential used to acquire the impersonated credentials.</param>
             /// <param name="options">The impersonation options.</param>
             public Initializer(GoogleCredential sourceCredential, ImpersonationOptions options)
                 : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, options.TargetPrincipal))
