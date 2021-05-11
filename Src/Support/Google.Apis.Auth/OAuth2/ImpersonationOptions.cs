@@ -57,14 +57,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="scopes">The scopes to request during the authorization grant.</param>
         internal ImpersonationOptions(string targetPrincipal, TimeSpan? lifetime, IEnumerable<string> delegateAccounts, IEnumerable<string> scopes)
         {
-            if (!string.IsNullOrEmpty(targetPrincipal))
-            {
-                TargetPrincipal = targetPrincipal;
-            }
-            else
-            {
-                throw new ArgumentException("Parameter was empty", "targetPrincipal");
-            }
+            TargetPrincipal = targetPrincipal.ThrowIfNullOrEmpty(nameof(targetPrincipal));
             DelegateAccounts = delegateAccounts;
             Scopes = scopes;
             Lifetime = lifetime ?? new TimeSpan(1, 0, 0);
