@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
-    /// Represents a signer which is able to sign blob, for instance, <see cref="ServiceAccountCredential"/> and <see cref="ImpersonatedCredential"/>. 
+    /// Represents a data blob signer. 
     /// </summary>
     public interface IBlobSigner
     {
