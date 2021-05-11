@@ -68,7 +68,7 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
-        /// Gets the source credential used as to acquire the impersonated credentials.
+        /// Gets the source credential used to acquire the impersonated credentials.
         /// </summary>
         public GoogleCredential SourceCredential { get; }
 
