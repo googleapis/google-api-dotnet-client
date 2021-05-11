@@ -41,7 +41,7 @@ namespace Google.Apis.Auth.OAuth2
         new internal class Initializer : ServiceCredential.Initializer
         {
             /// <summary>
-            /// Gets or sets the source credential used as to acquire the impersonated credentials.
+            /// Gets or sets the source credential used to acquire the impersonated credentials.
             /// </summary>
             public GoogleCredential SourceCredential { get; set; }
 
