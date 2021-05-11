@@ -75,6 +75,21 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Installed application localhost redirect URI.</summary>
         public const string LocalhostRedirectUri = "http://localhost";
 
+        /// <summary>IAM access token endpoint for service account.</summary>
+        internal const string IamServiceAccountEndpointCommonPrefix = "https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/";
+
+        /// <summary>IAM access token endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamAccessTokenEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:generateAccessToken";
+
+        /// <summary>IAM signBlob endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamSignEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:signBlob";
+
+        /// <summary>IAM ID token endpoint format string. To use it insert the service account email.</summary>
+        internal const string IamIdTokenEndpointFormatString = IamServiceAccountEndpointCommonPrefix + "{0}:generateIdToken";
+
+        /// <summary>Scope needed for source credential in impersonated credential.</summary>
+        internal const string IamScope = "https://www.googleapis.com/auth/iam";
+
         /// <summary>
         /// The effective Compute Engine authorization token server URL.
         /// This takes account of the GCE_METADATA_HOST environment variable.

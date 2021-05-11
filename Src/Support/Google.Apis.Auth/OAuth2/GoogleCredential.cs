@@ -33,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider, IBlobSigner
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static readonly DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -319,12 +319,49 @@ namespace Google.Apis.Auth.OAuth2
             (credential is IOidcTokenProvider provider) ?
             provider.GetOidcTokenAsync(options, cancellationToken) :
             throw new InvalidOperationException(
-                $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)} are supported OIDC token providers.");
+                $"{nameof(UnderlyingCredential)} is not an OIDC token provider. Only {nameof(ServiceAccountCredential)}, {nameof(ComputeCredential)}, {nameof(ImpersonatedCredential)} are supported OIDC token providers.");
 
         /// <summary>
         /// Gets the underlying credential instance being wrapped.
         /// </summary>
         public ICredential UnderlyingCredential => credential;
+
+        /// <inheritdoc/>
+        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default) =>
+            UnderlyingCredential is IBlobSigner ?
+                await (UnderlyingCredential as IBlobSigner).SignBlobAsync(blob, cancellationToken).ConfigureAwait(false) :
+                throw new InvalidOperationException(
+                    $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)} are supported blob signers.");
+
+        /// <summary>Creates a <see cref="GoogleCredential"/> wrapping a <see cref="ImpersonatedCredential"/>.</summary>
+        /// <param name="options">The impersonation options.</param>
+        public GoogleCredential Impersonate(ImpersonationOptions options)
+        {
+            var initializer = new ImpersonatedCredential.Initializer(this, options);
+            var impersonatedCredential = new ImpersonatedCredential(initializer);
+            return new ImpersonatedGoogleCredential(impersonatedCredential);
+        }
+
+        /// <summary>
+        /// Wraps <see cref="ImpersonatedCredential"/> as <see cref="GoogleCredential"/>.
+        /// We need this subclass because wrapping <see cref="ImpersonatedCredential"/> (unlike other wrapped credential
+        /// types) requires special handling for <see cref="CreateScoped"/> member.
+        /// </summary>
+        internal class ImpersonatedGoogleCredential : GoogleCredential
+        {
+            internal ImpersonatedGoogleCredential(ImpersonatedCredential credential)
+                : base(credential) { }
+
+            public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
+            {
+                var impersonatedCredential = credential as ImpersonatedCredential;
+                var initializer = new ImpersonatedCredential.Initializer(impersonatedCredential)
+                {
+                    Options = impersonatedCredential.Options.WithScopes(scopes)
+                };
+                return new ImpersonatedGoogleCredential(new ImpersonatedCredential(initializer));
+            }
+        }
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         public static GoogleCredential FromServiceAccountCredential(ServiceAccountCredential credential)

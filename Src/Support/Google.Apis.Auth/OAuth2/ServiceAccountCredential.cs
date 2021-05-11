@@ -54,7 +54,7 @@ namespace Google.Apis.Auth.OAuth2
     /// is used and when regular OAuth2 token is used.
     /// </para>
     /// </summary>
-    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential
+    public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         /// <summary>An initializer class for the service account credential. </summary>
@@ -412,6 +412,10 @@ namespace Google.Apis.Auth.OAuth2
                 return Convert.ToBase64String(sigBytes);
             }
         }
+
+        /// <inheritdoc/>
+        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
+            => await Task.FromResult<string>(CreateSignature(blob)).ConfigureAwait(false);
 
         /// <summary>
         /// Creates a serialized header as specified in 
