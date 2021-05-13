@@ -6961,6 +6961,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
         public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; }
 
+        /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
+        public virtual DNSConfig DesiredDnsConfig { get; set; }
+
         /// <summary>
         /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
         /// </summary>
@@ -7245,6 +7249,25 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DNSConfig contains the desired set of options for configuring clusterDNS.</summary>
+    public class DNSConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>cluster_dns indicates which in-cluster DNS provider should be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDns")]
+        public virtual string ClusterDns { get; set; }
+
+        /// <summary>cluster_dns_domain is the suffix used for all cluster service records.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDnsDomain")]
+        public virtual string ClusterDnsDomain { get; set; }
+
+        /// <summary>cluster_dns_scope indicates the scope of access to cluster DNS records.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterDnsScope")]
+        public virtual string ClusterDnsScope { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8002,6 +8025,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSnatStatus")]
         public virtual DefaultSnatStatus DefaultSnatStatus { get; set; }
+
+        /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
+        public virtual DNSConfig DnsConfig { get; set; }
 
         /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible

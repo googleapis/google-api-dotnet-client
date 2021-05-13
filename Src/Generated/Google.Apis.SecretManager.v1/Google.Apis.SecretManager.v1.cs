@@ -1006,6 +1006,13 @@ namespace Google.Apis.SecretManager.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored
+                /// secret object. If the etag is omitted, the request succeeds.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Etag { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -1026,6 +1033,14 @@ namespace Google.Apis.SecretManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/secrets/[^/]+$",
+                    });
+                    RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "etag",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1626,14 +1641,22 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>Request message for SecretManagerService.DestroySecretVersion.</summary>
     public class DestroySecretVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
+        /// <summary>
+        /// Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored
+        /// secret version object. If the etag is omitted, the request succeeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for SecretManagerService.DisableSecretVersion.</summary>
     public class DisableSecretVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
+        /// <summary>
+        /// Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored
+        /// secret version object. If the etag is omitted, the request succeeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
     }
 
@@ -1652,7 +1675,11 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>Request message for SecretManagerService.EnableSecretVersion.</summary>
     public class EnableSecretVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
+        /// <summary>
+        /// Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored
+        /// secret version object. If the etag is omitted, the request succeeds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
     }
 
@@ -1963,6 +1990,10 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Optional. Etag of the currently stored Secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output,
         /// regardless of what was sent on input.
@@ -2007,9 +2038,6 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>Input only. The TTL for the Secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -2039,6 +2067,10 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destroyTime")]
         public virtual object DestroyTime { get; set; }
 
+        /// <summary>Output only. Etag of the currently stored SecretVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.
         /// SecretVersion IDs in a Secret start at 1 and are incremented for each subsequent version of the secret.
@@ -2053,9 +2085,6 @@ namespace Google.Apis.SecretManager.v1.Data
         /// <summary>Output only. The current state of the SecretVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>

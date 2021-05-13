@@ -2037,7 +2037,9 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for a single cluster. Intended to parallel the ConfigManagement CR.</summary>
+    /// <summary>
+    /// **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
+    /// </summary>
     public class ConfigManagementMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Binauthz conifguration for the cluster.</summary>
@@ -2064,7 +2066,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>State for Anthos Config Management</summary>
+    /// <summary>**Anthos Config Management**: State for a single cluster.</summary>
     public class ConfigManagementMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Binauthz status</summary>
@@ -2552,7 +2554,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metering per-Membership Feature State.</summary>
+    /// <summary>**Metering**: Per-Membership Feature State.</summary>
     public class MeteringMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time stamp of the most recent measurement of the number of vCPUs in the cluster.</summary>
@@ -2569,7 +2571,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>FeatureSpec contains the input for the MultiClusterIngress feature.</summary>
+    /// <summary>**Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.</summary>
     public class MultiClusterIngressFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Customer's billing structure</summary>
