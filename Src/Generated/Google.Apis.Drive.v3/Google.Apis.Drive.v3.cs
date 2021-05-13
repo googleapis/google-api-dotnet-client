@@ -2469,10 +2469,17 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// The space in which the IDs can be used to create new files. Supported values are 'drive' and
-            /// 'appDataFolder'.
+            /// 'appDataFolder'. (Default: 'drive')
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("space", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Space { get; set; }
+
+            /// <summary>
+            /// The type of items which the IDs can be used for. Supported values are 'files' and 'shortcuts'. Note that
+            /// 'shortcuts' are only supported in the drive 'space'. (Default: 'files')
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Type { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "generateIds";
@@ -2501,6 +2508,14 @@ namespace Google.Apis.Drive.v3
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "drive",
+                    Pattern = null,
+                });
+                RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "type",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "files",
                     Pattern = null,
                 });
             }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.RecaptchaEnterprise.v1.RecaptchaEnterpriseBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RecaptchaEnterprise.v1.RecaptchaEnterpriseBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

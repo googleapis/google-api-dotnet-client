@@ -640,7 +640,7 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>
                 /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
                 /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// SERIAL_NUMBER.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
@@ -648,7 +648,7 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>
                 /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
                 /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// SERIAL_NUMBER.
                 /// </summary>
                 public enum ResponseDateTimeRenderOptionEnum
                 {
@@ -673,14 +673,14 @@ namespace Google.Apis.Sheets.v4
 
                 /// <summary>
                 /// Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// FORMATTED_VALUE.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
 
                 /// <summary>
                 /// Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// FORMATTED_VALUE.
                 /// </summary>
                 public enum ResponseValueRenderOptionEnum
                 {
@@ -960,16 +960,14 @@ namespace Google.Apis.Sheets.v4
 
                 /// <summary>
                 /// How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
 
                 /// <summary>
                 /// How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
                 /// </summary>
                 public enum DateTimeRenderOptionEnum
                 {
@@ -1401,16 +1399,14 @@ namespace Google.Apis.Sheets.v4
 
                 /// <summary>
                 /// How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
 
                 /// <summary>
                 /// How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
                 /// </summary>
                 public enum DateTimeRenderOptionEnum
                 {
@@ -1462,15 +1458,13 @@ namespace Google.Apis.Sheets.v4
                 }
 
                 /// <summary>
-                /// How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// How values should be represented in the output. The default render option is FORMATTED_VALUE.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ValueRenderOptionEnum> ValueRenderOption { get; set; }
 
                 /// <summary>
-                /// How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// How values should be represented in the output. The default render option is FORMATTED_VALUE.
                 /// </summary>
                 public enum ValueRenderOptionEnum
                 {
@@ -1600,7 +1594,7 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>
                 /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
                 /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// DateTimeRenderOption.SERIAL_NUMBER.
+                /// SERIAL_NUMBER.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
@@ -1608,7 +1602,7 @@ namespace Google.Apis.Sheets.v4
                 /// <summary>
                 /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
                 /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// DateTimeRenderOption.SERIAL_NUMBER.
+                /// SERIAL_NUMBER.
                 /// </summary>
                 public enum ResponseDateTimeRenderOptionEnum
                 {
@@ -1633,14 +1627,14 @@ namespace Google.Apis.Sheets.v4
 
                 /// <summary>
                 /// Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// FORMATTED_VALUE.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
 
                 /// <summary>
                 /// Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.
+                /// FORMATTED_VALUE.
                 /// </summary>
                 public enum ResponseValueRenderOptionEnum
                 {
@@ -2552,7 +2546,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("positiveColorStyle")]
         public virtual ColorStyle PositiveColorStyle { get; set; }
 
-        /// <summary>Text formatting options for baseline value.</summary>
+        /// <summary>Text formatting options for baseline value. The link field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
@@ -2563,7 +2557,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// <summary>An axis of the chart. A chart may not have more than one axis per axis position.</summary>
     public class BasicChartAxis : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The format of the title. Only valid if the axis is not associated with the domain.</summary>
+        /// <summary>
+        /// The format of the title. Only valid if the axis is not associated with the domain. The link field is not
+        /// supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual TextFormat Format { get; set; }
 
@@ -2885,7 +2882,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// How dates, times, and durations should be represented in the output. This is ignored if value_render_option
-        /// is FORMATTED_VALUE. The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        /// is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRenderOption")]
         public virtual string DateTimeRenderOption { get; set; }
@@ -2899,8 +2896,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MajorDimension { get; set; }
 
         /// <summary>
-        /// How values should be represented in the output. The default render option is
-        /// ValueRenderOption.FORMATTED_VALUE.
+        /// How values should be represented in the output. The default render option is FORMATTED_VALUE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueRenderOption")]
         public virtual string ValueRenderOption { get; set; }
@@ -2990,7 +2986,7 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// The spreadsheet after updates were applied. This is only set if
-        /// [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.
+        /// BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response is `true`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatedSpreadsheet")]
         public virtual Spreadsheet UpdatedSpreadsheet { get; set; }
@@ -3021,15 +3017,13 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
-        /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-        /// DateTimeRenderOption.SERIAL_NUMBER.
+        /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseDateTimeRenderOption")]
         public virtual string ResponseDateTimeRenderOption { get; set; }
 
         /// <summary>
-        /// Determines how values in the response should be rendered. The default render option is
-        /// ValueRenderOption.FORMATTED_VALUE.
+        /// Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseValueRenderOption")]
         public virtual string ResponseValueRenderOption { get; set; }
@@ -3092,15 +3086,13 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// Determines how dates, times, and durations in the response should be rendered. This is ignored if
-        /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-        /// DateTimeRenderOption.SERIAL_NUMBER.
+        /// response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseDateTimeRenderOption")]
         public virtual string ResponseDateTimeRenderOption { get; set; }
 
         /// <summary>
-        /// Determines how values in the response should be rendered. The default render option is
-        /// ValueRenderOption.FORMATTED_VALUE.
+        /// Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseValueRenderOption")]
         public virtual string ResponseValueRenderOption { get; set; }
@@ -3328,7 +3320,9 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleSizes")]
         public virtual ChartData BubbleSizes { get; set; }
 
-        /// <summary>The format of the text inside the bubbles. Strikethrough and underline are not supported.</summary>
+        /// <summary>
+        /// The format of the text inside the bubbles. Strikethrough, underline, and link are not supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bubbleTextStyle")]
         public virtual TextFormat BubbleTextStyle { get; set; }
 
@@ -3446,7 +3440,7 @@ namespace Google.Apis.Sheets.v4.Data
     {
         /// <summary>
         /// Output only. Information about a data source formula on the cell. The field is set if user_entered_value is
-        /// a formula referencing some DATA_SOURCE sheet, e.g `=SUM(DataSheet!Column)`.
+        /// a formula referencing some DATA_SOURCE sheet, e.g. `=SUM(DataSheet!Column)`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceFormula")]
         public virtual DataSourceFormula DataSourceFormula { get; set; }
@@ -3490,7 +3484,9 @@ namespace Google.Apis.Sheets.v4.Data
 
         /// <summary>
         /// A hyperlink this cell points to, if any. If the cell contains multiple hyperlinks, this field will be empty.
-        /// This field is read-only. To set it, use a `=HYPERLINK` formula in the userEnteredValue.formulaValue field.
+        /// This field is read-only. To set it, use a `=HYPERLINK` formula in the userEnteredValue.formulaValue field. A
+        /// cell-level link can also be set from the userEnteredFormat.textFormat field. Alternatively, set a hyperlink
+        /// in the textFormatRun.format.link field that spans the entire cell.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hyperlink")]
         public virtual string Hyperlink { get; set; }
@@ -3572,7 +3568,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textDirection")]
         public virtual string TextDirection { get; set; }
 
-        /// <summary>The format of the text in the cell (unless overridden by a format run).</summary>
+        /// <summary>
+        /// The format of the text in the cell (unless overridden by a format run). Setting a cell-level link will clear
+        /// the cell's existing links. Setting a link in a format run will clear the cell-level link.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
@@ -3825,7 +3824,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
         public virtual string Subtitle { get; set; }
 
-        /// <summary>The subtitle text format. Strikethrough and underline are not supported.</summary>
+        /// <summary>The subtitle text format. Strikethrough, underline, and link are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtitleTextFormat")]
         public virtual TextFormat SubtitleTextFormat { get; set; }
 
@@ -3837,7 +3836,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>The title text format. Strikethrough and underline are not supported.</summary>
+        /// <summary>The title text format. Strikethrough, underline, and link are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextFormat")]
         public virtual TextFormat TitleTextFormat { get; set; }
 
@@ -4192,7 +4191,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual string Placement { get; set; }
 
-        /// <summary>The text format used for the data label.</summary>
+        /// <summary>The text format used for the data label. The link field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
@@ -4798,8 +4797,8 @@ namespace Google.Apis.Sheets.v4.Data
     public class DeleteSheetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ID of the sheet to delete. If the sheet is of SheetType.DATA_SOURCE type, the associated DataSource is
-        /// also deleted.
+        /// The ID of the sheet to delete. If the sheet is of DATA_SOURCE type, the associated DataSource is also
+        /// deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sheetId")]
         public virtual System.Nullable<int> SheetId { get; set; }
@@ -5207,7 +5206,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string FormulaValue { get; set; }
 
         /// <summary>
-        /// Represents a double value. Note: Dates, Times and DateTimes are represented as doubles in "serial number"
+        /// Represents a double value. Note: Dates, Times and DateTimes are represented as doubles in SERIAL_NUMBER
         /// format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numberValue")]
@@ -5808,7 +5807,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual TextPosition Position { get; set; }
 
-        /// <summary>Text formatting options for key value.</summary>
+        /// <summary>Text formatting options for key value. The link field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
@@ -7309,7 +7308,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
         public virtual string HorizontalAlignment { get; set; }
 
-        /// <summary>The text format of title in the slicer.</summary>
+        /// <summary>The text format of title in the slicer. The link field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 
@@ -7826,7 +7825,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeData")]
         public virtual ChartData SizeData { get; set; }
 
-        /// <summary>The text format for all labels on the chart.</summary>
+        /// <summary>The text format for all labels on the chart. The link field is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
 

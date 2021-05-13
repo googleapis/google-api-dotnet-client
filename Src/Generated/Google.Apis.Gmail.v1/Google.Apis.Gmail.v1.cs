@@ -92,7 +92,7 @@ namespace Google.Apis.Gmail.v1
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
             public static string GmailMetadata = "https://www.googleapis.com/auth/gmail.metadata";
 
-            /// <summary>View and modify but not delete your email</summary>
+            /// <summary>Read, compose, and send emails from your Gmail account</summary>
             public static string GmailModify = "https://www.googleapis.com/auth/gmail.modify";
 
             /// <summary>View your email messages and settings</summary>
@@ -138,7 +138,7 @@ namespace Google.Apis.Gmail.v1
             /// <summary>View your email message metadata such as labels and headers, but not the email body</summary>
             public const string GmailMetadata = "https://www.googleapis.com/auth/gmail.metadata";
 
-            /// <summary>View and modify but not delete your email</summary>
+            /// <summary>Read, compose, and send emails from your Gmail account</summary>
             public const string GmailModify = "https://www.googleapis.com/auth/gmail.modify";
 
             /// <summary>View your email messages and settings</summary>

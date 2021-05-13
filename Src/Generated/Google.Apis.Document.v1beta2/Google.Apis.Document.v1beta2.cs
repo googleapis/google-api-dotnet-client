@@ -1837,6 +1837,13 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; }
 
+        /// <summary>
+        /// The index of the parent revisions corresponding collection of items (eg. list of entities, properties within
+        /// entities, etc.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
         /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual System.Nullable<int> Revision { get; set; }
@@ -2946,6 +2953,13 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>The id of the parent provenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<int> Id { get; set; }
+
+        /// <summary>
+        /// The index of the parent revisions corresponding collection of items (eg. list of entities, properties within
+        /// entities, etc.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>The index of the [Document.revisions] identifying the parent revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]

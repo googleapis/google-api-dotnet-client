@@ -1375,10 +1375,9 @@ namespace Google.Apis.Translate.v3beta1
             /// <param name="parent">
             /// Required. Location to make a regional call. Format:
             /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
-            /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global
-            /// location is required for requests using AutoML models or custom glossaries. Models and glossaries must
-            /// be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400) error is
-            /// returned.
+            /// `projects/{project-number-or-id}/locations/global`. Non-global location is required for requests using
+            /// AutoML models or custom glossaries. Models and glossaries must be within the same region (have the same
+            /// location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
             /// </param>
             public virtual TranslateDocumentRequest TranslateDocument(Google.Apis.Translate.v3beta1.Data.TranslateDocumentRequest body, string parent)
             {
@@ -1399,10 +1398,9 @@ namespace Google.Apis.Translate.v3beta1
                 /// <summary>
                 /// Required. Location to make a regional call. Format:
                 /// `projects/{project-number-or-id}/locations/{location-id}`. For global calls, use
-                /// `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`. Non-global
-                /// location is required for requests using AutoML models or custom glossaries. Models and glossaries
-                /// must be within the same region (have the same location-id), otherwise an INVALID_ARGUMENT (400)
-                /// error is returned.
+                /// `projects/{project-number-or-id}/locations/global`. Non-global location is required for requests
+                /// using AutoML models or custom glossaries. Models and glossaries must be within the same region (have
+                /// the same location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }

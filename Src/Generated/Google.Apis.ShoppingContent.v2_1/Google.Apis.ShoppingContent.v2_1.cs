@@ -20556,7 +20556,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// - "`qualityNotExpected`" - "`receivedTooLate`" - "`storePackageMissing`" - "`transitPackageMissing`" -
         /// "`unsuccessfulDeliveryUndeliverable`" - "`wrongChargeInStore`" - "`wrongItem`" - "`returns`" -
         /// "`undeliverable`" - "`issueRelatedRefundAndReplacementAmountDescription`" - "`refundFromMerchant`" -
-        /// "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`"
+        /// "`returnLabelShippingFee`" - "`lumpSumCorrection`" - "`pspFee`" - "`principalRefundDoesNotFit`" -
+        /// "`principalRefundOrderedWrongItem`" - "`principalRefundQualityNotExpected`" -
+        /// "`principalRefundBetterPriceFound`" - "`principalRefundNoLongerNeeded`" - "`principalRefundChangedMind`" -
+        /// "`principalRefundReceivedTooLate`" - "`principalRefundIncorrectItemReceived`" -
+        /// "`principalRefundDamagedOrDefectiveItem`" - "`principalRefundDidNotMatchDescription`" -
+        /// "`principalRefundExpiredItem`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

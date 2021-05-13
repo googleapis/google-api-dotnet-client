@@ -11203,6 +11203,12 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
+        public virtual GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig ServiceDirectory { get; set; }
+
+        /// <summary>
         /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from
         /// webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         /// </summary>
@@ -11441,6 +11447,27 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generic Service configuration of this webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericWebService")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebService GenericWebService { get; set; }
+
+        /// <summary>
+        /// Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format:
+        /// `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the
+        /// location of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

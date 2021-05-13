@@ -334,7 +334,7 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Token to specify the next page in the list.</summary>
+                /// <summary>Token to specify the page of the request to be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -443,7 +443,7 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Token to specify next page in the list.</summary>
+                /// <summary>Token to specify the page of the request to be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -595,7 +595,7 @@ namespace Google.Apis.ChromeManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Token to specify the next page in the list.</summary>
+                /// <summary>Token to specify the page of the request to be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -717,7 +717,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("browserVersions")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1BrowserVersion> BrowserVersions { get; set; }
 
-        /// <summary>Token to specify the next page in the list.</summary>
+        /// <summary>Token to specify the next page of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -736,7 +736,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installedApps")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1InstalledApp> InstalledApps { get; set; }
 
-        /// <summary>Token to specify next page in the list.</summary>
+        /// <summary>Token to specify the next page of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -773,7 +773,7 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1Device> Devices { get; set; }
 
-        /// <summary>Token to specify the next page in the list.</summary>
+        /// <summary>Token to specify the next page of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

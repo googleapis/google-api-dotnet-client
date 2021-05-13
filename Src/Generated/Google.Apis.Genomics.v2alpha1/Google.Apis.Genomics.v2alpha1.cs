@@ -532,14 +532,10 @@ namespace Google.Apis.Genomics.v2alpha1
                 /// occurred. * error: If the pipeline is running, this value is NULL. Once the pipeline finishes, the
                 /// value is the standard Google error code. * labels.key or labels."key with space" where key is a
                 /// label key. * done: If the pipeline is running, this value is false. Once the pipeline finishes, the
-                /// value is true. In v1 and v1alpha2, the following filter fields are supported: * projectId: Required.
-                /// Corresponds to OperationMetadata.projectId. * createTime: The time this job was created, in seconds
-                /// from the [epoch](http://en.wikipedia.org/wiki/Unix_time). Can use `&amp;gt;=` and/or `&amp;lt;=`
-                /// operators. * status: Can be `RUNNING`, `SUCCESS`, `FAILURE`, or `CANCELED`. Only one status may be
-                /// specified. * labels.key where key is a label key. Examples: * `projectId = my-project AND createTime
-                /// &amp;gt;= 1432140000` * `projectId = my-project AND createTime &amp;gt;= 1432140000 AND createTime
-                /// &amp;lt;= 1432150000 AND status = RUNNING` * `projectId = my-project AND labels.color = *` *
-                /// `projectId = my-project AND labels.color = red`
+                /// value is true. Examples: * `projectId = my-project AND createTime &amp;gt;= 1432140000` * `projectId
+                /// = my-project AND createTime &amp;gt;= 1432140000 AND createTime &amp;lt;= 1432150000 AND status =
+                /// RUNNING` * `projectId = my-project AND labels.color = *` * `projectId = my-project AND labels.color
+                /// = red`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -962,29 +958,6 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes a Compute Engine resource that is being managed by a running pipeline.</summary>
-    public class ComputeEngine : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The names of the disks that were created for this pipeline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskNames")]
-        public virtual System.Collections.Generic.IList<string> DiskNames { get; set; }
-
-        /// <summary>The instance on which the operation is running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
-        public virtual string InstanceName { get; set; }
-
-        /// <summary>The machine type of the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
-        public virtual string MachineType { get; set; }
-
-        /// <summary>The availability zone in which the instance resides.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
-        public virtual string Zone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// An event generated when a container is forcibly terminated by the worker. Currently, this only occurs when the
     /// container outlives the timeout specified by the user.
@@ -1339,81 +1312,6 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An event that occurred during an Operation.</summary>
-    public class OperationEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required description of event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// Optional time of when event finished. An event can have a start time and no finish time. If an event has a
-        /// finish time, there must be a start time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>Optional time of when event started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata describing an Operation.</summary>
-    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This field is deprecated. Use `labels` instead. Optionally provided by the caller when submitting the
-        /// request that creates the operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
-        public virtual string ClientId { get; set; }
-
-        /// <summary>The time at which the job was submitted to the Genomics service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>The time at which the job stopped running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Optional event messages that were generated during the job's execution. This also contains any warnings that
-        /// were generated during import or export.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("events")]
-        public virtual System.Collections.Generic.IList<OperationEvent> Events { get; set; }
-
-        /// <summary>Optionally provided by the caller when submitting the request that creates the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-
-        /// <summary>The Google Cloud Project in which the job is scoped.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
-
-        /// <summary>
-        /// The original request that started the operation. Note that this will be in current version of the API. If
-        /// the operation was started with v1beta2 API and a GetOperation is performed on v1 API, a v1 request will be
-        /// returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("request")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Request { get; set; }
-
-        /// <summary>Runtime metadata on this Operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string, object> RuntimeMetadata { get; set; }
-
-        /// <summary>The time at which the job began to run.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Configuration for a persistent disk to be attached to the VM. See
     /// https://cloud.google.com/compute/docs/disks/performance for more information about disk type, size, and
@@ -1563,20 +1461,6 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     /// <summary>The response to the RunPipeline method, returned in the operation's result field on success.</summary>
     public class RunPipelineResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Runtime metadata that will be populated in the runtimeMetadata field of the Operation associated with a
-    /// RunPipeline execution.
-    /// </summary>
-    public class RuntimeMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Execution information specific to Google Compute Engine.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("computeEngine")]
-        public virtual ComputeEngine ComputeEngine { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

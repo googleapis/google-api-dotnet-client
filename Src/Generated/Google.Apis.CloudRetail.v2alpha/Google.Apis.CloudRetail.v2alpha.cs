@@ -1866,7 +1866,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("catalogItem")]
         public virtual string CatalogItem { get; set; }
 
-        /// <summary>GCS file path of the import source. Can be set for batch operation error.</summary>
+        /// <summary>Cloud Storage file path of the import source. Can be set for batch operation error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPath")]
         public virtual string GcsPath { get; set; }
 
@@ -2931,7 +2931,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
     /// <summary>
     /// UserEvent captures all metadata information Retail API needs to know about how end users interact with
-    /// customers' website. Next tag: 22
+    /// customers' website.
     /// </summary>
     public class GoogleCloudRetailV2alphaUserEvent : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.YouTubeAnalytics.v2 Client Library</Title>
-    <Version>1.51.0.2235</Version>
+    <Version>1.51.0.2321</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

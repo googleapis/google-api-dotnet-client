@@ -1,4 +1,12 @@
 {
+  "Google.Apis.CloudAsset.v1.AssetsResource+ListRequest.ContentTypeEnum": [
+    "CONTENT_TYPE_UNSPECIFIED",
+    "RESOURCE",
+    "IAM_POLICY",
+    "ORG_POLICY",
+    "ACCESS_POLICY",
+    "OS_INVENTORY"
+  ],
   "Google.Apis.CloudAsset.v1.CloudAssetBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
