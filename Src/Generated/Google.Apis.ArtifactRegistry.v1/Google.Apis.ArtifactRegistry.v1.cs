@@ -820,14 +820,33 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DockerImage represents a docker artifact.</summary>
+    /// <summary>
+    /// DockerImage represents a docker artifact. The following fields are returned as untyped metadata in the Version
+    /// resource, using camelcase keys (i.e. metadata.imageSizeBytes): - imageSizeBytes - mediaType - buildTime
+    /// </summary>
     public class DockerImage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Calculated size of the image.</summary>
+        /// <summary>
+        /// The time this image was built. This field is returned as the 'metadata.buildTime' field in the Version
+        /// resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the
+        /// JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON
+        /// marshals google.protobuf.Timestamp into an RFC 3339 string.
+        /// (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=158-159&amp;amp;rcl=364878183).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildTime")]
+        public virtual object BuildTime { get; set; }
+
+        /// <summary>
+        /// Calculated size of the image. This field is returned as the 'metadata.imageSizeBytes' field in the Version
+        /// resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageSizeBytes")]
         public virtual System.Nullable<long> ImageSizeBytes { get; set; }
 
-        /// <summary>Media type of this image, e.g. "application/vnd.docker.distribution.manifest.v2+json".</summary>
+        /// <summary>
+        /// Media type of this image, e.g. "application/vnd.docker.distribution.manifest.v2+json". This field is
+        /// returned as the 'metadata.mediaType' field in the Version resource.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
         public virtual string MediaType { get; set; }
 

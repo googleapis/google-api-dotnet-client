@@ -358,9 +358,9 @@ namespace Google.Apis.ServiceControl.v1
         /// should cache the check results and reuse them for 60 seconds. In case of any server errors, the client
         /// should rely on the cached results for much longer time to avoid outage. WARNING: There is general 60s delay
         /// for the configuration and policy propagation, therefore callers MUST NOT depend on the `Check` method having
-        /// the latest policy information. NOTE: the CheckRequest has the size limit of 64KB. This method requires the
-        /// `servicemanagement.services.check` permission on the specified service. For more information, see [Cloud
-        /// IAM](https://cloud.google.com/iam).
+        /// the latest policy information. NOTE: the CheckRequest has the size limit (wire-format byte size) of 1MB.
+        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">
@@ -379,9 +379,9 @@ namespace Google.Apis.ServiceControl.v1
         /// should cache the check results and reuse them for 60 seconds. In case of any server errors, the client
         /// should rely on the cached results for much longer time to avoid outage. WARNING: There is general 60s delay
         /// for the configuration and policy propagation, therefore callers MUST NOT depend on the `Check` method having
-        /// the latest policy information. NOTE: the CheckRequest has the size limit of 64KB. This method requires the
-        /// `servicemanagement.services.check` permission on the specified service. For more information, see [Cloud
-        /// IAM](https://cloud.google.com/iam).
+        /// the latest policy information. NOTE: the CheckRequest has the size limit (wire-format byte size) of 1MB.
+        /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         /// </summary>
         public class CheckRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.CheckResponse>
         {

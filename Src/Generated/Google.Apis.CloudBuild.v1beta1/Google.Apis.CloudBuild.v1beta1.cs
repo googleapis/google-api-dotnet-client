@@ -993,6 +993,10 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual System.Collections.Generic.IDictionary<string, TimeSpan> Timing { get; set; }
 
+        /// <summary>Output only. Non-fatal problems encountered during the execution of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<Warning> Warnings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1866,6 +1870,21 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A non-fatal problem encountered during the execution of the build.</summary>
+    public class Warning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The priority for this warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>Explanation of the warning generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
