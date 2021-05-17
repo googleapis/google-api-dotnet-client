@@ -6800,6 +6800,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDatabaseEncryption")]
         public virtual DatabaseEncryption DesiredDatabaseEncryption { get; set; }
 
+        /// <summary>The desired datapath provider for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredDatapathProvider")]
+        public virtual string DesiredDatapathProvider { get; set; }
+
         /// <summary>The desired status of whether to disable default sNAT for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDefaultSnatStatus")]
         public virtual DefaultSnatStatus DesiredDefaultSnatStatus { get; set; }
@@ -7697,6 +7701,13 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>NetworkConfig reports the relative names of network &amp; subnetwork.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy
+        /// implementation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datapathProvider")]
+        public virtual string DatapathProvider { get; set; }
+
         /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when
         /// default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied
@@ -9420,6 +9431,31 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UpgradeAvailableEvent is a notification sent to customers when a new available version is released.
+    /// </summary>
+    public class UpgradeAvailableEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The release channel of the version. If empty, it means a non-channel release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseChannel")]
+        public virtual ReleaseChannel ReleaseChannel { get; set; }
+
+        /// <summary>Optional relative path to the resource. For example, the relative path of the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The resource type of the release version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The release version available for upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

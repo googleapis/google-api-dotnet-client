@@ -716,7 +716,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The name of this connection profile resource in the form of
-                /// projects/{project}/locations/{location}/instances/{instance}.
+                /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DatabaseMigrationService.v1.Data.ConnectionProfile body, string name)
                 {
@@ -736,7 +736,7 @@ namespace Google.Apis.DatabaseMigrationService.v1
 
                     /// <summary>
                     /// The name of this connection profile resource in the form of
-                    /// projects/{project}/locations/{location}/instances/{instance}.
+                    /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2657,7 +2657,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// The name of this connection profile resource in the form of
-        /// projects/{project}/locations/{location}/instances/{instance}.
+        /// projects/{project}/locations/{location}/connectionProfiles/{instance}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3361,8 +3361,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
         /// <summary>
         /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For
-        /// example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be
-        /// removed after it is set.
+        /// example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed
+        /// after it is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; }

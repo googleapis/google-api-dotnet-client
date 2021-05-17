@@ -438,8 +438,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields:
-                        /// state Eg: `state:"DISMISSED" or state:"ACTIVE"
+                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields: *
+                        /// `stateInfo.state` * `insightSubtype` * `severity` Examples: * `stateInfo.state = ACTIVE OR
+                        /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+                        /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity =
+                        /// HIGH)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -703,8 +707,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter expression to restrict the recommendations returned. Supported filter fields:
-                        /// state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+                        /// Filter expression to restrict the recommendations returned. Supported filter fields: *
+                        /// `state_info.state` * `recommenderSubtype` * `priority` Examples: * `stateInfo.state = ACTIVE
+                        /// OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+                        /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state = ACTIVE AND (priority =
+                        /// P1 OR priority = P2)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1140,8 +1148,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields:
-                        /// state Eg: `state:"DISMISSED" or state:"ACTIVE"
+                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields: *
+                        /// `stateInfo.state` * `insightSubtype` * `severity` Examples: * `stateInfo.state = ACTIVE OR
+                        /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+                        /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity =
+                        /// HIGH)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1405,8 +1417,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter expression to restrict the recommendations returned. Supported filter fields:
-                        /// state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+                        /// Filter expression to restrict the recommendations returned. Supported filter fields: *
+                        /// `state_info.state` * `recommenderSubtype` * `priority` Examples: * `stateInfo.state = ACTIVE
+                        /// OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+                        /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state = ACTIVE AND (priority =
+                        /// P1 OR priority = P2)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -1842,8 +1858,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields:
-                        /// state Eg: `state:"DISMISSED" or state:"ACTIVE"
+                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields: *
+                        /// `stateInfo.state` * `insightSubtype` * `severity` Examples: * `stateInfo.state = ACTIVE OR
+                        /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+                        /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity =
+                        /// HIGH)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -2107,8 +2127,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter expression to restrict the recommendations returned. Supported filter fields:
-                        /// state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+                        /// Filter expression to restrict the recommendations returned. Supported filter fields: *
+                        /// `state_info.state` * `recommenderSubtype` * `priority` Examples: * `stateInfo.state = ACTIVE
+                        /// OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+                        /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state = ACTIVE AND (priority =
+                        /// P1 OR priority = P2)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -2544,8 +2568,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields:
-                        /// state Eg: `state:"DISMISSED" or state:"ACTIVE"
+                        /// Optional. Filter expression to restrict the insights returned. Supported filter fields: *
+                        /// `stateInfo.state` * `insightSubtype` * `severity` Examples: * `stateInfo.state = ACTIVE OR
+                        /// stateInfo.state = DISMISSED` * `insightSubtype = PERMISSIONS_USAGE` * `severity = CRITICAL
+                        /// OR severity = HIGH` * `stateInfo.state = ACTIVE AND (severity = CRITICAL OR severity =
+                        /// HIGH)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -2809,8 +2837,12 @@ namespace Google.Apis.Recommender.v1beta1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter expression to restrict the recommendations returned. Supported filter fields:
-                        /// state_info.state Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
+                        /// Filter expression to restrict the recommendations returned. Supported filter fields: *
+                        /// `state_info.state` * `recommenderSubtype` * `priority` Examples: * `stateInfo.state = ACTIVE
+                        /// OR stateInfo.state = DISMISSED` * `recommenderSubtype = REMOVE_ROLE OR recommenderSubtype =
+                        /// REPLACE_ROLE` * `priority = P1 OR priority = P2` * `stateInfo.state = ACTIVE AND (priority =
+                        /// P1 OR priority = P2)` (These expressions are based on the filter language described at
+                        /// https://google.aip.dev/160)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -3111,6 +3143,10 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>Use with CategoryType.COST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costProjection")]
         public virtual GoogleCloudRecommenderV1beta1CostProjection CostProjection { get; set; }
+
+        /// <summary>Use with CategoryType.SECURITY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityProjection")]
+        public virtual GoogleCloudRecommenderV1beta1SecurityProjection SecurityProjection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3505,6 +3541,17 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>A map of metadata for the state, provided by user or automations systems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> StateMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains various ways of describing the impact on Security.</summary>
+    public class GoogleCloudRecommenderV1beta1SecurityProjection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This field can be used by the recommender to define details specific to security impact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

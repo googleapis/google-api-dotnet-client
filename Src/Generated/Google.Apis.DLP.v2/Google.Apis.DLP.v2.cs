@@ -10423,7 +10423,11 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual GooglePrivacyDlpV2RecordCondition Condition { get; set; }
 
-        /// <summary>Required. Input field(s) to apply the transformation to.</summary>
+        /// <summary>
+        /// Required. Input field(s) to apply the transformation to. When you have columns that reference their position
+        /// within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example,
+        /// instead of "contact.nums[0].type", use "contact.nums.type".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> Fields { get; set; }
 
