@@ -5695,7 +5695,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The time when the operation was finished.</summary>
+        /// <summary>The time when the operation finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doneTime")]
         public virtual object DoneTime { get; set; }
 
@@ -6067,7 +6067,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
     /// <summary>
     /// Confidential Instance Config for clusters using Confidential VMs
-    /// (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+    /// (https://cloud.google.com/compute/confidential-vm/docs)
     /// </summary>
     public class ConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6226,7 +6226,7 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// Optional. Confidential Instance Config for clusters using Confidential VMs
-        /// (https://cloud.google.com/compute/confidential-vm/docs)
+        /// (https://cloud.google.com/compute/confidential-vm/docs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
         public virtual ConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }

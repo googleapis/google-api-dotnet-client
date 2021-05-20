@@ -28,6 +28,10 @@
     "INTENT_VIEW_UNSPECIFIED",
     "INTENT_VIEW_FULL"
   ],
+  "Google.Apis.Dialogflow.v2.ProjectsResource+LocationsResource+AgentResource+EnvironmentsResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
   "Google.Apis.Dialogflow.v2.ProjectsResource+LocationsResource+AgentResource+IntentsResource+CreateRequest.IntentViewEnum": [
     "INTENT_VIEW_UNSPECIFIED",
     "INTENT_VIEW_FULL"
