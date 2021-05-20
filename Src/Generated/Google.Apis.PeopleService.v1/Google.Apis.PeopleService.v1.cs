@@ -1952,7 +1952,7 @@ namespace Google.Apis.PeopleService.v1
             /// information about the authenticated user, specify `people/me`. - To get information about a google
             /// account, specify `people/{account_id}`. - To get information about a contact, specify the resource name
             /// that identifies the contact as returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 50
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 200
             /// resource names in one request.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]

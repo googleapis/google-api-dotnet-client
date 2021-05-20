@@ -4946,6 +4946,9 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exchange")]
         public virtual string Exchange { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("forecastInventory")]
+        public virtual string ForecastInventory { get; set; }
+
         /// <summary>Link to publisher's Google+ page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googlePlusLink")]
         public virtual string GooglePlusLink { get; set; }

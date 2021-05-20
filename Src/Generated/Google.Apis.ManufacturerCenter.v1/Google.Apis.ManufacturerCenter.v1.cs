@@ -927,7 +927,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// https://support.google.com/manufacturers/answer/6124116#sizetype.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeType")]
-        public virtual string SizeType { get; set; }
+        public virtual System.Collections.Generic.IList<string> SizeType { get; set; }
 
         /// <summary>
         /// The suggested retail price (MSRP) of the product. For more information, see

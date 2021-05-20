@@ -440,7 +440,7 @@ namespace Google.Apis.StreetViewPublish.v1
             public enum ViewEnum
             {
                 /// <summary>
-                /// Server reponses do not include the download URL for the photo bytes. The default value.
+                /// Server responses do not include the download URL for the photo bytes. The default value.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 0,
@@ -752,7 +752,7 @@ namespace Google.Apis.StreetViewPublish.v1
             public enum ViewEnum
             {
                 /// <summary>
-                /// Server reponses do not include the download URL for the photo bytes. The default value.
+                /// Server responses do not include the download URL for the photo bytes. The default value.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 0,
@@ -919,7 +919,7 @@ namespace Google.Apis.StreetViewPublish.v1
             public enum ViewEnum
             {
                 /// <summary>
-                /// Server reponses do not include the download URL for the photo bytes. The default value.
+                /// Server responses do not include the download URL for the photo bytes. The default value.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 0,

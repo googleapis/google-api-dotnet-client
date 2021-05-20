@@ -1607,7 +1607,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The maximum number of links to return in the response, used for pagination.</summary>
+            /// <summary>
+            /// The maximum number of links to return in the response, used for pagination. The minimum allowed value is
+            /// 5 results per page. If provided value is lower than 5, it will be automatically increased to 5.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -8477,6 +8480,100 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an existing product in your Merchant Center account. Only updates attributes provided in the
+        /// request.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// The ID of the account that contains the product. This account cannot be a multi-client account.
+        /// </param>
+        /// <param name="productId">The REST ID of the product for which to update.</param>
+        public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId, string productId)
+        {
+            return new UpdateRequest(service, body, merchantId, productId);
+        }
+
+        /// <summary>
+        /// Updates an existing product in your Merchant Center account. Only updates attributes provided in the
+        /// request.
+        /// </summary>
+        public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Product>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Product body, ulong merchantId, string productId) : base(service)
+            {
+                MerchantId = merchantId;
+                ProductId = productId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The ID of the account that contains the product. This account cannot be a multi-client account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The REST ID of the product for which to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProductId { get; private set; }
+
+            /// <summary>
+            /// The list of product attributes to be updated. Attributes specified in the update mask without a value
+            /// specified in the body will be deleted from the product. Only top-level product attributes can be
+            /// updated. If not defined, product attributes with set values will be updated and other attributes will
+            /// stay unchanged.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.Product Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "update";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/products/{productId}";
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -15957,7 +16054,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual PriceAmount CustomerShippingFee { get; set; }
 
         /// <summary>
-        /// Required. The delivery postal code, as a continuous string without spaces or dashes, e.g. "95016".
+        /// Required. The delivery postal code, as a continuous string without spaces or dashes, e.g. "95016". This
+        /// field will be anonymized in returned OrderTrackingSignal creation response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryPostalCode")]
         public virtual string DeliveryPostalCode { get; set; }
@@ -15988,7 +16086,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderCreatedTime")]
         public virtual DateTime OrderCreatedTime { get; set; }
 
-        /// <summary>Required. The ID of the order on the merchant side.</summary>
+        /// <summary>
+        /// Required. The ID of the order on the merchant side. This field will be hashed in returned
+        /// OrderTrackingSignal creation response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; }
 
@@ -16048,7 +16149,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
-        /// <summary>Required. The shipment ID.</summary>
+        /// <summary>
+        /// Required. The shipment ID. This field will be hashed in returned OrderTrackingSignal creation response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; }
 
@@ -16091,7 +16194,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestDeliveryPromiseTime")]
         public virtual DateTime LatestDeliveryPromiseTime { get; set; }
 
-        /// <summary>The origin postal code, as a continuous string without spaces or dashes, e.g. "95016".</summary>
+        /// <summary>
+        /// The origin postal code, as a continuous string without spaces or dashes, e.g. "95016". This field will be
+        /// anonymized in returned OrderTrackingSignal creation response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
         public virtual string OriginPostalCode { get; set; }
 
@@ -16102,7 +16208,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("originRegionCode")]
         public virtual string OriginRegionCode { get; set; }
 
-        /// <summary>Required. The shipment ID.</summary>
+        /// <summary>
+        /// Required. The shipment ID. This field will be hashed in returned OrderTrackingSignal creation response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; }
 
@@ -16385,9 +16493,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class OrderreturnsLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the line item. This value is assigned by Google when an order is created.</summary>
+        /// <summary>
+        /// The ID of the line item. This value is assigned by Google when an order is created. Either lineItemId or
+        /// productId is required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; }
+
+        /// <summary>
+        /// The ID of the product to cancel. This is the REST ID used in the products service. Either lineItemId or
+        /// productId is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
 
         /// <summary>The quantity of this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -18032,9 +18150,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     /// <summary>
     ///  Required product attributes are primarily defined by the products data specification. See the Products Data
-    /// Specification Help Center article for information. Some attributes are country-specific, so make sure you select
-    /// the appropriate country in the drop-down selector at the top of the page. Product data. After inserting,
-    /// updating, or deleting a product, it may take several minutes before changes take effect.
+    /// Specification Help Center article for information. Product data. After inserting, updating, or deleting a
+    /// product, it may take several minutes before changes take effect.
     /// </summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18780,7 +18897,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<ulong> MerchantId { get; set; }
 
         /// <summary>
-        /// The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" - "`insert`"
+        /// The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`update`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
@@ -18792,6 +18909,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The ID of the product to get or delete. Only defined if the method is `get` or `delete`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// The list of product attributes to be updated. Attributes specified in the update mask without a value
+        /// specified in the body will be deleted from the product. Only top-level product attributes can be updated. If
+        /// not defined, product attributes with set values will be updated and other attributes will stay unchanged.
+        /// Only defined if the method is `update`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19319,7 +19445,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicationCount")]
         public virtual System.Nullable<long> ApplicationCount { get; set; }
 
-        /// <summary>Stats specific to buybox winning rules for product report.</summary>
+        /// <summary>Stats specific to buybox winning rules for product report (deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyboxWinningProductStats")]
         public virtual RepricingProductReportBuyboxWinningProductStats BuyboxWinningProductStats { get; set; }
 
@@ -19550,7 +19676,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// <summary>Resource that represents a daily Repricing rule report. Next ID: 11</summary>
     public class RepricingRuleReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Stats specific to buybox winning rules for rule report.</summary>
+        /// <summary>Stats specific to buybox winning rules for rule report (deprecated).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buyboxWinningRuleStats")]
         public virtual RepricingRuleReportBuyboxWinningRuleStats BuyboxWinningRuleStats { get; set; }
 

@@ -11633,12 +11633,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// Additional parameters to be put into session parameters. To remove a parameter from the session, clients
-        /// should explicitly set the parameter value to null. Depending on your protocol or client library language,
-        /// this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of
-        /// (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If
-        /// parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one
-        /// of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite
-        /// entity: map from composite entity property names to property values - Else: parameter value
+        /// should explicitly set the parameter value to null. You can reference the session parameters in the agent
+        /// with the following format: $session.params.parameter-id. Depending on your protocol or client library
+        /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
+        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
+        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
+        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
+        /// a composite entity: map from composite entity property names to property values - Else: parameter value
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -12117,8 +12118,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual System.Collections.Generic.IList<string> PurgeDataTypes { get; set; }
 
         /// <summary>
-        /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g.,
-        /// Stackdriver logs.
+        /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not
+        /// have access to – for example, Cloud logging.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionScope")]
         public virtual string RedactionScope { get; set; }
@@ -12128,9 +12129,11 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string RedactionStrategy { get; set; }
 
         /// <summary>
-        /// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d
-        /// TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use
-        /// Dialogflow's default TTL.
+        /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging,
+        /// which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL.
+        /// Setting a value higher than that has no effect. A missing value or setting to 0 also means we use
+        /// Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google
+        /// representative to check availability for you.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionWindowDays")]
         public virtual System.Nullable<int> RetentionWindowDays { get; set; }

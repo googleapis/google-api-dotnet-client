@@ -2054,6 +2054,33 @@ namespace Google.Apis.RemoteBuildExecution.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryUsage")]
         public virtual GoogleDevtoolsRemotebuildbotResourceUsageStat MemoryUsage { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDiskIoStats")]
+        public virtual GoogleDevtoolsRemotebuildbotResourceUsageIOStats TotalDiskIoStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleDevtoolsRemotebuildbotResourceUsageIOStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("readBytesCount")]
+        public virtual System.Nullable<ulong> ReadBytesCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("readCount")]
+        public virtual System.Nullable<ulong> ReadCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("readTimeMs")]
+        public virtual System.Nullable<ulong> ReadTimeMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeBytesCount")]
+        public virtual System.Nullable<ulong> WriteBytesCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeCount")]
+        public virtual System.Nullable<ulong> WriteCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("writeTimeMs")]
+        public virtual System.Nullable<ulong> WriteTimeMs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
