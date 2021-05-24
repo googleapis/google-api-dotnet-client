@@ -1,0 +1,484 @@
+{
+  "Google.Apis.Dfareporting.v3_5.AccountsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AccountsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AccountUserProfilesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AccountUserProfilesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdsResource+ListRequest.CompatibilityEnum": [
+    "DISPLAY",
+    "DISPLAY_INTERSTITIAL",
+    "APP",
+    "APP_INTERSTITIAL",
+    "IN_STREAM_VIDEO",
+    "IN_STREAM_AUDIO"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdsResource+ListRequest.TypeEnum": [
+    "AD_SERVING_STANDARD_AD",
+    "AD_SERVING_DEFAULT_AD",
+    "AD_SERVING_CLICK_TRACKER",
+    "AD_SERVING_TRACKING",
+    "AD_SERVING_BRAND_SAFE_AD"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertiserGroupsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertiserGroupsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertiserLandingPagesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertiserLandingPagesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertisersResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertisersResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.AdvertisersResource+ListRequest.StatusEnum": [
+    "APPROVED",
+    "ON_HOLD"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CampaignCreativeAssociationsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CampaignsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CampaignsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ChangeLogsResource+ListRequest.ActionEnum": [
+    "ACTION_CREATE",
+    "ACTION_UPDATE",
+    "ACTION_DELETE",
+    "ACTION_ENABLE",
+    "ACTION_DISABLE",
+    "ACTION_ADD",
+    "ACTION_REMOVE",
+    "ACTION_MARK_AS_DEFAULT",
+    "ACTION_ASSOCIATE",
+    "ACTION_ASSIGN",
+    "ACTION_UNASSIGN",
+    "ACTION_SEND",
+    "ACTION_LINK",
+    "ACTION_UNLINK",
+    "ACTION_PUSH",
+    "ACTION_EMAIL_TAGS",
+    "ACTION_SHARE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ChangeLogsResource+ListRequest.ObjectTypeEnum": [
+    "OBJECT_ADVERTISER",
+    "OBJECT_FLOODLIGHT_CONFIGURATION",
+    "OBJECT_AD",
+    "OBJECT_FLOODLIGHT_ACTVITY",
+    "OBJECT_CAMPAIGN",
+    "OBJECT_FLOODLIGHT_ACTIVITY_GROUP",
+    "OBJECT_CREATIVE",
+    "OBJECT_PLACEMENT",
+    "OBJECT_DFA_SITE",
+    "OBJECT_USER_ROLE",
+    "OBJECT_USER_PROFILE",
+    "OBJECT_ADVERTISER_GROUP",
+    "OBJECT_ACCOUNT",
+    "OBJECT_SUBACCOUNT",
+    "OBJECT_RICHMEDIA_CREATIVE",
+    "OBJECT_INSTREAM_CREATIVE",
+    "OBJECT_MEDIA_ORDER",
+    "OBJECT_CONTENT_CATEGORY",
+    "OBJECT_PLACEMENT_STRATEGY",
+    "OBJECT_SD_SITE",
+    "OBJECT_SIZE",
+    "OBJECT_CREATIVE_GROUP",
+    "OBJECT_CREATIVE_ASSET",
+    "OBJECT_USER_PROFILE_FILTER",
+    "OBJECT_LANDING_PAGE",
+    "OBJECT_CREATIVE_FIELD",
+    "OBJECT_REMARKETING_LIST",
+    "OBJECT_PROVIDED_LIST_CLIENT",
+    "OBJECT_EVENT_TAG",
+    "OBJECT_CREATIVE_BUNDLE",
+    "OBJECT_BILLING_ACCOUNT_GROUP",
+    "OBJECT_BILLING_FEATURE",
+    "OBJECT_RATE_CARD",
+    "OBJECT_ACCOUNT_BILLING_FEATURE",
+    "OBJECT_BILLING_MINIMUM_FEE",
+    "OBJECT_BILLING_PROFILE",
+    "OBJECT_PLAYSTORE_LINK",
+    "OBJECT_TARGETING_TEMPLATE",
+    "OBJECT_SEARCH_LIFT_STUDY",
+    "OBJECT_FLOODLIGHT_DV360_LINK"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ContentCategoriesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ContentCategoriesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeAssetsResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeAssetsResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeFieldsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeFieldsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeFieldValuesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "VALUE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeFieldValuesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeGroupsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativeGroupsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.CreativesResource+ListRequest.TypesEnum": [
+    "IMAGE",
+    "DISPLAY_REDIRECT",
+    "CUSTOM_DISPLAY",
+    "INTERNAL_REDIRECT",
+    "CUSTOM_DISPLAY_INTERSTITIAL",
+    "INTERSTITIAL_INTERNAL_REDIRECT",
+    "TRACKING_TEXT",
+    "RICH_MEDIA_DISPLAY_BANNER",
+    "RICH_MEDIA_INPAGE_FLOATING",
+    "RICH_MEDIA_IM_EXPAND",
+    "RICH_MEDIA_DISPLAY_EXPANDING",
+    "RICH_MEDIA_DISPLAY_INTERSTITIAL",
+    "RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL",
+    "RICH_MEDIA_MOBILE_IN_APP",
+    "FLASH_INPAGE",
+    "INSTREAM_VIDEO",
+    "VPAID_LINEAR_VIDEO",
+    "VPAID_NON_LINEAR_VIDEO",
+    "INSTREAM_VIDEO_REDIRECT",
+    "RICH_MEDIA_PEEL_DOWN",
+    "HTML5_BANNER",
+    "DISPLAY",
+    "DISPLAY_IMAGE_GALLERY",
+    "BRAND_SAFE_DEFAULT_INSTREAM_VIDEO",
+    "INSTREAM_AUDIO"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DfareportingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DfareportingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DirectorySitesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DirectorySitesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DynamicTargetingKeysResource+DeleteRequest.ObjectTypeEnum": [
+    "OBJECT_ADVERTISER",
+    "OBJECT_AD",
+    "OBJECT_CREATIVE",
+    "OBJECT_PLACEMENT"
+  ],
+  "Google.Apis.Dfareporting.v3_5.DynamicTargetingKeysResource+ListRequest.ObjectTypeEnum": [
+    "OBJECT_ADVERTISER",
+    "OBJECT_AD",
+    "OBJECT_CREATIVE",
+    "OBJECT_PLACEMENT"
+  ],
+  "Google.Apis.Dfareporting.v3_5.EventTagsResource+ListRequest.EventTagTypesEnum": [
+    "IMPRESSION_IMAGE_EVENT_TAG",
+    "IMPRESSION_JAVASCRIPT_EVENT_TAG",
+    "CLICK_THROUGH_EVENT_TAG"
+  ],
+  "Google.Apis.Dfareporting.v3_5.EventTagsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.EventTagsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FilesResource+ListRequest.ScopeEnum": [
+    "ALL",
+    "MINE",
+    "SHARED_WITH_ME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FilesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "LAST_MODIFIED_TIME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FilesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivitiesResource+ListRequest.FloodlightActivityGroupTypeEnum": [
+    "COUNTER",
+    "SALE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivitiesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivitiesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivityGroupsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivityGroupsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.FloodlightActivityGroupsResource+ListRequest.TypeEnum": [
+    "COUNTER",
+    "SALE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.InventoryItemsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.InventoryItemsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.InventoryItemsResource+ListRequest.TypeEnum": [
+    "PLANNING_PLACEMENT_TYPE_REGULAR",
+    "PLANNING_PLACEMENT_TYPE_CREDIT"
+  ],
+  "Google.Apis.Dfareporting.v3_5.MobileAppsResource+ListRequest.DirectoriesEnum": [
+    "UNKNOWN",
+    "APPLE_APP_STORE",
+    "GOOGLE_PLAY_STORE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.OrderDocumentsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.OrderDocumentsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.OrdersResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.OrdersResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementGroupsResource+ListRequest.PlacementGroupTypeEnum": [
+    "PLACEMENT_PACKAGE",
+    "PLACEMENT_ROADBLOCK"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementGroupsResource+ListRequest.PricingTypesEnum": [
+    "PRICING_TYPE_CPM",
+    "PRICING_TYPE_CPC",
+    "PRICING_TYPE_CPA",
+    "PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
+    "PRICING_TYPE_FLAT_RATE_CLICKS",
+    "PRICING_TYPE_CPM_ACTIVEVIEW"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementGroupsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementGroupsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+GeneratetagsRequest.TagFormatsEnum": [
+    "PLACEMENT_TAG_STANDARD",
+    "PLACEMENT_TAG_IFRAME_JAVASCRIPT",
+    "PLACEMENT_TAG_IFRAME_ILAYER",
+    "PLACEMENT_TAG_INTERNAL_REDIRECT",
+    "PLACEMENT_TAG_JAVASCRIPT",
+    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT",
+    "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT",
+    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT",
+    "PLACEMENT_TAG_CLICK_COMMANDS",
+    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH",
+    "PLACEMENT_TAG_TRACKING",
+    "PLACEMENT_TAG_TRACKING_IFRAME",
+    "PLACEMENT_TAG_TRACKING_JAVASCRIPT",
+    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3",
+    "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY",
+    "PLACEMENT_TAG_JAVASCRIPT_LEGACY",
+    "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY",
+    "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY",
+    "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+ListRequest.CompatibilitiesEnum": [
+    "DISPLAY",
+    "DISPLAY_INTERSTITIAL",
+    "APP",
+    "APP_INTERSTITIAL",
+    "IN_STREAM_VIDEO",
+    "IN_STREAM_AUDIO"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+ListRequest.PaymentSourceEnum": [
+    "PLACEMENT_AGENCY_PAID",
+    "PLACEMENT_PUBLISHER_PAID"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+ListRequest.PricingTypesEnum": [
+    "PRICING_TYPE_CPM",
+    "PRICING_TYPE_CPC",
+    "PRICING_TYPE_CPA",
+    "PRICING_TYPE_FLAT_RATE_IMPRESSIONS",
+    "PRICING_TYPE_FLAT_RATE_CLICKS",
+    "PRICING_TYPE_CPM_ACTIVEVIEW"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementStrategiesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.PlacementStrategiesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ProjectsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ProjectsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.RemarketingListsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.RemarketingListsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ReportsResource+FilesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "LAST_MODIFIED_TIME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ReportsResource+FilesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ReportsResource+ListRequest.ScopeEnum": [
+    "ALL",
+    "MINE"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ReportsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "LAST_MODIFIED_TIME",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.ReportsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.SitesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.SitesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.SubaccountsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.SubaccountsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.TargetableRemarketingListsResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.TargetableRemarketingListsResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.TargetingTemplatesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.TargetingTemplatesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ],
+  "Google.Apis.Dfareporting.v3_5.UserRolesResource+ListRequest.SortFieldEnum": [
+    "ID",
+    "NAME"
+  ],
+  "Google.Apis.Dfareporting.v3_5.UserRolesResource+ListRequest.SortOrderEnum": [
+    "ASCENDING",
+    "DESCENDING"
+  ]
+}

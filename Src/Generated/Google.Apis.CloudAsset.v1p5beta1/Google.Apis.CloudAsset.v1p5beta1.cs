@@ -278,8 +278,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1
         /// <summary>Lists assets with time and resource types and returns paged results in response.</summary>
         /// <param name="parent">
         /// Required. Name of the organization or project the assets belong to. Format:
-        /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-number]" (such as
-        /// "projects/my-project-id"), or "projects/[project-id]" (such as "projects/12345").
+        /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
+        /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
         /// </param>
         public virtual ListRequest List(string parent)
         {
@@ -298,8 +298,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1
 
             /// <summary>
             /// Required. Name of the organization or project the assets belong to. Format:
-            /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-number]" (such
-            /// as "projects/my-project-id"), or "projects/[project-id]" (such as "projects/12345").
+            /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
+            /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }

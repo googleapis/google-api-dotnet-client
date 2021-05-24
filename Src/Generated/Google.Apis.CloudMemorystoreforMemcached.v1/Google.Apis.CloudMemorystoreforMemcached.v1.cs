@@ -1450,7 +1450,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1.Data
         /// <summary>
         /// Unique name of the resource. It uses the form:
         /// `projects/{project_id|project_number}/locations/{location_id}/instances/{instance_id}` Note: Either
-        /// project_id or project_number and be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
+        /// project_id or project_number can be used, but keep it consistent with other APIs (e.g. RescheduleUpdate)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -4843,7 +4843,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAudiences")]
         public virtual System.Collections.Generic.IList<string> AllowedAudiences { get; set; }
 
-        /// <summary>Required. The OIDC issuer URL.</summary>
+        /// <summary>Required. The OIDC issuer URL. Must be an HTTPS endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
 

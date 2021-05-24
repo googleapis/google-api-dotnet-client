@@ -13,13 +13,15 @@
     "RAW_ONLY",
     "PARSED_ONLY",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "SCHEMATIZED_ONLY"
   ],
   "Google.Apis.CloudHealthcare.v1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+ListRequest.ViewEnum": [
     "MESSAGE_VIEW_UNSPECIFIED",
     "RAW_ONLY",
     "PARSED_ONLY",
     "FULL",
-    "BASIC"
+    "BASIC",
+    "SCHEMATIZED_ONLY"
   ]
 }

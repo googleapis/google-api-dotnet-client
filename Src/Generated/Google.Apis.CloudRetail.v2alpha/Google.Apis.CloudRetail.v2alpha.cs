@@ -2585,7 +2585,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// brand/maker of a product, or country of a customer. Numerical features. Some examples would be the
         /// height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123",
         /// "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field
-        /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 150
+        /// needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 200
         /// by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128
         /// characters.
         /// </summary>
@@ -2701,8 +2701,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string Title { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the product. This field is output-only. Default to
-        /// Catalog.product_level_config.ingestion_product_type if unset.
+        /// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

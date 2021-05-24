@@ -12409,6 +12409,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentContent")]
         public virtual string DocumentContent { get; set; }
 
+        /// <summary>
+        /// A list of licensed vocabularies to use in the request, in addition to the default unlicensed vocabularies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licensedVocabularies")]
+        public virtual System.Collections.Generic.IList<string> LicensedVocabularies { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15387,7 +15393,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         /// <summary>
         /// The Cloud Storage destination. The Cloud Healthcare API service account must have the
-        /// `roles/storage.objectAdmin` Cloud IAM role for this Cloud Storage location.
+        /// `roles/storage.objectAdmin` Cloud IAM role for this Cloud Storage location. The object name is in the
+        /// following format: query-accessible-data-result-{operation_id}.txt where each line contains a single data_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GoogleCloudHealthcareV1beta1ConsentGcsDestination GcsDestination { get; set; }
@@ -15403,6 +15410,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response for successful QueryAccessibleData operations. This structure is included in the response upon
+    /// operation completion.
+    /// </summary>
+    public class QueryAccessibleDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

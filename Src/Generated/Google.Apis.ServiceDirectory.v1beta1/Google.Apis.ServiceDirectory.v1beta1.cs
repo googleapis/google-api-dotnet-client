@@ -2044,6 +2044,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
+        /// <summary>Output only. The timestamp when the endpoint was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The
         /// entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata
@@ -2080,6 +2084,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         /// <summary>Optional. Service Directory rejects values outside of `[0, 65535]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Output only. The timestamp when the endpoint was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2261,6 +2269,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     /// </summary>
     public class Namespace : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The timestamp when the namespace was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with
         /// a given resource. Label keys and values can be no longer than 63 characters.
@@ -2273,6 +2285,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The timestamp when the namespace was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2392,6 +2408,10 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The timestamp when the service was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
         /// <summary>
         /// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane
         /// clients should use RegistrationService.ListEndpoints.
@@ -2421,6 +2441,13 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp when the service was last updated. Note: endpoints being created/deleted/updated
+        /// within the service are not considered service updates for the purpose of this timestamp.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

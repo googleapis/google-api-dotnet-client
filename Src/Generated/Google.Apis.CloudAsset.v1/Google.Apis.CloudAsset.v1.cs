@@ -290,8 +290,8 @@ namespace Google.Apis.CloudAsset.v1
         /// <summary>Lists assets with time and resource types and returns paged results in response.</summary>
         /// <param name="parent">
         /// Required. Name of the organization or project the assets belong to. Format:
-        /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-number]" (such as
-        /// "projects/my-project-id"), or "projects/[project-id]" (such as "projects/12345").
+        /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
+        /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
         /// </param>
         public virtual ListRequest List(string parent)
         {
@@ -310,8 +310,8 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Required. Name of the organization or project the assets belong to. Format:
-            /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-number]" (such
-            /// as "projects/my-project-id"), or "projects/[project-id]" (such as "projects/12345").
+            /// "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as
+            /// "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -1173,6 +1173,121 @@ namespace Google.Apis.CloudAsset.v1
         }
 
         /// <summary>
+        /// Analyze moving a resource to a specified destination without kicking off the actual move. The analysis is
+        /// best effort depending on the user's permissions of viewing different hierarchical policies and
+        /// configurations. The policies and configuration are subject to change before the actual resource migration
+        /// takes place.
+        /// </summary>
+        /// <param name="resource">
+        /// Required. Name of the resource to perform the analysis against. Only GCP Project are supported as of today.
+        /// Hence, this can only be Project ID (such as "projects/my-project-id") or a Project Number (such as
+        /// "projects/12345").
+        /// </param>
+        public virtual AnalyzeMoveRequest AnalyzeMove(string resource)
+        {
+            return new AnalyzeMoveRequest(service, resource);
+        }
+
+        /// <summary>
+        /// Analyze moving a resource to a specified destination without kicking off the actual move. The analysis is
+        /// best effort depending on the user's permissions of viewing different hierarchical policies and
+        /// configurations. The policies and configuration are subject to change before the actual resource migration
+        /// takes place.
+        /// </summary>
+        public class AnalyzeMoveRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeMoveResponse>
+        {
+            /// <summary>Constructs a new AnalyzeMove request.</summary>
+            public AnalyzeMoveRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+            {
+                Resource = resource;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the resource to perform the analysis against. Only GCP Project are supported as of
+            /// today. Hence, this can only be Project ID (such as "projects/my-project-id") or a Project Number (such
+            /// as "projects/12345").
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>
+            /// Required. Name of the GCP Folder or Organization to reparent the target resource. The analysis will be
+            /// performed against hypothetically moving the resource to this specified desitination parent. This can
+            /// only be a Folder number (such as "folders/123") or an Organization number (such as "organizations/123").
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationParent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DestinationParent { get; set; }
+
+            /// <summary>
+            /// Analysis view indicating what information should be included in the analysis response. If unspecified,
+            /// the default view is FULL.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// Analysis view indicating what information should be included in the analysis response. If unspecified,
+            /// the default view is FULL.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>The default/unset value. The API will default to the FULL view.</summary>
+                [Google.Apis.Util.StringValueAttribute("ANALYSIS_VIEW_UNSPECIFIED")]
+                ANALYSISVIEWUNSPECIFIED = 0,
+
+                /// <summary>Full analysis including all level of impacts of the specified resource move.</summary>
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL = 1,
+
+                /// <summary>
+                /// Basic analysis only including blockers which will prevent the specified resource move at runtime.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "analyzeMove";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+resource}:analyzeMove";
+
+            /// <summary>Initializes AnalyzeMove parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("destinationParent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationParent",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs
         /// history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history.
         /// Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset
@@ -1586,12 +1701,13 @@ namespace Google.Apis.CloudAsset.v1
             public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
 
             /// <summary>
-            /// Optional. A comma separated list of fields specifying the sorting order of the results. The default
+            /// Optional. A comma-separated list of fields specifying the sorting order of the results. The default
             /// order is ascending. Add " DESC" after the field name to indicate descending order. Redundant space
-            /// characters are ignored. Example: "location DESC, name". Only string fields in the response are sortable,
-            /// including `name`, `displayName`, `description`, `location`. All the other fields such as repeated fields
-            /// (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are
-            /// not supported.
+            /// characters are ignored. Example: "location DESC, name". Only singular primitive fields in the response
+            /// are sortable: * name * assetType * project * displayName * description * location * kmsKey * createTime
+            /// * updateTime * state * parentFullResourceName * parentAssetType All the other fields such as repeated
+            /// fields (e.g., `networkTags`), map fields (e.g., `labels`) and struct fields (e.g.,
+            /// `additionalAttributes`) are not supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -1766,6 +1882,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountImpersonationAnalysis")]
         public virtual System.Collections.Generic.IList<IamPolicyAnalysis> ServiceAccountImpersonationAnalysis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for resource move analysis.</summary>
+    public class AnalyzeMoveResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of analyses returned from performing the intended resource move analysis. The analysis is grouped
+        /// by different Cloud services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moveAnalysis")]
+        public virtual System.Collections.Generic.IList<MoveAnalysis> MoveAnalysis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3797,6 +3927,58 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>A list of feeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feeds")]
         public virtual System.Collections.Generic.IList<Feed> Feeds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message to group the analysis information.</summary>
+    public class MoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Analysis result of moving the target resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysis")]
+        public virtual MoveAnalysisResult Analysis { get; set; }
+
+        /// <summary>The user friendly display name of the analysis. E.g. IAM, Organization Policy etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Description of error encountered when performing the analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An analysis result including blockers and warnings.</summary>
+    public class MoveAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Blocking information that would prevent the target resource from moving to the specified destination at
+        /// runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
+        public virtual System.Collections.Generic.IList<MoveImpact> Blockers { get; set; }
+
+        /// <summary>
+        /// Warning information indicating that moving the target resource to the specified destination might be unsafe.
+        /// This can include important policy information and configuration changes, but will not block moves at
+        /// runtime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<MoveImpact> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message to group impacts of moving the target resource.</summary>
+    public class MoveImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User friendly impact detail in a free form message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
