@@ -7963,13 +7963,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                 MESSAGEVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
-                                /// Server responses include all the message fields except parsed_data field.
+                                /// Server responses include all the message fields except parsed_data field, and
+                                /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
                                 RAWONLY = 1,
 
                                 /// <summary>
-                                /// Server responses include all the message fields except data field.
+                                /// Server responses include all the message fields except data field, and
+                                /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
                                 PARSEDONLY = 2,
@@ -7977,6 +7979,12 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// <summary>Server responses include all the message fields.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL = 3,
+
+                                /// <summary>
+                                /// Server responses include all the message fields except data and parsed_data fields.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
+                                SCHEMATIZEDONLY = 5,
 
                                 /// <summary>Server responses include only the name field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -8195,13 +8203,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                 MESSAGEVIEWUNSPECIFIED = 0,
 
                                 /// <summary>
-                                /// Server responses include all the message fields except parsed_data field.
+                                /// Server responses include all the message fields except parsed_data field, and
+                                /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("RAW_ONLY")]
                                 RAWONLY = 1,
 
                                 /// <summary>
-                                /// Server responses include all the message fields except data field.
+                                /// Server responses include all the message fields except data field, and
+                                /// schematized_data fields.
                                 /// </summary>
                                 [Google.Apis.Util.StringValueAttribute("PARSED_ONLY")]
                                 PARSEDONLY = 2,
@@ -8209,6 +8219,12 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// <summary>Server responses include all the message fields.</summary>
                                 [Google.Apis.Util.StringValueAttribute("FULL")]
                                 FULL = 3,
+
+                                /// <summary>
+                                /// Server responses include all the message fields except data and parsed_data fields.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("SCHEMATIZED_ONLY")]
+                                SCHEMATIZEDONLY = 5,
 
                                 /// <summary>Server responses include only the name field.</summary>
                                 [Google.Apis.Util.StringValueAttribute("BASIC")]
@@ -12133,6 +12149,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceAttributes { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response for successful QueryAccessibleData operations. This structure is included in the response upon
+    /// operation completion.
+    /// </summary>
+    public class QueryAccessibleDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

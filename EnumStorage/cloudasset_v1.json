@@ -16,6 +16,11 @@
     "1",
     "2"
   ],
+  "Google.Apis.CloudAsset.v1.V1Resource+AnalyzeMoveRequest.ViewEnum": [
+    "ANALYSIS_VIEW_UNSPECIFIED",
+    "FULL",
+    "BASIC"
+  ],
   "Google.Apis.CloudAsset.v1.V1Resource+BatchGetAssetsHistoryRequest.ContentTypeEnum": [
     "CONTENT_TYPE_UNSPECIFIED",
     "RESOURCE",

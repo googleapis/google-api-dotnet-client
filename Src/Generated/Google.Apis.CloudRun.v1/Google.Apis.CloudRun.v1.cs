@@ -4359,7 +4359,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each
         /// key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose
         /// name is the key and content is the value. If specified, the listed keys will be projected into the specified
-        /// paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the
+        /// paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the
         /// volume setup will error unless it is marked optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
@@ -5906,8 +5906,7 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a
-    /// Secret.
+    /// Cloud Run fully managed: supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
     /// </summary>
     public class SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5973,7 +5972,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the
         /// referenced Secret will be projected into the volume as a file whose name is the key and content is the
         /// value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not
-        /// be present. If a key is specified which is not present in the Secret, the volume setup will error unless it
+        /// be present. If a key is specified that is not present in the Secret, the volume setup will error unless it
         /// is marked optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
