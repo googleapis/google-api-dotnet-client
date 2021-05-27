@@ -2685,7 +2685,10 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
 
-        /// <summary>Text translated into the target language.</summary>
+        /// <summary>
+        /// Text translated into the target language. If an error occurs during translation, this field might be
+        /// excluded from the response.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
         public virtual string TranslatedText { get; set; }
 

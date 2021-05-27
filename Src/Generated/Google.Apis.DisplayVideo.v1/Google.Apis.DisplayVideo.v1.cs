@@ -356,6 +356,7 @@ namespace Google.Apis.DisplayVideo.v1
             Channels = new ChannelsResource(service);
             Creatives = new CreativesResource(service);
             InsertionOrders = new InsertionOrdersResource(service);
+            Invoices = new InvoicesResource(service);
             LineItems = new LineItemsResource(service);
             LocationLists = new LocationListsResource(service);
             ManualTriggers = new ManualTriggersResource(service);
@@ -898,6 +899,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -1211,6 +1216,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -3365,6 +3374,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -3647,6 +3660,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -4299,6 +4316,200 @@ namespace Google.Apis.DisplayVideo.v1
             }
         }
 
+        /// <summary>Gets the Invoices resource.</summary>
+        public virtual InvoicesResource Invoices { get; }
+
+        /// <summary>The "invoices" collection of methods.</summary>
+        public class InvoicesResource
+        {
+            private const string Resource = "invoices";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public InvoicesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>List invoices for an advertiser.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser to list invoices for.</param>
+            public virtual ListRequest List(long advertiserId)
+            {
+                return new ListRequest(service, advertiserId);
+            }
+
+            /// <summary>List invoices for an advertiser.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListInvoicesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to list invoices for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>Required. Month for which invoices are needed in the format YYYYMM.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("issueMonth", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string IssueMonth { get; set; }
+
+                /// <summary>Select type of invoice to query for Loi Sapin advertisers. Otherwise its ignored.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("loiSapinInvoiceType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<LoiSapinInvoiceTypeEnum> LoiSapinInvoiceType { get; set; }
+
+                /// <summary>Select type of invoice to query for Loi Sapin advertisers. Otherwise its ignored.</summary>
+                public enum LoiSapinInvoiceTypeEnum
+                {
+                    /// <summary>Value is not specified.</summary>
+                    [Google.Apis.Util.StringValueAttribute("LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED")]
+                    LOISAPININVOICETYPEUNSPECIFIED = 0,
+
+                    /// <summary>Invoices with Media cost.</summary>
+                    [Google.Apis.Util.StringValueAttribute("LOI_SAPIN_INVOICE_TYPE_MEDIA")]
+                    LOISAPININVOICETYPEMEDIA = 1,
+
+                    /// <summary>Invoices with Platform fee.</summary>
+                    [Google.Apis.Util.StringValueAttribute("LOI_SAPIN_INVOICE_TYPE_PLATFORM")]
+                    LOISAPININVOICETYPEPLATFORM = 2,
+                }
+
+                /// <summary>
+                /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns
+                /// error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A token identifying a page of results the server should return. Typically, this is the value of
+                /// [ListInvoicesResponse.next_page_token] returned from the previous call to `ListInvoice` method. If
+                /// not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/invoices";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("issueMonth", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "issueMonth",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("loiSapinInvoiceType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "loiSapinInvoiceType",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lookup invoice currency for an advertiser.</summary>
+            /// <param name="advertiserId">Required. The ID of the advertiser to lookup currency for.</param>
+            public virtual LookupInvoiceCurrencyRequest LookupInvoiceCurrency(long advertiserId)
+            {
+                return new LookupInvoiceCurrencyRequest(service, advertiserId);
+            }
+
+            /// <summary>Lookup invoice currency for an advertiser.</summary>
+            public class LookupInvoiceCurrencyRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LookupInvoiceCurrencyResponse>
+            {
+                /// <summary>Constructs a new LookupInvoiceCurrency request.</summary>
+                public LookupInvoiceCurrencyRequest(Google.Apis.Services.IClientService service, long advertiserId) : base(service)
+                {
+                    AdvertiserId = advertiserId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the advertiser to lookup currency for.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long AdvertiserId { get; private set; }
+
+                /// <summary>
+                /// Month for which currency is needed in the format YYYYMM. If not set Api would return currency based
+                /// on current settings.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("invoiceMonth", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string InvoiceMonth { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "lookupInvoiceCurrency";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency";
+
+                /// <summary>Initializes LookupInvoiceCurrency parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "advertiserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("invoiceMonth", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "invoiceMonth",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the LineItems resource.</summary>
         public virtual LineItemsResource LineItems { get; }
 
@@ -4581,6 +4792,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>Gets or sets the body of this request.</summary>
@@ -4856,6 +5071,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -5138,6 +5357,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -5416,6 +5639,10 @@ namespace Google.Apis.DisplayVideo.v1
                             /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                             [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                             TARGETINGTYPESUBEXCHANGE = 37,
+
+                            /// <summary>Target ads to a specific native content position.</summary>
+                            [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                            TARGETINGTYPENATIVECONTENTPOSITION = 38,
                         }
 
                         /// <summary>
@@ -8506,6 +8733,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -8769,6 +9000,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -9039,6 +9274,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>
@@ -9307,6 +9546,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>
@@ -13509,6 +13752,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -13769,6 +14016,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>Required. The ID of the assigned targeting option to delete.</summary>
@@ -14036,6 +14287,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>
@@ -14301,6 +14556,10 @@ namespace Google.Apis.DisplayVideo.v1
                         /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                         [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                         TARGETINGTYPESUBEXCHANGE = 37,
+
+                        /// <summary>Target ads to a specific native content position.</summary>
+                        [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                        TARGETINGTYPENATIVECONTENTPOSITION = 38,
                     }
 
                     /// <summary>
@@ -14974,6 +15233,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
+
+                    /// <summary>Target ads to a specific native content position.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
                 }
 
                 /// <summary>Required. The ID of the of targeting option to retrieve.</summary>
@@ -15217,6 +15480,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
+
+                    /// <summary>Target ads to a specific native content position.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
                 }
 
                 /// <summary>Required. The Advertiser this request is being made in the context of.</summary>
@@ -15529,6 +15796,10 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>Purchase impressions from specific sub-exchanges.</summary>
                     [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_SUB_EXCHANGE")]
                     TARGETINGTYPESUBEXCHANGE = 37,
+
+                    /// <summary>Target ads to a specific native content position.</summary>
+                    [Google.Apis.Util.StringValueAttribute("TARGETING_TYPE_NATIVE_CONTENT_POSITION")]
+                    TARGETINGTYPENATIVECONTENTPOSITION = 38,
                 }
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -16058,6 +16329,15 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Required. Immutable. The unique ID of the partner that the advertiser belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerId")]
         public virtual System.Nullable<long> PartnerId { get; set; }
+
+        /// <summary>
+        /// Whether integration with Mediaocean (Prisma) is enabled. By enabling this: On behalf of my company, I
+        /// authorize Mediaocean (Prisma) to send budget segment plans to Google, and I authorize Google to send
+        /// corresponding reporting and invoices from DV360 to Mediaocean for the purposes of budget planning, billing,
+        /// and reconciliation for this advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaEnabled")]
+        public virtual System.Nullable<bool> PrismaEnabled { get; set; }
 
         /// <summary>Targeting settings related to ad serving of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
@@ -16591,6 +16871,13 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Native content position details. This field will be populated when the targeting_type is
+        /// `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeContentPositionDetails")]
+        public virtual NativeContentPositionAssignedTargetingOptionDetails NativeContentPositionDetails { get; set; }
+
+        /// <summary>
         /// Keyword details. This field will be populated when the targeting_type is
         /// `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`. A maximum of 4 negative keyword lists can be assigned to a resource.
         /// </summary>
@@ -16957,6 +17244,42 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a summarized budget information associated with this invoice.</summary>
+    public class BudgetSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. External budget id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalBudgetId")]
+        public virtual string ExternalBudgetId { get; set; }
+
+        /// <summary>
+        /// Output only. The pre-tax amount for this budget, in micros of the invoice's currency. For example if
+        /// currency_code is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preTaxAmountMicros")]
+        public virtual System.Nullable<long> PreTaxAmountMicros { get; set; }
+
+        /// <summary>Output only. Codes specific to the MediaOcean Prisma tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaCpeCode")]
+        public virtual PrismaCpeCode PrismaCpeCode { get; set; }
+
+        /// <summary>
+        /// Output only. The tax amount for this budget, in micros of the invoice's currency. For example if
+        /// currency_code is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxAmountMicros")]
+        public virtual System.Nullable<long> TaxAmountMicros { get; set; }
+
+        /// <summary>
+        /// Output only. The total amount of charges for this budget, in micros of the invoice's currency. For example
+        /// if currency_code is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmountMicros")]
+        public virtual System.Nullable<long> TotalAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for BulkEditAdvertiserAssignedTargetingOptions.</summary>
     public class BulkEditAdvertiserAssignedTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17312,6 +17635,12 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
+        /// <summary>
+        /// The list of budgets available to this campaign. Setting no budget gives an unlimited campaign budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignBudgets")]
+        public virtual System.Collections.Generic.IList<CampaignBudget> CampaignBudgets { get; set; }
+
         /// <summary>Required. The planned spend and duration of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignFlight")]
         public virtual CampaignFlight CampaignFlight { get; set; }
@@ -17349,6 +17678,65 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The timestamp when the campaign was last updated. Assigned by the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control how the campaign budget is allocated.</summary>
+    public class CampaignBudget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The budget amount the insertion order will spend for the given date_range. The amount is in
+        /// micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetAmountMicros")]
+        public virtual System.Nullable<long> BudgetAmountMicros { get; set; }
+
+        /// <summary>The unique ID of the campaign budget. If not included, budget is assumed to be new.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetId")]
+        public virtual System.Nullable<long> BudgetId { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The budget unit specifies whether the budget is currency based or impression based.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetUnit")]
+        public virtual string BudgetUnit { get; set; }
+
+        /// <summary>
+        /// Required. The flight start and end time settings of the segment. Both `start_date` and `end_date` must be
+        /// before the year 2037.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the budget. Must be UTF-8 encoded with a maximum size of 240 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. Must be unique under the campaign. If set, all impressions served against this budget will
+        /// include this ID on the invoice if the customer has opted into budget-segment-level billing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalBudgetId")]
+        public virtual string ExternalBudgetId { get; set; }
+
+        /// <summary>Required. The external source of the budget segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalBudgetSource")]
+        public virtual string ExternalBudgetSource { get; set; }
+
+        /// <summary>
+        /// Immutable. If set, all external_budget_id sharing the same invoice_grouping_id will include this ID on the
+        /// invoice if the customer has opted into budget-segment-level billing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceGroupingId")]
+        public virtual string InvoiceGroupingId { get; set; }
+
+        /// <summary>Required for MediaOcean budgets. Additional metadata set by the MediaOcean Prisma tool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaConfig")]
+        public virtual PrismaConfig PrismaConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19792,6 +20180,129 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single Invoice.</summary>
+    public class Invoice : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Budget invoice grouping ID associated with the budget segment in the insertion order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetInvoiceGroupingId")]
+        public virtual string BudgetInvoiceGroupingId { get; set; }
+
+        /// <summary>Output only. The list of summarized budget information associated with this invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetSummaries")]
+        public virtual System.Collections.Generic.IList<BudgetSummary> BudgetSummaries { get; set; }
+
+        /// <summary>
+        /// Output only. The originally issued invoice that is being adjusted by this invoice, if applicable. If there
+        /// is a corrected invoice, the replaced_invoice_ids field will be empty. May appear on invoice PDF as
+        /// `Reference invoice number`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("correctedInvoiceId")]
+        public virtual string CorrectedInvoiceId { get; set; }
+
+        /// <summary>Output only. Invoice currency code in ISO 4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Output only. Display name of the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The invoice due date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dueDate")]
+        public virtual Date DueDate { get; set; }
+
+        /// <summary>Output only. The unique ID of the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceId")]
+        public virtual string InvoiceId { get; set; }
+
+        /// <summary>Output only. The type of invoice document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoiceType")]
+        public virtual string InvoiceType { get; set; }
+
+        /// <summary>Output only. The date when the invoice was issued.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueDate")]
+        public virtual Date IssueDate { get; set; }
+
+        /// <summary>Output only. The resource name of the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The total amount of costs or adjustments not tied to a particular budget, in micros of the
+        /// invoice's currency. For example if currency_code is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonBudgetMicros")]
+        public virtual System.Nullable<long> NonBudgetMicros { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the payments account the invoice belongs to. Appears on the invoice PDF as `Billing
+        /// Account Number`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsAccountId")]
+        public virtual string PaymentsAccountId { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as `Billing
+        /// ID`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paymentsProfileId")]
+        public virtual string PaymentsProfileId { get; set; }
+
+        /// <summary>
+        /// Output only. The URL to download a PDF copy of the invoice. Note that this URL is user specific and requires
+        /// a valid OAuth 2.0 access token to access. The access token must be provided in an `Authorization: Bearer`
+        /// HTTP header and be authorized for one of the following scopes: *
+        /// `https://www.googleapis.com/auth/display-video-mediaplanning` *
+        /// `https://www.googleapis.com/auth/display-video` The URL will only be usable for 7 days from when the api is
+        /// called.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pdfUrl")]
+        public virtual string PdfUrl { get; set; }
+
+        /// <summary>Output only. Purchase order number associated with the invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseOrderNumber")]
+        public virtual string PurchaseOrderNumber { get; set; }
+
+        /// <summary>
+        /// Output only. The originally issued invoice(s) that is being cancelled by this invoice, if applicable. If
+        /// there are any replaced invoices, the corrected_invoice_id field will be empty. May appear on invoice PDF as
+        /// `Replaced invoice numbers`. Note: There may be multiple replaced invoices due to consolidation of multiple
+        /// invoices into a single invoice.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacedInvoiceIds")]
+        public virtual System.Collections.Generic.IList<string> ReplacedInvoiceIds { get; set; }
+
+        /// <summary>Output only. Service start and end dates which are covered by this invoice.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDateRange")]
+        public virtual DateRange ServiceDateRange { get; set; }
+
+        /// <summary>
+        /// Output only. The pre-tax subtotal amount, in micros of the invoice's currency. For example if currency_code
+        /// is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtotalAmountMicros")]
+        public virtual System.Nullable<long> SubtotalAmountMicros { get; set; }
+
+        /// <summary>
+        /// Output only. The invoice total amount, in micros of the invoice's currency. For example if currency_code is
+        /// `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAmountMicros")]
+        public virtual System.Nullable<long> TotalAmountMicros { get; set; }
+
+        /// <summary>
+        /// Output only. The sum of all taxes in invoice, in micros of the invoice's currency. For example if
+        /// currency_code is `USD`, then 1000000 micros is one US dollar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTaxAmountMicros")]
+        public virtual System.Nullable<long> TotalTaxAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned keyword targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_KEYWORD`.
@@ -20337,6 +20848,24 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for InvoiceService.ListInvoices.</summary>
+    public class ListInvoicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of invoices. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invoices")]
+        public virtual System.Collections.Generic.IList<Invoice> Invoices { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the [ListInvoicesRequest.page_token] field
+        /// in the subsequent call to `ListInvoices` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListLineItemAssignedTargetingOptions.</summary>
     public class ListLineItemAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20580,6 +21109,17 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for InvoiceService.LookupInvoiceCurrency.</summary>
+    public class LookupInvoiceCurrencyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Invoice currency code in ISO 4217 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single manual trigger in Display &amp; Video 360.</summary>
     public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20717,6 +21257,42 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details for native content position assigned targeting option. This will be populated in the
+    /// native_content_position_details field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+    /// Explicitly targeting all options is not supported. Remove all native content position targeting options to
+    /// achieve this effect.
+    /// </summary>
+    public class NativeContentPositionAssignedTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentPosition")]
+        public virtual string ContentPosition { get; set; }
+
+        /// <summary>
+        /// Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
+        public virtual string TargetingOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a targetable native content position. This will be populated in the native_content_position_details
+    /// field when targeting_type is `TARGETING_TYPE_NATIVE_CONTENT_POSITION`.
+    /// </summary>
+    public class NativeContentPositionTargetingOptionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The content position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentPosition")]
+        public virtual string ContentPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21297,6 +21873,44 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings specific to the MediaOcean Prisma tool.</summary>
+    public class PrismaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Google Payments Center supports searching and filtering on this code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaCpeCode")]
+        public virtual PrismaCpeCode PrismaCpeCode { get; set; }
+
+        /// <summary>Required. The Prisma type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaType")]
+        public virtual string PrismaType { get; set; }
+
+        /// <summary>Required. The entity allocated this budget (DSP, site, etc.).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supplier")]
+        public virtual string Supplier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Payments Center supports searching and filtering on the component fields of this code.</summary>
+    public class PrismaCpeCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Prisma client code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaClientCode")]
+        public virtual string PrismaClientCode { get; set; }
+
+        /// <summary>The Prisma estimate code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaEstimateCode")]
+        public virtual string PrismaEstimateCode { get; set; }
+
+        /// <summary>The Prisma product code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prismaProductCode")]
+        public virtual string PrismaProductCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Targeting details for proximity location list. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_PROXIMITY_LOCATION_LIST`.
@@ -21783,6 +22397,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// <summary>Output only. The resource name for this targeting option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Native content position details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nativeContentPositionDetails")]
+        public virtual NativeContentPositionTargetingOptionDetails NativeContentPositionDetails { get; set; }
 
         /// <summary>On screen position details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionDetails")]

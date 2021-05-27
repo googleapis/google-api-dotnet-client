@@ -1015,6 +1015,27 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message containing information about the result of an upgrade check operation.</summary>
+    public class CheckUpgradeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Url for a docker build log of an upgraded image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildLogUri")]
+        public virtual string BuildLogUri { get; set; }
+
+        /// <summary>Output only. Whether build has succeeded or failed on modules conflicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsPypiModulesConflict")]
+        public virtual string ContainsPypiModulesConflict { get; set; }
+
+        /// <summary>
+        /// Output only. Extract from a docker image build log containing information about pypi modules conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiConflictBuildLogExtract")]
+        public virtual string PypiConflictBuildLogExtract { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {

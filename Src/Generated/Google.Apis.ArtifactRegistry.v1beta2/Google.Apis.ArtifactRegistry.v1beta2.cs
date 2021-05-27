@@ -921,7 +921,8 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// The name of the tag, for example:
-                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the
+                        /// package or tag ID parts contain slashes, the slashes are escaped.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1beta2.Data.Tag body, string name)
                         {
@@ -941,7 +942,8 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
 
                             /// <summary>
                             /// The name of the tag, for example:
-                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the
+                            /// package or tag ID parts contain slashes, the slashes are escaped.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2188,7 +2190,9 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual System.Collections.Generic.IList<Hash> Hashes { get; set; }
 
         /// <summary>
-        /// The name of the file, for example: "projects/p1/locations/us-central1/repositories/repo1/files/a/b/c.txt".
+        /// The name of the file, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt". If the file ID part contains
+        /// slashes, they are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2427,6 +2431,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
 
         /// <summary>
         /// The name of the package, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+        /// If the package ID part contains slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2597,14 +2602,16 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
     {
         /// <summary>
         /// The name of the tag, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID
+        /// parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// The name of the version the tag refers to, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package
+        /// or version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -2662,7 +2669,8 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
 
         /// <summary>
         /// The name of the version, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1".
+        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1". If the package or
+        /// version ID parts contain slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

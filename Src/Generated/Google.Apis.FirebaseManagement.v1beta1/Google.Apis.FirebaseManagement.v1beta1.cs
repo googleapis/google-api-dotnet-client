@@ -2812,24 +2812,6 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
-        /// <summary>
-        /// Deprecated. Instead, to link a Project with a Google Analytics account, call
-        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
-        /// GCP `Project`. The region code (CLDR) that the account will use for Google Analytics data For example: US,
-        /// GB, or DE In Java, use `com.google.i18n.identifiers.RegionCode`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; }
-
-        /// <summary>
-        /// Deprecated. Instead, to link a Project with a Google Analytics account, call
-        /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) after you add Firebase resources to the
-        /// GCP `Project`. The time zone that the account will use for Google Analytics data. For example:
-        /// America/Los_Angeles or Africa/Abidjan
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

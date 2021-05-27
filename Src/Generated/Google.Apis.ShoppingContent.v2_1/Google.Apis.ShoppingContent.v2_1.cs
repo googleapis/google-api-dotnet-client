@@ -8528,10 +8528,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             public virtual string ProductId { get; private set; }
 
             /// <summary>
-            /// The list of product attributes to be updated. Attributes specified in the update mask without a value
-            /// specified in the body will be deleted from the product. Only top-level product attributes can be
-            /// updated. If not defined, product attributes with set values will be updated and other attributes will
-            /// stay unchanged.
+            /// The comma-separated list of product attributes to be updated. Example: `"title,salePrice"`. Attributes
+            /// specified in the update mask without a value specified in the body will be deleted from the product.
+            /// Only top-level product attributes can be updated. If not defined, product attributes with set values
+            /// will be updated and other attributes will stay unchanged.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -9514,7 +9514,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RegionId { get; private set; }
 
-            /// <summary>Optional. The field mask indicating the fields to update.</summary>
+            /// <summary>
+            /// Optional. The comma-separated field mask indicating the fields to update. Example:
+            /// `"displayName,postalCodeArea.regionCode"`.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -18911,10 +18914,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ProductId { get; set; }
 
         /// <summary>
-        /// The list of product attributes to be updated. Attributes specified in the update mask without a value
-        /// specified in the body will be deleted from the product. Only top-level product attributes can be updated. If
-        /// not defined, product attributes with set values will be updated and other attributes will stay unchanged.
-        /// Only defined if the method is `update`.
+        /// The comma-separated list of product attributes to be updated. Example: `"title,salePrice"`. Attributes
+        /// specified in the update mask without a value specified in the body will be deleted from the product. Only
+        /// top-level product attributes can be updated. If not defined, product attributes with set values will be
+        /// updated and other attributes will stay unchanged. Only defined if the method is `update`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -21562,7 +21565,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
-        /// <summary>Required. The weight represented as a number.</summary>
+        /// <summary>
+        /// Required. The weight represented as a number. The weight can have a maximum precision of four decimal
+        /// places.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

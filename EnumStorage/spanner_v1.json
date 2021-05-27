@@ -5,6 +5,16 @@
     "GOOGLE_DEFAULT_ENCRYPTION",
     "CUSTOMER_MANAGED_ENCRYPTION"
   ],
+  "Google.Apis.Spanner.v1.ProjectsResource+InstancesResource+DatabasesResource+GetScansRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "SUMMARY",
+    "FULL"
+  ],
+  "Google.Apis.Spanner.v1.ScansResource+ListRequest.ViewEnum": [
+    "VIEW_UNSPECIFIED",
+    "SUMMARY",
+    "FULL"
+  ],
   "Google.Apis.Spanner.v1.SpannerBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",

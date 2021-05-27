@@ -13,12 +13,27 @@
     "INSPECT_JOB",
     "RISK_ANALYSIS_JOB"
   ],
+  "Google.Apis.DLP.v2.OrganizationsResource+LocationsResource+JobTriggersResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ],
   "Google.Apis.DLP.v2.ProjectsResource+DlpJobsResource+ListRequest.TypeEnum": [
     "DLP_JOB_TYPE_UNSPECIFIED",
     "INSPECT_JOB",
     "RISK_ANALYSIS_JOB"
   ],
+  "Google.Apis.DLP.v2.ProjectsResource+JobTriggersResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ],
   "Google.Apis.DLP.v2.ProjectsResource+LocationsResource+DlpJobsResource+ListRequest.TypeEnum": [
+    "DLP_JOB_TYPE_UNSPECIFIED",
+    "INSPECT_JOB",
+    "RISK_ANALYSIS_JOB"
+  ],
+  "Google.Apis.DLP.v2.ProjectsResource+LocationsResource+JobTriggersResource+ListRequest.TypeEnum": [
     "DLP_JOB_TYPE_UNSPECIFIED",
     "INSPECT_JOB",
     "RISK_ANALYSIS_JOB"

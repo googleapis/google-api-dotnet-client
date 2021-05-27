@@ -2085,6 +2085,168 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     });
                 }
             }
+
+            /// <summary>
+            /// Update given deals to pause serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
+            /// accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call
+            /// PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The proposal_id of the proposal containing the deals.</param>
+            public virtual PauseRequest Pause(Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalDealsRequest body, string accountId, string proposalId)
+            {
+                return new PauseRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>
+            /// Update given deals to pause serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
+            /// accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call
+            /// PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
+            /// </summary>
+            public class PauseRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Pause request.</summary>
+                public PauseRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalDealsRequest body, string accountId, string proposalId) : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The proposal_id of the proposal containing the deals.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.PauseProposalDealsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "pause";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause";
+
+                /// <summary>Initializes Pause parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Update given deals to resume serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
+            /// accounts.proposals.resume endpoint. It is a no-op to resume already-running deals. It is an error to
+            /// call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="accountId">Account ID of the buyer.</param>
+            /// <param name="proposalId">The proposal_id of the proposal containing the deals.</param>
+            public virtual ResumeRequest Resume(Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalDealsRequest body, string accountId, string proposalId)
+            {
+                return new ResumeRequest(service, body, accountId, proposalId);
+            }
+
+            /// <summary>
+            /// Update given deals to resume serving. This method will set the
+            /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request.
+            /// Currently, this method only applies to PG and PD deals. For PA deals, please call
+            /// accounts.proposals.resume endpoint. It is a no-op to resume already-running deals. It is an error to
+            /// call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not
+            /// finalized or renegotiating.
+            /// </summary>
+            public class ResumeRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.Proposal>
+            {
+                /// <summary>Constructs a new Resume request.</summary>
+                public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalDealsRequest body, string accountId, string proposalId) : base(service)
+                {
+                    AccountId = accountId;
+                    ProposalId = proposalId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AccountId { get; private set; }
+
+                /// <summary>The proposal_id of the proposal containing the deals.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("proposalId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProposalId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdExchangeBuyerII.v2beta1.Data.ResumeProposalDealsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "resume";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume";
+
+                /// <summary>Initializes Resume parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("proposalId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "proposalId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Products resource.</summary>
@@ -8198,6 +8360,26 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message to pause serving for finalized deals.</summary>
+    public class PauseProposalDealsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The external_deal_id's of the deals to be paused. If empty, all the deals in the proposal will be paused.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDealIds")]
+        public virtual System.Collections.Generic.IList<string> ExternalDealIds { get; set; }
+
+        /// <summary>
+        /// The reason why the deals are being paused. This human readable message will be displayed in the seller's UI.
+        /// (Max length: 1000 unicode code units.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message to pause serving for an already-finalized proposal.</summary>
     public class PauseProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8661,6 +8843,19 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The association between a creative and a deal that should be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("association")]
         public virtual CreativeDealAssociation Association { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to resume (unpause) serving for already-finalized deals.</summary>
+    public class ResumeProposalDealsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The external_deal_id's of the deals to resume. If empty, all the deals in the proposal will be resumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDealIds")]
+        public virtual System.Collections.Generic.IList<string> ExternalDealIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

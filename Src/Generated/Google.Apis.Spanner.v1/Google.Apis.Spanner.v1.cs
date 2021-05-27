@@ -35,6 +35,7 @@ namespace Google.Apis.Spanner.v1
         public SpannerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            Scans = new ScansResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -90,6 +91,9 @@ namespace Google.Apis.Spanner.v1
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the Scans resource.</summary>
+        public virtual ScansResource Scans { get; }
     }
 
     /// <summary>A base abstract class for Spanner requests.</summary>
@@ -3317,6 +3321,126 @@ namespace Google.Apis.Spanner.v1
                     }
                 }
 
+                /// <summary>Request a specific scan with Database-specific data for Cloud Key Visualizer.</summary>
+                /// <param name="name">
+                /// Required. The unique name of the scan containing the requested information, specific to the Database
+                /// service implementing this interface.
+                /// </param>
+                public virtual GetScansRequest GetScans(string name)
+                {
+                    return new GetScansRequest(service, name);
+                }
+
+                /// <summary>Request a specific scan with Database-specific data for Cloud Key Visualizer.</summary>
+                public class GetScansRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Scan>
+                {
+                    /// <summary>Constructs a new GetScans request.</summary>
+                    public GetScansRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The unique name of the scan containing the requested information, specific to the
+                    /// Database service implementing this interface.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The upper bound for the time range to retrieve Scan data for.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object EndTime { get; set; }
+
+                    /// <summary>
+                    /// These fields restrict the Database-specific information returned in the `Scan.data` field. If a
+                    /// `View` is provided that does not include the `Scan.data` field, these are ignored. This range of
+                    /// time must be entirely contained within the defined time range of the targeted scan. The lower
+                    /// bound for the time range to retrieve Scan data for.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object StartTime { get; set; }
+
+                    /// <summary>
+                    /// Specifies which parts of the Scan should be returned in the response. Note, if left unspecified,
+                    /// the FULL view is assumed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// Specifies which parts of the Scan should be returned in the response. Note, if left unspecified,
+                    /// the FULL view is assumed.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Not specified, equivalent to SUMMARY.</summary>
+                        [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                        VIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Server responses only include `name`, `details`, `start_time` and `end_time`. The default
+                        /// value. Note, the ListScans method may only use this view type, others view types are not
+                        /// supported.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("SUMMARY")]
+                        SUMMARY = 1,
+
+                        /// <summary>
+                        /// Full representation of the scan is returned in the server response, including `data`.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getScans";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/scans";
+
+                    /// <summary>Initializes GetScans parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                        });
+                        RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists Cloud Spanner databases.</summary>
                 /// <param name="parent">
                 /// Required. The instance whose databases should be listed. Values are of the form
@@ -4583,6 +4707,150 @@ namespace Google.Apis.Spanner.v1
             }
         }
     }
+
+    /// <summary>The "scans" collection of methods.</summary>
+    public class ScansResource
+    {
+        private const string Resource = "scans";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ScansResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Return available scans given a Database-specific resource name.</summary>
+        /// <param name="parent">
+        /// Required. The unique name of the parent resource, specific to the Database service implementing this
+        /// interface.
+        /// </param>
+        public virtual ListRequest List(string parent)
+        {
+            return new ListRequest(service, parent);
+        }
+
+        /// <summary>Return available scans given a Database-specific resource name.</summary>
+        public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListScansResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The unique name of the parent resource, specific to the Database service implementing this
+            /// interface.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// A filter expression to restrict the results based on information present in the available Scan
+            /// collection. The filter applies to all fields within the Scan message except for `data`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of items to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>
+            /// Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the
+            /// default) is currently supported for ListScans.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>
+            /// Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the
+            /// default) is currently supported for ListScans.
+            /// </summary>
+            public enum ViewEnum
+            {
+                /// <summary>Not specified, equivalent to SUMMARY.</summary>
+                [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
+                VIEWUNSPECIFIED = 0,
+
+                /// <summary>
+                /// Server responses only include `name`, `details`, `start_time` and `end_time`. The default value.
+                /// Note, the ListScans method may only use this view type, others view types are not supported.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("SUMMARY")]
+                SUMMARY = 1,
+
+                /// <summary>
+                /// Full representation of the scan is returned in the server response, including `data`.
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("FULL")]
+                FULL = 2,
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^scans$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "view",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.Spanner.v1.Data
 {
@@ -4883,6 +5151,31 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A message representing context for a KeyRangeInfo, including a label, value, unit, and severity.
+    /// </summary>
+    public class ContextValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label for the context value. e.g. "latency".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual LocalizedString Label { get; set; }
+
+        /// <summary>The severity of this context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The unit of the context value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The value for the context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
     public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5091,6 +5384,53 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The table whose rows will be deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing a derived metric.</summary>
+    public class DerivedMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the denominator metric. e.g. "rows".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denominator")]
+        public virtual LocalizedString Denominator { get; set; }
+
+        /// <summary>The name of the numerator metric. e.g. "latency".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numerator")]
+        public virtual LocalizedString Numerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing the key visualizer diagnostic messages.</summary>
+    public class DiagnosticMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about this diagnostic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual LocalizedString Info { get; set; }
+
+        /// <summary>The metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual LocalizedString Metric { get; set; }
+
+        /// <summary>
+        /// Whether this message is specific only for the current metric. By default Diagnostics are shown for all
+        /// metrics, regardless which metric is the currently selected metric in the UI. However occasionally a metric
+        /// will generate so many messages that the resulting visual clutter becomes overwhelming. In this case setting
+        /// this to true, will show the diagnostic messages for that metric only if it is the currently selected metric.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricSpecific")]
+        public virtual System.Nullable<bool> MetricSpecific { get; set; }
+
+        /// <summary>The severity of the diagnostic message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The short message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortMessage")]
+        public virtual LocalizedString ShortMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5405,6 +5745,32 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message representing a (sparse) collection of hot keys for specific key buckets.</summary>
+    public class IndexedHotKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A (sparse) mapping from key bucket index to the index of the specific hot row key for that key bucket. The
+        /// index of the hot row key can be translated to the actual row key via the
+        /// ScanData.VisualizationData.indexed_keys repeated field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparseHotKeys")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> SparseHotKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing a (sparse) collection of KeyRangeInfos for specific key buckets.</summary>
+    public class IndexedKeyRangeInfos : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A (sparse) mapping from key bucket index to the KeyRangeInfos for that key bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyRangeInfos")]
+        public virtual System.Collections.Generic.IDictionary<string, KeyRangeInfos> KeyRangeInfos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An isolated set of Cloud Spanner resources on which databases can be hosted.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5550,6 +5916,65 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOpen")]
         public virtual System.Collections.Generic.IList<object> StartOpen { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing information for a key range (possibly one key).</summary>
+    public class KeyRangeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of context values for this key range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextValues")]
+        public virtual System.Collections.Generic.IList<ContextValue> ContextValues { get; set; }
+
+        /// <summary>The index of the end key in indexed_keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endKeyIndex")]
+        public virtual System.Nullable<int> EndKeyIndex { get; set; }
+
+        /// <summary>Information about this key range, for all metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual LocalizedString Info { get; set; }
+
+        /// <summary>The number of keys this range covers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keysCount")]
+        public virtual System.Nullable<long> KeysCount { get; set; }
+
+        /// <summary>The name of the metric. e.g. "latency".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual LocalizedString Metric { get; set; }
+
+        /// <summary>The index of the start key in indexed_keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startKeyIndex")]
+        public virtual System.Nullable<int> StartKeyIndex { get; set; }
+
+        /// <summary>
+        /// The unit of the metric. This is an unstructured field and will be mapped as is to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual LocalizedString Unit { get; set; }
+
+        /// <summary>The value of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<float> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing a list of specific information for multiple key ranges.</summary>
+    public class KeyRangeInfos : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list individual KeyRangeInfos.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infos")]
+        public virtual System.Collections.Generic.IList<KeyRangeInfo> Infos { get; set; }
+
+        /// <summary>
+        /// The total size of the list of all KeyRangeInfos. This may be larger than the number of repeated messages
+        /// above. If that is the case, this number may be used to determine how many are not being shown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5724,6 +6149,23 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response method from the ListScans method.</summary>
+    public class ListScansResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Available scans based on the list query parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scans")]
+        public virtual System.Collections.Generic.IList<Scan> Scans { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for ListSessions.</summary>
     public class ListSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5736,6 +6178,124 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The list of requested sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
         public virtual System.Collections.Generic.IList<Session> Sessions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message representing a user-facing string whose value may need to be translated before being displayed.
+    /// </summary>
+    public class LocalizedString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A map of arguments used when creating the localized message. Keys represent parameter names which may be
+        /// used by the localized version when substituting dynamic values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Args { get; set; }
+
+        /// <summary>
+        /// The canonical English version of this message. If no token is provided or the front-end has no message
+        /// associated with the token, this text will be displayed as-is.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// The token identifying the message, e.g. 'METRIC_READ_CPU'. This should be unique within the service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message representing the actual monitoring data, values for each key bucket over time, of a metric.
+    /// </summary>
+    public class Metric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aggregation function used to aggregate each key bucket</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregation")]
+        public virtual string Aggregation { get; set; }
+
+        /// <summary>The category of the metric, e.g. "Activity", "Alerts", "Reads", etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual LocalizedString Category { get; set; }
+
+        /// <summary>The references to numerator and denominator metrics for a derived metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("derived")]
+        public virtual DerivedMetric Derived { get; set; }
+
+        /// <summary>The displayed label of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayLabel")]
+        public virtual LocalizedString DisplayLabel { get; set; }
+
+        /// <summary>Whether the metric has any non-zero data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasNonzeroData")]
+        public virtual System.Nullable<bool> HasNonzeroData { get; set; }
+
+        /// <summary>
+        /// The value that is considered hot for the metric. On a per metric basis hotness signals high utilization and
+        /// something that might potentially be a cause for concern by the end user. hot_value is used to calibrate and
+        /// scale visual color scales.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotValue")]
+        public virtual System.Nullable<float> HotValue { get; set; }
+
+        /// <summary>
+        /// The (sparse) mapping from time index to an IndexedHotKey message, representing those time intervals for
+        /// which there are hot keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexedHotKeys")]
+        public virtual System.Collections.Generic.IDictionary<string, IndexedHotKey> IndexedHotKeys { get; set; }
+
+        /// <summary>
+        /// The (sparse) mapping from time interval index to an IndexedKeyRangeInfos message, representing those time
+        /// intervals for which there are informational messages concerning key ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexedKeyRangeInfos")]
+        public virtual System.Collections.Generic.IDictionary<string, IndexedKeyRangeInfos> IndexedKeyRangeInfos { get; set; }
+
+        /// <summary>Information about the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual LocalizedString Info { get; set; }
+
+        /// <summary>The data for the metric as a matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matrix")]
+        public virtual MetricMatrix Matrix { get; set; }
+
+        /// <summary>The unit of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual LocalizedString Unit { get; set; }
+
+        /// <summary>Whether the metric is visible to the end user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visible")]
+        public virtual System.Nullable<bool> Visible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing a matrix of floats.</summary>
+    public class MetricMatrix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The rows of the matrix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<MetricMatrixRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message representing a row of a matrix of floats.</summary>
+    public class MetricMatrixRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns of the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cols")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Cols { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6192,6 +6752,38 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// A message representing a key prefix node in the key prefix hierarchy. for eg. Bigtable keyspaces are
+    /// lexicographically ordered mappings of keys to values. Keys often have a shared prefix structure where users use
+    /// the keys to organize data. Eg ///employee In this case Keysight will possibly use one node for a company and
+    /// reuse it for all employees that fall under the company. Doing so improves legibility in the UI.
+    /// </summary>
+    public class PrefixNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether this corresponds to a data_source name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceNode")]
+        public virtual System.Nullable<bool> DataSourceNode { get; set; }
+
+        /// <summary>The depth in the prefix hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<int> Depth { get; set; }
+
+        /// <summary>The index of the end key bucket of the range that this node spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>The index of the start key bucket of the range that this node spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The string represented by the prefix node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("word")]
+        public virtual string Word { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Query optimizer configuration.</summary>
     public class QueryOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6627,6 +7219,66 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The transaction to roll back.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Scan is a structure which describes Cloud Key Visualizer scan information.</summary>
+    public class Scan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional information provided by the implementer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Details { get; set; }
+
+        /// <summary>The upper bound for when the scan is defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// The unique name of the scan, specific to the Database service implementing this interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Cloud Key Visualizer scan data. Note, this field is not available to the ListScans method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanData")]
+        public virtual ScanData ScanData { get; set; }
+
+        /// <summary>
+        /// A range of time (inclusive) for when the scan is defined. The lower bound for when the scan is defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ScanData contains Cloud Key Visualizer scan data used by the caller to construct a visualization.
+    /// </summary>
+    public class ScanData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Key Visualizer scan data. The range of time this information covers is captured via the above time
+        /// range fields. Note, this field is not available to the ListScans method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual VisualizationData Data { get; set; }
+
+        /// <summary>The upper bound for when the contained data is defined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// A range of time (inclusive) for when the contained data is defined. The lower bound for when the contained
+        /// data is defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7126,6 +7778,58 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual Instance Instance { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class VisualizationData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The token signifying the end of a data_source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceEndToken")]
+        public virtual string DataSourceEndToken { get; set; }
+
+        /// <summary>The token delimiting a datasource name from the rest of a key in a data_source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceSeparatorToken")]
+        public virtual string DataSourceSeparatorToken { get; set; }
+
+        /// <summary>The list of messages (info, alerts, ...)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticMessages")]
+        public virtual System.Collections.Generic.IList<DiagnosticMessage> DiagnosticMessages { get; set; }
+
+        /// <summary>
+        /// We discretize the entire keyspace into buckets. Assuming each bucket has an inclusive keyrange and covers
+        /// keys from k(i) ... k(n). In this case k(n) would be an end key for a given range. end_key_string is the
+        /// collection of all such end keys
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endKeyStrings")]
+        public virtual System.Collections.Generic.IList<string> EndKeyStrings { get; set; }
+
+        /// <summary>Whether this scan contains PII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPii")]
+        public virtual System.Nullable<bool> HasPii { get; set; }
+
+        /// <summary>
+        /// Keys of key ranges that contribute significantly to a given metric Can be thought of as heavy hitters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexedKeys")]
+        public virtual System.Collections.Generic.IList<string> IndexedKeys { get; set; }
+
+        /// <summary>The token delimiting the key prefixes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keySeparator")]
+        public virtual string KeySeparator { get; set; }
+
+        /// <summary>The unit for the key: e.g. 'key' or 'chunk'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyUnit")]
+        public virtual string KeyUnit { get; set; }
+
+        /// <summary>The list of data objects for each metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
+
+        /// <summary>The list of extracted key prefix nodes used in the key prefix hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixNodes")]
+        public virtual System.Collections.Generic.IList<PrefixNode> PrefixNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

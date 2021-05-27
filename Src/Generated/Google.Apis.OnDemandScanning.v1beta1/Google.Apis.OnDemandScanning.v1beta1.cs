@@ -1134,6 +1134,22 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular
+    /// resources or a specified reason.
+    /// </summary>
+    public class ComplianceOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceReason")]
+        public virtual string NonComplianceReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantFiles")]
+        public virtual System.Collections.Generic.IList<NonCompliantFile> NonCompliantFiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The period during which some deployable was active in a runtime.</summary>
     public class DeploymentOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1442,6 +1458,29 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about files that caused a compliance check to fail.</summary>
+    public class NonCompliantFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Command to display the non-compliant files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayCommand")]
+        public virtual string DisplayCommand { get; set; }
+
+        /// <summary>
+        /// display_command is a single command that can be used to display a list of non compliant files. When there is
+        /// no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command`
+        /// is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Explains why a file is non compliant for a CIS check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance of an analysis type that has been found on a resource.</summary>
     public class Occurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1452,6 +1491,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>Describes a verifiable build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual BuildOccurrence Build { get; set; }
+
+        /// <summary>Describes a compliance violation on a linked resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliance")]
+        public virtual ComplianceOccurrence Compliance { get; set; }
 
         /// <summary>Output only. The time this occurrence was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
