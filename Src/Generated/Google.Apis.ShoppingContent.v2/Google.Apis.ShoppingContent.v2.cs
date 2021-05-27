@@ -14758,7 +14758,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
-        /// <summary>Required. The weight represented as a number.</summary>
+        /// <summary>
+        /// Required. The weight represented as a number. The weight can have a maximum precision of four decimal
+        /// places.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

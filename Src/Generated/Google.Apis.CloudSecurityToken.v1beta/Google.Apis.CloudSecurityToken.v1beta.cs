@@ -353,7 +353,7 @@ namespace Google.Apis.CloudSecurityToken.v1beta.Data
         public virtual string Scope { get; set; }
 
         /// <summary>
-        /// Required. The input token. This token is a either an external credential issued by a workload identity pool
+        /// Required. The input token. This token is either an external credential issued by a workload identity pool
         /// provider, or a short-lived access token issued by Google. If the token is an OIDC JWT, it must use the JWT
         /// format defined in [RFC 7523](https://tools.ietf.org/html/rfc7523), and the `subject_token_type` must be
         /// `urn:ietf:params:oauth:token-type:jwt`. The following headers are required: - `kid`: The identifier of the

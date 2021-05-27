@@ -394,8 +394,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -412,8 +412,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
                     {
@@ -663,8 +663,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -681,8 +681,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
                     {
@@ -1104,8 +1104,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -1122,8 +1122,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
                     {
@@ -1373,8 +1373,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -1391,8 +1391,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
                     {
@@ -1814,8 +1814,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -1832,8 +1832,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
                     {
@@ -2083,8 +2083,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -2101,8 +2101,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
                     {
@@ -2524,8 +2524,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -2542,8 +2542,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the
-                    /// specified insight type.
+                    /// Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission
+                    /// for the specified insight type.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightsResponse>
                     {
@@ -2793,8 +2793,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The container resource on which to execute the request. Acceptable formats: 1.
@@ -2811,8 +2811,8 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for
-                    /// the specified recommender.
+                    /// Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM
+                    /// permission for the specified recommender.
                     /// </summary>
                     public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendationsResponse>
                     {
@@ -3345,7 +3345,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
     public class GoogleCloudRecommenderV1beta1Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and 'custom'
+        /// Type of this operation. Contains one of 'add', 'remove', 'replace', 'move', 'copy', 'test' and 'custom'
         /// operations. This field is case-insensitive and always populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]

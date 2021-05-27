@@ -1883,7 +1883,7 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                     public enum TypeEnum
                     {
-                        /// <summary>Unused</summary>
+                        /// <summary>Defaults to INSPECT_JOB.</summary>
                         [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
                         DLPJOBTYPEUNSPECIFIED = 0,
 
@@ -2657,6 +2657,26 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                    /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                    public enum TypeEnum
+                    {
+                        /// <summary>Defaults to INSPECT_JOB.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                        DLPJOBTYPEUNSPECIFIED = 0,
+
+                        /// <summary>The job inspected Google Cloud for sensitive data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                        INSPECTJOB = 1,
+
+                        /// <summary>The job executed a Risk Analysis computation.</summary>
+                        [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                        RISKANALYSISJOB = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -2713,6 +2733,14 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4640,7 +4668,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 public enum TypeEnum
                 {
-                    /// <summary>Unused</summary>
+                    /// <summary>Defaults to INSPECT_JOB.</summary>
                     [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
                     DLPJOBTYPEUNSPECIFIED = 0,
 
@@ -5571,6 +5599,26 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                public enum TypeEnum
+                {
+                    /// <summary>Defaults to INSPECT_JOB.</summary>
+                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                    DLPJOBTYPEUNSPECIFIED = 0,
+
+                    /// <summary>The job inspected Google Cloud for sensitive data.</summary>
+                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                    INSPECTJOB = 1,
+
+                    /// <summary>The job executed a Risk Analysis computation.</summary>
+                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                    RISKANALYSISJOB = 2,
+                }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -5627,6 +5675,14 @@ namespace Google.Apis.DLP.v2
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -6873,7 +6929,7 @@ namespace Google.Apis.DLP.v2
                     /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                     public enum TypeEnum
                     {
-                        /// <summary>Unused</summary>
+                        /// <summary>Defaults to INSPECT_JOB.</summary>
                         [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
                         DLPJOBTYPEUNSPECIFIED = 0,
 
@@ -7875,6 +7931,26 @@ namespace Google.Apis.DLP.v2
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                    /// <summary>The type of jobs. Will use `DlpJobType.INSPECT` if not set.</summary>
+                    public enum TypeEnum
+                    {
+                        /// <summary>Defaults to INSPECT_JOB.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                        DLPJOBTYPEUNSPECIFIED = 0,
+
+                        /// <summary>The job inspected Google Cloud for sensitive data.</summary>
+                        [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                        INSPECTJOB = 1,
+
+                        /// <summary>The job executed a Risk Analysis computation.</summary>
+                        [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                        RISKANALYSISJOB = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -7931,6 +8007,14 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

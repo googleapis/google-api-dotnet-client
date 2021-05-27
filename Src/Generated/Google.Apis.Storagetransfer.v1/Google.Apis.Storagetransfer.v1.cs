@@ -1048,9 +1048,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class AwsS3Data : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the
-        /// bucket must be granted to the access ID of the AWS access key. For information on our data retention policy
-        /// for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket
+        /// must be granted to the access ID of the AWS access key. For information on our data retention policy for
+        /// user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsAccessKey")]
         public virtual AwsAccessKey AwsAccessKey { get; set; }

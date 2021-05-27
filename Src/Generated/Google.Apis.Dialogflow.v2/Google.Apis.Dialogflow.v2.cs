@@ -15613,6 +15613,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3ContinuousTestResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name for the continuous test result. Format:
+        /// `projects//locations//agents//environments//continuousTestResults/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Time when the continuous testing run starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual object RunTime { get; set; }
+
+        /// <summary>A list of individual test case results names in this continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
+        public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides
     /// a response.
@@ -16742,6 +16770,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.RunContinuousTest long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3RunContinuousTestMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.RunContinuousTest.</summary>
+    public class GoogleCloudDialogflowCxV3RunContinuousTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result for a continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResult")]
+        public virtual GoogleCloudDialogflowCxV3ContinuousTestResult ContinuousTestResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
     public class GoogleCloudDialogflowCxV3RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17251,6 +17301,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The test case results. The detailed conversation turns are empty in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestCaseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ContinuousTestResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name for the continuous test result. Format:
+        /// `projects//locations//agents//environments//continuousTestResults/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Time when the continuous testing run starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual object RunTime { get; set; }
+
+        /// <summary>A list of individual test case results names in this continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
+        public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18385,6 +18463,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.RunContinuousTest long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.RunContinuousTest.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result for a continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1ContinuousTestResult ContinuousTestResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19236,7 +19336,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents a response from an automated agent.</summary>
     public class GoogleCloudDialogflowV2AutomatedAgentReply : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Response of the Dialogflow Sessions.DetectIntent call.</summary>
+        /// <summary>Response of the Dialogflow Sessions.DetectIntent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponse")]
         public virtual GoogleCloudDialogflowV2DetectIntentResponse DetectIntentResponse { get; set; }
 
@@ -22057,6 +22157,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
+        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
+        public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
+
         /// <summary>
         /// Free-form diagnostic information for the associated detect intent request. The fields of this data can
         /// change without notice, so you should not write code that depends on its structure. The data may contain: -
@@ -24487,6 +24591,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
+
+        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
+        public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 
         /// <summary>
         /// Free-form diagnostic information for the associated detect intent request. The fields of this data can

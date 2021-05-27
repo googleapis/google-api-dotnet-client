@@ -831,7 +831,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// resource. The build time is returned to the client as an RFC 3339 string, which can be easily used with the
         /// JavaScript Date constructor and keeps the Version timestamps returned via OnePlatform consistent, as JSON
         /// marshals google.protobuf.Timestamp into an RFC 3339 string.
-        /// (http://google3/cloud/containers/artifacts/metadata/v1beta2/builder/data.go?l=158-159&amp;amp;rcl=364878183).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildTime")]
         public virtual object BuildTime { get; set; }

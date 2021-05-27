@@ -754,8 +754,104 @@ namespace Google.Apis.Dialogflow.v3beta1
                     public EnvironmentsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        ContinuousTestResults = new ContinuousTestResultsResource(service);
                         Experiments = new ExperimentsResource(service);
                         Sessions = new SessionsResource(service);
+                    }
+
+                    /// <summary>Gets the ContinuousTestResults resource.</summary>
+                    public virtual ContinuousTestResultsResource ContinuousTestResults { get; }
+
+                    /// <summary>The "continuousTestResults" collection of methods.</summary>
+                    public class ContinuousTestResultsResource
+                    {
+                        private const string Resource = "continuousTestResults";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ContinuousTestResultsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Fetches a list of continuous test results for a given environment.</summary>
+                        /// <param name="parent">
+                        /// Required. The environment to list results for. Format: `projects//locations//agents//
+                        /// environments/`.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Fetches a list of continuous test results for a given environment.</summary>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The environment to list results for. Format: `projects//locations//agents//
+                            /// environments/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// The maximum number of items to return in a single page. By default 100 and at most 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The next_page_token value returned from a previous list request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3beta1/{+parent}/continuousTestResults";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the Experiments resource.</summary>
@@ -2199,6 +2295,61 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Kicks off a continuous test under the specified Environment.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="environment">
+                    /// Required. Format: `projects//locations//agents//environments/`.
+                    /// </param>
+                    public virtual RunContinuousTestRequest RunContinuousTest(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest body, string environment)
+                    {
+                        return new RunContinuousTestRequest(service, body, environment);
+                    }
+
+                    /// <summary>Kicks off a continuous test under the specified Environment.</summary>
+                    public class RunContinuousTestRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new RunContinuousTest request.</summary>
+                        public RunContinuousTestRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest body, string environment) : base(service)
+                        {
+                            Environment = environment;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Format: `projects//locations//agents//environments/`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Environment { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "runContinuousTest";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+environment}:runContinuousTest";
+
+                        /// <summary>Initializes RunContinuousTest parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "environment",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+$",
                             });
                         }
                     }
@@ -7781,6 +7932,34 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3ContinuousTestResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name for the continuous test result. Format:
+        /// `projects//locations//agents//environments//continuousTestResults/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Time when the continuous testing run starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual object RunTime { get; set; }
+
+        /// <summary>A list of individual test case results names in this continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
+        public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides
     /// a response.
@@ -8910,6 +9089,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Environments.RunContinuousTest long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3RunContinuousTestMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.RunContinuousTest.</summary>
+    public class GoogleCloudDialogflowCxV3RunContinuousTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result for a continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResult")]
+        public virtual GoogleCloudDialogflowCxV3ContinuousTestResult ContinuousTestResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.RunTestCase long running operation.</summary>
     public class GoogleCloudDialogflowCxV3RunTestCaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9570,6 +9771,34 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Transition (excluding transition route groups) coverage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionCoverage")]
         public virtual GoogleCloudDialogflowCxV3beta1TransitionCoverage TransitionCoverage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a result from running a test case in an agent environment.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ContinuousTestResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name for the continuous test result. Format:
+        /// `projects//locations//agents//environments//continuousTestResults/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The result of this continuous test run, i.e. whether all the tests in this continuous test run pass or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Time when the continuous testing run starts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
+        public virtual object RunTime { get; set; }
+
+        /// <summary>A list of individual test case results names in this continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
+        public virtual System.Collections.Generic.IList<string> TestCaseResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10974,6 +11203,23 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Environments.ListTestCaseResults.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ListContinuousTestResultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of continuous test results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ContinuousTestResult> ContinuousTestResults { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for EntityTypes.ListEntityTypes.</summary>
     public class GoogleCloudDialogflowCxV3beta1ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12051,6 +12297,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Agent restore mode. If not specified, `KEEP` is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreOption")]
         public virtual string RestoreOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned for the Environments.RunContinuousTest long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunContinuousTestMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The test errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1TestError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Environments.RunContinuousTest.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunContinuousTestRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Environments.RunContinuousTest.</summary>
+    public class GoogleCloudDialogflowCxV3beta1RunContinuousTestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result for a continuous test run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTestResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1ContinuousTestResult ContinuousTestResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14412,6 +14687,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
 
+        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
+        public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
+
         /// <summary>
         /// Free-form diagnostic information for the associated detect intent request. The fields of this data can
         /// change without notice, so you should not write code that depends on its structure. The data may contain: -
@@ -16467,6 +16746,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allRequiredParamsPresent")]
         public virtual System.Nullable<bool> AllRequiredParamsPresent { get; set; }
+
+        /// <summary>Indicates whether the conversational query triggers a cancellation for slot filling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelsSlotFilling")]
+        public virtual System.Nullable<bool> CancelsSlotFilling { get; set; }
 
         /// <summary>
         /// Free-form diagnostic information for the associated detect intent request. The fields of this data can

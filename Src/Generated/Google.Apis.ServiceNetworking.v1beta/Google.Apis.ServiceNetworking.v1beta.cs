@@ -1121,13 +1121,6 @@ namespace Google.Apis.ServiceNetworking.v1beta.Data
         public virtual string JwtAudience { get; set; }
 
         /// <summary>
-        /// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be
-        /// rejected.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minDeadline")]
-        public virtual System.Nullable<double> MinDeadline { get; set; }
-
-        /// <summary>
         /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationDeadline")]
