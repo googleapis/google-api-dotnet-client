@@ -3044,13 +3044,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string SearchQuery { get; set; }
 
         /// <summary>
-        /// Represents the user sessions to aggregate user behavior within a time period. If not set, heuristics will be
-        /// used to autogenerate one.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
-        public virtual string SessionId { get; set; }
-
-        /// <summary>
         /// Complete URL (window.location.href) of the user's current page. When using the client side event reporting
         /// with JavaScript pixel and Google Tag Manager, this value is filled in automatically. Maximum length 5,000
         /// characters.

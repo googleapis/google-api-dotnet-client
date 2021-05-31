@@ -1138,6 +1138,22 @@ namespace Google.Apis.ServiceControl.v2.Data
     /// <summary>Describes a resource referenced in the request.</summary>
     public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The identifier of the container of this resource. For Google Cloud APIs, the resource container
+        /// must be one of the following formats: - `projects/` - `folders/` - `organizations/` For the policy
+        /// enforcement on the container level (VPCSC and Location Policy check), this field takes precedence on the
+        /// container extracted from name when presents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual string Container { get; set; }
+
+        /// <summary>
+        /// Optional. The location of the resource. The value must be a valid zone, region or multiregion. For example:
+        /// "europe-west4" or "northamerica-northeast1-a"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>The name of the resource referenced in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

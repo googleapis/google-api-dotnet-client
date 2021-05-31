@@ -413,8 +413,9 @@ namespace Google.Apis.AlertCenter.v1beta1
 
                 /// <summary>
                 /// Optional. A query string for filtering alert feedback results. For more details, see [Query
-                /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter
-                /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+                /// filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters) and [Supported
+                /// query filter
+                /// fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -760,8 +761,8 @@ namespace Google.Apis.AlertCenter.v1beta1
 
             /// <summary>
             /// Optional. A query string for filtering alert results. For more details, see [Query
-            /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query filter
-            /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+            /// filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters) and [Supported query
+            /// filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1182,7 +1183,8 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
         /// <summary>
         /// Required. The type of the alert. This is output only after alert is created. For a list of available alert
-        /// types see [Google Workspace Alert types](/admin-sdk/alertcenter/reference/alert-types).
+        /// types see [Google Workspace Alert
+        /// types](https://developers.google.com/admin-sdk/alertcenter/reference/alert-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -1752,7 +1754,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
 
     /// <summary>
     /// Settings for callback notifications. For more details see [Google Workspace Alert
-    /// Notification](/admin-sdk/alertcenter/guides/notifications).
+    /// Notification](https://developers.google.com/admin-sdk/alertcenter/guides/notifications).
     /// </summary>
     public class Notification : Google.Apis.Requests.IDirectResponseSchema
     {

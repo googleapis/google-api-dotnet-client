@@ -1921,6 +1921,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperControllerManagerState")]
         public virtual string GatekeeperControllerManagerState { get; set; }
 
+        /// <summary>Status of the pod serving the mutation webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatekeeperMutation")]
+        public virtual string GatekeeperMutation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2177,6 +2181,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Logs all denies and dry run failures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logDeniesEnabled")]
         public virtual System.Nullable<bool> LogDeniesEnabled { get; set; }
+
+        /// <summary>Enable users to try out mutation for PolicyController.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationEnabled")]
+        public virtual System.Nullable<bool> MutationEnabled { get; set; }
 
         /// <summary>
         /// Enables the ability to use Constraint Templates that reference to objects other than the object currently
