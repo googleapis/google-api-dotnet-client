@@ -6161,8 +6161,8 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Nullable<bool> OwnedByMe { get; set; }
 
         /// <summary>
-        /// The owners of the file. Currently, only certain legacy files may have more than one owner. Not populated for
-        /// items in shared drives.
+        /// The owner of this file. Only certain legacy files may have more than one owner. This field isn't populated
+        /// for items in shared drives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; }

@@ -1066,7 +1066,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// Create an OS policy assignment. This method also creates the first revision of the OS policy
                 /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
                 /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1081,7 +1081,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// Create an OS policy assignment. This method also creates the first revision of the OS policy
                 /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
                 /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 public class CreateRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.Operation>
                 {
@@ -1151,7 +1151,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// This method returns a long running operation (LRO) that contains the rollout details. The rollout
                 /// can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions
                 /// associated with the OS policy assignment are deleted. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 /// <param name="name">Required. The name of the OS policy assignment to be deleted</param>
                 public virtual DeleteRequest Delete(string name)
@@ -1164,7 +1164,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// This method returns a long running operation (LRO) that contains the rollout details. The rollout
                 /// can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions
                 /// associated with the OS policy assignment are deleted. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 public class DeleteRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.Operation>
                 {
@@ -1416,7 +1416,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// Update an existing OS policy assignment. This method creates a new revision of the OS policy
                 /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
                 /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1433,7 +1433,7 @@ namespace Google.Apis.OSConfig.v1alpha
                 /// Update an existing OS policy assignment. This method creates a new revision of the OS policy
                 /// assignment. This method returns a long running operation (LRO) that contains the rollout details.
                 /// The rollout can be cancelled by cancelling the LRO. For more information, see [Method:
-                /// projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
+                /// projects.locations.osPolicyAssignments.operations.cancel](/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
                 /// </summary>
                 public class PatchRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.Operation>
                 {
@@ -1624,7 +1624,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// have multiple OS policies. As a result, multiple OS policies could be applied to a single VM. You can use this
     /// API resource to determine both the compliance state of your VM as well as the compliance state of an individual
     /// OS policy. For more information, see [View
-    /// compliance](https://cloud.google.com/compute/docs/os-configuration-management/view-compliance).
+    /// compliance](/compute/docs/os-configuration-management/view-compliance).
     /// </summary>
     public class InstanceOSPoliciesCompliance : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1708,7 +1708,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// This API resource represents the available inventory data for a Compute Engine virtual machine (VM) instance at
     /// a given point in time. You can use this API resource to determine the inventory data of your VM. For more
     /// information, see [Information provided by OS inventory
-    /// management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected).
+    /// management](/compute/docs/instances/os-inventory-management#data-collected).
     /// </summary>
     public class Inventory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2138,7 +2138,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// group of Compute Engine VM instances. An OS policy is used to define the desired state configuration for a
     /// Compute Engine VM instance through a set of configuration resources that provide capabilities such as installing
     /// or removing software packages, or executing a script. For more information, see [OS policy and OS policy
-    /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+    /// assignment](/compute/docs/os-configuration-management/working-with-os-policies).
     /// </summary>
     public class OSPolicyAssignment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2382,10 +2382,6 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configSteps")]
         public virtual System.Collections.Generic.IList<OSPolicyResourceConfigStep> ConfigSteps { get; set; }
 
-        /// <summary>ExecResource specific output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("execResourceOutput")]
-        public virtual OSPolicyResourceComplianceExecResourceOutput ExecResourceOutput { get; set; }
-
         /// <summary>The id of the OS policy resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osPolicyResourceId")]
         public virtual string OsPolicyResourceId { get; set; }
@@ -2393,17 +2389,6 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// <summary>Compliance state of the OS policy resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>ExecResource specific output.</summary>
-    public class OSPolicyResourceComplianceExecResourceOutput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output from Enforcement phase output file (if run). Output size is limited to 100K bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enforcementOutput")]
-        public virtual string EnforcementOutput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2476,14 +2461,6 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// <summary>Required. The script interpreter to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
         public virtual string Interpreter { get; set; }
-
-        /// <summary>
-        /// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be
-        /// recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will
-        /// result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputFilePath")]
-        public virtual string OutputFilePath { get; set; }
 
         /// <summary>An inline script. The size of the script is limited to 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
@@ -2653,7 +2630,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     }
 
     /// <summary>
-    /// A package managed by APT. - install: `apt-get update &amp;amp;&amp;amp; apt-get -y install [name]` - remove:
+    /// A package managed by APT. install: `apt-get update &amp;amp;&amp;amp; apt-get -y install [name]` remove:
     /// `apt-get -y remove [name]`
     /// </summary>
     public class OSPolicyResourcePackageResourceAPT : Google.Apis.Requests.IDirectResponseSchema
@@ -2670,7 +2647,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     public class OSPolicyResourcePackageResourceDeb : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true:
+        /// Whether dependencies should also be installed. install when false: `dpkg -i package` install when true:
         /// `apt-get update &amp;amp;&amp;amp; apt-get -y install package.deb`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullDeps")]
@@ -2685,7 +2662,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     }
 
     /// <summary>
-    /// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove
+    /// A package managed by GooGet. install: `googet -noconfirm install package` remove: `googet -noconfirm remove
     /// package`
     /// </summary>
     public class OSPolicyResourcePackageResourceGooGet : Google.Apis.Requests.IDirectResponseSchema
@@ -2703,7 +2680,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     {
         /// <summary>
         /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended
-        /// to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        /// to the defaults of "ACTION=INSTALL REBOOT=ReallySuppress".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IList<string> Properties { get; set; }
@@ -2720,8 +2697,8 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     public class OSPolicyResourcePackageResourceRPM : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs
-        /// package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        /// Whether dependencies should also be installed. install when false: `rpm --upgrade --replacepkgs package.rpm`
+        /// install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullDeps")]
         public virtual System.Nullable<bool> PullDeps { get; set; }
@@ -2734,9 +2711,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
-    /// </summary>
+    /// <summary>A package managed by YUM. install: `yum -y install package` remove: `yum -y remove package`</summary>
     public class OSPolicyResourcePackageResourceYUM : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Package name.</summary>
@@ -2748,7 +2723,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     }
 
     /// <summary>
-    /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
+    /// A package managed by Zypper. install: `zypper -y install package` remove: `zypper -y rm package`
     /// </summary>
     public class OSPolicyResourcePackageResourceZypper : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2785,7 +2760,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
 
     /// <summary>
     /// Represents a single apt package repository. These will be added to a repo file that will be managed at
-    /// `/etc/apt/sources.list.d/google_osconfig.list`.
+    /// /etc/apt/sources.list.d/google_osconfig.list.
     /// </summary>
     public class OSPolicyResourceRepositoryResourceAptRepository : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2803,7 +2778,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
 
         /// <summary>
         /// URI of the key file for this repository. The agent maintains a keyring at
-        /// `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        /// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpgKey")]
         public virtual string GpgKey { get; set; }
@@ -2969,7 +2944,7 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     /// <summary>
     /// This API resource represents the vulnerability report for a specified Compute Engine virtual machine (VM)
     /// instance at a given point in time. For more information, see [Vulnerability
-    /// reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports).
+    /// reports](/compute/docs/instances/os-inventory-management#vulnerability-reports).
     /// </summary>
     public class VulnerabilityReport : Google.Apis.Requests.IDirectResponseSchema
     {

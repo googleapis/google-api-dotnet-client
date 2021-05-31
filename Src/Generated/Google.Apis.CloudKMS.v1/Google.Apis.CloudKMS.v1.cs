@@ -1741,8 +1741,8 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>
-                    /// Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on an
-                    /// asymmetric key.
+                    /// Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on a
+                    /// key whose purpose is not ENCRYPT_DECRYPT.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The resource name of the CryptoKey to update.</param>
@@ -1752,8 +1752,8 @@ namespace Google.Apis.CloudKMS.v1
                     }
 
                     /// <summary>
-                    /// Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on an
-                    /// asymmetric key.
+                    /// Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on a
+                    /// key whose purpose is not ENCRYPT_DECRYPT.
                     /// </summary>
                     public class UpdatePrimaryVersionRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.CryptoKey>
                     {

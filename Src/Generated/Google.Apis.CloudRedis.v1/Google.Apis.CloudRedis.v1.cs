@@ -958,6 +958,67 @@ namespace Google.Apis.CloudRedis.v1
                     }
                 }
 
+                /// <summary>Reschedule maintenance for a given instance in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Redis instance resource name using the form:
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers
+                /// to a GCP region.
+                /// </param>
+                public virtual RescheduleMaintenanceRequest RescheduleMaintenance(Google.Apis.CloudRedis.v1.Data.RescheduleMaintenanceRequest body, string name)
+                {
+                    return new RescheduleMaintenanceRequest(service, body, name);
+                }
+
+                /// <summary>Reschedule maintenance for a given instance in a given project and location.</summary>
+                public class RescheduleMaintenanceRequest : CloudRedisBaseServiceRequest<Google.Apis.CloudRedis.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RescheduleMaintenance request.</summary>
+                    public RescheduleMaintenanceRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRedis.v1.Data.RescheduleMaintenanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Redis instance resource name using the form:
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id`
+                    /// refers to a GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRedis.v1.Data.RescheduleMaintenanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rescheduleMaintenance";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:rescheduleMaintenance";
+
+                    /// <summary>Initializes RescheduleMaintenance parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Upgrades Redis instance to the newer Redis version specified in the request.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1648,6 +1709,17 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
+        /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at
+        /// any time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; }
+
+        /// <summary>Output only. Date and time of upcoming maintenance events which have been scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
+
         /// <summary>Required. Redis memory size in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeGb")]
         public virtual System.Nullable<int> MemorySizeGb { get; set; }
@@ -1833,6 +1905,60 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Maintenance policy for an instance.</summary>
+    public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the policy was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the
+        /// length is greater than 512.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The time when the policy was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current
+        /// version, the maximum number of weekly_window is expected to be one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyMaintenanceWindow")]
+        public virtual System.Collections.Generic.IList<WeeklyMaintenanceWindow> WeeklyMaintenanceWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.</summary>
+    public class MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the scheduled maintenance can be rescheduled, default is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
+        public virtual System.Nullable<bool> CanReschedule { get; set; }
+
+        /// <summary>Output only. The end time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
+        public virtual object ScheduleDeadlineTime { get; set; }
+
+        /// <summary>Output only. The start time of any upcoming scheduled maintenance for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1890,6 +2016,24 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for RescheduleMaintenance.</summary>
+    public class RescheduleMaintenanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rescheduleType")]
+        public virtual string RescheduleType { get; set; }
+
+        /// <summary>
+        /// Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in RFC
+        /// 3339 format, for example `2012-11-15T16:19:00.094Z`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
+        public virtual object ScheduleTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1914,6 +2058,38 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1958,6 +2134,28 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. Specifies the target version of Redis software to upgrade to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside
+    /// this window.
+    /// </summary>
+    public class WeeklyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The day of week that maintenance updates occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>Output only. Duration of the maintenance window. The current window is fixed at 3 hours.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>Required. Start time of the window in UTC time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

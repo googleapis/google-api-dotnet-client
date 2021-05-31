@@ -9428,7 +9428,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownerNames")]
         public virtual System.Collections.Generic.IList<string> OwnerNames { get; set; }
 
-        /// <summary>The owner(s) of this file. Not populated for items in shared drives.</summary>
+        /// <summary>
+        /// The owner of this file. Only certain legacy files may have more than one owner. This field isn't populated
+        /// for items in shared drives.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; }
 

@@ -8570,11 +8570,11 @@ namespace Google.Apis.Logging.v2
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
-        /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Required. The resource name for the CMEK settings to update. &amp;lt; "projects/PROJECT_ID/cmekSettings"
+        /// "organizations/ORGANIZATION_ID/cmekSettings" "billingAccounts/BILLING_ACCOUNT_ID/cmekSettings"
+        /// "folders/FOLDER_ID/cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+        /// can currently only be configured for GCP organizations. Once configured, it applies to all projects and
+        /// folders in the GCP organization.
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
@@ -8600,9 +8600,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
-            /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// Required. The resource name for the CMEK settings to update. &amp;lt; "projects/PROJECT_ID/cmekSettings"
+            /// "organizations/ORGANIZATION_ID/cmekSettings" "billingAccounts/BILLING_ACCOUNT_ID/cmekSettings"
+            /// "folders/FOLDER_ID/cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
@@ -11590,11 +11590,11 @@ namespace Google.Apis.Logging.v2
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
-        /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-        /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
-        /// Router can currently only be configured for GCP organizations. Once configured, it applies to all projects
-        /// and folders in the GCP organization.
+        /// Required. The resource name for the CMEK settings to update. &amp;lt; "projects/PROJECT_ID/cmekSettings"
+        /// "organizations/ORGANIZATION_ID/cmekSettings" "billingAccounts/BILLING_ACCOUNT_ID/cmekSettings"
+        /// "folders/FOLDER_ID/cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+        /// can currently only be configured for GCP organizations. Once configured, it applies to all projects and
+        /// folders in the GCP organization.
         /// </param>
         public virtual UpdateCmekSettingsRequest UpdateCmekSettings(Google.Apis.Logging.v2.Data.CmekSettings body, string name)
         {
@@ -11620,9 +11620,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name for the CMEK settings to update. "projects/[PROJECT_ID]/cmekSettings"
-            /// "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-            /// "folders/[FOLDER_ID]/cmekSettings" Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
+            /// Required. The resource name for the CMEK settings to update. &amp;lt; "projects/PROJECT_ID/cmekSettings"
+            /// "organizations/ORGANIZATION_ID/cmekSettings" "billingAccounts/BILLING_ACCOUNT_ID/cmekSettings"
+            /// "folders/FOLDER_ID/cmekSettings"Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs
             /// Router can currently only be configured for GCP organizations. Once configured, it applies to all
             /// projects and folders in the GCP organization.
             /// </summary>
