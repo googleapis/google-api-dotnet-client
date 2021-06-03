@@ -6766,6 +6766,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual System.Nullable<int> NodeIpv4CidrSize { get; set; }
 
         /// <summary>
+        /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific
+        /// NodePool object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodePoolDefaults")]
+        public virtual NodePoolDefaults NodePoolDefaults { get; set; }
+
+        /// <summary>
         /// The node pools associated with this cluster. This field should not be set if "node_config" or
         /// "initial_node_count" are specified.
         /// </summary>
@@ -7307,6 +7314,35 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Denotes the state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8292,6 +8328,13 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Subset of NodeConfig message that has defaults.</summary>
+    public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node kubelet configs.</summary>
     public class NodeKubeletConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8517,6 +8560,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Subset of Nodepool message that has defaults.</summary>
+    public class NodePoolDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subset of NodeConfig message that has defaults.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeConfigDefaults")]
+        public virtual NodeConfigDefaults NodeConfigDefaults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8993,6 +9047,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>List of valid node upgrade target versions, in descending order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validNodeVersions")]
         public virtual System.Collections.Generic.IList<string> ValidNodeVersions { get; set; }
+
+        /// <summary>Maps of Kubernetes version and supported Windows server versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsVersionMaps")]
+        public virtual System.Collections.Generic.IDictionary<string, WindowsVersions> WindowsVersionMaps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10057,6 +10115,36 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Enables vertical pod autoscaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Windows server version.</summary>
+    public class WindowsVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Windows server image type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; }
+
+        /// <summary>Windows server build number</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>Mainstream support end date</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
+        public virtual Date SupportEndDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Windows server versions.</summary>
+    public class WindowsVersions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of Windows server versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsVersions")]
+        public virtual System.Collections.Generic.IList<WindowsVersion> WindowsVersionsValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

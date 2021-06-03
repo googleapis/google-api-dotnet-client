@@ -1,0 +1,21 @@
+{
+  "Google.Apis.Ideahub.v1alpha.IdeahubBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Ideahub.v1alpha.IdeahubBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Ideahub.v1alpha.IdeasResource+ListRequest.CreatorPlatformEnum": [
+    "UNKNOWN",
+    "BLOGGER",
+    "SITEKIT"
+  ],
+  "Google.Apis.Ideahub.v1alpha.PlatformsResource+PropertiesResource+IdeasResource+ListRequest.CreatorPlatformEnum": [
+    "UNKNOWN",
+    "BLOGGER",
+    "SITEKIT"
+  ]
+}

@@ -8132,6 +8132,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The input from the human user.</summary>
     public class GoogleCloudDialogflowCxV3ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether sentiment analysis is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSentimentAnalysis")]
+        public virtual System.Nullable<bool> EnableSentimentAnalysis { get; set; }
+
         /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }
@@ -10169,9 +10173,10 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         /// <summary>
         /// The unique identifier of the page to override the current page in the session. Format:
-        /// `projects//locations//agents//pages/`. If `current_page` is specified, the previous state of the session
-        /// will be ignored by Dialogflow, including the previous page and the previous session parameters. In most
-        /// cases, current_page and parameters should be configured together to direct a session to a specific state.
+        /// `projects//locations//agents//flows//pages/`. If `current_page` is specified, the previous state of the
+        /// session will be ignored by Dialogflow, including the previous page and the previous session parameters. In
+        /// most cases, current_page and parameters should be configured together to direct a session to a specific
+        /// state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual string CurrentPage { get; set; }
@@ -11792,6 +11797,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The input from the human user.</summary>
     public class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether sentiment analysis is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSentimentAnalysis")]
+        public virtual System.Nullable<bool> EnableSentimentAnalysis { get; set; }
+
         /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }

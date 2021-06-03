@@ -3623,6 +3623,10 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
         public virtual string VideoUrl { get; set; }
 
+        /// <summary>The contents of a VAST document for a native video ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoVastXml")]
+        public virtual string VideoVastXml { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

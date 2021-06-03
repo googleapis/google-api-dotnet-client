@@ -4518,7 +4518,7 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>A possibly paginated list of TagBindings for the specified TagValue or resource.</summary>
+        /// <summary>A possibly paginated list of TagBindings for the specified resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagBindings")]
         public virtual System.Collections.Generic.IList<TagBinding> TagBindings { get; set; }
 

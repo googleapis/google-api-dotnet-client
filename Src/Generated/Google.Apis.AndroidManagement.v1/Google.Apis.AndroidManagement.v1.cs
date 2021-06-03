@@ -3400,6 +3400,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response on issuing a command. This is currently empty as a placeholder.</summary>
+    public class IssueCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Keyed app state reported by the app.</summary>
     public class KeyedAppState : Google.Apis.Requests.IDirectResponseSchema
     {

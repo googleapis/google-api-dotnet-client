@@ -6657,7 +6657,10 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Labels are used to categorize messages and threads within the user's mailbox.</summary>
+    /// <summary>
+    /// Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels
+    /// supported for a user's mailbox is 10,000.
+    /// </summary>
     public class Label : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

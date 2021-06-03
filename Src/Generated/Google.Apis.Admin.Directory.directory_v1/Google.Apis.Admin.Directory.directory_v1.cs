@@ -12144,7 +12144,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agreedToTerms")]
         public virtual System.Nullable<bool> AgreedToTerms { get; set; }
 
-        /// <summary>Output only. List of the user's alias email addresses.</summary>
+        /// <summary>Output only. A list of the user's alias email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
         public virtual System.Collections.Generic.IList<string> Aliases { get; set; }
 
