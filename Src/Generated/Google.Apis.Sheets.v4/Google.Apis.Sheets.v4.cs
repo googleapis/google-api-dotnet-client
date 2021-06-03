@@ -3569,8 +3569,9 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string TextDirection { get; set; }
 
         /// <summary>
-        /// The format of the text in the cell (unless overridden by a format run). Setting a cell-level link will clear
-        /// the cell's existing links. Setting a link in a format run will clear the cell-level link.
+        /// The format of the text in the cell (unless overridden by a format run). Setting a cell-level link here will
+        /// clear the cell's existing links. Setting the link field in a TextFormatRun will take precedence over the
+        /// cell-level link.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
         public virtual TextFormat TextFormat { get; set; }
@@ -7541,10 +7542,10 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Nullable<bool> Italic { get; set; }
 
         /// <summary>
-        /// The link destination of the text, if any. Setting a link in a format run will clear an existing cell-level
-        /// link. When a link is set, the text foreground color will be set to the default link color and the text will
-        /// be underlined. If these fields are modified in the same request, those values will be used instead of the
-        /// link defaults.
+        /// The link destination of the text, if any. Setting the link field in a TextFormatRun will clear the cell's
+        /// existing links or a cell-level link set in the same request. When a link is set, the text foreground color
+        /// will be set to the default link color and the text will be underlined. If these fields are modified in the
+        /// same request, those values will be used instead of the link defaults.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual Link Link { get; set; }

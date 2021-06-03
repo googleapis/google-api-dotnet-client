@@ -14365,6 +14365,9 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class TestItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("featuredPart")]
+        public virtual System.Nullable<bool> FeaturedPart { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("gaia")]
         public virtual System.Nullable<long> Gaia { get; set; }
 

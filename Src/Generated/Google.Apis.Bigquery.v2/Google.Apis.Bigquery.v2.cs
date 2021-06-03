@@ -5226,6 +5226,24 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("csvOptions")]
         public virtual CsvOptions CsvOptions { get; set; }
 
+        /// <summary>
+        /// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted.
+        /// This list and the precision and the scale parameters of the decimal field determine the target type. In the
+        /// order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports
+        /// the precision and the scale. STRING supports all precision and scale values. If none of the listed types
+        /// supports the precision and the scale, the type supporting the widest range in the specified list is picked,
+        /// and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose
+        /// the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -&amp;gt; NUMERIC;
+        /// (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -&amp;gt; BIGNUMERIC (NUMERIC
+        /// cannot hold 10 fractional digits); (76,38) -&amp;gt; BIGNUMERIC; (77,38) -&amp;gt; BIGNUMERIC (error if
+        /// value exeeds supported range). This field cannot contain duplicate types. The order of the types in this
+        /// field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and
+        /// NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"]
+        /// for the other file formats.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decimalTargetTypes")]
+        public virtual System.Collections.Generic.IList<string> DecimalTargetTypes { get; set; }
+
         /// <summary>[Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSheetsOptions")]
         public virtual GoogleSheetsOptions GoogleSheetsOptions { get; set; }
@@ -5753,19 +5771,19 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string CreateDisposition { get; set; }
 
         /// <summary>
-        /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and
-        /// the precision and the scale parameters of the decimal field determine the target type. In the order of
-        /// NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in
-        /// the specified list and if it supports the precision and the scale. STRING supports all precision and scale
-        /// values. If none of the listed types supports the precision and the scale, the type supporting the widest
-        /// range in the specified list is picked, and if a value exceeds the supported range when reading the data, an
-        /// error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If
-        /// (precision,scale) is: * (38,9) -&amp;gt; NUMERIC; * (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30
-        /// integer digits); * (38,10) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38)
-        /// -&amp;gt; BIGNUMERIC; * (77,38) -&amp;gt; BIGNUMERIC (error if value exeeds supported range). This field
-        /// cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC",
-        /// "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
-        /// Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        /// [Optional] Defines the list of possible SQL data types to which the source decimal values are converted.
+        /// This list and the precision and the scale parameters of the decimal field determine the target type. In the
+        /// order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports
+        /// the precision and the scale. STRING supports all precision and scale values. If none of the listed types
+        /// supports the precision and the scale, the type supporting the widest range in the specified list is picked,
+        /// and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose
+        /// the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -&amp;gt; NUMERIC;
+        /// (39,9) -&amp;gt; BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -&amp;gt; BIGNUMERIC (NUMERIC
+        /// cannot hold 10 fractional digits); (76,38) -&amp;gt; BIGNUMERIC; (77,38) -&amp;gt; BIGNUMERIC (error if
+        /// value exeeds supported range). This field cannot contain duplicate types. The order of the types in this
+        /// field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and
+        /// NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"]
+        /// for the other file formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decimalTargetTypes")]
         public virtual System.Collections.Generic.IList<string> DecimalTargetTypes { get; set; }
@@ -6360,8 +6378,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// [Output-only] [Alpha] Information of the multi-statement transaction if this job is part of one.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transactionInfoTemplate")]
-        public virtual TransactionInfo TransactionInfoTemplate { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionInfo")]
+        public virtual TransactionInfo TransactionInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6434,6 +6452,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; }
+
+        /// <summary>
+        /// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE
+        /// or TRUNCATE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
+        public virtual object DmlStats { get; set; }
 
         /// <summary>[Output-only] The original estimate of bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
@@ -7245,6 +7270,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<bool> CacheHit { get; set; }
 
         /// <summary>
+        /// [Output-only] Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE
+        /// or TRUNCATE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
+        public virtual object DmlStats { get; set; }
+
+        /// <summary>
         /// [Output-only] The first errors or warnings encountered during the running of the job. The final message
         /// includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the
         /// job has completed or was unsuccessful.
@@ -7707,11 +7739,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class SnapshotDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] Reference describing the ID of the table that is snapshotted.</summary>
+        /// <summary>[Required] Reference describing the ID of the table that was snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseTableReference")]
         public virtual TableReference BaseTableReference { get; set; }
 
-        /// <summary>[Required] The time at which the base table was snapshot.</summary>
+        /// <summary>
+        /// [Required] The time at which the base table was snapshot. This value is reported in the JSON response using
+        /// RFC3339 format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
         public virtual string SnapshotTimeRaw { get; set; }
 

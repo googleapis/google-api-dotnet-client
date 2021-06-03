@@ -15662,6 +15662,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The input from the human user.</summary>
     public class GoogleCloudDialogflowCxV3ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether sentiment analysis is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSentimentAnalysis")]
+        public virtual System.Nullable<bool> EnableSentimentAnalysis { get; set; }
+
         /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }
@@ -17355,6 +17359,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The input from the human user.</summary>
     public class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether sentiment analysis is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSentimentAnalysis")]
+        public virtual System.Nullable<bool> EnableSentimentAnalysis { get; set; }
+
         /// <summary>Parameters that need to be injected into the conversation during intent detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("injectedParameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> InjectedParameters { get; set; }

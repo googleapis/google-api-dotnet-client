@@ -15955,12 +15955,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// Malaysia) - "`postnl`" (PostNL) - "`ptt`" (PTT Turkish Post) - "`eub`" (ePacket) - "`chukou1`" (Chukou1
         /// Logistics) - "`bestex`" (Best Express) - "`canada post`" (Canada Post) - "`purolator`" (Purolator) -
         /// "`canpar`" (Canpar) - "`india post`" (India Post) - "`blue dart`" (Blue Dart) - "`delhivery`" (Delhivery) -
-        /// "`dtdc`" (DTDC) - "`tpc india`" (TPC India) Supported carriers for FR are: - "`la poste`" (La Poste)
-        /// *automatic status updates * - "`colissimo`" (Colissimo by La Poste) *automatic status updates* - "`ups`"
-        /// (United Parcel Service) *automatic status updates * - "`chronopost`" (Chronopost by La Poste) - "`gls`"
-        /// (General Logistics Systems France) - "`dpd`" (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) -
-        /// "`colis prive`" (Colis Privé) - "`boxtal`" (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`"
-        /// (DB Schenker) - "`aramex`" (Aramex)
+        /// "`dtdc`" (DTDC) - "`tpc india`" (TPC India) - "`lso`" (Lone Star Overnight) - "`tww`" (Team Worldwide)
+        /// Supported carriers for FR are: - "`la poste`" (La Poste) *automatic status updates * - "`colissimo`"
+        /// (Colissimo by La Poste) *automatic status updates* - "`ups`" (United Parcel Service) *automatic status
+        /// updates * - "`chronopost`" (Chronopost by La Poste) - "`gls`" (General Logistics Systems France) - "`dpd`"
+        /// (DPD Group by GeoPost) - "`bpost`" (Belgian Post Group) - "`colis prive`" (Colis Privé) - "`boxtal`"
+        /// (Boxtal) - "`geodis`" (GEODIS) - "`tnt`" (TNT) - "`db schenker`" (DB Schenker) - "`aramex`" (Aramex)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; }
@@ -18366,6 +18366,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
 
+        /// <summary>Link template for merchant hosted local storefront.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkTemplate")]
+        public virtual string LinkTemplate { get; set; }
+
         /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
         public virtual LoyaltyPoints LoyaltyPoints { get; set; }
@@ -18394,6 +18398,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; }
 
+        /// <summary>Link template for merchant hosted local storefront optimized for mobile devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileLinkTemplate")]
+        public virtual string MobileLinkTemplate { get; set; }
+
         /// <summary>Manufacturer Part Number (MPN) of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpn")]
         public virtual string Mpn { get; set; }
@@ -18414,6 +18422,20 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The item's pattern (e.g. polka dots).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
         public virtual string Pattern { get; set; }
+
+        /// <summary>
+        /// The pick up option for the item. Acceptable values are: - "`buy`" - "`reserve`" - "`ship to store`" - "`not
+        /// supported`"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
+        public virtual string PickupMethod { get; set; }
+
+        /// <summary>
+        /// Item store pickup timeline. Acceptable values are: - "`same day`" - "`next day`" - "`2-day`" - "`3-day`" -
+        /// "`4-day`" - "`5-day`" - "`6-day`" - "`7-day`" - "`multi-week`"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
+        public virtual string PickupSla { get; set; }
 
         /// <summary>Price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]

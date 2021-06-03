@@ -465,7 +465,9 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxMembers { get; set; }
 
-            /// <summary>Required. The resource names of the contact groups to get.</summary>
+            /// <summary>
+            /// Required. The resource names of the contact groups to get. There is a maximum of 200 resource names.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
@@ -1952,8 +1954,8 @@ namespace Google.Apis.PeopleService.v1
             /// information about the authenticated user, specify `people/me`. - To get information about a google
             /// account, specify `people/{account_id}`. - To get information about a contact, specify the resource name
             /// that identifies the contact as returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list). You can include up to 200
-            /// resource names in one request.
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list). There is a maximum of 200
+            /// resource names.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
