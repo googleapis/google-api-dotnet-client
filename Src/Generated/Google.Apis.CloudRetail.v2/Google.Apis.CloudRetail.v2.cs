@@ -2760,10 +2760,11 @@ namespace Google.Apis.CloudRetail.v2.Data
 
         /// <summary>
         /// Required. User event type. Allowed values are: * `add-to-cart`: Products being added to cart. *
-        /// `category-page-view`: Special pages such as sale or promotion pages viewed. * `detail-page-view`: Products
-        /// detail page viewed. * `home-page-view`: Homepage viewed. * `promotion-offered`: Promotion is offered to a
-        /// user. * `promotion-not-offered`: Promotion is not offered to a user. * `purchase-complete`: User finishing a
-        /// purchase. * `search`: Product search. * `shopping-cart-page-view`: User viewing a shopping cart.
+        /// `category-page-view`: Special pages such as sale or promotion pages viewed. * `completion`: Completion query
+        /// result showed/clicked. * `detail-page-view`: Products detail page viewed. * `home-page-view`: Homepage
+        /// viewed. * `promotion-offered`: Promotion is offered to a user. * `promotion-not-offered`: Promotion is not
+        /// offered to a user. * `purchase-complete`: User finishing a purchase. * `search`: Product search. *
+        /// `shopping-cart-page-view`: User viewing a shopping cart.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }

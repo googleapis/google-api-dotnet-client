@@ -519,7 +519,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
 
         /// <summary>
         /// A link between a position in the original request input and a corresponding time in the output audio. It's
-        /// only supported via of SSML input.
+        /// only supported via `` of SSML input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timepoints")]
         public virtual System.Collections.Generic.IList<Timepoint> Timepoints { get; set; }
@@ -533,7 +533,7 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
     /// </summary>
     public class Timepoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Timepoint name as received from the client within tag.</summary>
+        /// <summary>Timepoint name as received from the client within `` tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markName")]
         public virtual string MarkName { get; set; }
 

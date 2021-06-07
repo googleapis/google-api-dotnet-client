@@ -6644,7 +6644,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
 
-        /// <summary>The public key used for sharing data with this instance.</summary>
+        /// <summary>The public ECIES key used for sharing data with this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEciesKey")]
+        public virtual string PublicEciesKey { get; set; }
+
+        /// <summary>The public RSA key used for sharing data with this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
 
