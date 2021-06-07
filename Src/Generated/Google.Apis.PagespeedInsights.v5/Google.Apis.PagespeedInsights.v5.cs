@@ -461,6 +461,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
     /// <summary>A light reference to an audit by id, used to group and weight audits in a given category.</summary>
     public class AuditRefs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The conventional acronym for the audit/metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acronym")]
+        public virtual string Acronym { get; set; }
+
         /// <summary>The category group that the audit belongs to (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
@@ -468,6 +472,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The audit ref id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>Any audit IDs closely relevant to this one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevantAudits")]
+        public virtual System.Collections.Generic.IList<string> RelevantAudits { get; set; }
 
         /// <summary>The weight this audit's score has on the overall category score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
@@ -629,6 +637,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The audit's id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The unit of the numeric_value field. Used to format the numeric value for display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericUnit")]
+        public virtual string NumericUnit { get; set; }
 
         /// <summary>
         /// A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the
@@ -849,6 +861,13 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditGroupExpandTooltip")]
         public virtual string AuditGroupExpandTooltip { get; set; }
 
+        /// <summary>
+        /// Text link pointing to the Lighthouse scoring calculator. This link immediately follows a sentence stating
+        /// the performance score is calculated from the perf metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatorLink")]
+        public virtual string CalculatorLink { get; set; }
+
         /// <summary>The label for the initial request in a critical request chain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crcInitialNavigation")]
         public virtual string CrcInitialNavigation { get; set; }
@@ -856,6 +875,46 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The label for values shown in the summary of critical request chains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crcLongestDurationLabel")]
         public virtual string CrcLongestDurationLabel { get; set; }
+
+        /// <summary>Option in a dropdown menu that copies the Lighthouse JSON object to the system clipboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownCopyJSON")]
+        public virtual string DropdownCopyJSON { get; set; }
+
+        /// <summary>
+        /// Option in a dropdown menu that toggles the themeing of the report between Light(default) and Dark themes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownDarkTheme")]
+        public virtual string DropdownDarkTheme { get; set; }
+
+        /// <summary>Option in a dropdown menu that opens a full Lighthouse report in a print dialog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownPrintExpanded")]
+        public virtual string DropdownPrintExpanded { get; set; }
+
+        /// <summary>Option in a dropdown menu that opens a small, summary report in a print dialog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownPrintSummary")]
+        public virtual string DropdownPrintSummary { get; set; }
+
+        /// <summary>Option in a dropdown menu that saves the current report as a new GitHub Gist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownSaveGist")]
+        public virtual string DropdownSaveGist { get; set; }
+
+        /// <summary>
+        /// Option in a dropdown menu that saves the Lighthouse report HTML locally to the system as a '.html' file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownSaveHTML")]
+        public virtual string DropdownSaveHTML { get; set; }
+
+        /// <summary>
+        /// Option in a dropdown menu that saves the Lighthouse JSON object to the local system as a '.json' file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownSaveJSON")]
+        public virtual string DropdownSaveJSON { get; set; }
+
+        /// <summary>
+        /// Option in a dropdown menu that opens the current report in the Lighthouse Viewer Application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dropdownViewer")]
+        public virtual string DropdownViewer { get; set; }
 
         /// <summary>The label shown next to an audit or metric that has had an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorLabel")]
@@ -865,11 +924,15 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMissingAuditInfo")]
         public virtual string ErrorMissingAuditInfo { get; set; }
 
+        /// <summary>Label for button to create an issue against the Lighthouse GitHub project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footerIssue")]
+        public virtual string FooterIssue { get; set; }
+
         /// <summary>The title of the lab data performance category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labDataTitle")]
         public virtual string LabDataTitle { get; set; }
 
-        /// <summary>The disclaimer shown under performance explaning that the network can vary.</summary>
+        /// <summary>The disclaimer shown under performance explaining that the network can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lsPerformanceCategoryDescription")]
         public virtual string LsPerformanceCategoryDescription { get; set; }
 
@@ -893,9 +956,126 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passedAuditsGroupTitle")]
         public virtual string PassedAuditsGroupTitle { get; set; }
 
+        /// <summary>
+        /// Descriptive explanation for emulation setting when emulating a generic desktop form factor, as opposed to a
+        /// mobile-device like form factor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeDesktopEmulation")]
+        public virtual string RuntimeDesktopEmulation { get; set; }
+
+        /// <summary>Descriptive explanation for emulation setting when emulating a Nexus 5X mobile device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMobileEmulation")]
+        public virtual string RuntimeMobileEmulation { get; set; }
+
+        /// <summary>Descriptive explanation for emulation setting when no device emulation is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeNoEmulation")]
+        public virtual string RuntimeNoEmulation { get; set; }
+
+        /// <summary>Label for a row in a table that shows the version of the Axe library used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsAxeVersion")]
+        public virtual string RuntimeSettingsAxeVersion { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that shows the estimated CPU power of the machine running Lighthouse. Example row
+        /// values: 532, 1492, 783.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsBenchmark")]
+        public virtual string RuntimeSettingsBenchmark { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that describes the CPU throttling conditions that were used during a Lighthouse
+        /// run, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsCPUThrottling")]
+        public virtual string RuntimeSettingsCPUThrottling { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that shows in what tool Lighthouse is being run (e.g. The lighthouse CLI, Chrome
+        /// DevTools, Lightrider, WebPageTest, etc).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsChannel")]
+        public virtual string RuntimeSettingsChannel { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that describes the kind of device that was emulated for the Lighthouse run.
+        /// Example values for row elements: 'No Emulation', 'Emulated Desktop', etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsDevice")]
+        public virtual string RuntimeSettingsDevice { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that shows the time at which a Lighthouse run was conducted; formatted as a
+        /// timestamp, e.g. Jan 1, 1970 12:00 AM UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsFetchTime")]
+        public virtual string RuntimeSettingsFetchTime { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that describes the network throttling conditions that were used during a
+        /// Lighthouse run, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsNetworkThrottling")]
+        public virtual string RuntimeSettingsNetworkThrottling { get; set; }
+
+        /// <summary>
+        /// Title of the Runtime settings table in a Lighthouse report. Runtime settings are the environment
+        /// configurations that a specific report used at auditing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsTitle")]
+        public virtual string RuntimeSettingsTitle { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that shows the User Agent that was detected on the Host machine that ran
+        /// Lighthouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsUA")]
+        public virtual string RuntimeSettingsUA { get; set; }
+
+        /// <summary>
+        /// Label for a row in a table that shows the User Agent that was used to send out all network requests during
+        /// the Lighthouse run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsUANetwork")]
+        public virtual string RuntimeSettingsUANetwork { get; set; }
+
+        /// <summary>Label for a row in a table that shows the URL that was audited during a Lighthouse run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeSettingsUrl")]
+        public virtual string RuntimeSettingsUrl { get; set; }
+
+        /// <summary>Descriptive explanation for a runtime setting that is set to an unknown value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeUnknown")]
+        public virtual string RuntimeUnknown { get; set; }
+
         /// <summary>The label that explains the score gauges scale (0-49, 50-89, 90-100).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scorescaleLabel")]
         public virtual string ScorescaleLabel { get; set; }
+
+        /// <summary>
+        /// Label preceding a radio control for filtering the list of audits. The radio choices are various performance
+        /// metrics (FCP, LCP, TBT), and if chosen, the audits in the report are hidden if they are not relevant to the
+        /// selected metric.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showRelevantAudits")]
+        public virtual string ShowRelevantAudits { get; set; }
+
+        /// <summary>The label for the button to show only a few lines of a snippet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetCollapseButtonLabel")]
+        public virtual string SnippetCollapseButtonLabel { get; set; }
+
+        /// <summary>The label for the button to show all lines of a snippet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetExpandButtonLabel")]
+        public virtual string SnippetExpandButtonLabel { get; set; }
+
+        /// <summary>This label is for a filter checkbox above a table of items</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyResourcesLabel")]
+        public virtual string ThirdPartyResourcesLabel { get; set; }
+
+        /// <summary>
+        /// Descriptive explanation for environment throttling that was provided by the runtime environment instead of
+        /// provided by Lighthouse throttling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("throttlingProvided")]
+        public virtual string ThrottlingProvided { get; set; }
 
         /// <summary>The label shown preceding important warnings that may have invalidated an entire report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toplevelWarningsMessage")]
@@ -904,6 +1084,14 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         /// <summary>The disclaimer shown below a performance metric value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("varianceDisclaimer")]
         public virtual string VarianceDisclaimer { get; set; }
+
+        /// <summary>Label for a button that opens the Treemap App</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("viewTreemapLabel")]
+        public virtual string ViewTreemapLabel { get; set; }
+
+        /// <summary>The heading that is shown above a list of audits that have warnings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningAuditsGroupTitle")]
+        public virtual string WarningAuditsGroupTitle { get; set; }
 
         /// <summary>The label shown above a bulleted list of warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningHeader")]

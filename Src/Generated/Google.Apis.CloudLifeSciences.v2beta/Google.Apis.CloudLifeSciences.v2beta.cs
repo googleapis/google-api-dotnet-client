@@ -1714,6 +1714,13 @@ namespace Google.Apis.CloudLifeSciences.v2beta.Data
         public virtual System.Nullable<bool> Preemptible { get; set; }
 
         /// <summary>
+        /// If specified, the VM will only be allocated inside the matching reservation. It will fail if the VM
+        /// parameters don't match the reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
+        public virtual string Reservation { get; set; }
+
+        /// <summary>
         /// The service account to install on the VM. This account does not need any permissions other than those
         /// required by the pipeline.
         /// </summary>
