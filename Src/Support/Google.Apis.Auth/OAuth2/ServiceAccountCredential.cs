@@ -167,8 +167,17 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public string KeyId { get; }
 
-        /// <summary><c>true</c> if this credential has any scopes associated with it.</summary>
-        internal bool HasScopes => Scopes?.Any() == true;
+        /// <summary>
+        /// Returns true if this credential scopes have been explicitly set via this library.
+        /// Returns false otherwise.
+        /// </summary>
+        internal bool HasExplicitScopes => Scopes?.Any() == true;
+
+        /// <inheritdoc/>
+        bool IGoogleCredential.HasExplicitScopes => HasExplicitScopes;
+
+        /// <inheritdoc/>
+        bool IGoogleCredential.SupportsExplicitScopes => true;
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceAccountCredential(Initializer initializer) : base(initializer)
@@ -203,6 +212,14 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new ServiceAccountCredential(new Initializer(this) { QuotaProject = quotaProject });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) =>
+            new ServiceAccountCredential(new Initializer(this) { Scopes = scopes });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
+            new ServiceAccountCredential(new Initializer(this) { User = user });
 
         /// <summary>
         /// Requests a new token as specified in 
@@ -240,7 +257,7 @@ namespace Google.Apis.Auth.OAuth2
         public override async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default)
         {
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
-            if (!HasScopes && authUri != null)
+            if (!HasExplicitScopes && authUri != null)
             {
                 return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
             }
