@@ -19,6 +19,8 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Util;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -51,7 +53,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <param name="sourceCredential">The source credential used to acquire the impersonated credentials.</param>
             /// <param name="options">The impersonation options.</param>
             public Initializer(GoogleCredential sourceCredential, ImpersonationOptions options)
-                : base(String.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, options.TargetPrincipal))
+                : base(string.Format(GoogleAuthConsts.IamAccessTokenEndpointFormatString, options.TargetPrincipal))
             { 
                 SourceCredential = sourceCredential;
                 Options = options;
@@ -74,6 +76,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public ImpersonationOptions Options { get; }
 
+        /// <inheritdoc/>
+        bool IGoogleCredential.HasExplicitScopes => Options?.Scopes?.Any() == true;
+
+        /// <inheritdoc/>
+        bool IGoogleCredential.SupportsExplicitScopes => true;
+
         /// <summary>Constructs a new impersonated credential using the given initializer.</summary>
         internal ImpersonatedCredential(Initializer initializer) : base(initializer)
         {
@@ -90,6 +98,17 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new ImpersonatedCredential(new Initializer(this) { QuotaProject = quotaProject });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) =>
+            new ImpersonatedCredential(new Initializer(this)
+            {
+                Options = Options.WithScopes(scopes)
+            });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
+            throw new InvalidOperationException($"{nameof(ImpersonatedCredential)} does not support Domain-Wide Delegation");
 
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)

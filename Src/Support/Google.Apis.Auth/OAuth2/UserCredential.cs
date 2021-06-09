@@ -19,6 +19,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Logging;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -51,6 +52,12 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public string QuotaProject { get; }
 
+        /// <inheritdoc/>
+        bool IGoogleCredential.HasExplicitScopes => false;
+
+        /// <inheritdoc/>
+        bool IGoogleCredential.SupportsExplicitScopes => false;
+
         private readonly TokenRefreshManager _refreshManager;
 
         /// <summary>Constructs a new credential instance.</summary>
@@ -79,6 +86,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new UserCredential(Flow, UserId, Token, quotaProject);
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.MaybeWithScopes(IEnumerable<string> scopes) => this;
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
+            throw new InvalidOperationException($"{nameof(UserCredential)} does not support Domain-Wide Delegation");
 
         #region IHttpExecuteInterceptor
 

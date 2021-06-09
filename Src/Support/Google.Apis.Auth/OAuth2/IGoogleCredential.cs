@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+using System.Collections.Generic;
+
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
@@ -37,5 +40,34 @@ namespace Google.Apis.Auth.OAuth2
         /// <returns>A new instance with the same type as this but with <see cref="QuotaProject"/>
         /// set to <paramref name="quotaProject"/>.</returns>
         IGoogleCredential WithQuotaProject(string quotaProject);
+
+        /// <summary>
+        /// Returns true if this credential scopes have been explicitly set via this library.
+        /// Returns false otherwise.
+        /// </summary>
+        bool HasExplicitScopes { get; }
+
+        /// <summary>
+        /// Returns true if this credential accepts explicit scopes to be set
+        /// via this library.
+        /// Returns false otherwise.
+        /// </summary>
+        bool SupportsExplicitScopes { get; }
+
+        /// <summary>
+        /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
+        /// instance.
+        /// </summary>
+        IGoogleCredential MaybeWithScopes(IEnumerable<string> scopes);
+
+        /// <summary>
+        /// If the credential supports domain wide delegation this method will create a copy of the
+        /// credential with the specified user set.
+        /// Otherwise, it throws <see cref="InvalidOperationException"/>.
+        /// </summary>
+        // TODO: Consider adding a IDomainWideDelegate interface. It's maybe of public interest to
+        // work only with credentials that support domain wide delegation. This interface would
+        // behave similar to IOIdcTokenProvider and IBlogSigner.
+        IGoogleCredential WithUserForDomainWideDelegation(string user);
     }
 }

@@ -261,7 +261,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
                 Clock = clock
             }.FromPrivateKey(PrivateKey);
             var cred = new ServiceAccountCredential(initializer);
-            Assert.False(cred.HasScopes); // Must be false for the remainder of this test to be valid.
+            Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
             // Check JWTs removed from cache once cache fills up.
             var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
             for (int i = 0; i < ServiceAccountCredential.JwtCacheMaxSize; i++)
@@ -286,7 +286,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
                 Clock = clock
             }.FromPrivateKey(PrivateKey);
             var cred = new ServiceAccountCredential(initializer);
-            Assert.False(cred.HasScopes); // Must be false for the remainder of this test to be valid.
+            Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
             // Check JWTs are only cached until the expiry minus the expiry window.
             var jwt0 = await cred.GetAccessTokenForRequestAsync("uri");
             clock.UtcNow += ServiceAccountCredential.JwtLifetime - ServiceAccountCredential.JwtCacheExpiryWindow - TimeSpan.FromSeconds(1);
