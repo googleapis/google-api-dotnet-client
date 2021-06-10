@@ -5683,8 +5683,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// The list of experiments to enable. This field should be used for SDK related experiments and not for service
-        /// related experiments. The proper field for service related experiments is service_options. For more details
-        /// see the rationale at go/user-specified-service-options.
+        /// related experiments. The proper field for service related experiments is service_options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiments")]
         public virtual System.Collections.Generic.IList<string> Experiments { get; set; }
@@ -5719,7 +5718,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// The list of service options to enable. This field should be used for service related experiments only. These
         /// experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always
-        /// on). For more details see the rationale at go/user-specified-service-options.
+        /// on).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceOptions")]
         public virtual System.Collections.Generic.IList<string> ServiceOptions { get; set; }
@@ -5931,6 +5930,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The initial number of Google Compute Engine instances for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
         public virtual System.Nullable<int> NumWorkers { get; set; }
+
+        /// <summary>
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the
+        /// version of the SDK. Note this field is only valid for portable pipelines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkContainerImage")]
+        public virtual string SdkContainerImage { get; set; }
 
         /// <summary>The email address of the service account to run the job as.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]

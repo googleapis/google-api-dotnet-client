@@ -1418,6 +1418,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paragraphs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageParagraph> Paragraphs { get; set; }
 
+        /// <summary>The history of this page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
+
         /// <summary>A list of visually detected tables on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageTable> Tables { get; set; }
@@ -1475,7 +1479,8 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element.
+        /// element. This field is skipped when its value is the default 0. See
+        /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual System.Nullable<long> Page { get; set; }
@@ -1558,6 +1563,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>A list of detected languages for name together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameDetectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage> NameDetectedLanguages { get; set; }
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
 
         /// <summary>A list of detected languages for value together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueDetectedLanguages")]
@@ -2535,6 +2544,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paragraphs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageParagraph> Paragraphs { get; set; }
 
+        /// <summary>The history of this page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
+
         /// <summary>A list of visually detected tables on the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tables")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageTable> Tables { get; set; }
@@ -2592,7 +2605,8 @@ namespace Google.Apis.Document.v1beta2.Data
 
         /// <summary>
         /// Required. Index into the Document.pages element, for example using Document.pages to locate the related page
-        /// element.
+        /// element. This field is skipped when its value is the default 0. See
+        /// https://developers.google.com/protocol-buffers/docs/proto3#json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual System.Nullable<long> Page { get; set; }
@@ -2675,6 +2689,10 @@ namespace Google.Apis.Document.v1beta2.Data
         /// <summary>A list of detected languages for name together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameDetectedLanguages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage> NameDetectedLanguages { get; set; }
+
+        /// <summary>The history of this annotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
 
         /// <summary>A list of detected languages for value together with confidence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueDetectedLanguages")]

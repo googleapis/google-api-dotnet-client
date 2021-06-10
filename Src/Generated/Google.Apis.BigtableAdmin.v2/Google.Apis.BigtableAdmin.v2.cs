@@ -2754,15 +2754,15 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Create a new table by restoring from a completed backup. The new table must be in the same instance
+                /// Create a new table by restoring from a completed backup. The new table must be in the same project
                 /// as the instance containing the backup. The returned table long-running operation can be used to
                 /// track the progress of the operation, and to cancel it. The metadata field type is
                 /// RestoreTableMetadata. The response type is Table, if successful.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The name of the instance in which to create the restored table. This instance must be the
-                /// parent of the source backup. Values are of the form `projects//instances/`.
+                /// Required. The name of the instance in which to create the restored table. This instance must be in
+                /// the same project as the source backup. Values are of the form `projects//instances/`.
                 /// </param>
                 public virtual RestoreRequest Restore(Google.Apis.BigtableAdmin.v2.Data.RestoreTableRequest body, string parent)
                 {
@@ -2770,7 +2770,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Create a new table by restoring from a completed backup. The new table must be in the same instance
+                /// Create a new table by restoring from a completed backup. The new table must be in the same project
                 /// as the instance containing the backup. The returned table long-running operation can be used to
                 /// track the progress of the operation, and to cancel it. The metadata field type is
                 /// RestoreTableMetadata. The response type is Table, if successful.
@@ -2787,7 +2787,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                     /// <summary>
                     /// Required. The name of the instance in which to create the restored table. This instance must be
-                    /// the parent of the source backup. Values are of the form `projects//instances/`.
+                    /// in the same project as the source backup. Values are of the form `projects//instances/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

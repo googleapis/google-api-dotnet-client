@@ -6833,10 +6833,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Maximum user access to the GA4 property allowed to admins of the linked Firebase project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maximumUserAccess")]
-        public virtual string MaximumUserAccess { get; set; }
-
         /// <summary>Output only. Example format: properties/1234/firebaseLinks/5678</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

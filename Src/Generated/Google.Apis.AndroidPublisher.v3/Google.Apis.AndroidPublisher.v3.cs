@@ -7896,7 +7896,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ObfuscatedExternalProfileId { get; set; }
 
         /// <summary>
-        /// The order id of the latest recurring order associated with the purchase of the subscription.
+        /// The order id of the latest recurring order associated with the purchase of the subscription. If the
+        /// subscription was canceled because payment was declined, this will be the order id from the payment declined
+        /// order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; }
