@@ -1411,6 +1411,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     /// <summary>This represents an available software upgrade.</summary>
                     [Google.Apis.Util.StringValueAttribute("UPGRADE")]
                     UPGRADE = 8,
+
+                    /// <summary>This represents a compliance check that can be applied to a resource.</summary>
+                    [Google.Apis.Util.StringValueAttribute("COMPLIANCE")]
+                    COMPLIANCE = 9,
                 }
 
                 /// <summary>
@@ -3074,6 +3078,21 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A compliance check that is a CIS benchmark.</summary>
+    public class CisBenchmark : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The profile level of this CIS benchmark check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileLevel")]
+        public virtual System.Nullable<int> ProfileLevel { get; set; }
+
+        /// <summary>The severity level of this CIS benchmark check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Command describes a step performed as part of the build pipeline.</summary>
     public class Command : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3105,6 +3124,79 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The ID(s) of the Command(s) that this Command depends on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
         public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ComplianceNote encapsulates all information about a specific compliance check.</summary>
+    public class ComplianceNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Right now we only have one compliance type, but we may add additional types in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cisBenchmark")]
+        public virtual CisBenchmark CisBenchmark { get; set; }
+
+        /// <summary>A description about this compliance check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A rationale for the existence of this compliance check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
+        public virtual string Rationale { get; set; }
+
+        /// <summary>A description of remediation steps if the compliance check fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual string Remediation { get; set; }
+
+        /// <summary>Serialized scan instructions with a predefined format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanInstructions")]
+        public virtual string ScanInstructions { get; set; }
+
+        /// <summary>The title that identifies this compliance check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The OS and config versions the benchmark applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Collections.Generic.IList<ComplianceVersion> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular
+    /// resources or a specified reason.
+    /// </summary>
+    public class ComplianceOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason for non compliance of these files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceReason")]
+        public virtual string NonComplianceReason { get; set; }
+
+        /// <summary>A list of files which are violating compliance checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantFiles")]
+        public virtual System.Collections.Generic.IList<NonCompliantFile> NonCompliantFiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the CIS benchmark version that is applicable to a given OS and os version.</summary>
+    public class ComplianceVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; }
+
+        /// <summary>
+        /// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is
+        /// defined in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3781,6 +3873,29 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about files that caused a compliance check to fail.</summary>
+    public class NonCompliantFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Command to display the non-compliant files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayCommand")]
+        public virtual string DisplayCommand { get; set; }
+
+        /// <summary>
+        /// display_command is a single command that can be used to display a list of non compliant files. When there is
+        /// no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command`
+        /// is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Explains why a file is non compliant for a CIS check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides a detailed description of a `Note`.</summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3795,6 +3910,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Build provenance type for a verifiable build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildType")]
         public virtual BuildType BuildType { get; set; }
+
+        /// <summary>A note describing a compliance check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliance")]
+        public virtual ComplianceNote Compliance { get; set; }
 
         /// <summary>
         /// Output only. The time this note was created. This field can be used as a filter in list requests.
@@ -3869,6 +3988,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Build details for a verifiable build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildDetails")]
         public virtual BuildDetails BuildDetails { get; set; }
+
+        /// <summary>Describes whether or not a resource passes compliance checks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliance")]
+        public virtual ComplianceOccurrence Compliance { get; set; }
 
         /// <summary>Output only. The time this `Occurrence` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]

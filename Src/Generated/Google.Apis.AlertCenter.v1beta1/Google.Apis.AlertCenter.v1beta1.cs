@@ -1172,7 +1172,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>
         /// Required. A unique identifier for the system that reported the alert. This is output only after alert is
         /// created. Supported sources are any of the following: * Google Operations * Mobile device management * Gmail
-        /// phishing * Domain wide takeout * State sponsored attack * Google identity
+        /// phishing * Data Loss Prevention * Domain wide takeout * State sponsored attack * Google identity
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }

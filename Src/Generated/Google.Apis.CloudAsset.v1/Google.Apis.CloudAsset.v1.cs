@@ -2362,8 +2362,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`.
         /// Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other
         /// fields of `Expr` are optional. See our [user
-        /// guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for
-        /// detailed instructions.
+        /// guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed
+        /// instructions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }

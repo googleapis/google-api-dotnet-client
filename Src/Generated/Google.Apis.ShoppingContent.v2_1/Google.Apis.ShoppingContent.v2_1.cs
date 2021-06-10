@@ -14954,6 +14954,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// </summary>
     public class Metrics : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Average order size - the average number of items in an order. **This metric cannot be segmented by product
+        /// dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aos")]
+        public virtual System.Nullable<double> Aos { get; set; }
+
+        /// <summary>
+        /// Average order value - the average value (total price of items) of all placed orders. The currency of the
+        /// returned value is stored in the currency_code segment. If this metric is selected, 'segments.currency_code'
+        /// is automatically added to the SELECT clause in the search query (unless it is explicitly selected by the
+        /// user) and the currency_code segment is populated in the response. **This metric cannot be segmented by
+        /// product dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aovMicros")]
+        public virtual System.Nullable<double> AovMicros { get; set; }
+
         /// <summary>Number of clicks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clicks")]
         public virtual System.Nullable<long> Clicks { get; set; }
@@ -14965,9 +14982,116 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ctr")]
         public virtual System.Nullable<double> Ctr { get; set; }
 
+        /// <summary>
+        /// Average number of days between an order being placed and the order being fully shipped, reported on the last
+        /// shipment date. **This metric cannot be segmented by product dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("daysToShip")]
+        public virtual System.Nullable<double> DaysToShip { get; set; }
+
         /// <summary>Number of times merchant's products are shown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("impressions")]
         public virtual System.Nullable<long> Impressions { get; set; }
+
+        /// <summary>Average number of days between an item being ordered and the item being</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemDaysToShip")]
+        public virtual System.Nullable<double> ItemDaysToShip { get; set; }
+
+        /// <summary>
+        /// Percentage of shipped items in relation to all finalized items (shipped or rejected by the merchant;
+        /// unshipped items are not taken into account), reported on the order date. Item fill rate is lowered by
+        /// merchant rejections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemFillRate")]
+        public virtual System.Nullable<double> ItemFillRate { get; set; }
+
+        /// <summary>
+        /// Total price of ordered items. Excludes shipping, taxes (US only), and customer cancellations that happened
+        /// within 30 minutes of placing the order. The currency of the returned value is stored in the currency_code
+        /// segment. If this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in
+        /// the search query (unless it is explicitly selected by the user) and the currency_code segment is populated
+        /// in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderedItemSalesMicros")]
+        public virtual System.Nullable<long> OrderedItemSalesMicros { get; set; }
+
+        /// <summary>
+        /// Number of ordered items. Excludes customer cancellations that happened within 30 minutes of placing the
+        /// order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderedItems")]
+        public virtual System.Nullable<long> OrderedItems { get; set; }
+
+        /// <summary>
+        /// Number of placed orders. Excludes customer cancellations that happened within 30 minutes of placing the
+        /// order. **This metric cannot be segmented by product dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orders")]
+        public virtual System.Nullable<long> Orders { get; set; }
+
+        /// <summary>Number of ordered items canceled by the merchant, reported on the order date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rejectedItems")]
+        public virtual System.Nullable<long> RejectedItems { get; set; }
+
+        /// <summary>
+        /// Total price of returned items divided by the total price of shipped items, reported on the order date. If
+        /// this metric is selected, 'segments.currency_code' is automatically added to the SELECT clause in the search
+        /// query (unless it is explicitly selected by the user) and the currency_code segment is populated in the
+        /// response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnRate")]
+        public virtual System.Nullable<double> ReturnRate { get; set; }
+
+        /// <summary>
+        /// Number of ordered items sent back for return, reported on the date when the merchant accepted the return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnedItems")]
+        public virtual System.Nullable<long> ReturnedItems { get; set; }
+
+        /// <summary>
+        /// Total price of ordered items sent back for return, reported on the date when the merchant accepted the
+        /// return. The currency of the returned value is stored in the currency_code segment. If this metric is
+        /// selected, 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless
+        /// it is explicitly selected by the user) and the currency_code segment is populated in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnsMicros")]
+        public virtual System.Nullable<long> ReturnsMicros { get; set; }
+
+        /// <summary>
+        /// Total price of shipped items, reported on the order date. Excludes shipping and taxes (US only). The
+        /// currency of the returned value is stored in the currency_code segment. If this metric is selected,
+        /// 'segments.currency_code' is automatically added to the SELECT clause in the search query (unless it is
+        /// explicitly selected by the user) and the currency_code segment is populated in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippedItemSalesMicros")]
+        public virtual System.Nullable<long> ShippedItemSalesMicros { get; set; }
+
+        /// <summary>Number of shipped items, reported on the shipment date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippedItems")]
+        public virtual System.Nullable<long> ShippedItems { get; set; }
+
+        /// <summary>
+        /// Number of fully shipped orders, reported on the last shipment date. **This metric cannot be segmented by
+        /// product dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippedOrders")]
+        public virtual System.Nullable<long> ShippedOrders { get; set; }
+
+        /// <summary>
+        /// Number of ordered items not shipped up until the end of the queried day. If a multi-day period is specified
+        /// in the search query, the returned value is the average number of unshipped items over the days in the
+        /// queried period.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unshippedItems")]
+        public virtual System.Nullable<double> UnshippedItems { get; set; }
+
+        /// <summary>
+        /// Number of orders not shipped or partially shipped up until the end of the queried day. If a multi-day period
+        /// is specified in the search query, the returned value is the average number of unshipped orders over the days
+        /// in the queried period. **This metric cannot be segmented by product dimensions.**
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unshippedOrders")]
+        public virtual System.Nullable<double> UnshippedOrders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18366,7 +18490,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
 
-        /// <summary>Link template for merchant hosted local storefront.</summary>
+        /// <summary>URL template for merchant hosted local storefront.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkTemplate")]
         public virtual string LinkTemplate { get; set; }
 
@@ -18398,7 +18522,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLink")]
         public virtual string MobileLink { get; set; }
 
-        /// <summary>Link template for merchant hosted local storefront optimized for mobile devices.</summary>
+        /// <summary>URL template for merchant hosted local storefront optimized for mobile devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileLinkTemplate")]
         public virtual string MobileLinkTemplate { get; set; }
 
@@ -20529,6 +20653,57 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// </summary>
     public class Segments : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Brand of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>Product category (1st level) in Google's product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL1")]
+        public virtual string CategoryL1 { get; set; }
+
+        /// <summary>Product category (2nd level) in Google's product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL2")]
+        public virtual string CategoryL2 { get; set; }
+
+        /// <summary>Product category (3rd level) in Google's product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL3")]
+        public virtual string CategoryL3 { get; set; }
+
+        /// <summary>Product category (4th level) in Google's product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL4")]
+        public virtual string CategoryL4 { get; set; }
+
+        /// <summary>Product category (5th level) in Google's product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryL5")]
+        public virtual string CategoryL5 { get; set; }
+
+        /// <summary>
+        /// Currency in which price metrics are represented, e.g., if you select `ordered_item_sales_micros`, the
+        /// returned value will be represented by this currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Custom label 0 for custom grouping of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel0")]
+        public virtual string CustomLabel0 { get; set; }
+
+        /// <summary>Custom label 1 for custom grouping of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel1")]
+        public virtual string CustomLabel1 { get; set; }
+
+        /// <summary>Custom label 2 for custom grouping of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel2")]
+        public virtual string CustomLabel2 { get; set; }
+
+        /// <summary>Custom label 3 for custom grouping of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel3")]
+        public virtual string CustomLabel3 { get; set; }
+
+        /// <summary>Custom label 4 for custom grouping of products.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customLabel4")]
+        public virtual string CustomLabel4 { get; set; }
+
         /// <summary>Date in the merchant timezone to which metrics apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
@@ -20537,9 +20712,37 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
 
+        /// <summary>Product category (1st level) in merchant's own product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL1")]
+        public virtual string ProductTypeL1 { get; set; }
+
+        /// <summary>Product category (2nd level) in merchant's own product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL2")]
+        public virtual string ProductTypeL2 { get; set; }
+
+        /// <summary>Product category (3rd level) in merchant's own product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL3")]
+        public virtual string ProductTypeL3 { get; set; }
+
+        /// <summary>Product category (4th level) in merchant's own product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL4")]
+        public virtual string ProductTypeL4 { get; set; }
+
+        /// <summary>Product category (5th level) in merchant's own product taxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
+        public virtual string ProductTypeL5 { get; set; }
+
         /// <summary>Program to which metrics apply, e.g., Free Product Listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("program")]
         public virtual string Program { get; set; }
+
+        /// <summary>Title of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>First day of the week (Monday) of the metrics date in the merchant timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("week")]
+        public virtual Date Week { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

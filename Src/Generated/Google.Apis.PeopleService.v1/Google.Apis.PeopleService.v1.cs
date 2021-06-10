@@ -1035,7 +1035,9 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Provides a list of contacts in the authenticated user's other contacts that matches the search query. The
         /// query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the
-        /// OTHER_CONTACT source.
+        /// OTHER_CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty
+        /// query to update the cache. See
+        /// https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -1045,7 +1047,9 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Provides a list of contacts in the authenticated user's other contacts that matches the search query. The
         /// query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the
-        /// OTHER_CONTACT source.
+        /// OTHER_CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty
+        /// query to update the cache. See
+        /// https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts
         /// </summary>
         public class SearchRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
         {
@@ -2123,11 +2127,11 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYSOURCETYPEUNSPECIFIED = 0,
 
-                /// <summary>G Suite domain shared contact.</summary>
+                /// <summary>Google Workspace domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
                 DIRECTORYSOURCETYPEDOMAINCONTACT = 1,
 
-                /// <summary>G Suite domain profile.</summary>
+                /// <summary>Google Workspace domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
                 DIRECTORYSOURCETYPEDOMAINPROFILE = 2,
             }
@@ -2215,7 +2219,9 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The
         /// query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations`
-        /// fields that are from the CONTACT" source.
+        /// fields that are from the CONTACT" source. **IMPORTANT**: Before searching, clients should send a warmup
+        /// request with an empty query to update the cache. See
+        /// https://developers.google.com/people/v1/contacts#search_the_users_contacts
         /// </summary>
         public virtual SearchContactsRequest SearchContacts()
         {
@@ -2225,7 +2231,9 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>
         /// Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The
         /// query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations`
-        /// fields that are from the CONTACT" source.
+        /// fields that are from the CONTACT" source. **IMPORTANT**: Before searching, clients should send a warmup
+        /// request with an empty query to update the cache. See
+        /// https://developers.google.com/people/v1/contacts#search_the_users_contacts
         /// </summary>
         public class SearchContactsRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.SearchResponse>
         {
@@ -2424,11 +2432,11 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_UNSPECIFIED")]
                 DIRECTORYSOURCETYPEUNSPECIFIED = 0,
 
-                /// <summary>G Suite domain shared contact.</summary>
+                /// <summary>Google Workspace domain shared contact.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT")]
                 DIRECTORYSOURCETYPEDOMAINCONTACT = 1,
 
-                /// <summary>G Suite domain profile.</summary>
+                /// <summary>Google Workspace domain profile.</summary>
                 [Google.Apis.Util.StringValueAttribute("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE")]
                 DIRECTORYSOURCETYPEDOMAINPROFILE = 2,
             }
@@ -3255,10 +3263,10 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A G Suite Domain membership.</summary>
+    /// <summary>A Google Workspace Domain membership.</summary>
     public class DomainMembership : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the person is in the viewer's G Suite domain.</summary>
+        /// <summary>True if the person is in the viewer's Google Workspace domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inViewerDomain")]
         public virtual System.Nullable<bool> InViewerDomain { get; set; }
 

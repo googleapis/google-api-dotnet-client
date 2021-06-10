@@ -17,6 +17,7 @@
     "DEPLOYABLE",
     "DISCOVERY",
     "ATTESTATION_AUTHORITY",
-    "UPGRADE"
+    "UPGRADE",
+    "COMPLIANCE"
   ]
 }
