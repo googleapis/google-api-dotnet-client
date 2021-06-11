@@ -16,6 +16,7 @@ limitations under the License.
 
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Util;
 using System;
@@ -109,6 +110,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
             throw new InvalidOperationException($"{nameof(ImpersonatedCredential)} does not support Domain-Wide Delegation");
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            new ImpersonatedCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <inheritdoc/>
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)

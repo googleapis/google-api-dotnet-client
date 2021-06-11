@@ -26,6 +26,7 @@ using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
+using Google.Apis.Http;
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0
 using RsaKey = System.Security.Cryptography.RSA;
@@ -220,6 +221,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
             new ServiceAccountCredential(new Initializer(this) { User = user });
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            new ServiceAccountCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         /// <summary>
         /// Requests a new token as specified in 

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Http;
 using Google.Apis.Tests.Mocks;
 using System;
 using System.Threading.Tasks;
@@ -40,6 +41,19 @@ namespace Google.Apis.Auth.Tests.OAuth2
             // Two subsequent invocations should return the same task.
             Assert.Same(ComputeCredential.IsRunningOnComputeEngine(),
                 ComputeCredential.IsRunningOnComputeEngine());
+        }
+
+        [Fact]
+        public void WithHttpClientFactory()
+        {
+            var credential = new ComputeCredential();
+            var factory = new HttpClientFactory();
+            var credentialWithFactory = Assert.IsType<ComputeCredential>(((IGoogleCredential)credential).WithHttpClientFactory(factory));
+
+            Assert.NotSame(credential, credentialWithFactory);
+            Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
+            Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
+            Assert.Same(factory, credentialWithFactory.HttpClientFactory);
         }
 
         [Fact]

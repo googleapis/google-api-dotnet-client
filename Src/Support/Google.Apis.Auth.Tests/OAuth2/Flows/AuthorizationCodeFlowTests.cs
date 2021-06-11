@@ -86,6 +86,20 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
 
         #endregion
 
+        [Fact]
+        public void WithHttpClientFactory()
+        {
+            var flow = CreateFlow();
+            var factory = new HttpClientFactory();
+            var flowWithFactory = Assert.IsType<AuthorizationCodeFlow>(
+                ((IHttpAuthorizationFlow)flow).WithHttpClientFactory(factory));
+
+            Assert.NotSame(flow, flowWithFactory);
+            Assert.NotSame(flow.HttpClient, flowWithFactory.HttpClient);
+            Assert.NotSame(flow.HttpClientFactory, flowWithFactory.HttpClientFactory);
+            Assert.Same(factory, flowWithFactory.HttpClientFactory);
+        }
+
         #region LoadToken
 
         [Fact]

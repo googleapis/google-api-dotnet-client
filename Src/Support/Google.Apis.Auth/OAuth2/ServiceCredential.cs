@@ -14,16 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
+using Google.Apis.Logging;
+using Google.Apis.Util;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
-using Google.Apis.Logging;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -153,8 +152,8 @@ namespace Google.Apis.Auth.OAuth2
                     new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
                         () => new BackOffHandler(new ExponentialBackOff())));
             }
-            HttpClientFactory = initializer.HttpClientFactory;
-            HttpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
+            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
+            HttpClient = HttpClientFactory.CreateHttpClient(httpArgs);
             _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
 
             QuotaProject = initializer.QuotaProject;

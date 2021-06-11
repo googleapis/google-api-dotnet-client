@@ -14,20 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Moq;
-
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
-using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
-using Google.Apis.Util.Store;
-using Google.Apis.Auth.OAuth2;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests.OAuth2.Flows
@@ -75,7 +66,21 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal(initializer.Nonce, flow.Nonce);
             Assert.Equal(initializer.UserDefinedQueryParams, flow.UserDefinedQueryParams);
         }
-        
+
+        [Fact]
+        public void WithHttpClientFactory()
+        {
+            var flow = new GoogleAuthorizationCodeFlow(initializer);
+            var factory = new HttpClientFactory();
+            var flowWithFactory = Assert.IsType<GoogleAuthorizationCodeFlow>(
+                ((IHttpAuthorizationFlow)flow).WithHttpClientFactory(factory));
+
+            Assert.NotSame(flow, flowWithFactory);
+            Assert.NotSame(flow.HttpClient, flowWithFactory.HttpClient);
+            Assert.NotSame(flow.HttpClientFactory, flowWithFactory.HttpClientFactory);
+            Assert.Same(factory, flowWithFactory.HttpClientFactory);
+        }
+
         [Fact]
         public void CreateAuthorizationCodeRequestTest()
         {

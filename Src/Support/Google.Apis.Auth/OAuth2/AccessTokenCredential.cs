@@ -60,6 +60,9 @@ namespace Google.Apis.Auth.OAuth2
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
             throw new InvalidOperationException($"{nameof(AccessTokenCredential)} does not support Domain-Wide Delegation");
 
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) => this;
+
         public void Initialize(ConfigurableHttpClient httpClient) =>
             httpClient.MessageHandler.Credential = this;
 
