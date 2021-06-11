@@ -17,6 +17,7 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
@@ -124,6 +125,21 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var initializer = new ImpersonatedCredential.Initializer(sourceCredential, options);
             var ex = Assert.Throws<InvalidOperationException>(() => new ImpersonatedCredential(initializer));
             Assert.Equal("The underlying credential of source credential must be UserCredential or ServiceAccountCredential.", ex.Message);
+        }
+
+        [Fact]
+        public void WithHttpClientFactory()
+        {
+            var sourceCredential = CreateSourceCredential();
+            var credential = new ImpersonatedCredential(
+                new ImpersonatedCredential.Initializer(sourceCredential, new ImpersonationOptions("principal", null, null, null)));
+            var factory = new HttpClientFactory();
+            var credentialWithFactory = Assert.IsType<ImpersonatedCredential>(((IGoogleCredential)credential).WithHttpClientFactory(factory));
+
+            Assert.NotSame(credential, credentialWithFactory);
+            Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
+            Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
+            Assert.Same(factory, credentialWithFactory.HttpClientFactory);
         }
 
         [Fact]

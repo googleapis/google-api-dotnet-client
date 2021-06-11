@@ -283,6 +283,14 @@ namespace Google.Apis.Auth.OAuth2
         public virtual GoogleCredential CreateWithQuotaProject(string quotaProject) =>
             new GoogleCredential(credential.WithQuotaProject(quotaProject));
 
+        /// <summary>
+        /// Creates a copy of this credential with the specified HTTP client factory.
+        /// </summary>
+        /// <param name="factory">The HTTP client factory to be used by the new credential.
+        /// May be null, in which case the default <see cref="HttpClientFactory"/> will be used.</param>
+        public virtual GoogleCredential CreateWithHttpClientFactory(IHttpClientFactory factory) =>
+            new GoogleCredential(credential.WithHttpClientFactory(factory));
+
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {
             credential.Initialize(httpClient);

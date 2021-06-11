@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
 using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
@@ -118,6 +119,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
             throw new InvalidOperationException($"{nameof(ComputeCredential)} does not support Domain-Wide Delegation");
+
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            new ComputeCredential(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         #region ServiceCredential overrides
 

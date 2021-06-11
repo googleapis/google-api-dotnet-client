@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Logging;
 using System.Net;
 using System.Net.Http;
 
@@ -23,8 +22,35 @@ namespace Google.Apis.Http
     /// <summary>The default implementation of the HTTP client factory.</summary>
     public class HttpClientFactory : IHttpClientFactory
     {
-        /// <summary>The class logger.</summary>
-        private static readonly ILogger Logger = ApplicationContext.Logger.ForType<HttpClientFactory>();
+        /// <summary>
+        /// Creates a new instance of <see cref="HttpClientFactory"/> that
+        /// will set the given proxy on HTTP clients created by this factory.
+        /// </summary>
+        /// <param name="proxy">The proxy to set on HTTP clients created by this factory.
+        /// May be null, in which case no proxy will be used.</param>
+        public static HttpClientFactory ForProxy(IWebProxy proxy) =>
+            new HttpClientFactory(proxy);
+
+        /// <summary>
+        /// Creates a new instance of <see cref="HttpClientFactory"/>.
+        /// </summary>
+        public HttpClientFactory() : this(null)
+        { }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="HttpClientFactory"/> that
+        /// will set the given proxy on HTTP clients created by this factory.
+        /// </summary>
+        /// <param name="proxy">The proxy to set on HTTP clients created by this factory.
+        /// May be null, in which case no proxy will be used.</param>
+        protected HttpClientFactory(IWebProxy proxy) => Proxy = proxy;
+
+        /// <summary>
+        /// Gets the proxy to use when creating HTTP clients, if any.
+        /// May be null, in which case, no proxy will be set for HTTP clients
+        /// created by this factory.
+        /// </summary>
+        public IWebProxy Proxy { get; }
 
         /// <inheritdoc/>
         public ConfigurableHttpClient CreateHttpClient(CreateHttpClientArgs args)
@@ -116,6 +142,10 @@ namespace Google.Apis.Http
         /// Configuring these within this method will have no effect.
         /// </description></item>
         /// <item><description>
+        /// <see cref="HttpClientHandler.Proxy"/> is set in this method to <see cref="Proxy"/>
+        /// if <see cref="Proxy"/> value is not null. You may override that behaviour.
+        /// </description></item>
+        /// <item><description>
         /// Return a new instance of an <see cref="HttpClientHandler"/> for each call to this method.
         /// </description></item>
         /// <item><description>
@@ -124,6 +154,14 @@ namespace Google.Apis.Http
         /// </list>
         /// </remarks>
         /// <returns>A suitable <see cref="HttpClientHandler"/>.</returns>
-        protected virtual HttpClientHandler CreateClientHandler() => new HttpClientHandler();
+        protected virtual HttpClientHandler CreateClientHandler()
+        {
+            var client = new HttpClientHandler();
+            if (Proxy != null)
+            {
+                client.Proxy = Proxy;
+            }
+            return client;
+        }
     }
 }

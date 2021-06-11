@@ -14,22 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Requests;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Http;
+using Google.Apis.Json;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Apis.Auth.OAuth2.Requests;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Json;
-
 namespace Google.Apis.Auth.OAuth2.Flows
 {
     /// <summary>
     /// Google specific authorization code flow which inherits from <see cref="AuthorizationCodeFlow"/>.
     /// </summary>
-    public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow
+    public class GoogleAuthorizationCodeFlow : AuthorizationCodeFlow, IHttpAuthorizationFlow
     {
         /// <summary>
         /// The project ID associated with the credential using this flow.
@@ -82,6 +83,11 @@ namespace Google.Apis.Auth.OAuth2.Flows
             Nonce = initializer.Nonce;
             userDefinedQueryParams = initializer.UserDefinedQueryParams;
         }
+
+        /// <inheritdoc/>
+        // Note: we reimplement here to make sure we return a GoogleAuthorizationCodeFlow.
+        IHttpAuthorizationFlow IHttpAuthorizationFlow.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            new GoogleAuthorizationCodeFlow(new Initializer(this) { HttpClientFactory = httpClientFactory, });
 
         /// <inheritdoc/>
         public override AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri)
@@ -162,12 +168,27 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             /// <summary>
             /// Constructs a new initializer. Sets Authorization server URL to 
-            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.OidcAuthorizationUrl"/>, and Token server URL to 
-            /// <see cref="Google.Apis.Auth.OAuth2.GoogleAuthConsts.OidcTokenUrl"/>.
+            /// <see cref="GoogleAuthConsts.OidcAuthorizationUrl"/>, and Token server URL to 
+            /// <see cref="GoogleAuthConsts.OidcTokenUrl"/>.
             /// </summary>
-            public Initializer() : this(
-                GoogleAuthConsts.OidcAuthorizationUrl, GoogleAuthConsts.OidcTokenUrl, GoogleAuthConsts.RevokeTokenUrl)
+            public Initializer()
+                : this(GoogleAuthConsts.OidcAuthorizationUrl, GoogleAuthConsts.OidcTokenUrl, GoogleAuthConsts.RevokeTokenUrl)
             {
+            }
+
+            /// <summary>
+            /// Constructs a new initializer from the given <see cref="GoogleAuthorizationCodeFlow"/>.
+            /// </summary>
+            internal Initializer(GoogleAuthorizationCodeFlow flow)
+                : base(flow)
+            {
+                ProjectId = flow.ProjectId;
+                RevokeTokenUrl = flow.revokeTokenUrl;
+                IncludeGrantedScopes = flow.IncludeGrantedScopes;
+                LoginHint = flow.LoginHint;
+                Prompt = flow.Prompt;
+                Nonce = flow.Nonce;
+                UserDefinedQueryParams = flow.UserDefinedQueryParams;
             }
 
             /// <summary>Constructs a new initializer.</summary>

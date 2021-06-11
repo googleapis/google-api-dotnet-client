@@ -379,6 +379,19 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
+        public void WithHttpClientFactory()
+        {
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId").FromPrivateKey(PrivateKey));
+            var factory = new HttpClientFactory();
+            var credentialWithFactory = Assert.IsType<ServiceAccountCredential>(((IGoogleCredential)credential).WithHttpClientFactory(factory));
+
+            Assert.NotSame(credential, credentialWithFactory);
+            Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
+            Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
+            Assert.Same(factory, credentialWithFactory.HttpClientFactory);
+        }
+
+        [Fact]
         public async Task FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.

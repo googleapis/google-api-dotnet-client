@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Http;
 using System;
 using System.Collections.Generic;
 
@@ -69,5 +70,15 @@ namespace Google.Apis.Auth.OAuth2
         // work only with credentials that support domain wide delegation. This interface would
         // behave similar to IOIdcTokenProvider and IBlogSigner.
         IGoogleCredential WithUserForDomainWideDelegation(string user);
+
+        /// <summary>
+        /// Return a new instance of the same type as this but that uses the
+        /// given HTTP client factory.
+        /// </summary>
+        /// <param name="httpClientFactory">The http client factory to be used by the new instance.
+        /// May be null in which case the default <see cref="HttpClientFactory"/> will be used.</param>
+        /// <returns>A new instance with the same type as this but that will use <paramref name="httpClientFactory"/>
+        /// to obtain an <see cref="ConfigurableHttpClient"/> to be used for token and other operations.</returns>
+        IGoogleCredential WithHttpClientFactory(IHttpClientFactory httpClientFactory);
     }
 }

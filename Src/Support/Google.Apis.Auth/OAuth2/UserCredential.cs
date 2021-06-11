@@ -94,6 +94,12 @@ namespace Google.Apis.Auth.OAuth2
         IGoogleCredential IGoogleCredential.WithUserForDomainWideDelegation(string user) =>
             throw new InvalidOperationException($"{nameof(UserCredential)} does not support Domain-Wide Delegation");
 
+        /// <inheritdoc/>
+        IGoogleCredential IGoogleCredential.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            Flow is IHttpAuthorizationFlow httpFlow
+            ? new UserCredential(httpFlow.WithHttpClientFactory(httpClientFactory), UserId, Token, QuotaProject)
+            : throw new InvalidOperationException($"{Flow.GetType().FullName} does not support an HTTP client factory to be set");
+
         #region IHttpExecuteInterceptor
 
         /// <summary>

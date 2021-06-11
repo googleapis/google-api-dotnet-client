@@ -38,7 +38,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
     /// that access token when it expires.
     /// </para>
     /// </summary>
-    public class AuthorizationCodeFlow : IAuthorizationCodeFlow
+    public class AuthorizationCodeFlow : IHttpAuthorizationFlow
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<AuthorizationCodeFlow>();
 
@@ -111,6 +111,22 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
                 Clock = SystemClock.Default;
             }
+
+            /// <summary>
+            /// Constructs a new initializer from the given <see cref="AuthorizationCodeFlow"/>
+            /// </summary>
+            internal Initializer(AuthorizationCodeFlow flow)
+            {
+                AccessMethod = flow.AccessMethod;
+                TokenServerUrl = flow.TokenServerUrl;
+                AuthorizationServerUrl = flow.AuthorizationServerUrl;
+                ClientSecrets = flow.ClientSecrets;
+                DataStore = flow.DataStore;
+                Scopes = flow.Scopes;
+                HttpClientFactory = flow.HttpClientFactory;
+                DefaultExponentialBackOffPolicy = flow.DefaultExponentialBackOffPolicy;
+                Clock = flow.Clock;
+            }
         }
 
         #endregion
@@ -145,6 +161,10 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         /// <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
         public ConfigurableHttpClient HttpClient { get { return httpClient; } }
+
+        internal IHttpClientFactory HttpClientFactory { get; }
+
+        private ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; }
 
         /// <summary>Constructs a new flow using the initializer's properties.</summary>
         public AuthorizationCodeFlow(Initializer initializer)
@@ -182,17 +202,22 @@ namespace Google.Apis.Auth.OAuth2.Flows
             scopes = initializer.Scopes;
 
             // Set the HTTP client.
-            var httpArgs = new CreateHttpClientArgs();
+            DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
+            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
 
+            var httpArgs = new CreateHttpClientArgs();
             // Add exponential back-off initializer if necessary.
-            if (initializer.DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
+            if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
             {
-                httpArgs.Initializers.Add(
-                    new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
-                        () => new BackOffHandler(new ExponentialBackOff())));
+                httpArgs.Initializers.Add(new ExponentialBackOffInitializer(
+                    DefaultExponentialBackOffPolicy, () => new BackOffHandler(new ExponentialBackOff())));
             }
-            httpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
+            httpClient = HttpClientFactory.CreateHttpClient(httpArgs);
         }
+
+        /// <inheritdoc/>
+        IHttpAuthorizationFlow IHttpAuthorizationFlow.WithHttpClientFactory(IHttpClientFactory httpClientFactory) =>
+            new AuthorizationCodeFlow(new Initializer(this) { HttpClientFactory = httpClientFactory });
 
         #region IAuthorizationCodeFlow overrides
 
