@@ -4769,8 +4769,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’,
-        /// and underscores ‘_’.
+        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-',
+        /// and underscores '_'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

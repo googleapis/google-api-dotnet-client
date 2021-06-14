@@ -3836,6 +3836,34 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A message representing the message types used by a long-running operation. Example: rpc Export(ExportRequest)
+    /// returns (google.longrunning.Operation) { option (google.longrunning.operation_info) = { response_type:
+    /// "ExportResponse" metadata_type: "ExportMetadata" }; }
+    /// </summary>
+    public class OperationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The message name of the metadata type for this long-running operation. If the response is in a
+        /// different package from the rpc, a fully-qualified message name must be used (e.g. `google.protobuf.Struct`).
+        /// Note: Altering this value constitutes a breaking change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataType")]
+        public virtual string MetadataType { get; set; }
+
+        /// <summary>
+        /// Required. The message name of the primary return type for this long-running operation. This type will be
+        /// used to deserialize the LRO's response. If the response is in a different package from the rpc, a
+        /// fully-qualified message name must be used (e.g. `google.protobuf.Struct`). Note: Altering this value
+        /// constitutes a breaking change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseType")]
+        public virtual string ResponseType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata associated with a long running operation resource.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

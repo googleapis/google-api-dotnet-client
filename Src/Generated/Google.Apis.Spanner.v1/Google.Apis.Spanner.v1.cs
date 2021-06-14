@@ -5826,6 +5826,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count
+        /// should be present in the message. This may be zero in API responses for instances that are not yet in state
+        /// `READY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
+        public virtual System.Nullable<int> ProcessingUnits { get; set; }
+
+        /// <summary>
         /// Output only. The current instance state. For CreateInstance, the state must be either omitted or set to
         /// `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         /// </summary>

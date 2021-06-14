@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1alpha1 Client Library</Title>
-    <Version>1.51.0.2274</Version>
+    <Version>1.51.0.2343</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

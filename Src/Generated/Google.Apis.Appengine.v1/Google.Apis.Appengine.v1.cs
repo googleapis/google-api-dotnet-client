@@ -5756,6 +5756,10 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>VPC access connector specification.</summary>
     public class VpcAccessConnector : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The egress setting for the connector, controlling what traffic is diverted through it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressSetting")]
+        public virtual string EgressSetting { get; set; }
+
         /// <summary>
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>

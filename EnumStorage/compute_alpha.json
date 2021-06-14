@@ -1,6 +1,12 @@
 {
   "Google.Apis.Compute.alpha.ComputeBaseServiceRequest<<TResponse>>.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Compute.alpha.ComputeBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Compute.alpha.InstancesResource+UpdateRequest.MinimalActionEnum": [
     "INVALID",

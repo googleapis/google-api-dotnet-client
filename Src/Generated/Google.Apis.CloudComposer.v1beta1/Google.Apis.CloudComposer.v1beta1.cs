@@ -313,6 +313,71 @@ namespace Google.Apis.CloudComposer.v1beta1
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Check if an upgrade operation on the environment will succeed. In case of problems detailed info can
+                /// be found in the returned Operation.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the environment to check upgrade for, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual CheckUpgradeRequest CheckUpgrade(Google.Apis.CloudComposer.v1beta1.Data.CheckUpgradeRequest body, string environment)
+                {
+                    return new CheckUpgradeRequest(service, body, environment);
+                }
+
+                /// <summary>
+                /// Check if an upgrade operation on the environment will succeed. In case of problems detailed info can
+                /// be found in the returned Operation.
+                /// </summary>
+                public class CheckUpgradeRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new CheckUpgrade request.</summary>
+                    public CheckUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.CheckUpgradeRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the environment to check upgrade for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.CheckUpgradeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkUpgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:checkUpgrade";
+
+                    /// <summary>Initializes CheckUpgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Create a new environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1079,6 +1144,50 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to check whether image upgrade will succeed.</summary>
+    public class CheckUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The version of the software running in the environment. This encapsulates both the version of Cloud Composer
+        /// functionality and the version of Apache Airflow. It must match the regular expression
+        /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the
+        /// server also checks if the provided version is supported and denies the request for an unsupported version.
+        /// The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the
+        /// patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided
+        /// instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version
+        /// and stores that version number in the same field. The portion of the image version that follows `airflow-`
+        /// is an official Apache Airflow repository [release
+        /// name](https://github.com/apache/incubator-airflow/releases). See also [Version List]
+        /// (/composer/docs/concepts/versioning/composer-versions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
+        public virtual string ImageVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message containing information about the result of an upgrade check operation.</summary>
+    public class CheckUpgradeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Url for a docker build log of an upgraded image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildLogUri")]
+        public virtual string BuildLogUri { get; set; }
+
+        /// <summary>Output only. Whether build has succeeded or failed on modules conflicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containsPypiModulesConflict")]
+        public virtual string ContainsPypiModulesConflict { get; set; }
+
+        /// <summary>
+        /// Output only. Extract from a docker image build log containing information about pypi modules conflicts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiConflictBuildLogExtract")]
+        public virtual string PypiConflictBuildLogExtract { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6889,16 +6889,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Immutable. Google Ads customer ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerId { get; set; }
-
         /// <summary>
         /// Output only. Email address of the user that created the link. An empty string will be returned if the email
         /// address can't be retrieved.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorEmailAddress")]
+        public virtual string CreatorEmailAddress { get; set; }
+
+        /// <summary>Immutable. Google Ads customer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
 
         /// <summary>
         /// Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not
