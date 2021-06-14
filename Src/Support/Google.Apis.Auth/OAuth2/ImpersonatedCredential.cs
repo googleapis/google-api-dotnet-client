@@ -17,14 +17,12 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
-using Google.Apis.Json;
 using Google.Apis.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -177,12 +175,10 @@ namespace Google.Apis.Auth.OAuth2
                 Scopes = Scopes,
                 Lifetime = $"{(int)Lifetime.TotalSeconds}s"
             };
-            var body = NewtonsoftJsonSerializer.Instance.Serialize(request);
-            var content = new StringContent(body, Encoding.UTF8, "application/json");
-            
-            var response = await HttpClient.PostAsync(TokenServerUrl, content, taskCancellationToken).ConfigureAwait(false);
-            var newToken = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
-            Token = newToken;
+
+            Token = await request.ExecuteAsync(HttpClient, TokenServerUrl, Clock, Logger, taskCancellationToken)
+                .ConfigureAwait(false);
+
             return true;
         }
 
@@ -205,12 +201,11 @@ namespace Google.Apis.Auth.OAuth2
                 Audience = oidcTokenOptions.TargetAudience,
                 IncludeEmail = true
             };
-            var body = NewtonsoftJsonSerializer.Instance.Serialize(request);
-            var content = new StringContent(body, Encoding.UTF8, "application/json");
-            
             var oidcTokenUrl = string.Format(GoogleAuthConsts.IamIdTokenEndpointFormatString, TargetPrincipal);
-            var response = await HttpClient.PostAsync(oidcTokenUrl, content, cancellationToken).ConfigureAwait(false);
-            caller.Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
+
+            caller.Token = await request.ExecuteAsync(HttpClient, oidcTokenUrl, Clock, Logger, cancellationToken)
+                .ConfigureAwait(false);
+
             return true;
         }
 
@@ -221,30 +216,20 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="cancellationToken">Cancellation token to cancel operation.</param>
         /// <returns>The base64 encoded signature.</returns>
         /// <exception cref="HttpRequestException">When signing request fails.</exception>
-        /// <exception cref="Newtonsoft.Json.JsonException">When signing response is not a valid JSON.</exception>
+        /// <exception cref="JsonException">When signing response is not a valid JSON.</exception>
         public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
         {
-            var request = new
+            var request = new ImpersonationSignBlobRequest
             {
-                delegates = DelegateAccounts,
-                payload = blob
+                DelegateAccounts = DelegateAccounts,
+                Payload = blob
             };
-            var body = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(request), Encoding.UTF8, "application/json");
-            
             var signBlobUrl = string.Format(GoogleAuthConsts.IamSignEndpointFormatString, TargetPrincipal);
-            
-            var response = await HttpClient.PostAsync(signBlobUrl, body, cancellationToken).ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var signBlobResponse = NewtonsoftJsonSerializer.Instance.Deserialize<SignBlobResponse>(content);
-            return signBlobResponse.SignedBlob;
-        }
 
-        internal class SignBlobResponse
-        {
-            /// <summary>Gets or sets the signed blob.</summary>
-            [JsonProperty("signedBlob")]
-            public string SignedBlob { get; set; }
+            var response = await request.ExecuteAsync<ImpersonationSignBlobResponse>(HttpClient, signBlobUrl, cancellationToken)
+                .ConfigureAwait(false);
+
+            return response.SignedBlob;
         }
     }
 }
