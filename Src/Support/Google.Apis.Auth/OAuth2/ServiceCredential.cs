@@ -113,6 +113,17 @@ namespace Google.Apis.Auth.OAuth2
                 QuotaProject = other.QuotaProject;
                 HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(other.HttpClientInitializers);
             }
+
+            internal Initializer(Initializer other)
+            {
+                TokenServerUrl = other.TokenServerUrl;
+                Clock = other.Clock;
+                AccessMethod = other.AccessMethod;
+                HttpClientFactory = other.HttpClientFactory;
+                DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
+                QuotaProject = other.QuotaProject;
+                HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(other.HttpClientInitializers);
+            }
         }
 
         /// <summary>Gets the token server URL.</summary>

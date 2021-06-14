@@ -228,6 +228,16 @@ namespace Google.Apis.Auth.OAuth2
         /// by calling <see cref="CreateScoped(IEnumerable{string})"/>
         /// </description>
         /// </item>
+        /// <item>
+        /// <description>
+        /// <see cref="ImpersonatedCredential"/> is not scoped by default but when used without
+        /// explicit scopes to access a Google service, the service's default scopes will be assumed.
+        /// Note that the scopes of an <see cref="ImpersonatedCredential.SourceCredential"/> have no
+        /// bearings on the <see cref="ImpersonatedCredential"/> scopes.
+        /// It's possible to create an <see cref="ImpersonatedCredential"/> with explicit scopes set
+        /// by calling <see cref="CreateScoped(IEnumerable{string})"/>
+        /// </description>
+        /// </item>
         /// </list>
         /// </summary>
         public virtual bool IsCreateScopedRequired => 
@@ -317,14 +327,21 @@ namespace Google.Apis.Auth.OAuth2
                 throw new InvalidOperationException(
                     $"{nameof(UnderlyingCredential)} is not a blob signer. Only {nameof(ServiceAccountCredential)}, {nameof(ImpersonatedCredential)} are supported blob signers.");
 
-        /// <summary>Creates a <see cref="GoogleCredential"/> wrapping a <see cref="ImpersonatedCredential"/>.</summary>
-        /// <param name="options">The impersonation options.</param>
-        public GoogleCredential Impersonate(ImpersonationOptions options)
-        {
-            var initializer = new ImpersonatedCredential.Initializer(this, options);
-            var impersonatedCredential = new ImpersonatedCredential(initializer);
-            return new GoogleCredential(impersonatedCredential);
-        }
+        /// <summary>
+        /// Allows this credential to impersonate the <see cref="ImpersonatedCredential.Initializer.TargetPrincipal"/>.
+        /// Only <see cref="ServiceAccountCredential"/> and <see cref="UserCredential"/> support impersonation,
+        /// so this method will throw <see cref="InvalidOperationException"/> if this credential's
+        /// <see cref="UnderlyingCredential"/> is not of one of those supported types.
+        /// </summary>
+        /// <param name="initializer">Initializer containing the configuration for the impersonated credential.</param>
+        /// <remarks>
+        /// For impersonation, a credential needs to be scoped to https://www.googleapis.com/auth/iam. When using a
+        /// <see cref="ServiceAccountCredential"/> as the source credential, this is not a problem, since the credential
+        /// can be scoped on demand. When using a <see cref="UserCredential"/> the credential needs to have been obtained
+        /// with the required scope, else, when attempting and impersonated request, you'll receive an authorization error.
+        /// </remarks>
+        public GoogleCredential Impersonate(ImpersonatedCredential.Initializer initializer) =>
+            new GoogleCredential(ImpersonatedCredential.Create(this, initializer));
 
         /// <summary>Creates a <c>GoogleCredential</c> wrapping a <see cref="ServiceAccountCredential"/>.</summary>
         public static GoogleCredential FromServiceAccountCredential(ServiceAccountCredential credential)
