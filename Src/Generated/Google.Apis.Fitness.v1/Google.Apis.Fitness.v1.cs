@@ -68,7 +68,7 @@ namespace Google.Apis.Fitness.v1
             /// <summary>Use Google Fit to see and store your physical activity data</summary>
             public static string FitnessActivityRead = "https://www.googleapis.com/auth/fitness.activity.read";
 
-            /// <summary>See and add to your Google Fit physical activity data</summary>
+            /// <summary>Add to your Google Fit physical activity data</summary>
             public static string FitnessActivityWrite = "https://www.googleapis.com/auth/fitness.activity.write";
 
             /// <summary>
@@ -78,8 +78,8 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessBloodGlucoseRead = "https://www.googleapis.com/auth/fitness.blood_glucose.read";
 
             /// <summary>
-            /// See and add info about your blood glucose to Google Fit. I consent to Google sharing my blood glucose
-            /// information with this app.
+            /// Add info about your blood glucose to Google Fit. I consent to Google using my blood glucose information
+            /// with this app.
             /// </summary>
             public static string FitnessBloodGlucoseWrite = "https://www.googleapis.com/auth/fitness.blood_glucose.write";
 
@@ -90,7 +90,7 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessBloodPressureRead = "https://www.googleapis.com/auth/fitness.blood_pressure.read";
 
             /// <summary>
-            /// See and add info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure
+            /// Add info about your blood pressure in Google Fit. I consent to Google using my blood pressure
             /// information with this app.
             /// </summary>
             public static string FitnessBloodPressureWrite = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
@@ -98,7 +98,7 @@ namespace Google.Apis.Fitness.v1
             /// <summary>See info about your body measurements and heart rate in Google Fit</summary>
             public static string FitnessBodyRead = "https://www.googleapis.com/auth/fitness.body.read";
 
-            /// <summary>See and add info about your body measurements and heart rate to Google Fit</summary>
+            /// <summary>Add info about your body measurements and heart rate to Google Fit</summary>
             public static string FitnessBodyWrite = "https://www.googleapis.com/auth/fitness.body.write";
 
             /// <summary>
@@ -108,8 +108,8 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessBodyTemperatureRead = "https://www.googleapis.com/auth/fitness.body_temperature.read";
 
             /// <summary>
-            /// See and add to info about your body temperature in Google Fit. I consent to Google sharing my body
-            /// temperature information with this app.
+            /// Add to info about your body temperature in Google Fit. I consent to Google using my body temperature
+            /// information with this app.
             /// </summary>
             public static string FitnessBodyTemperatureWrite = "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
@@ -120,21 +120,21 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessHeartRateRead = "https://www.googleapis.com/auth/fitness.heart_rate.read";
 
             /// <summary>
-            /// See and add to your heart rate data in Google Fit. I consent to Google sharing my heart rate information
-            /// with this app.
+            /// Add to your heart rate data in Google Fit. I consent to Google using my heart rate information with this
+            /// app.
             /// </summary>
             public static string FitnessHeartRateWrite = "https://www.googleapis.com/auth/fitness.heart_rate.write";
 
             /// <summary>See your Google Fit speed and distance data</summary>
             public static string FitnessLocationRead = "https://www.googleapis.com/auth/fitness.location.read";
 
-            /// <summary>See and add to your Google Fit location data</summary>
+            /// <summary>Add to your Google Fit location data</summary>
             public static string FitnessLocationWrite = "https://www.googleapis.com/auth/fitness.location.write";
 
             /// <summary>See info about your nutrition in Google Fit</summary>
             public static string FitnessNutritionRead = "https://www.googleapis.com/auth/fitness.nutrition.read";
 
-            /// <summary>See and add to info about your nutrition in Google Fit</summary>
+            /// <summary>Add to info about your nutrition in Google Fit</summary>
             public static string FitnessNutritionWrite = "https://www.googleapis.com/auth/fitness.nutrition.write";
 
             /// <summary>
@@ -144,8 +144,8 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessOxygenSaturationRead = "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
 
             /// <summary>
-            /// See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen
-            /// saturation information with this app.
+            /// Add info about your oxygen saturation in Google Fit. I consent to Google using my oxygen saturation
+            /// information with this app.
             /// </summary>
             public static string FitnessOxygenSaturationWrite = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
@@ -156,8 +156,8 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessReproductiveHealthRead = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
             /// <summary>
-            /// See and add info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reproductive health information with this app.
+            /// Add info about your reproductive health in Google Fit. I consent to Google using my reproductive health
+            /// information with this app.
             /// </summary>
             public static string FitnessReproductiveHealthWrite = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
@@ -167,8 +167,7 @@ namespace Google.Apis.Fitness.v1
             public static string FitnessSleepRead = "https://www.googleapis.com/auth/fitness.sleep.read";
 
             /// <summary>
-            /// See and add to your sleep data in Google Fit. I consent to Google sharing my sleep information with this
-            /// app.
+            /// Add to your sleep data in Google Fit. I consent to Google using my sleep information with this app.
             /// </summary>
             public static string FitnessSleepWrite = "https://www.googleapis.com/auth/fitness.sleep.write";
         }
@@ -179,7 +178,7 @@ namespace Google.Apis.Fitness.v1
             /// <summary>Use Google Fit to see and store your physical activity data</summary>
             public const string FitnessActivityRead = "https://www.googleapis.com/auth/fitness.activity.read";
 
-            /// <summary>See and add to your Google Fit physical activity data</summary>
+            /// <summary>Add to your Google Fit physical activity data</summary>
             public const string FitnessActivityWrite = "https://www.googleapis.com/auth/fitness.activity.write";
 
             /// <summary>
@@ -189,8 +188,8 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessBloodGlucoseRead = "https://www.googleapis.com/auth/fitness.blood_glucose.read";
 
             /// <summary>
-            /// See and add info about your blood glucose to Google Fit. I consent to Google sharing my blood glucose
-            /// information with this app.
+            /// Add info about your blood glucose to Google Fit. I consent to Google using my blood glucose information
+            /// with this app.
             /// </summary>
             public const string FitnessBloodGlucoseWrite = "https://www.googleapis.com/auth/fitness.blood_glucose.write";
 
@@ -201,7 +200,7 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessBloodPressureRead = "https://www.googleapis.com/auth/fitness.blood_pressure.read";
 
             /// <summary>
-            /// See and add info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure
+            /// Add info about your blood pressure in Google Fit. I consent to Google using my blood pressure
             /// information with this app.
             /// </summary>
             public const string FitnessBloodPressureWrite = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
@@ -209,7 +208,7 @@ namespace Google.Apis.Fitness.v1
             /// <summary>See info about your body measurements and heart rate in Google Fit</summary>
             public const string FitnessBodyRead = "https://www.googleapis.com/auth/fitness.body.read";
 
-            /// <summary>See and add info about your body measurements and heart rate to Google Fit</summary>
+            /// <summary>Add info about your body measurements and heart rate to Google Fit</summary>
             public const string FitnessBodyWrite = "https://www.googleapis.com/auth/fitness.body.write";
 
             /// <summary>
@@ -219,8 +218,8 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessBodyTemperatureRead = "https://www.googleapis.com/auth/fitness.body_temperature.read";
 
             /// <summary>
-            /// See and add to info about your body temperature in Google Fit. I consent to Google sharing my body
-            /// temperature information with this app.
+            /// Add to info about your body temperature in Google Fit. I consent to Google using my body temperature
+            /// information with this app.
             /// </summary>
             public const string FitnessBodyTemperatureWrite = "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
@@ -231,21 +230,21 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessHeartRateRead = "https://www.googleapis.com/auth/fitness.heart_rate.read";
 
             /// <summary>
-            /// See and add to your heart rate data in Google Fit. I consent to Google sharing my heart rate information
-            /// with this app.
+            /// Add to your heart rate data in Google Fit. I consent to Google using my heart rate information with this
+            /// app.
             /// </summary>
             public const string FitnessHeartRateWrite = "https://www.googleapis.com/auth/fitness.heart_rate.write";
 
             /// <summary>See your Google Fit speed and distance data</summary>
             public const string FitnessLocationRead = "https://www.googleapis.com/auth/fitness.location.read";
 
-            /// <summary>See and add to your Google Fit location data</summary>
+            /// <summary>Add to your Google Fit location data</summary>
             public const string FitnessLocationWrite = "https://www.googleapis.com/auth/fitness.location.write";
 
             /// <summary>See info about your nutrition in Google Fit</summary>
             public const string FitnessNutritionRead = "https://www.googleapis.com/auth/fitness.nutrition.read";
 
-            /// <summary>See and add to info about your nutrition in Google Fit</summary>
+            /// <summary>Add to info about your nutrition in Google Fit</summary>
             public const string FitnessNutritionWrite = "https://www.googleapis.com/auth/fitness.nutrition.write";
 
             /// <summary>
@@ -255,8 +254,8 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessOxygenSaturationRead = "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
 
             /// <summary>
-            /// See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen
-            /// saturation information with this app.
+            /// Add info about your oxygen saturation in Google Fit. I consent to Google using my oxygen saturation
+            /// information with this app.
             /// </summary>
             public const string FitnessOxygenSaturationWrite = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
@@ -267,8 +266,8 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessReproductiveHealthRead = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
             /// <summary>
-            /// See and add info about your reproductive health in Google Fit. I consent to Google sharing my
-            /// reproductive health information with this app.
+            /// Add info about your reproductive health in Google Fit. I consent to Google using my reproductive health
+            /// information with this app.
             /// </summary>
             public const string FitnessReproductiveHealthWrite = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
@@ -278,8 +277,7 @@ namespace Google.Apis.Fitness.v1
             public const string FitnessSleepRead = "https://www.googleapis.com/auth/fitness.sleep.read";
 
             /// <summary>
-            /// See and add to your sleep data in Google Fit. I consent to Google sharing my sleep information with this
-            /// app.
+            /// Add to your sleep data in Google Fit. I consent to Google using my sleep information with this app.
             /// </summary>
             public const string FitnessSleepWrite = "https://www.googleapis.com/auth/fitness.sleep.write";
         }

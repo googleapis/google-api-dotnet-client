@@ -321,7 +321,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
+            /// Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Release body, string name)
             {
@@ -352,7 +352,7 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
+                /// Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -389,7 +389,8 @@ namespace Google.Apis.FirebaseRules.v1
 
             /// <summary>Delete a `Release` by resource name.</summary>
             /// <param name="name">
-            /// Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}`
+            /// Required. Resource name for the `Release` to delete. Format:
+            /// `projects/{project_id}/releases/{release_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -407,7 +408,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}`
+                /// Required. Resource name for the `Release` to delete. Format:
+                /// `projects/{project_id}/releases/{release_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -438,7 +440,7 @@ namespace Google.Apis.FirebaseRules.v1
 
             /// <summary>Get a `Release` by name.</summary>
             /// <param name="name">
-            /// Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+            /// Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -456,7 +458,7 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+                /// Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -487,7 +489,7 @@ namespace Google.Apis.FirebaseRules.v1
 
             /// <summary>Get the `Release` executable to use when enforcing rules.</summary>
             /// <param name="name">
-            /// Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+            /// Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
             /// </param>
             public virtual GetExecutableRequest GetExecutable(string name)
             {
@@ -505,7 +507,7 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+                /// Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -572,7 +574,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// List the `Release` values for a project. This list may optionally be filtered by `Release` name,
             /// `Ruleset` name, `TestSuite` name, or any combination thereof.
             /// </summary>
-            /// <param name="name">Resource name for the project. Format: `projects/{project_id}`</param>
+            /// <param name="name">Required. Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -591,23 +593,22 @@ namespace Google.Apis.FirebaseRules.v1
                     InitParameters();
                 }
 
-                /// <summary>Resource name for the project. Format: `projects/{project_id}`</summary>
+                /// <summary>Required. Resource name for the project. Format: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// `Release` filter. The list method supports filters with restrictions on the `Release.name`,
-                /// `Release.ruleset_name`, and `Release.test_suite_name`. Example 1: A filter of 'name=prod*' might
-                /// return `Release`s with names within 'projects/foo' prefixed with 'prod': Name | Ruleset Name
-                /// ------------------------------|------------- projects/foo/releases/prod |
-                /// projects/foo/rulesets/uuid1234 projects/foo/releases/prod/v1 | projects/foo/rulesets/uuid1234
-                /// projects/foo/releases/prod/v2 | projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod*
-                /// ruleset_name=uuid1234` would return only `Release` instances for 'projects/foo' with names prefixed
-                /// with 'prod' referring to the same `Ruleset` name of 'uuid1234': Name | Ruleset Name
-                /// ------------------------------|------------- projects/foo/releases/prod | projects/foo/rulesets/1234
-                /// projects/foo/releases/prod/v1 | projects/foo/rulesets/1234 In the examples, the filter parameters
-                /// refer to the search filters are relative to the project. Fully qualified prefixed may also be used.
-                /// e.g. `test_suite_name=projects/foo/testsuites/uuid1`
+                /// `Release` filter. The list method supports filters with restrictions on the `Release.name`, and
+                /// `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return `Release`s with names
+                /// within 'projects/foo' prefixed with 'prod': Name -&amp;gt; Ruleset Name: *
+                /// projects/foo/releases/prod -&amp;gt; projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v1
+                /// -&amp;gt; projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v2 -&amp;gt;
+                /// projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod* ruleset_name=uuid1234` would
+                /// return only `Release` instances for 'projects/foo' with names prefixed with 'prod' referring to the
+                /// same `Ruleset` name of 'uuid1234': Name -&amp;gt; Ruleset Name: * projects/foo/releases/prod
+                /// -&amp;gt; projects/foo/rulesets/1234 * projects/foo/releases/prod/v1 -&amp;gt;
+                /// projects/foo/rulesets/1234 In the examples, the filter parameters refer to the search filters are
+                /// relative to the project. Fully qualified prefixed may also be used.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -673,12 +674,12 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>
-            /// Update a `Release` via PATCH. Only updates to the `ruleset_name` and `test_suite_name` fields will be
-            /// honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method.
+            /// Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not
+            /// supported. To create a `Release` use the CreateRelease method.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
+            /// Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest body, string name)
             {
@@ -686,8 +687,8 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>
-            /// Update a `Release` via PATCH. Only updates to the `ruleset_name` and `test_suite_name` fields will be
-            /// honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method.
+            /// Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not
+            /// supported. To create a `Release` use the CreateRelease method.
             /// </summary>
             public class PatchRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Release>
             {
@@ -700,7 +701,7 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
+                /// Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -760,7 +761,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
+            /// Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.FirebaseRules.v1.Data.Ruleset body, string name)
             {
@@ -783,7 +784,7 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
+                /// Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -823,7 +824,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// fail.
             /// </summary>
             /// <param name="name">
-            /// Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}`
+            /// Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -844,7 +845,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}`
+                /// Required. Resource name for the ruleset to delete. Format:
+                /// `projects/{project_id}/rulesets/{ruleset_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -875,7 +877,7 @@ namespace Google.Apis.FirebaseRules.v1
 
             /// <summary>Get a `Ruleset` by name including the full `Source` contents.</summary>
             /// <param name="name">
-            /// Resource name for the ruleset to get. Format: `projects/{project_id}/rulesets/{ruleset_id}`
+            /// Required. Resource name for the ruleset to get. Format: `projects/{project_id}/rulesets/{ruleset_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -893,7 +895,8 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>
-                /// Resource name for the ruleset to get. Format: `projects/{project_id}/rulesets/{ruleset_id}`
+                /// Required. Resource name for the ruleset to get. Format:
+                /// `projects/{project_id}/rulesets/{ruleset_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -926,7 +929,7 @@ namespace Google.Apis.FirebaseRules.v1
             /// List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full `Source`
             /// contents of a `Ruleset` may be retrieved with GetRuleset.
             /// </summary>
-            /// <param name="name">Resource name for the project. Format: `projects/{project_id}`</param>
+            /// <param name="name">Required. Resource name for the project. Format: `projects/{project_id}`</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
@@ -945,7 +948,7 @@ namespace Google.Apis.FirebaseRules.v1
                     InitParameters();
                 }
 
-                /// <summary>Resource name for the project. Format: `projects/{project_id}`</summary>
+                /// <summary>Required. Resource name for the project. Format: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1032,9 +1035,9 @@ namespace Google.Apis.FirebaseRules.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the resource
-        /// name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must be
-        /// the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}`
+        /// Required. Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the
+        /// resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this
+        /// must be the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}`
         /// </param>
         public virtual TestRequest Test(Google.Apis.FirebaseRules.v1.Data.TestRulesetRequest body, string name)
         {
@@ -1063,9 +1066,10 @@ namespace Google.Apis.FirebaseRules.v1
             }
 
             /// <summary>
-            /// Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the resource
-            /// name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must
-            /// be the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}`
+            /// Required. Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`,
+            /// the resource name must refer to the project: Format: `projects/{project_id}` For tests against a
+            /// `Ruleset`, this must be the `Ruleset` resource name: Format:
+            /// `projects/{project_id}/rulesets/{ruleset_id}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -1321,23 +1325,11 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time the release was created. Output only.</summary>
+        /// <summary>Output only. Time the release was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>
-        /// Resource name for the `Release`. `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`
-        /// which affords developers a great deal of flexibility in mapping the name to the style that best fits their
-        /// existing development practices. For example, a name could refer to an environment, an app, a version, or
-        /// some combination of three. In the table below, for the project name `projects/foo`, the following relative
-        /// release paths show how flat and structured names might be chosen to match a desired development / deployment
-        /// strategy. Use Case | Flat Name | Structured Name -------------|---------------------|----------------
-        /// Environments | releases/qa | releases/qa Apps | releases/app1_qa | releases/app1/qa Versions |
-        /// releases/app1_v2_qa | releases/app1/v2/qa The delimiter between the release name path elements can be almost
-        /// anything and it should work equally well with the release name list filter, but in many ways the structured
-        /// paths provide a clearer picture of the relationship between `Release` instances. Format:
-        /// `projects/{project_id}/releases/{release_id}`
-        /// </summary>
+        /// <summary>Format: `projects/{project_id}/releases/{release_id}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1347,7 +1339,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
         public virtual string RulesetName { get; set; }
 
-        /// <summary>Time the release was updated. Output only.</summary>
+        /// <summary>Output only. Time the release was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
@@ -1377,17 +1369,17 @@ namespace Google.Apis.FirebaseRules.v1.Data
     /// </summary>
     public class Ruleset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Time the `Ruleset` was created. Output only.</summary>
+        /// <summary>Output only. Time the `Ruleset` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The metadata for this ruleset. Output only.</summary>
+        /// <summary>Output only. The metadata for this ruleset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual Metadata Metadata { get; set; }
 
         /// <summary>
-        /// Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format:
-        /// `projects/{project_id}/rulesets/{ruleset_id}` Output only.
+        /// Output only. Name of the `Ruleset`. The ruleset_id is auto generated by the service. Format:
+        /// `projects/{project_id}/rulesets/{ruleset_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1557,7 +1549,10 @@ namespace Google.Apis.FirebaseRules.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
-        /// <summary>Inline `TestSuite` to run.</summary>
+        /// <summary>
+        /// The tests to execute against the `Source`. When `Source` is provided inline, the test cases will only be run
+        /// if the `Source` is syntactically and semantically valid. Inline `TestSuite` to run.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSuite")]
         public virtual TestSuite TestSuite { get; set; }
 
@@ -1601,7 +1596,7 @@ namespace Google.Apis.FirebaseRules.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request for FirebaseRulesService.UpdateReleasePatch.</summary>
+    /// <summary>The request for FirebaseRulesService.UpdateRelease.</summary>
     public class UpdateReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>`Release` to update.</summary>

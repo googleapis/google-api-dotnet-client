@@ -1366,9 +1366,9 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class JobSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the
-        /// system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on
-        /// time. Otherwise, the value must be positive integer. +optional
+        /// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be
+        /// active before the system tries to terminate it. If set to zero, the system will never attempt to terminate
+        /// the job based on time. Otherwise, the value must be positive integer. +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeDeadlineSeconds")]
         public virtual System.Nullable<long> ActiveDeadlineSeconds { get; set; }
@@ -1404,10 +1404,10 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual InstanceTemplateSpec Template { get; set; }
 
         /// <summary>
-        /// Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete
-        /// or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be
-        /// automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be
-        /// honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+        /// Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution
+        /// (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is
+        /// eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g.
+        /// finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttlSecondsAfterFinished")]
         public virtual System.Nullable<int> TtlSecondsAfterFinished { get; set; }
