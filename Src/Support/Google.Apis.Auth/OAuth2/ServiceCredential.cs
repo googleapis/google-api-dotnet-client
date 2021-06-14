@@ -19,6 +19,7 @@ using Google.Apis.Http;
 using Google.Apis.Logging;
 using Google.Apis.Util;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -83,6 +84,13 @@ namespace Google.Apis.Auth.OAuth2
             /// </summary>
             public string QuotaProject { get; set; }
 
+            /// <summary>
+            /// Initializers to be sent to the <see cref="HttpClientFactory"/> to be set
+            /// on the <see cref="HttpClient"/> that will be used by the credential to perform
+            /// token operations.
+            /// </summary>
+            internal IList<IConfigurableHttpClientInitializer> HttpClientInitializers { get; }
+
             /// <summary>Constructs a new initializer using the given token server URL.</summary>
             public Initializer(string tokenServerUrl)
             {
@@ -91,6 +99,8 @@ namespace Google.Apis.Auth.OAuth2
                 AccessMethod = new BearerToken.AuthorizationHeaderAccessMethod();
                 Clock = SystemClock.Default;
                 DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.UnsuccessfulResponse503;
+
+                HttpClientInitializers = new List<IConfigurableHttpClientInitializer>();
             }
 
             internal Initializer(ServiceCredential other)
@@ -101,6 +111,7 @@ namespace Google.Apis.Auth.OAuth2
                 HttpClientFactory = other.HttpClientFactory;
                 DefaultExponentialBackOffPolicy = other.DefaultExponentialBackOffPolicy;
                 QuotaProject = other.QuotaProject;
+                HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(other.HttpClientInitializers);
             }
         }
 
@@ -117,6 +128,13 @@ namespace Google.Apis.Auth.OAuth2
         public ConfigurableHttpClient HttpClient { get; }
 
         internal IHttpClientFactory HttpClientFactory { get; }
+
+        /// <summary>
+        /// Initializers to be sent to the <see cref="HttpClientFactory"/> to be set
+        /// on the <see cref="HttpClient"/> that will be used by the credential to perform
+        /// token operations.
+        /// </summary>
+        internal IEnumerable<IConfigurableHttpClientInitializer> HttpClientInitializers { get; }
 
         internal ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; }
 
@@ -146,12 +164,21 @@ namespace Google.Apis.Auth.OAuth2
             var httpArgs = new CreateHttpClientArgs();
 
             // Add exponential back-off initializer if necessary.
-            if (initializer.DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
+            DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
+            if (DefaultExponentialBackOffPolicy != ExponentialBackOffPolicy.None)
             {
                 httpArgs.Initializers.Add(
-                    new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
+                    new ExponentialBackOffInitializer(DefaultExponentialBackOffPolicy,
                         () => new BackOffHandler(new ExponentialBackOff())));
             }
+
+            // Add other initializers
+            HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(initializer.HttpClientInitializers).AsReadOnly();
+            foreach(var httpClientInitializer in HttpClientInitializers)
+            {
+                httpArgs.Initializers.Add(httpClientInitializer);
+            }
+
             HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
             HttpClient = HttpClientFactory.CreateHttpClient(httpArgs);
             _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
