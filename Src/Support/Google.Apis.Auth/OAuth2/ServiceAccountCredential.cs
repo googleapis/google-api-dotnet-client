@@ -436,8 +436,8 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <inheritdoc/>
-        public async Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
-            => await Task.FromResult<string>(CreateSignature(blob)).ConfigureAwait(false);
+        public Task<string> SignBlobAsync(byte[] blob, CancellationToken cancellationToken = default)
+            => Task.FromResult(CreateSignature(blob));
 
         /// <summary>
         /// Creates a serialized header as specified in 

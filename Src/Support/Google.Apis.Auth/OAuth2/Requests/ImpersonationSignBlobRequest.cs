@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2021 Google LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,21 +18,12 @@ using Newtonsoft.Json;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
-    /// <summary>
-    /// OIDC token request for impersonated credential as specified in https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials#sa-credentials-oauth.
-    /// </summary>
-    internal class ImpersonationOIdCTokenRequest : ImpersonationRequest
+    internal class ImpersonationSignBlobRequest : ImpersonationRequest
     {
         /// <summary>
-        /// Gets or sets the audience of the requested OIDC token.
+        /// Gets or sets the payload to be signed.
         /// </summary>
-        [JsonProperty("audience")]
-        public string Audience { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether email address should be included in the requested OIDC token.
-        /// </summary>
-        [JsonProperty("includeEmail")]
-        public bool IncludeEmail { get; set; }
+        [JsonProperty("payload")]
+        public byte[] Payload { get; set; }
     }
 }
