@@ -186,7 +186,7 @@ namespace Google.Apis.Auth.OAuth2
             Id = initializer.Id.ThrowIfNullOrEmpty("initializer.Id");
             ProjectId = initializer.ProjectId;
             User = initializer.User;
-            Scopes = initializer.Scopes;
+            Scopes = initializer.Scopes?.ToList().AsReadOnly() ?? Enumerable.Empty<string>();
             Key = initializer.Key.ThrowIfNull("initializer.Key");
             KeyId = initializer.KeyId;
         }

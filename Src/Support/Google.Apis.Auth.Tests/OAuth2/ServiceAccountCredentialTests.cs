@@ -373,7 +373,8 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.Equal(svc1.DefaultExponentialBackOffPolicy, svc2.DefaultExponentialBackOffPolicy);
             Assert.Same(svc1.ProjectId, svc2.ProjectId);
             Assert.NotSame(svc1.User, svc2.User);
-            Assert.Same(svc1.Scopes, svc2.Scopes);
+            Assert.Collection(svc1.Scopes, scope => Assert.Equal("scope1", scope));
+            Assert.Collection(svc2.Scopes, scope => Assert.Equal("scope1", scope));
             Assert.Equal("user1", svc1.User);
             Assert.Equal("user2", svc2.User);
         }
