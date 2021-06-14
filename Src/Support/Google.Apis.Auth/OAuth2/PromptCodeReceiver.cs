@@ -46,7 +46,7 @@ namespace Google.Apis.Auth.OAuth2
             Console.WriteLine("Please visit the following URL in a web browser, then enter the code shown after authorization:");
             Console.WriteLine(authorizationUrl);
             Console.WriteLine();
-#elif NET45
+#elif NET45 || NET461
             Logger.Debug("Open a browser with \"{0}\" URL", authorizationUrl);
             System.Diagnostics.Process.Start(authorizationUrl);
 #else

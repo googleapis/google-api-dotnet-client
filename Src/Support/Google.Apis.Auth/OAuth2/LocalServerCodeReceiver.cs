@@ -455,7 +455,7 @@ namespace Google.Apis.Auth.OAuth2
             // Create a new response URL with a dictionary that contains all the response query parameters.
             return new AuthorizationCodeResponseUrl(queryParams);
         }
-#elif NET45 || NETSTANDARD2_0
+#elif NET45 || NET461 || NETSTANDARD2_0
         private HttpListener StartListener()
         {
             try
@@ -543,7 +543,7 @@ namespace Google.Apis.Auth.OAuth2
             }
             return false;
         }
-#elif NET45
+#elif NET45 || NET461
         private bool OpenBrowser(string url)
         {
             Process.Start(url);
@@ -679,7 +679,7 @@ namespace Google.Apis.Auth.OAuth2
 #if NETSTANDARD1_3
                 // No check required on NETStandard 1.3, it uses TcpListener which can only use IP adddresses, not DNS names.
                 return false;
-#elif NET45 || NETSTANDARD2_0
+#elif NET45 || NET461 || NETSTANDARD2_0
                 try
                 {
                     // This listener isn't used for anything except to check if it can listen on the given URI.

@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETSTANDARD2_0 || NET45
+#if NETSTANDARD2_0 || NET45 || NET461
 #define ES256_SUPPORTED
 #elif !NETSTANDARD1_3
 #error Unsupported Platform
@@ -36,7 +36,7 @@ namespace Google.Apis.Auth
 {
     internal static class SignedTokenVerification
     {
-#if NET45
+#if NET45 || NET461
         // See http://oid-info.com/get/2.16.840.1.101.3.4.2.1
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         // In net45 We don't have the handy ECParameters class so we need to pass the X and Y
@@ -114,7 +114,7 @@ namespace Google.Apis.Auth
             {
 #if NET45
                 if (((RSACryptoServiceProvider)certificate).VerifyHash(signedToken.Sha256Hash, Sha256Oid, signedToken.Signature))
-#elif NETSTANDARD1_3 || NETSTANDARD2_0
+#elif NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 if (certificate.VerifyHash(signedToken.Sha256Hash, signedToken.Signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1))
 #else
 #error Unsupported platform
@@ -178,7 +178,7 @@ namespace Google.Apis.Auth
                 });
                 return ecdsa;
             }
-#elif NET45
+#elif NET45 || NET461
             static ECDsa BuildEcdsa(byte[] x, byte[] y)
             {
                 // In net45 We don't have the handy ECParameters class so we need to pass the X and Y

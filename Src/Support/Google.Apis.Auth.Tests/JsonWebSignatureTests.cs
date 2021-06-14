@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP2_0 || NET452 || NET46
+#if NETCOREAPP2_0 || NET452 || NET46 || NET461
 #define ES256_SUPPORTED
 #elif !NETCOREAPP1_0 && !NETCOREAPP1_1
 #error Unsupported platform
