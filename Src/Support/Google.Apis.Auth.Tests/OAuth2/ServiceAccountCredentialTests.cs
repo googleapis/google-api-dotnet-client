@@ -142,7 +142,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromX509Certificate()
         {
-#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0
+#if NETCOREAPP1_0 || NETCOREAPP1_1 || NETCOREAPP2_0 || NET461
             const string sPfx = @"
 MIIGMQIBAzCCBfcGCSqGSIb3DQEHAaCCBegEggXkMIIF4DCCAt8GCSqGSIb3DQEHBqCCAtAwggLM
 AgEAMIICxQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQImgNbotR3pnACAggAgIICmMHYqn7R

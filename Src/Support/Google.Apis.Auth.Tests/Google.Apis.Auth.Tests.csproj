@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;net452;net46</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.0;netcoreapp1.1;netcoreapp2.0;net452;net46;net461</TargetFrameworks>
     <!-- On non-Windows platforms only net core can be built -->
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp1.0;netcoreapp1.1;netcoreapp2.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
@@ -23,7 +23,7 @@
     <ProjectReference Include="..\Google.Apis.Tests\Google.Apis.Tests.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46' or '$(TargetFramework)'=='net461'">
     <Reference Include="System.Net.Http" />
     <PackageReference Include="BouncyCastle" Version="1.8.2" />
   </ItemGroup>
