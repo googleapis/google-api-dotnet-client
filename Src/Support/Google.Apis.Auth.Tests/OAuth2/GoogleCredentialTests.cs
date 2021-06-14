@@ -481,38 +481,43 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public void Impersonate()
         {
             var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
-            var delegates = new[] {"delegate"};
-            var scopes = new[] {"scope"};
-            var targetPrincipal = "principal";
-            var lifetime = new TimeSpan(2, 0, 0);
-            var options = new ImpersonationOptions(targetPrincipal, lifetime, delegates, scopes);
-            var credential = sourceCredential.Impersonate(options);
-            var impersonatedCredential = (ImpersonatedCredential) credential.UnderlyingCredential;
-            Assert.Equal(delegates, impersonatedCredential.Options.DelegateAccounts);
-            Assert.Equal(scopes, impersonatedCredential.Options.Scopes);
-            Assert.Equal(targetPrincipal, impersonatedCredential.Options.TargetPrincipal);
-            Assert.Equal(lifetime, impersonatedCredential.Options.Lifetime);
+
+            var credential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal")
+            {
+                DelegateAccounts = new string[] { "delegate" },
+                Scopes = new string[] { "scope" },
+                Lifetime = TimeSpan.FromHours(2)
+            });
+
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(credential.UnderlyingCredential);
+            Assert.Collection(impersonatedCredential.DelegateAccounts, del => Assert.Equal("delegate", del));
+            Assert.Collection(impersonatedCredential.Scopes, scope => Assert.Equal("scope", scope));
+            Assert.Equal("principal", impersonatedCredential.TargetPrincipal);
+            Assert.Equal(TimeSpan.FromHours(2), impersonatedCredential.Lifetime);
         }
 
         [Fact]
         public void CreateScoped_Impersonated()
         {
             var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
-            var scopes = new[] {"new_scope"};
-            var unscopedCredential = sourceCredential.Impersonate(new ImpersonationOptions("principal", null, null, null));
-            var scopedCredential = unscopedCredential.CreateScoped(scopes);
+            var unscopedCredential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal"));
+
+            var scopedCredential = unscopedCredential.CreateScoped("new_scope");
+
             Assert.NotSame(unscopedCredential, scopedCredential);
             Assert.NotSame(unscopedCredential.UnderlyingCredential, scopedCredential.UnderlyingCredential);
-            var impersonatedCredential = (ImpersonatedCredential) scopedCredential.UnderlyingCredential;
-            Assert.Equal(scopes, impersonatedCredential.Options.Scopes);
+            var impersonatedCredential = Assert.IsType<ImpersonatedCredential>(scopedCredential.UnderlyingCredential);
+            Assert.Collection(impersonatedCredential.Scopes, scope => Assert.Equal("new_scope", scope));
         }
 
         [Fact]
         public void CreateWithQuotaProject_Impersonated()
         {
             var sourceCredential = GoogleCredential.FromJson(DummyServiceAccountCredentialFileContents);
-            var credential = sourceCredential.Impersonate(new ImpersonationOptions("principal", null, null, null));
+
+            var credential = sourceCredential.Impersonate(new ImpersonatedCredential.Initializer("principal"));
             var credentialWithQuotaProject = credential.CreateWithQuotaProject("new_project");
+
             Assert.NotSame(credential, credentialWithQuotaProject);
             Assert.NotSame(credential.UnderlyingCredential, credentialWithQuotaProject.UnderlyingCredential);
             Assert.Equal("new_project", credentialWithQuotaProject.QuotaProject);

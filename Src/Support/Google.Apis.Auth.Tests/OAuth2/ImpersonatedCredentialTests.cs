@@ -39,20 +39,24 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         internal class FakeHttpMessageHandler : HttpMessageHandler
         {
-            private string content;
-            private HttpStatusCode statusCode;
+            private string _content;
+            private HttpStatusCode _statusCode;
+            private Action<HttpRequestMessage> _requestValidator;
 
-            public FakeHttpMessageHandler(HttpStatusCode statusCode, string content)
+            public FakeHttpMessageHandler(HttpStatusCode statusCode, string content, Action<HttpRequestMessage> requestValidator)
             {
-                this.content = content;
-                this.statusCode = statusCode;
+                _content = content;
+                _statusCode = statusCode;
+                _requestValidator = requestValidator;
             }
 
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                HttpResponseMessage response = new HttpResponseMessage(statusCode)
+                _requestValidator?.Invoke(request);
+
+                HttpResponseMessage response = new HttpResponseMessage(_statusCode)
                 {
-                    Content = new StringContent(content),
+                    Content = new StringContent(_content),
                     RequestMessage = request
                 };
                 return Task.FromResult(response);
@@ -82,33 +86,31 @@ namespace Google.Apis.Auth.Tests.OAuth2
             return new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse));
         }
 
-        private static ImpersonatedCredential CreateImpersonatedCredentialForBody(object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK)
+        private static ImpersonatedCredential CreateImpersonatedCredentialForBody(object body, bool serializeBody = true, HttpStatusCode status = HttpStatusCode.OK, Action<HttpRequestMessage> requestValidator = null)
         {
             var sourceCredential = CreateSourceCredential();
-            var content = "";
-            if (serializeBody)
-            {
-                content = NewtonsoftJsonSerializer.Instance.Serialize(body);
-            }
-            else
-            {
-                content = (string)body;
-            }
-            var messageHandler = new FakeHttpMessageHandler(status, content);
-            var options = new ImpersonationOptions("principal", null, null, new[] {"scope"});
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, options)
-            {
-                Clock = _clock,
-                HttpClientFactory = new MockHttpClientFactory(messageHandler)
-            };
-            return new ImpersonatedCredential(initializer);
+            var messageHandler = new FakeHttpMessageHandler(
+                status,
+                serializeBody ? NewtonsoftJsonSerializer.Instance.Serialize(body) : body.ToString(),
+                requestValidator);
+
+            return ImpersonatedCredential.Create(
+                sourceCredential,
+                new ImpersonatedCredential.Initializer("principal")
+                {
+                    Scopes = new string[] { "scope" },
+                    Clock = _clock,
+                    HttpClientFactory = new MockHttpClientFactory(messageHandler)
+                });
         }
 
         private static ImpersonatedCredential CreateImpersonatedCredentialWithIdTokenResponse() =>
             CreateImpersonatedCredentialForBody(new { token = OidcComputeSuccessMessageHandler.FirstCallToken });
 
-        private static ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse() =>
-            CreateImpersonatedCredentialForBody(new { accessToken = "access_token", expireTime = "2020-05-13T16:00:00.045123456Z" });
+        private static ImpersonatedCredential CreateImpersonatedCredentialWithAccessTokenResponse(Action<HttpRequestMessage> requestValidator = null) =>
+            CreateImpersonatedCredentialForBody(
+                new { accessToken = "access_token", expireTime = "2020-05-13T16:00:00.045123456Z" },
+                requestValidator: requestValidator);
 
         // Use signedBlob = base64("principal") = "Zm9v"
         private static ImpersonatedCredential CreateImpersonatedCredentialWithSignBlobResponse() =>
@@ -118,21 +120,15 @@ namespace Google.Apis.Auth.Tests.OAuth2
             CreateImpersonatedCredentialForBody(ErrorResponseContent, false, HttpStatusCode.NotFound);
 
         [Fact]
-        public void Constructor_InvalidSourceCredential()
-        {
-            var sourceCredential = GoogleCredential.FromComputeCredential();
-            var options = new ImpersonationOptions("principal", null, null, null);
-            var initializer = new ImpersonatedCredential.Initializer(sourceCredential, options);
-            var ex = Assert.Throws<InvalidOperationException>(() => new ImpersonatedCredential(initializer));
-            Assert.Equal("The underlying credential of source credential must be UserCredential or ServiceAccountCredential.", ex.Message);
-        }
+        public void Create_InvalidSourceCredential() =>
+            Assert.Throws<InvalidOperationException>(() => ImpersonatedCredential.Create(
+                GoogleCredential.FromComputeCredential(),
+                new ImpersonatedCredential.Initializer("principal")));
 
         [Fact]
         public void WithHttpClientFactory()
         {
-            var sourceCredential = CreateSourceCredential();
-            var credential = new ImpersonatedCredential(
-                new ImpersonatedCredential.Initializer(sourceCredential, new ImpersonationOptions("principal", null, null, null)));
+            var credential = ImpersonatedCredential.Create(CreateSourceCredential(), new ImpersonatedCredential.Initializer("principal"));
             var factory = new HttpClientFactory();
             var credentialWithFactory = Assert.IsType<ImpersonatedCredential>(((IGoogleCredential)credential).WithHttpClientFactory(factory));
 
@@ -140,6 +136,22 @@ namespace Google.Apis.Auth.Tests.OAuth2
             Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
             Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
             Assert.Same(factory, credentialWithFactory.HttpClientFactory);
+        }
+
+        [Fact]
+        public async Task InterceptsRequestsWithSourceCredentialAccessToken()
+        {
+            int calls = 0;
+            var credential = CreateImpersonatedCredentialWithAccessTokenResponse(request =>
+            {
+                calls++;
+                Assert.Equal("bearer", request.Headers.Authorization.Scheme, ignoreCase: true);
+                Assert.Equal("ACCESS_TOKEN", request.Headers.Authorization.Parameter);
+            });
+
+            await credential.GetAccessTokenForRequestAsync();
+
+            Assert.Equal(1, calls);
         }
 
         [Fact]
