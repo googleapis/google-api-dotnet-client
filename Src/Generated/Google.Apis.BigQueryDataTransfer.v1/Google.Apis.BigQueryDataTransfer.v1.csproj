@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.BigQueryDataTransfer.v1 Client Library</Title>
-    <Version>1.51.0.2299</Version>
+    <Version>1.52.0.2299</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -63,13 +63,13 @@
 
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <PackageReference Include="Google.Apis" Version="1.51.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.51.0" />
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Google.Apis" Version="1.51.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.51.0" />
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -83,8 +83,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <PackageReference Include="Google.Apis" Version="1.51.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.51.0" />
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">

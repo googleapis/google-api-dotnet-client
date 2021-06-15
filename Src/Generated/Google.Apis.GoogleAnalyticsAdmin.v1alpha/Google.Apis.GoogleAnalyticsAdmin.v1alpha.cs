@@ -6558,6 +6558,16 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>
+        /// Output only. If set to true, this conversion event refers to a custom event. If set to false, this
+        /// conversion event refers to a default event in GA. Default events typically have special meaning in GA.
+        /// Default events are usually created for you by the GA system, but in some cases can be created by property
+        /// admins. Custom events count towards the maximum number of custom conversion events that may be created per
+        /// property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual System.Nullable<bool> Custom { get; set; }
+
         /// <summary>Immutable. The event name for this conversion event. Examples: 'click', 'purchase'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual string EventName { get; set; }

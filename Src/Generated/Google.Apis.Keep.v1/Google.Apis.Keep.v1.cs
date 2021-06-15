@@ -63,6 +63,20 @@ namespace Google.Apis.Keep.v1
         public override string BatchPath => "batch";
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Keep API.</summary>
+        public class Scope
+        {
+            /// <summary>See, edit, create and permanently delete all your Google Keep data</summary>
+            public static string Keep = "https://www.googleapis.com/auth/keep";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Google Keep API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>See, edit, create and permanently delete all your Google Keep data</summary>
+            public const string Keep = "https://www.googleapis.com/auth/keep";
+        }
+
         /// <summary>Gets the Media resource.</summary>
         public virtual MediaResource Media { get; }
 
