@@ -1169,6 +1169,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedPageUri")]
         public virtual string AccessDeniedPageUri { get; set; }
 
+        /// <summary>Whether to generate a troubleshooting URL on access denied events to this application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generateTroubleshootingUri")]
+        public virtual System.Nullable<bool> GenerateTroubleshootingUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

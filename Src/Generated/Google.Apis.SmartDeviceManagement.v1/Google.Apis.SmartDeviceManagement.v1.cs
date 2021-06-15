@@ -67,6 +67,9 @@ namespace Google.Apis.SmartDeviceManagement.v1
         {
             /// <summary>See and/or control the devices that you selected</summary>
             public static string SdmService = "https://www.googleapis.com/auth/sdm.service";
+
+            /// <summary>See and control the Nest thermostats that you select</summary>
+            public static string SdmThermostatService = "https://www.googleapis.com/auth/sdm.thermostat.service";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Smart Device Management API.</summary>
@@ -74,6 +77,9 @@ namespace Google.Apis.SmartDeviceManagement.v1
         {
             /// <summary>See and/or control the devices that you selected</summary>
             public const string SdmService = "https://www.googleapis.com/auth/sdm.service";
+
+            /// <summary>See and control the Nest thermostats that you select</summary>
+            public const string SdmThermostatService = "https://www.googleapis.com/auth/sdm.thermostat.service";
         }
 
         /// <summary>Gets the Enterprises resource.</summary>

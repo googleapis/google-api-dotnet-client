@@ -2387,7 +2387,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessibleTrackIds")]
         public virtual System.Collections.Generic.IList<string> AccessibleTrackIds { get; set; }
 
-        /// <summary>This feature is not generally available yet.</summary>
+        /// <summary>Controls the auto-update mode for the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateMode")]
         public virtual string AutoUpdateMode { get; set; }
 
@@ -2809,6 +2809,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationReports")]
         public virtual System.Collections.Generic.IList<ApplicationReport> ApplicationReports { get; set; }
+
+        /// <summary>
+        /// The password requirements currently applied to the device. The applied requirements may be slightly
+        /// different from those specified in passwordPolicies in some cases. fieldPath is set based on
+        /// passwordPolicies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appliedPasswordPolicies")]
+        public virtual System.Collections.Generic.IList<PasswordRequirements> AppliedPasswordPolicies { get; set; }
 
         /// <summary>The name of the policy currently applied to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliedPolicyName")]
@@ -4086,7 +4094,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyTracks")]
         public virtual System.Collections.Generic.IList<string> AndroidDevicePolicyTracks { get; set; }
 
-        /// <summary>The app auto update policy, which controls when automatic app updates can be applied.</summary>
+        /// <summary>
+        /// Deprecated. Use autoUpdateMode instead.When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
+        /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect.The app auto update policy, which controls when
+        /// automatic app updates can be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoUpdatePolicy")]
         public virtual string AppAutoUpdatePolicy { get; set; }
 
