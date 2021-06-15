@@ -1,8 +1,8 @@
 {	
   "language": "csharp",	
   "description": "C# libraries for Google APIs.",	
-  "releaseVersion": "1.51.0", "comment1": "Version of generated package.",	
-  "currentSupportVersion": "1.51.0", "comment2": "Version of support library upon which to depend.",	
+  "releaseVersion": "1.52.0", "comment1": "Version of generated package.",	
+  "currentSupportVersion": "1.52.0", "comment2": "Version of support library upon which to depend.",	
   "pclSupportVersion": "1.25.0", "comment3": "Version of PCL support library.",	
   "net40SupportVersion": "1.10.0", "comment4": "Version of net40 support library.",	
 
