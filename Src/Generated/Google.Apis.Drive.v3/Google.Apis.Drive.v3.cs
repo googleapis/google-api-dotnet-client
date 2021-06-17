@@ -6094,6 +6094,10 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifyingUser")]
         public virtual User LastModifyingUser { get; set; }
 
+        /// <summary>Contains details about the link URLs that clients are using to refer to this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkShareMetadata")]
+        public virtual LinkShareMetadataData LinkShareMetadata { get; set; }
+
         /// <summary>
         /// The MD5 checksum for the content of the file. This is only applicable to files with binary content in Google
         /// Drive.
@@ -6200,6 +6204,10 @@ namespace Google.Apis.Drive.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaBytesUsed")]
         public virtual System.Nullable<long> QuotaBytesUsed { get; set; }
+
+        /// <summary>A key needed to access the item via a shared link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
+        public virtual string ResourceKey { get; set; }
 
         /// <summary>Whether the file has been shared. Not populated for items in shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shared")]
@@ -6375,6 +6383,12 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeCopyRequiresWriterPermission")]
             public virtual System.Nullable<bool> CanChangeCopyRequiresWriterPermission { get; set; }
+
+            /// <summary>
+            /// Whether the current user can change the securityUpdateEnabled field on link share metadata.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeSecurityUpdateEnabled")]
+            public virtual System.Nullable<bool> CanChangeSecurityUpdateEnabled { get; set; }
 
             /// <summary>Deprecated</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeViewersCanCopyContent")]
@@ -6680,6 +6694,18 @@ namespace Google.Apis.Drive.v3.Data
             }
         }
 
+        /// <summary>Contains details about the link URLs that clients are using to refer to this item.</summary>
+        public class LinkShareMetadataData
+        {
+            /// <summary>Whether the file is eligible for security update.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("securityUpdateEligible")]
+            public virtual System.Nullable<bool> SecurityUpdateEligible { get; set; }
+
+            /// <summary>Whether the security update is enabled for this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("securityUpdateEnabled")]
+            public virtual System.Nullable<bool> SecurityUpdateEnabled { get; set; }
+        }
+
         /// <summary>
         /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
         /// application/vnd.google-apps.shortcut.
@@ -6696,6 +6722,10 @@ namespace Google.Apis.Drive.v3.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetMimeType")]
             public virtual string TargetMimeType { get; set; }
+
+            /// <summary>The ResourceKey for the target file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("targetResourceKey")]
+            public virtual string TargetResourceKey { get; set; }
         }
 
         /// <summary>Additional metadata about video media. This may not be available immediately upon upload.</summary>

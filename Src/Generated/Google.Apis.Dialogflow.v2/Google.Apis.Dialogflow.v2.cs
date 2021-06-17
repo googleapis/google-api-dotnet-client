@@ -15993,6 +15993,16 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3ResponseMessage> Messages { get; set; }
 
+        /// <summary>
+        /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a
+        /// webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects
+        /// streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled
+        /// in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to
+        /// fulfillments that have slow webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPartialResponses")]
+        public virtual System.Nullable<bool> ReturnPartialResponses { get; set; }
+
         /// <summary>Set parameter values before executing the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setParameterActions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> SetParameterActions { get; set; }
@@ -17690,6 +17700,16 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1ResponseMessage> Messages { get; set; }
 
+        /// <summary>
+        /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a
+        /// webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects
+        /// streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled
+        /// in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to
+        /// fulfillments that have slow webhooks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPartialResponses")]
+        public virtual System.Nullable<bool> ReturnPartialResponses { get; set; }
+
         /// <summary>Set parameter values before executing the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setParameterActions")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction> SetParameterActions { get; set; }
@@ -19344,6 +19364,17 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Represents a response from an automated agent.</summary>
     public class GoogleCloudDialogflowV2AutomatedAgentReply : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Indicates whether the partial automated agent reply is interruptible when a later reply message arrives.
+        /// e.g. if the agent specified some music as partial response, it can be cancelled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCancellation")]
+        public virtual System.Nullable<bool> AllowCancellation { get; set; }
+
+        /// <summary>AutomatedAgentReply type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentReplyType")]
+        public virtual string AutomatedAgentReplyType { get; set; }
+
         /// <summary>Response of the Dialogflow Sessions.DetectIntent call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectIntentResponse")]
         public virtual GoogleCloudDialogflowV2DetectIntentResponse DetectIntentResponse { get; set; }

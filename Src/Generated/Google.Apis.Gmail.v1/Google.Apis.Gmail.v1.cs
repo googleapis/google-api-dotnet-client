@@ -776,7 +776,10 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("includeSpamTrash", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeSpamTrash { get; set; }
 
-                /// <summary>Maximum number of drafts to return.</summary>
+                /// <summary>
+                /// Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this
+                /// field is 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -1358,7 +1361,10 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelId { get; set; }
 
-                /// <summary>The maximum number of history records to return.</summary>
+                /// <summary>
+                /// Maximum number of history records to return. This field defaults to 100. The maximum allowed value
+                /// for this field is 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -2895,7 +2901,10 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> LabelIds { get; set; }
 
-                /// <summary>Maximum number of messages to return.</summary>
+                /// <summary>
+                /// Maximum number of messages to return. This field defaults to 100. The maximum allowed value for this
+                /// field is 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -5908,7 +5917,10 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> LabelIds { get; set; }
 
-                /// <summary>Maximum number of threads to return.</summary>
+                /// <summary>
+                /// Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this
+                /// field is 500.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> MaxResults { get; set; }
 

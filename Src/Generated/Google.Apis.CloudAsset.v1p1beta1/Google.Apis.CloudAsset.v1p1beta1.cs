@@ -657,8 +657,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
     {
         /// <summary>
         /// The map from roles to their included permission matching the permission query (e.g. containing
-        /// `policy.role.permissions:`). A sample role string: "roles/compute.instanceAdmin". The roles can also be
-        /// found in the returned `policy` bindings. Note that the map is populated only if requesting with a permission
+        /// `policy.role.permissions:`). Example role string: "roles/compute.instanceAdmin". The roles can also be found
+        /// in the returned `policy` bindings. Note that the map is populated only if requesting with a permission
         /// query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedPermissions")]
@@ -1725,29 +1725,29 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The result for a IAM Policy search.</summary>
+    /// <summary>The result for an IAM policy search.</summary>
     public class IamPolicySearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Explanation about the IAM policy search result. It contains additional information to explain why the search
-        /// result matches the query.
+        /// Explanation about the IAM policy search result. It contains additional information that explains why the
+        /// search result matches the query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual Explanation Explanation { get; set; }
 
         /// <summary>
-        /// The IAM policy directly set on the given resource. Note that the original IAM policy can contain multiple
+        /// The IAM policy attached to the specified resource. Note that the original IAM policy can contain multiple
         /// bindings. This only contains the bindings that match the given query. For queries that don't contain a
-        /// constrain on policies (e.g. an empty query), this contains all the bindings.
+        /// constraint on policies (e.g. an empty query), this contains all the bindings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
         /// <summary>
-        /// The project that the associated GCP resource belongs to, in the form of `projects/{project_number}`. If an
-        /// IAM policy is set on a resource (like VM instance, Cloud Storage bucket), the project field will indicate
-        /// the project that contains the resource. If an IAM policy is set on a folder or orgnization, the project
-        /// field will be empty.
+        /// The project that the associated Google Cloud resource belongs to, in the form of
+        /// `projects/{project_number}`. If an IAM policy is set on a resource -- such as a Compute Engine instance or a
+        /// Cloud Storage bucket -- the project field will indicate the project that contains the resource. If an IAM
+        /// policy is set on a folder or orgnization, the project field will be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
@@ -1763,10 +1763,10 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>IAM permissions</summary>
+    /// <summary>IAM permissions.</summary>
     public class Permissions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of permissions. A sample permission string: "compute.disk.get".</summary>
+        /// <summary>A list of permissions. Example permission string: "compute.disk.get".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> PermissionsValue { get; set; }
 

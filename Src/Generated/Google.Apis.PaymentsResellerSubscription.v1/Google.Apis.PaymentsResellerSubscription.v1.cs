@@ -1334,6 +1334,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>
+        /// Optional. Details about the previous subscription that this new subscription upgrades/downgrades from. Only
+        /// populated if this subscription is an upgrade/downgrade from another subscription.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeDowngradeDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails UpgradeDowngradeDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1344,6 +1351,24 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The reason of the cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about the previous subscription that this new subscription upgrades/downgrades from.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the billing cycle spec for the new upgraded/downgraded subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingCycleSpec")]
+        public virtual string BillingCycleSpec { get; set; }
+
+        /// <summary>
+        /// Required. The previous subscription id to be replaced. This is not the full resource name, use the
+        /// subscription_id segment only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousSubscriptionId")]
+        public virtual string PreviousSubscriptionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
