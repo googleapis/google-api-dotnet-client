@@ -1554,6 +1554,30 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Scope { get; private set; }
 
             /// <summary>
+            /// Optional. A list of asset types that the IAM policies are attached to. If empty, it will search the IAM
+            /// policies that are attached to all the [searchable asset
+            /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+            /// Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots IAM policies
+            /// attached to asset type starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies
+            /// attached to asset type ends with "Instance". * ".*Instance.*" snapshots IAM policies attached to asset
+            /// type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
+            /// expression syntax. If the regular expression does not match any supported asset type, an
+            /// INVALID_ARGUMENT error will be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
+
+            /// <summary>
+            /// Optional. A comma-separated list of fields specifying the sorting order of the results. The default
+            /// order is ascending. Add " DESC" after the field name to indicate descending order. Redundant space
+            /// characters are ignored. Example: "assetType DESC, resource". Only singular primitive fields in the
+            /// response are sortable: * resource * assetType * project All the other fields such as repeated fields
+            /// (e.g., `folders`) and non-primitive fields (e.g., `policy`) are not supported.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>
             /// Optional. The page size for search result pagination. Page size is capped at 500 even if a larger value
             /// is given. If set to zero, server will pick an appropriate default. Returned results may be fewer than
             /// requested. When this happens, there could be more results as long as `next_page_token` is returned.
@@ -1591,7 +1615,9 @@ namespace Google.Apis.CloudAsset.v1
             /// IAM policy bindings that are set on the project named "myproject". * `Important` to find IAM policy
             /// bindings that contain "Important" as a word in any of the searchable fields (except for the included
             /// permissions). * `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings that are set
-            /// on resources "instance1" or "instance2" and also specify user "amy".
+            /// on resources "instance1" or "instance2" and also specify user "amy". * `roles:roles/compute.admin` to
+            /// find IAM policy bindings that specify the Compute Admin role. * `memberTypes:user` to find IAM policy
+            /// bindings that contain the "user" member type.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1616,6 +1642,22 @@ namespace Google.Apis.CloudAsset.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("assetTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "assetTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
@@ -3787,11 +3829,36 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class IamPolicySearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The type of the resource associated with this IAM policy. Example: `compute.googleapis.com/Disk`. To search
+        /// against the `asset_type`: * specify the `asset_types` field in your search request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
         /// Explanation about the IAM policy search result. It contains additional information to explain why the search
         /// result matches the query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual Explanation Explanation { get; set; }
+
+        /// <summary>
+        /// The folder(s) that the IAM policy belongs to, in the form of folders/{FOLDER_NUMBER}. This field is
+        /// available when the IAM policy belongs to one or more folders. To search against `folders`: * use a field
+        /// query. Example: `folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `scope` field
+        /// as this folder in your search request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<string> Folders { get; set; }
+
+        /// <summary>
+        /// The organization that the IAM policy belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the IAM policy belongs to an organization. To search against `organization`: * use a
+        /// field query. Example: `organization:123` * use a free text query. Example: `123` * specify the `scope` field
+        /// as this organization in your search request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
 
         /// <summary>
         /// The IAM policy directly set on the given resource. Note that the original IAM policy can contain multiple

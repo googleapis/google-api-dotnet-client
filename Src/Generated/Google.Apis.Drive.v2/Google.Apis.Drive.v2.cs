@@ -9348,6 +9348,10 @@ namespace Google.Apis.Drive.v2.Data
             set => LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
+        /// <summary>Contains details about the link URLs that clients are using to refer to this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkShareMetadata")]
+        public virtual LinkShareMetadataData LinkShareMetadata { get; set; }
+
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("markedViewedByMeDate")]
         public virtual string MarkedViewedByMeDateRaw { get; set; }
@@ -9461,6 +9465,10 @@ namespace Google.Apis.Drive.v2.Data
         /// <summary>The number of quota bytes used by this file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaBytesUsed")]
         public virtual System.Nullable<long> QuotaBytesUsed { get; set; }
+
+        /// <summary>A key needed to access the item via a shared link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
+        public virtual string ResourceKey { get; set; }
 
         /// <summary>A link back to this file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -9624,6 +9632,12 @@ namespace Google.Apis.Drive.v2.Data
             /// <summary>Deprecated</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canChangeRestrictedDownload")]
             public virtual System.Nullable<bool> CanChangeRestrictedDownload { get; set; }
+
+            /// <summary>
+            /// Whether the current user can change the securityUpdateEnabled field on link share metadata.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canChangeSecurityUpdateEnabled")]
+            public virtual System.Nullable<bool> CanChangeSecurityUpdateEnabled { get; set; }
 
             /// <summary>Whether the current user can comment on this file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canComment")]
@@ -9936,6 +9950,18 @@ namespace Google.Apis.Drive.v2.Data
             public virtual System.Nullable<bool> Viewed { get; set; }
         }
 
+        /// <summary>Contains details about the link URLs that clients are using to refer to this item.</summary>
+        public class LinkShareMetadataData
+        {
+            /// <summary>Whether the file is eligible for security update.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("securityUpdateEligible")]
+            public virtual System.Nullable<bool> SecurityUpdateEligible { get; set; }
+
+            /// <summary>Whether the security update is enabled for this file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("securityUpdateEnabled")]
+            public virtual System.Nullable<bool> SecurityUpdateEnabled { get; set; }
+        }
+
         /// <summary>
         /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
         /// application/vnd.google-apps.shortcut.
@@ -9952,6 +9978,10 @@ namespace Google.Apis.Drive.v2.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetMimeType")]
             public virtual string TargetMimeType { get; set; }
+
+            /// <summary>The ResourceKey for the target file.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("targetResourceKey")]
+            public virtual string TargetResourceKey { get; set; }
         }
 
         /// <summary>

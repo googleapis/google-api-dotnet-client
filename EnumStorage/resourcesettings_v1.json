@@ -1,0 +1,47 @@
+{
+  "Google.Apis.ResourceSettings.v1.FoldersResource+SettingsResource+GetRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.FoldersResource+SettingsResource+ListRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.OrganizationsResource+SettingsResource+GetRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.OrganizationsResource+SettingsResource+ListRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.ProjectsResource+SettingsResource+GetRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.ProjectsResource+SettingsResource+ListRequest.ViewEnum": [
+    "SETTING_VIEW_UNSPECIFIED",
+    "SETTING_VIEW_BASIC",
+    "SETTING_VIEW_EFFECTIVE_VALUE",
+    "SETTING_VIEW_LOCAL_VALUE"
+  ],
+  "Google.Apis.ResourceSettings.v1.ResourceSettingsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ResourceSettings.v1.ResourceSettingsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -2153,7 +2153,7 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
 
-        /// <summary>Output only. Duration of the maintenance window. The current window is fixed at 3 hours.</summary>
+        /// <summary>Output only. Duration of the maintenance window. The current window is fixed at 1 hour.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
 
