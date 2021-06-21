@@ -4336,7 +4336,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         /// <summary>
         /// Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject
         /// Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see
-        /// https://cloud.google.com/certificate-authority-service/docs/cel-guide
+        /// https://cloud.google.com/certificate-authority-service/docs/using-cel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("celExpression")]
         public virtual Expr CelExpression { get; set; }
@@ -5458,14 +5458,15 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hexSerialNumber")]
         public virtual string HexSerialNumber { get; set; }
 
-        /// <summary>
-        /// For convenience, the actual lifetime of an issued certificate. Corresponds to 'not_after_time' -
-        /// 'not_before_time'.
-        /// </summary>
+        /// <summary>For convenience, the actual lifetime of an issued certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifetime")]
         public virtual object Lifetime { get; set; }
 
-        /// <summary>The time at which the certificate expires.</summary>
+        /// <summary>
+        /// The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the
+        /// period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' +
+        /// 'lifetime' - 1 second.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
         public virtual object NotAfterTime { get; set; }
 

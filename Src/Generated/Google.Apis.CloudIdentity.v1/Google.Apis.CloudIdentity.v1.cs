@@ -2337,7 +2337,7 @@ namespace Google.Apis.CloudIdentity.v1
                 /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a
                 /// Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey`
                 /// represents an external-identity-mapped group. The namespace must correspond to an identity source
-                /// created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+                /// created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("memberKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MemberKeyNamespace { get; set; }
@@ -2949,7 +2949,7 @@ namespace Google.Apis.CloudIdentity.v1
             /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed
             /// entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an
             /// external-identity-mapped group. The namespace must correspond to an identity source created in Admin
-            /// Console and must be in the form of `identitysources/{identity_source_id}.
+            /// Console and must be in the form of `identitysources/{identity_source_id}`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey.namespace", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GroupKeyNamespace { get; set; }
@@ -3017,7 +3017,7 @@ namespace Google.Apis.CloudIdentity.v1
 
             /// <summary>
             /// Required. The fully-qualified names of fields to update. May only contain the following fields:
-            /// `display_name`, `description`.
+            /// `display_name`, `description`, `labels`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -3261,7 +3261,7 @@ namespace Google.Apis.CloudIdentity.v1.Data
         /// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed
         /// entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an
         /// external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console
-        /// and must be in the form of `identitysources/{identity_source_id}.
+        /// and must be in the form of `identitysources/{identity_source_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }

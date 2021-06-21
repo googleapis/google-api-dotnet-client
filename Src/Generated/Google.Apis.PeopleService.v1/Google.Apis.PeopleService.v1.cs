@@ -954,7 +954,8 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
-            /// specified by separating them with commas. Valid values are: * emailAddresses * names * phoneNumbers
+            /// specified by separating them with commas. Valid values are: * emailAddresses * metadata * names *
+            /// phoneNumbers
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -1079,7 +1080,8 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
-            /// specified by separating them with commas. Valid values are: * emailAddresses * names * phoneNumbers
+            /// specified by separating them with commas. Valid values are: * emailAddresses * metadata * names *
+            /// phoneNumbers
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -4019,7 +4021,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("coverPhotos")]
         public virtual System.Collections.Generic.IList<CoverPhoto> CoverPhotos { get; set; }
 
-        /// <summary>The person's email addresses.</summary>
+        /// <summary>
+        /// The person's email addresses. For [`connections.list`](/people/api/rest/v1/people.connections/list),
+        /// [`otherContacts.list`](/people/api/rest/v1/otherContacts/list), and
+        /// [`people.listDirectoryPeople`](/people/api/rest/v1/people/listDirectoryPeople) the number of email addresses
+        /// is limited to 100. If a Person has more email addresses the entire set can be obtained by calling
+        /// ['people.get'](/people/api/rest/v1/people/get).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddresses")]
         public virtual System.Collections.Generic.IList<EmailAddress> EmailAddresses { get; set; }
 
@@ -4090,7 +4098,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("organizations")]
         public virtual System.Collections.Generic.IList<Organization> Organizations { get; set; }
 
-        /// <summary>The person's phone numbers.</summary>
+        /// <summary>
+        /// The person's phone numbers. For [`connections.list`](/people/api/rest/v1/people.connections/list),
+        /// [`otherContacts.list`](/people/api/rest/v1/otherContacts/list), and
+        /// [`people.listDirectoryPeople`](/people/api/rest/v1/people/listDirectoryPeople) the number of phone numbers
+        /// is limited to 100. If a Person has more phone numbers the entire set can be obtained by calling
+        /// ['people.get'](/people/api/rest/v1/people/get).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
         public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; }
 

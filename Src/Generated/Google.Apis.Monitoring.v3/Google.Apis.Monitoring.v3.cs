@@ -9076,6 +9076,25 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains metadata for longrunning operation for the edit Metrics Scope endpoints.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The time when the operation result was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9325,6 +9344,15 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("telemetry")]
         public virtual Telemetry Telemetry { get; set; }
 
+        /// <summary>
+        /// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and
+        /// values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum
+        /// length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For
+        /// labels which do not have a semantic value, the empty string may be supplied for the label value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9405,6 +9433,16 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLevelIndicator")]
         public virtual ServiceLevelIndicator ServiceLevelIndicator { get; set; }
+
+        /// <summary>
+        /// Labels which have been used to annotate the service-level objective. Label keys must start with a letter.
+        /// Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values
+        /// have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may
+        /// be stored. For labels which do not have a semantic value, the empty string may be supplied for the label
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

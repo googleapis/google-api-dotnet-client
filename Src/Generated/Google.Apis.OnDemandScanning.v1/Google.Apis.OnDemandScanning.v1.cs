@@ -1629,6 +1629,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("package")]
         public virtual string Package { get; set; }
 
+        /// <summary>The type of package: os, maven, go, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("unused")]
         public virtual string Unused { get; set; }
 
