@@ -787,8 +787,7 @@ namespace Google.Apis.FirebaseRealtimeDatabase.v1beta.Data
 
         /// <summary>
         /// The fully qualified resource name of the database instance, in the form:
-        /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported
-        /// location is 'us-central1'.
+        /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

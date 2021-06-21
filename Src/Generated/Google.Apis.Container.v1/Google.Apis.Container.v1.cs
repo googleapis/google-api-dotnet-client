@@ -6822,6 +6822,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredIntraNodeVisibilityConfig")]
         public virtual IntraNodeVisibilityConfig DesiredIntraNodeVisibilityConfig { get; set; }
 
+        /// <summary>The desired L4 Internal Load Balancer Subsetting configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredL4ilbSubsettingConfig")]
+        public virtual ILBSubsettingConfig DesiredL4ilbSubsettingConfig { get; set; }
+
         /// <summary>
         /// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in
         /// which the cluster's nodes should be located. This list must always include the cluster's primary zone.
@@ -7278,6 +7282,19 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+    /// </summary>
+    public class ILBSubsettingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enables l4 ILB subsetting for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for controlling how IPs are allocated in the cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7726,6 +7743,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntraNodeVisibility")]
         public virtual System.Nullable<bool> EnableIntraNodeVisibility { get; set; }
+
+        /// <summary>Whether L4ILB Subsetting is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableL4ilbSubsetting")]
+        public virtual System.Nullable<bool> EnableL4ilbSubsetting { get; set; }
 
         /// <summary>
         /// Output only. The relative name of the Google Compute Engine

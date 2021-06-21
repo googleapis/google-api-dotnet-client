@@ -1192,7 +1192,7 @@ namespace Google.Apis.Appengine.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("noManagedCertificate", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> NoManagedCertificate { get; set; }
 
-                /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 

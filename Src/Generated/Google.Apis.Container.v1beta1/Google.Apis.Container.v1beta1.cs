@@ -8096,6 +8096,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpv6GoogleAccess")]
         public virtual string PrivateIpv6GoogleAccess { get; set; }
 
+        /// <summary>ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceExternalIpsConfig")]
+        public virtual ServiceExternalIPsConfig ServiceExternalIpsConfig { get; set; }
+
         /// <summary>
         /// Output only. The relative name of the Google Compute Engine
         /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example:
@@ -9064,6 +9068,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Maps of Kubernetes version and supported Windows server versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsVersionMaps")]
         public virtual System.Collections.Generic.IDictionary<string, WindowsVersions> WindowsVersionMaps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config to block services with externalIPs field.</summary>
+    public class ServiceExternalIPsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Services with ExternalIPs field are allowed or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

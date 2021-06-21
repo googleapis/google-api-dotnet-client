@@ -3067,7 +3067,7 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         /// Supported functions are `LOWER([field_name])` to perform a case insensitive match and `EMPTY([field_name])`
         /// to filter on the existence of a key. Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
         /// nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 100 comparisons or functions are
-        /// allowed in the expression. The expression must be &amp;lt; 6000 bytes in length. Sample Query:
+        /// allowed in the expression. The expression must be &amp;lt; 10000 bytes in length. Sample Query:
         /// `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND driving_years &amp;gt; 10`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customAttributeFilter")]
@@ -3819,9 +3819,10 @@ namespace Google.Apis.CloudTalentSolution.v4.Data
         /// bucket(1, MAX, "positive number") or bucket(1, 10). Job histogram facets: * company_display_name: histogram
         /// by [Job.company_display_name. * employment_type: histogram by Job.employment_types, for example,
         /// "FULL_TIME", "PART_TIME". * company_size: histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". *
-        /// publish_time_in_month: histogram by the Job.posting_publish_time in months. Must specify list of numeric
-        /// buckets in spec. * publish_time_in_year: histogram by the Job.posting_publish_time in years. Must specify
-        /// list of numeric buckets in spec. * degree_types: histogram by the Job.degree_types, for example,
+        /// publish_time_in_day: histogram by the Job.posting_publish_time in days. Must specify list of numeric buckets
+        /// in spec. * publish_time_in_month: histogram by the Job.posting_publish_time in months. Must specify list of
+        /// numeric buckets in spec. * publish_time_in_year: histogram by the Job.posting_publish_time in years. Must
+        /// specify list of numeric buckets in spec. * degree_types: histogram by the Job.degree_types, for example,
         /// "Bachelors", "Masters". * job_level: histogram by the Job.job_level, for example, "Entry Level". * country:
         /// histogram by the country code of jobs, for example, "US", "FR". * admin1: histogram by the admin1 code of
         /// jobs, which is a global placeholder referring to the state, province, or the particular term a country uses

@@ -1918,6 +1918,63 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
+                /// <summary>Update Notebook Instance configurations.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual UpdateConfigRequest UpdateConfig(Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceConfigRequest body, string name)
+                {
+                    return new UpdateConfigRequest(service, body, name);
+                }
+
+                /// <summary>Update Notebook Instance configurations.</summary>
+                public class UpdateConfigRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpdateConfig request.</summary>
+                    public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v1.Data.UpdateInstanceConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:updateConfig";
+
+                    /// <summary>Initializes UpdateConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Updates the Shielded instance configuration of a single Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -4003,6 +4060,24 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Notebook instance configurations that can be updated.</summary>
+    public class InstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Verifies core internal services are running. More info: go/notebooks-health</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHealthMonitoring")]
+        public virtual System.Nullable<bool> EnableHealthMonitoring { get; set; }
+
+        /// <summary>
+        /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron
+        /// format](https://en.wikipedia.org/wiki/Cron).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookUpgradeSchedule")]
+        public virtual string NotebookUpgradeSchedule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for checking if a notebook instance is upgradeable.</summary>
     public class IsInstanceUpgradeableResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5021,6 +5096,17 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// <summary>Request for created scheduled notebooks</summary>
     public class TriggerScheduleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for updating instance configurations.</summary>
+    public class UpdateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The instance configurations to be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual InstanceConfig Config { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

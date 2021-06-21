@@ -2577,9 +2577,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Derived from the source and destination endpoints definition, and validated by the data plane model. If
-        /// there are multiple traces starting from different source locations, then the endpoint_info may be different
-        /// between traces.
+        /// Derived from the source and destination endpoints definition specified by user request, and validated by the
+        /// data plane model. If there are multiple traces starting from different source locations, then the
+        /// endpoint_info may be different between traces.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointInfo")]
         public virtual EndpointInfo EndpointInfo { get; set; }

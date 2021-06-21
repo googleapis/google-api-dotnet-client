@@ -1169,7 +1169,7 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("domainMappingsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string DomainMappingsId { get; private set; }
 
-                /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -3311,7 +3311,7 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("migrateTraffic", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> MigrateTraffic { get; set; }
 
-                /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -3499,7 +3499,7 @@ namespace Google.Apis.Appengine.v1
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
-            /// <summary>Standard field mask for the set of fields to be updated.</summary>
+            /// <summary>Required. Standard field mask for the set of fields to be updated.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
