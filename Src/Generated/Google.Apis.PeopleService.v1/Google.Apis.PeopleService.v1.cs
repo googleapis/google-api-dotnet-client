@@ -511,14 +511,20 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Create a new contact group owned by the authenticated user.</summary>
+        /// <summary>
+        /// Create a new contact group owned by the authenticated user. Created contact group names must be unique to
+        /// the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Create a new contact group owned by the authenticated user.</summary>
+        /// <summary>
+        /// Create a new contact group owned by the authenticated user. Created contact group names must be unique to
+        /// the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error.
+        /// </summary>
         public class CreateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -789,7 +795,11 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
-        /// <summary>Update the name of an existing contact group owned by the authenticated user.</summary>
+        /// <summary>
+        /// Update the name of an existing contact group owned by the authenticated user. Updated contact group names
+        /// must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a
+        /// HTTP 409 error.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">
         /// The resource name for the contact group, assigned by the server. An ASCII string, in the form of
@@ -800,7 +810,11 @@ namespace Google.Apis.PeopleService.v1
             return new UpdateRequest(service, body, resourceName);
         }
 
-        /// <summary>Update the name of an existing contact group owned by the authenticated user.</summary>
+        /// <summary>
+        /// Update the name of an existing contact group owned by the authenticated user. Updated contact group names
+        /// must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a
+        /// HTTP 409 error.
+        /// </summary>
         public class UpdateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3072,7 +3086,10 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual ContactGroupMetadata Metadata { get; set; }
 
         /// <summary>
-        /// The contact group name set by the group owner or a system provided name for system groups.
+        /// The contact group name set by the group owner or a system provided name for system groups. For
+        /// [`contactGroups.create`](/people/api/rest/v1/contactGroups/create) or
+        /// [`contactGroups.update`](/people/api/rest/v1/contactGroups/update) the name must be unique to the users
+        /// contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

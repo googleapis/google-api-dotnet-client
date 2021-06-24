@@ -6947,9 +6947,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The auto-update policy for apps installed on the device. "choiceToTheUser" allows the device's user to
-        /// configure the app update policy. "always" enables auto updates. "never" disables auto updates. "wifiOnly"
-        /// enables auto updates only when the device is connected to wifi.
+        /// Deprecated. Use autoUpdateMode instead. When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
+        /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect. "choiceToTheUser" allows the device's user to configure
+        /// the app update policy. "always" enables auto updates. "never" disables auto updates. "wifiOnly" enables auto
+        /// updates only when the device is connected to wifi.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
         public virtual string AutoUpdatePolicy { get; set; }

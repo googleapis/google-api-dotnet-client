@@ -475,7 +475,7 @@ namespace Google.Apis.Keep.v1
             }
 
             /// <summary>
-            /// Creates one or more permission on the note. Only permissions with the `WRITER` role may be created. If
+            /// Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If
             /// adding any permission fails, then the entire request fails and no changes are made.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -489,7 +489,7 @@ namespace Google.Apis.Keep.v1
             }
 
             /// <summary>
-            /// Creates one or more permission on the note. Only permissions with the `WRITER` role may be created. If
+            /// Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If
             /// adding any permission fails, then the entire request fails and no changes are made.
             /// </summary>
             public class BatchCreateRequest : KeepBaseServiceRequest<Google.Apis.Keep.v1.Data.BatchCreatePermissionsResponse>
@@ -778,9 +778,9 @@ namespace Google.Apis.Keep.v1
             }
 
             /// <summary>
-            /// Filter for list results. If no filter is supplied, the "-trashed" filter is applied by default. Valid
-            /// fields to filter by are: - `create_time` - `update_time` - `trash_time` - `trashed` Filter syntax
-            /// follows the Google AIP filtering spec: https://aip.dev/160
+            /// Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid
+            /// fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax
+            /// follows the [Google AIP filtering spec](https://aip.dev/160).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -972,7 +972,7 @@ namespace Google.Apis.Keep.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response when listing a page of notes (see KeepService documentation).</summary>
+    /// <summary>The response when listing a page of notes.</summary>
     public class ListNotesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Next page's `page_token` field.</summary>
@@ -1019,14 +1019,14 @@ namespace Google.Apis.Keep.v1.Data
         public virtual string Title { get; set; }
 
         /// <summary>
-        /// Output only. If this note has been trashed, when that happened. If trashed, the note will eventually be
-        /// deleted. If the note is not trashed, this is not set (and the trashed field is false).
+        /// Output only. When this note was trashed. If `trashed`, the note is eventually deleted. If the note is not
+        /// trashed, this field is not set (and the trashed field is `false`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashTime")]
         public virtual object TrashTime { get; set; }
 
         /// <summary>
-        /// Output only. True if this note has been trashed. If trashed, the note will eventually be deleted.
+        /// Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trashed")]
         public virtual System.Nullable<bool> Trashed { get; set; }
@@ -1050,8 +1050,9 @@ namespace Google.Apis.Keep.v1.Data
         public virtual System.Nullable<bool> Deleted { get; set; }
 
         /// <summary>
-        /// The email associated with the member. If set on create, the email field in the User or Group message must
-        /// either be empty or match this field. On read, may be unset if the member does not have an associated email.
+        /// The email associated with the member. If set on create, the `email` field in the `User` or `Group` message
+        /// must either be empty or match this field. On read, may be unset if the member does not have an associated
+        /// email.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
