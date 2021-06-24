@@ -3906,6 +3906,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trialId")]
         public virtual string TrialId { get; set; }
 
+        /// <summary>
+        /// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress
+        /// hyperparameter tuning trials with web access enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webAccessUris")]
+        public virtual System.Collections.Generic.IDictionary<string, string> WebAccessUris { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5041,6 +5048,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
+        /// <summary>Optional. Whether to enable web access for the training job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWebAccess")]
+        public virtual System.Nullable<bool> EnableWebAccess { get; set; }
+
         /// <summary>
         /// Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a
         /// training job, instead of using Google's default encryption. If this is set, then all resources created by
@@ -5297,6 +5308,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
         public virtual System.Collections.Generic.IList<GoogleCloudMlV1HyperparameterOutput> Trials { get; set; }
+
+        /// <summary>
+        /// Output only. The web URIs for the training job. Currently for debug terminal access to the job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webAccessUris")]
+        public virtual System.Collections.Generic.IDictionary<string, string> WebAccessUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

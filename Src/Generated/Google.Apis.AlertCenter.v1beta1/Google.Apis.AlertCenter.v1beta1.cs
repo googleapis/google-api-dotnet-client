@@ -1767,6 +1767,31 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     }
 
     /// <summary>
+    /// An alert that gets triggered when a user enables autoforwarding to an email which is outside of its domain
+    /// </summary>
+    public class OutOfDomainForwarding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email of the actor who triggered the alert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorEmail")]
+        public virtual string ActorEmail { get; set; }
+
+        /// <summary>The time the email forwarding was enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTime")]
+        public virtual object EnableTime { get; set; }
+
+        /// <summary>Email to which emails are being forwarded</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardeeEmail")]
+        public virtual string ForwardeeEmail { get; set; }
+
+        /// <summary>IP address of the user while enabling forwarding</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Alert for a spike in user reported phishing. *Warning*: This type has been deprecated. Use
     /// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing) instead.
     /// </summary>

@@ -304,7 +304,15 @@ namespace Google.Apis.Ideahub.v1alpha
             [Google.Apis.Util.RequestParameterAttribute("creator.platformId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CreatorPlatformId { get; set; }
 
-            /// <summary>Filter semantics described below.</summary>
+            /// <summary>
+            /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. *
+            /// Restrictions are implicitly combined, as if the `AND` operator was always used. The `OR` operator is
+            /// currently unsupported. * Supported functions: - `saved(bool)`: If set to true, fetches only saved ideas.
+            /// If set to false, fetches all except saved ideas. Can't be simultaneously used with `dismissed(bool)`. -
+            /// `dismissed(bool)`: If set to true, fetches only dismissed ideas. Can't be simultaneously used with
+            /// `saved(bool)`. The `false` value is currently unsupported. Examples: * `saved(true)` * `saved(false)` *
+            /// `dismissed(true)` The length of this field should be no more than 500 characters.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -436,6 +444,7 @@ namespace Google.Apis.Ideahub.v1alpha
                 IdeaStates = new IdeaStatesResource(service);
                 Ideas = new IdeasResource(service);
                 Locales = new LocalesResource(service);
+                TopicStates = new TopicStatesResource(service);
             }
 
             /// <summary>Gets the IdeaStates resource.</summary>
@@ -595,7 +604,16 @@ namespace Google.Apis.Ideahub.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("creator.platformId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CreatorPlatformId { get; set; }
 
-                    /// <summary>Filter semantics described below.</summary>
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions are implicitly combined, as if the `AND` operator was always used.
+                    /// The `OR` operator is currently unsupported. * Supported functions: - `saved(bool)`: If set to
+                    /// true, fetches only saved ideas. If set to false, fetches all except saved ideas. Can't be
+                    /// simultaneously used with `dismissed(bool)`. - `dismissed(bool)`: If set to true, fetches only
+                    /// dismissed ideas. Can't be simultaneously used with `saved(bool)`. The `false` value is currently
+                    /// unsupported. Examples: * `saved(true)` * `saved(false)` * `dismissed(true)` The length of this
+                    /// field should be no more than 500 characters.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -787,6 +805,95 @@ namespace Google.Apis.Ideahub.v1alpha
                     }
                 }
             }
+
+            /// <summary>Gets the TopicStates resource.</summary>
+            public virtual TopicStatesResource TopicStates { get; }
+
+            /// <summary>The "topicStates" collection of methods.</summary>
+            public class TopicStatesResource
+            {
+                private const string Resource = "topicStates";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TopicStatesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Update a topic state resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Unique identifier for the topic state. Format:
+                /// platforms/{platform}/properties/{property}/topicStates/{topic_state}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaTopicState body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Update a topic state resource.</summary>
+                public class PatchRequest : IdeahubBaseServiceRequest<Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaTopicState>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaTopicState body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Unique identifier for the topic state. Format:
+                    /// platforms/{platform}/properties/{property}/topicStates/{topic_state}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaTopicState Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^platforms/[^/]+/properties/[^/]+/topicStates/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
     }
 }
@@ -896,6 +1003,28 @@ namespace Google.Apis.Ideahub.v1alpha.Data
         /// <summary>The mID of the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mid")]
         public virtual string Mid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents topic state specific to a web property.</summary>
+    public class GoogleSearchIdeahubV1alphaTopicState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the topic is dismissed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dismissed")]
+        public virtual System.Nullable<bool> Dismissed { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the topic state. Format:
+        /// platforms/{platform}/properties/{property}/topicStates/{topic_state}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether the topic is saved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saved")]
+        public virtual System.Nullable<bool> Saved { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5364,10 +5364,6 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The schema of the default version of this processor type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
-        public virtual GoogleCloudDocumentaiV1beta3Schema Schema { get; set; }
-
         /// <summary>The type of the processor, e.g, "invoice_parsing".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5461,73 +5457,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The Cloud Storage uri for the human reviewed document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual string GcsDestination { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The schema defines the output of the processed document by a processor.</summary>
-    public class GoogleCloudDocumentaiV1beta3Schema : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Display name to show to users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Entity types of the schema.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3SchemaEntityType> EntityTypes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for
-    /// entity-based processors. Multiple types can also compose a dependency tree to represent nested types.
-    /// </summary>
-    public class GoogleCloudDocumentaiV1beta3SchemaEntityType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Type of the entity. It must be one of the following: `document` - the entity represents a classification of
-        /// a logical document. `object` - if the entity has properties it is likely an object (or or a document.)
-        /// `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount.
-        /// `number` - the entity is a number - integer or floating point. `string` - the entity is a string value.
-        /// `boolean` - the entity is a boolean value. `address` - the entity is a location address.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseType")]
-        public virtual string BaseType { get; set; }
-
-        /// <summary>Description of the entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>If specified, lists all the possible values for this entity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
-        public virtual System.Collections.Generic.IList<string> EnumValues { get; set; }
-
-        /// <summary>Occurrence type limits the number of times an entity type appears in the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
-        public virtual string OccurrenceType { get; set; }
-
-        /// <summary>
-        /// Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For
-        /// example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address',
-        /// with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3SchemaEntityType> Properties { get; set; }
-
-        /// <summary>Source of this entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>Name of the type. It must be unique within the set of same level types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

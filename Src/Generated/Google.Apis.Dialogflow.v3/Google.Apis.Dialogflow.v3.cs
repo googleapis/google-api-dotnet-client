@@ -344,7 +344,11 @@ namespace Google.Apis.Dialogflow.v3
                         this.service = service;
                     }
 
-                    /// <summary>Creates an entity type in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates an entity type in the specified agent. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The agent to create a entity type for. Format: `projects//locations//agents/`.
@@ -354,7 +358,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates an entity type in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates an entity type in the specified agent. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3EntityType>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -419,7 +427,11 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Deletes the specified entity type.</summary>
+                    /// <summary>
+                    /// Deletes the specified entity type. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The name of the entity type to delete. Format:
                     /// `projects//locations//agents//entityTypes/`.
@@ -429,7 +441,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified entity type.</summary>
+                    /// <summary>
+                    /// Deletes the specified entity type. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -649,7 +665,11 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Updates the specified entity type.</summary>
+                    /// <summary>
+                    /// Updates the specified entity type. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format:
@@ -660,7 +680,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified entity type.</summary>
+                    /// <summary>
+                    /// Updates the specified entity type. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3EntityType>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -2392,7 +2416,11 @@ namespace Google.Apis.Dialogflow.v3
                             this.service = service;
                         }
 
-                        /// <summary>Creates a page in the specified flow.</summary>
+                        /// <summary>
+                        /// Creates a page in the specified flow. Note: You should always train a flow prior to sending
+                        /// it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The flow to create a page for. Format: `projects//locations//agents//flows/`.
@@ -2402,7 +2430,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates a page in the specified flow.</summary>
+                        /// <summary>
+                        /// Creates a page in the specified flow. Note: You should always train a flow prior to sending
+                        /// it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Page>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -2475,7 +2507,11 @@ namespace Google.Apis.Dialogflow.v3
                             }
                         }
 
-                        /// <summary>Deletes the specified page.</summary>
+                        /// <summary>
+                        /// Deletes the specified page. Note: You should always train a flow prior to sending it
+                        /// queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="name">
                         /// Required. The name of the page to delete. Format:
                         /// `projects//locations//agents//Flows//pages/`.
@@ -2485,7 +2521,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>Deletes the specified page.</summary>
+                        /// <summary>
+                        /// Deletes the specified page. Note: You should always train a flow prior to sending it
+                        /// queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -2720,7 +2760,11 @@ namespace Google.Apis.Dialogflow.v3
                             }
                         }
 
-                        /// <summary>Updates the specified page.</summary>
+                        /// <summary>
+                        /// Updates the specified page. Note: You should always train a flow prior to sending it
+                        /// queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// The unique identifier of the page. Required for the Pages.UpdatePage method.
@@ -2732,7 +2776,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>Updates the specified page.</summary>
+                        /// <summary>
+                        /// Updates the specified page. Note: You should always train a flow prior to sending it
+                        /// queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Page>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -2840,7 +2888,11 @@ namespace Google.Apis.Dialogflow.v3
                             this.service = service;
                         }
 
-                        /// <summary>Creates an TransitionRouteGroup in the specified flow.</summary>
+                        /// <summary>
+                        /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow
+                        /// prior to sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The flow to create an TransitionRouteGroup for. Format:
@@ -2851,7 +2903,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new CreateRequest(service, body, parent);
                         }
 
-                        /// <summary>Creates an TransitionRouteGroup in the specified flow.</summary>
+                        /// <summary>
+                        /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow
+                        /// prior to sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup>
                         {
                             /// <summary>Constructs a new Create request.</summary>
@@ -2918,7 +2974,11 @@ namespace Google.Apis.Dialogflow.v3
                             }
                         }
 
-                        /// <summary>Deletes the specified TransitionRouteGroup.</summary>
+                        /// <summary>
+                        /// Deletes the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                        /// sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="name">
                         /// Required. The name of the TransitionRouteGroup to delete. Format:
                         /// `projects//locations//agents//flows//transitionRouteGroups/`.
@@ -2928,7 +2988,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new DeleteRequest(service, name);
                         }
 
-                        /// <summary>Deletes the specified TransitionRouteGroup.</summary>
+                        /// <summary>
+                        /// Deletes the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                        /// sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
@@ -3154,7 +3218,11 @@ namespace Google.Apis.Dialogflow.v3
                             }
                         }
 
-                        /// <summary>Updates the specified TransitionRouteGroup.</summary>
+                        /// <summary>
+                        /// Updates the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                        /// sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// The unique identifier of the transition route group.
@@ -3166,7 +3234,11 @@ namespace Google.Apis.Dialogflow.v3
                             return new PatchRequest(service, body, name);
                         }
 
-                        /// <summary>Updates the specified TransitionRouteGroup.</summary>
+                        /// <summary>
+                        /// Updates the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                        /// sending it queries. See the [training
+                        /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                        /// </summary>
                         public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
@@ -3633,7 +3705,11 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Creates a flow in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates a flow in the specified agent. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The agent to create a flow for. Format: `projects//locations//agents/`.
@@ -3643,7 +3719,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a flow in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates a flow in the specified agent. Note: You should always train a flow prior to sending it
+                    /// queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Flow>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -3978,7 +4058,11 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Imports the specified flow to the specified agent from a binary file.</summary>
+                    /// <summary>
+                    /// Imports the specified flow to the specified agent from a binary file. Note: You should always
+                    /// train a flow prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The agent to import the flow into. Format: `projects//locations//agents/`.
@@ -3988,7 +4072,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new ImportRequest(service, body, parent);
                     }
 
-                    /// <summary>Imports the specified flow to the specified agent from a binary file.</summary>
+                    /// <summary>
+                    /// Imports the specified flow to the specified agent from a binary file. Note: You should always
+                    /// train a flow prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Import request.</summary>
@@ -4131,7 +4219,10 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Updates the specified flow.</summary>
+                    /// <summary>
+                    /// Updates the specified flow. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
@@ -4141,7 +4232,10 @@ namespace Google.Apis.Dialogflow.v3
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified flow.</summary>
+                    /// <summary>
+                    /// Updates the specified flow. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Flow>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -4225,7 +4319,9 @@ namespace Google.Apis.Dialogflow.v3
                     }
 
                     /// <summary>
-                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained.
+                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. Note: You
+                    /// should always train a flow prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -4237,7 +4333,9 @@ namespace Google.Apis.Dialogflow.v3
                     }
 
                     /// <summary>
-                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained.
+                    /// Trains the specified flow. Note that only the flow in 'draft' environment is trained. Note: You
+                    /// should always train a flow prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                     /// </summary>
                     public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
                     {
@@ -4366,7 +4464,11 @@ namespace Google.Apis.Dialogflow.v3
                         this.service = service;
                     }
 
-                    /// <summary>Creates an intent in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates an intent in the specified agent. Note: You should always train a flow prior to sending
+                    /// it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The agent to create an intent for. Format: `projects//locations//agents/`.
@@ -4376,7 +4478,11 @@ namespace Google.Apis.Dialogflow.v3
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates an intent in the specified agent.</summary>
+                    /// <summary>
+                    /// Creates an intent in the specified agent. Note: You should always train a flow prior to sending
+                    /// it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Intent>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -4440,7 +4546,10 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Deletes the specified intent.</summary>
+                    /// <summary>
+                    /// Deletes the specified intent. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="name">
                     /// Required. The name of the intent to delete. Format: `projects//locations//agents//intents/`.
                     /// </param>
@@ -4449,7 +4558,10 @@ namespace Google.Apis.Dialogflow.v3
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes the specified intent.</summary>
+                    /// <summary>
+                    /// Deletes the specified intent. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -4675,7 +4787,10 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
-                    /// <summary>Updates the specified intent.</summary>
+                    /// <summary>
+                    /// Updates the specified intent. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The unique identifier of the intent. Required for the Intents.UpdateIntent method.
@@ -4687,7 +4802,10 @@ namespace Google.Apis.Dialogflow.v3
                         return new PatchRequest(service, body, name);
                     }
 
-                    /// <summary>Updates the specified intent.</summary>
+                    /// <summary>
+                    /// Updates the specified intent. Note: You should always train a flow prior to sending it queries.
+                    /// See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Intent>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
@@ -6567,7 +6685,11 @@ namespace Google.Apis.Dialogflow.v3
                     }
                 }
 
-                /// <summary>Creates an agent in the specified location.</summary>
+                /// <summary>
+                /// Creates an agent in the specified location. Note: You should always train flows prior to sending
+                /// them queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The location to create a agent for. Format: `projects//locations/`.
@@ -6577,7 +6699,11 @@ namespace Google.Apis.Dialogflow.v3
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates an agent in the specified location.</summary>
+                /// <summary>
+                /// Creates an agent in the specified location. Note: You should always train flows prior to sending
+                /// them queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                /// </summary>
                 public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Agent>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6913,7 +7039,10 @@ namespace Google.Apis.Dialogflow.v3
                     }
                 }
 
-                /// <summary>Updates the specified agent.</summary>
+                /// <summary>
+                /// Updates the specified agent. Note: You should always train flows prior to sending them queries. See
+                /// the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent
@@ -6924,7 +7053,10 @@ namespace Google.Apis.Dialogflow.v3
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>Updates the specified agent.</summary>
+                /// <summary>
+                /// Updates the specified agent. Note: You should always train flows prior to sending them queries. See
+                /// the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                /// </summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3Agent>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -6989,7 +7121,9 @@ namespace Google.Apis.Dialogflow.v3
 
                 /// <summary>
                 /// Restores the specified agent from a binary file. Replaces the current agent with a new one. Note
-                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed.
+                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. Note: You
+                /// should always train flows prior to sending them queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -7002,7 +7136,9 @@ namespace Google.Apis.Dialogflow.v3
 
                 /// <summary>
                 /// Restores the specified agent from a binary file. Replaces the current agent with a new one. Note
-                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed.
+                /// that all existing resources in agent (e.g. intents, entity types, flows) will be removed. Note: You
+                /// should always train flows prior to sending them queries. See the [training
+                /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
                 /// </summary>
                 public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
                 {
@@ -9352,9 +9488,9 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-'
         /// and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start
-        /// with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys."
-        /// is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head *
-        /// sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent.
+        /// with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-"
+        /// is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head *
+        /// sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent.
         /// "sys.contextual" means the intent is a contextual intent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -10707,9 +10843,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default
-        /// DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/`
-        /// OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base
+        /// settings. If empty, we use the default DLP inspect config. The template name will have one of the following
+        /// formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR
+        /// `organizations//inspectTemplates/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual string InspectTemplate { get; set; }

@@ -5191,7 +5191,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         /// <summary>
         /// Number of results that match the bucket value. Counts are only returned for searches when count accuracy is
-        /// ensured. Can be empty.
+        /// ensured. Cloud Search does not guarantee facet counts for any query and facet counts might be present only
+        /// intermittently, even for identical queries. Do not build dependencies on facet count existence; instead use
+        /// facet ount percentages which are always returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; }

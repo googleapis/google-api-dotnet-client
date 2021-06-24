@@ -2720,10 +2720,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>
                     /// Queries all data_ids that are consented for a specified use in the given consent store and
                     /// writes them to a specified destination. The returned Operation includes a progress counter for
-                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For
-                    /// example, the following sample log entry shows a `failed to evaluate consent policy` error that
-                    /// occurred during a QueryAccessibleData call to consent store
+                    /// the number of User data mappings processed. If the request is successful, a detailed response is
+                    /// returned of type QueryAccessibleDataResponse, contained in the response field when the operation
+                    /// finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud Logging (see
+                    /// [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following
+                    /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
+                    /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -2749,10 +2752,13 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>
                     /// Queries all data_ids that are consented for a specified use in the given consent store and
                     /// writes them to a specified destination. The returned Operation includes a progress counter for
-                    /// the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing
-                    /// error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For
-                    /// example, the following sample log entry shows a `failed to evaluate consent policy` error that
-                    /// occurred during a QueryAccessibleData call to consent store
+                    /// the number of User data mappings processed. If the request is successful, a detailed response is
+                    /// returned of type QueryAccessibleDataResponse, contained in the response field when the operation
+                    /// finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud Logging (see
+                    /// [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following
+                    /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
+                    /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
                     /// ```json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
@@ -12159,6 +12165,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// </summary>
     public class QueryAccessibleDataResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// List of files, each of which contains a list of data_id(s) that are consented for a specified use in the
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUris")]
+        public virtual System.Collections.Generic.IList<string> GcsUris { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

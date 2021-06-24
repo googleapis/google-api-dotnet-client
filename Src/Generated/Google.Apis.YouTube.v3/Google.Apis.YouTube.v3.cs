@@ -7555,8 +7555,8 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
         /// <param name="part">
-        /// The *part* parameter specifies the superChatEvent resource parts that the API response will include.
-        /// Supported values are id and snippet.
+        /// The *part* parameter specifies the superChatEvent resource parts that the API response will include. This
+        /// parameter is currently not supported.
         /// </param>
         public virtual ListRequest List(Google.Apis.Util.Repeatable<string> part)
         {
@@ -7575,7 +7575,7 @@ namespace Google.Apis.YouTube.v3
 
             /// <summary>
             /// The *part* parameter specifies the superChatEvent resource parts that the API response will include.
-            /// Supported values are id and snippet.
+            /// This parameter is currently not supported.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }

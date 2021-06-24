@@ -1215,6 +1215,136 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             }
 
             /// <summary>
+            /// Accepts a AppAttest Artifact and Assertion, and uses the developer's preconfigured auth token to verify
+            /// the token with Apple. Returns an AttestationToken with the App ID as specified by the `app` field
+            /// included as attested claims.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+            /// </param>
+            public virtual ExchangeAppAttestAssertionRequest ExchangeAppAttestAssertion(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest body, string app)
+            {
+                return new ExchangeAppAttestAssertionRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Accepts a AppAttest Artifact and Assertion, and uses the developer's preconfigured auth token to verify
+            /// the token with Apple. Returns an AttestationToken with the App ID as specified by the `app` field
+            /// included as attested claims.
+            /// </summary>
+            public class ExchangeAppAttestAssertionRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAttestationTokenResponse>
+            {
+                /// <summary>Constructs a new ExchangeAppAttestAssertion request.</summary>
+                public ExchangeAppAttestAssertionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exchangeAppAttestAssertion";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:exchangeAppAttestAssertion";
+
+                /// <summary>Initializes ExchangeAppAttestAssertion parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Accepts a AppAttest CBOR Attestation, and uses the developer's preconfigured team and bundle IDs to
+            /// verify the token with Apple. Returns an Attestation Artifact that can later be exchanged for an
+            /// AttestationToken in ExchangeAppAttestAssertion.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+            /// </param>
+            public virtual ExchangeAppAttestAttestationRequest ExchangeAppAttestAttestation(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest body, string app)
+            {
+                return new ExchangeAppAttestAttestationRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Accepts a AppAttest CBOR Attestation, and uses the developer's preconfigured team and bundle IDs to
+            /// verify the token with Apple. Returns an Attestation Artifact that can later be exchanged for an
+            /// AttestationToken in ExchangeAppAttestAssertion.
+            /// </summary>
+            public class ExchangeAppAttestAttestationRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse>
+            {
+                /// <summary>Constructs a new ExchangeAppAttestAttestation request.</summary>
+                public ExchangeAppAttestAttestationRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exchangeAppAttestAttestation";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:exchangeAppAttestAttestation";
+
+                /// <summary>Initializes ExchangeAppAttestAttestation parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Validates a custom token signed using your project's Admin SDK service account credentials. If valid,
             /// returns an App Check token encapsulated in an AttestationTokenResponse.
             /// </summary>
@@ -1564,6 +1694,69 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     });
                 }
             }
+
+            /// <summary>
+            /// Initiates the App Attest flow by generating a challenge which will be used as a type of nonce for this
+            /// attestation.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="app">
+            /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+            /// </param>
+            public virtual GenerateAppAttestChallengeRequest GenerateAppAttestChallenge(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest body, string app)
+            {
+                return new GenerateAppAttestChallengeRequest(service, body, app);
+            }
+
+            /// <summary>
+            /// Initiates the App Attest flow by generating a challenge which will be used as a type of nonce for this
+            /// attestation.
+            /// </summary>
+            public class GenerateAppAttestChallengeRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse>
+            {
+                /// <summary>Constructs a new GenerateAppAttestChallenge request.</summary>
+                public GenerateAppAttestChallengeRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest body, string app) : base(service)
+                {
+                    App = app;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The full resource name to the iOS App. Format: "projects/{project_id}/apps/{app_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string App { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateAppAttestChallenge";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+app}:generateAppAttestChallenge";
+
+                /// <summary>Initializes GenerateAppAttestChallenge parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "app",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Services resource.</summary>
@@ -1875,6 +2068,26 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 }
 namespace Google.Apis.Firebaseappcheck.v1beta.Data
 {
+    /// <summary>Response object for GenerateAppAttestChallenge</summary>
+    public class GoogleFirebaseAppcheckV1betaAppAttestChallengeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A one time use challenge for the client to pass to Apple's App Attest API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
+        /// <summary>
+        /// The duration from the time this challenge is minted until it is expired. This field is intended to ease
+        /// client-side token management, since the device may have clock skew, but is still able to accurately measure
+        /// a duration. This expiration is intended to minimize the replay window within which a single challenge may be
+        /// reused. See AIP 142 for naming of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Encapsulates an *App Check token*, which are used to access Firebase services protected by App Check.
     /// </summary>
@@ -2024,6 +2237,62 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ExchangeAppAttestAssertion</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The artifact previously returned by ExchangeAppAttestAttestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
+        public virtual string Artifact { get; set; }
+
+        /// <summary>The CBOR encoded assertion provided by the Apple App Attest SDK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertion")]
+        public virtual string Assertion { get; set; }
+
+        /// <summary>A one time challenge returned by GenerateAppAttestChallenge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ExchangeAppAttestAttestation</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The App Attest statement as returned by Apple's client-side App Attest API. This is the CBOR object returned
+        /// by Apple, which will be Base64 encoded in the JSON API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationStatement")]
+        public virtual string AttestationStatement { get; set; }
+
+        /// <summary>The challenge previously generated by the FAC backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
+        public virtual string Challenge { get; set; }
+
+        /// <summary>The key ID generated by App Attest for the client app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ExchangeAppAttestAttestation</summary>
+    public class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An artifact that should be passed back during the Assertion flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
+        public virtual string Artifact { get; set; }
+
+        /// <summary>An attestation token which can be used to access Firebase APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestationToken")]
+        public virtual GoogleFirebaseAppcheckV1betaAttestationTokenResponse AttestationToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the ExchangeCustomToken method.</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2088,6 +2357,13 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetyNetToken")]
         public virtual string SafetyNetToken { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GenerateAppAttestChallenge</summary>
+    public class GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

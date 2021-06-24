@@ -3206,75 +3206,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     });
                 }
             }
-
-            /// <summary>Updates a FirebaseLink on a property</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Example format: properties/1234/firebaseLinks/5678</param>
-            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>Updates a FirebaseLink on a property</summary>
-            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Output only. Example format: properties/1234/firebaseLinks/5678</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>
-                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
-                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
-                /// with the string "*" to match all fields.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaFirebaseLink Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/firebaseLinks/[^/]+$",
-                    });
-                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
         }
 
         /// <summary>Gets the GoogleAdsLinks resource.</summary>
@@ -6568,13 +6499,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual System.Nullable<bool> Custom { get; set; }
 
+        /// <summary>Output only. If set, this event can currently be deleted via DeleteConversionEvent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletable")]
+        public virtual System.Nullable<bool> Deletable { get; set; }
+
         /// <summary>Immutable. The event name for this conversion event. Examples: 'click', 'purchase'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
         public virtual string EventName { get; set; }
-
-        /// <summary>Output only. If set, this event can currently be deleted via DeleteConversionEvent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isDeletable")]
-        public virtual System.Nullable<bool> IsDeletable { get; set; }
 
         /// <summary>
         /// Output only. Resource name of this conversion event. Format:

@@ -4273,6 +4273,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>Optional. The POSIX groups associated with the `Group`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posixGroups")]
+        public virtual System.Collections.Generic.IList<PosixGroup> PosixGroups { get; set; }
+
         /// <summary>Output only. The time when the `Group` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -4674,6 +4678,27 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>POSIX Group definition to represent a group in a POSIX compliant system.</summary>
+    public class PosixGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GID of the POSIX group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gid")]
+        public virtual System.Nullable<ulong> Gid { get; set; }
+
+        /// <summary>Name of the POSIX group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
+        public virtual string SystemId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
