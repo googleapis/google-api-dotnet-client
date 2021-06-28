@@ -63,6 +63,7 @@ namespace Google.Apis.YouTube.v3
             VideoCategories = new VideoCategoriesResource(this);
             Videos = new VideosResource(this);
             Watermarks = new WatermarksResource(this);
+            Youtube = new YoutubeResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -236,6 +237,9 @@ namespace Google.Apis.YouTube.v3
 
         /// <summary>Gets the Watermarks resource.</summary>
         public virtual WatermarksResource Watermarks { get; }
+
+        /// <summary>Gets the Youtube resource.</summary>
+        public virtual YoutubeResource Youtube { get; }
     }
 
     /// <summary>A base abstract class for YouTube requests.</summary>
@@ -2874,67 +2878,6 @@ namespace Google.Apis.YouTube.v3
                 {
                     Name = "videoId",
                     IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates an existing resource.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="part">
-        /// The *part* parameter specifies a comma-separated list of commentThread resource properties that the API
-        /// response will include. You must at least include the snippet part in the parameter value since that part
-        /// contains all of the properties that the API request can update.
-        /// </param>
-        public virtual UpdateRequest Update(Google.Apis.YouTube.v3.Data.CommentThread body, Google.Apis.Util.Repeatable<string> part)
-        {
-            return new UpdateRequest(service, body, part);
-        }
-
-        /// <summary>Updates an existing resource.</summary>
-        public class UpdateRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.CommentThread>
-        {
-            /// <summary>Constructs a new Update request.</summary>
-            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.CommentThread body, Google.Apis.Util.Repeatable<string> part) : base(service)
-            {
-                Part = part;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// The *part* parameter specifies a comma-separated list of commentThread resource properties that the API
-            /// response will include. You must at least include the snippet part in the parameter value since that part
-            /// contains all of the properties that the API request can update.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Part { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.YouTube.v3.Data.CommentThread Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "update";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PUT";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "youtube/v3/commentThreads";
-
-            /// <summary>Initializes Update parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "part",
-                    IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
@@ -9707,6 +9650,95 @@ namespace Google.Apis.YouTube.v3
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+    }
+
+    /// <summary>The "youtube" collection of methods.</summary>
+    public class YoutubeResource
+    {
+        private const string Resource = "youtube";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public YoutubeResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            V3 = new V3Resource(service);
+        }
+
+        /// <summary>Gets the V3 resource.</summary>
+        public virtual V3Resource V3 { get; }
+
+        /// <summary>The "v3" collection of methods.</summary>
+        public class V3Resource
+        {
+            private const string Resource = "v3";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public V3Resource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Updates an existing resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            public virtual UpdateCommentThreadsRequest UpdateCommentThreads(Google.Apis.YouTube.v3.Data.CommentThread body)
+            {
+                return new UpdateCommentThreadsRequest(service, body);
+            }
+
+            /// <summary>Updates an existing resource.</summary>
+            public class UpdateCommentThreadsRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.CommentThread>
+            {
+                /// <summary>Constructs a new UpdateCommentThreads request.</summary>
+                public UpdateCommentThreadsRequest(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.CommentThread body) : base(service)
+                {
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The *part* parameter specifies a comma-separated list of commentThread resource properties that the
+                /// API response will include. You must at least include the snippet part in the parameter value since
+                /// that part contains all of the properties that the API request can update.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.YouTube.v3.Data.CommentThread Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCommentThreads";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PUT";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "youtube/v3/commentThreads";
+
+                /// <summary>Initializes UpdateCommentThreads parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("part", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "part",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
             }
         }
     }

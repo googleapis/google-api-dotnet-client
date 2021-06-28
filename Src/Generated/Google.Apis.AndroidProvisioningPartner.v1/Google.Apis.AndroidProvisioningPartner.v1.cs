@@ -2098,6 +2098,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string CompanyName { get; set; }
 
         /// <summary>
+        /// Input only. The preferred locale of the customer represented as a BCP47 language code. This field is
+        /// validated on input and requests containing unsupported language codes will be rejected. Supported language
+        /// codes: Arabic (ar) Chinese (Hong Kong) (zh-HK) Chinese (Simplified) (zh-CN) Chinese (Traditional) (zh-TW)
+        /// Czech (cs) Danish (da) Dutch (nl) English (UK) (en-GB) English (US) (en-US) Filipino (fil) Finnish (fi)
+        /// French (fr) German (de) Hebrew (iw) Hindi (hi) Hungarian (hu) Indonesian (id) Italian (it) Japanese (ja)
+        /// Korean (ko) Norwegian (Bokmal) (no) Polish (pl) Portuguese (Brazil) (pt-BR) Portuguese (Portugal) (pt-PT)
+        /// Russian (ru) Spanish (es) Spanish (Latin America) (es-419) Swedish (sv) Thai (th) Turkish (tr) Ukrainian
+        /// (uk) Vietnamese (vi)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
         /// Output only. The API resource name of the company. The resource name is one of the following formats: *
         /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` *
         /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server.
@@ -2107,11 +2120,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
 
         /// <summary>
         /// Required. Input only. Email address of customer's users in the owner role. At least one `owner_email` is
-        /// required. Each email address must be associated with a Google Account. Owners share the same access as
-        /// admins but can also add, delete, and edit your organization's portal users.
+        /// required. Owners share the same access as admins but can also add, delete, and edit your organization's
+        /// portal users.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; }
+
+        /// <summary>
+        /// Input only. If set to true, welcome email will not be sent to the customer. It is recommended to skip the
+        /// welcome email if devices will be claimed with additional DEVICE_PROTECTION service, as the customer will
+        /// receive separate emails at device claim time. This field is ignored if this is not a Zero-touch customer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipWelcomeEmail")]
+        public virtual System.Nullable<bool> SkipWelcomeEmail { get; set; }
 
         /// <summary>
         /// Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See

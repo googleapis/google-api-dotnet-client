@@ -1239,7 +1239,10 @@ namespace Google.Apis.Transcoder.v1beta1.Data
     /// <summary>Overlaid jpeg image.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).</summary>
+        /// <summary>
+        /// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set
+        /// this to a value greater than `0.0`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
         public virtual System.Nullable<double> Alpha { get; set; }
 
@@ -1578,35 +1581,35 @@ namespace Google.Apis.Transcoder.v1beta1.Data
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output only] API version used to start the operation.</summary>
+        /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
         /// <summary>
-        /// [Output only] Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
-        /// <summary>[Output only] The time the operation was created.</summary>
+        /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>[Output only] The time the operation finished running.</summary>
+        /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
         public virtual string StatusDetail { get; set; }
 
-        /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>[Output only] Name of the verb executed by the operation.</summary>
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 

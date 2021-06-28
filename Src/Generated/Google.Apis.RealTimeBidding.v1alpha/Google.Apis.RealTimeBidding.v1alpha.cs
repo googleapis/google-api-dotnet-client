@@ -297,6 +297,136 @@ namespace Google.Apis.RealTimeBidding.v1alpha
                 this.service = service;
             }
 
+            /// <summary>
+            /// Activates an existing bidding function. An activated function is available for invocation for the
+            /// server-side TURTLEDOVE simulations.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the bidding function to activate. Format:
+            /// `bidders/{bidder_account_id}/biddingFunction/{bidding_function_name}`
+            /// </param>
+            public virtual ActivateRequest Activate(Google.Apis.RealTimeBidding.v1alpha.Data.ActivateBiddingFunctionRequest body, string name)
+            {
+                return new ActivateRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Activates an existing bidding function. An activated function is available for invocation for the
+            /// server-side TURTLEDOVE simulations.
+            /// </summary>
+            public class ActivateRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1alpha.Data.BiddingFunction>
+            {
+                /// <summary>Constructs a new Activate request.</summary>
+                public ActivateRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1alpha.Data.ActivateBiddingFunctionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the bidding function to activate. Format:
+                /// `bidders/{bidder_account_id}/biddingFunction/{bidding_function_name}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1alpha.Data.ActivateBiddingFunctionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "activate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:activate";
+
+                /// <summary>Initializes Activate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/biddingFunctions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Archives an existing bidding function. An archived function will not be available for function
+            /// invocation for the server-side TURTLEDOVE simulations unless it is activated.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the bidding function to archive. Format:
+            /// `bidders/{bidder_account_id}/biddingFunction/{bidding_function_name}`
+            /// </param>
+            public virtual ArchiveRequest Archive(Google.Apis.RealTimeBidding.v1alpha.Data.ArchiveBiddingFunctionRequest body, string name)
+            {
+                return new ArchiveRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Archives an existing bidding function. An archived function will not be available for function
+            /// invocation for the server-side TURTLEDOVE simulations unless it is activated.
+            /// </summary>
+            public class ArchiveRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1alpha.Data.BiddingFunction>
+            {
+                /// <summary>Constructs a new Archive request.</summary>
+                public ArchiveRequest(Google.Apis.Services.IClientService service, Google.Apis.RealTimeBidding.v1alpha.Data.ArchiveBiddingFunctionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the bidding function to archive. Format:
+                /// `bidders/{bidder_account_id}/biddingFunction/{bidding_function_name}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RealTimeBidding.v1alpha.Data.ArchiveBiddingFunctionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "archive";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:archive";
+
+                /// <summary>Initializes Archive parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+/biddingFunctions/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Creates a new bidding function.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -438,6 +568,20 @@ namespace Google.Apis.RealTimeBidding.v1alpha
 }
 namespace Google.Apis.RealTimeBidding.v1alpha.Data
 {
+    /// <summary>The request to activate a bidding function.</summary>
+    public class ActivateBiddingFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to archive a bidding function.</summary>
+    public class ArchiveBiddingFunctionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The bidding function to be executed as part of the TURTLEDOVE simulation experiment bidding flow.
     /// </summary>
@@ -453,6 +597,10 @@ namespace Google.Apis.RealTimeBidding.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the bidding function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The type of the bidding function to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
