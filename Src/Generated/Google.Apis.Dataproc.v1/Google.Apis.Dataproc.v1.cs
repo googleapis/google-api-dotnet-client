@@ -2923,6 +2923,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>
                 /// Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata
                 /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+                /// The cluster must be in a RUNNING state or an error is returned.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">
@@ -2938,6 +2939,7 @@ namespace Google.Apis.Dataproc.v1
                 /// <summary>
                 /// Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata
                 /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+                /// The cluster must be in a RUNNING state or an error is returned.
                 /// </summary>
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
@@ -5613,7 +5615,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cooldownPeriod")]
         public virtual object CooldownPeriod { get; set; }
 
-        /// <summary>Required. YARN autoscaling configuration.</summary>
+        /// <summary>Optional. YARN autoscaling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnConfig")]
         public virtual BasicYarnAutoscalingConfig YarnConfig { get; set; }
 

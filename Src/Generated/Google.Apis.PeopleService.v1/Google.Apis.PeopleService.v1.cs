@@ -969,7 +969,7 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>
             /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
             /// specified by separating them with commas. Valid values are: * emailAddresses * metadata * names *
-            /// phoneNumbers
+            /// phoneNumbers * photos
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -1079,7 +1079,7 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values
-            /// greater than 10 will be capped to 10.
+            /// greater than 30 will be capped to 30.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2266,7 +2266,7 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values
-            /// greater than 10 will be capped to 10.
+            /// greater than 30 will be capped to 30.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }

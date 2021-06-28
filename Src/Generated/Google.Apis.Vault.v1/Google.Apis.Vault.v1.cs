@@ -305,7 +305,7 @@ namespace Google.Apis.Vault.v1
                 this.service = service;
             }
 
-            /// <summary>Creates an Export.</summary>
+            /// <summary>Creates an export.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Export body, string matterId)
@@ -313,7 +313,7 @@ namespace Google.Apis.Vault.v1
                 return new CreateRequest(service, body, matterId);
             }
 
-            /// <summary>Creates an Export.</summary>
+            /// <summary>Creates an export.</summary>
             public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Export>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -358,7 +358,7 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Deletes an Export.</summary>
+            /// <summary>Deletes an export.</summary>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="exportId">The export ID.</param>
             public virtual DeleteRequest Delete(string matterId, string exportId)
@@ -366,7 +366,7 @@ namespace Google.Apis.Vault.v1
                 return new DeleteRequest(service, matterId, exportId);
             }
 
-            /// <summary>Deletes an Export.</summary>
+            /// <summary>Deletes an export.</summary>
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -417,7 +417,7 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Gets an Export.</summary>
+            /// <summary>Gets an export.</summary>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="exportId">The export ID.</param>
             public virtual GetRequest Get(string matterId, string exportId)
@@ -425,7 +425,7 @@ namespace Google.Apis.Vault.v1
                 return new GetRequest(service, matterId, exportId);
             }
 
-            /// <summary>Gets an Export.</summary>
+            /// <summary>Gets an export.</summary>
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Export>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -476,14 +476,14 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Lists Exports.</summary>
+            /// <summary>Lists details about the exports in the specified matter.</summary>
             /// <param name="matterId">The matter ID.</param>
             public virtual ListRequest List(string matterId)
             {
                 return new ListRequest(service, matterId);
             }
 
-            /// <summary>Lists Exports.</summary>
+            /// <summary>Lists details about the exports in the specified matter.</summary>
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListExportsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -582,8 +582,8 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>
-                /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no held_org_unit set.
-                /// Attempting to add an account to an OU-based hold will result in an error.
+                /// Adds an account to a hold. Accounts can be added only to a hold that does not have an organizational
+                /// unit set. If you try to add an account to an organizational unit-based hold, an error is returned.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="matterId">The matter ID.</param>
@@ -594,8 +594,8 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>
-                /// Adds a HeldAccount to a hold. Accounts can only be added to a hold that has no held_org_unit set.
-                /// Attempting to add an account to an OU-based hold will result in an error.
+                /// Adds an account to a hold. Accounts can be added only to a hold that does not have an organizational
+                /// unit set. If you try to add an account to an organizational unit-based hold, an error is returned.
                 /// </summary>
                 public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.HeldAccount>
                 {
@@ -654,10 +654,7 @@ namespace Google.Apis.Vault.v1
                     }
                 }
 
-                /// <summary>
-                /// Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts, the hold
-                /// will not apply to any accounts.
-                /// </summary>
+                /// <summary>Removes an account from a hold.</summary>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
                 /// <param name="accountId">The ID of the account to remove from the hold.</param>
@@ -666,10 +663,7 @@ namespace Google.Apis.Vault.v1
                     return new DeleteRequest(service, matterId, holdId, accountId);
                 }
 
-                /// <summary>
-                /// Removes a HeldAccount from a hold. If this request leaves the hold with no held accounts, the hold
-                /// will not apply to any accounts.
-                /// </summary>
+                /// <summary>Removes an account from a hold.</summary>
                 public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -734,8 +728,10 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>
-                /// Lists HeldAccounts for a hold. This will only list individually specified held accounts. If the hold
-                /// is on an OU, then use Admin SDK to enumerate its members.
+                /// Lists the accounts covered by a hold. This can list only individually-specified accounts covered by
+                /// the hold. If the hold covers an organizational unit, use the [Admin
+                /// SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on
+                /// hold.
                 /// </summary>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
@@ -745,8 +741,10 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>
-                /// Lists HeldAccounts for a hold. This will only list individually specified held accounts. If the hold
-                /// is on an OU, then use Admin SDK to enumerate its members.
+                /// Lists the accounts covered by a hold. This can list only individually-specified accounts covered by
+                /// the hold. If the hold covers an organizational unit, use the [Admin
+                /// SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on
+                /// hold.
                 /// </summary>
                 public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHeldAccountsResponse>
                 {
@@ -800,8 +798,8 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added. Accounts can
-            /// only be added to an existing account-based hold.
+            /// Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be
+            /// added only to an existing account-based hold.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
@@ -812,8 +810,8 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Adds HeldAccounts to a hold. Returns a list of accounts that have been successfully added. Accounts can
-            /// only be added to an existing account-based hold.
+            /// Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be
+            /// added only to an existing account-based hold.
             /// </summary>
             public class AddHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.AddHeldAccountsResponse>
             {
@@ -872,7 +870,7 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Creates a hold in the given matter.</summary>
+            /// <summary>Creates a hold in the specified matter.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Hold body, string matterId)
@@ -880,7 +878,7 @@ namespace Google.Apis.Vault.v1
                 return new CreateRequest(service, body, matterId);
             }
 
-            /// <summary>Creates a hold in the given matter.</summary>
+            /// <summary>Creates a hold in the specified matter.</summary>
             public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -925,7 +923,10 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Removes a hold by ID. This will release any HeldAccounts on this Hold.</summary>
+            /// <summary>
+            /// Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the
+            /// data is not preserved by another hold or retention rule, it might be purged.
+            /// </summary>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="holdId">The hold ID.</param>
             public virtual DeleteRequest Delete(string matterId, string holdId)
@@ -933,7 +934,10 @@ namespace Google.Apis.Vault.v1
                 return new DeleteRequest(service, matterId, holdId);
             }
 
-            /// <summary>Removes a hold by ID. This will release any HeldAccounts on this Hold.</summary>
+            /// <summary>
+            /// Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the
+            /// data is not preserved by another hold or retention rule, it might be purged.
+            /// </summary>
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -984,7 +988,7 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Gets a hold by ID.</summary>
+            /// <summary>Gets the specified hold.</summary>
             /// <param name="matterId">The matter ID.</param>
             /// <param name="holdId">The hold ID.</param>
             public virtual GetRequest Get(string matterId, string holdId)
@@ -992,7 +996,7 @@ namespace Google.Apis.Vault.v1
                 return new GetRequest(service, matterId, holdId);
             }
 
-            /// <summary>Gets a hold by ID.</summary>
+            /// <summary>Gets the specified hold.</summary>
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1011,24 +1015,24 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
 
-                /// <summary>Specifies which parts of the Hold to return.</summary>
+                /// <summary>The amount of detail to return for a hold.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Specifies which parts of the Hold to return.</summary>
+                /// <summary>The amount of detail to return for a hold.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
+                    /// <summary>Not specified. Defaults to **FULL_HOLD**.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED = 0,
 
-                    /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
+                    /// <summary>Returns the hold ID, name, update time, service, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD = 1,
 
                     /// <summary>
-                    /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
-                    /// applies to, such as accounts, or OU.
+                    /// Returns all details of **BASIC_HOLD** and the entities the hold applies to, such as accounts or
+                    /// organizational unit.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD = 2,
@@ -1074,18 +1078,14 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>
-            /// Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to list.
-            /// </summary>
+            /// <summary>Lists the holds in a matter.</summary>
             /// <param name="matterId">The matter ID.</param>
             public virtual ListRequest List(string matterId)
             {
                 return new ListRequest(service, matterId);
             }
 
-            /// <summary>
-            /// Lists holds within a matter. An empty page token in ListHoldsResponse denotes no more holds to list.
-            /// </summary>
+            /// <summary>Lists the holds in a matter.</summary>
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHoldsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1101,7 +1101,7 @@ namespace Google.Apis.Vault.v1
 
                 /// <summary>
                 /// The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or
-                /// as 0, is the same as page_size = 100.
+                /// as 0, is the same as **page_size** = 100.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1112,24 +1112,24 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Specifies which parts of the Hold to return.</summary>
+                /// <summary>The amount of detail to return for a hold.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Specifies which parts of the Hold to return.</summary>
+                /// <summary>The amount of detail to return for a hold.</summary>
                 public enum ViewEnum
                 {
-                    /// <summary>There is no specified view. Defaults to FULL_HOLD.</summary>
+                    /// <summary>Not specified. Defaults to **FULL_HOLD**.</summary>
                     [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
                     HOLDVIEWUNSPECIFIED = 0,
 
-                    /// <summary>Response includes the id, name, update time, corpus, and query.</summary>
+                    /// <summary>Returns the hold ID, name, update time, service, and query.</summary>
                     [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
                     BASICHOLD = 1,
 
                     /// <summary>
-                    /// Full representation of a Hold. Response includes all fields of 'BASIC' and the entities the Hold
-                    /// applies to, such as accounts, or OU.
+                    /// Returns all details of **BASIC_HOLD** and the entities the hold applies to, such as accounts or
+                    /// organizational unit.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
                     FULLHOLD = 2,
@@ -1184,8 +1184,7 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request. If this
-            /// request leaves the hold with no held accounts, the hold will not apply to any accounts.
+            /// Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
@@ -1196,8 +1195,7 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Removes HeldAccounts from a hold. Returns a list of statuses in the same order as the request. If this
-            /// request leaves the hold with no held accounts, the hold will not apply to any accounts.
+            /// Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request.
             /// </summary>
             public class RemoveHeldAccountsRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.RemoveHeldAccountsResponse>
             {
@@ -1257,9 +1255,9 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers an OU,
-            /// nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will be
-            /// ignored.
+            /// Updates the scope (organizational unit or accounts) and query parameters of a hold. You cannot add
+            /// accounts to a hold that covers an organizational unit, nor can you add organizational units to a hold
+            /// that covers individual accounts. If you try, the unsupported values are ignored.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="matterId">The matter ID.</param>
@@ -1270,9 +1268,9 @@ namespace Google.Apis.Vault.v1
             }
 
             /// <summary>
-            /// Updates the OU and/or query parameters of a hold. You cannot add accounts to a hold that covers an OU,
-            /// nor can you add OUs to a hold that covers individual accounts. Accounts listed in the hold will be
-            /// ignored.
+            /// Updates the scope (organizational unit or accounts) and query parameters of a hold. You cannot add
+            /// accounts to a hold that covers an organizational unit, nor can you add organizational units to a hold
+            /// that covers individual accounts. If you try, the unsupported values are ignored.
             /// </summary>
             public class UpdateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Hold>
             {
@@ -1351,9 +1349,7 @@ namespace Google.Apis.Vault.v1
 
             /// <summary>Creates a saved query.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="matterId">
-            /// The matter ID of the parent matter for which the saved query is to be created.
-            /// </param>
+            /// <param name="matterId">The ID of the matter to create the saved query in.</param>
             public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.SavedQuery body, string matterId)
             {
                 return new CreateRequest(service, body, matterId);
@@ -1370,7 +1366,7 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-                /// <summary>The matter ID of the parent matter for which the saved query is to be created.</summary>
+                /// <summary>The ID of the matter to create the saved query in.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
@@ -1404,17 +1400,15 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Deletes a saved query by Id.</summary>
-            /// <param name="matterId">
-            /// The matter ID of the parent matter for which the saved query is to be deleted.
-            /// </param>
-            /// <param name="savedQueryId">ID of the saved query to be deleted.</param>
+            /// <summary>Deletes the specified saved query.</summary>
+            /// <param name="matterId">The ID of the matter to delete the saved query from.</param>
+            /// <param name="savedQueryId">ID of the saved query to delete.</param>
             public virtual DeleteRequest Delete(string matterId, string savedQueryId)
             {
                 return new DeleteRequest(service, matterId, savedQueryId);
             }
 
-            /// <summary>Deletes a saved query by Id.</summary>
+            /// <summary>Deletes the specified saved query.</summary>
             public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1425,11 +1419,11 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-                /// <summary>The matter ID of the parent matter for which the saved query is to be deleted.</summary>
+                /// <summary>The ID of the matter to delete the saved query from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>ID of the saved query to be deleted.</summary>
+                /// <summary>ID of the saved query to delete.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
 
@@ -1465,17 +1459,15 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>Retrieves a saved query by Id.</summary>
-            /// <param name="matterId">
-            /// The matter ID of the parent matter for which the saved query is to be retrieved.
-            /// </param>
-            /// <param name="savedQueryId">ID of the saved query to be retrieved.</param>
+            /// <summary>Retrieves the specified saved query.</summary>
+            /// <param name="matterId">The ID of the matter to get the saved query from.</param>
+            /// <param name="savedQueryId">ID of the saved query to retrieve.</param>
             public virtual GetRequest Get(string matterId, string savedQueryId)
             {
                 return new GetRequest(service, matterId, savedQueryId);
             }
 
-            /// <summary>Retrieves a saved query by Id.</summary>
+            /// <summary>Retrieves the specified saved query.</summary>
             public class GetRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.SavedQuery>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1486,11 +1478,11 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-                /// <summary>The matter ID of the parent matter for which the saved query is to be retrieved.</summary>
+                /// <summary>The ID of the matter to get the saved query from.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>ID of the saved query to be retrieved.</summary>
+                /// <summary>ID of the saved query to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("savedQueryId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SavedQueryId { get; private set; }
 
@@ -1526,22 +1518,14 @@ namespace Google.Apis.Vault.v1
                 }
             }
 
-            /// <summary>
-            /// Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no more
-            /// saved queries to list.
-            /// </summary>
-            /// <param name="matterId">
-            /// The matter ID of the parent matter for which the saved queries are to be retrieved.
-            /// </param>
+            /// <summary>Lists the saved queries in a matter.</summary>
+            /// <param name="matterId">The ID of the matter to get the saved queries for.</param>
             public virtual ListRequest List(string matterId)
             {
                 return new ListRequest(service, matterId);
             }
 
-            /// <summary>
-            /// Lists saved queries within a matter. An empty page token in ListSavedQueriesResponse denotes no more
-            /// saved queries to list.
-            /// </summary>
+            /// <summary>Lists the saved queries in a matter.</summary>
             public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListSavedQueriesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1551,9 +1535,7 @@ namespace Google.Apis.Vault.v1
                     InitParameters();
                 }
 
-                /// <summary>
-                /// The matter ID of the parent matter for which the saved queries are to be retrieved.
-                /// </summary>
+                /// <summary>The ID of the matter to get the saved queries for.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
@@ -1662,7 +1644,7 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>Closes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Closes the specified matter. Returns the matter with updated state.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual CloseRequest Close(Google.Apis.Vault.v1.Data.CloseMatterRequest body, string matterId)
@@ -1670,7 +1652,7 @@ namespace Google.Apis.Vault.v1
             return new CloseRequest(service, body, matterId);
         }
 
-        /// <summary>Closes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Closes the specified matter. Returns the matter with updated state.</summary>
         public class CloseRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.CloseMatterResponse>
         {
             /// <summary>Constructs a new Close request.</summary>
@@ -1715,9 +1697,7 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>
-        /// Counts the artifacts within the context of a matter and returns a detailed breakdown of metrics.
-        /// </summary>
+        /// <summary>Counts the accounts processed by the specified query.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual CountRequest Count(Google.Apis.Vault.v1.Data.CountArtifactsRequest body, string matterId)
@@ -1725,9 +1705,7 @@ namespace Google.Apis.Vault.v1
             return new CountRequest(service, body, matterId);
         }
 
-        /// <summary>
-        /// Counts the artifacts within the context of a matter and returns a detailed breakdown of metrics.
-        /// </summary>
+        /// <summary>Counts the accounts processed by the specified query.</summary>
         public class CountRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Operation>
         {
             /// <summary>Constructs a new Count request.</summary>
@@ -1773,8 +1751,8 @@ namespace Google.Apis.Vault.v1
         }
 
         /// <summary>
-        /// Creates a new matter with the given name and description. The initial state is open, and the owner is the
-        /// method caller. Returns the created matter with default view.
+        /// Creates a matter with the given name and description. The initial state is open, and the owner is the method
+        /// caller. Returns the created matter with default view.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Vault.v1.Data.Matter body)
@@ -1783,8 +1761,8 @@ namespace Google.Apis.Vault.v1
         }
 
         /// <summary>
-        /// Creates a new matter with the given name and description. The initial state is open, and the owner is the
-        /// method caller. Returns the created matter with default view.
+        /// Creates a matter with the given name and description. The initial state is open, and the owner is the method
+        /// caller. Returns the created matter with default view.
         /// </summary>
         public class CreateRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
@@ -1817,14 +1795,14 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>Deletes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Deletes the specified matter. Returns the matter with updated state.</summary>
         /// <param name="matterId">The matter ID</param>
         public virtual DeleteRequest Delete(string matterId)
         {
             return new DeleteRequest(service, matterId);
         }
 
-        /// <summary>Deletes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Deletes the specified matter. Returns the matter with updated state.</summary>
         public class DeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1883,23 +1861,24 @@ namespace Google.Apis.Vault.v1
             [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MatterId { get; private set; }
 
-            /// <summary>Specifies which parts of the Matter to return in the response.</summary>
+            /// <summary>Specifies how much information about the matter to return in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>Specifies which parts of the Matter to return in the response.</summary>
+            /// <summary>Specifies how much information about the matter to return in the response.</summary>
             public enum ViewEnum
             {
-                /// <summary>There is no specified view.</summary>
+                /// <summary>The amount of detail is unspecified. Same as **BASIC**.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED = 0,
 
-                /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
+                /// <summary>Returns the matter ID, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 1,
 
                 /// <summary>
-                /// Full representation of matter is returned. Everything above and including MatterPermissions list.
+                /// Returns the basic details and a list of matter owners and collaborators (see
+                /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 2,
@@ -1937,13 +1916,13 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>Lists matters the user has access to.</summary>
+        /// <summary>Lists matters the requestor has access to.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists matters the user has access to.</summary>
+        /// <summary>Lists matters the requestor has access to.</summary>
         public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListMattersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1961,13 +1940,13 @@ namespace Google.Apis.Vault.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// If set, list only matters with that specific state. The default is listing matters of all states.
+            /// If set, lists only matters with the specified state. The default lists matters of all states.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StateEnum> State { get; set; }
 
             /// <summary>
-            /// If set, list only matters with that specific state. The default is listing matters of all states.
+            /// If set, lists only matters with the specified state. The default lists matters of all states.
             /// </summary>
             public enum StateEnum
             {
@@ -1975,36 +1954,37 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
                 STATEUNSPECIFIED = 0,
 
-                /// <summary>This matter is open.</summary>
+                /// <summary>The matter is open.</summary>
                 [Google.Apis.Util.StringValueAttribute("OPEN")]
                 OPEN = 1,
 
-                /// <summary>This matter is closed.</summary>
+                /// <summary>The matter is closed.</summary>
                 [Google.Apis.Util.StringValueAttribute("CLOSED")]
                 CLOSED = 2,
 
-                /// <summary>This matter is deleted.</summary>
+                /// <summary>The matter is deleted.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELETED")]
                 DELETED = 3,
             }
 
-            /// <summary>Specifies which parts of the matter to return in response.</summary>
+            /// <summary>Specifies how much information about the matter to return in response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>Specifies which parts of the matter to return in response.</summary>
+            /// <summary>Specifies how much information about the matter to return in response.</summary>
             public enum ViewEnum
             {
-                /// <summary>There is no specified view.</summary>
+                /// <summary>The amount of detail is unspecified. Same as **BASIC**.</summary>
                 [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
                 VIEWUNSPECIFIED = 0,
 
-                /// <summary>Response includes the matter_id, name, description, and state. Default choice.</summary>
+                /// <summary>Returns the matter ID, name, description, and state. Default choice.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 1,
 
                 /// <summary>
-                /// Full representation of matter is returned. Everything above and including MatterPermissions list.
+                /// Returns the basic details and a list of matter owners and collaborators (see
+                /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL = 2,
@@ -2111,7 +2091,7 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>Reopens the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Reopens the specified matter. Returns the matter with updated state.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual ReopenRequest Reopen(Google.Apis.Vault.v1.Data.ReopenMatterRequest body, string matterId)
@@ -2119,7 +2099,7 @@ namespace Google.Apis.Vault.v1
             return new ReopenRequest(service, body, matterId);
         }
 
-        /// <summary>Reopens the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Reopens the specified matter. Returns the matter with updated state.</summary>
         public class ReopenRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ReopenMatterResponse>
         {
             /// <summary>Constructs a new Reopen request.</summary>
@@ -2164,7 +2144,7 @@ namespace Google.Apis.Vault.v1
             }
         }
 
-        /// <summary>Undeletes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Undeletes the specified matter. Returns the matter with updated state.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="matterId">The matter ID.</param>
         public virtual UndeleteRequest Undelete(Google.Apis.Vault.v1.Data.UndeleteMatterRequest body, string matterId)
@@ -2172,7 +2152,7 @@ namespace Google.Apis.Vault.v1
             return new UndeleteRequest(service, body, matterId);
         }
 
-        /// <summary>Undeletes the specified matter. Returns matter with updated state.</summary>
+        /// <summary>Undeletes the specified matter. Returns the matter with updated state.</summary>
         public class UndeleteRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.Matter>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -2560,14 +2540,14 @@ namespace Google.Apis.Vault.v1
 }
 namespace Google.Apis.Vault.v1.Data
 {
-    /// <summary>Count number for each account.</summary>
+    /// <summary>The results count for each account.</summary>
     public class AccountCount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual UserInfo Account { get; set; }
 
-        /// <summary>The number of artifacts found for this account.</summary>
+        /// <summary>The number of results (messages or files) found for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
@@ -2590,7 +2570,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Accounts to search</summary>
+    /// <summary>The accounts to search</summary>
     public class AccountInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A set of accounts to search.</summary>
@@ -2601,14 +2581,14 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A status detailing the status of each account creation, and the HeldAccount, if successful.</summary>
+    /// <summary>The status of each account creation, and the **HeldAccount**, if successful.</summary>
     public class AddHeldAccountResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If present, this account was successfully created.</summary>
+        /// <summary>Returned when the account was successfully created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual HeldAccount Account { get; set; }
 
-        /// <summary>This represents the success status. If failed, check message.</summary>
+        /// <summary>Reports the request status. If it failed, returns an error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; }
 
@@ -2620,14 +2600,15 @@ namespace Google.Apis.Vault.v1.Data
     public class AddHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Account IDs to identify which accounts to add. Only account_ids or only emails should be specified, but not
-        /// both.
+        /// A comma-separated list of the account IDs of the accounts to add to the hold. Specify either **emails** or
+        /// **account_ids**, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
         public virtual System.Collections.Generic.IList<string> AccountIds { get; set; }
 
         /// <summary>
-        /// Emails to identify which accounts to add. Only emails or only account_ids should be specified, but not both.
+        /// A comma-separated list of the emails of the accounts to add to the hold. Specify either **emails** or
+        /// **account_ids**, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emails")]
         public virtual System.Collections.Generic.IList<string> Emails { get; set; }
@@ -2649,22 +2630,24 @@ namespace Google.Apis.Vault.v1.Data
 
     /// <summary>
     /// Add an account with the permission specified. The role cannot be owner. If an account already has a role in the
-    /// matter, it will be overwritten.
+    /// matter, the existing role is overwritten.
     /// </summary>
     public class AddMatterPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Only relevant if send_emails is true. True to CC requestor in the email message. False to not CC requestor.
+        /// Only relevant if **sendEmails** is **true**. To CC the requestor in the email message, set to **true**. To
+        /// not CC requestor, set to **false**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ccMe")]
         public virtual System.Nullable<bool> CcMe { get; set; }
 
-        /// <summary>The MatterPermission to add.</summary>
+        /// <summary>The account and its role to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermission")]
         public virtual MatterPermission MatterPermission { get; set; }
 
         /// <summary>
-        /// True to send notification email to the added account. False to not send notification email.
+        /// To send a notification email to the added account, set to **true**. To not send a notification email, set to
+        /// **false**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendEmails")]
         public virtual System.Nullable<bool> SendEmails { get; set; }
@@ -2690,7 +2673,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Response to a CloseMatterRequest.</summary>
     public class CloseMatterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated matter, with state CLOSED.</summary>
+        /// <summary>The updated matter, with state **CLOSED**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matter")]
         public virtual Matter Matter { get; set; }
 
@@ -2698,12 +2681,14 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An export file on cloud storage</summary>
+    /// <summary>The export file in Cloud Storage</summary>
     public class CloudStorageFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The cloud storage bucket name of this export file. Can be used in cloud storage JSON/XML API, but not to
-        /// list the bucket contents. Instead, you can get individual export files by object name.
+        /// The name of the Cloud Storage bucket for the export file. You can use this value in the [Cloud Storage JSON
+        /// or XML APIs](https://cloud.google.com/storage/docs/apis), but not to list the bucket contents. Instead, you
+        /// can [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get) by object
+        /// name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; }
@@ -2713,12 +2698,13 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string Md5Hash { get; set; }
 
         /// <summary>
-        /// The cloud storage object name of this export file. Can be used in cloud storage JSON/XML API.
+        /// The name of the Cloud Storage object for the export file. You can use this value in the [Cloud Storage JSON
+        /// or XML APIs](https://cloud.google.com/storage/docs/apis).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
         public virtual string ObjectName { get; set; }
 
-        /// <summary>The size of the export file.</summary>
+        /// <summary>The export file size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
@@ -2726,10 +2712,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Export sink for cloud storage files.</summary>
+    /// <summary>Export sink for Cloud Storage files.</summary>
     public class CloudStorageSink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The exported files on cloud storage.</summary>
+        /// <summary>Output only. The exported files in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<CloudStorageFile> Files { get; set; }
 
@@ -2737,26 +2723,28 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Corpus specific queries.</summary>
+    /// <summary>Service-specific options for holds.</summary>
     public class CorpusQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details pertaining to Drive holds. If set, corpus must be Drive.</summary>
+        /// <summary>Service-specific options for Drive holds. If set, **CorpusType** must be **DRIVE**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveQuery")]
         public virtual HeldDriveQuery DriveQuery { get; set; }
 
-        /// <summary>Details pertaining to Groups holds. If set, corpus must be Groups.</summary>
+        /// <summary>Service-specific options for Groups holds. If set, **CorpusType** must be **GROUPS**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsQuery")]
         public virtual HeldGroupsQuery GroupsQuery { get; set; }
 
-        /// <summary>Details pertaining to Hangouts Chat holds. If set, corpus must be Hangouts Chat.</summary>
+        /// <summary>
+        /// Service-specific options for Chat holds. If set, **CorpusType** must be **HANGOUTS_CHAT**.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatQuery")]
         public virtual HeldHangoutsChatQuery HangoutsChatQuery { get; set; }
 
-        /// <summary>Details pertaining to mail holds. If set, corpus must be mail.</summary>
+        /// <summary>Service-specific options for Gmail holds. If set, **CorpusType** must be **MAIL**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailQuery")]
         public virtual HeldMailQuery MailQuery { get; set; }
 
-        /// <summary>Details pertaining to Voice holds. If set, corpus must be Voice.</summary>
+        /// <summary>Service-specific options for Voice holds. If set, **CorpusType** must be **VOICE**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceQuery")]
         public virtual HeldVoiceQuery VoiceQuery { get; set; }
 
@@ -2794,7 +2782,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
 
-        /// <summary>Specifies the granularity of the count result returned in response.</summary>
+        /// <summary>Sets the granularity of the count results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; }
 
@@ -2805,15 +2793,15 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Definition of the response for method CountArtifacts.</summary>
     public class CountArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Count metrics of Groups.</summary>
+        /// <summary>Count metrics for Groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsCountResult")]
         public virtual GroupsCountResult GroupsCountResult { get; set; }
 
-        /// <summary>Count metrics of Mail.</summary>
+        /// <summary>Count metrics for Gmail and classic Hangouts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailCountResult")]
         public virtual MailCountResult MailCountResult { get; set; }
 
-        /// <summary>Total count of artifacts. For mail and groups, artifacts refers to messages.</summary>
+        /// <summary>Total count of messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
         public virtual System.Nullable<long> TotalCount { get; set; }
 
@@ -2821,10 +2809,13 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for Drive export.</summary>
+    /// <summary>Options for Drive exports.</summary>
     public class DriveExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true to include access level information for users with indirect access to files.</summary>
+        /// <summary>
+        /// To include access level information for users with [indirect
+        /// access](https://support.google.com/vault/answer/6099459#metadata) to files, set to **true**.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeAccessInfo")]
         public virtual System.Nullable<bool> IncludeAccessInfo { get; set; }
 
@@ -2832,10 +2823,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Drive search advanced options</summary>
+    /// <summary>Additional options for Drive search</summary>
     public class DriveOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true to include shared drive.</summary>
+        /// <summary>Set to **true** to include shared drives.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSharedDrives")]
         public virtual System.Nullable<bool> IncludeSharedDrives { get; set; }
 
@@ -2844,8 +2835,8 @@ namespace Google.Apis.Vault.v1.Data
         public virtual System.Nullable<bool> IncludeTeamDrives { get; set; }
 
         /// <summary>
-        /// Search the versions of the Drive file as of the reference date. These timestamps are in GMT and rounded down
-        /// to the given date.
+        /// Search the current version of the Drive file, but export the contents of the last version saved before 12:00
+        /// AM UTC on the specified date. Enter the date in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionDate")]
         public virtual object VersionDate { get; set; }
@@ -2867,13 +2858,14 @@ namespace Google.Apis.Vault.v1.Data
     }
 
     /// <summary>
-    /// An export To work with Vault resources, the account must have the [required Vault privileges]
-    /// (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must
-    /// have created the matter, have the matter shared with them, or have the **View All Matters** privilege.
+    /// An export. To work with Vault resources, the account must have the [required Vault
+    /// privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
+    /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
+    /// privilege.
     /// </summary>
     public class Export : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Export sink for cloud storage files.</summary>
+        /// <summary>Output only. The sink for export files in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageSink")]
         public virtual CloudStorageSink CloudStorageSink { get; set; }
 
@@ -2881,7 +2873,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Advanced options of the export.</summary>
+        /// <summary>Additional export options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportOptions")]
         public virtual ExportOptions ExportOptions { get; set; }
 
@@ -2897,7 +2889,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The search query being exported.</summary>
+        /// <summary>The query parameters used to create the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
 
@@ -2905,11 +2897,11 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requester")]
         public virtual UserInfo Requester { get; set; }
 
-        /// <summary>Output only. Export statistics.</summary>
+        /// <summary>Output only. Details about the export progress and size.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual ExportStats Stats { get; set; }
 
-        /// <summary>Output only. The export status.</summary>
+        /// <summary>Output only. The status of the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -2917,30 +2909,30 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Export advanced options</summary>
+    /// <summary>Additional options for exports</summary>
     public class ExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Option available for Drive export.</summary>
+        /// <summary>Options for Drive exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveExportOptions DriveOptions { get; set; }
 
-        /// <summary>Option available for groups export.</summary>
+        /// <summary>Options for Groups exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupsOptions")]
         public virtual GroupsExportOptions GroupsOptions { get; set; }
 
-        /// <summary>Option available for hangouts chat export.</summary>
+        /// <summary>Options for Chat exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatOptions")]
         public virtual HangoutsChatExportOptions HangoutsChatOptions { get; set; }
 
-        /// <summary>Option available for mail export.</summary>
+        /// <summary>Options for Gmail exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOptions")]
         public virtual MailExportOptions MailOptions { get; set; }
 
-        /// <summary>The requested export location.</summary>
+        /// <summary>The requested data region for the export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; }
 
-        /// <summary>Option available for voice export.</summary>
+        /// <summary>Options for Voice exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceOptions")]
         public virtual VoiceExportOptions VoiceOptions { get; set; }
 
@@ -2948,10 +2940,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Stats of an export.</summary>
+    /// <summary>Progress information for an export.</summary>
     public class ExportStats : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of documents already processed by the export.</summary>
+        /// <summary>The number of messages or files already processed for export.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportedArtifactCount")]
         public virtual System.Nullable<long> ExportedArtifactCount { get; set; }
 
@@ -2959,7 +2951,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizeInBytes")]
         public virtual System.Nullable<long> SizeInBytes { get; set; }
 
-        /// <summary>The number of documents to be exported.</summary>
+        /// <summary>The number of messages or files to be exported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalArtifactCount")]
         public virtual System.Nullable<long> TotalArtifactCount { get; set; }
 
@@ -2983,8 +2975,8 @@ namespace Google.Apis.Vault.v1.Data
         public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
 
         /// <summary>
-        /// When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because
-        /// they are not on hold. For other data scope, this field is not set.
+        /// When **DataScope** is **HELD_DATA**, these accounts in the request are not queried because they are not on
+        /// hold. For other data scope, this field is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
         public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
@@ -2997,10 +2989,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for groups export.</summary>
+    /// <summary>Options for Groups exports.</summary>
     public class GroupsExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The export format for groups export.</summary>
+        /// <summary>The file format for exported messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; }
 
@@ -3008,10 +3000,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for hangouts chat export.</summary>
+    /// <summary>Options for Chat exports.</summary>
     public class HangoutsChatExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The export format for hangouts chat export.</summary>
+        /// <summary>The file format for exported messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; }
 
@@ -3019,10 +3011,12 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Accounts to search</summary>
+    /// <summary>The Chat spaces to search</summary>
     public class HangoutsChatInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of rooms to search.</summary>
+        /// <summary>
+        /// A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/hangouts/chat).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roomId")]
         public virtual System.Collections.Generic.IList<string> RoomId { get; set; }
 
@@ -3030,10 +3024,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Hangouts chat search advanced options</summary>
+    /// <summary>Additional options for Google Chat search</summary>
     public class HangoutsChatOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true to include rooms.</summary>
+        /// <summary>For searches by account or organizational unit, set to **true** to include rooms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRooms")]
         public virtual System.Nullable<bool> IncludeRooms { get; set; }
 
@@ -3042,20 +3036,19 @@ namespace Google.Apis.Vault.v1.Data
     }
 
     /// <summary>
-    /// An account being held in a particular hold. This structure is immutable. This can be either a single user or a
-    /// google group, depending on the corpus. To work with Vault resources, the account must have the [required Vault
-    /// privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
-    /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
-    /// privilege.
+    /// An account covered by a hold. This structure is immutable. It can be an individual account or a Google Group,
+    /// depending on the service. To work with Vault resources, the account must have the [required Vault privileges]
+    /// (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the account must
+    /// have created the matter, have the matter shared with them, or have the **View All Matters** privilege.
     /// </summary>
     public class HeldAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The account's ID as provided by the Admin SDK.</summary>
+        /// <summary>The account ID, as provided by the [Admin SDK](https://developers.google.com/admin-sdk/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
         /// <summary>
-        /// The primary email address of the account. If used as an input, this takes precedence over account ID.
+        /// The primary email address of the account. If used as an input, this takes precedence over **accountId**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
@@ -3076,14 +3069,14 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Query options for Drive holds.</summary>
+    /// <summary>Options for Drive holds.</summary>
     public class HeldDriveQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, include files in shared drives in the hold.</summary>
+        /// <summary>To include files in shared drives in the hold, set to **true**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSharedDriveFiles")]
         public virtual System.Nullable<bool> IncludeSharedDriveFiles { get; set; }
 
-        /// <summary>If true, include files in Team Drives in the hold.</summary>
+        /// <summary>To include files in Team Drives in the hold, set to **true**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeTeamDriveFiles")]
         public virtual System.Nullable<bool> IncludeTeamDriveFiles { get; set; }
 
@@ -3095,20 +3088,21 @@ namespace Google.Apis.Vault.v1.Data
     public class HeldGroupsQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The end time for the query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
         /// <summary>
-        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The start time for the query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>The search terms for the hold.</summary>
+        /// <summary>
+        /// The [search operators](https://support.google.com/vault/answer/2474474) used to refine the messages covered
+        /// by the hold.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual string Terms { get; set; }
 
@@ -3116,10 +3110,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Query options for hangouts chat holds.</summary>
+    /// <summary>Options for Chat holds.</summary>
     public class HeldHangoutsChatQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, include rooms the user has participated in.</summary>
+        /// <summary>To include messages in Chat spaces the user was a member of, set to **true**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRooms")]
         public virtual System.Nullable<bool> IncludeRooms { get; set; }
 
@@ -3127,24 +3121,25 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Query options for mail holds.</summary>
+    /// <summary>Query options for Gmail holds.</summary>
     public class HeldMailQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The end time for the query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
         /// <summary>
-        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The start time for the query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>The search terms for the hold.</summary>
+        /// <summary>
+        /// The [search operators](https://support.google.com/vault/answer/2474474) used to refine the messages covered
+        /// by the hold.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual string Terms { get; set; }
 
@@ -3152,14 +3147,17 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A organizational unit being held in a particular hold. This structure is immutable.</summary>
+    /// <summary>The organizational unit covered by a hold. This structure is immutable.</summary>
     public class HeldOrgUnit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When the org unit was put on hold. This property is immutable.</summary>
+        /// <summary>When the organizational unit was put on hold. This property is immutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("holdTime")]
         public virtual object HoldTime { get; set; }
 
-        /// <summary>The org unit's immutable ID as provided by the Admin SDK.</summary>
+        /// <summary>
+        /// The organizational unit's immutable ID as provided by the [Admin
+        /// SDK](https://developers.google.com/admin-sdk/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
 
@@ -3167,11 +3165,12 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Query options for Voice holds.</summary>
+    /// <summary>Options for Voice holds.</summary>
     public class HeldVoiceQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Data covered by this rule. Should be non-empty. Order does not matter and duplicates will be ignored.
+        /// A list of data types covered by the hold. Should be non-empty. Order does not matter and duplicates are
+        /// ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coveredData")]
         public virtual System.Collections.Generic.IList<string> CoveredData { get; set; }
@@ -3181,20 +3180,19 @@ namespace Google.Apis.Vault.v1.Data
     }
 
     /// <summary>
-    /// Represents a hold within Vault. A hold restricts purging of artifacts based on the combination of the query and
-    /// accounts restrictions. A hold can be configured to either apply to an explicitly configured set of accounts, or
-    /// can be applied to all members of an organizational unit. To work with Vault resources, the account must have the
-    /// [required Vault privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To
-    /// access a matter, the account must have created the matter, have the matter shared with them, or have the **View
-    /// All Matters** privilege.
+    /// A hold. A hold prevents the specified Google Workspace service from purging data for specific accounts or all
+    /// members of an organizational unit. To work with Vault resources, the account must have the [required Vault
+    /// privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
+    /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
+    /// privilege.
     /// </summary>
     public class Hold : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, the hold applies to the enumerated accounts and org_unit must be empty.</summary>
+        /// <summary>If set, the hold applies to the specified accounts and **orgUnit** must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
         public virtual System.Collections.Generic.IList<HeldAccount> Accounts { get; set; }
 
-        /// <summary>The corpus to be searched.</summary>
+        /// <summary>The service to be searched.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpus")]
         public virtual string Corpus { get; set; }
 
@@ -3207,13 +3205,13 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If set, the hold applies to all members of the organizational unit and accounts must be empty. This property
-        /// is mutable. For groups holds, set the accounts field.
+        /// If set, the hold applies to all members of the organizational unit and **accounts** must be empty. This
+        /// property is mutable. For Groups holds, set **accounts**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnit")]
         public virtual HeldOrgUnit OrgUnit { get; set; }
 
-        /// <summary>The corpus-specific query. If set, the corpusQuery must match corpus type.</summary>
+        /// <summary>Service-specific options. If set, **CorpusQuery** must match **CorpusType**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual CorpusQuery Query { get; set; }
 
@@ -3225,7 +3223,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The holds for a matter.</summary>
+    /// <summary>The exports for a matter.</summary>
     public class ListExportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of exports.</summary>
@@ -3240,7 +3238,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Returns a list of held accounts for a hold.</summary>
+    /// <summary>Returns a list of the accounts covered by a hold.</summary>
     public class ListHeldAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The held accounts on a hold.</summary>
@@ -3309,7 +3307,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of output saved queries.</summary>
+        /// <summary>List of saved queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savedQueries")]
         public virtual System.Collections.Generic.IList<SavedQuery> SavedQueries { get; set; }
 
@@ -3317,10 +3315,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mail specific count metrics.</summary>
+    /// <summary>Gmail and classic Hangouts-specific count metrics.</summary>
     public class MailCountResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Error occurred when querying these accounts.</summary>
+        /// <summary>Errors occurred when querying these accounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountCountErrors")]
         public virtual System.Collections.Generic.IList<AccountCountError> AccountCountErrors { get; set; }
 
@@ -3333,8 +3331,8 @@ namespace Google.Apis.Vault.v1.Data
         public virtual System.Nullable<long> MatchingAccountsCount { get; set; }
 
         /// <summary>
-        /// When data scope is HELD_DATA in the request Query, these accounts in the request are not queried because
-        /// they are not on hold. For other data scope, this field is not set.
+        /// When **DataScope** is **HELD_DATA**, the number of accounts in the request that are not queried because they
+        /// are not on hold. For other data scopes, this field is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonQueryableAccounts")]
         public virtual System.Collections.Generic.IList<string> NonQueryableAccounts { get; set; }
@@ -3347,14 +3345,14 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for mail export.</summary>
+    /// <summary>Options for Gmail exports.</summary>
     public class MailExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The export file format.</summary>
+        /// <summary>The file format for exported messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; }
 
-        /// <summary>Set to true to export confidential mode content.</summary>
+        /// <summary>To export confidential mode content, set to **true**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showConfidentialModeContent")]
         public virtual System.Nullable<bool> ShowConfidentialModeContent { get; set; }
 
@@ -3362,10 +3360,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Mail search advanced options</summary>
+    /// <summary>Additional options for Gmail search</summary>
     public class MailOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Set to true to exclude drafts.</summary>
+        /// <summary>Set to **true** to exclude drafts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeDrafts")]
         public virtual System.Nullable<bool> ExcludeDrafts { get; set; }
 
@@ -3380,19 +3378,17 @@ namespace Google.Apis.Vault.v1.Data
     /// </summary>
     public class Matter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The description of the matter.</summary>
+        /// <summary>An optional description for the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// The matter ID which is generated by the server. Should be blank when creating a new matter.
-        /// </summary>
+        /// <summary>The matter ID, which is generated by the server. Leave blank when creating a matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; }
 
         /// <summary>
-        /// List of users and access to the matter. Currently there is no programmer defined limit on the number of
-        /// permissions a matter can have.
+        /// Lists the users and their permission for the matter. Currently there is no programmer defined limit on the
+        /// number of permissions a matter can have.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterPermissions")]
         public virtual System.Collections.Generic.IList<MatterPermission> MatterPermissions { get; set; }
@@ -3410,16 +3406,17 @@ namespace Google.Apis.Vault.v1.Data
     }
 
     /// <summary>
-    /// Currently each matter only has one owner, and all others are collaborators. When an account is purged, its
-    /// corresponding MatterPermission resources cease to exist.
+    /// Users can be matter owners or collaborators. Each matter has only one owner. All others users who can access the
+    /// matter are collaborators. When an account is purged, its corresponding MatterPermission resources cease to
+    /// exist.
     /// </summary>
     public class MatterPermission : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The account ID, as provided by Admin SDK.</summary>
+        /// <summary>The account ID, as provided by the [Admin SDK](https://developers.google.com/admin-sdk/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; }
 
-        /// <summary>The user's role in this matter.</summary>
+        /// <summary>The user's role for the matter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
 
@@ -3470,10 +3467,13 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Org Unit to search</summary>
+    /// <summary>The organizational unit to search</summary>
     public class OrgUnitInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Org unit to search, as provided by the Admin SDK Directory API.</summary>
+        /// <summary>
+        /// The name of the organizational unit to search, as provided by the [Admin SDK Directory
+        /// API](https://developers.google.com/admin-sdk/directory/).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; }
 
@@ -3481,55 +3481,51 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A query definition relevant for search &amp; export.</summary>
+    /// <summary>The query definition used for search and export.</summary>
     public class Query : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When 'ACCOUNT' is chosen as search method, account_info needs to be specified.</summary>
+        /// <summary>Required when **SearchMethod** is **ACCOUNT**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountInfo")]
         public virtual AccountInfo AccountInfo { get; set; }
 
-        /// <summary>The corpus to search.</summary>
+        /// <summary>The Google Workspace service to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpus")]
         public virtual string Corpus { get; set; }
 
-        /// <summary>The data source to search from.</summary>
+        /// <summary>The data source to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataScope")]
         public virtual string DataScope { get; set; }
 
-        /// <summary>For Drive search, specify more options in this field.</summary>
+        /// <summary>Set Drive search-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveOptions")]
         public virtual DriveOptions DriveOptions { get; set; }
 
         /// <summary>
-        /// The end time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The end time for the search query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>
-        /// When 'ROOM' is chosen as search method, hangout_chats_info needs to be specified. (read-only)
-        /// </summary>
+        /// <summary>Required when **SearchMethod** is **ROOM**. (read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatInfo")]
         public virtual HangoutsChatInfo HangoutsChatInfo { get; set; }
 
-        /// <summary>For hangouts chat search, specify more options in this field. (read-only)</summary>
+        /// <summary>Set Chat search-specific options. (read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatOptions")]
         public virtual HangoutsChatOptions HangoutsChatOptions { get; set; }
 
-        /// <summary>For mail search, specify more options in this field.</summary>
+        /// <summary>Set Gmail search-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailOptions")]
         public virtual MailOptions MailOptions { get; set; }
 
         /// <summary>
-        /// The search method to use. This field is similar to the search_method field but is introduced to support
-        /// shared drives. It supports all search method types. In case the search_method is TEAM_DRIVE the response of
-        /// this field will be SHARED_DRIVE only.
+        /// The entity to search. This field replaces **searchMethod** to support shared drives. When **searchMethod**
+        /// is **TEAM_DRIVE**, the response of this field is **SHARED_DRIVE**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>When 'ORG_UNIT' is chosen as as search method, org_unit_info needs to be specified.</summary>
+        /// <summary>Required when **SearchMethod** is **ORG_UNIT**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitInfo")]
         public virtual OrgUnitInfo OrgUnitInfo { get; set; }
 
@@ -3537,33 +3533,37 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchMethod")]
         public virtual string SearchMethod { get; set; }
 
-        /// <summary>When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs to be specified.</summary>
+        /// <summary>Required when **SearchMethod** is **SHARED_DRIVE**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveInfo")]
         public virtual SharedDriveInfo SharedDriveInfo { get; set; }
 
         /// <summary>
-        /// The start time range for the search query. These timestamps are in GMT and rounded down to the start of the
-        /// given date.
+        /// The start time for the search query. Specify in GMT. The value is rounded to 12 AM on the specified date.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
 
-        /// <summary>When 'TEAM_DRIVE' is chosen as search method, team_drive_info needs to be specified.</summary>
+        /// <summary>Required when **SearchMethod** is **TEAM_DRIVE**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveInfo")]
         public virtual TeamDriveInfo TeamDriveInfo { get; set; }
 
-        /// <summary>The corpus-specific search operators used to generate search results.</summary>
+        /// <summary>
+        /// Service-specific [search operators](https://support.google.com/vault/answer/2474474) to filter search
+        /// results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual string Terms { get; set; }
 
         /// <summary>
-        /// The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles". For more information, see
-        /// Time Zone.
+        /// The time zone name. It should be an IANA TZ name, such as "America/Los_Angeles". For a list of time zone
+        /// names, see [Time Zone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For more information
+        /// about how Vault uses time zones, see [the Vault help
+        /// center](https://support.google.com/vault/answer/6092995#time).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
-        /// <summary>For voice search, specify more options in this field.</summary>
+        /// <summary>Set Voice search-specific options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voiceOptions")]
         public virtual VoiceOptions VoiceOptions { get; set; }
 
@@ -3574,7 +3574,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Remove a list of accounts from a hold.</summary>
     public class RemoveHeldAccountsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Account IDs to identify HeldAccounts to remove.</summary>
+        /// <summary>The account IDs of the accounts to remove from the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountIds")]
         public virtual System.Collections.Generic.IList<string> AccountIds { get; set; }
 
@@ -3585,7 +3585,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Response for batch delete held accounts.</summary>
     public class RemoveHeldAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of statuses for deleted accounts. Results have the same order as the request.</summary>
+        /// <summary>A list of statuses for the deleted accounts. Results have the same order as the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
         public virtual System.Collections.Generic.IList<Status> Statuses { get; set; }
 
@@ -3614,7 +3614,7 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Response to a ReopenMatterRequest.</summary>
     public class ReopenMatterResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The updated matter, with state OPEN.</summary>
+        /// <summary>The updated matter, with state **OPEN**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matter")]
         public virtual Matter Matter { get; set; }
 
@@ -3623,29 +3623,29 @@ namespace Google.Apis.Vault.v1.Data
     }
 
     /// <summary>
-    /// Definition of the saved query. To work with Vault resources, the account must have the [required Vault
-    /// privileges] (https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
+    /// The definition of a saved query. To work with Vault resources, the account must have the [required Vault
+    /// privileges](https://support.google.com/vault/answer/2799699) and access to the matter. To access a matter, the
     /// account must have created the matter, have the matter shared with them, or have the **View All Matters**
     /// privilege.
     /// </summary>
     public class SavedQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The server generated timestamp at which saved query was created.</summary>
+        /// <summary>Output only. The server-generated timestamp when the saved query was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Name of the saved query.</summary>
+        /// <summary>The name of the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. The matter ID of the associated matter. The server does not look at this field during create
-        /// and always uses matter id in the URL.
+        /// Output only. The matter ID of the matter the saved query is saved in. The server does not use this field
+        /// during create and always uses matter ID in the URL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matterId")]
         public virtual string MatterId { get; set; }
 
-        /// <summary>The underlying Query object which contains all the information of the saved query.</summary>
+        /// <summary>The search parameters of the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
 
@@ -3657,10 +3657,12 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Shared drives to search</summary>
+    /// <summary>The shared drives to search</summary>
     public class SharedDriveInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Shared drive IDs, as provided by Drive API.</summary>
+        /// <summary>
+        /// A list of shared drive IDs, as provided by the [Drive API](https://developers.google.com/drive).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharedDriveIds")]
         public virtual System.Collections.Generic.IList<string> SharedDriveIds { get; set; }
 
@@ -3700,7 +3702,9 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Team Drives to search</summary>
     public class TeamDriveInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Team Drive IDs, as provided by Drive API.</summary>
+        /// <summary>
+        /// List of Team Drive IDs, as provided by the [Drive API](https://developers.google.com/drive).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("teamDriveIds")]
         public virtual System.Collections.Generic.IList<string> TeamDriveIds { get; set; }
 
@@ -3730,10 +3734,10 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The options for voice export.</summary>
+    /// <summary>The options for Voice exports.</summary>
     public class VoiceExportOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The export format for voice export.</summary>
+        /// <summary>The file format for exported text messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportFormat")]
         public virtual string ExportFormat { get; set; }
 
@@ -3741,7 +3745,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Voice search options</summary>
+    /// <summary>Additional options for Voice search</summary>
     public class VoiceOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Datatypes to search</summary>
