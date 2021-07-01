@@ -1330,6 +1330,45 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A contiguous set of minutes: startMinutesAgo, startMinutesAgo + 1, ..., endMinutesAgo. Requests are allowed up
+    /// to 2 minute ranges.
+    /// </summary>
+    public class MinuteRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The inclusive end minute for the query as a number of minutes before now. Cannot be before
+        /// `startMinutesAgo`. For example, `"endMinutesAgo": 15` specifies the report should include event data from
+        /// prior to 15 minutes ago. If unspecified, `endMinutesAgo` is defaulted to 0. Standard Analytics properties
+        /// can request any minute in the last 30 minutes of event data (`endMinutesAgo &amp;lt;= 29`), and 360
+        /// Analytics properties can request any minute in the last 60 minutes of event data (`endMinutesAgo &amp;lt;=
+        /// 59`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endMinutesAgo")]
+        public virtual System.Nullable<int> EndMinutesAgo { get; set; }
+
+        /// <summary>
+        /// Assigns a name to this minute range. The dimension `dateRange` is valued to this name in a report response.
+        /// If set, cannot begin with `date_range_` or `RESERVED_`. If not set, minute ranges are named by their zero
+        /// based index in the request: `date_range_0`, `date_range_1`, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The inclusive start minute for the query as a number of minutes before now. For example, `"startMinutesAgo":
+        /// 29` specifies the report should include event data from 29 minutes ago and after. Cannot be after
+        /// `endMinutesAgo`. If unspecified, `startMinutesAgo` is defaulted to 29. Standard Analytics properties can
+        /// request up to the last 30 minutes of event data (`startMinutesAgo &amp;lt;= 29`), and 360 Analytics
+        /// properties can request up to the last 60 minutes of event data (`startMinutesAgo &amp;lt;= 59`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startMinutesAgo")]
+        public virtual System.Nullable<int> StartMinutesAgo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Filters for numeric or date values.</summary>
     public class NumericFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1787,6 +1826,15 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// <summary>The metrics requested and displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
+
+        /// <summary>
+        /// The minute ranges of event data to read. If unspecified, one minute range for the last 30 minutes will be
+        /// used. If multiple minute ranges are requested, each response row will contain a zero based minute range
+        /// index. If two minute ranges overlap, the event data for the overlapping minutes is included in the response
+        /// rows for both minute ranges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minuteRanges")]
+        public virtual System.Collections.Generic.IList<MinuteRange> MinuteRanges { get; set; }
 
         /// <summary>Specifies how rows are ordered in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]

@@ -5016,10 +5016,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; }
 
-        /// <summary>
-        /// A short and friendly name for the worker pool this event refers to, populated from the value of
-        /// PoolStageRelation::user_pool_name.
-        /// </summary>
+        /// <summary>A short and friendly name for the worker pool this event refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
 

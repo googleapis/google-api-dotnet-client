@@ -8984,6 +8984,77 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Configure the search parameters for the FHIR store and reindex resources in the FHIR store
+                    /// according to the defined search parameters. The search parameters provided in this request will
+                    /// replace any previous search configuration. The target SearchParameter resources need to exist in
+                    /// the store before calling ConfigureSearch, otherwise an error will occur. This method returns an
+                    /// Operation that can be used to track the progress of the reindexing by calling GetOperation.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the FHIR store to configure, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ConfigureSearchRequest ConfigureSearch(Google.Apis.CloudHealthcare.v1beta1.Data.ConfigureSearchRequest body, string name)
+                    {
+                        return new ConfigureSearchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Configure the search parameters for the FHIR store and reindex resources in the FHIR store
+                    /// according to the defined search parameters. The search parameters provided in this request will
+                    /// replace any previous search configuration. The target SearchParameter resources need to exist in
+                    /// the store before calling ConfigureSearch, otherwise an error will occur. This method returns an
+                    /// Operation that can be used to track the progress of the reindexing by calling GetOperation.
+                    /// </summary>
+                    public class ConfigureSearchRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ConfigureSearch request.</summary>
+                        public ConfigureSearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ConfigureSearchRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the FHIR store to configure, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ConfigureSearchRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "configureSearch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:configureSearch";
+
+                        /// <summary>Initializes ConfigureSearch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Creates a new FHIR store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">The name of the dataset this FHIR store belongs to.</param>
@@ -12841,6 +12912,27 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to configure the search parameters for the specified FHIR store.</summary>
+    public class ConfigureSearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The canonical URLs of the search parameters that are intended to be used for the FHIR store. See
+        /// https://www.hl7.org/fhir/references.html#canonical for explanation on FHIR canonical urls
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrls")]
+        public virtual System.Collections.Generic.IList<string> CanonicalUrls { get; set; }
+
+        /// <summary>
+        /// If `validate_only` is set to true, the method will compile all the search parameters without actually
+        /// setting the search config for the store and triggering the reindex.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a user's consent.</summary>
     public class Consent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13659,7 +13751,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
         /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per
-        /// resource type.
+        /// resource type. Note that unlike in FhirStore.StreamConfig.BigQueryDestination, BigQuery views will not be
+        /// created by ExportResources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1beta1FhirBigQueryDestination BigqueryDestination { get; set; }
@@ -13834,6 +13927,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
+
+        /// <summary>Configuration for how FHIR resource can be searched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
+        public virtual SearchConfig SearchConfig { get; set; }
 
         /// <summary>
         /// A list of streaming configs that configure the destinations of streaming export for every resource mutation
@@ -15655,6 +15752,39 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The error output of the parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual string Error { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the configuration for FHIR search.</summary>
+    public class SearchConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchParameters")]
+        public virtual System.Collections.Generic.IList<SearchParameter> SearchParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the versioned name and the URL for one SearchParameter.</summary>
+    public class SearchParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The canonical url of the search parameter resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
+        public virtual string CanonicalUrl { get; set; }
+
+        /// <summary>
+        /// The versioned name of the search parameter resource. The format is
+        /// projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id}
+        /// For fhir stores with disable_resource_versioning=true, the format is
+        /// projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual string Parameter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

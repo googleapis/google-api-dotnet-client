@@ -10775,7 +10775,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>
         /// The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
         /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per
-        /// resource type.
+        /// resource type. Note that unlike in FhirStore.StreamConfig.BigQueryDestination, BigQuery views will not be
+        /// created by ExportResources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
         public virtual GoogleCloudHealthcareV1FhirBigQueryDestination BigqueryDestination { get; set; }

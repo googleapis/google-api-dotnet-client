@@ -1659,7 +1659,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual StorageSource StorageSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see
+        /// description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
         public virtual StorageSourceManifest StorageSourceManifest { get; set; }
@@ -1759,7 +1760,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Location of the source manifest in Google Cloud Storage. This feature is in Preview.</summary>
+    /// <summary>
+    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description
+    /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+    /// </summary>
     public class StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

@@ -3019,6 +3019,13 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Configuration for an automated build in response to source repository changes.</summary>
     public class BuildTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2.
+        /// cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autodetect")]
+        public virtual System.Nullable<bool> Autodetect { get; set; }
+
         /// <summary>Contents of the build template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("build")]
         public virtual Build Build { get; set; }
@@ -3858,7 +3865,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual StorageSource StorageSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see
+        /// description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
         public virtual StorageSourceManifest StorageSourceManifest { get; set; }
@@ -3958,7 +3966,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Location of the source manifest in Google Cloud Storage. This feature is in Preview.</summary>
+    /// <summary>
+    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description
+    /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+    /// </summary>
     public class StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

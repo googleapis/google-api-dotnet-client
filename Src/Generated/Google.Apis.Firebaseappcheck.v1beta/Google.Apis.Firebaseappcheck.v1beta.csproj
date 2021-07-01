@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Firebaseappcheck.v1beta Client Library</Title>
-    <Version>1.52.0.2363</Version>
+    <Version>1.52.0.2367</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

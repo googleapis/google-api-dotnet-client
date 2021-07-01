@@ -600,6 +600,10 @@ namespace Google.Apis.CivicInfo.v2
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
                 SpecialPurposeOfficer = 10,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("otherRole")]
+                OtherRole = 11,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -785,6 +789,10 @@ namespace Google.Apis.CivicInfo.v2
                 /// <summary></summary>
                 [Google.Apis.Util.StringValueAttribute("specialPurposeOfficer")]
                 SpecialPurposeOfficer = 10,
+
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("otherRole")]
+                OtherRole = 11,
             }
 
             /// <summary>Gets the method name.</summary>

@@ -1518,7 +1518,7 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>Maximum number of shared drives to return.</summary>
+            /// <summary>Maximum number of shared drives to return per page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
