@@ -2201,7 +2201,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
     /// <summary>
     /// An app's DeviceCheck configuration object. This configuration is used by ExchangeDeviceCheckToken to validate
-    /// device tokens issued to apps by DeviceCheck.
+    /// device tokens issued to apps by DeviceCheck. It also controls certain properties of the returned App Check
+    /// token, such as its ttl. Note that the Team ID registered with your app is used as part of the validation
+    /// process. Please register it via the Firebase Console or programmatically via the [Firebase Management
+    /// Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps/patch).
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaDeviceCheckConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2278,7 +2281,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ExchangeAppAttestAttestation</summary>
+    /// <summary>Response message for ExchangeAppAttestAttestation and ExchangeAppAttestDebugAttestation</summary>
     public class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An artifact that should be passed back during the Assertion flow.</summary>
@@ -2461,7 +2464,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
     /// <summary>
     /// An app's reCAPTCHA v3 configuration object. This configuration is used by ExchangeRecaptchaToken to validate
-    /// reCAPTCHA tokens issued to apps by reCAPTCHA v3.
+    /// reCAPTCHA tokens issued to apps by reCAPTCHA v3. It also controls certain properties of the returned App Check
+    /// token, such as its ttl.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaRecaptchaConfig : Google.Apis.Requests.IDirectResponseSchema
     {

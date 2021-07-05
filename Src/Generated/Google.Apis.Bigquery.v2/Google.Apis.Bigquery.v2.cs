@@ -3999,6 +3999,37 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BiEngineReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] High-level BI Engine reason for partial or disabled acceleration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>[Output-only] Free form human-readable reason for partial or disabled acceleration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BiEngineStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output-only] Specifies which mode of BI Engine acceleration was performed (if any).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biEngineMode")]
+        public virtual string BiEngineMode { get; set; }
+
+        /// <summary>
+        /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine
+        /// could not accelerate. In case the full query was accelerated, this field is not populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biEngineReasons")]
+        public virtual System.Collections.Generic.IList<BiEngineReason> BiEngineReasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BigQueryModelTraining : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4910,6 +4941,24 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class DmlStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedRowCount")]
+        public virtual System.Nullable<long> DeletedRowCount { get; set; }
+
+        /// <summary>Number of inserted Rows. Populated by DML INSERT and MERGE statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insertedRowCount")]
+        public virtual System.Nullable<long> InsertedRowCount { get; set; }
+
+        /// <summary>Number of updated Rows. Populated by DML UPDATE and MERGE statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedRowCount")]
+        public virtual System.Nullable<long> UpdatedRowCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5132,24 +5181,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Human-readable stage descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substeps")]
         public virtual System.Collections.Generic.IList<string> Substeps { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Explanation for a single feature.</summary>
-    public class Explanation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Attribution of feature.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attribution")]
-        public virtual System.Nullable<double> Attribution { get; set; }
-
-        /// <summary>
-        /// Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name
-        /// will always be truncated to first 120 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
-        public virtual string FeatureName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5434,26 +5465,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The resource type of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Global explanations containing the top most important features after training.</summary>
-    public class GlobalExplanation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Class label for this set of global explanations. Will be empty/null for binary logistic and linear
-        /// regression models. Sorted alphabetically in descending order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("classLabel")]
-        public virtual string ClassLabel { get; set; }
-
-        /// <summary>
-        /// A list of the top global explanations. Sorted by absolute value of attribution in descending order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explanations")]
-        public virtual System.Collections.Generic.IList<Explanation> Explanations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6357,8 +6368,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual ScriptStatistics ScriptStatistics { get; set; }
 
         /// <summary>[Output-only] [Preview] Information of the session if this job is part of one.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfoTemplate")]
-        public virtual SessionInfo SessionInfoTemplate { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual SessionInfo SessionInfo { get; set; }
 
         /// <summary>
         /// [Output-only] Start time of this job, in milliseconds since the epoch. This field will be present when the
@@ -6399,6 +6410,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class JobStatistics2 : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biEngineStatistics")]
+        public virtual BiEngineStatistics BiEngineStatistics { get; set; }
+
         /// <summary>[Output-only] Billing tier for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingTier")]
         public virtual System.Nullable<int> BillingTier { get; set; }
@@ -6458,7 +6473,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// or TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
-        public virtual object DmlStats { get; set; }
+        public virtual DmlStatistics DmlStats { get; set; }
 
         /// <summary>[Output-only] The original estimate of bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
@@ -7274,7 +7289,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// or TRUNCATE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dmlStats")]
-        public virtual object DmlStats { get; set; }
+        public virtual DmlStatistics DmlStats { get; set; }
 
         /// <summary>
         /// [Output-only] The first errors or warnings encountered during the running of the job. The final message
@@ -8662,13 +8677,6 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The evaluation metrics over training/eval data that were computed at the end of training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMetrics")]
         public virtual EvaluationMetrics EvaluationMetrics { get; set; }
-
-        /// <summary>
-        /// Global explanations for important features of the model. For multi-class models, there is one entry for each
-        /// label class. For other models, there is only one entry in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("globalExplanations")]
-        public virtual System.Collections.Generic.IList<GlobalExplanation> GlobalExplanations { get; set; }
 
         /// <summary>Output of each iteration run, results.size() &lt;= max_iterations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]

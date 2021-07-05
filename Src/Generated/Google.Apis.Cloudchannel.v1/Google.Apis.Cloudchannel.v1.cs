@@ -4306,16 +4306,16 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and
-        /// serves as the customer's username for those accounts.
+        /// serves as the customer's username for those accounts. Use this email to invite Team customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>The customer account contact's first name.</summary>
+        /// <summary>The customer account contact's first name. Optional for Team customers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
         public virtual string FirstName { get; set; }
 
-        /// <summary>The customer account contact's last name.</summary>
+        /// <summary>The customer account contact's last name. Optional for Team customers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
         public virtual string LastName { get; set; }
 
@@ -4359,7 +4359,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>
         /// Secondary contact email. You need to provide an alternate email to create different domains if a primary
         /// contact email already exists. Users will receive a notification with credentials when you create an
-        /// admin.google.com account. Secondary emails are also recovery email addresses.
+        /// admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional
+        /// when you create Team customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateEmail")]
         public virtual string AlternateEmail { get; set; }

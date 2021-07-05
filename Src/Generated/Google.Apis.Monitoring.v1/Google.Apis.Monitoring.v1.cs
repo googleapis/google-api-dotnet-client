@@ -750,6 +750,20 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A chart that displays alert policy data.</summary>
+    public class AlertChart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the alert policy. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A chart axis.</summary>
     public class Axis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1507,6 +1521,10 @@ namespace Google.Apis.Monitoring.v1.Data
     /// </summary>
     public class Widget : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A chart of alert policy data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertChart")]
+        public virtual AlertChart AlertChart { get; set; }
+
         /// <summary>A blank space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blank")]
         public virtual Empty Blank { get; set; }

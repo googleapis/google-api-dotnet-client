@@ -7,5 +7,10 @@
   "Google.Apis.DataFusion.v1beta1.DataFusionBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.DataFusion.v1beta1.ProjectsResource+LocationsResource+InstancesResource+NamespacesResource+ListRequest.ViewEnum": [
+    "NAMESPACE_VIEW_UNSPECIFIED",
+    "NAMESPACE_VIEW_BASIC",
+    "NAMESPACE_VIEW_FULL"
   ]
 }

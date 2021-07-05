@@ -1233,10 +1233,9 @@ namespace Google.Apis.Translate.v3beta1
                 /// Optional. Get supported languages of this model. The format depends on model type: - AutoML
                 /// Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` -
                 /// General (built-in) models:
-                /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-                /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` Returns languages
-                /// supported by the specified model. If missing, we get supported languages of Google general base
-                /// (PBMT) model.
+                /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, Returns languages
+                /// supported by the specified model. If missing, we get supported languages of Google general NMT
+                /// model.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Model { get; set; }
@@ -1612,10 +1611,8 @@ namespace Google.Apis.Translate.v3beta1
             /// <summary>
             /// Optional. Get supported languages of this model. The format depends on model type: - AutoML Translation
             /// models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in)
-            /// models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-            /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` Returns languages
-            /// supported by the specified model. If missing, we get supported languages of Google general base (PBMT)
-            /// model.
+            /// models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, Returns languages
+            /// supported by the specified model. If missing, we get supported languages of Google general NMT model.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Model { get; set; }
@@ -1805,8 +1802,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on
         /// model type: - AutoML Translation models:
         /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models:
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` If the map is empty or a
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a
         /// specific model is not requested for a language pair, then default google model (nmt) is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
@@ -1865,8 +1861,7 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// Value can be a built-in general model, or an AutoML Translation model. The value format depends on model
         /// type: - AutoML Translation models:
         /// `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models:
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` If the map is empty or a
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a
         /// specific model is not requested for a language pair, then default google model (nmt) is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
@@ -2499,9 +2494,8 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// <summary>
         /// Optional. The `model` type requested for this translation. The format depends on model type: - AutoML
         /// Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General
-        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` If not provided, the default
-        /// Google model (NMT) will be used for translation.
+        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If not
+        /// provided, the default Google model (NMT) will be used for translation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -2614,11 +2608,10 @@ namespace Google.Apis.Translate.v3beta1.Data
         /// <summary>
         /// Optional. The `model` type requested for this translation. The format depends on model type: - AutoML
         /// Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General
-        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
-        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/base` For global (non-regionalized)
-        /// requests, use `location-id` `global`. For example,
-        /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If missing, the system decides which
-        /// google base model to use.
+        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, For global
+        /// (non-regionalized) requests, use `location-id` `global`. For example,
+        /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If not provided, the default Google
+        /// model (NMT) will be used
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }

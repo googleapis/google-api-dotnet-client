@@ -2159,6 +2159,20 @@ namespace Google.Apis.Adsense.v2
                     [Google.Apis.Util.StringValueAttribute("SERVED_AD_TYPE_CODE")]
                     SERVEDADTYPECODE = 39,
 
+                    /// <summary>
+                    /// Localized ad format name indicating the way an ad is shown to the users on your site (e.g.
+                    /// "In-page", "Anchor", "Vignette").
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_FORMAT_NAME")]
+                    ADFORMATNAME = 44,
+
+                    /// <summary>
+                    /// Ad format code indicating the way an ad is shown to the users on your site (e.g. "ON_PAGE",
+                    /// "ANCHOR", "INTERSTITIAL").
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_FORMAT_CODE")]
+                    ADFORMATCODE = 45,
+
                     /// <summary>Custom search style name.</summary>
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_SEARCH_STYLE_NAME")]
                     CUSTOMSEARCHSTYLENAME = 40,
@@ -2900,6 +2914,20 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Served ad type code (e.g. "IMAGE", "RADLINK", "OTHER").</summary>
                     [Google.Apis.Util.StringValueAttribute("SERVED_AD_TYPE_CODE")]
                     SERVEDADTYPECODE = 39,
+
+                    /// <summary>
+                    /// Localized ad format name indicating the way an ad is shown to the users on your site (e.g.
+                    /// "In-page", "Anchor", "Vignette").
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_FORMAT_NAME")]
+                    ADFORMATNAME = 44,
+
+                    /// <summary>
+                    /// Ad format code indicating the way an ad is shown to the users on your site (e.g. "ON_PAGE",
+                    /// "ANCHOR", "INTERSTITIAL").
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("AD_FORMAT_CODE")]
+                    ADFORMATCODE = 45,
 
                     /// <summary>Custom search style name.</summary>
                     [Google.Apis.Util.StringValueAttribute("CUSTOM_SEARCH_STYLE_NAME")]

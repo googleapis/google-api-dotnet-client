@@ -3302,7 +3302,7 @@ namespace Google.Apis.DatabaseMigrationService.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedNetworks")]
         public virtual System.Collections.Generic.IList<SqlAclEntry> AuthorizedNetworks { get; set; }
 
-        /// <summary>Whether the instance should be assigned an IPv4 address or not.</summary>
+        /// <summary>Whether the instance is assigned a public IP address or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIpv4")]
         public virtual System.Nullable<bool> EnableIpv4 { get; set; }
 

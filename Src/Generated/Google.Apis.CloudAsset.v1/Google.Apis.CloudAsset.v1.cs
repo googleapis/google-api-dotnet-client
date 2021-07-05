@@ -1796,6 +1796,21 @@ namespace Google.Apis.CloudAsset.v1
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
 
+            /// <summary>
+            /// Optional. A comma-separated list of fields specifying which fields to be returned in
+            /// ResourceSearchResult. Only '*' or combination of top level fields can be specified. Field names of both
+            /// snake_case and camelCase are supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
+            /// The read_mask paths must be valid field paths listed but not limited to (both snake_case and camelCase
+            /// are supported): * name * asset_type or assetType * project * display_name or displayName * description *
+            /// location * labels * network_tags or networkTags * kms_key or kmsKey * create_time or createTime *
+            /// update_time or updateTime * state * additional_attributes or additionalAttributes * versioned_resources
+            /// or versionedResources If read_mask is not specified, all fields except versionedResources will be
+            /// returned. If only '*' is specified, all fields including versionedResources will be returned. Any
+            /// invalid field path will trigger INVALID_ARGUMENT error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadMask { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "searchAllResources";
 
@@ -1852,6 +1867,14 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
                 {
                     Name = "query",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readMask",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -4551,6 +4574,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>
+        /// Versioned resource representations of this resource. This is repeated because there could be multiple
+        /// versions of resource representations during version migration. This `versioned_resources` field is not
+        /// searchable. Some attributes of the resource representations are exposed in `additional_attributes` field, so
+        /// as to allow users to search on them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionedResources")]
+        public virtual System.Collections.Generic.IList<VersionedResource> VersionedResources { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4790,6 +4822,33 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string PackageName { get; set; }
 
         /// <summary>The version of the package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource representation as defined by the corresponding service providing the resource for a given API version.
+    /// </summary>
+    public class VersionedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// JSON representation of the resource as defined by the corresponding service providing this resource.
+        /// Example: If the resource is an instance provided by Compute Engine, this field will contain the JSON
+        /// representation of the instance as defined by Compute Engine:
+        /// `https://cloud.google.com/compute/docs/reference/rest/v1/instances`. You can find the resource definition
+        /// for each supported resource type in this table:
+        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Resource { get; set; }
+
+        /// <summary>
+        /// API version of the resource. Example: If the resource is an instance provided by Compute Engine v1 API as
+        /// defined in `https://cloud.google.com/compute/docs/reference/rest/v1/instances`, version will be "v1".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 

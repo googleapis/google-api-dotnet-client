@@ -3148,6 +3148,10 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The properties of Page that are only relevant for pages with page_type SLIDE.</summary>
     public class SlideProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the slide is skipped in the presentation mode. Defaults to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSkipped")]
+        public virtual System.Nullable<bool> IsSkipped { get; set; }
+
         /// <summary>The object ID of the layout that this slide is based on. This property is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutObjectId")]
         public virtual string LayoutObjectId { get; set; }

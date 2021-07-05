@@ -504,8 +504,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to cancel a subscription service by the end of the current billing cycle for their
-            /// customers. It should be called directly by the partner using service accounts.
+            /// Used by partners to cancel a subscription service either immediately or by the end of the current
+            /// billing cycle for their customers. It should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -518,8 +518,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to cancel a subscription service by the end of the current billing cycle for their
-            /// customers. It should be called directly by the partner using service accounts.
+            /// Used by partners to cancel a subscription service either immediately or by the end of the current
+            /// billing cycle for their customers. It should be called directly by the partner using service accounts.
             /// </summary>
             public class CancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse>
             {
@@ -1295,6 +1295,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string PartnerUserToken { get; set; }
 
         /// <summary>
+        /// Output only. Describes the processing state of the subscription. See more details at [the lifecycle of a
+        /// subscription](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingState")]
+        public virtual string ProcessingState { get; set; }
+
+        /// <summary>
         /// Required. Resource name that identifies one or more subscription products. The format will be
         /// 'partners/{partner_id}/products/{product_id}'.
         /// </summary>
@@ -1322,7 +1329,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Location ServiceLocation { get; set; }
 
         /// <summary>
-        /// Output only. Descibes the state of the subscription. See more details at [the lifecycle of a
+        /// Output only. Describes the state of the subscription. See more details at [the lifecycle of a
         /// subscription](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -1345,7 +1352,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes the details of a cancelled subscription.</summary>
+    /// <summary>Describes the details of a cancelled or cancelling subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The reason of the cancellation.</summary>

@@ -53,7 +53,9 @@
     "CUSTOM_SEARCH_STYLE_NAME",
     "CUSTOM_SEARCH_STYLE_ID",
     "DOMAIN_REGISTRANT",
-    "WEBSEARCH_QUERY_STRING"
+    "WEBSEARCH_QUERY_STRING",
+    "AD_FORMAT_NAME",
+    "AD_FORMAT_CODE"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateCsvRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",
@@ -149,7 +151,9 @@
     "CUSTOM_SEARCH_STYLE_NAME",
     "CUSTOM_SEARCH_STYLE_ID",
     "DOMAIN_REGISTRANT",
-    "WEBSEARCH_QUERY_STRING"
+    "WEBSEARCH_QUERY_STRING",
+    "AD_FORMAT_NAME",
+    "AD_FORMAT_CODE"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateRequest.MetricsEnum": [
     "METRIC_UNSPECIFIED",

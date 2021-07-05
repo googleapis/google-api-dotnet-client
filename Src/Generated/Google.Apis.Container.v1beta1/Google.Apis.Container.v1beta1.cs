@@ -6944,6 +6944,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAddonsConfig")]
         public virtual AddonsConfig DesiredAddonsConfig { get; set; }
 
+        /// <summary>AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
+        public virtual AuthenticatorGroupsConfig DesiredAuthenticatorGroupsConfig { get; set; }
+
         /// <summary>The desired Autopilot configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilot")]
         public virtual Autopilot DesiredAutopilot { get; set; }
