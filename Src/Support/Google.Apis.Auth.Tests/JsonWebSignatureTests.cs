@@ -22,6 +22,7 @@ limitations under the License.
 
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -85,6 +86,21 @@ namespace Google.Apis.Auth.Tests
         public async Task ValidRS256Signature() =>
             Assert.NotNull(await JsonWebSignature.VerifySignedTokenAsync(
                 FakeCertificateCache.JwtGoogleSigned, BuildOptions()));
+
+        [Fact]
+        public async Task ValidRS256Signature_CustomPayload()
+        {
+            var payload = await JsonWebSignature.VerifySignedTokenAsync<CustomPayload>(FakeCertificateCache.JwtGoogleSigned, BuildOptions());
+            Assert.NotNull(payload);
+            Assert.NotNull(payload.AuthorizedParty);
+            Assert.NotEmpty(payload.AuthorizedParty);
+        }
+
+        private class CustomPayload : JsonWebSignature.Payload
+        {
+            [JsonProperty("azp")]
+            public string AuthorizedParty { get; set; }
+        }
 
 #if ES256_SUPPORTED
         [Fact]

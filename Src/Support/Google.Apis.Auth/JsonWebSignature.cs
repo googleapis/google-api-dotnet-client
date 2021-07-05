@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Json;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,10 +36,27 @@ namespace Google.Apis.Auth
         /// <param name="cancellationToken">The cancellation token for the operation.</param>
         /// <returns>The payload contained by the token.</returns>
         /// <exception cref="InvalidJwtException">If the token is invalid or expired.</exception>
-        public async static Task<Payload> VerifySignedTokenAsync(
+        public static Task<Payload> VerifySignedTokenAsync(
+            string signedJwt, SignedTokenVerificationOptions options = null, CancellationToken cancellationToken = default) =>
+            VerifySignedTokenAsync<Payload>(signedJwt, options, cancellationToken);
+
+        /// <summary>
+        /// Verifies that the given token is a valid, not expired, signed token.
+        /// </summary>
+        /// <param name="signedJwt">The token to verify.</param>
+        /// <param name="options">The options to use for verification.
+        /// May be null in which case default options will be used.</param>
+        /// <param name="cancellationToken">The cancellation token for the operation.</param>
+        /// <returns>The payload contained by the token.</returns>
+        /// <exception cref="InvalidJwtException">If the token is invalid or expired.</exception>
+        /// <typeparam name="TPayload">The type of the payload to return, so user code can validate
+        /// additional claims. Should extend <see cref="Payload"/>. Payload information will be deserialized
+        /// using <see cref="NewtonsoftJsonSerializer.Instance"/>.</typeparam>
+        public async static Task<TPayload> VerifySignedTokenAsync<TPayload>(
             string signedJwt, SignedTokenVerificationOptions options = null, CancellationToken cancellationToken = default)
+            where TPayload : Payload
         {
-            var signedToken = SignedToken<Header, Payload>.FromSignedToken(signedJwt);
+            var signedToken = SignedToken<Header, TPayload>.FromSignedToken(signedJwt);
             await SignedTokenVerification.VerifySignedTokenAsync(signedToken, options, cancellationToken).ConfigureAwait(false);
             return signedToken.Payload;
         }
