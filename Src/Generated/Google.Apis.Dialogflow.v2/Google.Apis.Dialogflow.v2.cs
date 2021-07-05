@@ -20253,7 +20253,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` -
+        /// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` -
         /// `projects//locations//agent/versions/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]

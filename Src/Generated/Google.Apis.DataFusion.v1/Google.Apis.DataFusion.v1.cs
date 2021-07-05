@@ -1418,7 +1418,7 @@ namespace Google.Apis.DataFusion.v1
                 public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
 
                 /// <summary>
-                /// The maximum number of results to return. If not set, the service will select a default.
+                /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1611,6 +1611,22 @@ namespace Google.Apis.DataFusion.v1.Data
     }
 
     /// <summary>
+    /// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+    /// </summary>
+    public class CryptoKeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be
+        /// in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyReference")]
+        public virtual string KeyReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
@@ -1686,6 +1702,12 @@ namespace Google.Apis.DataFusion.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyConfig")]
+        public virtual CryptoKeyConfig CryptoKeyConfig { get; set; }
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data
         /// processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud
         /// resources.
@@ -1718,8 +1740,8 @@ namespace Google.Apis.DataFusion.v1.Data
         public virtual string GcsBucket { get; set; }
 
         /// <summary>
-        /// The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The
-        /// character '=' is not allowed to be used within the labels.
+        /// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine
+        /// VMs. The character '=' is not allowed to be used within the labels.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -1970,7 +1992,7 @@ namespace Google.Apis.DataFusion.v1.Data
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Map to hold any additonal status info for the operation If there is an accelerator being
+        /// Map to hold any additional status info for the operation If there is an accelerator being
         /// enabled/disabled/deleted, this will be populated with accelerator name as key and status as ENABLING,
         /// DISABLING or DELETING
         /// </summary>

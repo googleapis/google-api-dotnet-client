@@ -2234,7 +2234,7 @@ namespace Google.Apis.Drive.v2
                 InitParameters();
             }
 
-            /// <summary>Maximum number of shared drives to return.</summary>
+            /// <summary>Maximum number of shared drives to return per page.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 

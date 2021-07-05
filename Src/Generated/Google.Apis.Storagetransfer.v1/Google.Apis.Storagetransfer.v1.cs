@@ -1070,6 +1070,14 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
+        /// <summary>
+        /// Input only. Role arn to support temporary credentials via AssumeRoleWithWebIdentity. When role arn is
+        /// provided, transfer service will fetch temporary credentials for the session using AssumeRoleWithWebIdentity
+        /// call for the provided role using the [GoogleServiceAccount] for this project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleArn")]
+        public virtual string RoleArn { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1117,8 +1125,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
     public class AzureCredentials : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared
-        /// access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        /// Required. Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2
+        /// is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2,
+        /// you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage
+        /// resources using shared access signatures
+        /// (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sasToken")]
         public virtual string SasToken { get; set; }
@@ -1247,6 +1258,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountEmail")]
         public virtual string AccountEmail { get; set; }
+
+        /// <summary>Unique identifier for the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectId")]
+        public virtual string SubjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

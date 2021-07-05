@@ -30,7 +30,8 @@
     "highestCourtJudge",
     "judge",
     "schoolBoard",
-    "specialPurposeOfficer"
+    "specialPurposeOfficer",
+    "otherRole"
   ],
   "Google.Apis.CivicInfo.v2.RepresentativesResource+RepresentativeInfoByDivisionRequest.LevelsEnum": [
     "international",
@@ -54,6 +55,7 @@
     "highestCourtJudge",
     "judge",
     "schoolBoard",
-    "specialPurposeOfficer"
+    "specialPurposeOfficer",
+    "otherRole"
   ]
 }

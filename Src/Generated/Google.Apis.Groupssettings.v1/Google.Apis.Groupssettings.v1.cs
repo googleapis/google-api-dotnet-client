@@ -430,6 +430,13 @@ namespace Google.Apis.Groupssettings.v1.Data
         public virtual string DefaultMessageDenyNotificationText { get; set; }
 
         /// <summary>
+        /// Default sender for members who can post messages as the group. Possible values are: - `DEFAULT_SELF`: By
+        /// default messages will be sent from the user - `GROUP`: By default messages will be sent from the group
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("default_sender")]
+        public virtual string DefaultSender { get; set; }
+
+        /// <summary>
         /// Description of the group. This property value may be an empty string if no group description has been
         /// entered. If entered, the maximum group description is no more than 300 characters.
         /// </summary>
