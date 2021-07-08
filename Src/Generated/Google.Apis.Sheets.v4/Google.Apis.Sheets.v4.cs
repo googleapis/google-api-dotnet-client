@@ -76,10 +76,10 @@ namespace Google.Apis.Sheets.v4
             /// <summary>See and download all your Google Drive files</summary>
             public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
-            /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
+            /// <summary>See, edit, create, and delete all your Google Sheets spreadsheets</summary>
             public static string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
-            /// <summary>View your Google Spreadsheets</summary>
+            /// <summary>See all your Google Sheets spreadsheets</summary>
             public static string SpreadsheetsReadonly = "https://www.googleapis.com/auth/spreadsheets.readonly";
         }
 
@@ -97,10 +97,10 @@ namespace Google.Apis.Sheets.v4
             /// <summary>See and download all your Google Drive files</summary>
             public const string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
-            /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
+            /// <summary>See, edit, create, and delete all your Google Sheets spreadsheets</summary>
             public const string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
-            /// <summary>View your Google Spreadsheets</summary>
+            /// <summary>See all your Google Sheets spreadsheets</summary>
             public const string SpreadsheetsReadonly = "https://www.googleapis.com/auth/spreadsheets.readonly";
         }
 
