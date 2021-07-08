@@ -68,6 +68,9 @@ namespace Google.Apis.Keep.v1
         {
             /// <summary>See, edit, create and permanently delete all your Google Keep data</summary>
             public static string Keep = "https://www.googleapis.com/auth/keep";
+
+            /// <summary>View all your Google Keep data</summary>
+            public static string KeepReadonly = "https://www.googleapis.com/auth/keep.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Keep API.</summary>
@@ -75,6 +78,9 @@ namespace Google.Apis.Keep.v1
         {
             /// <summary>See, edit, create and permanently delete all your Google Keep data</summary>
             public const string Keep = "https://www.googleapis.com/auth/keep";
+
+            /// <summary>View all your Google Keep data</summary>
+            public const string KeepReadonly = "https://www.googleapis.com/auth/keep.readonly";
         }
 
         /// <summary>Gets the Media resource.</summary>

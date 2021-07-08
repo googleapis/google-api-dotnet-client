@@ -1026,11 +1026,21 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containsPypiModulesConflict")]
         public virtual string ContainsPypiModulesConflict { get; set; }
 
+        /// <summary>Composer image for which the build was happening.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
+        public virtual string ImageVersion { get; set; }
+
         /// <summary>
         /// Output only. Extract from a docker image build log containing information about pypi modules conflicts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pypiConflictBuildLogExtract")]
         public virtual string PypiConflictBuildLogExtract { get; set; }
+
+        /// <summary>
+        /// Pypi dependencies specified in the environment configuration, at the time when the build was triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiDependencies")]
+        public virtual System.Collections.Generic.IDictionary<string, string> PypiDependencies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

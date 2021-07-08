@@ -482,8 +482,91 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                 public RepositoriesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AptArtifacts = new AptArtifactsResource(service);
                     Files = new FilesResource(service);
                     Packages = new PackagesResource(service);
+                    YumArtifacts = new YumArtifactsResource(service);
+                }
+
+                /// <summary>Gets the AptArtifacts resource.</summary>
+                public virtual AptArtifactsResource AptArtifacts { get; }
+
+                /// <summary>The "aptArtifacts" collection of methods.</summary>
+                public class AptArtifactsResource
+                {
+                    private const string Resource = "aptArtifacts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AptArtifactsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Imports Apt artifacts. The returned Operation will complete once the resources are imported.
+                    /// Package, Version, and File resources are created based on the imported artifacts. Imported
+                    /// artifacts that conflict with existing resources are ignored.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The name of the parent resource where the artifacts will be imported.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1beta2.Data.ImportAptArtifactsRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Imports Apt artifacts. The returned Operation will complete once the resources are imported.
+                    /// Package, Version, and File resources are created based on the imported artifacts. Imported
+                    /// artifacts that conflict with existing resources are ignored.
+                    /// </summary>
+                    public class ImportRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1beta2.Data.ImportAptArtifactsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the parent resource where the artifacts will be imported.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1beta2.Data.ImportAptArtifactsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta2/{+parent}/aptArtifacts:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Files resource.</summary>
@@ -1438,6 +1521,87 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                     }
                 }
 
+                /// <summary>Gets the YumArtifacts resource.</summary>
+                public virtual YumArtifactsResource YumArtifacts { get; }
+
+                /// <summary>The "yumArtifacts" collection of methods.</summary>
+                public class YumArtifactsResource
+                {
+                    private const string Resource = "yumArtifacts";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public YumArtifactsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are
+                    /// imported. Package, Version, and File resources are created based on the imported artifacts.
+                    /// Imported artifacts that conflict with existing resources are ignored.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The name of the parent resource where the artifacts will be imported.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.ArtifactRegistry.v1beta2.Data.ImportYumArtifactsRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are
+                    /// imported. Package, Version, and File resources are created based on the imported artifacts.
+                    /// Imported artifacts that conflict with existing resources are ignored.
+                    /// </summary>
+                    public class ImportRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1beta2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1beta2.Data.ImportYumArtifactsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the parent resource where the artifacts will be imported.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1beta2.Data.ImportYumArtifactsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta2/{+parent}/yumArtifacts:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>
                 /// Creates a repository. The returned Operation will finish once the repository has been created. Its
                 /// response will be the created Repository.
@@ -2075,6 +2239,40 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
 }
 namespace Google.Apis.ArtifactRegistry.v1beta2.Data
 {
+    /// <summary>
+    /// A detailed representation of an Apt artifact. Information in the record is derived from the archive's control
+    /// file. See https://www.debian.org/doc/debian-policy/ch-controlfields.html
+    /// </summary>
+    public class AptArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Operating system architecture of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. Repository component of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("component")]
+        public virtual string Component { get; set; }
+
+        /// <summary>Output only. Contents of the artifact's control metadata file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlFile")]
+        public virtual string ControlFile { get; set; }
+
+        /// <summary>Output only. The Artifact Registry resource name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The Apt package name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Output only. An artifact is a binary or source package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2223,6 +2421,118 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class ImportAptArtifactsErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportAptArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
+    public class ImportAptArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>Supports URI wildcards for matching multiple objects from a single URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useWildcards")]
+        public virtual System.Nullable<bool> UseWildcards { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to import new apt artifacts.</summary>
+    public class ImportAptArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage location where input content is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportAptArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message from importing artifacts.</summary>
+    public class ImportAptArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
+        public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
+
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ImportAptArtifactsErrorInfo> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class ImportYumArtifactsErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportYumArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
+    public class ImportYumArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket//my_object).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>Supports URI wildcards for matching multiple objects from a single URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useWildcards")]
+        public virtual System.Nullable<bool> UseWildcards { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to import new yum artifacts.</summary>
+    public class ImportYumArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage location where input content is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportYumArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message from importing artifacts.</summary>
+    public class ImportYumArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ImportYumArtifactsErrorInfo> Errors { get; set; }
+
+        /// <summary>The yum artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
+        public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2646,6 +2956,56 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response to upload an artifact.</summary>
+    public class UploadAptArtifactMediaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation to be returned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response of the completed artifact upload operation. This response is contained in the Operation and
+    /// available to users.
+    /// </summary>
+    public class UploadAptArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
+        public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to upload an artifact.</summary>
+    public class UploadYumArtifactMediaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation to be returned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response of the completed artifact upload operation. This response is contained in the Operation and
+    /// available to users.
+    /// </summary>
+    public class UploadYumArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
+        public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The body of a version resource. A version resource represents a collection of components, such as files and
     /// other data. This may correspond to a version in many package management schemes.
@@ -2684,6 +3044,29 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         /// <summary>The time when the version was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A detailed representation of a Yum artifact.</summary>
+    public class YumArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Operating system architecture of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. The Artifact Registry resource name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The yum package name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>Output only. An artifact is a binary or source package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
+        public virtual string PackageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5956,6 +5956,10 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startKeyIndex")]
         public virtual System.Nullable<int> StartKeyIndex { get; set; }
 
+        /// <summary>The time offset. This is the time since the start of the time interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual object TimeOffset { get; set; }
+
         /// <summary>
         /// The unit of the metric. This is an unstructured field and will be mapped as is to the user.
         /// </summary>

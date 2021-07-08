@@ -65,10 +65,10 @@ namespace Google.Apis.Docs.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Docs API.</summary>
         public class Scope
         {
-            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
+            /// <summary>See, edit, create, and delete all your Google Docs documents</summary>
             public static string Documents = "https://www.googleapis.com/auth/documents";
 
-            /// <summary>View your Google Docs documents</summary>
+            /// <summary>See all your Google Docs documents</summary>
             public static string DocumentsReadonly = "https://www.googleapis.com/auth/documents.readonly";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
@@ -86,10 +86,10 @@ namespace Google.Apis.Docs.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Docs API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
+            /// <summary>See, edit, create, and delete all your Google Docs documents</summary>
             public const string Documents = "https://www.googleapis.com/auth/documents";
 
-            /// <summary>View your Google Docs documents</summary>
+            /// <summary>See all your Google Docs documents</summary>
             public const string DocumentsReadonly = "https://www.googleapis.com/auth/documents.readonly";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
@@ -2671,6 +2671,13 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("person")]
         public virtual Person Person { get; set; }
 
+        /// <summary>
+        /// A paragraph element that links to a Google resource (such as a file in Drive, a Youtube video, a Calendar
+        /// event, etc.)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLink")]
+        public virtual RichLink RichLink { get; set; }
+
         /// <summary>The zero-based start index of this paragraph element, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
@@ -3413,6 +3420,70 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The red component of the color, from 0.0 to 1.0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("red")]
         public virtual System.Nullable<float> Red { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link to a Google resource (e.g., a file in Drive, a YouTube video, a Calendar event, etc.).</summary>
+    public class RichLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of this link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkId")]
+        public virtual string RichLinkId { get; set; }
+
+        /// <summary>Output only. The properties of this RichLink. This field is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkProperties")]
+        public virtual RichLinkProperties RichLinkProperties { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that remove this link from the document. A RichLink might have multiple deletion IDs if,
+        /// for example, multiple users suggest to delete it. If empty, then this person link isn't suggested for
+        /// deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDeletionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedDeletionIds { get; set; }
+
+        /// <summary>
+        /// IDs for suggestions that insert this link into the document. A RichLink might have multiple insertion IDs if
+        /// it is a nested suggested change (a suggestion within a suggestion made by a different user, for example). If
+        /// empty, then this person link isn't a suggested insertion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedInsertionIds")]
+        public virtual System.Collections.Generic.IList<string> SuggestedInsertionIds { get; set; }
+
+        /// <summary>The suggested text style changes to this RichLink, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedTextStyleChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedTextStyle> SuggestedTextStyleChanges { get; set; }
+
+        /// <summary>The text style of this RichLink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
+        public virtual TextStyle TextStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties specific to a RichLink.</summary>
+    public class RichLinkProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of the RichLink, if
+        /// there is one (i.e., when it is a file in Drive).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>
+        /// Output only. The title of the RichLink as displayed in the link. This title matches the title of the linked
+        /// resource at the time of the insertion or last update of the link. This field is always present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. The URI to the RichLink. This is always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7048,7 +7048,7 @@ namespace Google.Apis.YouTube.v3
                     Name = "type",
                     IsRequired = false,
                     ParameterType = "query",
-                    DefaultValue = "video,channel,playlist",
+                    DefaultValue = null,
                     Pattern = null,
                 });
                 RequestParameters.Add("videoCaption", new Google.Apis.Discovery.Parameter

@@ -693,12 +693,14 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// the new image version. Additionally, the new image version cannot effect a version downgrade and
                     /// must match the current image version's Composer major version and Airflow major and minor
                     /// versions. Consult the Cloud Composer Version List for valid values. *
-                    /// config.databaseConfig.machineType * Cloud SQL machine type used by Airflow database. It has to
-                    /// be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. *
-                    /// config.webServerConfig.machineType * Machine type on which Airflow web server is running. It has
-                    /// to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. *
-                    /// config.maintenanceWindow * Maintenance window during which Cloud Composer components may be
-                    /// under maintenance.
+                    /// config.softwareConfig.schedulerCount * Horizontally scale the number of schedulers in Airflow. A
+                    /// positive integer not greater than the number of nodes must be provided in the
+                    /// `config.softwareConfig.schedulerCount` field. * config.databaseConfig.machineType * Cloud SQL
+                    /// machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4,
+                    /// db-n1-standard-8 or db-n1-standard-16. * config.webServerConfig.machineType * Machine type on
+                    /// which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+                    /// composer-n1-webserver-4 or composer-n1-webserver-8. * config.maintenanceWindow * Maintenance
+                    /// window during which Cloud Composer components may be under maintenance.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1183,11 +1185,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containsPypiModulesConflict")]
         public virtual string ContainsPypiModulesConflict { get; set; }
 
+        /// <summary>Composer image for which the build was happening.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
+        public virtual string ImageVersion { get; set; }
+
         /// <summary>
         /// Output only. Extract from a docker image build log containing information about pypi modules conflicts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pypiConflictBuildLogExtract")]
         public virtual string PypiConflictBuildLogExtract { get; set; }
+
+        /// <summary>
+        /// Pypi dependencies specified in the environment configuration, at the time when the build was triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiDependencies")]
+        public virtual System.Collections.Generic.IDictionary<string, string> PypiDependencies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1339,6 +1351,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
 
+        /// <summary>
+        /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer
+        /// environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentSize")]
+        public virtual string EnvironmentSize { get; set; }
+
         /// <summary>Output only. The Kubernetes Engine cluster used to run this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; }
@@ -1382,6 +1401,14 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
         public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
+
+        /// <summary>
+        /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer
+        /// environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is
+        /// supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadsConfig")]
+        public virtual WorkloadsConfig WorkloadsConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1623,7 +1650,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not
-        /// specified, the "default" Compute Engine service account is used. Cannot be updated .
+        /// specified, the "default" Compute Engine service account is used. Cannot be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -1760,6 +1787,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     public class PrivateEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved.
+        /// Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This
+        /// field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudComposerNetworkIpv4CidrBlock")]
+        public virtual string CloudComposerNetworkIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// Output only. The IP range reserved for the tenant project's Cloud Composer network. This field is supported
+        /// for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudComposerNetworkIpv4ReservedRange")]
+        public virtual string CloudComposerNetworkIpv4ReservedRange { get; set; }
+
+        /// <summary>
         /// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be
         /// disjoint from web_server_ipv4_cidr_block
         /// </summary>
@@ -1797,6 +1839,29 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>Restart Airflow web server.</summary>
     public class RestartWebServerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for resources used by Airflow schedulers.</summary>
+    public class SchedulerResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of schedulers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Optional. CPU request and limit for a single Airflow scheduler replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow scheduler replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>Optional. Storage (GB) request and limit for a single Airflow scheduler replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGb")]
+        public virtual System.Nullable<float> StorageGb { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1916,6 +1981,74 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>A collection of allowed IP ranges with descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedIpRanges")]
         public virtual System.Collections.Generic.IList<AllowedIpRange> AllowedIpRanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for resources used by Airflow web server.</summary>
+    public class WebServerResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CPU request and limit for Airflow web server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for Airflow web server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>Optional. Storage (GB) request and limit for Airflow web server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGb")]
+        public virtual System.Nullable<float> StorageGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for resources used by Airflow workers.</summary>
+    public class WorkerResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CPU request and limit for a single Airflow worker replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Maximum number of workers for autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCount")]
+        public virtual System.Nullable<int> MaxCount { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow worker replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>Optional. Minimum number of workers for autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCount")]
+        public virtual System.Nullable<int> MinCount { get; set; }
+
+        /// <summary>Optional. Storage (GB) request and limit for a single Airflow worker replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGb")]
+        public virtual System.Nullable<float> StorageGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported
+    /// for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    /// </summary>
+    public class WorkloadsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Resources used by Airflow schedulers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduler")]
+        public virtual SchedulerResource Scheduler { get; set; }
+
+        /// <summary>Optional. Resources used by Airflow web server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServer")]
+        public virtual WebServerResource WebServer { get; set; }
+
+        /// <summary>Optional. Resources used by Airflow workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("worker")]
+        public virtual WorkerResource Worker { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
