@@ -10339,8 +10339,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual object EndTime { get; set; }
 
         /// <summary>
-        /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will
-        /// be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is
+        /// not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and
+        /// maximum will be 6 days.
+        /// LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentLength")]
         public virtual object ExperimentLength { get; set; }
@@ -10364,9 +10366,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual object StartTime { get; set; }
 
         /// <summary>
-        /// The current state of the experiment. Transition triggered by Expriments.StartExperiment:
-        /// PENDING-&amp;gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&amp;gt;CANCELLED or
-        /// RUNNING-&amp;gt;CANCELLED.
+        /// The current state of the experiment. Transition triggered by Experiments.StartExperiment:
+        /// DRAFT-&amp;gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&amp;gt;DONE or
+        /// RUNNING-&amp;gt;DONE.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

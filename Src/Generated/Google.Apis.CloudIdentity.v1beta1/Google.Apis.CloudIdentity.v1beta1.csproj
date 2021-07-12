@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Dataproc.v1 Client Library</Title>
-    <Version>1.52.0.2380</Version>
+    <Title>Google.Apis.CloudIdentity.v1beta1 Client Library</Title>
+    <Version>1.52.0.2378</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,8 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      This is not the recommended package for working with Dataproc, please use the Google.Cloud.Dataproc.V1 package.
-      This Google APIs Client Library for working with Dataproc v1 uses older code generation, and is harder to use.
+      Google APIs Client Library for working with Cloudidentity v1beta1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -34,7 +33,7 @@
       - Xamarin
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/dataproc/v1
+      https://developers.google.com/api-client-library/dotnet/apis/cloudidentity/v1beta1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
