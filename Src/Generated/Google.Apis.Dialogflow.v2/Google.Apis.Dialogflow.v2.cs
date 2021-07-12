@@ -2245,7 +2245,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Deletes the specified agent environment.</summary>
                 /// <param name="name">
                 /// Required. The name of the environment to delete. / Format: - `projects//agent/environments/` -
-                /// `projects//locations//agent/environments/`
+                /// `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2264,7 +2264,8 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Required. The name of the environment to delete. / Format: - `projects//agent/environments/` -
-                    /// `projects//locations//agent/environments/`
+                    /// `projects//locations//agent/environments/` The environment ID for the default environment is
+                    /// `-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2296,7 +2297,7 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Retrieves the specified agent environment.</summary>
                 /// <param name="name">
                 /// Required. The name of the environment. Supported formats: - `projects//agent/environments/` -
-                /// `projects//locations//agent/environments/`
+                /// `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2315,7 +2316,8 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Required. The name of the environment. Supported formats: - `projects//agent/environments/` -
-                    /// `projects//locations//agent/environments/`
+                    /// `projects//locations//agent/environments/` The environment ID for the default environment is
+                    /// `-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2347,7 +2349,8 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Gets the history of the specified environment.</summary>
                 /// <param name="parent">
                 /// Required. The name of the environment to retrieve history for. Supported formats: -
-                /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for
+                /// the default environment is `-`.
                 /// </param>
                 public virtual GetHistoryRequest GetHistory(string parent)
                 {
@@ -2366,7 +2369,8 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Required. The name of the environment to retrieve history for. Supported formats: -
-                    /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                    /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID
+                    /// for the default environment is `-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2422,7 +2426,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
                 }
 
-                /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
                 /// <param name="parent">
                 /// Required. The agent to list all environments from. Format: - `projects//agent` -
                 /// `projects//locations//agent`
@@ -2432,7 +2436,7 @@ namespace Google.Apis.Dialogflow.v2
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
                 public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEnvironmentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2504,16 +2508,17 @@ namespace Google.Apis.Dialogflow.v2
                 /// Updates the specified agent environment. This method allows you to deploy new agent versions into
                 /// the environment. When an environment is pointed to a new agent version by setting
                 /// `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that
-                /// time, the environment keeps on serving the previous version of the agent. After the new agent
+                /// time, the environment continues serving the previous version of the agent. After the new agent
                 /// version is done loading, the environment is set back to the `RUNNING` state. You can use "-" as
-                /// Environment ID in environment name to update version in "draft" environment. WARNING: this will
-                /// negate all recent changes to draft and can't be undone. You may want to save the draft to a version
-                /// before calling this function.
+                /// Environment ID in environment name to update an agent version in the default environment. WARNING:
+                /// this will negate all recent changes to the draft agent and can't be undone. You may want to save the
+                /// draft agent to a version before calling this method.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The unique identifier of this agent environment. Supported formats: -
-                /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for
+                /// the default environment is `-`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string name)
                 {
@@ -2524,11 +2529,11 @@ namespace Google.Apis.Dialogflow.v2
                 /// Updates the specified agent environment. This method allows you to deploy new agent versions into
                 /// the environment. When an environment is pointed to a new agent version by setting
                 /// `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During that
-                /// time, the environment keeps on serving the previous version of the agent. After the new agent
+                /// time, the environment continues serving the previous version of the agent. After the new agent
                 /// version is done loading, the environment is set back to the `RUNNING` state. You can use "-" as
-                /// Environment ID in environment name to update version in "draft" environment. WARNING: this will
-                /// negate all recent changes to draft and can't be undone. You may want to save the draft to a version
-                /// before calling this function.
+                /// Environment ID in environment name to update an agent version in the default environment. WARNING:
+                /// this will negate all recent changes to the draft agent and can't be undone. You may want to save the
+                /// draft agent to a version before calling this method.
                 /// </summary>
                 public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment>
                 {
@@ -2542,15 +2547,17 @@ namespace Google.Apis.Dialogflow.v2
 
                     /// <summary>
                     /// Output only. The unique identifier of this agent environment. Supported formats: -
-                    /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                    /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID
+                    /// for the default environment is `-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. This field is used to prevent accidental overwrite of the draft environment, which is
-                    /// an operation that cannot be undone. To confirm that the caller desires this overwrite, this
-                    /// field must be explicitly set to true when updating the draft environment (environment ID = `-`).
+                    /// Optional. This field is used to prevent accidental overwrite of the default environment, which
+                    /// is an operation that cannot be undone. To confirm that the caller desires this overwrite, this
+                    /// field must be explicitly set to true when updating the default environment (environment ID =
+                    /// `-`).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowLoadToDraftAndDiscardChanges", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowLoadToDraftAndDiscardChanges { get; set; }
@@ -9961,7 +9968,8 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Deletes the specified agent environment.</summary>
                     /// <param name="name">
                     /// Required. The name of the environment to delete. / Format: - `projects//agent/environments/` -
-                    /// `projects//locations//agent/environments/`
+                    /// `projects//locations//agent/environments/` The environment ID for the default environment is
+                    /// `-`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -9980,7 +9988,8 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Required. The name of the environment to delete. / Format: - `projects//agent/environments/`
-                        /// - `projects//locations//agent/environments/`
+                        /// - `projects//locations//agent/environments/` The environment ID for the default environment
+                        /// is `-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10012,7 +10021,8 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Retrieves the specified agent environment.</summary>
                     /// <param name="name">
                     /// Required. The name of the environment. Supported formats: - `projects//agent/environments/` -
-                    /// `projects//locations//agent/environments/`
+                    /// `projects//locations//agent/environments/` The environment ID for the default environment is
+                    /// `-`.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -10031,7 +10041,8 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Required. The name of the environment. Supported formats: - `projects//agent/environments/`
-                        /// - `projects//locations//agent/environments/`
+                        /// - `projects//locations//agent/environments/` The environment ID for the default environment
+                        /// is `-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10063,7 +10074,8 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Gets the history of the specified environment.</summary>
                     /// <param name="parent">
                     /// Required. The name of the environment to retrieve history for. Supported formats: -
-                    /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                    /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID
+                    /// for the default environment is `-`.
                     /// </param>
                     public virtual GetHistoryRequest GetHistory(string parent)
                     {
@@ -10082,7 +10094,8 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Required. The name of the environment to retrieve history for. Supported formats: -
-                        /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                        /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment
+                        /// ID for the default environment is `-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10140,7 +10153,7 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
-                    /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                    /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
                     /// <param name="parent">
                     /// Required. The agent to list all environments from. Format: - `projects//agent` -
                     /// `projects//locations//agent`
@@ -10150,7 +10163,7 @@ namespace Google.Apis.Dialogflow.v2
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Returns the list of all non-draft environments of the specified agent.</summary>
+                    /// <summary>Returns the list of all non-default environments of the specified agent.</summary>
                     public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEnvironmentsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -10224,16 +10237,17 @@ namespace Google.Apis.Dialogflow.v2
                     /// Updates the specified agent environment. This method allows you to deploy new agent versions
                     /// into the environment. When an environment is pointed to a new agent version by setting
                     /// `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During
-                    /// that time, the environment keeps on serving the previous version of the agent. After the new
+                    /// that time, the environment continues serving the previous version of the agent. After the new
                     /// agent version is done loading, the environment is set back to the `RUNNING` state. You can use
-                    /// "-" as Environment ID in environment name to update version in "draft" environment. WARNING:
-                    /// this will negate all recent changes to draft and can't be undone. You may want to save the draft
-                    /// to a version before calling this function.
+                    /// "-" as Environment ID in environment name to update an agent version in the default environment.
+                    /// WARNING: this will negate all recent changes to the draft agent and can't be undone. You may
+                    /// want to save the draft agent to a version before calling this method.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. The unique identifier of this agent environment. Supported formats: -
-                    /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                    /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID
+                    /// for the default environment is `-`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment body, string name)
                     {
@@ -10244,11 +10258,11 @@ namespace Google.Apis.Dialogflow.v2
                     /// Updates the specified agent environment. This method allows you to deploy new agent versions
                     /// into the environment. When an environment is pointed to a new agent version by setting
                     /// `environment.agent_version`, the environment is temporarily set to the `LOADING` state. During
-                    /// that time, the environment keeps on serving the previous version of the agent. After the new
+                    /// that time, the environment continues serving the previous version of the agent. After the new
                     /// agent version is done loading, the environment is set back to the `RUNNING` state. You can use
-                    /// "-" as Environment ID in environment name to update version in "draft" environment. WARNING:
-                    /// this will negate all recent changes to draft and can't be undone. You may want to save the draft
-                    /// to a version before calling this function.
+                    /// "-" as Environment ID in environment name to update an agent version in the default environment.
+                    /// WARNING: this will negate all recent changes to the draft agent and can't be undone. You may
+                    /// want to save the draft agent to a version before calling this method.
                     /// </summary>
                     public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Environment>
                     {
@@ -10262,16 +10276,17 @@ namespace Google.Apis.Dialogflow.v2
 
                         /// <summary>
                         /// Output only. The unique identifier of this agent environment. Supported formats: -
-                        /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+                        /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment
+                        /// ID for the default environment is `-`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. This field is used to prevent accidental overwrite of the draft environment, which
-                        /// is an operation that cannot be undone. To confirm that the caller desires this overwrite,
-                        /// this field must be explicitly set to true when updating the draft environment (environment
-                        /// ID = `-`).
+                        /// Optional. This field is used to prevent accidental overwrite of the default environment,
+                        /// which is an operation that cannot be undone. To confirm that the caller desires this
+                        /// overwrite, this field must be explicitly set to true when updating the default environment
+                        /// (environment ID = `-`).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("allowLoadToDraftAndDiscardChanges", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AllowLoadToDraftAndDiscardChanges { get; set; }
@@ -20272,7 +20287,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Output only. The unique identifier of this agent environment. Supported formats: -
-        /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+        /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the
+        /// default environment is `-`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -20317,7 +20333,8 @@ namespace Google.Apis.Dialogflow.v2.Data
 
         /// <summary>
         /// Output only. The name of the environment this history is for. Supported formats: -
-        /// `projects//agent/environments/` - `projects//locations//agent/environments/`
+        /// `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the
+        /// default environment is `-`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }

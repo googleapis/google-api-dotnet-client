@@ -7091,6 +7091,12 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
 
+        /// <summary>
+        /// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredServiceExternalIpsConfig")]
+        public virtual ServiceExternalIPsConfig DesiredServiceExternalIpsConfig { get; set; }
+
         /// <summary>Configuration for Shielded Nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredShieldedNodes")]
         public virtual ShieldedNodes DesiredShieldedNodes { get; set; }

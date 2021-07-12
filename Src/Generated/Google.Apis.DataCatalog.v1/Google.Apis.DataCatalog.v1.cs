@@ -4538,6 +4538,25 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification for the BigQuery connection.</summary>
+    public class GoogleCloudDatacatalogV1BigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
+        public virtual GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec CloudSql { get; set; }
+
+        /// <summary>The type of the BigQuery connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>True if there are credentials attached to the BigQuery connection; false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasCredential")]
+        public virtual System.Nullable<bool> HasCredential { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see
     /// [Introduction to partitioned tables]
@@ -4594,6 +4613,25 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewSpec")]
         public virtual GoogleCloudDatacatalogV1ViewSpec ViewSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for the BigQuery connection to a Cloud SQL instance.</summary>
+    public class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Cloud SQL instance ID in the format of `project:location:instance`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>Type of the Cloud SQL database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4663,6 +4701,20 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION`
+    /// type.
+    /// </summary>
+    public class GoogleCloudDatacatalogV1DataSourceConnectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fields specific to BigQuery connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConnectionSpec")]
+        public virtual GoogleCloudDatacatalogV1BigQueryConnectionSpec BigqueryConnectionSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specification that applies to a table resource. Valid only for entries with the `TABLE` type.</summary>
     public class GoogleCloudDatacatalogV1DatabaseTableSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4699,6 +4751,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>Output only. Physical location of the entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual GoogleCloudDatacatalogV1DataSource DataSource { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a data source connection. Valid only for entries with the
+        /// `DATA_SOURCE_CONNECTION` type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceConnectionSpec")]
+        public virtual GoogleCloudDatacatalogV1DataSourceConnectionSpec DataSourceConnectionSpec { get; set; }
 
         /// <summary>
         /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -4746,6 +4805,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integratedSystem")]
         public virtual string IntegratedSystem { get; set; }
+
+        /// <summary>
+        /// Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to
+        /// custom entries. Synced entries have unmodifiable labels that come from the source system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the
@@ -5297,6 +5363,15 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludeProjectIds { get; set; }
 
         /// <summary>
+        /// Optional. If `true`, include public tag templates in the search results. By default, they are included only
+        /// if you have explicit permissions on them to view them. For example, if you are the owner. Other scope
+        /// fields, for example, ``include_org_ids``, still restrict the returned public tag templates and at least one
+        /// of them is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includePublicTagTemplates")]
+        public virtual System.Nullable<bool> IncludePublicTagTemplates { get; set; }
+
+        /// <summary>
         /// Optional. The list of locations to search within. If empty, all locations are searched. Returns an error if
         /// any location in the list isn't one of the [Supported
         /// regions](https://cloud.google.com/data-catalog/docs/concepts/regions#supported_regions). If a location is
@@ -5621,6 +5696,20 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1TagTemplateField> Fields { get; set; }
+
+        /// <summary>
+        /// Indicates whether this is a public tag template. Every user has view access to a *public* tag template by
+        /// default. This means that: * Every user can use this tag template to tag an entry. * If an entry is tagged
+        /// using the tag template, the tag is always shown in the response to ``ListTags`` called on the entry. * To
+        /// get the template using the GetTagTemplate method, you need view access either on the project or the
+        /// organization the tag template resides in but no other permission is needed. * Operations on the tag template
+        /// other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a
+        /// public tag template are referred to as public tags. You can search for a public tag by value with a simple
+        /// search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results
+        /// depending on scope, see: include_public_tag_templates
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPubliclyReadable")]
+        public virtual System.Nullable<bool> IsPubliclyReadable { get; set; }
 
         /// <summary>
         /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources

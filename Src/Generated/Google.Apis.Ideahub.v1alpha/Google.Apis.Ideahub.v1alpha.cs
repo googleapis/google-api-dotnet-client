@@ -441,10 +441,88 @@ namespace Google.Apis.Ideahub.v1alpha
             public PropertiesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                IdeaActivities = new IdeaActivitiesResource(service);
                 IdeaStates = new IdeaStatesResource(service);
                 Ideas = new IdeasResource(service);
                 Locales = new LocalesResource(service);
                 TopicStates = new TopicStatesResource(service);
+            }
+
+            /// <summary>Gets the IdeaActivities resource.</summary>
+            public virtual IdeaActivitiesResource IdeaActivities { get; }
+
+            /// <summary>The "ideaActivities" collection of methods.</summary>
+            public class IdeaActivitiesResource
+            {
+                private const string Resource = "ideaActivities";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public IdeaActivitiesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an idea activity entry.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this idea activity will be created. Format:
+                /// platforms/{platform}/property/{property}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaIdeaActivity body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates an idea activity entry.</summary>
+                public class CreateRequest : IdeahubBaseServiceRequest<Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaIdeaActivity>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaIdeaActivity body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this idea activity will be created. Format:
+                    /// platforms/{platform}/property/{property}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Ideahub.v1alpha.Data.GoogleSearchIdeahubV1alphaIdeaActivity Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/ideaActivities";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^platforms/[^/]+/properties/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the IdeaStates resource.</summary>
@@ -931,6 +1009,36 @@ namespace Google.Apis.Ideahub.v1alpha.Data
         /// <summary>The Topics that match the idea.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topics")]
         public virtual System.Collections.Generic.IList<GoogleSearchIdeahubV1alphaTopic> Topics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An idea activity entry.</summary>
+    public class GoogleSearchIdeahubV1alphaIdeaActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Idea IDs for this entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ideaIds")]
+        public virtual System.Collections.Generic.IList<string> IdeaIds { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the idea activity. Format:
+        /// platforms/{platform}/properties/{property}/ideaActivities/{idea_activity}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The Topic IDs for this entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicIds")]
+        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; }
+
+        /// <summary>The type of activity performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The uri the activity relates to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
