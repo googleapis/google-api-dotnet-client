@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.BigtableAdmin.v2;
 using Google.Apis.BigtableAdmin.v2.Data;
@@ -74,19 +75,45 @@ namespace IntegrationTests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [Fact]
-        public void JwtAccessToken_RestClient()
+        [Theory]
+        [InlineData(true, null)]
+        [InlineData(false, null)]
+        [InlineData(true, new[] { "https://www.googleapis.com/auth/bigtable.admin" })]
+        public void JwtAccessToken_RestClient(bool useJwtAccessWithScopes, string[] scopes)
         {
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
 
+            GoogleCredential credential = useJwtAccessWithScopes 
+                ? Helper.GetServiceCredentialWithJwtFlag().CreateScoped(scopes) 
+                : Helper.GetServiceCredential().CreateScoped(scopes);
+
             BigtableAdminService service = new BigtableAdminService(new BaseClientService.Initializer
             {
-                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped()
+                HttpClientInitializer = credential
             });
             
             ListInstancesResponse response = service.Projects.Instances.List($"projects/{Helper.GetProjectId()}").Execute();
 
             Assert.NotNull(response);
+        }
+
+        [Fact]
+        public void JwtAccessToken_WrongScope_RestClient()
+        {
+            // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
+
+            GoogleCredential credential = Helper.GetServiceCredentialWithJwtFlag().CreateScoped(new[] { "https://www.googleapis.com/auth/admob.readonly" });
+
+            BigtableAdminService service = new BigtableAdminService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credential
+            });
+
+            string expectedError = "Request had invalid authentication credentials.";
+
+            var exception = Assert.Throws<GoogleApiException>(() =>
+                service.Projects.Instances.List($"projects/{Helper.GetProjectId()}").Execute());
+            Assert.Contains(expectedError, exception.Message);
         }
     }
 }
