@@ -262,6 +262,7 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             }.FromPrivateKey(PrivateKey);
             var cred = new ServiceAccountCredential(initializer);
             Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
+            Assert.False(cred.UseJwtAccessWithScopes);
             // Check JWTs removed from cache once cache fills up.
             var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
             for (int i = 0; i < ServiceAccountCredential.JwtCacheMaxSize; i++)
@@ -275,6 +276,35 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             await cred.GetAccessTokenForRequestAsync("uri_too_much");
             var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri0");
             Assert.NotSame(jwt0, jwt0Uncached);
+        }
+
+        [Fact]
+        public async Task JwtCache_Scoped_CachesOne()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = true,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.True(cred.HasExplicitScopes); // Must be true for the remainder of this test to be valid.
+            Assert.True(cred.UseJwtAccessWithScopes);
+            // Check that only one JWT is cached
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
+            for (int i = 0; i < ServiceAccountCredential.JwtCacheMaxSize; i++)
+            {
+                await cred.GetAccessTokenForRequestAsync($"uri{i}");
+                // Check jwt is retrieved from cache.
+                var jwt0Cached = await cred.GetAccessTokenForRequestAsync("uri0");
+                Assert.Same(jwt0, jwt0Cached);
+            }
+            // Add one more JWT to cache that should remove jwt0 from the cache.
+            await cred.GetAccessTokenForRequestAsync("uri_too_much");
+            var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri0");
+            //  Scoped credential cache just one token regardless of authUri.
+            Assert.Same(jwt0, jwt0Uncached);
         }
 
         [Fact]
@@ -295,6 +325,47 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             clock.UtcNow += TimeSpan.FromSeconds(2);
             var jwt0Uncached = await cred.GetAccessTokenForRequestAsync("uri");
             Assert.NotSame(jwt0, jwt0Uncached);
+        }
+
+        [Theory]
+        [CombinatorialData]
+        public async Task JwtScopes_UseAud(bool useJwtAccessWithScopes)
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = useJwtAccessWithScopes,
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.False(cred.HasExplicitScopes); // Must be false for the remainder of this test to be valid.
+
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
+            byte[] decoded = TokenEncodingHelpers.Base64UrlDecode(jwt0.Split(new char[] { '.' })[1]);
+            string payload = System.Text.Encoding.UTF8.GetString(decoded);
+
+            Assert.Contains("\"aud\":\"uri0\"", payload);
+            Assert.DoesNotContain("scope", payload);
+        }
+
+        [Fact]
+        public async Task JwtScopes_UseScopes()
+        {
+            var clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+            var initializer = new ServiceAccountCredential.Initializer("some-id")
+            {
+                UseJwtAccessWithScopes = true,
+                Scopes = new[] { "scope1", "scope2" },
+                Clock = clock
+            }.FromPrivateKey(PrivateKey);
+            var cred = new ServiceAccountCredential(initializer);
+            Assert.True(cred.HasExplicitScopes); // Must be true for the remainder of this test to be valid.
+
+            var jwt0 = await cred.GetAccessTokenForRequestAsync("uri0");
+            byte[] decoded = TokenEncodingHelpers.Base64UrlDecode(jwt0.Split(new char[] { '.' })[1]);
+            string payload = System.Text.Encoding.UTF8.GetString(decoded);
+            Assert.Contains("\"scope\":\"scope1 scope2\"", payload);
+            Assert.DoesNotContain("aud", payload);
         }
 
         private class DummyAccessMethod : IAccessMethod
@@ -390,6 +461,19 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             Assert.NotSame(credential.HttpClient, credentialWithFactory.HttpClient);
             Assert.NotSame(credential.HttpClientFactory, credentialWithFactory.HttpClientFactory);
             Assert.Same(factory, credentialWithFactory.HttpClientFactory);
+        }
+
+        [Fact]
+        public void WithUseJwtAccessWithScopes()
+        {
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId").FromPrivateKey(PrivateKey));
+            Assert.False(credential.UseJwtAccessWithScopes);
+
+            var credentialWithJwtFlag = credential.WithUseJwtAccessWithScopes(true);
+
+            Assert.NotSame(credential, credentialWithJwtFlag);
+            Assert.Same(credential.Id, credentialWithJwtFlag.Id);
+            Assert.True(credentialWithJwtFlag.UseJwtAccessWithScopes);
         }
 
         [Fact]

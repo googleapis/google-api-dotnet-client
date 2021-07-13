@@ -67,5 +67,12 @@ namespace IntegrationTests.Utils
         public static string GetClientSecret() => Encoding.UTF8.GetString(s_clientSecret.Value);
 
         public static MemoryStream GetClientSecretStream() => new MemoryStream(s_clientSecret.Value);
+
+        public static GoogleCredential GetServiceCredentialWithJwtFlag()
+        {
+            ServiceAccountCredential credential = (ServiceAccountCredential)s_serviceCredential.Value.UnderlyingCredential;
+
+            return GoogleCredential.FromServiceAccountCredential(credential.WithUseJwtAccessWithScopes(true));
+        }
     }
 }
