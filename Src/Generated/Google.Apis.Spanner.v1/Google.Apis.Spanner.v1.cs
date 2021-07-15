@@ -5313,6 +5313,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
+        /// Output only. The read-write region which contains the database's leader replicas. This is the same as the
+        /// value of default_leader database option set using DatabaseAdmin.CreateDatabase or
+        /// DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLeader")]
+        public virtual string DefaultLeader { get; set; }
+
+        /// <summary>
         /// Output only. Earliest timestamp at which older versions of the data can be read. This value is continuously
         /// updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover
         /// data, make sure to account for the time from the moment when the value is queried to the moment when you
@@ -5853,6 +5861,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The name of this instance configuration as it appears in UIs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Allowed values of the “default_leader” schema option for databases in instances that use this instance
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leaderOptions")]
+        public virtual System.Collections.Generic.IList<string> LeaderOptions { get; set; }
 
         /// <summary>
         /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`
@@ -7015,7 +7030,8 @@ namespace Google.Apis.Spanner.v1.Data
         /// and transaction_tag can be specified for a read or query that belongs to a transaction. This field is
         /// ignored for requests where it's not applicable (e.g. CommitRequest). Legal characters for `request_tag`
         /// values are all printable characters (ASCII 32 - 126) and the length of a request_tag is limited to 50
-        /// characters. Values that exceed this limit are truncated.
+        /// characters. Values that exceed this limit are truncated. Any leading underscore (_) characters will be
+        /// removed from the string.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTag")]
         public virtual string RequestTag { get; set; }
@@ -7026,7 +7042,7 @@ namespace Google.Apis.Spanner.v1.Data
         /// for all requests belonging to the same transaction. If this request doesn’t belong to any transaction,
         /// transaction_tag will be ignored. Legal characters for `transaction_tag` values are all printable characters
         /// (ASCII 32 - 126) and the length of a transaction_tag is limited to 50 characters. Values that exceed this
-        /// limit are truncated.
+        /// limit are truncated. Any leading underscore (_) characters will be removed from the string.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionTag")]
         public virtual string TransactionTag { get; set; }

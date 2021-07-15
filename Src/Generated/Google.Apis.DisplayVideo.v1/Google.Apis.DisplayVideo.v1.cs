@@ -1245,7 +1245,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                        /// Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`.
                         /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -3689,7 +3689,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                        /// Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`.
                         /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -5683,7 +5683,7 @@ namespace Google.Apis.DisplayVideo.v1
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                        /// Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`.
                         /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -9587,7 +9587,7 @@ namespace Google.Apis.DisplayVideo.v1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                    /// Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`.
                     /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]

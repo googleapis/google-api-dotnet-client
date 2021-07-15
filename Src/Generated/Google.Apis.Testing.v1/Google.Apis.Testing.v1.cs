@@ -995,6 +995,13 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roboDirectives")]
         public virtual System.Collections.Generic.IList<RoboDirective> RoboDirectives { get; set; }
 
+        /// <summary>
+        /// The mode in which Robo should run. Most clients should allow the server to populate this field
+        /// automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roboMode")]
+        public virtual string RoboMode { get; set; }
+
         /// <summary>A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
         public virtual FileReference RoboScript { get; set; }
@@ -2228,9 +2235,10 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string NetworkProfile { get; set; }
 
         /// <summary>
-        /// Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for
-        /// the configured duration. The systrace file thus obtained is put in the results bucket together with the
-        /// other artifacts from the run.
+        /// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any
+        /// time, at which point no Systrace file will be provided in the results. Systrace configuration for the run.
+        /// If set a systrace will be taken, starting on test start and lasting for the configured duration. The
+        /// systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systrace")]
         public virtual SystraceSetup Systrace { get; set; }

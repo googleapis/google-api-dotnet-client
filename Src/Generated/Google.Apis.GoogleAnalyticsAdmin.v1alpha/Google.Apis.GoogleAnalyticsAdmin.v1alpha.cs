@@ -1444,6 +1444,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             ConversionEvents = new ConversionEventsResource(service);
             CustomDimensions = new CustomDimensionsResource(service);
             CustomMetrics = new CustomMetricsResource(service);
+            DisplayVideo360AdvertiserLinkProposals = new DisplayVideo360AdvertiserLinkProposalsResource(service);
+            DisplayVideo360AdvertiserLinks = new DisplayVideo360AdvertiserLinksResource(service);
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
             IosAppDataStreams = new IosAppDataStreamsResource(service);
@@ -2996,6 +2998,728 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/customMetrics/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the DisplayVideo360AdvertiserLinkProposals resource.</summary>
+        public virtual DisplayVideo360AdvertiserLinkProposalsResource DisplayVideo360AdvertiserLinkProposals { get; }
+
+        /// <summary>The "displayVideo360AdvertiserLinkProposals" collection of methods.</summary>
+        public class DisplayVideo360AdvertiserLinkProposalsResource
+        {
+            private const string Resource = "displayVideo360AdvertiserLinkProposals";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DisplayVideo360AdvertiserLinkProposalsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Approves a DisplayVideo360AdvertiserLinkProposal. The DisplayVideo360AdvertiserLinkProposal will be
+            /// deleted and a new DisplayVideo360AdvertiserLink will be created.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to approve. Example format:
+            /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+            /// </param>
+            public virtual ApproveRequest Approve(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest body, string name)
+            {
+                return new ApproveRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Approves a DisplayVideo360AdvertiserLinkProposal. The DisplayVideo360AdvertiserLinkProposal will be
+            /// deleted and a new DisplayVideo360AdvertiserLink will be created.
+            /// </summary>
+            public class ApproveRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse>
+            {
+                /// <summary>Constructs a new Approve request.</summary>
+                public ApproveRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to approve. Example format:
+                /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "approve";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:approve";
+
+                /// <summary>Initializes Approve parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinkProposals/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Cancels a DisplayVideo360AdvertiserLinkProposal. Cancelling can mean either: - Declining a proposal
+            /// initiated from Display &amp;amp; Video 360 - Withdrawing a proposal initiated from Google Analytics
+            /// After being cancelled, a proposal will eventually be deleted automatically.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to cancel. Example format:
+            /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+            /// </param>
+            public virtual CancelRequest Cancel(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Cancels a DisplayVideo360AdvertiserLinkProposal. Cancelling can mean either: - Declining a proposal
+            /// initiated from Display &amp;amp; Video 360 - Withdrawing a proposal initiated from Google Analytics
+            /// After being cancelled, a proposal will eventually be deleted automatically.
+            /// </summary>
+            public class CancelRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to cancel. Example format:
+                /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinkProposals/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Creates a DisplayVideo360AdvertiserLinkProposal.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a DisplayVideo360AdvertiserLinkProposal.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a DisplayVideo360AdvertiserLinkProposal on a property. This can only be used on cancelled
+            /// proposals.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to delete. Example format:
+            /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Deletes a DisplayVideo360AdvertiserLinkProposal on a property. This can only be used on cancelled
+            /// proposals.
+            /// </summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to delete. Example format:
+                /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinkProposals/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single DisplayVideo360AdvertiserLinkProposal.</summary>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to get. Example format:
+            /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single DisplayVideo360AdvertiserLinkProposal.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLinkProposal to get. Example format:
+                /// properties/1234/displayVideo360AdvertiserLinkProposals/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinkProposals/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists DisplayVideo360AdvertiserLinkProposals on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists DisplayVideo360AdvertiserLinkProposals on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListDisplayVideo360AdvertiserLinkProposals` call. Provide
+                /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListDisplayVideo360AdvertiserLinkProposals` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/displayVideo360AdvertiserLinkProposals";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the DisplayVideo360AdvertiserLinks resource.</summary>
+        public virtual DisplayVideo360AdvertiserLinksResource DisplayVideo360AdvertiserLinks { get; }
+
+        /// <summary>The "displayVideo360AdvertiserLinks" collection of methods.</summary>
+        public class DisplayVideo360AdvertiserLinksResource
+        {
+            private const string Resource = "displayVideo360AdvertiserLinks";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DisplayVideo360AdvertiserLinksResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a DisplayVideo360AdvertiserLink. This can only be utilized by users who have proper
+            /// authorization both on the Google Analytics property and on the Display &amp;amp; Video 360 advertiser.
+            /// Users who do not have access to the Display &amp;amp; Video 360 advertiser should instead seek to create
+            /// a DisplayVideo360LinkProposal.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a DisplayVideo360AdvertiserLink. This can only be utilized by users who have proper
+            /// authorization both on the Google Analytics property and on the Display &amp;amp; Video 360 advertiser.
+            /// Users who do not have access to the Display &amp;amp; Video 360 advertiser should instead seek to create
+            /// a DisplayVideo360LinkProposal.
+            /// </summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/displayVideo360AdvertiserLinks";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a DisplayVideo360AdvertiserLink on a property.</summary>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLink to delete. Example format:
+            /// properties/1234/displayVideo360AdvertiserLinks/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a DisplayVideo360AdvertiserLink on a property.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLink to delete. Example format:
+                /// properties/1234/displayVideo360AdvertiserLinks/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Look up a single DisplayVideo360AdvertiserLink</summary>
+            /// <param name="name">
+            /// Required. The name of the DisplayVideo360AdvertiserLink to get. Example format:
+            /// properties/1234/displayVideo360AdvertiserLink/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Look up a single DisplayVideo360AdvertiserLink</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the DisplayVideo360AdvertiserLink to get. Example format:
+                /// properties/1234/displayVideo360AdvertiserLink/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all DisplayVideo360AdvertiserLinks on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all DisplayVideo360AdvertiserLinks on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListDisplayVideo360AdvertiserLinks` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListDisplayVideo360AdvertiserLinks` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/displayVideo360AdvertiserLinks";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a DisplayVideo360AdvertiserLink on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+            /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display
+            /// &amp;amp; Video 360 Advertiser ID
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a DisplayVideo360AdvertiserLink on a property.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+                /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display
+                /// &amp;amp; Video 360 Advertiser ID
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/displayVideo360AdvertiserLinks/[^/]+$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -6188,6 +6912,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DisplayVideo360AdvertiserLink created as a result of approving the proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLink")]
+        public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink DisplayVideo360AdvertiserLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ArchiveCustomDimension RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6354,6 +7096,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A description of a change to a single Google Analytics resource.</summary>
     public class GoogleAnalyticsAdminV1alphaChangeHistoryChange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6405,6 +7154,14 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a CustomMetric resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetric")]
         public virtual GoogleAnalyticsAdminV1alphaCustomMetric CustomMetric { get; set; }
+
+        /// <summary>A snapshot of a DisplayVideo360AdvertiserLink resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLink")]
+        public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink DisplayVideo360AdvertiserLink { get; set; }
+
+        /// <summary>A snapshot of a DisplayVideo360AdvertiserLinkProposal resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinkProposal")]
+        public virtual GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal DisplayVideo360AdvertiserLinkProposal { get; set; }
 
         /// <summary>A snapshot of a FirebaseLink resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseLink")]
@@ -6683,6 +7440,118 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A link between a GA4 property and a Display &amp; Video 360 advertiser.</summary>
+    public class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables personalized advertising features with this integration. If this field is not set on create/update,
+        /// it will be defaulted to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsPersonalizationEnabled")]
+        public virtual System.Nullable<bool> AdsPersonalizationEnabled { get; set; }
+
+        /// <summary>Output only. The display name of the Display &amp; Video 360 Advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserDisplayName")]
+        public virtual string AdvertiserDisplayName { get; set; }
+
+        /// <summary>Immutable. The Display &amp; Video 360 Advertiser's advertiser ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual string AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Immutable. Enables the import of campaign data from Display &amp;amp; Video 360 into the GA4 property. After
+        /// link creation, this can only be updated from the Display &amp;amp; Video 360 product. If this field is not
+        /// set on create, it will be defaulted to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignDataSharingEnabled")]
+        public virtual System.Nullable<bool> CampaignDataSharingEnabled { get; set; }
+
+        /// <summary>
+        /// Immutable. Enables the import of cost data from Display &amp;amp; Video 360 into the GA4 property. This can
+        /// only be enabled if campaign_data_import_enabled is enabled. After link creation, this can only be updated
+        /// from the Display &amp;amp; Video 360 product. If this field is not set on create, it will be defaulted to
+        /// true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costDataSharingEnabled")]
+        public virtual System.Nullable<bool> CostDataSharingEnabled { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format:
+        /// properties/{propertyId}/displayVideo360AdvertiserLinks/{linkId} Note: linkId is not the Display &amp;amp;
+        /// Video 360 Advertiser ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A proposal for a link between an GA4 property and a Display &amp;amp; Video 360 advertiser. A proposal is
+    /// converted to a DisplayVideo360AdvertiserLink once approved. Google Analytics admins approve inbound proposals
+    /// while Display &amp;amp; Video 360 admins approve outbound proposals.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Enables personalized advertising features with this integration. If this field is not set on
+        /// create, it will be defaulted to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsPersonalizationEnabled")]
+        public virtual System.Nullable<bool> AdsPersonalizationEnabled { get; set; }
+
+        /// <summary>
+        /// Output only. The display name of the Display &amp;amp; Video Advertiser. Only populated for proposals that
+        /// originated from Display &amp;amp; Video 360.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserDisplayName")]
+        public virtual string AdvertiserDisplayName { get; set; }
+
+        /// <summary>Immutable. The Display &amp; Video 360 Advertiser's advertiser ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual string AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Immutable. Enables the import of campaign data from Display &amp;amp; Video 360. If this field is not set on
+        /// create, it will be defaulted to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignDataSharingEnabled")]
+        public virtual System.Nullable<bool> CampaignDataSharingEnabled { get; set; }
+
+        /// <summary>
+        /// Immutable. Enables the import of cost data from Display &amp;amp; Video 360. This can only be enabled if
+        /// campaign_data_import_enabled is enabled. If this field is not set on create, it will be defaulted to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costDataSharingEnabled")]
+        public virtual System.Nullable<bool> CostDataSharingEnabled { get; set; }
+
+        /// <summary>Output only. The status information for this link proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkProposalStatusDetails")]
+        public virtual GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails LinkProposalStatusDetails { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format:
+        /// properties/{propertyId}/displayVideo360AdvertiserLinkProposals/{proposalId} Note: proposalId is not the
+        /// Display &amp;amp; Video 360 Advertiser ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Input only. On a proposal being sent to Display &amp;amp; Video 360, this field must be set to the email
+        /// address of an admin on the target advertiser. This is used to verify that the Google Analytics admin is
+        /// aware of at least one admin on the Display &amp;amp; Video 360 Advertiser. This does not restrict approval
+        /// of the proposal to a single user. Any admin on the Display &amp;amp; Video 360 Advertiser may approve the
+        /// proposal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationEmail")]
+        public virtual string ValidationEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Singleton resource under a WebDataStream, configuring measurement of additional site interactions and content.
     /// </summary>
@@ -6920,6 +7789,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Status information for a link proposal.</summary>
+    public class GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The source of this proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkProposalInitiatingProduct")]
+        public virtual string LinkProposalInitiatingProduct { get; set; }
+
+        /// <summary>Output only. The state of this proposal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkProposalState")]
+        public virtual string LinkProposalState { get; set; }
+
+        /// <summary>Output only. The email address of the user that proposed this linkage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestorEmail")]
+        public virtual string RequestorEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListAccountSummaries RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7016,6 +7904,42 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>List of CustomMetrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetrics")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaCustomMetric> CustomMetrics { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListDisplayVideo360AdvertiserLinkProposals RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of DisplayVideo360AdvertiserLinkProposals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinkProposals")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal> DisplayVideo360AdvertiserLinkProposals { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListDisplayVideo360AdvertiserLinks RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of DisplayVideo360AdvertiserLinks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVideo360AdvertiserLinks")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> DisplayVideo360AdvertiserLinks { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -7231,6 +8155,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
+
+        /// <summary>Output only. The Google Analytics service level that applies to this property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLevel")]
+        public virtual string ServiceLevel { get; set; }
 
         /// <summary>
         /// Required. Reporting Time Zone, used as the day boundary for reports, regardless of where the data

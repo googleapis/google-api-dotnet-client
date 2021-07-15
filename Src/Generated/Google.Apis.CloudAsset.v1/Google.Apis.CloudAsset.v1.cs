@@ -1782,16 +1782,16 @@ namespace Google.Apis.CloudAsset.v1
             /// to find Cloud resources that have a label "env" and its value is "prod". * `labels.env:*` to find Cloud
             /// resources that have a label "env". * `kmsKey:key` to find Cloud resources encrypted with a
             /// customer-managed encryption key whose name contains the word "key". * `state:ACTIVE` to find Cloud
-            /// resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to find {{gcp_name}} resources
-            /// whose state doesn't contain "ACTIVE" as a word. * `createTime&amp;lt;1609459200` to find Cloud resources
-            /// that were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01
-            /// 00:00:00 UTC" in seconds. * `updateTime&amp;gt;1609459200` to find Cloud resources that were updated
-            /// after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in
-            /// seconds. * `Important` to find Cloud resources that contain "Important" as a word in any of the
-            /// searchable fields. * `Impor*` to find Cloud resources that contain "Impor" as a prefix of any word in
-            /// any of the searchable fields. * `Important location:(us-west1 OR global)` to find Cloud resources that
-            /// contain "Important" as a word in any of the searchable fields and are also located in the "us-west1"
-            /// region or the "global" location.
+            /// resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to find Cloud resources whose
+            /// state doesn't contain "ACTIVE" as a word. * `createTime&amp;lt;1609459200` to find Cloud resources that
+            /// were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01 00:00:00
+            /// UTC" in seconds. * `updateTime&amp;gt;1609459200` to find Cloud resources that were updated after
+            /// "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in seconds. *
+            /// `Important` to find Cloud resources that contain "Important" as a word in any of the searchable fields.
+            /// * `Impor*` to find Cloud resources that contain "Impor" as a prefix of any word in any of the searchable
+            /// fields. * `Important location:(us-west1 OR global)` to find Cloud resources that contain "Important" as
+            /// a word in any of the searchable fields and are also located in the "us-west1" region or the "global"
+            /// location.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1801,12 +1801,11 @@ namespace Google.Apis.CloudAsset.v1
             /// ResourceSearchResult. Only '*' or combination of top level fields can be specified. Field names of both
             /// snake_case and camelCase are supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
             /// The read_mask paths must be valid field paths listed but not limited to (both snake_case and camelCase
-            /// are supported): * name * asset_type or assetType * project * display_name or displayName * description *
-            /// location * labels * network_tags or networkTags * kms_key or kmsKey * create_time or createTime *
-            /// update_time or updateTime * state * additional_attributes or additionalAttributes * versioned_resources
-            /// or versionedResources If read_mask is not specified, all fields except versionedResources will be
-            /// returned. If only '*' is specified, all fields including versionedResources will be returned. Any
-            /// invalid field path will trigger INVALID_ARGUMENT error.
+            /// are supported): * name * assetType * project * displayName * description * location * labels *
+            /// networkTags * kmsKey * createTime * updateTime * state * additionalAttributes * versionedResources If
+            /// read_mask is not specified, all fields except versionedResources will be returned. If only '*' is
+            /// specified, all fields including versionedResources will be returned. Any invalid field path will trigger
+            /// INVALID_ARGUMENT error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -2057,6 +2056,31 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Attached resource representation, which is defined by the corresponding service provider. It represents an
+    /// attached resource's payload.
+    /// </summary>
+    public class AttachedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The type of this attached resource. Example: `osconfig.googleapis.com/Inventory` You can find the supported
+        /// attached asset types of each resource in this table:
+        /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
+        /// Versioned resource representations of this attached resource. This is repeated because there could be
+        /// multiple versions of the attached resource representations during version migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionedResources")]
+        public virtual System.Collections.Generic.IList<VersionedResource> VersionedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4427,6 +4451,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
+
+        /// <summary>
+        /// Attached resources of this resource. For example, an OSConfig Inventory is an attached resource of a Compute
+        /// Instance. This field is repeated because a resource could have multiple attached resources. This
+        /// `attached_resources` field is not searchable. Some attributes of the attached resources are exposed in
+        /// `additional_attributes` field, so as to allow users to search on them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResources")]
+        public virtual System.Collections.Generic.IList<AttachedResource> AttachedResources { get; set; }
 
         /// <summary>
         /// The create timestamp of this resource, at which the resource was created. The granularity is in seconds.

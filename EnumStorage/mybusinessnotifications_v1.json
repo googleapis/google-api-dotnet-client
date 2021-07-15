@@ -1,0 +1,11 @@
+{
+  "Google.Apis.MyBusinessNotificationSettings.v1.MyBusinessNotificationSettingsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MyBusinessNotificationSettings.v1.MyBusinessNotificationSettingsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

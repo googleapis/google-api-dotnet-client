@@ -3542,7 +3542,11 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This
-            /// parameter is required as an acknowledgement of the side effect.
+            /// parameter is required as an acknowledgement of the side effect. File owners can only transfer ownership
+            /// of files existing on My Drive. Files existing in a shared drive are owned by the organization that owns
+            /// that shared drive. Ownership transfers are not supported for files and folders in shared drives.
+            /// Organizers of a shared drive can move items from that shared drive into their My Drive which transfers
+            /// the ownership to them.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
@@ -4020,7 +4024,11 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This
-            /// parameter is required as an acknowledgement of the side effect.
+            /// parameter is required as an acknowledgement of the side effect. File owners can only transfer ownership
+            /// of files existing on My Drive. Files existing in a shared drive are owned by the organization that owns
+            /// that shared drive. Ownership transfers are not supported for files and folders in shared drives.
+            /// Organizers of a shared drive can move items from that shared drive into their My Drive which transfers
+            /// the ownership to them.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }

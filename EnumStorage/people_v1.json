@@ -1,4 +1,10 @@
 {
+  "Google.Apis.PeopleService.v1.OtherContactsResource+ListRequest.SourcesEnum": [
+    "READ_SOURCE_TYPE_UNSPECIFIED",
+    "READ_SOURCE_TYPE_PROFILE",
+    "READ_SOURCE_TYPE_CONTACT",
+    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+  ],
   "Google.Apis.PeopleService.v1.PeopleResource+ConnectionsResource+ListRequest.SortOrderEnum": [
     "LAST_MODIFIED_ASCENDING",
     "LAST_MODIFIED_DESCENDING",

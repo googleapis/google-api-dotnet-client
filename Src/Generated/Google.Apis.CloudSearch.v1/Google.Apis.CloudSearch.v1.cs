@@ -6670,6 +6670,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Default options to interpret user query.</summary>
+    public class QueryInterpretationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental
+        /// results for queries associated with a given search application. If this flag is set to True, it will take
+        /// precedence over the option set at Query level. For the default value of False, query level flag will set the
+        /// correct interpretation for supplemental results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceDisableSupplementalResults")]
+        public virtual System.Nullable<bool> ForceDisableSupplementalResults { get; set; }
+
+        /// <summary>
+        /// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of
+        /// queries, supplemental results retrieval, and usage of synonyms including custom ones. If this flag is set to
+        /// True, it will take precedence over the option set at Query level. For the default value of False, query
+        /// level flag will set the correct interpretation for verbatim mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceVerbatimMode")]
+        public virtual System.Nullable<bool> ForceVerbatimMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options to interpret user query.</summary>
     public class QueryInterpretationOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6679,6 +6704,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableNlInterpretation")]
         public virtual System.Nullable<bool> DisableNlInterpretation { get; set; }
+
+        /// <summary>
+        /// Use this flag to disable supplemental results for a query. Supplemental results setting chosen at
+        /// SearchApplication level will take precedence if set to True.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSupplementalResults")]
+        public virtual System.Nullable<bool> DisableSupplementalResults { get; set; }
 
         /// <summary>
         /// Enable this flag to turn off all internal optimizations like natural language (NL) interpretation of
@@ -7062,6 +7094,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
         public virtual System.Collections.Generic.IList<string> OperationIds { get; set; }
+
+        /// <summary>The default options for query interpretation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInterpretationConfig")]
+        public virtual QueryInterpretationConfig QueryInterpretationConfig { get; set; }
 
         /// <summary>Configuration for ranking results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scoringConfig")]

@@ -15266,6 +15266,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 
+        /// <summary>
+        /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendForBulkImport")]
+        public virtual System.Nullable<bool> SendForBulkImport { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

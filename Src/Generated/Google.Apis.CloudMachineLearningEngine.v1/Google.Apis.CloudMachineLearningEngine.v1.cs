@@ -4735,6 +4735,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxWaitTime")]
         public virtual object MaxWaitTime { get; set; }
 
+        /// <summary>
+        /// Optional. Job scheduling will be based on this priority, which in the range [0, 1000]. The bigger the
+        /// number, the higher the priority. Default to 0 if not set. If there are multiple jobs requesting same type of
+        /// accelerators, the high priority job will be scheduled prior to ones with low priority.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

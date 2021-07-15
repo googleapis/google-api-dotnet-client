@@ -889,6 +889,10 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Response message associated with the ExportProcessorVersion operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ExportProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Cloud Storage URI containing the output artifacts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

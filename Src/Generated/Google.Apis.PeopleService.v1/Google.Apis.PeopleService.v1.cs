@@ -983,6 +983,34 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
             /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            public enum SourcesEnum
+            {
+                /// <summary>Unspecified.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_UNSPECIFIED")]
+                READSOURCETYPEUNSPECIFIED = 0,
+
+                /// <summary>Returns SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, and SourceType.PROFILE.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_PROFILE")]
+                READSOURCETYPEPROFILE = 1,
+
+                /// <summary>Returns SourceType.CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_CONTACT")]
+                READSOURCETYPECONTACT = 2,
+
+                /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
+                READSOURCETYPEDOMAINCONTACT = 3,
+            }
+
+            /// <summary>
             /// Optional. A sync token, received from a previous `ListOtherContacts` call. Provide this to retrieve only
             /// the resources changed since the last request. Sync requests that specify `sync_token` have an additional
             /// rate limit. When the `syncToken` is specified, resources deleted since the last sync will be returned as
@@ -1034,6 +1062,14 @@ namespace Google.Apis.PeopleService.v1
                 RequestParameters.Add("requestSyncToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "requestSyncToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sources", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sources",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
