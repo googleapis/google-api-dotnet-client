@@ -4735,24 +4735,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Deprecated in favor of [site channels](sites.channels).</summary>
-    public class PreviewConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If true, preview URLs are enabled for this version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("active")]
-        public virtual System.Nullable<bool> Active { get; set; }
-
-        /// <summary>
-        /// Indicates the expiration time for previewing this version; preview URL requests received after this time
-        /// will 404.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if
     /// matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
@@ -5066,10 +5048,6 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Deprecated in favor of [site channels](sites.channels).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preview")]
-        public virtual PreviewConfig Preview { get; set; }
 
         /// <summary>
         /// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to

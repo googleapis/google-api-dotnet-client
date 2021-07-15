@@ -1,0 +1,99 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <!-- nupkg information -->
+  <PropertyGroup>
+    <Title>Google.Apis.Fcmdata.v1beta1 Client Library</Title>
+    <Version>1.52.0.2385</Version>
+    <Authors>Google LLC</Authors>
+    <Copyright>Copyright 2021 Google LLC</Copyright>
+    <PackageTags>Google</PackageTags>
+    <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
+    <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <Description>
+      Google APIs Client Library for working with Fcmdata v1beta1.
+
+      Supported Platforms:
+      - .NET Framework 4.5+
+      - .NET Standard 1.3 and .NET Standard 2.0; providing .NET Core support.
+
+      Legacy platforms:
+      - .NET Framework 4.0
+      - Windows 8 Apps
+      - Windows Phone 8.1
+      - Windows Phone Silverlight 8.0
+
+      Incompatible platforms:
+      - .NET Framework &lt; 4.0
+      - Silverlight
+      - UWP (will build, but is known not to work at runtime)
+      - Xamarin
+
+      More documentation on the API is available at:
+      https://developers.google.com/api-client-library/dotnet/apis/fcmdata/v1beta1
+
+      The package source code is available at:
+      https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+    <None Include="../../../NuGetIcon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- build properties -->
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard1.3;netstandard1.0;net45;net40</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1570,1587,1591</NoWarn>
+  </PropertyGroup>
+
+  <!-- common dependencies -->
+  <ItemGroup>
+    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="1.0.1" PrivateAssets="All" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <!-- per-target dependencies -->
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
+    <PackageTargetFallback>portable-net45+win8+wpa81+wp8</PackageTargetFallback>
+    <AppConfig>app.netstandard10.config</AppConfig>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
+    <PackageReference Include="Google.Apis" Version="[1.25.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.25.0]" ExcludeAssets="build" />
+    <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="Google.Apis" Version="1.52.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.52.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net40'">
+    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
+    <AppConfig>app.net40.config</AppConfig>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net40'">
+    <PackageReference Include="Google.Apis" Version="[1.10.0]" ExcludeAssets="build" />
+    <PackageReference Include="Google.Apis.Auth" Version="[1.10.0]" ExcludeAssets="build" />
+  </ItemGroup>
+
+</Project>

@@ -2964,7 +2964,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     {
         /// <summary>
         /// Required. A list of products to update/create. Each product must have a valid Product.id. Recommended max of
-        /// 10k items.
+        /// 100 items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaProduct> Products { get; set; }

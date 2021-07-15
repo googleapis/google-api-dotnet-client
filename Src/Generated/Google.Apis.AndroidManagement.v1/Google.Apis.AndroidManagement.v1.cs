@@ -1788,13 +1788,17 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
-            /// This feature is not generally available yet. Whether the managed Google Play Agreement is presented and
-            /// agreed.
+            /// Whether the enterprise admin has seen and agreed to the managed Google Play Agreement
+            /// (https://www.android.com/enterprise/terms/). Always set this to true when creating an EMM-managed
+            /// enterprise. Do not create the enterprise until the admin has viewed and accepted the agreement.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("agreementAccepted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AgreementAccepted { get; set; }
 
-            /// <summary>The enterprise token appended to the callback URL.</summary>
+            /// <summary>
+            /// The enterprise token appended to the callback URL. Only set this when creating a customer-managed
+            /// enterprise.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("enterpriseToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EnterpriseToken { get; set; }
 
@@ -1802,7 +1806,10 @@ namespace Google.Apis.AndroidManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
+            /// <summary>
+            /// The name of the SignupUrl used to sign up for the enterprise. Only set this when creating a
+            /// customer-managed enterprise.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
 
@@ -1860,17 +1867,14 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
-        /// <summary>This feature is not generally available yet. Deletes an enterprise.</summary>
-        /// <param name="name">
-        /// This feature is not generally available yet. The name of the enterprise in the form
-        /// enterprises/{enterpriseId}.
-        /// </param>
+        /// <summary>Deletes an enterprise. Only available for EMM-managed enterprises.</summary>
+        /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>This feature is not generally available yet. Deletes an enterprise.</summary>
+        /// <summary>Deletes an enterprise. Only available for EMM-managed enterprises.</summary>
         public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1880,10 +1884,7 @@ namespace Google.Apis.AndroidManagement.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// This feature is not generally available yet. The name of the enterprise in the form
-            /// enterprises/{enterpriseId}.
-            /// </summary>
+            /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1956,19 +1957,13 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
-        /// <summary>
-        /// This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial
-        /// views are returned.
-        /// </summary>
+        /// <summary>Lists EMM-managed enterprises. Only BASIC fields are returned.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>
-        /// This feature is not generally available yet. Lists enterprises that are managed by an EMM. Only partial
-        /// views are returned.
-        /// </summary>
+        /// <summary>Lists EMM-managed enterprises. Only BASIC fields are returned.</summary>
         public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListEnterprisesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1977,48 +1972,30 @@ namespace Google.Apis.AndroidManagement.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// This feature is not generally available yet. The requested page size. The actual page size may be fixed
-            /// to a min or max value.
-            /// </summary>
+            /// <summary>The requested page size. The actual page size may be fixed to a min or max value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>
-            /// This feature is not generally available yet. A token identifying a page of results returned by the
-            /// server.
-            /// </summary>
+            /// <summary>A token identifying a page of results returned by the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// Required. This feature is not generally available yet. The ID of the Cloud project of the EMM the
-            /// enterprises belongs to.
-            /// </summary>
+            /// <summary>Required. The Cloud project ID of the EMM managing the enterprises.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
 
-            /// <summary>
-            /// This feature is not generally available yet. View that specify that partial response should be returned.
-            /// </summary>
+            /// <summary>Specifies which Enterprise fields to return. This method only supports BASIC.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
 
-            /// <summary>
-            /// This feature is not generally available yet. View that specify that partial response should be returned.
-            /// </summary>
+            /// <summary>Specifies which Enterprise fields to return. This method only supports BASIC.</summary>
             public enum ViewEnum
             {
-                /// <summary>
-                /// This feature is not generally available yet. The API will default to the BASIC view for the List
-                /// method.
-                /// </summary>
+                /// <summary>The API will default to the BASIC view for the List method.</summary>
                 [Google.Apis.Util.StringValueAttribute("ENTERPRISE_VIEW_UNSPECIFIED")]
                 ENTERPRISEVIEWUNSPECIFIED = 0,
 
-                /// <summary>
-                /// This feature is not generally available yet. Includes name and enterprise_display_name fields.
-                /// </summary>
+                /// <summary>Includes name and enterprise_display_name fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("BASIC")]
                 BASIC = 1,
             }
@@ -3185,9 +3162,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoApprovalEnabled")]
         public virtual System.Nullable<bool> AppAutoApprovalEnabled { get; set; }
 
-        /// <summary>
-        /// This feature is not generally available yet. The enterprise contact info of an EMM owned enterprise
-        /// </summary>
+        /// <summary>The enterprise contact info of an EMM-managed enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactInfo")]
         public virtual ContactInfo ContactInfo { get; set; }
 
@@ -3518,17 +3493,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>This feature is not generally available yet. Response to a request to list enterprises.</summary>
+    /// <summary>Response to a request to list enterprises.</summary>
     public class ListEnterprisesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This feature is not generally available yet. The list of enterprises.</summary>
+        /// <summary>The list of enterprises.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterprises")]
         public virtual System.Collections.Generic.IList<Enterprise> Enterprises { get; set; }
 
-        /// <summary>
-        /// This feature is not generally available yet. If there are more results, a token to retrieve next page of
-        /// results.
-        /// </summary>
+        /// <summary>If there are more results, a token to retrieve next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 

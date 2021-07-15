@@ -35,6 +35,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         public SQLAdminService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BackupRuns = new BackupRunsResource(this);
+            Connect = new ConnectResource(this);
             Databases = new DatabasesResource(this);
             Flags = new FlagsResource(this);
             Instances = new InstancesResource(this);
@@ -92,6 +93,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>Gets the BackupRuns resource.</summary>
         public virtual BackupRunsResource BackupRuns { get; }
+
+        /// <summary>Gets the Connect resource.</summary>
+        public virtual ConnectResource Connect { get; }
 
         /// <summary>Gets the Databases resource.</summary>
         public virtual DatabasesResource Databases { get; }
@@ -531,19 +535,21 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Lists all backup runs associated with a given instance and configuration in the reverse chronological order
-        /// of the backup initiation time.
+        /// Lists all backup runs associated with the project or a given instance and configuration in the reverse
+        /// chronological order of the backup initiation time.
         /// </summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
-        /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        /// <param name="instance">
+        /// Cloud SQL instance ID, or "-" for all instances. This does not include the project ID.
+        /// </param>
         public virtual ListRequest List(string project, string instance)
         {
             return new ListRequest(service, project, instance);
         }
 
         /// <summary>
-        /// Lists all backup runs associated with a given instance and configuration in the reverse chronological order
-        /// of the backup initiation time.
+        /// Lists all backup runs associated with the project or a given instance and configuration in the reverse
+        /// chronological order of the backup initiation time.
         /// </summary>
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.BackupRunsListResponse>
         {
@@ -559,7 +565,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            /// <summary>
+            /// Cloud SQL instance ID, or "-" for all instances. This does not include the project ID.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
@@ -613,6 +621,167 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "connect" collection of methods.</summary>
+    public class ConnectResource
+    {
+        private const string Resource = "connect";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ConnectResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Generates a short-lived X509 certificate containing the provided public key and signed by a private key
+        /// specific to the target instance. Users may use the certificate to authenticate as themselves when connecting
+        /// to the database.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual GenerateEphemeralCertRequest GenerateEphemeralCert(Google.Apis.SQLAdmin.v1beta4.Data.GenerateEphemeralCertRequest body, string project, string instance)
+        {
+            return new GenerateEphemeralCertRequest(service, body, project, instance);
+        }
+
+        /// <summary>
+        /// Generates a short-lived X509 certificate containing the provided public key and signed by a private key
+        /// specific to the target instance. Users may use the certificate to authenticate as themselves when connecting
+        /// to the database.
+        /// </summary>
+        public class GenerateEphemeralCertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.GenerateEphemeralCertResponse>
+        {
+            /// <summary>Constructs a new GenerateEphemeralCert request.</summary>
+            public GenerateEphemeralCertRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.GenerateEphemeralCertRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.GenerateEphemeralCertRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateEphemeralCert";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}:generateEphemeralCert";
+
+            /// <summary>Initializes GenerateEphemeralCert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves connect settings about a Cloud SQL instance.</summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual GetRequest Get(string project, string instance)
+        {
+            return new GetRequest(service, project, instance);
+        }
+
+        /// <summary>Retrieves connect settings about a Cloud SQL instance.</summary>
+        public class GetRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.ConnectSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Optional. Optional snapshot read timestamp to trade freshness for performance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ReadTime { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/connectSettings";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "readTime",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -3863,7 +4032,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Reserved for future use.</summary>
+        /// <summary>(Postgres only) Whether point in time recovery is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
         public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
 
@@ -4072,9 +4241,46 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pitrTimestampMs")]
         public virtual System.Nullable<long> PitrTimestampMs { get; set; }
 
-        /// <summary>Reserved for future use.</summary>
+        /// <summary>Timestamp, if specified, identifies the time to which the source instance is cloned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
         public virtual object PointInTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Connect settings retrieval response.</summary>
+    public class ConnectSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// **SECOND_GEN**: Cloud SQL database instance. **EXTERNAL**: A database server that is not managed by Google.
+        /// This property is read-only; use the **tier** property in the **settings** object to determine the database
+        /// type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendType")]
+        public virtual string BackendType { get; set; }
+
+        /// <summary>
+        /// The database engine type and version. The **databaseVersion** field cannot be changed after instance
+        /// creation. MySQL instances: **MYSQL_8_0**, **MYSQL_5_7** (default), or **MYSQL_5_6**. PostgreSQL instances:
+        /// **POSTGRES_9_6**, **POSTGRES_10**, **POSTGRES_11** or **POSTGRES_12** (default). SQL Server instances:
+        /// **SQLSERVER_2017_STANDARD** (default), **SQLSERVER_2017_ENTERPRISE**, **SQLSERVER_2017_EXPRESS**, or
+        /// **SQLSERVER_2017_WEB**.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
+        public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>The assigned IP addresses for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<IpMapping> IpAddresses { get; set; }
+
+        /// <summary>This is always `sql#connectSettings`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>SSL configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaCert")]
+        public virtual SslCert ServerCaCert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4696,6 +4902,36 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always *sql#flagsList*.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ephemeral certificate creation request.</summary>
+    public class GenerateEphemeralCertRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Access token to include in the signed certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>PEM encoded public key to include in the signed certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("public_key")]
+        public virtual string PublicKey { get; set; }
+
+        /// <summary>Optional. Optional snapshot read timestamp to trade freshness for performance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
+        public virtual object ReadTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ephemeral certificate creation request.</summary>
+    public class GenerateEphemeralCertResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Generated cert</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralCert")]
+        public virtual SslCert EphemeralCert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5650,6 +5886,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>If the scheduled maintenance can be rescheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
         public virtual System.Nullable<bool> CanReschedule { get; set; }
+
+        /// <summary>Maintenance cannot be rescheduled to start beyond this deadline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
+        public virtual object ScheduleDeadlineTime { get; set; }
 
         /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]

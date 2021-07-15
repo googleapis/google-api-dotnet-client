@@ -1364,7 +1364,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure,
     /// and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or
     /// metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3
-    /// objects, and the `Last-Modified` header of Azure blobs.
+    /// objects, and the `Last-Modified` header of Azure blobs. This is not supported for transfers involving
+    /// PosixFilesystem.
     /// </summary>
     public class ObjectConditions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1745,14 +1746,19 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is
         /// used as the unique name for this job. If the specified name is in use by a job, the creation request fails
         /// with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a
-        /// number, and should be no more than 128 characters. This name must not start with 'transferJobs/OPI'.
-        /// 'transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
-        /// Invalid job names fail with an INVALID_ARGUMENT error.
+        /// number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must
+        /// start with 'transferJobs/OPI' specifically. For all other transfer types, this name must not start with
+        /// 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix for PosixFilesystem transfers.
+        /// Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example:
+        /// `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming
+        /// requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Notification configuration.</summary>
+        /// <summary>
+        /// Notification configuration. This is not supported for transfers involving PosixFilesystem.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 

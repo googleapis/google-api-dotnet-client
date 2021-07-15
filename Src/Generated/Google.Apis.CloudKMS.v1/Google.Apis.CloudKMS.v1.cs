@@ -2853,7 +2853,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as
         /// int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which
         /// will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
-        /// NOTE: This field is in Beta.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
@@ -2876,8 +2875,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate
         /// an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
         /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
-        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
-        /// in Beta.
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
@@ -2891,8 +2889,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of
         /// this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was
         /// not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but this
-        /// field is still false, discard the response and perform a limited number of retries. NOTE: This field is in
-        /// Beta.
+        /// field is still false, discard the response and perform a limited number of retries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
         public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; }
@@ -2919,8 +2916,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch
         /// may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
         /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
-        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
-        /// field is in Beta.
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digestCrc32c")]
         public virtual System.Nullable<long> DigestCrc32c { get; set; }
@@ -2934,7 +2930,7 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>
         /// The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended
-        /// resource was used for signing. NOTE: This field is in Beta.
+        /// resource was used for signing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2954,8 +2950,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
         /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
         /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
-        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
-        /// in Beta.
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureCrc32c")]
         public virtual System.Nullable<long> SignatureCrc32c { get; set; }
@@ -2965,7 +2960,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// KeyManagementService and used for the integrity verification of the digest. A false value of this field
         /// indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not delivered to
         /// KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still false,
-        /// discard the response and perform a limited number of retries. NOTE: This field is in Beta.
+        /// discard the response and perform a limited number of retries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedDigestCrc32c")]
         public virtual System.Nullable<bool> VerifiedDigestCrc32c { get; set; }
@@ -3289,7 +3284,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
         /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
-        /// this type. NOTE: This field is in Beta.
+        /// this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
@@ -3306,8 +3301,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// DecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
         /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
         /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
-        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This
-        /// field is in Beta.
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
@@ -3331,8 +3325,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that
         /// KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64
         /// for reasons of compatibility across different languages. However, it is a non-negative integer, which will
-        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE:
-        /// This field is in Beta.
+        /// never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
@@ -3397,7 +3390,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is
         /// defined as int64 for reasons of compatibility across different languages. However, it is a non-negative
         /// integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support
-        /// this type. NOTE: This field is in Beta.
+        /// this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
@@ -3418,7 +3411,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
         /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
         /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
-        /// uint32 in languages that support this type. NOTE: This field is in Beta.
+        /// uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
         public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
@@ -3441,8 +3434,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an
         /// issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of
         /// compatibility across different languages. However, it is a non-negative integer, which will never exceed
-        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type. NOTE: This field is
-        /// in Beta.
+        /// 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
         public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
@@ -3464,7 +3456,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// this field indicates either that EncryptRequest.additional_authenticated_data_crc32c was left unset or that
         /// it was not delivered to KeyManagementService. If you've set
         /// EncryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and
-        /// perform a limited number of retries. NOTE: This field is in Beta.
+        /// perform a limited number of retries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
         public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; }
@@ -3474,7 +3466,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// KeyManagementService and used for the integrity verification of the plaintext. A false value of this field
         /// indicates either that EncryptRequest.plaintext_crc32c was left unset or that it was not delivered to
         /// KeyManagementService. If you've set EncryptRequest.plaintext_crc32c but this field is still false, discard
-        /// the response and perform a limited number of retries. NOTE: This field is in Beta.
+        /// the response and perform a limited number of retries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
         public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; }

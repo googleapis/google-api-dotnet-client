@@ -1537,6 +1537,14 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; }
 
+        /// <summary>Secret environment variables configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnvironmentVariables")]
+        public virtual System.Collections.Generic.IList<SecretEnvVar> SecretEnvironmentVariables { get; set; }
+
+        /// <summary>Secret volumes configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVolumes")]
+        public virtual System.Collections.Generic.IList<SecretVolume> SecretVolumes { get; set; }
+
         /// <summary>
         /// The email of the function's service account. If empty, defaults to
         /// `{project_id}@appspot.gserviceaccount.com`.
@@ -2022,6 +2030,98 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// </summary>
     public class Retry : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from
+    /// secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret
+    /// values are only fetched when a new clone starts.
+    /// </summary>
+    public class SecretEnvVar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Project whose secret manager data is being referenced. Cross project secrets are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version
+        /// for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a single version.</summary>
+    public class SecretVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Relative path of the file under the mount path where the secret value for this version will be fetched and
+        /// made available. For example, setting the mount_path as '/etc/secrets' and path as `/secret_foo` would mount
+        /// the secret value file at `/etc/secrets/secret_foo`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version
+        /// with secret volumes as secret value changes are reflected immediately.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret
+    /// manager and make it available as files mounted at the requested paths within the application container. Secret
+    /// value is not a part of the configuration. Every filesystem read operation performs a lookup in secret manager to
+    /// retrieve the secret value.
+    /// </summary>
+    public class SecretVolume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The path within the container to mount the secret volume. For example, setting the mount_path as
+        /// `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will
+        /// also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths:
+        /// /etc/secrets Restricted mount paths: /cloudsql, /dev/log, /pod, /proc, /var/log
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>
+        /// Project whose secret manager data is being referenced. Cross project secrets are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the secret in secret manager (not the full resource name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secret")]
+        public virtual string Secret { get; set; }
+
+        /// <summary>
+        /// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made
+        /// available in a file named after the secret under the mount point.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<SecretVersion> Versions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

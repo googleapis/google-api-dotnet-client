@@ -995,9 +995,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker
-        /// pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more
-        /// information.
+        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private
+        /// pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pool")]
         public virtual PoolOption Pool { get; set; }
@@ -1504,8 +1503,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
     }
 
     /// <summary>
-    /// Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker
-    /// pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+    /// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private
+    /// pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
     /// </summary>
     public class PoolOption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1815,8 +1814,8 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`)
-        /// containing source to build.
+        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive
+        /// file (`.tar.gz`) containing source to build.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }

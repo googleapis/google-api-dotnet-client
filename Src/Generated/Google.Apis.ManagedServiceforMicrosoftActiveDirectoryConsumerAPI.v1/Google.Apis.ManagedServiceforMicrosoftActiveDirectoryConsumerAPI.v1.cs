@@ -2147,6 +2147,13 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string Admin { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs
+        /// disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogsEnabled")]
+        public virtual System.Nullable<bool> AuditLogsEnabled { get; set; }
+
+        /// <summary>
         /// Optional. The full names of the Google Compute Engine
         /// [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can
         /// be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If
@@ -2731,7 +2738,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
         public virtual Certificate Certificate { get; set; }
 
-        /// <summary>Input only. The password used to encrypt the uploaded pfx certificate.</summary>
+        /// <summary>Input only. The password used to encrypt the uploaded PFX certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificatePassword")]
         public virtual string CertificatePassword { get; set; }
 
@@ -2982,35 +2989,35 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output only] API version used to start the operation.</summary>
+        /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
         /// <summary>
-        /// [Output only] Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
-        /// <summary>[Output only] The time the operation was created.</summary>
+        /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>[Output only] The time the operation finished running.</summary>
+        /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
 
-        /// <summary>[Output only] Human-readable status of the operation, if any.</summary>
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
         public virtual string StatusDetail { get; set; }
 
-        /// <summary>[Output only] Server-defined resource path for the target of the operation.</summary>
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>[Output only] Name of the verb executed by the operation.</summary>
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
@@ -3149,33 +3156,29 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the Sql instance integrated with AD.</summary>
+    /// <summary>Represents the SQL instance integrated with Managed AD.</summary>
     public class SqlIntegration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. The time sql integration was created. Synthetic field is populated automatically by CCFE.
-        /// </summary>
+        /// <summary>Output only. The time the SQL integration was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// The unique name of the sql integration in the form of
+        /// The unique name of the SQL integration in the form of
         /// `projects/{project_id}/locations/global/domains/{domain_name}/sqlIntegrations/{sql_integration}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The full resource name of an integrated sql instance</summary>
+        /// <summary>The full resource name of an integrated SQL instance</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlInstance")]
         public virtual string SqlInstance { get; set; }
 
-        /// <summary>Output only. The current state of the sql integration.</summary>
+        /// <summary>Output only. The current state of the SQL integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>
-        /// Output only. The time sql integration was updated. Synthetic field is populated automatically by CCFE.
-        /// </summary>
+        /// <summary>Output only. The time the SQL integration was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 

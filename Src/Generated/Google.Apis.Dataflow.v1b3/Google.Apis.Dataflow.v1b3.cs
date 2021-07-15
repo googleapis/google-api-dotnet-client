@@ -5887,6 +5887,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalUserLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> AdditionalUserLabels { get; set; }
 
+        /// <summary>Worker disk size, in gigabytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
+
         /// <summary>Whether to enable Streaming Engine for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
         public virtual System.Nullable<bool> EnableStreamingEngine { get; set; }
@@ -5910,6 +5914,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
+
+        /// <summary>The maximum number of workers to cap scaling at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumWorkers")]
+        public virtual System.Nullable<int> MaxNumWorkers { get; set; }
 
         /// <summary>
         /// The maximum number of Google Compute Engine instances to be made available to your pipeline during

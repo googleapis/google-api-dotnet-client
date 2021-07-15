@@ -84,7 +84,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View and manage the provisioning of users on your domain</summary>
             public static string AdminDirectoryUser = "https://www.googleapis.com/auth/admin.directory.user";
 
-            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
+            /// <summary>See, edit, create, and delete all your Google Docs documents</summary>
             public static string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
@@ -117,7 +117,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View Google Apps Script projects</summary>
             public static string ScriptProjectsReadonly = "https://www.googleapis.com/auth/script.projects.readonly";
 
-            /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
+            /// <summary>See, edit, create, and delete all your Google Sheets spreadsheets</summary>
             public static string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
             /// <summary>See your primary Google Account email address</summary>
@@ -144,7 +144,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View and manage the provisioning of users on your domain</summary>
             public const string AdminDirectoryUser = "https://www.googleapis.com/auth/admin.directory.user";
 
-            /// <summary>See, create, and edit all Google Docs documents you have access to</summary>
+            /// <summary>See, edit, create, and delete all your Google Docs documents</summary>
             public const string Documents = "https://www.googleapis.com/auth/documents";
 
             /// <summary>See, edit, create, and delete all of your Google Drive files</summary>
@@ -177,7 +177,7 @@ namespace Google.Apis.Script.v1
             /// <summary>View Google Apps Script projects</summary>
             public const string ScriptProjectsReadonly = "https://www.googleapis.com/auth/script.projects.readonly";
 
-            /// <summary>See, edit, create, and delete your spreadsheets in Google Drive</summary>
+            /// <summary>See, edit, create, and delete all your Google Sheets spreadsheets</summary>
             public const string Spreadsheets = "https://www.googleapis.com/auth/spreadsheets";
 
             /// <summary>See your primary Google Account email address</summary>

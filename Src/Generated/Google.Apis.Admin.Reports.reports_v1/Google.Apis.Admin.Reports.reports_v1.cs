@@ -306,6 +306,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
         /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
+        /// Must not be a deleted user. For a deleted user, call `users.list` in Directory API with `showDeleted=true`,
+        /// then use the returned `ID` as the `userKey`.
         /// </param>
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual ListRequest List(string userKey, ListRequest.ApplicationNameEnum applicationName)
@@ -332,7 +334,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
             /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
-            /// address.
+            /// address. Must not be a deleted user. For a deleted user, call `users.list` in Directory API with
+            /// `showDeleted=true`, then use the returned `ID` as the `userKey`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -557,7 +560,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Filters { get; set; }
 
             /// <summary>
-            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response will
+            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e. the response will
             /// contain activities for only those users that are a part of at least one of the group ids mentioned here.
             /// Format: "id:abc123,id:xyz456"
             /// </summary>
@@ -717,6 +720,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
         /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
+        /// Must not be a deleted user. For a deleted user, call `users.list` in Directory API with `showDeleted=true`,
+        /// then use the returned `ID` as the `userKey`.
         /// </param>
         /// <param name="applicationName">Application name for which the events are to be retrieved.</param>
         public virtual WatchRequest Watch(Google.Apis.Admin.Reports.reports_v1.Data.Channel body, string userKey, WatchRequest.ApplicationNameEnum applicationName)
@@ -742,7 +747,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
             /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
-            /// address.
+            /// address. Must not be a deleted user. For a deleted user, call `users.list` in Directory API with
+            /// `showDeleted=true`, then use the returned `ID` as the `userKey`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -967,7 +973,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Filters { get; set; }
 
             /// <summary>
-            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response will
+            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e. the response will
             /// contain activities for only those users that are a part of at least one of the group ids mentioned here.
             /// Format: "id:abc123,id:xyz456"
             /// </summary>
@@ -1546,6 +1552,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// <param name="userKey">
         /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
         /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email address.
+        /// Must not be a deleted user. For a deleted user, call `users.list` in Directory API with `showDeleted=true`,
+        /// then use the returned `ID` as the `userKey`.
         /// </param>
         /// <param name="date">
         /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We recommend
@@ -1574,7 +1582,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// <summary>
             /// Represents the profile ID or the user email for which the data should be filtered. Can be `all` for all
             /// information, or `userKey` for a user's unique Google Workspace profile ID or their primary email
-            /// address.
+            /// address. Must not be a deleted user. For a deleted user, call `users.list` in Directory API with
+            /// `showDeleted=true`, then use the returned `ID` as the `userKey`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
@@ -1609,7 +1618,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string Filters { get; set; }
 
             /// <summary>
-            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e, the response will
+            /// Comma separated group ids (obfuscated) on which user activities are filtered, i.e. the response will
             /// contain activities for only those users that are a part of at least one of the group ids mentioned here.
             /// Format: "id:abc123,id:xyz456"
             /// </summary>

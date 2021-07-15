@@ -1492,6 +1492,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>If set, only the accounts with the given name (case sensitive) will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1550,6 +1554,14 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1982,6 +1994,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
+            /// <summary>If set, only the accounts with the given name (case sensitive) will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>The token returned by the previous request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2018,6 +2034,14 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
                     Name = "maxResults",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -11761,6 +11785,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>How the account is managed. Acceptable values are: - "`manual`" - "`automatic`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountManagement")]
+        public virtual string AccountManagement { get; set; }
+
         /// <summary>
         /// Linked Ads accounts that are active or pending approval. To create a new link request, add a new link with
         /// status `active` to the list. It will remain in a `pending` state until approved or rejected either in the
@@ -12057,6 +12085,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>A list of account level issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountLevelIssues")]
         public virtual System.Collections.Generic.IList<AccountStatusAccountLevelIssue> AccountLevelIssues { get; set; }
+
+        /// <summary>How the account is managed. Acceptable values are: - "`manual`" - "`automatic`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountManagement")]
+        public virtual string AccountManagement { get; set; }
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string "`content#accountStatus`"
@@ -21650,7 +21682,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalCharges")]
         public virtual System.Collections.Generic.IList<UnitInvoiceAdditionalCharge> AdditionalCharges { get; set; }
 
-        /// <summary>[required] Pre-tax or post-tax price of the unit depending on the locality of the order.</summary>
+        /// <summary>
+        /// [required] Pre-tax or post-tax price of one unit depending on the locality of the order. *Note:* Invoicing
+        /// works on a per unit basis. The `unitPrice` is the price of a single unit, and will be multiplied by the
+        /// number of entries in `shipmentUnitId`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
         public virtual Price UnitPrice { get; set; }
 
@@ -21664,7 +21700,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
     public class UnitInvoiceAdditionalCharge : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[required] Amount of the additional charge.</summary>
+        /// <summary>
+        /// [required] Amount of the additional charge per unit. *Note:* Invoicing works on a per unit bases. The
+        /// `additionalChargeAmount` is the amount charged per unit, and will be multiplied by the number of entries in
+        /// `shipmentUnitID`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalChargeAmount")]
         public virtual Amount AdditionalChargeAmount { get; set; }
 

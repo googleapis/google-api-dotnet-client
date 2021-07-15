@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Fcmdata.v1beta1.FcmdataBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Fcmdata.v1beta1.FcmdataBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

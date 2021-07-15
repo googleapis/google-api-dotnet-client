@@ -374,9 +374,229 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             public AppsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AppAttestConfig = new AppAttestConfigResource(service);
                 DebugTokens = new DebugTokensResource(service);
                 DeviceCheckConfig = new DeviceCheckConfigResource(service);
                 RecaptchaConfig = new RecaptchaConfigResource(service);
+                SafetyNetConfig = new SafetyNetConfigResource(service);
+            }
+
+            /// <summary>Gets the AppAttestConfig resource.</summary>
+            public virtual AppAttestConfigResource AppAttestConfig { get; }
+
+            /// <summary>The "appAttestConfig" collection of methods.</summary>
+            public class AppAttestConfigResource
+            {
+                private const string Resource = "appAttestConfig";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AppAttestConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets the AppAttestConfigs for the specified list of apps atomically.</summary>
+                /// <param name="parent">
+                /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format ```
+                /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// retrieved must match this field, or the entire batch fails.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>Gets the AppAttestConfigs for the specified list of apps atomically.</summary>
+                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format
+                    /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                    /// being retrieved must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The relative resource names of the AppAttestConfigs to retrieve, in the format ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ``` A maximum of 100 objects can be
+                    /// retrieved in a batch.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/apps/-/appAttestConfig:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the AppAttestConfig for the specified app.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the AppAttestConfig, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the AppAttestConfig for the specified app.</summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the AppAttestConfig, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/appAttestConfig$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the AppAttestConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange AppAttest tokens for App Check tokens.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the App Attest configuration object, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the AppAttestConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange AppAttest tokens for App Check tokens.
+                /// </summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the App Attest configuration object, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the AppAttestConfig Gets to update.
+                    /// Example: `token_ttl`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaAppAttestConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/appAttestConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DebugTokens resource.</summary>
@@ -1201,6 +1421,224 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/apps/[^/]+/recaptchaConfig$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SafetyNetConfig resource.</summary>
+            public virtual SafetyNetConfigResource SafetyNetConfig { get; }
+
+            /// <summary>The "safetyNetConfig" collection of methods.</summary>
+            public class SafetyNetConfigResource
+            {
+                private const string Resource = "safetyNetConfig";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SafetyNetConfigResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets the SafetyNetConfigs for the specified list of apps atomically.</summary>
+                /// <param name="parent">
+                /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format ```
+                /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// retrieved must match this field, or the entire batch fails.
+                /// </param>
+                public virtual BatchGetRequest BatchGet(string parent)
+                {
+                    return new BatchGetRequest(service, parent);
+                }
+
+                /// <summary>Gets the SafetyNetConfigs for the specified list of apps atomically.</summary>
+                public class BatchGetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
+                {
+                    /// <summary>Constructs a new BatchGet request.</summary>
+                    public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format
+                    /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                    /// being retrieved must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The relative resource names of the SafetyNetConfigs to retrieve, in the format ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ``` A maximum of 100 objects can be
+                    /// retrieved in a batch.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchGet";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/apps/-/safetyNetConfig:batchGet";
+
+                    /// <summary>Initializes BatchGet parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "names",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the SafetyNetConfig, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the SafetyNetConfig, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/safetyNetConfig$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
+                /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or
+                /// invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens.
+                /// </summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig Gets to update.
+                    /// Example: `token_ttl`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaSafetyNetConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/apps/[^/]+/safetyNetConfig$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -2089,6 +2527,33 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     }
 
     /// <summary>
+    /// An app's App Attest configuration object. This configuration controls certain properties of the App Check token
+    /// returned by ExchangeAppAttestAttestation and ExchangeAppAttestAttestation, such as its ttl. Note that the Team
+    /// ID registered with your app is used as part of the validation process. Please register it via the Firebase
+    /// Console or programmatically via the [Firebase Management
+    /// Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.iosApps/patch).
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaAppAttestConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the App Attest configuration object, in the format: ```
+        /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid. If
+        /// unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Encapsulates an *App Check token*, which are used to access Firebase services protected by App Check.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaAttestationTokenResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -2113,6 +2578,17 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the BatchGetAppAttestConfigs method.</summary>
+    public class GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AppAttestConfigs retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaAppAttestConfig> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the BatchGetDeviceCheckConfigs method.</summary>
     public class GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2130,6 +2606,17 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// <summary>RecaptchaConfigs retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configs")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaRecaptchaConfig> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the BatchGetSafetyNetConfigs method.</summary>
+    public class GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SafetyNetConfigs retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaSafetyNetConfig> Configs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2235,6 +2722,13 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeySet")]
         public virtual System.Nullable<bool> PrivateKeySet { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from DeviceCheck tokens will be valid. If unset,
+        /// a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2489,6 +2983,40 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteSecretSet")]
         public virtual System.Nullable<bool> SiteSecretSet { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA tokens will be valid. If unset, a
+        /// default value of 1 day is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An app's SafetyNet configuration object. This configuration controls certain properties of the App Check token
+    /// returned by ExchangeSafetyNetToken, such as its ttl. Note that your registered SHA-256 certificate fingerprints
+    /// are used to validate tokens issued by SafetyNet; please register them via the Firebase Console or
+    /// programmatically via the [Firebase Management
+    /// Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1betaSafetyNetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
+        /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Specifies the duration for which App Check tokens exchanged from SafetyNet tokens will be valid. If unset, a
+        /// default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTtl")]
+        public virtual object TokenTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
