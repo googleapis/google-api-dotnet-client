@@ -481,6 +481,19 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
         }
 
         [Fact]
+        public void WithUseJwtAccessWithScopes()
+        {
+            var credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer("MyId").FromPrivateKey(PrivateKey));
+            Assert.False(credential.UseJwtAccessWithScopes);
+
+            var credentialWithJwtFlag = credential.WithUseJwtAccessWithScopes(true);
+
+            Assert.NotSame(credential, credentialWithJwtFlag);
+            Assert.Same(credential.Id, credentialWithJwtFlag.Id);
+            Assert.True(credentialWithJwtFlag.UseJwtAccessWithScopes);
+        }
+
+        [Fact]
         public async Task FetchesOidcToken()
         {
             // A little bit after the tokens returned from OidcTokenFakes were issued.

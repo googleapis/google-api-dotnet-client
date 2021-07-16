@@ -223,6 +223,19 @@ namespace Google.Apis.Auth.OAuth2
             return result;
         }
 
+        /// <summary>
+        /// Constructs a new instance of the <see cref="ServiceAccountCredential"/> but with the
+        /// given <see cref="UseJwtAccessWithScopes"/> value.
+        /// </summary>
+        /// <param name="useJwtAccessWithScopes"></param>
+        /// <returns> a new instance of the <see cref="ServiceAccountCredential"/> but with the
+        /// given <see cref="UseJwtAccessWithScopes"/> value.
+        /// </returns>
+        public ServiceAccountCredential WithUseJwtAccessWithScopes(bool useJwtAccessWithScopes)
+        {
+            return new ServiceAccountCredential(new Initializer(this) { UseJwtAccessWithScopes = useJwtAccessWithScopes });
+        }
+
         /// <inheritdoc/>
         IGoogleCredential IGoogleCredential.WithQuotaProject(string quotaProject) =>
             new ServiceAccountCredential(new Initializer(this) { QuotaProject = quotaProject });
