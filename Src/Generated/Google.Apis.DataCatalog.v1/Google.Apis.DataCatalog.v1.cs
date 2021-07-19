@@ -5646,6 +5646,13 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual System.Nullable<int> Order { get; set; }
 
+        /// <summary>
+        /// The value of a tag field with a rich text type. The maximum length is 10 MiB as this value holds HTML
+        /// descriptions including encoded images. The maximum length of the text without images is 100 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richtextValue")]
+        public virtual string RichtextValue { get; set; }
+
         /// <summary>The value of a tag field with a string type. The maximum length is 2000 UTF-8 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }

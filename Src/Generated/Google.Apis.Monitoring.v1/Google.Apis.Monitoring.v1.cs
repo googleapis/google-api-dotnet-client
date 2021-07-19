@@ -34,6 +34,7 @@ namespace Google.Apis.Monitoring.v1
         /// <param name="initializer">The service initializer.</param>
         public MonitoringService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -97,6 +98,9 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Publish metric data to your Google Cloud projects</summary>
             public const string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
         }
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -283,6 +287,72 @@ namespace Google.Apis.Monitoring.v1
         }
     }
 
+    /// <summary>The "operations" collection of methods.</summary>
+    public class OperationsResource
+    {
+        private const string Resource = "operations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
+        /// <param name="name">The name of the operation resource.</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation result
+        /// at intervals as recommended by the API service.
+        /// </summary>
+        public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>The name of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^operations/.*$",
+                });
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -317,8 +387,9 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see
-            /// Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the
-            /// specified project. For more information about permissions, see Cloud Identity and Access Management.
+            /// Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method
+            /// requires the monitoring.dashboards.create permission on the specified project. For more information
+            /// about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -332,8 +403,9 @@ namespace Google.Apis.Monitoring.v1
 
             /// <summary>
             /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see
-            /// Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the
-            /// specified project. For more information about permissions, see Cloud Identity and Access Management.
+            /// Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method
+            /// requires the monitoring.dashboards.create permission on the specified project. For more information
+            /// about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
             /// </summary>
             public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Dashboard>
             {
@@ -1069,6 +1141,49 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is false, it means the operation is still in progress. If true, the operation is completed, and
+        /// either error or response is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update,
+        /// the response should be the resource. For other methods, the response should have the type XxxResponse, where
+        /// Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
+        /// response type is TakeSnapshotResponse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains metadata for longrunning operation for the edit Metrics Scope endpoints.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1305,6 +1420,35 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingMethod")]
         public virtual string RankingMethod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Status type defines a logical error model that is suitable for different programming environments, including
+    /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
+    /// of data: error code, error message, and error details.You can find out more about this error model and how to
+    /// work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -302,9 +302,8 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// <summary>Links a Google Cloud Storage bucket to a Firebase project.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="bucket">
-            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-            /// Because bucket resource names are unique across projects, you may omit the project number,
-            /// `projects/-/buckets/{bucket_id}`.
+            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+            /// `projects/{project_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual AddFirebaseRequest AddFirebase(Google.Apis.Firebasestorage.v1beta.Data.AddFirebaseRequest body, string bucket)
             {
@@ -323,9 +322,8 @@ namespace Google.Apis.Firebasestorage.v1beta
                 }
 
                 /// <summary>
-                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-                /// Because bucket resource names are unique across projects, you may omit the project number,
-                /// `projects/-/buckets/{bucket_id}`.
+                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+                /// `projects/{project_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Bucket { get; private set; }
@@ -362,9 +360,8 @@ namespace Google.Apis.Firebasestorage.v1beta
 
             /// <summary>Gets a single linked storage bucket.</summary>
             /// <param name="name">
-            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-            /// Because bucket resource names are unique across projects, you may omit the project number,
-            /// `projects/-/buckets/{bucket_id}`.
+            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+            /// `projects/{project_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -382,9 +379,8 @@ namespace Google.Apis.Firebasestorage.v1beta
                 }
 
                 /// <summary>
-                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-                /// Because bucket resource names are unique across projects, you may omit the project number,
-                /// `projects/-/buckets/{bucket_id}`.
+                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+                /// `projects/{project_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -495,9 +491,8 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// <summary>Unlinks a linked Google Cloud Storage bucket from a Firebase project.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="bucket">
-            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-            /// Because bucket resource names are unique across projects, you may omit the project number,
-            /// `projects/-/buckets/{bucket_id}`.
+            /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+            /// `projects/{project_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual RemoveFirebaseRequest RemoveFirebase(Google.Apis.Firebasestorage.v1beta.Data.RemoveFirebaseRequest body, string bucket)
             {
@@ -516,9 +511,8 @@ namespace Google.Apis.Firebasestorage.v1beta
                 }
 
                 /// <summary>
-                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket.
-                /// Because bucket resource names are unique across projects, you may omit the project number,
-                /// `projects/-/buckets/{bucket_id}`.
+                /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
+                /// `projects/{project_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Bucket { get; private set; }
@@ -567,6 +561,10 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
     /// <summary>A storage bucket and its relation to a parent Firebase project.</summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Location of the storage bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>Resource name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -590,6 +588,44 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for MigrateLocationDestructively LRO.</summary>
+    public class GoogleFirebaseStorageControlplaneV1alphaMigrateLocationDestructivelyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the LRO was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the LRO was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>The current state of the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for MigrateLocationDestructively LRO.</summary>
+    public class GoogleFirebaseStorageControlplaneV1betaMigrateLocationDestructivelyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the LRO was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The time the LRO was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual object LastUpdateTime { get; set; }
+
+        /// <summary>The current state of the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

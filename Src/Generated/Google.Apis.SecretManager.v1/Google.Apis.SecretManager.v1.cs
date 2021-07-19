@@ -791,6 +791,14 @@ namespace Google.Apis.SecretManager.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Filter string, adhering to the rules in [List-operation
+                    /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret versions
+                    /// matching the filter. If filter is empty, all secret versions are listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to be returned in a single page. If set to 0, the server
                     /// decides the number of results to return. If the number is greater than 25000, it is capped at
                     /// 25000.
@@ -824,6 +832,14 @@ namespace Google.Apis.SecretManager.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/secrets/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -1193,6 +1209,14 @@ namespace Google.Apis.SecretManager.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. Filter string, adhering to the rules in [List-operation
+                /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the
+                /// filter. If filter is empty, all secrets are listed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of results to be returned in a single page. If set to 0, the server
                 /// decides the number of results to return. If the number is greater than 25000, it is capped at 25000.
                 /// </summary>
@@ -1225,6 +1249,14 @@ namespace Google.Apis.SecretManager.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
