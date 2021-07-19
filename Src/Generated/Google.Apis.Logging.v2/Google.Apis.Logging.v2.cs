@@ -14758,12 +14758,12 @@ namespace Google.Apis.Logging.v2.Data
         /// time or a unique identifier, respectively. The supplied values are chosen so that, among the log entries
         /// that did not supply their own values, the entries earlier in the list will sort before the entries later in
         /// the list. See the entries.list method.Log entries with timestamps that are more than the logs retention
-        /// period (https://cloud.google.com/logging/quota-policy) in the past or more than 24 hours in the future will
-        /// not be available when calling entries.list. However, those log entries can still be exported with LogSinks
+        /// period (https://cloud.google.com/logging/quotas) in the past or more than 24 hours in the future will not be
+        /// available when calling entries.list. However, those log entries can still be exported with LogSinks
         /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).To improve throughput and to avoid
-        /// exceeding the quota limit (https://cloud.google.com/logging/quota-policy) for calls to entries.write, you
-        /// should try to include several log entries in this list, rather than calling this method for each individual
-        /// log entry.
+        /// exceeding the quota limit (https://cloud.google.com/logging/quotas) for calls to entries.write, you should
+        /// try to include several log entries in this list, rather than calling this method for each individual log
+        /// entry.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; }

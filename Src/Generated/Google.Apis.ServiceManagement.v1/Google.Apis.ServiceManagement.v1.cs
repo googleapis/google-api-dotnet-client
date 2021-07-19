@@ -2707,7 +2707,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceRootUrl")]
         public virtual string ServiceRootUrl { get; set; }
 
-        /// <summary>A short summary of what the service does. Can only be provided by plain text.</summary>
+        /// <summary>
+        /// A short description of what the service does. The summary must be plain text. It becomes the overview of the
+        /// service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field
+        /// `description`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual string Summary { get; set; }
 
@@ -2725,15 +2729,19 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deprecationDescription")]
         public virtual string DeprecationDescription { get; set; }
 
-        /// <summary>Description of the selected API(s).</summary>
+        /// <summary>
+        /// The description is the comment in front of the selected proto element, such as a message, a method, a
+        /// 'service' definition, or a field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which
-        /// may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of
-        /// the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more
-        /// components. To specify a default for all applicable elements, the whole pattern "*" is used.
+        /// The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value.
+        /// Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are
+        /// only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not
+        /// "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all
+        /// applicable elements, the whole pattern "*" is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
@@ -3917,7 +3925,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     {
         /// <summary>
         /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown
-        /// file.
+        /// file. The content can be used to produce the documentation page such as HTML format page.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -4267,7 +4275,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>
         /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis`
         /// are automatically included. Enums which are not referenced but shall be included should be listed here by
-        /// name. Example: enums: - name: google.someapi.v1.SomeEnum
+        /// name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enums")]
         public virtual System.Collections.Generic.IList<Enum> Enums { get; set; }
@@ -4340,15 +4348,15 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("systemTypes")]
         public virtual System.Collections.Generic.IList<Type> SystemTypes { get; set; }
 
-        /// <summary>The product title for this service.</summary>
+        /// <summary>The product title for this service, it is the name displayed in Google Cloud Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
         /// <summary>
         /// A list of all proto message types included in this API service. Types referenced directly or indirectly by
         /// the `apis` are automatically included. Messages which are not referenced but shall be included, such as
-        /// types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name:
-        /// google.protobuf.Int32
+        /// types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author.
+        /// Example: types: - name: google.protobuf.Int32
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Type> Types { get; set; }

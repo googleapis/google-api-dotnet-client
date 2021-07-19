@@ -3005,8 +3005,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class MTLSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Defines the mechanism to obtain the Certificate Authority certificate to validate the client
-        /// certificate.
+        ///  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationCa")]
         public virtual System.Collections.Generic.IList<ValidationCA> ClientValidationCa { get; set; }
@@ -3128,9 +3127,9 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class ServerTlsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Determines if server allows plaintext connections. If set to true, server allows plain text
-        /// connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For
-        /// example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See
+        ///  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By
+        /// default, it is set to false. This setting is not exclusive of other encryption modes. For example, if
+        /// `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See
         /// documentation of other encryption modes to confirm compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowOpen")]
@@ -3140,19 +3139,18 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>Optional. Free-text description of the resource.</summary>
+        /// <summary>Free-text description of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Set of label tags associated with the resource.</summary>
+        /// <summary>Set of label tags associated with the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication
-        /// (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated
-        /// as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS
-        /// connections.
+        ///  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS -
+        /// mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not
+        /// mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mtlsPolicy")]
         public virtual MTLSPolicy MtlsPolicy { get; set; }
@@ -3165,8 +3163,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined
-        /// with allow_open as a permissive mode that allows both plain text and TLS is not supported.
+        ///  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with
+        /// `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serverCertificate")]
         public virtual GoogleCloudNetworksecurityV1beta1CertificateProvider ServerCertificate { get; set; }

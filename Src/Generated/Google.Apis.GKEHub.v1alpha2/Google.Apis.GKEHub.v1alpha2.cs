@@ -1812,6 +1812,13 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
     public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE
+        /// Control Plane.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
         /// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
         /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
         /// also supported.
