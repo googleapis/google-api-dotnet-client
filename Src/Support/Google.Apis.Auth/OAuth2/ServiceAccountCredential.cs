@@ -278,7 +278,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Gets an access token to authorize a request.
         /// If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/>
-        /// is false, an OAuth2 access token obtained from <see cref="TokenServerUrl"/> will be returned.
+        /// is false, an OAuth2 access token obtained from <see cref="ServiceCredential.TokenServerUrl"/> will be returned.
         /// Otherwise, a locally signed JWT will be returned. 
         /// The signed JWT will contain a "scope" claim with the scopes in <see cref="Scopes"/> if there are any,
         /// otherwise it will contain an "aud" claim with <paramref name="authUri"/>.
@@ -292,7 +292,7 @@ namespace Google.Apis.Auth.OAuth2
             // See: https://developers.google.com/identity/protocols/oauth2/service-account#jwt-auth
             if (!HasExplicitScopes && authUri == null)
             {
-                throw new GoogleApiException(string.Empty, "Invalid OAuth scope or ID token audience provided. " +
+                throw new GoogleApiException(TokenServerUrl, "Invalid OAuth scope or ID token audience provided. " +
                     "A valid authUri and/or OAuth scope is required to proceed.");
             }
             if (HasExplicitScopes && !UseJwtAccessWithScopes)
@@ -301,7 +301,8 @@ namespace Google.Apis.Auth.OAuth2
             }
 
             // See: https://google.aip.dev/auth/4111
-            return await GetOrCreateJwtAccessTokenAsync(authUri).ConfigureAwait(false);
+            string jwtKey = HasExplicitScopes ? ScopedTokenCacheKey : authUri;
+            return await GetOrCreateJwtAccessTokenAsync(authUri, jwtKey).ConfigureAwait(false);
         }
 
         /// <inheritdoc/>
@@ -354,7 +355,7 @@ namespace Google.Apis.Auth.OAuth2
         private LinkedList<JwtCacheEntry> _jwts = null;
         private Dictionary<string, LinkedListNode<JwtCacheEntry>> _jwtCache = null;
 
-        private Task<string> GetOrCreateJwtAccessTokenAsync(string authUri)
+        private Task<string> GetOrCreateJwtAccessTokenAsync(string authUri, string jwtKey)
         {
             var nowUtc = Clock.UtcNow;
             lock (_jwtLock)
@@ -366,7 +367,6 @@ namespace Google.Apis.Auth.OAuth2
                     _jwts = new LinkedList<JwtCacheEntry>();
                 }
 
-                string jwtKey = HasExplicitScopes ? ScopedTokenCacheKey : authUri;
                 if (_jwtCache.TryGetValue(jwtKey, out var cachedJwtNode))
                 {
                     var jwtEntry = cachedJwtNode.Value;
@@ -381,10 +381,7 @@ namespace Google.Apis.Auth.OAuth2
                 }
                 // Create a new JWT.
                 var expiryUtc = nowUtc + JwtLifetime;
-                Task<string> jwtTask = Task.Run(() =>
-                    HasExplicitScopes
-                    ? CreateJwtAccessTokenWithScopes(Scopes, nowUtc, expiryUtc)
-                    : CreateJwtAccessTokenWithAudience(authUri, nowUtc, expiryUtc));
+                Task<string> jwtTask = Task.Run(() => CreateJwtAccessToken(authUri, nowUtc, expiryUtc));
                 var jwtNode = _jwts.AddFirst(new JwtCacheEntry(jwtTask, jwtKey, expiryUtc));
                 _jwtCache.Add(jwtKey, jwtNode);
                 // If cache is too large, remove oldest JWT (for any uri)
@@ -405,35 +402,23 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="issueUtc">The issue time of the JWT.</param>
         /// <param name="expiryUtc">The expiry time of the JWT.</param>
         /// </summary>
-        private string CreateJwtAccessTokenWithAudience(string authUri, DateTime issueUtc, DateTime expiryUtc)
-        {
-            var payload = new JsonWebSignature.Payload()
-            {
-                Issuer = Id,
-                Subject = Id,
-                Audience = authUri,
-                IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
-                ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
-            };
-
-            return CreateAssertionFromPayload(payload);
-        }
-
-        /// <param name="scopes">A list of the permissions the application requests.</param>
-        /// <param name="issueUtc">The issue time of the JWT.</param>
-        /// <param name="expiryUtc">The expiry time of the JWT.</param>
-        /// <inheritdoc cref="CreateJwtAccessTokenWithAudience(string, DateTime, DateTime)"/>
-        private string CreateJwtAccessTokenWithScopes(IEnumerable<String> scopes, DateTime issueUtc, DateTime expiryUtc)
+        private string CreateJwtAccessToken(string authUri, DateTime issueUtc, DateTime expiryUtc)
         {
             var payload = new GoogleJsonWebSignature.Payload()
             {
                 Issuer = Id,
                 Subject = Id,
-                Scope = scopes.Aggregate((a, b) => a + " " + b),
                 IssuedAtTimeSeconds = (long)(issueUtc - UnixEpoch).TotalSeconds,
                 ExpirationTimeSeconds = (long)(expiryUtc - UnixEpoch).TotalSeconds,
             };
-
+            if (HasExplicitScopes)
+            {
+                payload.Scope = string.Join(" ", Scopes);
+            }
+            else
+            {
+                payload.Audience = authUri;
+            }
             return CreateAssertionFromPayload(payload);
         }
 

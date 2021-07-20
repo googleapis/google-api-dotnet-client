@@ -71,11 +71,13 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             string accessToken = await cred.GetAccessTokenForRequestAsync("http://authurl/");
 
             string expectedToken =
-                "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJDTElFTlRfRU1BSUwiLCJz" +
-                "dWIiOiJDTElFTlRfRU1BSUwiLCJhdWQiOiJodHRwOi8vYXV0aHVybC8iLCJleHAiOjE0N" +
-                "TE2MTAwMDAsImlhdCI6MTQ1MTYwNjQwMH0.WLljSaAqxMVZnAxFA2SvpA3n2WRlQW71Nb" +
-                "CUkbN-ZI-EWoL-HhgiV_3ISrXMvbDHYhBR0vvtXE0PcRcsMEf51Y0jV4DXZ8hf-QJFq7O" +
-                "Hrepwe93dnDE6uNVnbj41_0phuy1WKwae29Qp2aPI2Y8E8Z2tXQlF87E_MdgjXVeTF8k";
+                "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbF92ZXJpZmllZCI6ZmFsc2Us" +
+                "ImlzcyI6IkNMSUVOVF9FTUFJTCIsInN1YiI6IkNMSUVOVF9FTUFJTCIsImF1ZCI6Imh0d" +
+                "HA6Ly9hdXRodXJsLyIsImV4cCI6MTQ1MTYxMDAwMCwiaWF0IjoxNDUxNjA2NDAwfQ.KZc" +
+                "ciifEUcStHdbYHjWqLm1xa532hdwacNN5IfwhcJYnwSePuWbI1K-e8DUDKf9Z4AiIIqZ4" +
+                "3Kt0tasoHwW20wnlsxPYt4DRxUo0lbzh86LfSc16lCeuQ1_Sbnem8iC2uc8GE7nhpY4dK" +
+                "9KR48rzE1P2herZ1pnwZJ2KKg9RZCg";
+
             Assert.Equal(expectedToken, accessToken);
         }
 
@@ -227,11 +229,12 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
             string accessToken = await cred.GetAccessTokenForRequestAsync("http://authurl/");
 
             string expectedToken =
-                "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzb21lLWlkIiwic3ViIjoi" +
-                "c29tZS1pZCIsImF1ZCI6Imh0dHA6Ly9hdXRodXJsLyIsImV4cCI6MTQ1MTYxMDAwMCwia" +
-                "WF0IjoxNDUxNjA2NDAwfQ.GfpDHgrFi4ZlGC5LuJEarLU4_eTrT5PVa-S40YtkdB2E1f3" +
-                "4naYG2ItcfBEFg7Gbdkr1cIAyipuhEd2yLfPmWGwhOwVcBRNyK_J5w8RodS44mxNJwau0" +
-                "jKy4x1K20ybLqcnNgzE0wag6fi5GHwdNIB0URdHDTiC88CRYdl1CIdk";
+                "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbF92ZXJpZmllZCI6ZmFsc2Us" +
+                "ImlzcyI6InNvbWUtaWQiLCJzdWIiOiJzb21lLWlkIiwiYXVkIjoiaHR0cDovL2F1dGh1c" +
+                "mwvIiwiZXhwIjoxNDUxNjEwMDAwLCJpYXQiOjE0NTE2MDY0MDB9.WDioLj8zdccHYzD3A" +
+                "n2lwMxb7sMG5HKpTqZdh43y0CT5Yt0_LyefIcpVWpQSipmU6p0zEnuxRE0tSXE3-BhQL0" +
+                "t4mJFuUUHLCInfFORt_YjdnirPYehlf6TnXH9z7Op94U_wIy9MVQHyO8e4aNFtsVbzcpD" +
+                "AZ7g0RQ-WN1nzGic";
             Assert.Equal(expectedToken, accessToken);
         }
 
