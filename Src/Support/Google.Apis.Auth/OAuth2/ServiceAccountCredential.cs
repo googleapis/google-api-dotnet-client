@@ -267,11 +267,8 @@ namespace Google.Apis.Auth.OAuth2
         /// If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/>
         /// is false, an OAuth2 access token obtained from <see cref="TokenServerUrl"/> will be returned.
         /// Otherwise, a locally signed JWT will be returned. 
-        /// The JWT access token would contain "aud" claim based on <paramref name="authUri"/> if there
-        /// are no <see cref="Scopes"/> associated with the credential or <see cref="UseJwtAccessWithScopes"/> 
-        /// flag is set to false.
-        /// Alternatively, JWT access token would contain "scope" claim based on <see cref="Scopes"/>. 
-        /// The same logic applies when both <paramref name="authUri"/> and <see cref="Scopes"/> are present. 
+        /// The signed JWT will contain a "scope" claim with the scopes in <see cref="Scopes"/> if there are any,
+        /// otherwise it will contain an "aud" claim with <paramref name="authUri"/>.
         /// A cached token is used if possible and the token is only refreshed once it's close to its expiry.
         /// </summary>
         /// <param name="authUri">The URI the returned token will grant access to.</param>
