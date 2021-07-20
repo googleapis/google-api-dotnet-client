@@ -266,7 +266,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets an access token to authorize a request.
         /// If this credential has <see cref="Scopes"/> associated, but <see cref="UseJwtAccessWithScopes"/> flag
         /// is not set, an OAuth2 access token obtained from token server will be returned.
-        /// Otherwise, a locally signed JWT access token will be returned. 
+        /// Otherwise, a locally signed JWT will be returned. 
         /// The JWT access token would contain "aud" claim based on <paramref name="authUri"/> if there
         /// are no <see cref="Scopes"/> associated with the credential or <see cref="UseJwtAccessWithScopes"/> 
         /// flag is set to false.
