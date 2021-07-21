@@ -420,7 +420,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         public async Task AccessToken_WithQuotaProjectHeader(GoogleCredential credential)
         {
             credential = credential.CreateWithQuotaProject("my-billing-project");
-            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync();
+            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync("https://api.googleapis.com/");
 
             AssertContainsQuotaProject(
                 accessToken.Headers.Select(pair => new KeyValuePair<string, IEnumerable<string>>(pair.Key, pair.Value)),
@@ -447,7 +447,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         [MemberData(nameof(CredentialsForTesting))]
         public async Task AccessToken_NoQuotaProjectHeader(GoogleCredential credential)
         {
-            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync();
+            var accessToken = await ((ITokenAccessWithHeaders)credential.UnderlyingCredential).GetAccessTokenWithHeadersForRequestAsync("https://api.googleapis.com/");
 
             Assert.DoesNotContain(accessToken.Headers, h => h.Key == QuotaProjectHeaderKey);
         }
