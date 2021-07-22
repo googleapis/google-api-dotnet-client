@@ -4347,21 +4347,21 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     public class LocalDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the
-        /// disk is detached from the instance).
+        /// Optional. Output only. Specifies whether the disk will be auto-deleted when the instance is deleted (but not
+        /// when the disk is detached from the instance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
         public virtual System.Nullable<bool> AutoDelete { get; set; }
 
         /// <summary>
-        /// Output only. Indicates that this is a boot disk. The virtual machine will use the first partition of the
-        /// disk for its root filesystem.
+        /// Optional. Output only. Indicates that this is a boot disk. The virtual machine will use the first partition
+        /// of the disk for its root filesystem.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boot")]
         public virtual System.Nullable<bool> Boot { get; set; }
 
         /// <summary>
-        /// Output only. Specifies a unique device name of your choice that is reflected into the
+        /// Optional. Output only. Specifies a unique device name of your choice that is reflected into the
         /// /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used
         /// to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the
         /// server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a
@@ -4378,17 +4378,16 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IList<RuntimeGuestOsFeature> GuestOsFeatures { get; set; }
 
         /// <summary>
-        /// Output only. [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you
-        /// have many disks attached to an instance, each disk would have a unique index number.
+        /// Output only. A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks
+        /// attached to an instance, each disk would have a unique index number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>
-        /// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new
-        /// instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance.
-        /// This property is mutually exclusive with the source property; you can only define one or the other, but not
-        /// both.
+        /// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use
+        /// initialization parameters to create boot disks or local SSDs attached to the new instance. This property is
+        /// mutually exclusive with the source property; you can only define one or the other, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initializeParams")]
         public virtual LocalDiskInitializeParams InitializeParams { get; set; }
@@ -4406,7 +4405,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Output only. [Output Only] Any valid publicly visible licenses.</summary>
+        /// <summary>Output only. Any valid publicly visible licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; }
 
@@ -4433,7 +4432,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use
+    /// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use
     /// initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is
     /// mutually exclusive with the source property; you can only define one or the other, but not both.
     /// </summary>
@@ -4774,7 +4773,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the runtime. Format:
-        /// `projects/{project}/locations/{location}/runtimes/{runtime}`
+        /// `projects/{project}/locations/{location}/runtimes/{runtimeId}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4842,15 +4841,18 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling
-    /// guest operating system features to see a list of available options. Guest OS features for boot disk.
+    /// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images. Read
+    /// [Enabling guest operating system
+    /// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
+    /// to see a list of available options. Guest OS features for boot disk.
     /// </summary>
     public class RuntimeGuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available
-        /// options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE
-        /// VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        /// The ID of a supported feature. Read [Enabling guest operating system
+        /// features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
+        /// to see a list of available options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT
+        /// * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4871,7 +4873,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are
+    /// A set of Shielded Instance options. Check [Images using supported Shielded VM
+    /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are
     /// valid.
     /// </summary>
     public class RuntimeShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -4902,9 +4905,9 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// Specifies the selection and config of software inside the runtime. / The properties to set on runtime.
-    /// Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true *
-    /// idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+    /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime.
+    /// Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` *
+    /// `idle_shutdown_timeout: 180` * `report-system-health: true`
     /// </summary>
     public class RuntimeSoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {

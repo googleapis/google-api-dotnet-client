@@ -782,8 +782,8 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
                 /// <summary>
-                /// Must be set to true if the bundle installation may trigger a warning on user devices (for example,
-                /// if installation size may be over a threshold, typically 100 MB).
+                /// Must be set to true if the app bundle installation may trigger a warning on user devices (for
+                /// example, if installation size may be over a threshold, typically 100 MB).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
@@ -952,8 +952,8 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual string EditId { get; private set; }
 
                 /// <summary>
-                /// Must be set to true if the bundle installation may trigger a warning on user devices (for example,
-                /// if installation size may be over a threshold, typically 100 MB).
+                /// Must be set to true if the app bundle installation may trigger a warning on user devices (for
+                /// example, if installation size may be over a threshold, typically 100 MB).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("ackBundleInstallationWarning", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> AckBundleInstallationWarning { get; set; }
@@ -6906,7 +6906,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a bundle. The resource for BundlesService.</summary>
+    /// <summary>Information about an app bundle. The resource for BundlesService.</summary>
     public class Bundle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6933,10 +6933,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response listing all bundles.</summary>
+    /// <summary>Response listing all app bundles.</summary>
     public class BundlesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>All bundles.</summary>
+        /// <summary>All app bundles.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundles")]
         public virtual System.Collections.Generic.IList<Bundle> Bundles { get; set; }
 

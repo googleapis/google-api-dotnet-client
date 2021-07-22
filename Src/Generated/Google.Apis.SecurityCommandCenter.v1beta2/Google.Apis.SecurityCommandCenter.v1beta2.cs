@@ -3298,6 +3298,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
         public virtual string ExternalUri { get; set; }
 
+        /// <summary>The class of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
+        public virtual string FindingClass { get; set; }
+
+        /// <summary>
+        /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an
+        /// artifact observed on a network or in an operating system that, with high confidence, indicates a computer
+        /// intrusion. Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indicator")]
+        public virtual Indicator Indicator { get; set; }
+
         /// <summary>
         /// The relative resource name of this finding. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name Example:
@@ -3675,6 +3687,25 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents what's commonly known as an Indicator of compromise (IoC) in computer forensics. This is an artifact
+    /// observed on a network or in an operating system that, with high confidence, indicates a computer intrusion.
+    /// Reference: https://en.wikipedia.org/wiki/Indicator_of_compromise
+    /// </summary>
+    public class Indicator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of domains associated to the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; }
+
+        /// <summary>List of ip addresses associated to the Finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
+        public virtual System.Collections.Generic.IList<string> IpAddresses { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

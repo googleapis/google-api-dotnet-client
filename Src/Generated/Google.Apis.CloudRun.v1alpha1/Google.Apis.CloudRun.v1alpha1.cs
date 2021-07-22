@@ -645,24 +645,9 @@ namespace Google.Apis.CloudRun.v1alpha1
 }
 namespace Google.Apis.CloudRun.v1alpha1.Data
 {
-    /// <summary>Adds and removes POSIX capabilities from running containers.</summary>
-    public class Capabilities : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Added capabilities +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("add")]
-        public virtual System.Collections.Generic.IList<string> Add { get; set; }
-
-        /// <summary>Removed capabilities +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("drop")]
-        public virtual System.Collections.Generic.IList<string> Drop { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
-    /// ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target
-    /// ConfigMap's Data field will represent the key-value pairs as environment variables.
+    /// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.
+    /// The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     /// </summary>
     public class ConfigMapEnvSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -673,16 +658,11 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
-        /// </summary>
+        /// <summary>The ConfigMap to select from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be
-        /// defined +optional
-        /// </summary>
+        /// <summary>(Optional) Specify whether the ConfigMap must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -690,12 +670,10 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key from a ConfigMap.
-    /// </summary>
+    /// <summary>Not supported by Cloud Run Selects a key from a ConfigMap.</summary>
     public class ConfigMapKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Run fully managed: not supported Cloud Run on GKE: supported The key to select.</summary>
+        /// <summary>The key to select.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -706,16 +684,11 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported The ConfigMap to select from.
-        /// </summary>
+        /// <summary>The ConfigMap to select from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the ConfigMap or its key
-        /// must be defined +optional
-        /// </summary>
+        /// <summary>(Optional) Specify whether the ConfigMap or its key must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -724,24 +697,24 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a
-    /// volume as files using the keys in the Data field as the file names, unless the items element is populated with
-    /// specific mappings of keys to paths.
+    /// Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field
+    /// will be presented in a volume as files using the keys in the Data field as the file names, unless the items
+    /// element is populated with specific mappings of keys to paths.
     /// </summary>
     public class ConfigMapVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644.
-        /// Directories within the path are not affected by this setting. This might be in conflict with other options
-        /// that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        /// (Optional) Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to
+        /// 0644. Directories within the path are not affected by this setting. This might be in conflict with other
+        /// options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; }
 
         /// <summary>
-        /// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the
-        /// volume as a file whose name is the key and content is the value. If specified, the listed keys will be
-        /// projected into the specified paths, and unlisted keys will not be present. If a key is specified which is
+        /// (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected
+        /// into the volume as a file whose name is the key and content is the value. If specified, the listed keys will
+        /// be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is
         /// not present in the Secret, the volume setup will error unless it is marked optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
@@ -751,7 +724,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Specify whether the Secret or its keys must be defined.</summary>
+        /// <summary>(Optional) Specify whether the Secret or its keys must be defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -767,165 +740,130 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references
-        /// $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference
-        /// in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
+        /// (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable
+        /// references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the
+        /// reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
         /// $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
-        /// Cannot be updated. More info:
+        /// More info:
         /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        /// +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
-        /// <summary>
-        /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not
-        /// provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable
-        /// cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be
-        /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether
-        /// the variable exists or not. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        /// +optional
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>List of environment variables to set in the container. Cannot be updated. +optional</summary>
+        /// <summary>(Optional) List of environment variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
 
         /// <summary>
-        /// List of sources to populate environment variables in the container. The keys defined within a source must be
-        /// a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key
-        /// exists in multiple sources, the value associated with the last source will take precedence. Values defined
-        /// by an Env with a duplicate key will take precedence. Cannot be updated. +optional
+        /// (Optional) List of sources to populate environment variables in the container. The keys defined within a
+        /// source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting.
+        /// When a key exists in multiple sources, the value associated with the last source will take precedence.
+        /// Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("envFrom")]
         public virtual System.Collections.Generic.IList<EnvFromSource> EnvFrom { get; set; }
 
-        /// <summary>Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images</summary>
+        /// <summary>
+        /// Only supports containers from Google Container Registry or Artifact Registry URL of the Container image.
+        /// More info: https://kubernetes.io/docs/concepts/containers/images
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
         /// <summary>
-        /// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or
-        /// IfNotPresent otherwise. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/containers/images#updating-images +optional
+        /// (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is
+        /// specified, or IfNotPresent otherwise. More info:
+        /// https://kubernetes.io/docs/concepts/containers/images#updating-images
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imagePullPolicy")]
         public virtual string ImagePullPolicy { get; set; }
 
         /// <summary>
-        /// Actions that the management system should take in response to container lifecycle events. Cannot be updated.
-        /// +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lifecycle")]
-        public virtual Lifecycle Lifecycle { get; set; }
-
-        /// <summary>
-        /// Periodic probe of container liveness. Container will be restarted if the probe fails. Cannot be updated.
-        /// More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        /// (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livenessProbe")]
         public virtual Probe LivenessProbe { get; set; }
 
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL. Each container must have a unique name (DNS_LABEL). Cannot
-        /// be updated.
+        /// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info:
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of ports to expose from the container. Exposing a port here gives the system additional information
-        /// about the network connections a container uses, but is primarily informational. Not specifying a port here
-        /// DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address
-        /// inside a container will be accessible from the network. Cannot be updated. +optional
+        /// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified
+        /// ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a
+        /// port number will be chosen and passed to the container through the PORT environment variable for the
+        /// container to listen on.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ports")]
         public virtual System.Collections.Generic.IList<ContainerPort> Ports { get; set; }
 
         /// <summary>
-        /// Periodic probe of container service readiness. Container will be removed from service endpoints if the probe
-        /// fails. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        /// (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints
+        /// if the probe fails. More info:
+        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessProbe")]
         public virtual Probe ReadinessProbe { get; set; }
 
         /// <summary>
-        /// Compute Resources required by this container. Cannot be updated. More info:
-        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources +optional
+        /// (Optional) Compute Resources required by this container. More info:
+        /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual ResourceRequirements Resources { get; set; }
 
         /// <summary>
-        /// Security options the pod should run with. More info:
+        /// (Optional) Security options the pod should run with. More info:
         /// https://kubernetes.io/docs/concepts/policy/security-context/ More info:
-        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional
+        /// https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityContext")]
         public virtual SecurityContext SecurityContext { get; set; }
 
         /// <summary>
-        /// Whether this container should allocate a buffer for stdin in the container runtime. If this is not set,
-        /// reads from stdin in the container will always result in EOF. Default is false. +optional
+        /// (Optional) Startup probe of application within the container. All other probes are disabled if a startup
+        /// probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+        /// More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stdin")]
-        public virtual System.Nullable<bool> Stdin { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("startupProbe")]
+        public virtual Probe StartupProbe { get; set; }
 
         /// <summary>
-        /// Whether the container runtime should close the stdin channel after it has been opened by a single attach.
-        /// When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to
-        /// true, stdin is opened on container start, is empty until the first client attaches to stdin, and then
-        /// remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed
-        /// until the container is restarted. If this flag is false, a container processes that reads from stdin will
-        /// never receive an EOF. Default is false +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stdinOnce")]
-        public virtual System.Nullable<bool> StdinOnce { get; set; }
-
-        /// <summary>
-        /// Optional: Path at which the file to which the container's termination message will be written is mounted
+        /// (Optional) Path at which the file to which the container's termination message will be written is mounted
         /// into the container's filesystem. Message written is intended to be brief final status, such as an assertion
         /// failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across
-        /// all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated. +optional
+        /// all containers will be limited to 12kb. Defaults to /dev/termination-log.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationMessagePath")]
         public virtual string TerminationMessagePath { get; set; }
 
         /// <summary>
-        /// Indicate how the termination message should be populated. File will use the contents of
+        /// (Optional) Indicate how the termination message should be populated. File will use the contents of
         /// terminationMessagePath to populate the container status message on both success and failure.
         /// FallbackToLogsOnError will use the last chunk of container log output if the termination message file is
         /// empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever
-        /// is smaller. Defaults to File. Cannot be updated. +optional
+        /// is smaller. Defaults to File. Cannot be updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terminationMessagePolicy")]
         public virtual string TerminationMessagePolicy { get; set; }
 
         /// <summary>
-        /// Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.
-        /// +optional
+        /// (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes
+        /// to mount into the container's filesystem.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tty")]
-        public virtual System.Nullable<bool> Tty { get; set; }
-
-        /// <summary>
-        /// volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may
-        /// change in the future. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volumeDevices")]
-        public virtual System.Collections.Generic.IList<VolumeDevice> VolumeDevices { get; set; }
-
-        /// <summary>Pod volumes to mount into the container's filesystem. Cannot be updated. +optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeMounts")]
         public virtual System.Collections.Generic.IList<VolumeMount> VolumeMounts { get; set; }
 
         /// <summary>
-        /// Container's working directory. If not specified, the container runtime's default will be used, which might
-        /// be configured in the container image. Cannot be updated. +optional
+        /// (Optional) Container's working directory. If not specified, the container runtime's default will be used,
+        /// which might be configured in the container image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; }
@@ -938,32 +876,19 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Number of port to expose on the pod's IP address. This must be a valid port number, 0 &amp;lt; x &amp;lt;
+        /// (Optional) Port number the container listens on. This must be a valid port number, 0 &amp;lt; x &amp;lt;
         /// 65536.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerPort")]
         public virtual System.Nullable<int> ContainerPortValue { get; set; }
 
-        /// <summary>What host IP to bind the external port to. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostIP")]
-        public virtual string HostIP { get; set; }
-
         /// <summary>
-        /// Number of port to expose on the host. If specified, this must be a valid port number, 0 &amp;lt; x &amp;lt;
-        /// 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
-        /// +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
-        public virtual System.Nullable<int> HostPort { get; set; }
-
-        /// <summary>
-        /// If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a
-        /// unique name. Name for the port that can be referred to by services. +optional
+        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Protocol for port. Must be UDP or TCP. Defaults to "TCP". +optional</summary>
+        /// <summary>(Optional) Protocol for port. Must be "TCP". Defaults to "TCP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
@@ -983,20 +908,20 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>EnvFromSource represents the source of a set of ConfigMaps</summary>
+    /// <summary>Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps</summary>
     public class EnvFromSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ConfigMap to select from +optional</summary>
+        /// <summary>(Optional) The ConfigMap to select from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMapRef")]
         public virtual ConfigMapEnvSource ConfigMapRef { get; set; }
 
         /// <summary>
-        /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER. +optional
+        /// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
         public virtual string Prefix { get; set; }
 
-        /// <summary>The Secret to select from +optional</summary>
+        /// <summary>(Optional) The Secret to select from</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretRef")]
         public virtual SecretEnvSource SecretRef { get; set; }
 
@@ -1012,19 +937,17 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the
-        /// container and any route environment variables. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-        /// references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-        /// +optional
+        /// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in
+        /// the container and any route environment variables. If a variable cannot be resolved, the reference in the
+        /// input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME).
+        /// Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported Source for the environment variable's value. Only supports
-        /// secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used
-        /// if value is not empty. +optional
+        /// (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the
+        /// environment variable's value. Cannot be used if value is not empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueFrom")]
         public virtual EnvVarSource ValueFrom { get; set; }
@@ -1033,22 +956,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the
-    /// value of an EnvVar.
-    /// </summary>
+    /// <summary>EnvVarSource represents a source for the value of an EnvVar.</summary>
     public class EnvVarSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
-        /// </summary>
+        /// <summary>(Optional) Not supported by Cloud Run Selects a key of a ConfigMap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMapKeyRef")]
         public virtual ConfigMapKeySelector ConfigMapKeyRef { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for
-        /// Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
-        /// </summary>
+        /// <summary>(Optional) Selects a key (version) of a secret in Secret Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretKeyRef")]
         public virtual SecretKeySelector SecretKeyRef { get; set; }
 
@@ -1056,14 +971,14 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ExecAction describes a "run in container" action.</summary>
+    /// <summary>Not supported by Cloud Run ExecAction describes a "run in container" action.</summary>
     public class ExecAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Command is the command line to execute inside the container, the working directory for the command is root
-        /// ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so
-        /// traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to
-        /// that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
+        /// (Optional) Command is the command line to execute inside the container, the working directory for the
+        /// command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a
+        /// shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call
+        /// out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
@@ -1072,32 +987,25 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
+    /// <summary>Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        /// +optional
+        /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
-        /// <summary>Custom headers to set in the request. HTTP allows repeated headers. +optional</summary>
+        /// <summary>(Optional) Custom headers to set in the request. HTTP allows repeated headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
         public virtual System.Collections.Generic.IList<HTTPHeader> HttpHeaders { get; set; }
 
-        /// <summary>Path to access on the HTTP server. +optional</summary>
+        /// <summary>(Optional) Path to access on the HTTP server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>
-        /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be
-        /// an IANA_SVC_NAME.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual IntOrString Port { get; set; }
-
-        /// <summary>Scheme to use for connecting to the host. Defaults to HTTP. +optional</summary>
+        /// <summary>(Optional) Scheme to use for connecting to the host. Defaults to HTTP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
         public virtual string Scheme { get; set; }
 
@@ -1105,7 +1013,7 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>HTTPHeader describes a custom header to be used in HTTP probes</summary>
+    /// <summary>Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes</summary>
     public class HTTPHeader : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The header field name</summary>
@@ -1115,27 +1023,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// <summary>The header field value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Handler defines a specific action that should be taken</summary>
-    public class Handler : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// One and only one of the following should be specified. Exec specifies the action to take. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
-        public virtual ExecAction Exec { get; set; }
-
-        /// <summary>HTTPGet specifies the http request to perform. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
-        public virtual HTTPGetAction HttpGet { get; set; }
-
-        /// <summary>TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
-        public virtual TCPSocketAction TcpSocket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1251,29 +1138,6 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual InstanceSpec Spec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// IntOrString is a type that can hold an int32 or a string. When used in JSON or YAML marshalling and
-    /// unmarshalling, it produces or consumes the inner type. This allows you to have, for example, a JSON field that
-    /// can accept a name or number.
-    /// </summary>
-    public class IntOrString : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The int value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intVal")]
-        public virtual System.Nullable<int> IntVal { get; set; }
-
-        /// <summary>The string value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strVal")]
-        public virtual string StrVal { get; set; }
-
-        /// <summary>The type of the value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual System.Nullable<int> Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1477,57 +1341,26 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class KeyToPath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest
-        /// value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific
+        /// version. The key to project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
         /// <summary>
-        /// Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode
-        /// will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the
-        /// result can be other mode bits set. +optional
+        /// (Optional) Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the
+        /// volume defaultMode will be used. This might be in conflict with other options that affect the file mode,
+        /// like fsGroup, and the result can be other mode bits set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual System.Nullable<int> Mode { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the
-        /// key to. May not be an absolute path. May not contain the path element '..'. May not start with the string
-        /// '..'.
+        /// The relative path of the file to map the key to. May not be an absolute path. May not contain the path
+        /// element '..'. May not start with the string '..'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Lifecycle describes actions that the management system should take in response to container lifecycle events.
-    /// For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is
-    /// complete, unless the container process fails, in which case the handler is aborted.
-    /// </summary>
-    public class Lifecycle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// PostStart is called immediately after a container is created. If the handler fails, the container is
-        /// terminated and restarted according to its restart policy. Other management of the container blocks until the
-        /// hook completes. More info:
-        /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("postStart")]
-        public virtual Handler PostStart { get; set; }
-
-        /// <summary>
-        /// PreStop is called immediately before a container is terminated. The container is terminated after the
-        /// handler completes. The reason for termination is passed to the handler. Regardless of the outcome of the
-        /// handler, the container is eventually terminated. Other management of the container blocks until the hook
-        /// completes. More info:
-        /// https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preStop")]
-        public virtual Handler PreStop { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1606,13 +1439,13 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// LocalObjectReference contains enough information to let you locate the referenced object inside the same
-    /// namespace.
+    /// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced
+    /// object inside the same namespace.
     /// </summary>
     public class LocalObjectReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Name of the referent. More info:
+        /// (Optional) Name of the referent. More info:
         /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1623,72 +1456,72 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+    /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which
+    /// includes all objects users must create.
     /// </summary>
     public class ObjectMeta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Annotations is an unstructured key value map stored with a resource that may be set by external tools to
-        /// store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying
-        /// objects. More info: http://kubernetes.io/docs/user-guide/annotations +optional
+        /// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external
+        /// tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when
+        /// modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Not currently supported by Cloud Run. The name of the cluster which the object belongs to. This is used to
+        /// (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to
         /// distinguish resources with same name and namespace in different clusters. This field is not set anywhere
-        /// right now and apiserver is going to ignore it if set in create or update request. +optional
+        /// right now and apiserver is going to ignore it if set in create or update request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
 
         /// <summary>
-        /// CreationTimestamp is a timestamp representing the server time when this object was created. It is not
-        /// guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It
-        /// is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        /// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is
+        /// not guaranteed to be set in happens-before order across separate operations. Clients may not set this value.
+        /// It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More
+        /// info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual object CreationTimestamp { get; set; }
 
         /// <summary>
-        /// Not currently supported by Cloud Run. Number of seconds allowed for this object to gracefully terminate
+        /// (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate
         /// before it will be removed from the system. Only set when deletionTimestamp is also set. May only be
-        /// shortened. Read-only. +optional
+        /// shortened. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
         public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; }
 
         /// <summary>
-        /// DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the
-        /// server when a graceful deletion is requested by the user, and is not directly settable by a client. The
-        /// resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after
-        /// the time in this field, once the finalizers list is empty. As long as the finalizers list contains items,
-        /// deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into
-        /// the future, although it may be shortened or the resource may be deleted prior to this time. For example, a
-        /// user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful
-        /// termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard
-        /// termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the
-        /// presence of network partitions, this object may still exist after this timestamp, until an administrator or
-        /// automated process can determine the resource is fully terminated. If not set, graceful deletion of the
-        /// object has not been requested. Populated by the system when a graceful deletion is requested. Read-only.
-        /// More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        /// (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource
+        /// will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is
+        /// not directly settable by a client. The resource is expected to be deleted (no longer visible from resource
+        /// lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long
+        /// as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value
+        /// may not be unset or be set further into the future, although it may be shortened or the resource may be
+        /// deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet
+        /// will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the
+        /// Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod
+        /// from the API. In the presence of network partitions, this object may still exist after this timestamp, until
+        /// an administrator or automated process can determine the resource is fully terminated. If not set, graceful
+        /// deletion of the object has not been requested. Populated by the system when a graceful deletion is
+        /// requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
         public virtual object DeletionTimestamp { get; set; }
 
         /// <summary>
-        /// Not currently supported by Cloud Run. Must be empty before the object is deleted from the registry. Each
+        /// (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each
         /// entry is an identifier for the responsible component that will remove the entry from the list. If the
-        /// deletionTimestamp of the object is non-nil, entries in this list can only be removed. +optional
-        /// +patchStrategy=merge
+        /// deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
         public virtual System.Collections.Generic.IList<string> Finalizers { get; set; }
 
         /// <summary>
-        /// Not currently supported by Cloud Run. GenerateName is an optional prefix, used by the server, to generate a
+        /// (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a
         /// unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the
         /// client will be different than the name passed. This value will also be combined with a unique suffix. The
         /// provided value has the same validation rules as the Name field, and may be truncated by the length of the
@@ -1696,23 +1529,23 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         /// exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason
         /// ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry
         /// (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More
-        /// info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency +optional string
-        /// generateName = 2;
+        /// info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName =
+        /// 2;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateName")]
         public virtual string GenerateName { get; set; }
 
         /// <summary>
-        /// A sequence number representing a specific generation of the desired state. Populated by the system.
-        /// Read-only. +optional
+        /// (Optional) A sequence number representing a specific generation of the desired state. Populated by the
+        /// system. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<int> Generation { get; set; }
 
         /// <summary>
-        /// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May
-        /// match selectors of replication controllers and routes. More info:
-        /// http://kubernetes.io/docs/user-guide/labels +optional
+        /// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select)
+        /// objects. May match selectors of replication controllers and routes. More info:
+        /// http://kubernetes.io/docs/user-guide/labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -1734,35 +1567,35 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string Namespace__ { get; set; }
 
         /// <summary>
-        /// List of objects that own this object. If ALL objects in the list have been deleted, this object will be
-        /// garbage collected. +optional
+        /// (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have
+        /// been deleted, this object will be garbage collected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerReferences")]
         public virtual System.Collections.Generic.IList<OwnerReference> OwnerReferences { get; set; }
 
         /// <summary>
-        /// An opaque value that represents the internal version of this object that can be used by clients to determine
-        /// when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation
-        /// on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to
-        /// the server. They may only be valid for a particular resource or set of resources. Populated by the system.
-        /// Read-only. Value must be treated as opaque by clients and . More info:
-        /// https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency
-        /// +optional
+        /// Optional. An opaque value that represents the internal version of this object that can be used by clients to
+        /// determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch
+        /// operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified
+        /// back to the server or omit the value to disable conflict-detection. They may only be valid for a particular
+        /// resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients
+        /// or omitted. More info:
+        /// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceVersion")]
         public virtual string ResourceVersion { get; set; }
 
         /// <summary>
-        /// SelfLink is a URL representing this object. Populated by the system. Read-only. +optional string selfLink =
+        /// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink =
         /// 4;
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
         /// <summary>
-        /// UID is the unique in time and space value for this object. It is typically generated by the server on
-        /// successful creation of a resource and is not allowed to change on PUT operations. Populated by the system.
-        /// Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids +optional
+        /// (Optional) UID is the unique in time and space value for this object. It is typically generated by the
+        /// server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the
+        /// system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -1813,62 +1646,64 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
-    /// receive traffic.
+    /// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine
+    /// whether it is alive or ready to receive traffic.
     /// </summary>
     public class Probe : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3.
-        /// Minimum value is 1. +optional
+        /// (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field
+        /// inlined from the Handler message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exec")]
+        public virtual ExecAction Exec { get; set; }
+
+        /// <summary>
+        /// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded.
+        /// Defaults to 3. Minimum value is 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; }
 
-        /// <summary>The action taken to determine the health of a container</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("handler")]
-        public virtual Handler Handler { get; set; }
+        /// <summary>
+        /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
+        public virtual HTTPGetAction HttpGet { get; set; }
 
         /// <summary>
-        /// Number of seconds after the container has started before liveness probes are initiated. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        /// (Optional) Number of seconds after the container has started before liveness probes are initiated. More
+        /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
 
         /// <summary>
-        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. +optional
+        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
 
         /// <summary>
-        /// Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1.
-        /// Must be 1 for liveness. Minimum value is 1. +optional
+        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed.
+        /// Defaults to 1. Must be 1 for liveness. Minimum value is 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successThreshold")]
         public virtual System.Nullable<int> SuccessThreshold { get; set; }
 
         /// <summary>
-        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info:
-        /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes +optional
+        /// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined
+        /// from the Handler message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
+        public virtual TCPSocketAction TcpSocket { get; set; }
+
+        /// <summary>
+        /// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More
+        /// info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The view model of a single quantity, e.g. "800 MiB". Corresponds to
-    /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/generated.proto
-    /// </summary>
-    public class Quantity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Stringified version of the quantity, e.g., "800 MiB".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("string")]
-        public virtual string String__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1878,22 +1713,16 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     public class ResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Limits describes the maximum amount of compute resources allowed. The values of the map is string form of
-        /// the 'quantity' k8s type:
+        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'.
+        /// Setting 4 CPU requires at least 2Gi of memory. Limits describes the maximum amount of compute resources
+        /// allowed. The values of the map is string form of the 'quantity' k8s type:
         /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limits")]
         public virtual System.Collections.Generic.IDictionary<string, string> Limits { get; set; }
 
         /// <summary>
-        /// Limits describes the maximum amount of compute resources allowed. This is a temporary field created to
-        /// migrate away from the map limits field. This is done to become compliant with k8s style API. This field is
-        /// deprecated in favor of limits field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("limitsInMap")]
-        public virtual System.Collections.Generic.IDictionary<string, Quantity> LimitsInMap { get; set; }
-
-        /// <summary>
+        /// (Optional) Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'.
         /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container,
         /// it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The
         /// values of the map is string form of the 'quantity' k8s type:
@@ -1902,45 +1731,13 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IDictionary<string, string> Requests { get; set; }
 
-        /// <summary>
-        /// Requests describes the minimum amount of compute resources required. If Requests is omitted for a container,
-        /// it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is
-        /// a temporary field created to migrate away from the map requests field. This is done to become compliant with
-        /// k8s style API. This field is deprecated in favor of requests field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestsInMap")]
-        public virtual System.Collections.Generic.IDictionary<string, Quantity> RequestsInMap { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>SELinuxOptions are the labels to be applied to the container</summary>
-    public class SELinuxOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Level is SELinux level label that applies to the container. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("level")]
-        public virtual string Level { get; set; }
-
-        /// <summary>Role is a SELinux role label that applies to the container. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>Type is a SELinux type label that applies to the container. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>User is a SELinux user label that applies to the container. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>
-    /// SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's
-    /// Data field will represent the key-value pairs as environment variables.
+    /// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The
+    /// contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     /// </summary>
     public class SecretEnvSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1951,16 +1748,11 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localObjectReference")]
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
-        /// </summary>
+        /// <summary>The Secret to select from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be
-        /// defined +optional
-        /// </summary>
+        /// <summary>(Optional) Specify whether the Secret must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -1968,15 +1760,12 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
-    /// </summary>
+    /// <summary>SecretKeySelector selects a key of a Secret.</summary>
     public class SecretKeySelector : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest
-        /// version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to
-        /// select from. Must be a valid secret key.
+        /// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific
+        /// version. The key of the secret to select from. Must be a valid secret key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -1989,19 +1778,16 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual LocalObjectReference LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is
-        /// assumed to be in the same project. If the secret is in another project, you must define an alias. An alias
-        /// definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be
-        /// separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud
-        /// Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+        /// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+        /// If the secret is in another project, you must define an alias. An alias definition has the form:
+        /// :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias
+        /// definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's
+        /// namespace to select from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key
-        /// must be defined +optional
-        /// </summary>
+        /// <summary>(Optional) Specify whether the Secret or its key must be defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
@@ -2010,42 +1796,44 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data
-    /// field as the file names.
+    /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no
+    /// items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will
+    /// be presented in a volume as files using the keys in the Data field as the file names.
     /// </summary>
     public class SecretVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644.
-        /// Directories within the path are not affected by this setting. This might be in conflict with other options
-        /// that affect the file mode, like fsGroup, and the result can be other mode bits set.
+        /// (Optional) Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to
+        /// 0644. Directories within the path are not affected by this setting. This might be in conflict with other
+        /// options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an
+        /// integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric
+        /// notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultMode")]
         public virtual System.Nullable<int> DefaultMode { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the
-        /// secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the
-        /// path will be the name of the file exposed in the volume. When items are defined, they must specify a key and
-        /// a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the
-        /// referenced Secret will be projected into the volume as a file whose name is the key and content is the
-        /// value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not
-        /// be present. If a key is specified which is not present in the Secret, the volume setup will error unless it
-        /// is marked optional.
+        /// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the
+        /// key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file
+        /// exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each
+        /// key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose
+        /// name is the key and content is the value. If specified, the listed keys will be projected into the specified
+        /// paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the
+        /// volume setup will error unless it is marked optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<KeyToPath> Items { get; set; }
 
-        /// <summary>Specify whether the Secret or its keys must be defined.</summary>
+        /// <summary>(Optional) Specify whether the Secret or its keys must be defined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optional")]
         public virtual System.Nullable<bool> Optional { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is
-        /// assumed to be in the same project. If the secret is in another project, you must define an alias. An alias
-        /// definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be
-        /// separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud
-        /// Run for Anthos: supported Name of the secret in the container's namespace to use.
+        /// The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+        /// If the secret is in another project, you must define an alias. An alias definition has the form:
+        /// :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias
+        /// definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's
+        /// namespace to use.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretName")]
         public virtual string SecretName { get; set; }
@@ -2055,94 +1843,44 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
     }
 
     /// <summary>
-    /// SecurityContext holds security configuration that will be applied to a container. Some fields are present in
-    /// both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+    /// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container.
+    /// Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in
+    /// SecurityContext take precedence.
     /// </summary>
     public class SecurityContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This
-        /// bool directly controls if the no_new_privs flag will be set on the container process.
-        /// AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN
-        /// +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowPrivilegeEscalation")]
-        public virtual System.Nullable<bool> AllowPrivilegeEscalation { get; set; }
-
-        /// <summary>
-        /// The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by
-        /// the container runtime. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capabilities")]
-        public virtual Capabilities Capabilities { get; set; }
-
-        /// <summary>
-        /// Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on
-        /// the host. Defaults to false. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privileged")]
-        public virtual System.Nullable<bool> Privileged { get; set; }
-
-        /// <summary>Whether this container has a read-only root filesystem. Default is false. +optional</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readOnlyRootFilesystem")]
-        public virtual System.Nullable<bool> ReadOnlyRootFilesystem { get; set; }
-
-        /// <summary>
-        /// The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in
-        /// PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in
-        /// SecurityContext takes precedence. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("runAsGroup")]
-        public virtual System.Nullable<int> RunAsGroup { get; set; }
-
-        /// <summary>
-        /// Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at
-        /// runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset
-        /// or false, no such validation will be performed. May also be set in PodSecurityContext. If set in both
-        /// SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("runAsNonRoot")]
-        public virtual System.Nullable<bool> RunAsNonRoot { get; set; }
-
-        /// <summary>
-        /// The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if
-        /// unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext,
-        /// the value specified in SecurityContext takes precedence. +optional
+        /// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image
+        /// metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and
+        /// PodSecurityContext, the value specified in SecurityContext takes precedence.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runAsUser")]
         public virtual System.Nullable<int> RunAsUser { get; set; }
-
-        /// <summary>
-        /// The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a
-        /// random SELinux context for each container. May also be set in PodSecurityContext. If set in both
-        /// SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seLinuxOptions")]
-        public virtual SELinuxOptions SeLinuxOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>TCPSocketAction describes an action based on opening a socket</summary>
+    /// <summary>Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket</summary>
     public class TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional: Host name to connect to, defaults to the pod IP. +optional</summary>
+        /// <summary>(Optional) Optional: Host name to connect to, defaults to the pod IP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
         /// <summary>
         /// Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be
-        /// an IANA_SVC_NAME.
+        /// an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to
+        /// properly support the IntOrString golang type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
-        public virtual IntOrString Port { get; set; }
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Volume represents a named volume in a container.</summary>
+    /// <summary>Not supported by Cloud Run Volume represents a named volume in a container.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
@@ -2159,48 +1897,24 @@ namespace Google.Apis.CloudRun.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>volumeDevice describes a mapping of a raw block device within a container.</summary>
-    public class VolumeDevice : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>devicePath is the path inside of the container that the device will be mapped to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
-        public virtual string DevicePath { get; set; }
-
-        /// <summary>name must match the name of a persistentVolumeClaim in the pod</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>VolumeMount describes a mounting of a Volume within a container.</summary>
+    /// <summary>Not supported by Cloud Run VolumeMount describes a mounting of a Volume within a container.</summary>
     public class VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Path within the container at which the volume should be mounted. Must not contain ':'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; }
 
-        /// <summary>
-        /// mountPropagation determines how mounts are propagated from the host to container and the other way around.
-        /// When not set, MountPropagationHostToContainer is used. This field is beta in 1.10. +optional
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mountPropagation")]
-        public virtual string MountPropagation { get; set; }
-
         /// <summary>This must match the Name of a Volume.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false. +optional
-        /// </summary>
+        /// <summary>(Optional) Only true is accepted. Defaults to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
         /// <summary>
-        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-        /// +optional
+        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to ""
+        /// (volume's root).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
