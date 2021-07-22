@@ -1284,11 +1284,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum ViewEnum
             {
-                /// <summary></summary>
+                /// <summary>Default. View is populated with Merchant Center fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("MERCHANT")]
                 MERCHANT = 0,
 
-                /// <summary></summary>
+                /// <summary>View is populated with Comparison Shopping Services fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("CSS")]
                 CSS = 1,
             }
@@ -1513,11 +1513,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum ViewEnum
             {
-                /// <summary></summary>
+                /// <summary>Default. View is populated with Merchant Center fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("MERCHANT")]
                 MERCHANT = 0,
 
-                /// <summary></summary>
+                /// <summary>View is populated with Comparison Shopping Services fields.</summary>
                 [Google.Apis.Util.StringValueAttribute("CSS")]
                 CSS = 1,
             }
@@ -5719,11 +5719,11 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>Return the results in the specified order.</summary>
             public enum OrderByEnum
             {
-                /// <summary></summary>
+                /// <summary>Return results in descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("RETURN_CREATION_TIME_DESC")]
                 RETURNCREATIONTIMEDESC = 0,
 
-                /// <summary></summary>
+                /// <summary>Return results in ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("RETURN_CREATION_TIME_ASC")]
                 RETURNCREATIONTIMEASC = 1,
             }
@@ -5745,23 +5745,23 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum ShipmentStatesEnum
             {
-                /// <summary></summary>
+                /// <summary>Return shipments with `new` state only.</summary>
                 [Google.Apis.Util.StringValueAttribute("NEW")]
                 NEW__ = 0,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `shipped` state only.</summary>
                 [Google.Apis.Util.StringValueAttribute("SHIPPED")]
                 SHIPPED = 1,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `completed` state only.</summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
                 COMPLETED = 2,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `undeliverable` state only.</summary>
                 [Google.Apis.Util.StringValueAttribute("UNDELIVERABLE")]
                 UNDELIVERABLE = 3,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `pending` state only.</summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING")]
                 PENDING = 4,
             }
@@ -5779,15 +5779,15 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum ShipmentStatusEnum
             {
-                /// <summary></summary>
+                /// <summary>Return shipments with `new` status only.</summary>
                 [Google.Apis.Util.StringValueAttribute("NEW")]
                 NEW__ = 0,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `inProgress` status only.</summary>
                 [Google.Apis.Util.StringValueAttribute("IN_PROGRESS")]
                 INPROGRESS = 1,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with `processed` status only.</summary>
                 [Google.Apis.Util.StringValueAttribute("PROCESSED")]
                 PROCESSED = 2,
             }
@@ -5815,15 +5815,15 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum ShipmentTypesEnum
             {
-                /// <summary></summary>
+                /// <summary>Return shipments with type `byMail` only.</summary>
                 [Google.Apis.Util.StringValueAttribute("BY_MAIL")]
                 BYMAIL = 0,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with type `returnless` only.</summary>
                 [Google.Apis.Util.StringValueAttribute("RETURNLESS")]
                 RETURNLESS = 1,
 
-                /// <summary></summary>
+                /// <summary>Return shipments with type `contactCustomerSupport` only.</summary>
                 [Google.Apis.Util.StringValueAttribute("CONTACT_CUSTOMER_SUPPORT")]
                 CONTACTCUSTOMERSUPPORT = 2,
             }
@@ -6647,27 +6647,27 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// <summary>The name of the template to retrieve.</summary>
             public enum TemplateNameEnum
             {
-                /// <summary></summary>
+                /// <summary>Get `template1`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1")]
                 TEMPLATE1 = 0,
 
-                /// <summary></summary>
+                /// <summary>Get `template2`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE2")]
                 TEMPLATE2 = 1,
 
-                /// <summary></summary>
+                /// <summary>Get `template1A`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1A")]
                 TEMPLATE1A = 2,
 
-                /// <summary></summary>
+                /// <summary>Get `template1B`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE1B")]
                 TEMPLATE1B = 3,
 
-                /// <summary></summary>
+                /// <summary>Get `template3`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE3")]
                 TEMPLATE3 = 4,
 
-                /// <summary></summary>
+                /// <summary>Get `template4`.</summary>
                 [Google.Apis.Util.StringValueAttribute("TEMPLATE4")]
                 TEMPLATE4 = 5,
             }
@@ -6872,47 +6872,53 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             public enum StatusesEnum
             {
-                /// <summary></summary>
+                /// <summary>
+                /// Return orders with status `active`. The `active` status includes `pendingShipment` and
+                /// `partiallyShipped` orders.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("ACTIVE")]
                 ACTIVE = 0,
 
-                /// <summary></summary>
+                /// <summary>
+                /// Return orders with status `completed`. The `completed` status includes `shipped`,
+                /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled` orders.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("COMPLETED")]
                 COMPLETED = 1,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `canceled`.</summary>
                 [Google.Apis.Util.StringValueAttribute("CANCELED")]
                 CANCELED = 2,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `inProgress`.</summary>
                 [Google.Apis.Util.StringValueAttribute("IN_PROGRESS")]
                 INPROGRESS = 3,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `pendingShipment`.</summary>
                 [Google.Apis.Util.StringValueAttribute("PENDING_SHIPMENT")]
                 PENDINGSHIPMENT = 4,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `partiallyShipped`.</summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_SHIPPED")]
                 PARTIALLYSHIPPED = 5,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `shipped`.</summary>
                 [Google.Apis.Util.StringValueAttribute("SHIPPED")]
                 SHIPPED = 6,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `partiallyDelivered`.</summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_DELIVERED")]
                 PARTIALLYDELIVERED = 7,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `delivered`.</summary>
                 [Google.Apis.Util.StringValueAttribute("DELIVERED")]
                 DELIVERED = 8,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `partiallyReturned`.</summary>
                 [Google.Apis.Util.StringValueAttribute("PARTIALLY_RETURNED")]
                 PARTIALLYRETURNED = 9,
 
-                /// <summary></summary>
+                /// <summary>Return orders with status `returned`.</summary>
                 [Google.Apis.Util.StringValueAttribute("RETURNED")]
                 RETURNED = 10,
             }
@@ -8251,7 +8257,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
-            /// <summary>The Content API Supplemental Feed ID.</summary>
+            /// <summary>
+            /// The Content API Supplemental Feed ID. If present then product deletion applies to the data in a
+            /// supplemental feed. If absent, entire product will be deleted.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("feedId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> FeedId { get; set; }
 
@@ -8391,7 +8400,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The Content API Supplemental Feed ID.</summary>
+            /// <summary>
+            /// The Content API Supplemental Feed ID. If present then product insertion applies to the data in a
+            /// supplemental feed.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("feedId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ulong> FeedId { get; set; }
 
@@ -11785,7 +11797,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     /// </summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How the account is managed. Acceptable values are: - "`manual`" - "`automatic`" </summary>
+        /// <summary>
+        /// Output only. How the account is managed. Acceptable values are: - "`manual`" - "`automatic`"
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountManagement")]
         public virtual string AccountManagement { get; set; }
 
@@ -11824,7 +11838,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#account`"</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#account`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -12243,7 +12257,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; }
 
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#accountTax".</summary>
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "`content#accountTax`".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -12350,7 +12364,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<AccountIdentifier> AccountIdentifiers { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsAuthInfoResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsAuthInfoResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12362,7 +12376,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountsClaimWebsiteResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsClaimWebsiteResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsClaimWebsiteResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12474,7 +12488,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<AccountsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12550,7 +12564,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountsLinkResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsLinkResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12562,7 +12576,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountsListLinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsListLinksResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsListLinksResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12582,7 +12596,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12611,7 +12625,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountsUpdateLabelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountsUpdateLabelsResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12668,7 +12682,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#accountstatusesCustomBatchResponse".
+        /// "`content#accountstatusesCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12699,7 +12713,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccountstatusesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accountstatusesListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12759,7 +12773,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<AccounttaxCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accounttaxCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -12797,7 +12811,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AccounttaxListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#accounttaxListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -13544,7 +13558,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<DatafeedsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#datafeedsCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -13575,7 +13589,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class DatafeedsFetchNowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#datafeedsFetchNowResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -13587,7 +13601,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class DatafeedsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#datafeedsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -13658,7 +13672,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#datafeedstatusesCustomBatchResponse".
+        /// "`content#datafeedstatusesCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -13689,7 +13703,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class DatafeedstatusesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#datafeedstatusesListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#datafeedstatusesListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14353,7 +14367,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<LiasettingsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#liasettingsCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#liasettingsCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14407,7 +14422,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsGetAccessibleGmbAccountsResponse".
+        /// "`content#liasettingsGetAccessibleGmbAccountsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14420,7 +14435,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsListPosDataProvidersResponse".
+        /// "`content#liasettingsListPosDataProvidersResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14436,7 +14451,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class LiasettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#liasettingsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14456,7 +14471,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsRequestGmbAccessResponse".
+        /// "`content#liasettingsRequestGmbAccessResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14469,7 +14484,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsRequestInventoryVerificationResponse".
+        /// "`content#liasettingsRequestInventoryVerificationResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14482,7 +14497,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsSetInventoryVerificationContactResponse".
+        /// "`content#liasettingsSetInventoryVerificationContactResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14495,7 +14510,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#liasettingsSetPosDataProviderResponse".
+        /// "`content#liasettingsSetPosDataProviderResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -14804,7 +14819,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#localinventoryCustomBatchResponse".
+        /// "`content#localinventoryCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16431,7 +16446,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#orderinvoicesCreateChargeInvoiceResponse".
+        /// "`content#orderinvoicesCreateChargeInvoiceResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16480,7 +16495,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#orderinvoicesCreateRefundInvoiceResponse".
+        /// "`content#orderinvoicesCreateRefundInvoiceResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16545,7 +16560,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#orderreportsListDisbursementsResponse".
+        /// "`content#orderreportsListDisbursementsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16562,7 +16577,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#orderreportsListTransactionsResponse".
+        /// "`content#orderreportsListTransactionsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16598,7 +16613,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#orderreturnsAcknowledgeResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#orderreturnsAcknowledgeResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16637,7 +16653,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#orderreturnsCreateOrderReturnResponse".
+        /// "`content#orderreturnsCreateOrderReturnResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16677,7 +16693,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrderreturnsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#orderreturnsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#orderreturnsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16740,7 +16756,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#orderreturnsProcessResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#orderreturnsProcessResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16833,7 +16849,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersAcknowledgeResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersAcknowledgeResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16845,7 +16861,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersAdvanceTestOrderResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersAdvanceTestOrderResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#ordersAdvanceTestOrderResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16898,7 +16915,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersCancelLineItemResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersCancelLineItemResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16936,7 +16953,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersCancelResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersCancelResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -16962,7 +16979,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersCancelTestOrderByCustomerResponse".
+        /// "`content#ordersCancelTestOrderByCustomerResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17000,7 +17017,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersCreateTestOrderResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersCreateTestOrderResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersCreateTestOrderResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17026,7 +17043,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersCreateTestReturnResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersCreateTestReturnResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#ordersCreateTestReturnResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17154,7 +17172,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersGetByMerchantOrderIdResponse".
+        /// "`content#ordersGetByMerchantOrderIdResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17171,7 +17189,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersGetTestOrderTemplateResponse".
+        /// "`content#ordersGetTestOrderTemplateResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17241,7 +17259,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersInStoreRefundLineItemResponse".
+        /// "`content#ordersInStoreRefundLineItemResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17253,7 +17271,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class OrdersListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17309,7 +17327,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersRefundItemResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersRefundItemResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17357,7 +17375,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersRefundOrderResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersRefundOrderResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17410,7 +17428,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersRejectReturnLineItemResponse".
+        /// "`content#ordersRejectReturnLineItemResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17480,7 +17498,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersReturnRefundLineItemResponse".
+        /// "`content#ordersReturnRefundLineItemResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17521,7 +17539,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersSetLineItemMetadataResponse".
+        /// "`content#ordersSetLineItemMetadataResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17562,7 +17580,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersShipLineItemsResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersShipLineItemsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17614,7 +17632,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersUpdateLineItemShippingDetailsResponse".
+        /// "`content#ordersUpdateLineItemShippingDetailsResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17645,7 +17663,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#ordersUpdateMerchantOrderIdResponse".
+        /// "`content#ordersUpdateMerchantOrderIdResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17725,7 +17743,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ExecutionStatus { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#ordersUpdateShipmentResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#ordersUpdateShipmentResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -17848,7 +17866,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<PosCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#posCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -18025,7 +18043,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ItemId { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#posInventoryResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#posInventoryResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -18060,7 +18078,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class PosListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#posListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#posListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -18182,7 +18200,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ItemId { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#posSaleResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#posSaleResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19069,7 +19087,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; }
 
-        /// <summary>The Content API feed id.</summary>
+        /// <summary>
+        /// The Content API Supplemental Feed ID. If present then product insertion or deletion applies to a
+        /// supplemental feed instead of primary Content API feed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feedId")]
         public virtual System.Nullable<ulong> FeedId { get; set; }
 
@@ -19111,7 +19132,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<ProductsCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#productsCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#productsCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19151,7 +19172,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ProductsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#productsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#productsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19218,7 +19239,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#productstatusesCustomBatchResponse".
+        /// "`content#productstatusesCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19256,7 +19277,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ProductstatusesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#productstatusesListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19482,7 +19503,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<CustomAttribute> CustomAttributes { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#regionalInventory".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#regionalInventory`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19555,7 +19576,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#regionalinventoryCustomBatchResponse".
+        /// "`content#regionalinventoryCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -19577,7 +19598,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#regionalinventoryCustomBatchResponseEntry".
+        /// "`content#regionalinventoryCustomBatchResponseEntry`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -20471,7 +20492,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#returnaddressCustomBatchResponse".
+        /// "`content#returnaddressCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -20508,7 +20529,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ReturnaddressListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#returnaddressListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#returnaddressListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -20569,7 +20590,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<ReturnpolicyCustomBatchResponseEntry> Entries { get; set; }
 
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#returnpolicyCustomBatchResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string
+        /// "`content#returnpolicyCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -20606,7 +20628,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ReturnpolicyListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#returnpolicyListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#returnpolicyListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21046,7 +21068,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class SettlementreportsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#settlementreportsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#settlementreportsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21066,7 +21088,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#settlementtransactionsListResponse".
+        /// "`content#settlementtransactionsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21222,7 +21244,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#shippingsettingsCustomBatchResponse".
+        /// "`content#shippingsettingsCustomBatchResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21265,7 +21287,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#shippingsettingsGetSupportedCarriersResponse".
+        /// "`content#shippingsettingsGetSupportedCarriersResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21282,7 +21304,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#shippingsettingsGetSupportedHolidaysResponse".
+        /// "`content#shippingsettingsGetSupportedHolidaysResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21295,7 +21317,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     {
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "content#shippingsettingsGetSupportedPickupServicesResponse".
+        /// "`content#shippingsettingsGetSupportedPickupServicesResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -21311,7 +21333,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class ShippingsettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "content#shippingsettingsListResponse".
+        /// Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsListResponse`".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }

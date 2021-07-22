@@ -8151,7 +8151,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>
-        /// Maximum number of nodes in the NodePool. Must be &amp;gt;= min_node_count. There has to enough quota to
+        /// Maximum number of nodes in the NodePool. Must be &amp;gt;= min_node_count. There has to be enough quota to
         /// scale up the cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxNodeCount")]

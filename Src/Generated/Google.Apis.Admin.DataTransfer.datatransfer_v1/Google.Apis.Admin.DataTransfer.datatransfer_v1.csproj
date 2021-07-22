@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Admin.DataTransfer.datatransfer_v1 Client Library</Title>
-    <Version>1.52.0.2238</Version>
+    <Version>1.52.0.2392</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

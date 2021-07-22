@@ -7363,7 +7363,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Required. Immutable. The type for the custom metric's value.</summary>
+        /// <summary>Required. The type for the custom metric's value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementUnit")]
         public virtual string MeasurementUnit { get; set; }
 

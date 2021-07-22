@@ -938,7 +938,9 @@ namespace Google.Apis.PeopleService.v1
         /// is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the
         /// `sync_token` is specified, resources deleted since the last sync will be returned as a person with
         /// `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request
-        /// parameters must match the first call. See example usage at [List the user's other contacts that have
+        /// parameters must match the first call. Writes may have a propagation delay of several minutes for sync
+        /// requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the
+        /// user's other contacts that have
         /// changed](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed).
         /// </summary>
         public virtual ListRequest List()
@@ -954,7 +956,9 @@ namespace Google.Apis.PeopleService.v1
         /// is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the
         /// `sync_token` is specified, resources deleted since the last sync will be returned as a person with
         /// `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request
-        /// parameters must match the first call. See example usage at [List the user's other contacts that have
+        /// parameters must match the first call. Writes may have a propagation delay of several minutes for sync
+        /// requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the
+        /// user's other contacts that have
         /// changed](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed).
         /// </summary>
         public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListOtherContactsResponse>
@@ -1227,8 +1231,10 @@ namespace Google.Apis.PeopleService.v1
             /// additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can
             /// not be increased. When the `sync_token` is specified, resources deleted since the last sync will be
             /// returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is
-            /// specified, all other request parameters must match the first call. See example usage at [List the user's
-            /// contacts that have changed](/people/v1/contacts#list_the_users_contacts_that_have_changed).
+            /// specified, all other request parameters must match the first call. Writes may have a propagation delay
+            /// of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases.
+            /// See example usage at [List the user's contacts that have
+            /// changed](/people/v1/contacts#list_the_users_contacts_that_have_changed).
             /// </summary>
             /// <param name="resourceName">
             /// Required. The resource name to return connections for. Only `people/me` is valid.
@@ -1245,8 +1251,10 @@ namespace Google.Apis.PeopleService.v1
             /// additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can
             /// not be increased. When the `sync_token` is specified, resources deleted since the last sync will be
             /// returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is
-            /// specified, all other request parameters must match the first call. See example usage at [List the user's
-            /// contacts that have changed](/people/v1/contacts#list_the_users_contacts_that_have_changed).
+            /// specified, all other request parameters must match the first call. Writes may have a propagation delay
+            /// of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases.
+            /// See example usage at [List the user's contacts that have
+            /// changed](/people/v1/contacts#list_the_users_contacts_that_have_changed).
             /// </summary>
             public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
             {
@@ -2116,8 +2124,9 @@ namespace Google.Apis.PeopleService.v1
         /// Provides a list of domain profiles and domain contacts in the authenticated user's domain directory. When
         /// the `sync_token` is specified, resources deleted since the last sync will be returned as a person with
         /// `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request
-        /// parameters must match the first call. See example usage at [List the directory people that have
-        /// changed](/people/v1/directory#list_the_directory_people_that_have_changed).
+        /// parameters must match the first call. Writes may have a propagation delay of several minutes for sync
+        /// requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the
+        /// directory people that have changed](/people/v1/directory#list_the_directory_people_that_have_changed).
         /// </summary>
         public virtual ListDirectoryPeopleRequest ListDirectoryPeople()
         {
@@ -2128,8 +2137,9 @@ namespace Google.Apis.PeopleService.v1
         /// Provides a list of domain profiles and domain contacts in the authenticated user's domain directory. When
         /// the `sync_token` is specified, resources deleted since the last sync will be returned as a person with
         /// `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request
-        /// parameters must match the first call. See example usage at [List the directory people that have
-        /// changed](/people/v1/directory#list_the_directory_people_that_have_changed).
+        /// parameters must match the first call. Writes may have a propagation delay of several minutes for sync
+        /// requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the
+        /// directory people that have changed](/people/v1/directory#list_the_directory_people_that_have_changed).
         /// </summary>
         public class ListDirectoryPeopleRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListDirectoryPeopleResponse>
         {
@@ -3462,13 +3472,17 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>Metadata about a field.</summary>
     public class FieldMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the field is the primary field; false if the field is a secondary field.</summary>
+        /// <summary>True if the field is the primary field for the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]
         public virtual System.Nullable<bool> Primary { get; set; }
 
         /// <summary>The source of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
+
+        /// <summary>True if the field is the primary field for the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourcePrimary")]
+        public virtual System.Nullable<bool> SourcePrimary { get; set; }
 
         /// <summary>
         /// Output only. True if the field is verified; false if the field is unverified. A verified field is typically

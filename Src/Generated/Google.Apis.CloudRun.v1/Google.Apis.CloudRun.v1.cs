@@ -467,7 +467,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -488,7 +488,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -862,7 +862,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -883,7 +883,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -1183,7 +1183,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -1204,7 +1204,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -1398,7 +1398,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -1419,7 +1419,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -1799,7 +1799,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional encoded string to continue paging.</summary>
+                /// <summary>Optional. Encoded string to continue paging.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Continue { get; set; }
 
@@ -1820,7 +1820,7 @@ namespace Google.Apis.CloudRun.v1
                 [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LabelSelector { get; set; }
 
-                /// <summary>The maximum number of records that should be returned.</summary>
+                /// <summary>Optional. The maximum number of records that should be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> Limit { get; set; }
 
@@ -2310,7 +2310,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -2332,7 +2332,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -2706,7 +2706,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -2728,7 +2728,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -3028,7 +3028,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -3050,7 +3050,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -3244,7 +3244,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -3266,7 +3266,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -3722,7 +3722,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional encoded string to continue paging.</summary>
+                    /// <summary>Optional. Encoded string to continue paging.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("continue", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Continue { get; set; }
 
@@ -3744,7 +3744,7 @@ namespace Google.Apis.CloudRun.v1
                     [Google.Apis.Util.RequestParameterAttribute("labelSelector", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LabelSelector { get; set; }
 
-                    /// <summary>The maximum number of records that should be returned.</summary>
+                    /// <summary>Optional. The maximum number of records that should be returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -4691,8 +4691,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Collections.Generic.IList<ResourceRecord> ResourceRecords { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic
-        /// of the DomainMapping. +optional
+        /// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve
+        /// the traffic of the DomainMapping.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
@@ -5582,7 +5582,7 @@ namespace Google.Apis.CloudRun.v1.Data
     public class RevisionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container
+        /// Optional. ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container
         /// instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos:
         /// supported, defaults to 0, which means concurrency to the application is not limited, and the system decides
         /// the target concurrency for the autoscaler.
@@ -5645,8 +5645,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ImageDigest { get; set; }
 
         /// <summary>
-        /// Specifies the generated logging url for this particular revision based on the revision url template
-        /// specified in the controller's config. +optional
+        /// Optional. Specifies the generated logging url for this particular revision based on the revision url
+        /// template specified in the controller's config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logUrl")]
         public virtual string LogUrl { get; set; }
@@ -6248,9 +6248,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ConfigurationName { get; set; }
 
         /// <summary>
-        /// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration
+        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration
         /// should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty;
-        /// it must be false when RevisionName is non-empty. +optional
+        /// it must be false when RevisionName is non-empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRevision")]
         public virtual System.Nullable<bool> LatestRevision { get; set; }
@@ -6269,9 +6269,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionName")]
         public virtual string RevisionName { get; set; }
 
-        /// <summary>
-        /// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
-        /// </summary>
+        /// <summary>Optional. Tag is used to expose a dedicated url for referencing this target exclusively.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
 

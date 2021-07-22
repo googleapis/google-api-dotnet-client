@@ -815,6 +815,10 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
+        /// <summary>Output only. Contains information about the build when status=FAILURE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureInfo")]
+        public virtual FailureInfo FailureInfo { get; set; }
+
         /// <summary>
         /// Output only. Time at which execution of the build was finished. The difference between finish_time and
         /// start_time is the duration of the build's execution.
@@ -1231,6 +1235,21 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A fatal problem encountered during the execution of the build.</summary>
+    public class FailureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explains the failure issue in more detail using hard-coded text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>The name of the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of
     /// source input to the build.
@@ -1240,6 +1259,45 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class GoogleDevtoolsCloudbuildV2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1497,6 +1555,45 @@ namespace Google.Apis.CloudBuild.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1095,7 +1095,7 @@ namespace Google.Apis.CloudAsset.v1
         /// destination, the output format is the JSON format that represents a AnalyzeIamPolicyResponse. This method
         /// implements the google.longrunning.Operation, which allows you to track the operation status. We recommend
         /// intervals of at least 2 seconds with exponential backoff retry to poll the operation result. The metadata
-        /// contains the request to help callers to map responses to requests.
+        /// contains the metadata for the long-running operation.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="scope">
@@ -1118,7 +1118,7 @@ namespace Google.Apis.CloudAsset.v1
         /// destination, the output format is the JSON format that represents a AnalyzeIamPolicyResponse. This method
         /// implements the google.longrunning.Operation, which allows you to track the operation status. We recommend
         /// intervals of at least 2 seconds with exponential backoff retry to poll the operation result. The metadata
-        /// contains the request to help callers to map responses to requests.
+        /// contains the metadata for the long-running operation.
         /// </summary>
         public class AnalyzeIamPolicyLongrunningRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.Operation>
         {

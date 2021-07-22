@@ -1440,7 +1440,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
 
     /// <summary>
     /// Describes a Cloud Function that contains user computation executed in response to an event. It encapsulate
-    /// function and triggers configurations.
+    /// function and triggers configurations. Next tag: 35
     /// </summary>
     public class CloudFunction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2046,7 +2046,9 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string Key { get; set; }
 
         /// <summary>
-        /// Project whose secret manager data is being referenced. Cross project secrets are not supported.
+        /// Project identifier (preferrably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it will be populated with the function's project assuming that the secret exists in
+        /// the same project as of the function.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -2106,7 +2108,9 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string MountPath { get; set; }
 
         /// <summary>
-        /// Project whose secret manager data is being referenced. Cross project secrets are not supported.
+        /// Project identifier (preferrably project number but can also be the project ID) of the project that contains
+        /// the secret. If not set, it will be populated with the function's project assuming that the secret exists in
+        /// the same project as of the function.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }

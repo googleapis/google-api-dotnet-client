@@ -523,7 +523,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Delete an ASP issued by a user.</summary>
+        /// <summary>Deletes an ASP issued by a user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -534,7 +534,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new DeleteRequest(service, userKey, codeId);
         }
 
-        /// <summary>Delete an ASP issued by a user.</summary>
+        /// <summary>Deletes an ASP issued by a user.</summary>
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -588,7 +588,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Get information about an ASP issued by a user.</summary>
+        /// <summary>Gets information about an ASP issued by a user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -599,7 +599,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new GetRequest(service, userKey, codeId);
         }
 
-        /// <summary>Get information about an ASP issued by a user.</summary>
+        /// <summary>Gets information about an ASP issued by a user.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Asp>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -653,7 +653,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>List the ASPs issued by a user.</summary>
+        /// <summary>Lists the ASPs issued by a user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -663,7 +663,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new ListRequest(service, userKey);
         }
 
-        /// <summary>List the ASPs issued by a user.</summary>
+        /// <summary>Lists the ASPs issued by a user.</summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Asps>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -719,14 +719,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Stop watching resources through this channel.</summary>
+        /// <summary>Stops watching resources through this channel.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
             return new StopRequest(service, body);
         }
 
-        /// <summary>Stop watching resources through this channel.</summary>
+        /// <summary>Stops watching resources through this channel.</summary>
         public class StopRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -1186,7 +1186,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Move or insert multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once.
+        /// Moves or inserts multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at
+        /// once.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the Google Workspace account</param>
@@ -1197,7 +1198,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Move or insert multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once.
+        /// Moves or inserts multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at
+        /// once.
         /// </summary>
         public class MoveDevicesToOuRequest : DirectoryBaseServiceRequest<string>
         {
@@ -2344,7 +2346,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Patch Customers via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a customer.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerKey">Id of the customer to be updated</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Customer body, string customerKey)
@@ -2352,7 +2354,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customerKey);
         }
 
-        /// <summary>Patch Customers via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a customer.</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Customer>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3274,13 +3276,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieve all groups of a domain or of a user given a userKey (paginated)</summary>
+        /// <summary>Retrieves all groups of a domain or of a user given a userKey (paginated).</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Retrieve all groups of a domain or of a user given a userKey (paginated)</summary>
+        /// <summary>Retrieves all groups of a domain or of a user given a userKey (paginated).</summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Groups>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5415,7 +5417,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
             }
 
-            /// <summary>Patches a building via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a building.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
@@ -5427,7 +5429,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, buildingId);
             }
 
-            /// <summary>Patches a building via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a building.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -5943,7 +5945,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
             }
 
-            /// <summary>Patches a calendar resource via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a calendar resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
@@ -5955,7 +5957,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, calendarResourceId);
             }
 
-            /// <summary>Patches a calendar resource via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a calendar resource.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6377,7 +6379,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
             }
 
-            /// <summary>Patches a feature via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a feature.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">
             /// The unique ID for the customer's Google Workspace account. As an account administrator, you can also use
@@ -6389,7 +6391,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, featureKey);
             }
 
-            /// <summary>Patches a feature via Apiary Patch Orchestration.</summary>
+            /// <summary>Patches a feature.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -6671,7 +6673,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieve a role assignment.</summary>
+        /// <summary>Retrieves a role assignment.</summary>
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         /// <param name="roleAssignmentId">Immutable ID of the role assignment.</param>
         public virtual GetRequest Get(string customer, string roleAssignmentId)
@@ -6679,7 +6681,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new GetRequest(service, customer, roleAssignmentId);
         }
 
-        /// <summary>Retrieve a role assignment.</summary>
+        /// <summary>Retrieves a role assignment.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.RoleAssignment>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7137,7 +7139,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Patch role via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a role.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customer">Immutable ID of the Google Workspace account.</param>
         /// <param name="roleId">Immutable ID of the role.</param>
@@ -7146,7 +7148,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customer, roleId);
         }
 
-        /// <summary>Patch role via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a role.</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Role>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -7286,7 +7288,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Delete schema</summary>
+        /// <summary>Deletes a schema.</summary>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual DeleteRequest Delete(string customerId, string schemaKey)
@@ -7294,7 +7296,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new DeleteRequest(service, customerId, schemaKey);
         }
 
-        /// <summary>Delete schema</summary>
+        /// <summary>Deletes a schema.</summary>
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -7345,7 +7347,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieve schema</summary>
+        /// <summary>Retrieves a schema.</summary>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
@@ -7353,7 +7355,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new GetRequest(service, customerId, schemaKey);
         }
 
-        /// <summary>Retrieve schema</summary>
+        /// <summary>Retrieves a schema.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7404,7 +7406,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Create schema.</summary>
+        /// <summary>Creates a schema.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId)
@@ -7412,7 +7414,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new InsertRequest(service, body, customerId);
         }
 
-        /// <summary>Create schema.</summary>
+        /// <summary>Creates a schema.</summary>
         public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -7457,14 +7459,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Retrieve all schemas for a customer</summary>
+        /// <summary>Retrieves all schemas for a customer.</summary>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
         }
 
-        /// <summary>Retrieve all schemas for a customer</summary>
+        /// <summary>Retrieves all schemas for a customer.</summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schemas>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -7502,7 +7504,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Patch Schema via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a schema.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
@@ -7511,7 +7513,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new PatchRequest(service, body, customerId, schemaKey);
         }
 
-        /// <summary>Patch Schema via Apiary Patch Orchestration</summary>
+        /// <summary>Patches a schema.</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -7569,7 +7571,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Update schema</summary>
+        /// <summary>Updates a schema.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the Google Workspace account.</param>
         /// <param name="schemaKey">Name or immutable ID of the schema.</param>
@@ -7578,7 +7580,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new UpdateRequest(service, body, customerId, schemaKey);
         }
 
-        /// <summary>Update schema</summary>
+        /// <summary>Updates a schema.</summary>
         public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Schema>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -7651,7 +7653,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Delete all access tokens issued by a user for an application.</summary>
+        /// <summary>Deletes all access tokens issued by a user for an application.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -7662,7 +7664,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new DeleteRequest(service, userKey, clientId);
         }
 
-        /// <summary>Delete all access tokens issued by a user for an application.</summary>
+        /// <summary>Deletes all access tokens issued by a user for an application.</summary>
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -7716,7 +7718,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Get information about an access token issued by a user.</summary>
+        /// <summary>Gets information about an access token issued by a user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -7727,7 +7729,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new GetRequest(service, userKey, clientId);
         }
 
-        /// <summary>Get information about an access token issued by a user.</summary>
+        /// <summary>Gets information about an access token issued by a user.</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Token>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -7847,7 +7849,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Turn off 2-Step Verification for user.</summary>
+        /// <summary>Turns off 2-Step Verification for user.</summary>
         /// <param name="userKey">
         /// Identifies the user in the API request. The value can be the user's primary email address, alias email
         /// address, or unique user ID.
@@ -7857,7 +7859,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new TurnOffRequest(service, userKey);
         }
 
-        /// <summary>Turn off 2-Step Verification for user.</summary>
+        /// <summary>Turns off 2-Step Verification for user.</summary>
         public class TurnOffRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new TurnOff request.</summary>
@@ -8131,7 +8133,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
             }
 
-            /// <summary>Watch for changes in users list.</summary>
+            /// <summary>Watches for changes in users list.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
@@ -8139,7 +8141,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new WatchRequest(service, body, userKey);
             }
 
-            /// <summary>Watch for changes in users list.</summary>
+            /// <summary>Watches for changes in users list.</summary>
             public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Channel>
             {
                 /// <summary>Constructs a new Watch request.</summary>
@@ -9079,8 +9081,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Sign a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by
-        /// authenticating again.
+        /// Signs a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in
+        /// by authenticating again.
         /// </summary>
         /// <param name="userKey">
         /// Identifies the target user in the API request. The value can be the user's primary email address, alias
@@ -9092,8 +9094,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>
-        /// Sign a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by
-        /// authenticating again.
+        /// Signs a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in
+        /// by authenticating again.
         /// </summary>
         public class SignOutRequest : DirectoryBaseServiceRequest<string>
         {
@@ -9255,14 +9257,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Watch for changes in users list</summary>
+        /// <summary>Watches for changes in users list.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body)
         {
             return new WatchRequest(service, body);
         }
 
-        /// <summary>Watch for changes in users list</summary>
+        /// <summary>Watches for changes in users list.</summary>
         public class WatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>
@@ -9555,14 +9557,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             this.service = service;
         }
 
-        /// <summary>Generate new backup verification codes for the user.</summary>
+        /// <summary>Generates new backup verification codes for the user.</summary>
         /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual GenerateRequest Generate(string userKey)
         {
             return new GenerateRequest(service, userKey);
         }
 
-        /// <summary>Generate new backup verification codes for the user.</summary>
+        /// <summary>Generates new backup verification codes for the user.</summary>
         public class GenerateRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Generate request.</summary>
@@ -9600,14 +9602,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Invalidate the current backup verification codes for the user.</summary>
+        /// <summary>Invalidates the current backup verification codes for the user.</summary>
         /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual InvalidateRequest Invalidate(string userKey)
         {
             return new InvalidateRequest(service, userKey);
         }
 
-        /// <summary>Invalidate the current backup verification codes for the user.</summary>
+        /// <summary>Invalidates the current backup verification codes for the user.</summary>
         public class InvalidateRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Invalidate request.</summary>

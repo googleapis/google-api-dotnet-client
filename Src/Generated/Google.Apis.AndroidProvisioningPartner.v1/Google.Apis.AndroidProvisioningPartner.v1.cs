@@ -2386,6 +2386,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// </summary>
     public class DeviceClaim : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Additional service registered for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalService")]
+        public virtual string AdditionalService { get; set; }
+
         /// <summary>The ID of the Customer that purchased the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
         public virtual System.Nullable<long> OwnerCompanyId { get; set; }

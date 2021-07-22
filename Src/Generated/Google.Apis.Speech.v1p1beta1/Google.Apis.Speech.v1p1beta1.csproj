@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Speech.v1p1beta1 Client Library</Title>
-    <Version>1.52.0.2310</Version>
+    <Version>1.52.0.2386</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

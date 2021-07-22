@@ -1569,7 +1569,7 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentsSha256Hash")]
         public virtual System.Collections.Generic.IList<string> AttachmentsSha256Hash { get; set; }
 
-        /// <summary>The date the malicious email was sent.</summary>
+        /// <summary>The date of the event related to this email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual object Date { get; set; }
 

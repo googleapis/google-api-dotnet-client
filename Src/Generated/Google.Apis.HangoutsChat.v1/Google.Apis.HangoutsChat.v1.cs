@@ -1632,6 +1632,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Parameters that a bot can use to configure how it's response is posted.</summary>
     public class ActionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This response is for Dialog related events and must be accompanied by ResponseType.Dialog</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogAction")]
+        public virtual DialogAction DialogAction { get; set; }
+
         /// <summary>The type of bot response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -1639,6 +1643,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>URL for users to auth or config. (Only for REQUEST_CONFIG response types.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ActionStatus represents status of a request from the bot developer's side. In specific, for each request a bot
+    /// gets, the bot developer will set both fields below in relation to what the response status and message related
+    /// to status should be.
+    /// </summary>
+    public class ActionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
+        public virtual string StatusCode { get; set; }
+
+        /// <summary>
+        /// This message will be the corresponding string to the above status_code. If unset, an appropriate generic
+        /// message based on the status_code will be shown to the user. If this field is set then the message will be
+        /// surfaced to the user for both successes and errors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userFacingMessage")]
+        public virtual string UserFacingMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1819,6 +1846,70 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from
+    /// color representations in various languages over compactness. For example, the fields of this representation can
+    /// be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
+    /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the
+    /// absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020,
+    /// etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided,
+    /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha
+    /// values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static
+    /// java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
+    /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+    /// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float)
+    /// color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator
+    /// = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green /
+    /// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+    /// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); }
+    /// // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor
+    /// red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor
+    /// alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor
+    /// colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red,
+    /// green, blue, alpha; if (![color getRed:&amp;amp;red green:&amp;amp;green blue:&amp;amp;blue
+    /// alpha:&amp;amp;alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result
+    /// setGreen:green]; [result setBlue:blue]; if (alpha &amp;lt;= 0.9999) { [result
+    /// setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): //
+    /// ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+    /// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
+    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+    /// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
+    /// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red,
+    /// green, blue) { var rgbNumber = new Number((red &amp;lt;&amp;lt; 16) | (green &amp;lt;&amp;lt; 8) | blue); var
+    /// hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var
+    /// i = 0; i &amp;lt; missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
+    /// resultBuilder.join(''); }; // ...
+    /// </summary>
+    public class Color : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by
+        /// the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a
+        /// value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent
+        /// color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish
+        /// between a default value and the value being unset. If omitted, this color object is rendered as a solid
+        /// color (as if the alpha value had been explicitly given a value of 1.0).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
+        public virtual System.Nullable<float> Alpha { get; set; }
+
+        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
+        public virtual System.Nullable<float> Blue { get; set; }
+
+        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("green")]
+        public virtual System.Nullable<float> Green { get; set; }
+
+        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("red")]
+        public virtual System.Nullable<float> Red { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Chat events.</summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1876,6 +1967,42 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Wrapper around the card body of the dialog.</summary>
+    public class Dialog : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Body of the dialog, which will be rendered in a modal. NOTE: The following fields within the objects are not
+        /// supported: google.apps.card.v1.Widget.date_time_picker
+        /// google.apps.card.v1.DecoratedText.SwitchControl.on_change_action
+        /// google.apps.card.v1.TextInput.on_change_action google.apps.card.v1.SelectionInput.on_change_action
+        /// google.apps.card.v1.DateTimePicker.on_change_action Setting the fields above will have no effect on the
+        /// dialog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual GoogleAppsCardV1Card Body { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains dialog if present as well as the ActionStatus for the request sent from user.</summary>
+    public class DialogAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Status for either invoke dialog or submit dialog requests. This will be used to display a status and message
+        /// to user if needed. For example in case of an error or success.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionStatus")]
+        public virtual ActionStatus ActionStatus { get; set; }
+
+        /// <summary>Dialog for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialog")]
+        public virtual Dialog Dialog { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A reference to the data of a drive attachment.</summary>
     public class DriveDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1916,6 +2043,823 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>List of action parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<ActionParameter> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An action that describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
+    /// handle the form.
+    /// </summary>
+    public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("function")]
+        public virtual string Function { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
+        public virtual string LoadIndicator { get; set; }
+
+        /// <summary>List of action parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1ActionParameter> Parameters { get; set; }
+
+        /// <summary>
+        /// Indicates whether form values persist after the action. The default value is `false`. If `true`, form values
+        /// remain after the action is triggered. When using
+        /// [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator) for actions,
+        /// `persist_values` = `true`is recommended, as it ensures that any changes made by the user after form or on
+        /// change actions are sent to the server are not overwritten by the response. If `false`, the form values are
+        /// cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly recommended
+        /// that the card use [LoadIndicator.SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
+        /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
+        /// processed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
+        public virtual System.Nullable<bool> PersistValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
+    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
+    /// type and snooze time in the list of string parameters.
+    /// </summary>
+    public class GoogleAppsCardV1ActionParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the parameter for the action script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value of the parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the complete border style applied to widgets.</summary>
+    public class GoogleAppsCardV1BorderStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The corner radius for the border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
+        public virtual System.Nullable<int> CornerRadius { get; set; }
+
+        /// <summary>The colors to use when the type is `BORDER_TYPE_STROKE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
+        public virtual Color StrokeColor { get; set; }
+
+        /// <summary>The border type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A button. Can be a text button or an image button.</summary>
+    public class GoogleAppsCardV1Button : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The alternative text used for accessibility. Has no effect when an icon is set; use `icon.alt_text` instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>If set, the button is filled with a solid background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; }
+
+        /// <summary>If true, the button is displayed in a disabled state and doesn't respond to user actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The icon image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleAppsCardV1Icon Icon { get; set; }
+
+        /// <summary>The action to perform when the button is clicked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The text of the button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of buttons layed out horizontally.</summary>
+    public class GoogleAppsCardV1ButtonList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Button> Buttons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
+    /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
+    /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
+    /// "Heba Salam", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
+    /// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba Salam" }, "sections" : [ { "header":
+    /// "Contact Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
+    /// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, {
+    /// "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
+    /// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
+    /// "textButton": { "text": "Edit", }, "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
+    /// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
+    /// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
+    /// { "url": "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
+    /// </summary>
+    public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The actions of this card. They are added to a card's generated toolbar menu. For example, the following JSON
+        /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
+        /// "actionLabel": "Setting", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
+        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
+        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
+
+        /// <summary>The display style for peekCardHeader.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
+        public virtual string DisplayStyle { get; set; }
+
+        /// <summary>The fixed footer shown at the bottom of this card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
+        public virtual GoogleAppsCardV1CardFixedFooter FixedFooter { get; set; }
+
+        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual GoogleAppsCardV1CardHeader Header { get; set; }
+
+        /// <summary>Name of the card, which is used as a identifier for the card in card navigation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate
+        /// forward between the homepage cards and the contextual cards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
+        public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
+
+        /// <summary>Sections are separated by a line divider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Section> Sections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A card action is the action associated with the card. For example, an invoice card might include actions such as
+    /// delete invoice, email invoice, or open the invoice in a browser.
+    /// </summary>
+    public class GoogleAppsCardV1CardAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label that displays as the action menu item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
+        public virtual string ActionLabel { get; set; }
+
+        /// <summary>The onclick action for this action item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A persistent (sticky) footer that is added to the bottom of the card.</summary>
+    public class GoogleAppsCardV1CardFixedFooter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The primary button of the fixed footer. The button must be a text button with text and color set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryButton")]
+        public virtual GoogleAppsCardV1Button PrimaryButton { get; set; }
+
+        /// <summary>
+        /// The secondary button of the fixed footer. The button must be a text button with text and color set.
+        /// `primaryButton` must be set if `secondaryButton` is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryButton")]
+        public virtual GoogleAppsCardV1Button SecondaryButton { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1CardHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternative text of this image which is used for accessibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
+        public virtual string ImageAltText { get; set; }
+
+        /// <summary>The image's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; }
+
+        /// <summary>The URL of the image in the card header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
+        /// <summary>The subtitle of the card header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; }
+
+        /// <summary>
+        /// The title of the card header. The title must be specified. The header has a fixed height: if both a title
+        /// and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The widget that lets users to specify a date and time.</summary>
+    public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label for the field that displays to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input that's used in formInput, and uniquely identifies this input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Triggered when the user clicks Save or Clear from the date/time picker dialog. This is only triggered if the
+        /// value changed as a result of the Save/Clear operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
+
+        /// <summary>
+        /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
+        /// in the specified time zone. If not set, it uses the user's time zone setting on the client side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
+        public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
+
+        /// <summary>The type of the date/time picker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The value to display as the default value before user input or previous user input. It is represented in
+        /// milliseconds (Epoch time). For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY` type,
+        /// only date of the epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used. For example,
+        /// you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
+        public virtual System.Nullable<long> ValueMsEpoch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that displays text with optional decorations such as a label above or below the text, an icon in front
+    /// of the text, a selection widget or a button after the text.
+    /// </summary>
+    public class GoogleAppsCardV1DecoratedText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The formatted text label that shows below the main text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
+        public virtual string BottomLabel { get; set; }
+
+        /// <summary>A button that can be clicked to trigger an action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("button")]
+        public virtual GoogleAppsCardV1Button Button { get; set; }
+
+        /// <summary>An icon displayed after the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
+        public virtual GoogleAppsCardV1Icon EndIcon { get; set; }
+
+        /// <summary>Deprecated in favor of start_icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
+        public virtual GoogleAppsCardV1Icon Icon { get; set; }
+
+        /// <summary>Only the top and bottom label and content region are clickable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The icon displayed in front of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
+        public virtual GoogleAppsCardV1Icon StartIcon { get; set; }
+
+        /// <summary>A switch widget can be clicked to change its state or trigger an action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
+        public virtual GoogleAppsCardV1SwitchControl SwitchControl { get; set; }
+
+        /// <summary>Required. The main widget formatted text. See Text formatting for details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The formatted text label that shows above the main text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
+        public virtual string TopLabel { get; set; }
+
+        /// <summary>
+        /// The wrap text setting. If `true`, the text is wrapped and displayed in multiline. Otherwise, the text is
+        /// truncated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wrapText")]
+        public virtual System.Nullable<bool> WrapText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A divider that appears in between widgets.</summary>
+    public class GoogleAppsCardV1Divider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
+    public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The border style to apply to each grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
+        public virtual GoogleAppsCardV1BorderStyle BorderStyle { get; set; }
+
+        /// <summary>
+        /// The number of columns to display in the grid. A default value is used if this field isn't specified, and
+        /// that default value is different depending on where the grid is shown (dialog versus companion).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
+        public virtual System.Nullable<int> ColumnCount { get; set; }
+
+        /// <summary>The items to display in the grid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1GridItem> Items { get; set; }
+
+        /// <summary>
+        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
+        /// list added to the callback's parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The text that displays in the grid header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single item in the grid layout.</summary>
+    public class GoogleAppsCardV1GridItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A user-specified identifier for this grid item. This identifier is returned in the parent Grid's onClick
+        /// callback parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The image that displays in the grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleAppsCardV1ImageComponent Image { get; set; }
+
+        /// <summary>The layout to use for the grid item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
+        public virtual string Layout { get; set; }
+
+        /// <summary>The grid item's subtitle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; }
+
+        /// <summary>The horizontal alignment of the grid item's text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
+        public virtual string TextAlignment { get; set; }
+
+        /// <summary>The grid item's title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1Icon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The description of the icon, used for accessibility. The default value is provided if you don't specify one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>The icon specified by a URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>
+        /// The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn
+        /// larger than a standard icon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; }
+
+        /// <summary>The icon specified by the string name of a list of known icons</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
+        public virtual string KnownIcon { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An image that is specified by a URL and can have an onClick action.</summary>
+    public class GoogleAppsCardV1Image : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alternative text of this image, used for accessibility.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>An image URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual string ImageUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
+        public virtual GoogleAppsCardV1OnClick OnClick { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1ImageComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accessibility label for the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
+        public virtual string AltText { get; set; }
+
+        /// <summary>The border style to apply to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
+        public virtual GoogleAppsCardV1BorderStyle BorderStyle { get; set; }
+
+        /// <summary>The crop style to apply to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cropStyle")]
+        public virtual GoogleAppsCardV1ImageCropStyle CropStyle { get; set; }
+
+        /// <summary>The image URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the crop style applied to an image.</summary>
+    public class GoogleAppsCardV1ImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
+        public virtual System.Nullable<double> AspectRatio { get; set; }
+
+        /// <summary>The crop type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1OnClick : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If specified, an action is triggered by this onClick.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual GoogleAppsCardV1Action Action { get; set; }
+
+        /// <summary>A new card is pushed to the card stack after clicking if specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("card")]
+        public virtual GoogleAppsCardV1Card Card { get; set; }
+
+        /// <summary>
+        /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
+        /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
+        /// to do before the open link action response comes back.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
+        public virtual GoogleAppsCardV1Action OpenDynamicLinkAction { get; set; }
+
+        /// <summary>If specified, this onClick triggers an open link action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
+        public virtual GoogleAppsCardV1OpenLink OpenLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1OpenLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
+        public virtual string OnClose { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
+        public virtual string OpenAs { get; set; }
+
+        /// <summary>The URL to open.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A section contains a collection of widgets that are rendered vertically in the order that they are specified.
+    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties, for
+    /// example, float.
+    /// </summary>
+    public class GoogleAppsCardV1Section : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether this section is collapsible. If a section is collapsible, the description must be given.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsible")]
+        public virtual System.Nullable<bool> Collapsible { get; set; }
+
+        /// <summary>The header of the section. Formatted text is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual string Header { get; set; }
+
+        /// <summary>
+        /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
+        /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always shown and the last three are
+        /// collapsed as default. The `numUncollapsibleWidget` is taken into account only when collapsible is set to
+        /// `true`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
+        public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
+
+        /// <summary>A section must contain at least 1 widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Widget> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A widget that creates a UI item (for example, a drop-down list) with options for users to select.
+    /// </summary>
+    public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1SelectionItem> Items { get; set; }
+
+        /// <summary>The label displayed ahead of the switch control.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input which is used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
+        /// separate button.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The item in the switch control. A radio button, at most one of the items is selected.</summary>
+    public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first selected item is treated as
+        /// selected and the ones after are ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
+        public virtual System.Nullable<bool> Selected { get; set; }
+
+        /// <summary>The text to be displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The value associated with this item. The client should use this as a form input value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A suggestion item. Only supports text for now.</summary>
+    public class GoogleAppsCardV1SuggestionItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A container wrapping elements necessary for showing suggestion items used in text input autocomplete.
+    /// </summary>
+    public class GoogleAppsCardV1Suggestions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of suggestions items which will be used in are used in autocomplete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1SuggestionItem> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleAppsCardV1SwitchControl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The control type, either switch or checkbox.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
+        public virtual string ControlType { get; set; }
+
+        /// <summary>The name of the switch widget that's used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The action when the switch state is changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
+
+        /// <summary>If the switch is selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
+        public virtual System.Nullable<bool> Selected { get; set; }
+
+        /// <summary>The value is what is passed back in the callback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A text input is a UI item where users can input text. A text input can also have an onChange action and
+    /// suggestions.
+    /// </summary>
+    public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The refresh function that returns suggestions based on the user's input text. If the callback is not
+        /// specified, autocomplete is done in client side based on the initial suggestion items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
+        public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }
+
+        /// <summary>The hint text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
+        public virtual string HintText { get; set; }
+
+        /// <summary>The initial suggestions made before any user input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
+        public virtual GoogleAppsCardV1Suggestions InitialSuggestions { get; set; }
+
+        /// <summary>At least one of label and hintText must be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The name of the text input which is used in formInput.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The onChange action, for example, invoke a function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
+        public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
+
+        /// <summary>The style of the text, for example, a single line or multiple lines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The default value when there is no input from the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A paragraph of text that supports formatting. See [Text
+    /// formatting](workspace/add-ons/concepts/widgets#text_formatting") for details.
+    /// </summary>
+    public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text that's shown in the widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
+    public class GoogleAppsCardV1Widget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of buttons. For example, the following JSON creates two buttons. The first is a filled text button
+        /// and the second is an image button that opens a link: ``` "buttonList": { "buttons": [ "button": { "text":
+        /// "Edit", "Color": { "Red": 255 "Green": 255 "Blue": 255 } "disabled": true }, "button": { "icon": {
+        /// "knownIcon": "INVITE" "altText": "check calendar" }, "onClick": { "openLink": { "url":
+        /// "https://example.com/calendar" } } }, ] } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
+        public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>
+        /// Displays a selection/input widget for date/time. For example, the following JSON creates a date/time picker
+        /// for an appointment time: ``` "date_time_picker": { "name": "appointment_time", "label": "Book your
+        /// appointment at:", "type": "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
+        public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
+
+        /// <summary>
+        /// Displays a decorated text item in this widget. For example, the following JSON creates a decorated text
+        /// widget showing email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email
+        /// Address", "content": "heba.salam@example.com", "bottomLabel": "This is a new Email address!",
+        /// "switchWidget": { "name": "has_send_welcome_email_to_heba_salam", "selected": false, "controlType":
+        /// "ControlType.CHECKBOX" } } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
+        public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
+
+        /// <summary>
+        /// Displays a divider. For example, the following JSON creates a divider: ``` "divider": { } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("divider")]
+        public virtual GoogleAppsCardV1Divider Divider { get; set; }
+
+        /// <summary>
+        /// Displays a grid with a collection of items. For example, the following JSON creates a 2 column grid with a
+        /// single item: ``` "grid": { "title": "A fine collection of items", "numColumns": 2, "borderStyle": { "type":
+        /// "STROKE", "cornerRadius": 4.0 }, "items": [ "image": { "imageUri": "https://www.example.com/image.png",
+        /// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item",
+        /// "textAlignment": "CENTER" ], "onClick": { "openLink": { "url":"https://www.example.com" } } } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grid")]
+        public virtual GoogleAppsCardV1Grid Grid { get; set; }
+
+        /// <summary>The horizontal alignment of this widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; }
+
+        /// <summary>
+        /// Displays an image in this widget. For example, the following JSON creates an image with alternative text:
+        /// ``` "image": { "imageUrl": "https://example.com/heba_salam.png" "altText": "Avatar for Heba Salam" } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleAppsCardV1Image Image { get; set; }
+
+        /// <summary>
+        /// Displays a switch control in this widget. For example, the following JSON creates a dropdown selection for
+        /// size: ``` "switchControl": { "name": "size", "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ {
+        /// "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true }, {
+        /// "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
+        /// false } ] } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
+        public virtual GoogleAppsCardV1SelectionInput SelectionInput { get; set; }
+
+        /// <summary>
+        /// Displays a text input in this widget. For example, the following JSON creates a text input for mail address:
+        /// ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" } ``` As another example, the
+        /// following JSON creates a text input for programming language with static suggestions: ``` "textInput": {
+        /// "name": "preferred_programing_language", "label": "Preferred Language", "initialSuggestions": { "items": [ {
+        /// "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
+
+        /// <summary>
+        /// Displays a text paragraph in this widget. For example, the following JSON creates a bolded text: ```
+        /// "textParagraph": { "text": " *bold text*" } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
+        public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
