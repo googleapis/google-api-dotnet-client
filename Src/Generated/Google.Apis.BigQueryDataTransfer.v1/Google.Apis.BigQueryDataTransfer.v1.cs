@@ -1423,9 +1423,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
                 }
 
-                /// <summary>
-                /// Returns information about all transfer configs owned by a project in the specified location.
-                /// </summary>
+                /// <summary>Returns information about all data transfers in the project.</summary>
                 /// <param name="parent">
                 /// Required. The BigQuery project id for which data sources should be returned: `projects/{project_id}`
                 /// or `projects/{project_id}/locations/{location_id}`
@@ -1435,9 +1433,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>
-                /// Returns information about all transfer configs owned by a project in the specified location.
-                /// </summary>
+                /// <summary>Returns information about all data transfers in the project.</summary>
                 public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferConfigsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2579,9 +2575,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
             }
 
-            /// <summary>
-            /// Returns information about all transfer configs owned by a project in the specified location.
-            /// </summary>
+            /// <summary>Returns information about all data transfers in the project.</summary>
             /// <param name="parent">
             /// Required. The BigQuery project id for which data sources should be returned: `projects/{project_id}` or
             /// `projects/{project_id}/locations/{location_id}`
@@ -2591,9 +2585,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>
-            /// Returns information about all transfer configs owned by a project in the specified location.
-            /// </summary>
+            /// <summary>Returns information about all data transfers in the project.</summary>
             public class ListRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.ListTransferConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

@@ -1789,6 +1789,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
                             QueryString = 109,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationUrl")]
+                            ServerPageLocationUrl = 110,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationPath")]
+                            ServerPageLocationPath = 111,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
+                            ServerPageLocationHostname = 112,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2296,6 +2308,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
                             QueryString = 109,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationUrl")]
+                            ServerPageLocationUrl = 110,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationPath")]
+                            ServerPageLocationPath = 111,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
+                            ServerPageLocationHostname = 112,
                         }
 
                         /// <summary>Gets the method name.</summary>
@@ -2866,6 +2890,18 @@ namespace Google.Apis.TagManager.v2
                             /// <summary></summary>
                             [Google.Apis.Util.StringValueAttribute("queryString")]
                             QueryString = 109,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationUrl")]
+                            ServerPageLocationUrl = 110,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationPath")]
+                            ServerPageLocationPath = 111,
+
+                            /// <summary></summary>
+                            [Google.Apis.Util.StringValueAttribute("serverPageLocationHostname")]
+                            ServerPageLocationHostname = 112,
                         }
 
                         /// <summary>Gets the method name.</summary>

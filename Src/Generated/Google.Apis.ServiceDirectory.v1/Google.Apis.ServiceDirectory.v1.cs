@@ -2052,11 +2052,9 @@ namespace Google.Apis.ServiceDirectory.v1.Data
         /// beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots
         /// (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a
         /// series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/)
-        /// Annotations that fails to meet these requirements are rejected. * The `(*.)google.com/` and
-        /// `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user
-        /// tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is
-        /// equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same
-        /// location in Service Directory.
+        /// Annotations that fails to meet these requirements are rejected. Note: This field is equivalent to the
+        /// `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in
+        /// Service Directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -2391,11 +2389,9 @@ namespace Google.Apis.ServiceDirectory.v1.Data
         /// beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots
         /// (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a
         /// series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash
-        /// (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and
-        /// `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user
-        /// tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is
-        /// equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same
-        /// location in Service Directory.
+        /// (/). Annotations that fails to meet these requirements are rejected Note: This field is equivalent to the
+        /// `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in
+        /// Service Directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
