@@ -109,7 +109,10 @@
     "requestPath",
     "requestMethod",
     "clientName",
-    "queryString"
+    "queryString",
+    "serverPageLocationUrl",
+    "serverPageLocationPath",
+    "serverPageLocationHostname"
   ],
   "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+WorkspacesResource+BuiltInVariablesResource+DeleteRequest.TypeEnum": [
     "builtInVariableTypeUnspecified",
@@ -221,7 +224,10 @@
     "requestPath",
     "requestMethod",
     "clientName",
-    "queryString"
+    "queryString",
+    "serverPageLocationUrl",
+    "serverPageLocationPath",
+    "serverPageLocationHostname"
   ],
   "Google.Apis.TagManager.v2.AccountsResource+ContainersResource+WorkspacesResource+BuiltInVariablesResource+RevertRequest.TypeEnum": [
     "builtInVariableTypeUnspecified",
@@ -333,7 +339,10 @@
     "requestPath",
     "requestMethod",
     "clientName",
-    "queryString"
+    "queryString",
+    "serverPageLocationUrl",
+    "serverPageLocationPath",
+    "serverPageLocationHostname"
   ],
   "Google.Apis.TagManager.v2.TagManagerBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
