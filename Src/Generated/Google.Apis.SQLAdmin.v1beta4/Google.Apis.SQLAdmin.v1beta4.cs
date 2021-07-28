@@ -320,7 +320,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Deletes the backup taken by a backup run.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
-        /// <param name="id">The ID of the Backup Run to delete. To find a Backup Run ID, use the list method.</param>
+        /// <param name="id">The ID of the backup run to delete. To find a backup run ID, use the list method.</param>
         public virtual DeleteRequest Delete(string project, string instance, long id)
         {
             return new DeleteRequest(service, project, instance, id);
@@ -346,7 +346,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>The ID of the Backup Run to delete. To find a Backup Run ID, use the list method.</summary>
+            /// <summary>The ID of the backup run to delete. To find a backup run ID, use the list method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long Id { get; private set; }
 
@@ -393,7 +393,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>Retrieves a resource containing information about a backup run.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
-        /// <param name="id">The ID of this Backup Run.</param>
+        /// <param name="id">The ID of this backup run.</param>
         public virtual GetRequest Get(string project, string instance, long id)
         {
             return new GetRequest(service, project, instance, id);
@@ -419,7 +419,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>The ID of this Backup Run.</summary>
+            /// <summary>The ID of this backup run.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long Id { get; private set; }
 
@@ -463,9 +463,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
-        /// <summary>
-        /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
-        /// </summary>
+        /// <summary>Creates a new backup run on demand.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -474,9 +472,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new InsertRequest(service, body, project, instance);
         }
 
-        /// <summary>
-        /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
-        /// </summary>
+        /// <summary>Creates a new backup run on demand.</summary>
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -1260,13 +1256,13 @@ namespace Google.Apis.SQLAdmin.v1beta4
             this.service = service;
         }
 
-        /// <summary>List all available database flags for Cloud SQL instances.</summary>
+        /// <summary>Lists all available database flags for Cloud SQL instances.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>List all available database flags for Cloud SQL instances.</summary>
+        /// <summary>Lists all available database flags for Cloud SQL instances.</summary>
         public class ListRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.FlagsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1667,8 +1663,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Failover the instance to its failover replica instance. Using this operation might cause your instance to
-        /// restart.
+        /// Initiates a manual failover of a high availability (HA) primary instance to a standby instance, which
+        /// becomes the primary instance. Users are then rerouted to the new primary. For more information, see the
+        /// Overview of high availability page in the Cloud SQL documentation. If using Legacy HA (MySQL only), this
+        /// causes the instance to failover to its failover replica instance.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">ID of the project that contains the read replica.</param>
@@ -1679,8 +1677,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Failover the instance to its failover replica instance. Using this operation might cause your instance to
-        /// restart.
+        /// Initiates a manual failover of a high availability (HA) primary instance to a standby instance, which
+        /// becomes the primary instance. Users are then rerouted to the new primary. For more information, see the
+        /// Overview of high availability page in the Cloud SQL documentation. If using Legacy HA (MySQL only), this
+        /// causes the instance to failover to its failover replica instance.
         /// </summary>
         public class FailoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -4100,13 +4100,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>
-        /// Encryption configuration specific to a backup. Applies only to Second Generation instances.
-        /// </summary>
+        /// <summary>Encryption configuration specific to a backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
         public virtual DiskEncryptionConfiguration DiskEncryptionConfiguration { get; set; }
 
-        /// <summary>Encryption status specific to a backup. Applies only to Second Generation instances.</summary>
+        /// <summary>Encryption status specific to a backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
 
@@ -4335,8 +4333,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     {
         /// <summary>
         /// The name of the flag. These flags are passed at instance startup, so include both server options and system
-        /// variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see
-        /// Configuring Database Flags in the Cloud SQL documentation.
+        /// variables. Flags are specified with underscores, not hyphens. For more information, see Configuring Database
+        /// Flags in the Cloud SQL documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4377,22 +4375,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>
         /// The database engine type and version. The *databaseVersion* field cannot be changed after instance creation.
         /// MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*,
-        /// *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances:
+        /// *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, *POSTGRES_13* (default). SQL Server instances:
+        /// *SQLSERVER_2019_STANDARD*, *SQLSERVER_2019_ENTERPRISE*, *SQLSERVER_2019_EXPRESS*, or *SQLSERVER_2019_WEB*,
         /// *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or
         /// *SQLSERVER_2017_WEB*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
 
-        /// <summary>
-        /// Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
-        /// </summary>
+        /// <summary>Disk encryption configuration specific to an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionConfiguration")]
         public virtual DiskEncryptionConfiguration DiskEncryptionConfiguration { get; set; }
 
-        /// <summary>
-        /// Disk encryption status specific to an instance. Applies only to Second Generation instances.
-        /// </summary>
+        /// <summary>Disk encryption status specific to an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
 
@@ -4403,10 +4398,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>
-        /// The name and status of the failover replica. This property is applicable only to Second Generation
-        /// instances.
-        /// </summary>
+        /// <summary>The name and status of the failover replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverReplica")]
         public virtual FailoverReplicaData FailoverReplica { get; set; }
 
@@ -4536,10 +4528,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual System.Collections.Generic.IList<string> SuspensionReason { get; set; }
 
-        /// <summary>
-        /// The name and status of the failover replica. This property is applicable only to Second Generation
-        /// instances.
-        /// </summary>
+        /// <summary>The name and status of the failover replica.</summary>
         public class FailoverReplicaData
         {
             /// <summary>
@@ -4551,8 +4540,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
             /// <summary>
             /// The name of the failover replica. If specified at instance creation, a failover replica is created for
-            /// the instance. The name doesn't include the project ID. This property is applicable only to Second
-            /// Generation instances.
+            /// the instance. The name doesn't include the project ID.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; }
@@ -4614,11 +4602,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; }
 
         /// <summary>
-        /// Verify GTID consistency for demote operation. Default value: *True*. Second Generation instances only.
-        /// Setting this flag to false enables you to bypass GTID consistency check between on-premises primary instance
-        /// and Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication
-        /// failures. Change the value only if you know the reason for the GTID divergence and are confident that doing
-        /// so will not cause any replication issues.
+        /// Verify GTID consistency for demote operation. Default value: *True*. Setting this flag to false enables you
+        /// to bypass GTID consistency check between on-premises primary instance and Cloud SQL instance during the
+        /// demotion operation but also exposes you to the risk of future replication failures. Change the value only if
+        /// you know the reason for the GTID divergence and are confident that doing so will not cause any replication
+        /// issues.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyGtidConsistency")]
         public virtual System.Nullable<bool> VerifyGtidConsistency { get; set; }
@@ -4874,10 +4862,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Indicates whether changing this flag will trigger a database restart. Only applicable to Second Generation
-        /// instances.
-        /// </summary>
+        /// <summary>Indicates whether changing this flag will trigger a database restart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresRestart")]
         public virtual System.Nullable<bool> RequiresRestart { get; set; }
 
@@ -5036,8 +5021,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Nullable<bool> QueryInsightsEnabled { get; set; }
 
         /// <summary>
-        /// Number of query plans generated by Insights per minute. Default is 5. Changing this will restart the
-        /// database.
+        /// Number of query execution plans captured by Insights per minute for all queries combined. Default is 5.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
         public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }
@@ -5721,7 +5705,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external
-        /// networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+        /// networks can connect to the instance. The IPv4 address cannot be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipConfiguration")]
         public virtual IpConfiguration IpConfiguration { get; set; }

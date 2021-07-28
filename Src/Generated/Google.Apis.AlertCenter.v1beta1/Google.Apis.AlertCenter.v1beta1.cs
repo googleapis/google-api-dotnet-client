@@ -1301,6 +1301,33 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An outage incident reported by Google for a Google Workspace (formerly G Suite) application.</summary>
+    public class AppsOutage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Link to the outage event in Google Workspace Status Dashboard</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashboardUri")]
+        public virtual string DashboardUri { get; set; }
+
+        /// <summary>Timestamp by which the next update shall be provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextUpdateTime")]
+        public virtual object NextUpdateTime { get; set; }
+
+        /// <summary>List of products impacted by the outage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<string> Products { get; set; }
+
+        /// <summary>Timestamp of the outage expected or confirmed resolution. (Used only when known).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolutionTime")]
+        public virtual object ResolutionTime { get; set; }
+
+        /// <summary>Current outage status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Attachment with application-specific information about an alert.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1761,31 +1788,6 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>A Google Cloud Pub/sub topic destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
         public virtual CloudPubsubTopic CloudPubsubTopic { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An alert that gets triggered when a user enables autoforwarding to an email which is outside of its domain
-    /// </summary>
-    public class OutOfDomainForwarding : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Email of the actor who triggered the alert.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actorEmail")]
-        public virtual string ActorEmail { get; set; }
-
-        /// <summary>The time the email forwarding was enabled</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableTime")]
-        public virtual object EnableTime { get; set; }
-
-        /// <summary>Email to which emails are being forwarded</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("forwardeeEmail")]
-        public virtual string ForwardeeEmail { get; set; }
-
-        /// <summary>IP address of the user while enabling forwarding</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
-        public virtual string IpAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -315,7 +315,7 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Required. The resource name this setting is for. This is of the form
-        /// `accounts/{account_id}/notifications/setting`.
+        /// `accounts/{account_id}/notificationSetting`.
         /// </param>
         public virtual UpdateNotificationSettingRequest UpdateNotificationSetting(Google.Apis.MyBusinessNotificationSettings.v1.Data.NotificationSetting body, string name)
         {
@@ -340,7 +340,7 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1
 
             /// <summary>
             /// Required. The resource name this setting is for. This is of the form
-            /// `accounts/{account_id}/notifications/setting`.
+            /// `accounts/{account_id}/notificationSetting`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -400,7 +400,7 @@ namespace Google.Apis.MyBusinessNotificationSettings.v1.Data
     {
         /// <summary>
         /// Required. The resource name this setting is for. This is of the form
-        /// `accounts/{account_id}/notifications/setting`.
+        /// `accounts/{account_id}/notificationSetting`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

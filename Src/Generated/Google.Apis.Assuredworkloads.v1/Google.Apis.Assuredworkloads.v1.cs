@@ -949,9 +949,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an
-        /// organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources
-        /// are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
+        /// folder resource which is a child of the Workload parent. If not specified all resources are created under
+        /// the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
         public virtual string ProvisionedResourcesParent { get; set; }
@@ -1138,9 +1138,9 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an
-        /// organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources
-        /// are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
+        /// folder resource which is a child of the Workload parent. If not specified all resources are created under
+        /// the parent organization. Format: folders/{folder_id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisionedResourcesParent")]
         public virtual string ProvisionedResourcesParent { get; set; }

@@ -34,6 +34,7 @@ namespace Google.Apis.Monitoring.v1
         /// <param name="initializer">The service initializer.</param>
         public MonitoringService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Locations = new LocationsResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
         }
@@ -98,6 +99,9 @@ namespace Google.Apis.Monitoring.v1
             /// <summary>Publish metric data to your Google Cloud projects</summary>
             public const string MonitoringWrite = "https://www.googleapis.com/auth/monitoring.write";
         }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Operations resource.</summary>
         public virtual OperationsResource Operations { get; }
@@ -284,6 +288,301 @@ namespace Google.Apis.Monitoring.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Global = new GlobalResource(service);
+        }
+
+        /// <summary>Gets the Global resource.</summary>
+        public virtual GlobalResource Global { get; }
+
+        /// <summary>The "global" collection of methods.</summary>
+        public class GlobalResource
+        {
+            private const string Resource = "global";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GlobalResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                MetricsScopes = new MetricsScopesResource(service);
+            }
+
+            /// <summary>Gets the MetricsScopes resource.</summary>
+            public virtual MetricsScopesResource MetricsScopes { get; }
+
+            /// <summary>The "metricsScopes" collection of methods.</summary>
+            public class MetricsScopesResource
+            {
+                private const string Resource = "metricsScopes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MetricsScopesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Projects = new ProjectsResource(service);
+                }
+
+                /// <summary>Gets the Projects resource.</summary>
+                public virtual ProjectsResource Projects { get; }
+
+                /// <summary>The "projects" collection of methods.</summary>
+                public class ProjectsResource
+                {
+                    private const string Resource = "projects";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ProjectsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Adds a MonitoredProject with the given project ID to the specified Metrics Scope.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the existing Metrics Scope that will monitor this project.
+                    /// Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Monitoring.v1.Data.MonitoredProject body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Adds a MonitoredProject with the given project ID to the specified Metrics Scope.
+                    /// </summary>
+                    public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v1.Data.MonitoredProject body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the existing Metrics Scope that will monitor this project.
+                        /// Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Monitoring.v1.Data.MonitoredProject Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/projects";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/global/metricsScopes/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a MonitoredProject from the specified Metrics Scope.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the MonitoredProject. Example:
+                    /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}Authorization
+                    /// requires the following Google IAM (https://cloud.google.com/iam) permissions on both the Metrics
+                    /// Scope and on the MonitoredProject: monitoring.metricsScopes.link
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a MonitoredProject from the specified Metrics Scope.</summary>
+                    public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the MonitoredProject. Example:
+                        /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}Authorization
+                        /// requires the following Google IAM (https://cloud.google.com/iam) permissions on both the
+                        /// Metrics Scope and on the MonitoredProject: monitoring.metricsScopes.link
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^locations/global/metricsScopes/[^/]+/projects/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Returns a specific Metrics Scope.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the Metrics Scope. Example:
+                /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Returns a specific Metrics Scope.</summary>
+                public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.MetricsScope>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Metrics Scope. Example:
+                    /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^locations/global/metricsScopes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The
+                /// metrics scope representing the specified monitored project will always be the first entry in the
+                /// response.
+                /// </summary>
+                public virtual ListMetricScopesByMonitoredProjectRequest ListMetricScopesByMonitoredProject()
+                {
+                    return new ListMetricScopesByMonitoredProjectRequest(service);
+                }
+
+                /// <summary>
+                /// Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The
+                /// metrics scope representing the specified monitored project will always be the first entry in the
+                /// response.
+                /// </summary>
+                public class ListMetricScopesByMonitoredProjectRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.ListMetricsScopesByMonitoredProjectResponse>
+                {
+                    /// <summary>Constructs a new ListMetricScopesByMonitoredProject request.</summary>
+                    public ListMetricScopesByMonitoredProjectRequest(Google.Apis.Services.IClientService service) : base(service)
+                    {
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Monitored Project being requested. Example:
+                    /// projects/{MONITORED_PROJECT_ID_OR_NUMBER}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("monitoredResourceContainer", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MonitoredResourceContainer { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listMetricScopesByMonitoredProject";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/locations/global/metricsScopes:listMetricScopesByMonitoredProject";
+
+                    /// <summary>Initializes ListMetricScopesByMonitoredProject parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("monitoredResourceContainer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "monitoredResourceContainer",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
     }
 
@@ -1116,6 +1415,69 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ListMetricsScopesByMonitoredProject method.</summary>
+    public class ListMetricsScopesByMonitoredProjectResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A set of all metrics scopes that the specified monitored project has been added to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsScopes")]
+        public virtual System.Collections.Generic.IList<MetricsScope> MetricsScopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#concept-scope) in Cloud Monitoring,
+    /// which specifies one or more Google projects and zero or more AWS accounts to monitor together.
+    /// </summary>
+    public class MetricsScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when this Metrics Scope was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The list of projects monitored by this Metrics Scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredProjects")]
+        public virtual System.Collections.Generic.IList<MonitoredProject> MonitoredProjects { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the Monitoring Metrics Scope. On input, the resource name can be specified
+        /// with the scoping project ID or number. On output, the resource name is specified with the scoping project
+        /// number. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The time when this Metrics Scope record was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A project being monitored (https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a
+    /// Metrics Scope.
+    /// </summary>
+    public class MonitoredProject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when this MonitoredProject was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the MonitoredProject. On input, the resource name includes the scoping
+        /// project ID and monitored project ID. On output, it contains the equivalent project numbers. Example:
+        /// locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

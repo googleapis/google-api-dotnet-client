@@ -36,6 +36,7 @@ namespace Google.Apis.CloudBuild.v1
         {
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
+            V1 = new V1Resource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -82,6 +83,9 @@ namespace Google.Apis.CloudBuild.v1
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the V1 resource.</summary>
+        public virtual V1Resource V1 { get; }
     }
 
     /// <summary>A base abstract class for CloudBuild requests.</summary>
@@ -411,6 +415,7 @@ namespace Google.Apis.CloudBuild.v1
         {
             this.service = service;
             Builds = new BuildsResource(service);
+            GithubEnterpriseConfigs = new GithubEnterpriseConfigsResource(service);
             Locations = new LocationsResource(service);
             Triggers = new TriggersResource(service);
         }
@@ -855,6 +860,390 @@ namespace Google.Apis.CloudBuild.v1
             }
         }
 
+        /// <summary>Gets the GithubEnterpriseConfigs resource.</summary>
+        public virtual GithubEnterpriseConfigsResource GithubEnterpriseConfigs { get; }
+
+        /// <summary>The "githubEnterpriseConfigs" collection of methods.</summary>
+        public class GithubEnterpriseConfigsResource
+        {
+            private const string Resource = "githubEnterpriseConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GithubEnterpriseConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Create an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>ID of the project.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProjectId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/githubEnterpriseConfigs";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            /// <param name="name">
+            /// This field should contain the name of the enterprise config resource. For example:
+            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Delete an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// This field should contain the name of the enterprise config resource. For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Unique identifier of the `GitHubEnterpriseConfig`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ConfigId { get; set; }
+
+                /// <summary>ID of the project</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProjectId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "configId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+            /// <param name="name">
+            /// This field should contain the name of the enterprise config resource. For example:
+            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+            public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// This field should contain the name of the enterprise config resource. For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Unique identifier of the `GitHubEnterpriseConfig`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ConfigId { get; set; }
+
+                /// <summary>ID of the project</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProjectId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "configId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+            /// <param name="parent">
+            /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+            public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGithubEnterpriseConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>ID of the project</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProjectId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/githubEnterpriseConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+            /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// Update an association between a GCP project and a GitHub Enterprise server. This API is experimental.
+            /// </summary>
+            public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Update mask for the resource. If this is set, the server will only update the fields specified in
+                /// the field mask. Otherwise, a full update of the mutable resource fields will be performed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
 
@@ -871,6 +1260,7 @@ namespace Google.Apis.CloudBuild.v1
             {
                 this.service = service;
                 Builds = new BuildsResource(service);
+                GithubEnterpriseConfigs = new GithubEnterpriseConfigsResource(service);
                 Operations = new OperationsResource(service);
                 Triggers = new TriggersResource(service);
                 WorkerPools = new WorkerPoolsResource(service);
@@ -1299,6 +1689,396 @@ namespace Google.Apis.CloudBuild.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/builds/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the GithubEnterpriseConfigs resource.</summary>
+            public virtual GithubEnterpriseConfigsResource GithubEnterpriseConfigs { get; }
+
+            /// <summary>The "githubEnterpriseConfigs" collection of methods.</summary>
+            public class GithubEnterpriseConfigsResource
+            {
+                private const string Resource = "githubEnterpriseConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GithubEnterpriseConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Create an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Create an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>ID of the project.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/githubEnterpriseConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Delete an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                /// <param name="name">
+                /// This field should contain the name of the enterprise config resource. For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Delete an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// This field should contain the name of the enterprise config resource. For example:
+                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Unique identifier of the `GitHubEnterpriseConfig`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConfigId { get; set; }
+
+                    /// <summary>ID of the project</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+                /// <param name="name">
+                /// This field should contain the name of the enterprise config resource. For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieve a GitHubEnterpriseConfig. This API is experimental.</summary>
+                public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// This field should contain the name of the enterprise config resource. For example:
+                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Unique identifier of the `GitHubEnterpriseConfig`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConfigId { get; set; }
+
+                    /// <summary>ID of the project</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("configId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "configId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+                /// <param name="parent">
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List all GitHubEnterpriseConfigs for a given project. This API is experimental.</summary>
+                public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListGithubEnterpriseConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>ID of the project</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/githubEnterpriseConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Update an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Update an association between a GCP project and a GitHub Enterprise server. This API is
+                /// experimental.
+                /// </summary>
+                public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                    /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Update mask for the resource. If this is set, the server will only update the fields specified
+                    /// in the field mask. Otherwise, a full update of the mutable resource fields will be performed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/githubEnterpriseConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3004,6 +3784,60 @@ namespace Google.Apis.CloudBuild.v1
             }
         }
     }
+
+    /// <summary>The "v1" collection of methods.</summary>
+    public class V1Resource
+    {
+        private const string Resource = "v1";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public V1Resource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>ReceiveWebhook is called when the API receives a GitHub webhook.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual WebhookRequest Webhook(Google.Apis.CloudBuild.v1.Data.HttpBody body)
+        {
+            return new WebhookRequest(service, body);
+        }
+
+        /// <summary>ReceiveWebhook is called when the API receives a GitHub webhook.</summary>
+        public class WebhookRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Webhook request.</summary>
+            public WebhookRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.HttpBody body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudBuild.v1.Data.HttpBody Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "webhook";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/webhook";
+
+            /// <summary>Initializes Webhook parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+    }
 }
 namespace Google.Apis.CloudBuild.v1.Data
 {
@@ -3229,8 +4063,8 @@ namespace Google.Apis.CloudBuild.v1.Data
 
         /// <summary>
         /// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all
-        /// build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build
-        /// does not specify source or images, these keys will not be included.
+        /// build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD:
+        /// time to set up build. If the build does not specify source or images, these keys will not be included.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual System.Collections.Generic.IDictionary<string, TimeSpan> Timing { get; set; }
@@ -3533,6 +4367,15 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ResourceName { get; set; }
 
         /// <summary>
+        /// Optional. The service account used for all user-controlled operations including UpdateBuildTrigger,
+        /// RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build
+        /// service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format:
+        /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
         /// The repo and ref of the repository from which to build. This field is used only for those triggers that do
         /// not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the
         /// event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
@@ -3618,6 +4461,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `CreateGithubEnterpriseConfig` operation.</summary>
+    public class CreateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be created. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the `CreateWorkerPool` operation.</summary>
     public class CreateWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3635,6 +4500,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `DeleteGitHubEnterpriseConfig` operation.</summary>
+    public class DeleteGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be deleted. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3703,12 +4590,114 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise server.</summary>
+    public class GitHubEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The GitHub app id of the Cloud Build app on the GitHub Enterprise server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual System.Nullable<long> AppId { get; set; }
+
+        /// <summary>Output only. Time when the installation was associated with the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Name to display for this config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The URL of the github enterprise host the configuration is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUrl")]
+        public virtual string HostUrl { get; set; }
+
+        /// <summary>
+        /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+        /// "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be
+        /// enabled for private service connection. This should be set if the GitHub Enterprise server is hosted
+        /// on-premises and not reachable by public internet. If this field is left empty, no network peering will occur
+        /// and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format
+        /// `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is
+        /// the name of a VPC network in the project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
+        public virtual string PeeredNetwork { get; set; }
+
+        /// <summary>Names of secrets in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
+        public virtual GitHubEnterpriseSecrets Secrets { get; set; }
+
+        /// <summary>Optional. SSL certificate to use for requests to GitHub Enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
+        public virtual string SslCa { get; set; }
+
+        /// <summary>The key that should be attached to webhook calls to the ReceiveWebhook endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookKey")]
+        public virtual string WebhookKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise
+    /// server. Format is: projects//secrets/.
+    /// </summary>
+    public class GitHubEnterpriseSecrets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name for the OAuth client ID secret in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientIdName")]
+        public virtual string OauthClientIdName { get; set; }
+
+        /// <summary>The resource name for the OAuth client ID secret version in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientIdVersionName")]
+        public virtual string OauthClientIdVersionName { get; set; }
+
+        /// <summary>The resource name for the OAuth secret in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthSecretName")]
+        public virtual string OauthSecretName { get; set; }
+
+        /// <summary>The resource name for the OAuth secret secret version in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthSecretVersionName")]
+        public virtual string OauthSecretVersionName { get; set; }
+
+        /// <summary>The resource name for the private key secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyName")]
+        public virtual string PrivateKeyName { get; set; }
+
+        /// <summary>The resource name for the private key secret version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKeyVersionName")]
+        public virtual string PrivateKeyVersionName { get; set; }
+
+        /// <summary>The resource name for the webhook secret in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretName")]
+        public virtual string WebhookSecretName { get; set; }
+
+        /// <summary>The resource name for the webhook secret secret version in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretVersionName")]
+        public virtual string WebhookSecretVersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is
-    /// received. This message is experimental.
+    /// received.
     /// </summary>
     public class GitHubEventsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For
+        /// example: "projects/{$project_id}/githubEnterpriseConfig/{$config_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfigResourceName")]
+        public virtual string EnterpriseConfigResourceName { get; set; }
+
         /// <summary>The installationID that emits the GitHub event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationId")]
         public virtual System.Nullable<long> InstallationId { get; set; }
@@ -3909,6 +4898,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC response object returned by ListGithubEnterpriseConfigs RPC method.</summary>
+    public class ListGithubEnterpriseConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of GitHubEnterpriseConfigs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configs")]
+        public virtual System.Collections.Generic.IList<GitHubEnterpriseConfig> Configs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4190,6 +5190,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Machine configuration for the workers in the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual WorkerConfig WorkerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `ProcessAppManifestCallback` operation.</summary>
+    public class ProcessAppManifestCallbackOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be created. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4671,6 +5693,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Start of time span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `UpdateGitHubEnterpriseConfig` operation.</summary>
+    public class UpdateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be updated. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

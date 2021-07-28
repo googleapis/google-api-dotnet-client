@@ -67,6 +67,9 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
         {
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Send messages and manage messaging subscriptions for your Firebase applications</summary>
+            public static string FirebaseMessaging = "https://www.googleapis.com/auth/firebase.messaging";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Firebase Cloud Messaging API.</summary>
@@ -74,6 +77,9 @@ namespace Google.Apis.FirebaseCloudMessaging.v1
         {
             /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Send messages and manage messaging subscriptions for your Firebase applications</summary>
+            public const string FirebaseMessaging = "https://www.googleapis.com/auth/firebase.messaging";
         }
 
         /// <summary>Gets the Projects resource.</summary>
