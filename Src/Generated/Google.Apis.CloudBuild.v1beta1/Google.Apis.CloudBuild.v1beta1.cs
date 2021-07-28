@@ -991,8 +991,8 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
 
         /// <summary>
         /// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all
-        /// build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build
-        /// does not specify source or images, these keys will not be included.
+        /// build steps. * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. * SETUPBUILD:
+        /// time to set up build. If the build does not specify source or images, these keys will not be included.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]
         public virtual System.Collections.Generic.IDictionary<string, TimeSpan> Timing { get; set; }
@@ -1236,6 +1236,28 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `CreateGithubEnterpriseConfig` operation.</summary>
+    public class CreateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be created. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the `CreateWorkerPool` operation.</summary>
     public class CreateWorkerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1253,6 +1275,28 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
         public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `DeleteGitHubEnterpriseConfig` operation.</summary>
+    public class DeleteGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be deleted. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1666,6 +1710,28 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for `ProcessAppManifestCallback` operation.</summary>
+    public class ProcessAppManifestCallbackOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be created. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2011,6 +2077,28 @@ namespace Google.Apis.CloudBuild.v1beta1.Data
         /// <summary>Start of time span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for `UpdateGitHubEnterpriseConfig` operation.</summary>
+    public class UpdateGitHubEnterpriseConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time the operation was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual object CompleteTime { get; set; }
+
+        /// <summary>Time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// The resource name of the GitHubEnterprise to be updated. Format:
+        /// `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubEnterpriseConfig")]
+        public virtual string GithubEnterpriseConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

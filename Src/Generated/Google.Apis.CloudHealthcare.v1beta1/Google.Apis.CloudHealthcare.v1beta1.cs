@@ -12248,6 +12248,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Analyze heathcare entity in a document. Its response includes the recognized entity mentions and
                     /// the relationships between them. AnalyzeEntities uses context aware models to detect entities.
+                    /// This method can only analyze documents written in English.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="nlpService">
@@ -12262,6 +12263,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Analyze heathcare entity in a document. Its response includes the recognized entity mentions and
                     /// the relationships between them. AnalyzeEntities uses context aware models to detect entities.
+                    /// This method can only analyze documents written in English.
                     /// </summary>
                     public class AnalyzeEntitiesRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.AnalyzeEntitiesResponse>
                     {

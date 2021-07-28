@@ -43,6 +43,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Csses = new CssesResource(this);
             Datafeeds = new DatafeedsResource(this);
             Datafeedstatuses = new DatafeedstatusesResource(this);
+            Freelistingsprogram = new FreelistingsprogramResource(this);
             Liasettings = new LiasettingsResource(this);
             Localinventory = new LocalinventoryResource(this);
             Orderinvoices = new OrderinvoicesResource(this);
@@ -64,6 +65,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Settlementreports = new SettlementreportsResource(this);
             Settlementtransactions = new SettlementtransactionsResource(this);
             Shippingsettings = new ShippingsettingsResource(this);
+            Shoppingadsprogram = new ShoppingadsprogramResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -132,6 +134,9 @@ namespace Google.Apis.ShoppingContent.v2_1
         /// <summary>Gets the Datafeedstatuses resource.</summary>
         public virtual DatafeedstatusesResource Datafeedstatuses { get; }
 
+        /// <summary>Gets the Freelistingsprogram resource.</summary>
+        public virtual FreelistingsprogramResource Freelistingsprogram { get; }
+
         /// <summary>Gets the Liasettings resource.</summary>
         public virtual LiasettingsResource Liasettings { get; }
 
@@ -194,6 +199,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Shippingsettings resource.</summary>
         public virtual ShippingsettingsResource Shippingsettings { get; }
+
+        /// <summary>Gets the Shoppingadsprogram resource.</summary>
+        public virtual ShoppingadsprogramResource Shoppingadsprogram { get; }
     }
 
     /// <summary>A base abstract class for ShoppingContent requests.</summary>
@@ -1678,6 +1686,79 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
+        /// <summary>Request verification code to start phone verification.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The ID of the managing account. If this parameter is not the same as accountId, then this account
+        /// must be a multi-client account and accountId must be the ID of a sub-account of this account.
+        /// </param>
+        /// <param name="accountId">Required. The ID of the account.</param>
+        public virtual RequestphoneverificationRequest Requestphoneverification(Google.Apis.ShoppingContent.v2_1.Data.RequestPhoneVerificationRequest body, long merchantId, long accountId)
+        {
+            return new RequestphoneverificationRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Request verification code to start phone verification.</summary>
+        public class RequestphoneverificationRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RequestPhoneVerificationResponse>
+        {
+            /// <summary>Constructs a new Requestphoneverification request.</summary>
+            public RequestphoneverificationRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RequestPhoneVerificationRequest body, long merchantId, long accountId) : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AccountId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RequestPhoneVerificationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "requestphoneverification";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/accounts/{accountId}/requestphoneverification";
+
+            /// <summary>Initializes Requestphoneverification parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Updates a Merchant Center account. Any fields that are not provided are deleted from the resource.
         /// </summary>
@@ -1800,6 +1881,79 @@ namespace Google.Apis.ShoppingContent.v2_1
             public override string RestPath => "{merchantId}/accounts/{accountId}/updatelabels";
 
             /// <summary>Initializes Updatelabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Validates verification code to verify phone number for the account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">
+        /// Required. The ID of the managing account. If this parameter is not the same as accountId, then this account
+        /// must be a multi-client account and accountId must be the ID of a sub-account of this account.
+        /// </param>
+        /// <param name="accountId">Required. The ID of the account.</param>
+        public virtual VerifyphonenumberRequest Verifyphonenumber(Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberRequest body, long merchantId, long accountId)
+        {
+            return new VerifyphonenumberRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Validates verification code to verify phone number for the account.</summary>
+        public class VerifyphonenumberRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberResponse>
+        {
+            /// <summary>Constructs a new Verifyphonenumber request.</summary>
+            public VerifyphonenumberRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberRequest body, long merchantId, long accountId) : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long AccountId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.VerifyPhoneNumberRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "verifyphonenumber";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/accounts/{accountId}/verifyphonenumber";
+
+            /// <summary>Initializes Verifyphonenumber parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -4083,6 +4237,125 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "freelistingsprogram" collection of methods.</summary>
+    public class FreelistingsprogramResource
+    {
+        private const string Resource = "freelistingsprogram";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FreelistingsprogramResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the status and review eligibility for the free listing program.</summary>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        public virtual GetRequest Get(long merchantId)
+        {
+            return new GetRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves the status and review eligibility for the free listing program.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.FreeListingsProgramStatus>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/freelistingsprogram";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Requests a review for Free Listings program in the provided region. Important: This method is only
+        /// whitelisted for selected merchants.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewFreeListingsRequest body, long merchantId)
+        {
+            return new RequestreviewRequest(service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Requests a review for Free Listings program in the provided region. Important: This method is only
+        /// whitelisted for selected merchants.
+        /// </summary>
+        public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Requestreview request.</summary>
+            public RequestreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RequestReviewFreeListingsRequest body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RequestReviewFreeListingsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "requestreview";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/freelistingsprogram/requestreview";
+
+            /// <summary>Initializes Requestreview parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -11788,6 +12061,119 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
     }
+
+    /// <summary>The "shoppingadsprogram" collection of methods.</summary>
+    public class ShoppingadsprogramResource
+    {
+        private const string Resource = "shoppingadsprogram";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ShoppingadsprogramResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Retrieves the status and review eligibility for the Shopping Ads program.</summary>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        public virtual GetRequest Get(long merchantId)
+        {
+            return new GetRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves the status and review eligibility for the Shopping Ads program.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ShoppingAdsProgramStatus>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/shoppingadsprogram";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Requests a review for Shopping Ads program in the provided country.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account.</param>
+        public virtual RequestreviewRequest Requestreview(Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId)
+        {
+            return new RequestreviewRequest(service, body, merchantId);
+        }
+
+        /// <summary>Requests a review for Shopping Ads program in the provided country.</summary>
+        public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Requestreview request.</summary>
+            public RequestreviewRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RequestReviewShoppingAdsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "requestreview";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/shoppingadsprogram/requestreview";
+
+            /// <summary>Initializes Requestreview parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.ShoppingContent.v2_1.Data
 {
@@ -13921,6 +14307,73 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The message of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GetFreeListingsProgramStatus.</summary>
+    public class FreeListingsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Status of the program in each region. Regions with the same status and review eligibility are grouped
+        /// together in `regionCodes`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionStatuses")]
+        public virtual System.Collections.Generic.IList<FreeListingsProgramStatusRegionStatus> RegionStatuses { get; set; }
+
+        /// <summary>If program is successfully onboarded for at least one region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of program and region.</summary>
+    public class FreeListingsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
+        /// `eligibility_status` is `WARNING`. Date will be provided in ISO 8601 format i.e. YYYY-MM-DD
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
+        public virtual string DisapprovalDate { get; set; }
+
+        /// <summary>Eligibility status of the standard free listing program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
+        public virtual string EligibilityStatus { get; set; }
+
+        /// <summary>Eligibility status of the enhanced free listing program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedEligibilityStatus")]
+        public virtual string EnhancedEligibilityStatus { get; set; }
+
+        /// <summary>
+        /// Reason if a program in a given country is not eligible for review. Populated only if
+        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ineligibilityReason")]
+        public virtual string IneligibilityReason { get; set; }
+
+        /// <summary>
+        /// The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the
+        /// regions with the same `eligibilityStatus` and `reviewEligibility`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
+        public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
+
+        /// <summary>
+        /// If a program in a given country is eligible for review. It will be present only if eligibility status is
+        /// `DISAPPROVED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
+        public virtual string ReviewEligibilityStatus { get; set; }
+
+        /// <summary>
+        /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
+        public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20017,9 +20470,78 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the RequestPhoneVerification method.</summary>
+    public class RequestPhoneVerificationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for example, en-US). Language code is
+        /// used to provide localized `SMS` and `PHONE_CALL`. Default language used is en-US if not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Phone number to be verified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Required. Two letter country code for the phone number, for example `CA` for Canadian numbers. See the [ISO
+        /// 3166-1 alpha-2](https://wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) officially
+        /// assigned codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneRegionCode")]
+        public virtual string PhoneRegionCode { get; set; }
+
+        /// <summary>Verification method to receive verification code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationMethod")]
+        public virtual string PhoneVerificationMethod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the RequestPhoneVerification method.</summary>
+    public class RequestPhoneVerificationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The verification ID to use in subsequent calls to `verifyphonenumber`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationId")]
+        public virtual string VerificationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the RequestReviewProgram method.</summary>
     public class RequestReviewBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the RequestReviewFreeListings Program method.</summary>
+    public class RequestReviewFreeListingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which
+        /// review is to be requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the RequestReviewShoppingAds program method.</summary>
+    public class RequestReviewShoppingAdsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which
+        /// review is to be requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20672,7 +21194,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Required. Query that defines performance metrics to retrieve and dimensions according to which the metrics
-        /// are to be segmented.
+        /// are to be segmented. For details on how to construct your query, see the [Query Language
+        /// guide](https://developers.google.com/shopping-content/guides/reports/query-language/overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -20711,23 +21234,43 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
 
-        /// <summary>Product category (1st level) in Google's product taxonomy.</summary>
+        /// <summary>
+        /// [Product category (1st
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in Google's product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL1")]
         public virtual string CategoryL1 { get; set; }
 
-        /// <summary>Product category (2nd level) in Google's product taxonomy.</summary>
+        /// <summary>
+        /// [Product category (2nd
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in Google's product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL2")]
         public virtual string CategoryL2 { get; set; }
 
-        /// <summary>Product category (3rd level) in Google's product taxonomy.</summary>
+        /// <summary>
+        /// [Product category (3rd
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in Google's product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL3")]
         public virtual string CategoryL3 { get; set; }
 
-        /// <summary>Product category (4th level) in Google's product taxonomy.</summary>
+        /// <summary>
+        /// [Product category (4th
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in Google's product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL4")]
         public virtual string CategoryL4 { get; set; }
 
-        /// <summary>Product category (5th level) in Google's product taxonomy.</summary>
+        /// <summary>
+        /// [Product category (5th
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in Google's product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categoryL5")]
         public virtual string CategoryL5 { get; set; }
 
@@ -20766,23 +21309,43 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; }
 
-        /// <summary>Product category (1st level) in merchant's own product taxonomy.</summary>
+        /// <summary>
+        /// [Product type (1st
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in merchant's own product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL1")]
         public virtual string ProductTypeL1 { get; set; }
 
-        /// <summary>Product category (2nd level) in merchant's own product taxonomy.</summary>
+        /// <summary>
+        /// [Product type (2nd
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in merchant's own product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL2")]
         public virtual string ProductTypeL2 { get; set; }
 
-        /// <summary>Product category (3rd level) in merchant's own product taxonomy.</summary>
+        /// <summary>
+        /// [Product type (3rd
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in merchant's own product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL3")]
         public virtual string ProductTypeL3 { get; set; }
 
-        /// <summary>Product category (4th level) in merchant's own product taxonomy.</summary>
+        /// <summary>
+        /// [Product type (4th
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in merchant's own product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL4")]
         public virtual string ProductTypeL4 { get; set; }
 
-        /// <summary>Product category (5th level) in merchant's own product taxonomy.</summary>
+        /// <summary>
+        /// [Product type (5th
+        /// level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type)
+        /// in merchant's own product taxonomy.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productTypeL5")]
         public virtual string ProductTypeL5 { get; set; }
 
@@ -21349,6 +21912,70 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for GetShoppingAdsProgramStatus.</summary>
+    public class ShoppingAdsProgramStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Status of the program in each region. Regions with the same status and review eligibility are grouped
+        /// together in `regionCodes`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionStatuses")]
+        public virtual System.Collections.Generic.IList<ShoppingAdsProgramStatusRegionStatus> RegionStatuses { get; set; }
+
+        /// <summary>If program is successfully onboarded for at least one region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of program and region.</summary>
+    public class ShoppingAdsProgramStatusRegionStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Date by which `eligibility_status` will go from `WARNING` to `DISAPPROVED`. It will be present when
+        /// `eligibility_status` is `WARNING`. Date will be provided in [ISO
+        /// 8601](https://en.wikipedia.org/wiki/ISO_8601) format i.e. YYYY-MM-DD
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disapprovalDate")]
+        public virtual string DisapprovalDate { get; set; }
+
+        /// <summary>Eligibility status of the Shopping Ads program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibilityStatus")]
+        public virtual string EligibilityStatus { get; set; }
+
+        /// <summary>
+        /// Reason if a program in a given country is not eligible for review. Populated only if
+        /// `review_eligibility_status` is `INELIGIBLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ineligibilityReason")]
+        public virtual string IneligibilityReason { get; set; }
+
+        /// <summary>
+        /// The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the
+        /// regions with the same `eligibilityStatus` and `reviewEligibility`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
+        public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
+
+        /// <summary>
+        /// If a program in a given country is eligible for review. It will be present only if eligibility status is
+        /// `DISAPPROVED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewEligibilityStatus")]
+        public virtual string ReviewEligibilityStatus { get; set; }
+
+        /// <summary>
+        /// These issues will be evaluated in review process. Fix all the issues before requesting the review.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewIssues")]
+        public virtual System.Collections.Generic.IList<string> ReviewIssues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -21797,6 +22424,36 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subtableName")]
         public virtual string SubtableName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the VerifyPhoneNumber method.</summary>
+    public class VerifyPhoneNumberRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Verification method used to receive verification code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationMethod")]
+        public virtual string PhoneVerificationMethod { get; set; }
+
+        /// <summary>The verification code that was sent to the phone number for validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationCode")]
+        public virtual string VerificationCode { get; set; }
+
+        /// <summary>The verification ID returned by `requestphoneverification`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationId")]
+        public virtual string VerificationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the VerifyPhoneNumber method.</summary>
+    public class VerifyPhoneNumberResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Verified phone number if verification is successful.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedPhoneNumber")]
+        public virtual string VerifiedPhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

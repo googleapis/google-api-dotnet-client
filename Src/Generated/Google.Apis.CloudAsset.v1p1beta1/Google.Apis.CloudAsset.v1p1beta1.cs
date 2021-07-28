@@ -1148,8 +1148,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
 
         /// <summary>
         /// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only
-        /// include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum
-        /// length of the `short_name` component is 50 characters.
+        /// include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+        /// maximum length of the `access_level` component is 50 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1178,7 +1178,9 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`</summary>
+        /// <summary>
+        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1599,7 +1601,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1.Data
 
         /// <summary>
         /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and
-        /// only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// only include alphanumeric and '_'. Format:
+        /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -725,7 +725,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         /// Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts
         /// from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play
-        /// package. See restrict accounts in Google Play.
+        /// package. See restrict accounts in Google Play. When provisioning a new device, you should set the device
+        /// policy using this method before adding the managed Google Play Account to the device, otherwise the policy
+        /// will not be applied for a short period of time after adding the account to the device.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
@@ -739,7 +741,9 @@ namespace Google.Apis.AndroidEnterprise.v1
         /// <summary>
         /// Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts
         /// from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play
-        /// package. See restrict accounts in Google Play.
+        /// package. See restrict accounts in Google Play. When provisioning a new device, you should set the device
+        /// policy using this method before adding the managed Google Play Account to the device, otherwise the policy
+        /// will not be applied for a short period of time after adding the account to the device.
         /// </summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Device>
         {

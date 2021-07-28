@@ -394,8 +394,9 @@ namespace Google.Apis.DataCatalog.v1
             public virtual string LinkedResource { get; set; }
 
             /// <summary>
-            /// The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.{PROJECT_ID}.{TOPIC_ID}` *
-            /// `pubsub.{PROJECT_ID}.{TOPIC.ID.SEPARATED.WITH.DOTS}` *
+            /// The SQL name of the entry. SQL names are case-sensitive. Examples: *
+            /// `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` *
+            /// `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` *
             /// `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` *
             /// `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should
             /// comply with the [Lexical structure in Standard SQL]
@@ -5713,7 +5714,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// other than viewing (for example, editing IAM policies) follow standard IAM structures. Tags created with a
         /// public tag template are referred to as public tags. You can search for a public tag by value with a simple
         /// search query instead of using a ``tag:`` predicate. Public tag templates may not appear in search results
-        /// depending on scope, see: include_public_tag_templates
+        /// depending on scope, see: include_public_tag_templates Note: If an [IAM domain
+        /// restriction](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains) is
+        /// configured in the tag template's location, the public access will not be enabled but the simple search for
+        /// tag values will still work.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPubliclyReadable")]
         public virtual System.Nullable<bool> IsPubliclyReadable { get; set; }
