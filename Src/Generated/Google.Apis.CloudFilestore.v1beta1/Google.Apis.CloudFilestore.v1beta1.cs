@@ -691,6 +691,381 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 public InstancesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Snapshots = new SnapshotsResource(service);
+                }
+
+                /// <summary>Gets the Snapshots resource.</summary>
+                public virtual SnapshotsResource Snapshots { get; }
+
+                /// <summary>The "snapshots" collection of methods.</summary>
+                public class SnapshotsResource
+                {
+                    private const string Resource = "snapshots";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SnapshotsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a snapshot.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The Filestore Instance to create the snapshots of, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a snapshot.</summary>
+                    public class CreateRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Filestore Instance to create the snapshots of, in the format
+                        /// projects/{project_id}/locations/{location}/instances/{instance_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the snapshot. The ID must be unique within the specified
+                        /// instance. This value must start with a lowercase letter followed by up to 62 lowercase
+                        /// letters, numbers, or hyphens, and cannot end with a hyphen.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("snapshotId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string SnapshotId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Snapshot Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/snapshots";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("snapshotId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "snapshotId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a snapshot.</summary>
+                    /// <param name="name">
+                    /// Required. The snapshot resource name, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a snapshot.</summary>
+                    public class DeleteRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The snapshot resource name, in the format
+                        /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/snapshots/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the details of a specific snapshot.</summary>
+                    /// <param name="name">
+                    /// Required. The snapshot resource name, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the details of a specific snapshot.</summary>
+                    public class GetRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Snapshot>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The snapshot resource name, in the format
+                        /// projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/snapshots/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists all snapshots in a project for either a specified location or for all locations.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The instance for which to retrieve snapshot information, in the format
+                    /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists all snapshots in a project for either a specified location or for all locations.
+                    /// </summary>
+                    public class ListRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.ListSnapshotsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The instance for which to retrieve snapshot information, in the format
+                        /// projects/{project_id}/locations/{location}/instances/{instance_id}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>List filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Sort results. Supported values are "name", "name desc" or "" (unsorted).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>The maximum number of items to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The next_page_token value to use if there are additional results to retrieve for this list
+                        /// request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/snapshots";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the settings of a specific snapshot.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The resource name of the snapshot, in the format
+                    /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates the settings of a specific snapshot.</summary>
+                    public class PatchRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.Snapshot body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The resource name of the snapshot, in the format
+                        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Mask of fields to update. At least one path must be supplied in this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudFilestore.v1beta1.Data.Snapshot Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/snapshots/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -2247,6 +2622,24 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ListSnapshotsResponse is the result of ListSnapshotsRequest.</summary>
+    public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token you can use to retrieve the next page of results. Not returned if there are no more results in the
+        /// list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of snapshots in the project for the specified instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshots")]
+        public virtual System.Collections.Generic.IList<Snapshot> Snapshots { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2373,7 +2766,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the [internal IP address
+        /// Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using
+        /// DIRECT_PEERING connect mode. * [Named Address
+        /// Range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using
+        /// PRIVATE_SERVICE_ACCESS connect mode. For both cases, the range value (direct CIDR value or the range value
+        /// with which the named range was created) must be a /29 CIDR block for Basic tier or a /23 CIDR block for High
+        /// Scale or Enterprise tier in one of the [internal IP address
         /// ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses
         /// reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap
         /// with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the
@@ -2560,6 +2958,43 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Cloud Filestore snapshot.</summary>
+    public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the snapshot was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be
+        /// rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The amount of bytes needed to allocate a full copy of the snapshot content</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesystemUsedBytes")]
+        public virtual System.Nullable<long> FilesystemUsedBytes { get; set; }
+
+        /// <summary>Resource labels to represent user provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the snapshot, in the format
+        /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The snapshot state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -2630,8 +3065,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
         /// <summary>
         /// Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. User can
-        /// specify zero or more non-overlapping deny periods. For V1, Maximum number of deny_maintenance_periods is
-        /// expected to be one.
+        /// specify zero or more non-overlapping deny periods. Maximum number of deny_maintenance_periods expected is
+        /// one.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
         public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }

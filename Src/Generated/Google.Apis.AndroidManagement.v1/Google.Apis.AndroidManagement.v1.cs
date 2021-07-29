@@ -2890,9 +2890,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryEvents")]
         public virtual System.Collections.Generic.IList<MemoryEvent> MemoryEvents { get; set; }
 
-        /// <summary>
-        /// Memory information. This information is only available if memoryInfoEnabled is true in the device's policy.
-        /// </summary>
+        /// <summary>Memory information: contains information about device memory and storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
         public virtual MemoryInfo MemoryInfo { get; set; }
 
@@ -4789,7 +4787,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hardwareStatusEnabled")]
         public virtual System.Nullable<bool> HardwareStatusEnabled { get; set; }
 
-        /// <summary>Whether memory reporting is enabled.</summary>
+        /// <summary>Whether memory event reporting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfoEnabled")]
         public virtual System.Nullable<bool> MemoryInfoEnabled { get; set; }
 

@@ -3726,7 +3726,7 @@ namespace Google.Apis.Drive.v2
             public virtual string Q { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query. Supported values are 'drive', 'appDataFolder' and 'photos'.
+            /// A comma-separated list of spaces to query. Supported values are 'drive' and 'appDataFolder'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
@@ -9264,9 +9264,9 @@ namespace Google.Apis.Drive.v2.Data
         public virtual System.Nullable<long> FileSize { get; set; }
 
         /// <summary>
-        /// Folder color as an RGB hex string if the file is a folder. The list of supported colors is available in the
-        /// folderColorPalette field of the About resource. If an unsupported color is specified, it will be changed to
-        /// the closest color in the palette. Not populated for items in shared drives.
+        /// Folder color as an RGB hex string if the file is a folder or a shortcut to a folder. The list of supported
+        /// colors is available in the folderColorPalette field of the About resource. If an unsupported color is
+        /// specified, it will be changed to the closest color in the palette.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderColorRgb")]
         public virtual string FolderColorRgb { get; set; }

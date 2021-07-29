@@ -18,6 +18,10 @@
     "DISCOVERY",
     "ATTESTATION_AUTHORITY",
     "UPGRADE",
-    "COMPLIANCE"
+    "COMPLIANCE",
+    "SBOM",
+    "SPDX_PACKAGE",
+    "SPDX_FILE",
+    "SPDX_RELATIONSHIP"
   ]
 }

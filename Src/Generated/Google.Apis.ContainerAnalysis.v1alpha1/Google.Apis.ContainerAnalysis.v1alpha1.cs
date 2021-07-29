@@ -1415,6 +1415,22 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1
                     /// <summary>This represents a compliance check that can be applied to a resource.</summary>
                     [Google.Apis.Util.StringValueAttribute("COMPLIANCE")]
                     COMPLIANCE = 9,
+
+                    /// <summary>This represents a software bill of materials.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SBOM")]
+                    SBOM = 10,
+
+                    /// <summary>This represents an SPDX Package.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SPDX_PACKAGE")]
+                    SPDXPACKAGE = 11,
+
+                    /// <summary>This represents an SPDX File.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SPDX_FILE")]
+                    SPDXFILE = 12,
+
+                    /// <summary>This represents an SPDX Relationship.</summary>
+                    [Google.Apis.Util.StringValueAttribute("SPDX_RELATIONSHIP")]
+                    SPDXRELATIONSHIP = 13,
                 }
 
                 /// <summary>
@@ -3447,6 +3463,95 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }
 
     /// <summary>
+    /// DocumentNote represents an SPDX Document Creation Infromation section:
+    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
+    /// </summary>
+    public class DocumentNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such
+        /// fields ("SPDX-Metadata")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLicence")]
+        public virtual string DataLicence { get; set; }
+
+        /// <summary>
+        /// Provide a reference number that can be used to understand how to parse and interpret the rest of the file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxVersion")]
+        public virtual string SpdxVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DocumentOccurrence represents an SPDX Document Creation Information section:
+    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
+    /// </summary>
+    public class DocumentOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identify when the SPDX file was originally created. The date is to be specified according to combined date
+        /// and time in UTC format as specified in ISO 8601 standard
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any
+        /// other relevant comment not included in the other fields
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatorComment")]
+        public virtual string CreatorComment { get; set; }
+
+        /// <summary>
+        /// Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an
+        /// individual, indicate the person's name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creators")]
+        public virtual System.Collections.Generic.IList<string> Creators { get; set; }
+
+        /// <summary>
+        /// A field for creators of the SPDX file content to provide comments to the consumers of the SPDX document
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentComment")]
+        public virtual string DocumentComment { get; set; }
+
+        /// <summary>Identify any external SPDX documents referenced within this SPDX document</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDocumentRefs")]
+        public virtual System.Collections.Generic.IList<string> ExternalDocumentRefs { get; set; }
+
+        /// <summary>
+        /// Identify the current SPDX document which may be referenced in relationships by other files, packages
+        /// internally and documents externally
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX
+        /// file was created
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseListVersion")]
+        public virtual string LicenseListVersion { get; set; }
+
+        /// <summary>
+        /// Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as
+        /// specified in RFC-3986, with the exception of the ‘#’ delimiter
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>Identify name of this document as designated by creator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
@@ -3503,6 +3608,38 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }
 
     /// <summary>
+    /// An External Reference allows a Package to reference an external source of additional information, metadata,
+    /// enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+    /// </summary>
+    public class ExternalRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An External Reference allows a Package to reference an external source of additional information, metadata,
+        /// enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Human-readable information about the purpose and target of the reference</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>
+        /// The unique string with no spaces necessary to access the package-specific information, metadata, or content
+        /// within the target location
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locator")]
+        public virtual string Locator { get; set; }
+
+        /// <summary>Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Container message for hashes of byte content of files, used in Source messages to verify integrity of source
     /// input to the build.
     /// </summary>
@@ -3511,6 +3648,92 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+    /// </summary>
+    public class FileNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Provide a unique identifier to match analysis information on each specific file in a package
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksum")]
+        public virtual System.Collections.Generic.IList<string> Checksum { get; set; }
+
+        /// <summary>This field provides information about the type of file identified</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
+        public virtual string FileType { get; set; }
+
+        /// <summary>
+        /// Identify the full path and filename that corresponds to the file information in this section
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
+    /// </summary>
+    public class FileOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field provides a place for the SPDX data creator to record, at the file level, acknowledgements that
+        /// may be needed to be communicated in some contexts
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
+        public virtual System.Collections.Generic.IList<string> Attributions { get; set; }
+
+        /// <summary>
+        /// This field provides a place for the SPDX file creator to record any general comments about the file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>This field provides a place for the SPDX file creator to record file contributors</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contributors")]
+        public virtual System.Collections.Generic.IList<string> Contributors { get; set; }
+
+        /// <summary>Identify the copyright holder of the file, as well as any dates present</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyright")]
+        public virtual string Copyright { get; set; }
+
+        /// <summary>This field contains the license information actually found in the file, if any</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesLicenseInfo")]
+        public virtual System.Collections.Generic.IList<string> FilesLicenseInfo { get; set; }
+
+        /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// This field provides a place for the SPDX file creator to record any relevant background references or
+        /// analysis that went in to arriving at the Concluded License for a file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseComments")]
+        public virtual string LicenseComments { get; set; }
+
+        /// <summary>
+        /// This field contains the license the SPDX file creator has concluded as governing the file or alternative
+        /// values if the governing license cannot be determined
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConcluded")]
+        public virtual string LicenseConcluded { get; set; }
+
+        /// <summary>
+        /// This field provides a place for the SPDX file creator to record license notices or other such related
+        /// notices found in the file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notice")]
+        public virtual string Notice { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3956,9 +4179,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relatedUrl")]
         public virtual System.Collections.Generic.IList<RelatedUrl> RelatedUrl { get; set; }
 
+        /// <summary>A note describing a software bill of materials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbom")]
+        public virtual DocumentNote Sbom { get; set; }
+
         /// <summary>A one sentence description of this `Note`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
         public virtual string ShortDescription { get; set; }
+
+        /// <summary>A note describing an SPDX File.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxFile")]
+        public virtual FileNote SpdxFile { get; set; }
+
+        /// <summary>A note describing an SPDX Package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxPackage")]
+        public virtual PackageNote SpdxPackage { get; set; }
+
+        /// <summary>A note describing a relationship between SPDX elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxRelationship")]
+        public virtual RelationshipNote SpdxRelationship { get; set; }
 
         /// <summary>
         /// Output only. The time this note was last updated. This field can be used as a filter in list requests.
@@ -4047,6 +4286,22 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
         public virtual string ResourceUrl { get; set; }
+
+        /// <summary>Describes a specific software bill of materials document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbom")]
+        public virtual DocumentOccurrence Sbom { get; set; }
+
+        /// <summary>Describes a specific SPDX File.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxFile")]
+        public virtual FileOccurrence SpdxFile { get; set; }
+
+        /// <summary>Describes a specific SPDX Package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxPackage")]
+        public virtual PackageOccurrence SpdxPackage { get; set; }
+
+        /// <summary>Describes a specific relationship between SPDX elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spdxRelationship")]
+        public virtual RelationshipOccurrence SpdxRelationship { get; set; }
 
         /// <summary>Output only. The time this `Occurrence` was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
@@ -4140,6 +4395,153 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("severityName")]
         public virtual string SeverityName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// PackageNote represents an SPDX Package Information section:
+    /// https://spdx.github.io/spdx-spec/3-package-information/
+    /// </summary>
+    public class PackageNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether the file content of this package has been available for or subjected to analysis when
+        /// creating the SPDX document
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzed")]
+        public virtual System.Nullable<bool> Analyzed { get; set; }
+
+        /// <summary>
+        /// A place for the SPDX data creator to record, at the package level, acknowledgements that may be needed to be
+        /// communicated in some contexts
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribution")]
+        public virtual string Attribution { get; set; }
+
+        /// <summary>
+        /// Provide an independently reproducible mechanism that permits unique identification of a specific package
+        /// that correlates to the data in this SPDX file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksum")]
+        public virtual string Checksum { get; set; }
+
+        /// <summary>Identify the copyright holders of the package, as well as any dates present</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyright")]
+        public virtual string Copyright { get; set; }
+
+        /// <summary>A more detailed description of the package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedDescription")]
+        public virtual string DetailedDescription { get; set; }
+
+        /// <summary>
+        /// This section identifies the download Universal Resource Locator (URL), or a specific location within a
+        /// version control system (VCS) for the package at the time that the SPDX file was created
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadLocation")]
+        public virtual string DownloadLocation { get; set; }
+
+        /// <summary>ExternalRef</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalRefs")]
+        public virtual System.Collections.Generic.IList<ExternalRef> ExternalRefs { get; set; }
+
+        /// <summary>
+        /// Contain the license the SPDX file creator has concluded as governing the This field is to contain a list of
+        /// all licenses found in the package. The relationship between licenses (i.e., conjunctive, disjunctive) is not
+        /// specified in this field – it is simply a listing of all licenses found
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesLicenseInfo")]
+        public virtual System.Collections.Generic.IList<string> FilesLicenseInfo { get; set; }
+
+        /// <summary>
+        /// Provide a place for the SPDX file creator to record a web site that serves as the package's home page
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homePage")]
+        public virtual string HomePage { get; set; }
+
+        /// <summary>List the licenses that have been declared by the authors of the package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseDeclared")]
+        public virtual string LicenseDeclared { get; set; }
+
+        /// <summary>
+        /// If the package identified in the SPDX file originated from a different person or organization than
+        /// identified as Package Supplier, this field identifies from where or whom the package originally came
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originator")]
+        public virtual string Originator { get; set; }
+
+        /// <summary>A short description of the package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryDescription")]
+        public virtual string SummaryDescription { get; set; }
+
+        /// <summary>
+        /// Identify the actual distribution source for the package/directory identified in the SPDX file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supplier")]
+        public virtual string Supplier { get; set; }
+
+        /// <summary>Identify the full name of the package as given by the Package Originator</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>
+        /// This field provides an independently reproducible mechanism identifying specific contents of a package based
+        /// on the actual files (except the SPDX file itself, if it is included in the package) that make up each
+        /// package and that correlates to the data in this SPDX file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationCode")]
+        public virtual string VerificationCode { get; set; }
+
+        /// <summary>Identify the version of the package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// PackageOccurrence represents an SPDX Package Information section:
+    /// https://spdx.github.io/spdx-spec/3-package-information/
+    /// </summary>
+    public class PackageOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A place for the SPDX file creator to record any general comments about the package being described
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>
+        /// Provide the actual file name of the package, or path of the directory being treated as a package
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>
+        /// Uniquely identify any element in an SPDX document which may be referenced by other elements
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// This field provides a place for the SPDX file creator to record any relevant background information or
+        /// analysis that went in to arriving at the Concluded License for a package
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseComments")]
+        public virtual string LicenseComments { get; set; }
+
+        /// <summary>package or alternative values, if the governing license cannot be determined</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseConcluded")]
+        public virtual string LicenseConcluded { get; set; }
+
+        /// <summary>
+        /// Provide a place for the SPDX file creator to record any relevant background information or additional
+        /// comments about the origin of the package
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
+        public virtual string SourceInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4258,6 +4660,46 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Specific URL to associate with the note</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RelationshipNote represents an SPDX Relationship section:
+    /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+    /// </summary>
+    public class RelationshipNote : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RelationshipOccurrence represents an SPDX Relationship section:
+    /// https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
+    /// </summary>
+    public class RelationshipOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A place for the SPDX file creator to record any general comments about the relationship</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Also referred to as SPDXRef-A The source SPDX element (file, package, etc)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Also referred to as SPDXRef-B The target SPDC element (file, package, etc) In cases where there are "known
+        /// unknowns", the use of the keyword NOASSERTION can be used The keywords NONE can be used to indicate that an
+        /// SPDX element (package/file/snippet) has no other elements connected by some relationship to it
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>The type of relationship between the source and target SPDX elements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

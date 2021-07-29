@@ -1061,6 +1061,21 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The field and the value it must have for another field to be allowed to be set.</summary>
+    public class GoogleChromePolicyV1PolicySchemaFieldDependencies : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source field which this field depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceField")]
+        public virtual string SourceField { get; set; }
+
+        /// <summary>The value which the source field must have for this field to be allowed to be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFieldValue")]
+        public virtual string SourceFieldValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides detailed information for a particular field that is part of a PolicySchema.</summary>
     public class GoogleChromePolicyV1PolicySchemaFieldDescription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1071,6 +1086,12 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>Output only. The name of the field for associated with this description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
+
+        /// <summary>
+        /// Output only. Provides a list of fields and the values they must have for this field to be allowed to be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }
 
         /// <summary>Output only. Any input constraints associated on the values for the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputConstraint")]
