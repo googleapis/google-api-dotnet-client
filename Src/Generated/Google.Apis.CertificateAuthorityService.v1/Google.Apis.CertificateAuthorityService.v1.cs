@@ -5493,7 +5493,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class SubordinateConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate
+        /// Required. This can refer to a CertificateAuthority that was used to create a subordinate
         /// CertificateAuthority. This field is used for information and usability purposes only. The resource name is
         /// in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>

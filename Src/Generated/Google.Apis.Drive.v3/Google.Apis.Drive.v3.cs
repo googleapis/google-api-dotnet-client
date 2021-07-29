@@ -2808,8 +2808,8 @@ namespace Google.Apis.Drive.v3
             public virtual string Q { get; set; }
 
             /// <summary>
-            /// A comma-separated list of spaces to query within the corpus. Supported values are 'drive',
-            /// 'appDataFolder' and 'photos'.
+            /// A comma-separated list of spaces to query within the corpus. Supported values are 'drive' and
+            /// 'appDataFolder'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
@@ -6041,9 +6041,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string FileExtension { get; set; }
 
         /// <summary>
-        /// The color for a folder as an RGB hex string. The supported colors are published in the folderColorPalette
-        /// field of the About resource. If an unsupported color is specified, the closest color in the palette will be
-        /// used instead.
+        /// The color for a folder or shortcut to a folder as an RGB hex string. The supported colors are published in
+        /// the folderColorPalette field of the About resource. If an unsupported color is specified, the closest color
+        /// in the palette will be used instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderColorRgb")]
         public virtual string FolderColorRgb { get; set; }
