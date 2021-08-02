@@ -1319,25 +1319,6 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single replacement configuration.</summary>
-    public class Entry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the search is case sensitive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
-        public virtual System.Nullable<bool> CaseSensitive { get; set; }
-
-        /// <summary>What to replace with. Max length is 100 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replace")]
-        public virtual string Replace { get; set; }
-
-        /// <summary>What to replace. Max length is 100 characters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("search")]
-        public virtual string Search { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Message returned to the client by the `ListCustomClasses` method.</summary>
     public class ListCustomClassesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1775,14 +1756,6 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         public virtual System.Collections.Generic.IList<SpeechContext> SpeechContexts { get; set; }
 
         /// <summary>
-        /// Use transcription normalization to automatically replace parts of the transcript with phrases of your
-        /// choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability
-        /// &amp;gt; 0.8) and final transcripts.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transcriptNormalization")]
-        public virtual TranscriptNormalization TranscriptNormalization { get; set; }
-
-        /// <summary>
         /// Set to true to use an enhanced model for speech recognition. If `use_enhanced` is set to true and the
         /// `model` field is not set, then an appropriate enhanced model is chosen if an enhanced model exists for the
         /// audio. If `use_enhanced` is true and an enhanced version of the specified model does not exist, then the
@@ -2051,25 +2024,6 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Transcription normalization configuration. Use transcription normalization to automatically replace parts of the
-    /// transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable
-    /// partial transcripts (stability &amp;gt; 0.8) and final transcripts.
-    /// </summary>
-    public class TranscriptNormalization : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of replacement entries. We will perform replacement with one entry at a time. For example, the second
-        /// entry in ["cat" =&amp;gt; "dog", "mountain cat" =&amp;gt; "mountain dog"] will never be applied because we
-        /// will always process the first entry before it. At most 100 entries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
-        public virtual Entry Entries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

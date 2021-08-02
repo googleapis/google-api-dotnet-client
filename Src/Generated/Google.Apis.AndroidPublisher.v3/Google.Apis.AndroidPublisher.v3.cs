@@ -4670,6 +4670,13 @@ namespace Google.Apis.AndroidPublisher.v3
             public virtual string Sku { get; private set; }
 
             /// <summary>
+            /// If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app
+            /// product will be created.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+            /// <summary>
             /// If true the prices for all regions targeted by the parent app that don't have a price specified for this
             /// in-app product will be auto converted to the target currency based on the default price. Defaults to
             /// false.
@@ -4709,6 +4716,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "sku",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowMissing",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });

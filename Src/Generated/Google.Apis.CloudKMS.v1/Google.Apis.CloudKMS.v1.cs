@@ -911,6 +911,132 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
+                        /// Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be
+                        /// verified by another source with the same key.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the CryptoKeyVersion to use for signing.
+                        /// </param>
+                        public virtual MacSignRequest MacSign(Google.Apis.CloudKMS.v1.Data.MacSignRequest body, string name)
+                        {
+                            return new MacSignRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be
+                        /// verified by another source with the same key.
+                        /// </summary>
+                        public class MacSignRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.MacSignResponse>
+                        {
+                            /// <summary>Constructs a new MacSign request.</summary>
+                            public MacSignRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.MacSignRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the CryptoKeyVersion to use for signing.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.MacSignRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "macSign";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:macSign";
+
+                            /// <summary>Initializes MacSign parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response
+                        /// that indicates whether or not the verification was successful.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the CryptoKeyVersion to use for verification.
+                        /// </param>
+                        public virtual MacVerifyRequest MacVerify(Google.Apis.CloudKMS.v1.Data.MacVerifyRequest body, string name)
+                        {
+                            return new MacVerifyRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response
+                        /// that indicates whether or not the verification was successful.
+                        /// </summary>
+                        public class MacVerifyRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.MacVerifyResponse>
+                        {
+                            /// <summary>Constructs a new MacVerify request.</summary>
+                            public MacVerifyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.MacVerifyRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the CryptoKeyVersion to use for verification.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.MacVerifyRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "macVerify";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:macVerify";
+
+                            /// <summary>Initializes MacVerify parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and DISABLED
                         /// using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between
                         /// other states.
@@ -3827,6 +3953,170 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Indicates whether CryptoKeys with protection_level HSM can be created in this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hsmAvailable")]
         public virtual System.Nullable<bool> HsmAvailable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.MacSign.</summary>
+    public class MacSignRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The data to sign. The MAC tag is computed over this data field based on the specific algorithm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the MacSignRequest.data. If specified, KeyManagementService will
+        /// verify the integrity of the received MacSignRequest.data using this checksum. KeyManagementService will
+        /// report an error if the checksum verification fails. If you receive a checksum error, your client should
+        /// verify that CRC32C(MacSignRequest.data) is equal to MacSignRequest.data_crc32c, and if so, perform a limited
+        /// number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum.
+        /// Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is
+        /// a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in
+        /// languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
+        public virtual System.Nullable<long> DataCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.MacSign.</summary>
+    public class MacSignResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created signature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mac")]
+        public virtual string Mac { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned MacSignResponse.mac. An integrity check of
+        /// MacSignResponse.mac can be performed by computing the CRC32C checksum of MacSignResponse.mac and comparing
+        /// your results to this field. Discard the response in case of non-matching checksum values, and perform a
+        /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
+        /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macCrc32c")]
+        public virtual System.Nullable<long> MacCrc32c { get; set; }
+
+        /// <summary>
+        /// The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended
+        /// resource was used for signing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used for signing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether MacSignRequest.data_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the data. A false value of this field
+        /// indicates either that MacSignRequest.data_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set MacSignRequest.data_crc32c but this field is still false, discard the
+        /// response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedDataCrc32c")]
+        public virtual System.Nullable<bool> VerifiedDataCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.MacVerify.</summary>
+    public class MacVerifyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The data used previously as a MacSignRequest.data to generate the MAC tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the MacVerifyRequest.data. If specified, KeyManagementService will
+        /// verify the integrity of the received MacVerifyRequest.data using this checksum. KeyManagementService will
+        /// report an error if the checksum verification fails. If you receive a checksum error, your client should
+        /// verify that CRC32C(MacVerifyRequest.data) is equal to MacVerifyRequest.data_crc32c, and if so, perform a
+        /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
+        /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCrc32c")]
+        public virtual System.Nullable<long> DataCrc32c { get; set; }
+
+        /// <summary>Required. The signature to verify.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mac")]
+        public virtual string Mac { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the MacVerifyRequest.mac. If specified, KeyManagementService will
+        /// verify the integrity of the received MacVerifyRequest.mac using this checksum. KeyManagementService will
+        /// report an error if the checksum verification fails. If you receive a checksum error, your client should
+        /// verify that CRC32C(MacVerifyRequest.tag) is equal to MacVerifyRequest.mac_crc32c, and if so, perform a
+        /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
+        /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macCrc32c")]
+        public virtual System.Nullable<long> MacCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.MacVerify.</summary>
+    public class MacVerifyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the CryptoKeyVersion used for verification. Check this field to verify that the
+        /// intended resource was used for verification.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used for verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// This field indicates whether or not the verification operation for MacVerifyRequest.mac over
+        /// MacVerifyRequest.data was successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether MacVerifyRequest.data_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the data. A false value of this field
+        /// indicates either that MacVerifyRequest.data_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set MacVerifyRequest.data_crc32c but this field is still false, discard the
+        /// response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedDataCrc32c")]
+        public virtual System.Nullable<bool> VerifiedDataCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether MacVerifyRequest.mac_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the data. A false value of this field
+        /// indicates either that MacVerifyRequest.mac_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set MacVerifyRequest.mac_crc32c but this field is still false, discard the
+        /// response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedMacCrc32c")]
+        public virtual System.Nullable<bool> VerifiedMacCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. This value is used for the integrity verification of
+        /// [MacVerifyResponse.success]. If the value of this field contradicts the value of
+        /// [MacVerifyResponse.success], discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedSuccessIntegrity")]
+        public virtual System.Nullable<bool> VerifiedSuccessIntegrity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -22967,7 +22967,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<string> Entries { get; set; }
 
-        /// <summary>The detailed error messsage.</summary>
+        /// <summary>The detailed error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
