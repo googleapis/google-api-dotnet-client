@@ -534,9 +534,9 @@ namespace Google.Apis.Monitoring.v1
                 /// metrics scope representing the specified monitored project will always be the first entry in the
                 /// response.
                 /// </summary>
-                public virtual ListMetricScopesByMonitoredProjectRequest ListMetricScopesByMonitoredProject()
+                public virtual ListMetricsScopesByMonitoredProjectRequest ListMetricsScopesByMonitoredProject()
                 {
-                    return new ListMetricScopesByMonitoredProjectRequest(service);
+                    return new ListMetricsScopesByMonitoredProjectRequest(service);
                 }
 
                 /// <summary>
@@ -544,10 +544,10 @@ namespace Google.Apis.Monitoring.v1
                 /// metrics scope representing the specified monitored project will always be the first entry in the
                 /// response.
                 /// </summary>
-                public class ListMetricScopesByMonitoredProjectRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.ListMetricsScopesByMonitoredProjectResponse>
+                public class ListMetricsScopesByMonitoredProjectRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v1.Data.ListMetricsScopesByMonitoredProjectResponse>
                 {
-                    /// <summary>Constructs a new ListMetricScopesByMonitoredProject request.</summary>
-                    public ListMetricScopesByMonitoredProjectRequest(Google.Apis.Services.IClientService service) : base(service)
+                    /// <summary>Constructs a new ListMetricsScopesByMonitoredProject request.</summary>
+                    public ListMetricsScopesByMonitoredProjectRequest(Google.Apis.Services.IClientService service) : base(service)
                     {
                         InitParameters();
                     }
@@ -560,15 +560,15 @@ namespace Google.Apis.Monitoring.v1
                     public virtual string MonitoredResourceContainer { get; set; }
 
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "listMetricScopesByMonitoredProject";
+                    public override string MethodName => "listMetricsScopesByMonitoredProject";
 
                     /// <summary>Gets the HTTP method.</summary>
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/locations/global/metricsScopes:listMetricScopesByMonitoredProject";
+                    public override string RestPath => "v1/locations/global/metricsScopes:listMetricsScopesByMonitoredProject";
 
-                    /// <summary>Initializes ListMetricScopesByMonitoredProject parameter list.</summary>
+                    /// <summary>Initializes ListMetricsScopesByMonitoredProject parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();

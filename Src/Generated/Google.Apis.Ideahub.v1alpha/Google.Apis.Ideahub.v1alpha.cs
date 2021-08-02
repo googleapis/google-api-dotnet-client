@@ -1018,8 +1018,8 @@ namespace Google.Apis.Ideahub.v1alpha.Data
     public class GoogleSearchIdeahubV1alphaIdeaActivity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Idea IDs for this entry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ideaIds")]
-        public virtual System.Collections.Generic.IList<string> IdeaIds { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("ideas")]
+        public virtual System.Collections.Generic.IList<string> Ideas { get; set; }
 
         /// <summary>
         /// Unique identifier for the idea activity. Format:
@@ -1029,8 +1029,8 @@ namespace Google.Apis.Ideahub.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>The Topic IDs for this entry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicIds")]
-        public virtual System.Collections.Generic.IList<string> TopicIds { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
+        public virtual System.Collections.Generic.IList<string> Topics { get; set; }
 
         /// <summary>The type of activity performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -1111,6 +1111,10 @@ namespace Google.Apis.Ideahub.v1alpha.Data
         /// <summary>The mID of the topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mid")]
         public virtual string Mid { get; set; }
+
+        /// <summary>Unique identifier for the topic. Format: topics/{topic}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1588,6 +1588,35 @@ namespace Google.Apis.OSConfig.v1alpha.Data
     }
 
     /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero
+    /// year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with
+    /// a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and
+    /// `google.protobuf.Timestamp`.
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON
@@ -1844,6 +1873,10 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qfePackage")]
         public virtual InventoryWindowsQuickFixEngineeringPackage QfePackage { get; set; }
 
+        /// <summary>Details of Windows Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsApplication")]
+        public virtual InventoryWindowsApplication WindowsApplication { get; set; }
+
         /// <summary>
         /// Details of a Windows Update package. See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
         /// information about Windows Update.
@@ -1893,6 +1926,40 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// <summary>The version of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information about a Windows application as retrieved from the Windows Registry. For more information
+    /// about these fields, see [Windows Installer Properties for the Uninstall
+    /// Registry](https://docs.microsoft.com/en-us/windows/win32/msi/uninstall-registry-key){: class="external" }
+    /// </summary>
+    public class InventoryWindowsApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the application or product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The version of the product or application in string format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayVersion")]
+        public virtual string DisplayVersion { get; set; }
+
+        /// <summary>The internet address for technical support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpLink")]
+        public virtual string HelpLink { get; set; }
+
+        /// <summary>
+        /// The last time this product received service. The value of this property is replaced each time a patch is
+        /// applied or removed from the product or the command-line option is used to repair the product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installDate")]
+        public virtual Date InstallDate { get; set; }
+
+        /// <summary>The name of the manufacturer for the product or application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

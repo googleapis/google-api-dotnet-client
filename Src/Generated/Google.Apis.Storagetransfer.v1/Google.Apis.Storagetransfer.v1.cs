@@ -401,7 +401,7 @@ namespace Google.Apis.Storagetransfer.v1
         }
 
         /// <summary>Gets a transfer job.</summary>
-        /// <param name="jobName">Required. " The job to get.</param>
+        /// <param name="jobName">Required. The job to get.</param>
         /// <param name="projectId">
         /// Required. The ID of the Google Cloud Platform Console project that owns the job.
         /// </param>
@@ -421,7 +421,7 @@ namespace Google.Apis.Storagetransfer.v1
                 InitParameters();
             }
 
-            /// <summary>Required. " The job to get.</summary>
+            /// <summary>Required. The job to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("jobName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string JobName { get; private set; }
 
@@ -1071,8 +1071,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string Path { get; set; }
 
         /// <summary>
-        /// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via
-        /// `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM
+        /// The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`.
+        /// For more information about ARNs, see [IAM
         /// ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a
         /// role ARN is provided, Transfer Service fetches temporary credentials for the session using a
         /// `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
@@ -1329,6 +1329,20 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Logging configure.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables the Cloud Storage transfer logs for this transfer. This is only supported for transfer jobs with
+        /// PosixFilesystem sources. The default is that logs are not generated for this transfer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableOnpremGcsTransferLogs")]
+        public virtual System.Nullable<bool> EnableOnpremGcsTransferLogs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specification to configure notifications published to Pub/Sub. Notifications are published to the
     /// customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType
@@ -1486,6 +1500,17 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>Request passed to PauseTransferOperation.</summary>
     public class PauseTransferOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A POSIX filesystem data source or sink.</summary>
+    public class PosixFilesystem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Root directory path to the filesystem.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDirectory")]
+        public virtual string RootDirectory { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1669,6 +1694,29 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFromSourceSkippedBySync")]
         public virtual System.Nullable<long> BytesFromSourceSkippedBySync { get; set; }
 
+        /// <summary>
+        /// For transfers involving PosixFilesystem only. Number of listing failures for each directory found at the
+        /// source. Potential failures when listing a directory include permission failure or block failure. If listing
+        /// a directory fails, no files in the directory are transferred.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoriesFailedToListFromSource")]
+        public virtual System.Nullable<long> DirectoriesFailedToListFromSource { get; set; }
+
+        /// <summary>
+        /// For transfers involving PosixFilesystem only. Number of directories found while listing. For example, if the
+        /// root directory of the transfer is `base/` and there are two other directories, `a/` and `b/` under this
+        /// directory, the count after listing `base/`, `base/a/` and `base/b/` is 3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoriesFoundFromSource")]
+        public virtual System.Nullable<long> DirectoriesFoundFromSource { get; set; }
+
+        /// <summary>
+        /// For transfers involving PosixFilesystem only. Number of successful listings for each directory found at the
+        /// source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoriesSuccessfullyListedFromSource")]
+        public virtual System.Nullable<long> DirectoriesSuccessfullyListedFromSource { get; set; }
+
         /// <summary>Objects that are copied to the data sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsCopiedToSink")]
         public virtual System.Nullable<long> ObjectsCopiedToSink { get; set; }
@@ -1740,6 +1788,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestOperationName")]
         public virtual string LatestOperationName { get; set; }
+
+        /// <summary>Logging configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
 
         /// <summary>
         /// A unique name (within the transfer project) assigned when the job is created. If this field is empty in a
@@ -1895,6 +1947,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
         public virtual ObjectConditions ObjectConditions { get; set; }
+
+        /// <summary>A POSIX Filesystem data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posixDataSource")]
+        public virtual PosixFilesystem PosixDataSource { get; set; }
 
         /// <summary>
         /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last

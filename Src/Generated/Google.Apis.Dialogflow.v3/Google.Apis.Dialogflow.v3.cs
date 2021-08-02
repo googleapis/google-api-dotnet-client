@@ -8027,6 +8027,39 @@ namespace Google.Apis.Dialogflow.v3
 namespace Google.Apis.Dialogflow.v3.Data
 {
     /// <summary>
+    /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level
+    /// overrides the settings exposed at higher level. Hierarchy:
+    /// Agent-&amp;gt;Flow-&amp;gt;Page-&amp;gt;Fulfillment/Parameter.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
+        /// logging. Exposed at the following levels: - Agent level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors on logging.</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
+        public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
+
+        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
+        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Agents are best described as Natural Language Understanding (NLU) modules that transform user requests into
     /// actionable data. You can include agents in your app, product, or service to determine user intent and respond to
     /// the user in a natural way. After you create an agent, you can add Intents, Entity Types, Flows, Fulfillments,
@@ -8034,6 +8067,13 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Agent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted
         /// [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
@@ -8063,7 +8103,9 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpellCorrection")]
         public virtual System.Nullable<bool> EnableSpellCorrection { get; set; }
 
-        /// <summary>Indicates if stackdriver logging is enabled for the agent.</summary>
+        /// <summary>
+        /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -10344,6 +10386,15 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableWebhook")]
         public virtual System.Nullable<bool> DisableWebhook { get; set; }
 
+        /// <summary>
+        /// A list of flow versions to override for the request. Format:
+        /// `projects//locations//agents//flows//versions/`. If version 1 of flow X is included in this list, the
+        /// traffic of flow X will go through version 1 regardless of the version configuration in the environment. Each
+        /// flow can have at most one version specified in this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowVersions")]
+        public virtual System.Collections.Generic.IList<string> FlowVersions { get; set; }
+
         /// <summary>The geo location of this conversational query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
         public virtual GoogleTypeLatLng GeoLocation { get; set; }
@@ -10845,6 +10896,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Controls conversation exporting settings to Insights after conversation is completed. If
+        /// retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you
+        /// configure here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightsExportSettings")]
+        public virtual GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings InsightsExportSettings { get; set; }
+
+        /// <summary>
         /// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base
         /// settings. If empty, we use the default DLP inspect config. The template name will have one of the following
         /// formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR
@@ -10883,6 +10942,21 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionWindowDays")]
         public virtual System.Nullable<int> RetentionWindowDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings for exporting conversations to [Insights](https://cloud.google.com/dialogflow/priv/docs/insights).
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInsightsExport")]
+        public virtual System.Nullable<bool> EnableInsightsExport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
