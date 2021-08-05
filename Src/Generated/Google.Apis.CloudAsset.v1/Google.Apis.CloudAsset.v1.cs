@@ -360,6 +360,10 @@ namespace Google.Apis.CloudAsset.v1
                 /// <summary>The runtime OS Inventory information.</summary>
                 [Google.Apis.Util.StringValueAttribute("OS_INVENTORY")]
                 OSINVENTORY = 5,
+
+                /// <summary>The related resources.</summary>
+                [Google.Apis.Util.StringValueAttribute("RELATIONSHIP")]
+                RELATIONSHIP = 6,
             }
 
             /// <summary>
@@ -385,6 +389,20 @@ namespace Google.Apis.CloudAsset.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTime { get; set; }
+
+            /// <summary>
+            /// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only
+            /// be specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It
+            /// returns an error if any of the [relationship_types] doesn't belong to the supported relationship types
+            /// of the [asset_types] or if any of the [asset_types] doesn't belong to the source types of the
+            /// [relationship_types]. * Otherwise: it snapshots the supported relationships for all [asset_types] or
+            /// returns an error if any of the [asset_types] has no relationship support. An unspecified asset types
+            /// field means all supported asset_types. See [Introduction to Cloud Asset
+            /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and
+            /// relationship types.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("relationshipTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RelationshipTypes { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
@@ -442,6 +460,14 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("readTime", new Google.Apis.Discovery.Parameter
                 {
                     Name = "readTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("relationshipTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "relationshipTypes",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1365,6 +1391,10 @@ namespace Google.Apis.CloudAsset.v1
                 /// <summary>The runtime OS Inventory information.</summary>
                 [Google.Apis.Util.StringValueAttribute("OS_INVENTORY")]
                 OSINVENTORY = 5,
+
+                /// <summary>The related resources.</summary>
+                [Google.Apis.Util.StringValueAttribute("RELATIONSHIP")]
+                RELATIONSHIP = 6,
             }
 
             /// <summary>
@@ -1376,6 +1406,20 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>Start time of the time window (exclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("readTimeWindow.startTime", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadTimeWindowStartTime { get; set; }
+
+            /// <summary>
+            /// Optional. A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field
+            /// should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified
+            /// relationships' history on the [asset_names]. It returns an error if any of the [relationship_types]
+            /// doesn't belong to the supported relationship types of the [asset_names] or if any of the [asset_names]'s
+            /// types doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the
+            /// supported relationships' history on the [asset_names] or returns an error if any of the [asset_names]'s
+            /// types has no relationship support. See [Introduction to Cloud Asset
+            /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and
+            /// relationship types.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("relationshipTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RelationshipTypes { get; set; }
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "batchGetAssetsHistory";
@@ -1425,6 +1469,14 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("readTimeWindow.startTime", new Google.Apis.Discovery.Parameter
                 {
                     Name = "readTimeWindow.startTime",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("relationshipTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "relationshipTypes",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2039,6 +2091,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("osInventory")]
         public virtual Inventory OsInventory { get; set; }
 
+        /// <summary>
+        /// The related assets of the asset of one relationship type. One asset only represents one type of
+        /// relationship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedAssets")]
+        public virtual RelatedAssets RelatedAssets { get; set; }
+
         /// <summary>A representation of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; }
@@ -2371,6 +2430,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual object ReadTime { get; set; }
 
+        /// <summary>
+        /// A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be
+        /// specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It returns an
+        /// error if any of the [relationship_types] doesn't belong to the supported relationship types of the
+        /// [asset_types] or if any of the [asset_types] doesn't belong to the source types of the [relationship_types].
+        /// * Otherwise: it snapshots the supported relationships for all [asset_types] or returns an error if any of
+        /// the [asset_types] has no relationship support. An unspecified asset types field means all supported
+        /// asset_types. See [Introduction to Cloud Asset
+        /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and
+        /// relationship types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipTypes")]
+        public virtual System.Collections.Generic.IList<string> RelationshipTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2475,6 +2548,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be
+        /// specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the
+        /// [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to
+        /// the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the
+        /// [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the
+        /// supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the
+        /// [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset
+        /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and
+        /// relationship types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipTypes")]
+        public virtual System.Collections.Generic.IList<string> RelationshipTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3963,7 +4050,12 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The inventory details of a VM.</summary>
+    /// <summary>
+    /// This API resource represents the available inventory data for a Compute Engine virtual machine (VM) instance at
+    /// a given point in time. You can use this API resource to determine the inventory data of your VM. For more
+    /// information, see [Information provided by OS inventory
+    /// management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected).
+    /// </summary>
     public class Inventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3974,9 +4066,20 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string, Item> Items { get; set; }
 
+        /// <summary>
+        /// Output only. The `Inventory` API resource name. Format:
+        /// `projects/{project_number}/locations/{location}/instances/{instance_id}/inventory`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Base level operating system information for the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osInfo")]
         public virtual OsInfo OsInfo { get; set; }
+
+        /// <summary>Output only. Timestamp of the last reported inventory for the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4367,6 +4470,84 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An asset identify in Google Cloud which contains its name, type and ancestors. An asset can be any resource in
+    /// the Google Cloud [resource
+    /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), a resource outside
+    /// the Google Cloud resource hierarchy (such as Google Kubernetes Engine clusters and objects), or a policy (e.g.
+    /// Cloud IAM policy). See [Supported asset
+    /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+    /// </summary>
+    public class RelatedAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ancestors of an asset in Google Cloud [resource
+        /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as
+        /// a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and
+        /// ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
+        public virtual System.Collections.Generic.IList<string> Ancestors { get; set; }
+
+        /// <summary>
+        /// The full name of the asset. Example:
+        /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset
+        /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The detailed related assets with the `relationship_type`.</summary>
+    public class RelatedAssets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The peer resources of the relationship.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assets")]
+        public virtual System.Collections.Generic.IList<RelatedAsset> Assets { get; set; }
+
+        /// <summary>The detailed relationship attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationshipAttributes")]
+        public virtual RelationshipAttributes RelationshipAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The relationship attributes which include `type`, `source_resource_type`, `target_resource_type` and `action`.
+    /// </summary>
+    public class RelationshipAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detail of the relationship, e.g. `contains`, `attaches`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The source asset type. Example: `compute.googleapis.com/Instance`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceResourceType")]
+        public virtual string SourceResourceType { get; set; }
+
+        /// <summary>The target asset type. Example: `compute.googleapis.com/Disk`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResourceType")]
+        public virtual string TargetResourceType { get; set; }
+
+        /// <summary>The unique identifier of the relationship type. Example: `INSTANCE_TO_INSTANCEGROUP`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

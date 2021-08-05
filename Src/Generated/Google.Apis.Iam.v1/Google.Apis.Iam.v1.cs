@@ -5047,6 +5047,17 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for long-running Policy operations.</summary>
+    public class PolicyOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp when the google.longrunning.Operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request to get the list of auditable services for a resource.</summary>
     public class QueryAuditableServicesRequest : Google.Apis.Requests.IDirectResponseSchema
     {

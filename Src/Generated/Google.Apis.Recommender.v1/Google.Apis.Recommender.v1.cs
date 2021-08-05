@@ -3537,6 +3537,10 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationGroups")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1OperationGroup> OperationGroups { get; set; }
 
+        /// <summary>Condensed overview information about the recommendation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Overview { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

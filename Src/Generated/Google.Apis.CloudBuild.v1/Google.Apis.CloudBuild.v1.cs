@@ -3816,6 +3816,13 @@ namespace Google.Apis.CloudBuild.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// For GitHub Enterprise webhooks, this key is used to associate the webhook request with the
+            /// GitHubEnterpriseConfig to use for validation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("webhookKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string WebhookKey { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudBuild.v1.Data.HttpBody Body { get; set; }
 
@@ -3835,6 +3842,14 @@ namespace Google.Apis.CloudBuild.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("webhookKey", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "webhookKey",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }

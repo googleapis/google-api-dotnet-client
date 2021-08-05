@@ -807,6 +807,10 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
         public virtual System.Collections.Generic.IList<PosixAccount> PosixAccounts { get; set; }
 
+        /// <summary>The registered security key credentials for a user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityKeys")]
+        public virtual System.Collections.Generic.IList<SecurityKey> SecurityKeys { get; set; }
+
         /// <summary>A map from SSH public key fingerprint to the associated key object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
         public virtual System.Collections.Generic.IDictionary<string, SshPublicKey> SshPublicKeys { get; set; }
@@ -868,6 +872,31 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The credential information for a Google registered security key.</summary>
+    public class SecurityKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hardware-backed private key text in SSH format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; }
+
+        /// <summary>
+        /// Public key text in SSH format, defined by [RFC4253]("https://www.ietf.org/rfc/rfc4253.txt") section 6.6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
+        public virtual string PublicKey { get; set; }
+
+        /// <summary>The U2F protocol type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("universalTwoFactor")]
+        public virtual UniversalTwoFactor UniversalTwoFactor { get; set; }
+
+        /// <summary>The Web Authentication protocol type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webAuthn")]
+        public virtual WebAuthn WebAuthn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The SSH public key information associated with a Google account.</summary>
     public class SshPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -886,6 +915,28 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         /// <summary>Output only. The canonical resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Security key information specific to the U2F protocol.</summary>
+    public class UniversalTwoFactor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Application ID for the U2F protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Security key information specific to the Web Authentication protocol.</summary>
+    public class WebAuthn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Relying party ID for Web Authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rpId")]
+        public virtual string RpId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

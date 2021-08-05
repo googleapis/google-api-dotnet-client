@@ -674,9 +674,11 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// other labels. To delete the label, include it in `updateMask` and omit its mapping in
                     /// `environment.labels`. It is an error to provide both a mask of this form and the `labels` mask.
                     /// * `config.nodeCount` * Horizontally scale the number of nodes in the environment. An integer
-                    /// greater than or equal to 3 must be provided in the `config.nodeCount` field. *
+                    /// greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud
+                    /// Composer environments in versions composer-1.*.*-airflow-*.*.*. *
                     /// `config.webServerNetworkAccessControl` * Replace the environment's current
-                    /// WebServerNetworkAccessControl. * `config.softwareConfig.airflowConfigOverrides` * Replace all
+                    /// WebServerNetworkAccessControl. Supported for Cloud Composer environments in versions
+                    /// composer-1.*.*-airflow-*.*.*. * `config.softwareConfig.airflowConfigOverrides` * Replace all
                     /// Apache Airflow config overrides. If a replacement config overrides map is not included in
                     /// `environment`, all config overrides are cleared. It is an error to provide both this mask and a
                     /// mask specifying one or more individual config overrides. *
@@ -696,12 +698,19 @@ namespace Google.Apis.CloudComposer.v1beta1
                     /// List](https://cloud.google.com/composer/docs/concepts/versioning/composer-versions) for valid
                     /// values. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers
                     /// in Airflow. A positive integer not greater than the number of nodes must be provided in the
-                    /// `config.softwareConfig.schedulerCount` field. * `config.databaseConfig.machineType` * Cloud SQL
-                    /// machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4,
-                    /// db-n1-standard-8 or db-n1-standard-16. * `config.webServerConfig.machineType` * Machine type on
-                    /// which Airflow web server is running. It has to be one of: composer-n1-webserver-2,
-                    /// composer-n1-webserver-4 or composer-n1-webserver-8. * `config.maintenanceWindow` * Maintenance
-                    /// window during which Cloud Composer components may be under maintenance.
+                    /// `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in
+                    /// versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine
+                    /// type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4,
+                    /// db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions
+                    /// composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which
+                    /// Airflow web server is running. It has to be one of: composer-n1-webserver-2,
+                    /// composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in
+                    /// versions composer-1.*.*-airflow-*.*.*. * `config.maintenanceWindow` * Maintenance window during
+                    /// which Cloud Composer components may be under maintenance. * `config.workloadsConfig` * The
+                    /// workloads configuration settings for the GKE cluster associated with the Cloud Composer
+                    /// environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.*
+                    /// and newer. * `config.environmentSize` * The size of the Cloud Composer environment. Supported
+                    /// for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1206,7 +1215,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
+    /// <summary>
+    /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud
+    /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
+    /// </summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1261,7 +1273,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The encryption options for the Cloud Composer environment and its dependencies.</summary>
+    /// <summary>
+    /// The encryption options for the Cloud Composer environment and its dependencies. Supported for Cloud Composer
+    /// environments in versions composer-1.*.*-airflow-*.*.*.
+    /// </summary>
     public class EncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1341,13 +1356,15 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string DagGcsPrefix { get; set; }
 
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This
+        /// field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseConfig")]
         public virtual DatabaseConfig DatabaseConfig { get; set; }
 
         /// <summary>
         /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
+        /// This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
         public virtual EncryptionConfig EncryptionConfig { get; set; }
@@ -1379,7 +1396,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual NodeConfig NodeConfig { get; set; }
 
         /// <summary>
-        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment.
+        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field
+        /// is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -1392,13 +1410,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
 
-        /// <summary>Optional. The configuration settings for the Airflow web server App Engine instance.</summary>
+        /// <summary>
+        /// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported
+        /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerConfig")]
         public virtual WebServerConfig WebServerConfig { get; set; }
 
         /// <summary>
         /// Optional. The network-level access control policy for the Airflow web server. If unspecified, no
-        /// network-level access restrictions will be applied.
+        /// network-level access restrictions will be applied. This field is supported for Cloud Composer environments
+        /// in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerNetworkAccessControl")]
         public virtual WebServerNetworkAccessControl WebServerNetworkAccessControl { get; set; }
@@ -1420,11 +1442,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     {
         /// <summary>
         /// Optional. The IP address range used to allocate IP addresses to pods in the cluster. This field is
-        /// applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default
-        /// size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
-        /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
-        /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
-        /// use. Specify `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both.
+        /// applicable only when `use_ip_aliases` is true. For Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true. Set to blank to
+        /// have GKE choose a range with the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with
+        /// a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
+        /// (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`,
+        /// `192.168.0.0/16`) to pick a specific range to use. Specify `cluster_secondary_range_name` or
+        /// `cluster_ipv4_cidr_block` but not both.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
         public virtual string ClusterIpv4CidrBlock { get; set; }
@@ -1432,15 +1456,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// Optional. The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either
         /// `cluster_secondary_range_name` or `cluster_ipv4_cidr_block` but not both. This field is applicable only when
-        /// `use_ip_aliases` is true.
+        /// `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this
+        /// field is applicable only when `use_ip_aliases` is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
         public virtual string ClusterSecondaryRangeName { get; set; }
 
         /// <summary>
         /// Optional. The IP address range of the services IP addresses in this cluster. This field is applicable only
-        /// when `use_ip_aliases` is true. Set to blank to have GKE choose a range with the default size. Set to
-        /// /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
+        /// when `use_ip_aliases` is true. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*,
+        /// this field is applicable only when `use_ip_aliases` is true. Set to blank to have GKE choose a range with
+        /// the default size. Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific netmask. Set to a
         /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the
         /// RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to
         /// use. Specify `services_secondary_range_name` or `services_ipv4_cidr_block` but not both.
@@ -1451,13 +1477,16 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// Optional. The name of the services' secondary range used to allocate IP addresses to the cluster. Specify
         /// either `services_secondary_range_name` or `services_ipv4_cidr_block` but not both. This field is applicable
-        /// only when `use_ip_aliases` is true.
+        /// only when `use_ip_aliases` is true. For Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*, this field is applicable only when `use_ip_aliases` is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
         public virtual string ServicesSecondaryRangeName { get; set; }
 
         /// <summary>
         /// Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created.
+        /// This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Environments in newer versions always use VPC-native GKE clusters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
         public virtual System.Nullable<bool> UseIpAliases { get; set; }
@@ -1582,7 +1611,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     {
         /// <summary>
         /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB.
-        /// Cannot be updated.
+        /// Cannot be updated. This field is supported for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; }
@@ -1600,7 +1630,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine
         /// region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one
         /// field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified
-        /// field will be propagated to the unspecified field.
+        /// field will be propagated to the unspecified field. This field is supported for Cloud Composer environments
+        /// in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -1615,7 +1646,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// to both fields. If exactly one of this field and `nodeConfig.location` is specified, the location
         /// information from the specified field will be propagated to the unspecified field. The `machineTypeId` must
         /// not be a [shared-core machine type](/compute/docs/machine-types#sharedcore). If this field is unspecified,
-        /// the `machineTypeId` defaults to "n1-standard-1".
+        /// the `machineTypeId` defaults to "n1-standard-1". This field is supported for Cloud Composer environments in
+        /// versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
@@ -1626,7 +1658,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and to the
         /// default "Maximum Pods per Node" value which is used for newly created node pools if their value is not
         /// explicitly set during node pool creation. For more information, see [Optimizing IP address allocation]
-        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated.
+        /// (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated. This field is
+        /// supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
         public virtual System.Nullable<int> MaxPodsPerNode { get; set; }
@@ -1644,7 +1677,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty,
-        /// defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+        /// defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported
+        /// for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; }
@@ -1669,7 +1703,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>
         /// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or
         /// targets for network firewalls. Each tag within the list must comply with
-        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud
+        /// Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
@@ -1811,7 +1846,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true,
-        /// `IPAllocationPolicy.use_ip_aliases` must be set to true .
+        /// `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions
+        /// composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEnvironment")]
         public virtual System.Nullable<bool> EnablePrivateEnvironment { get; set; }
@@ -1824,12 +1860,16 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from
-        /// private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block.
+        /// private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for
+        /// Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerIpv4CidrBlock")]
         public virtual string WebServerIpv4CidrBlock { get; set; }
 
-        /// <summary>Output only. The IP range reserved for the tenant project's App Engine VMs.</summary>
+        /// <summary>
+        /// Output only. The IP range reserved for the tenant project's App Engine VMs. This field is supported for
+        /// Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServerIpv4ReservedRange")]
         public virtual string WebServerIpv4ReservedRange { get; set; }
 
@@ -1922,12 +1962,17 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>
         /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver
-        /// processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
+        /// processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated. This field is
+        /// only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in
+        /// newer versions always use Python major version 3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
         public virtual string PythonVersion { get; set; }
 
-        /// <summary>Optional. The number of schedulers for Airflow.</summary>
+        /// <summary>
+        /// Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in
+        /// versions composer-1.*.*-airflow-2.*.*.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedulerCount")]
         public virtual System.Nullable<int> SchedulerCount { get; set; }
 
@@ -1964,7 +2009,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The configuration settings for the Airflow web server App Engine instance.</summary>
+    /// <summary>
+    /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer
+    /// environments in versions composer-1.*.*-airflow-*.*.*.
+    /// </summary>
     public class WebServerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1980,7 +2028,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Network-level access control policy for the Airflow web server.</summary>
+    /// <summary>
+    /// Network-level access control policy for the Airflow web server. Supported for Cloud Composer environments in
+    /// versions composer-1.*.*-airflow-*.*.*.
+    /// </summary>
     public class WebServerNetworkAccessControl : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A collection of allowed IP ranges with descriptions.</summary>

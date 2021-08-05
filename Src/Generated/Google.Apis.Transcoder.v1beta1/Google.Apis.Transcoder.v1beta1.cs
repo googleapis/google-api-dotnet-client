@@ -1587,7 +1587,7 @@ namespace Google.Apis.Transcoder.v1beta1.Data
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
         /// `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]

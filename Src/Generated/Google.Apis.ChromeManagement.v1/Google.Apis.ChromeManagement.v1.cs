@@ -65,6 +65,12 @@ namespace Google.Apis.ChromeManagement.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Chrome Management API.</summary>
         public class Scope
         {
+            /// <summary>
+            /// See detailed information about apps installed on Chrome browsers and devices managed by your
+            /// organization
+            /// </summary>
+            public static string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
+
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public static string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
         }
@@ -72,6 +78,12 @@ namespace Google.Apis.ChromeManagement.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Chrome Management API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// See detailed information about apps installed on Chrome browsers and devices managed by your
+            /// organization
+            /// </summary>
+            public const string ChromeManagementAppdetailsReadonly = "https://www.googleapis.com/auth/chrome.management.appdetails.readonly";
+
             /// <summary>See reports about devices and Chrome browsers managed within your organization</summary>
             public const string ChromeManagementReportsReadonly = "https://www.googleapis.com/auth/chrome.management.reports.readonly";
         }
@@ -273,7 +285,254 @@ namespace Google.Apis.ChromeManagement.v1
         public CustomersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Apps = new AppsResource(service);
             Reports = new ReportsResource(service);
+        }
+
+        /// <summary>Gets the Apps resource.</summary>
+        public virtual AppsResource Apps { get; }
+
+        /// <summary>The "apps" collection of methods.</summary>
+        public class AppsResource
+        {
+            private const string Resource = "apps";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AppsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Android = new AndroidResource(service);
+                Chrome = new ChromeResource(service);
+                Web = new WebResource(service);
+            }
+
+            /// <summary>Gets the Android resource.</summary>
+            public virtual AndroidResource Android { get; }
+
+            /// <summary>The "android" collection of methods.</summary>
+            public class AndroidResource
+            {
+                private const string Resource = "android";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AndroidResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The app for which details are being queried. Examples:
+                /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google
+                /// Drive Chrome extension version 2.1.2,
+                /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's
+                /// latest version.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1AppDetails>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The app for which details are being queried. Examples:
+                    /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to
+                    /// Google Drive Chrome extension version 2.1.2,
+                    /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android
+                    /// app's latest version.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/apps/android/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Chrome resource.</summary>
+            public virtual ChromeResource Chrome { get; }
+
+            /// <summary>The "chrome" collection of methods.</summary>
+            public class ChromeResource
+            {
+                private const string Resource = "chrome";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ChromeResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The app for which details are being queried. Examples:
+                /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google
+                /// Drive Chrome extension version 2.1.2,
+                /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's
+                /// latest version.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1AppDetails>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The app for which details are being queried. Examples:
+                    /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to
+                    /// Google Drive Chrome extension version 2.1.2,
+                    /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android
+                    /// app's latest version.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/apps/chrome/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Web resource.</summary>
+            public virtual WebResource Web { get; }
+
+            /// <summary>The "web" collection of methods.</summary>
+            public class WebResource
+            {
+                private const string Resource = "web";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public WebResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The app for which details are being queried. Examples:
+                /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google
+                /// Drive Chrome extension version 2.1.2,
+                /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's
+                /// latest version.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get a specific app for a customer by its resource name.</summary>
+                public class GetRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1AppDetails>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The app for which details are being queried. Examples:
+                    /// "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to
+                    /// Google Drive Chrome extension version 2.1.2,
+                    /// "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android
+                    /// app's latest version.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/apps/web/[^/]+$",
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the Reports resource.</summary>
@@ -683,6 +942,127 @@ namespace Google.Apis.ChromeManagement.v1
 }
 namespace Google.Apis.ChromeManagement.v1.Data
 {
+    /// <summary>Android app information.</summary>
+    public class GoogleChromeManagementV1AndroidAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Permissions requested by an Android app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AndroidAppPermission> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Permission requested by an Android app.</summary>
+    public class GoogleChromeManagementV1AndroidAppPermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The type of the permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource representing app details.</summary>
+    public class GoogleChromeManagementV1AppDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Android app information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidAppInfo")]
+        public virtual GoogleChromeManagementV1AndroidAppInfo AndroidAppInfo { get; set; }
+
+        /// <summary>
+        /// Output only. Unique store identifier for the item. Examples: "gmbmikajjgmnabiglmofipeabaddhgne" for the Save
+        /// to Google Drive Chrome extension, "com.google.android.apps.docs" for the Google Drive Android app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Output only. Chrome Web Store app information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeAppInfo")]
+        public virtual GoogleChromeManagementV1ChromeAppInfo ChromeAppInfo { get; set; }
+
+        /// <summary>Output only. App's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. The uri for the detail page of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailUri")]
+        public virtual string DetailUri { get; set; }
+
+        /// <summary>Output only. App's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. First published time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstPublishTime")]
+        public virtual object FirstPublishTime { get; set; }
+
+        /// <summary>Output only. Home page or Website uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("homepageUri")]
+        public virtual string HomepageUri { get; set; }
+
+        /// <summary>Output only. A link to an image that can be used as an icon for the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; }
+
+        /// <summary>Output only. Indicates if the app has to be paid for OR has paid content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPaidApp")]
+        public virtual System.Nullable<bool> IsPaidApp { get; set; }
+
+        /// <summary>Output only. Latest published time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestPublishTime")]
+        public virtual object LatestPublishTime { get; set; }
+
+        /// <summary>
+        /// Output only. Format: name=customers/{customer_id}/apps/{chrome|android|web}/{app_id}@{version}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The URI pointing to the privacy policy of the app, if it was provided by the developer.
+        /// Version-specific field that will only be set when the requested app version is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUri")]
+        public virtual string PrivacyPolicyUri { get; set; }
+
+        /// <summary>Output only. The publisher of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
+
+        /// <summary>
+        /// Output only. Number of reviews received. Chrome Web Store review information will always be for the latest
+        /// version of an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewNumber")]
+        public virtual System.Nullable<long> ReviewNumber { get; set; }
+
+        /// <summary>
+        /// Output only. The rating of the app (on 5 stars). Chrome Web Store review information will always be for the
+        /// latest version of an app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewRating")]
+        public virtual System.Nullable<float> ReviewRating { get; set; }
+
+        /// <summary>
+        /// Output only. App version. A new revision is committed whenever a new version of the app is published.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>Output only. Information about a partial service error if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceError")]
+        public virtual GoogleRpcStatus ServiceError { get; set; }
+
+        /// <summary>Output only. App type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes a browser version and its install count.</summary>
     public class GoogleChromeManagementV1BrowserVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -705,6 +1085,90 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. The full version of the installed browser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chrome Web Store app information.</summary>
+    public class GoogleChromeManagementV1ChromeAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the app or extension is built and maintained by Google. Version-specific field that
+        /// will only be set when the requested app version is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleOwned")]
+        public virtual System.Nullable<bool> GoogleOwned { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the app or extension is in a published state in the Chrome Web Store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCwsHosted")]
+        public virtual System.Nullable<bool> IsCwsHosted { get; set; }
+
+        /// <summary>Output only. Whether the app or extension is a theme.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTheme")]
+        public virtual System.Nullable<bool> IsTheme { get; set; }
+
+        /// <summary>Output only. The minimum number of users using this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minUserCount")]
+        public virtual System.Nullable<int> MinUserCount { get; set; }
+
+        /// <summary>
+        /// Output only. Every custom permission requested by the app. Version-specific field that will only be set when
+        /// the requested app version is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ChromeAppPermission> Permissions { get; set; }
+
+        /// <summary>
+        /// Output only. Every permission giving access to domains or broad host patterns. ( e.g. www.google.com). This
+        /// includes the matches from content scripts as well as hosts in the permissions node of the manifest.
+        /// Version-specific field that will only be set when the requested app version is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteAccess")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1ChromeAppSiteAccess> SiteAccess { get; set; }
+
+        /// <summary>
+        /// Output only. The app developer has enabled support for their app. Version-specific field that will only be
+        /// set when the requested app version is found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportEnabled")]
+        public virtual System.Nullable<bool> SupportEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Permission requested by a Chrome app or extension.</summary>
+    public class GoogleChromeManagementV1ChromeAppPermission : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If available, whether this permissions grants the app/extension access to user data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessUserData")]
+        public virtual System.Nullable<bool> AccessUserData { get; set; }
+
+        /// <summary>
+        /// Output only. If available, a URI to a page that has documentation for the current permission.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>Output only. The type of the permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent one host permission.</summary>
+    public class GoogleChromeManagementV1ChromeAppSiteAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. This can contain very specific hosts, or patterns like "*.com" for instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostMatch")]
+        public virtual string HostMatch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -834,6 +1298,35 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Permissions of the installed app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

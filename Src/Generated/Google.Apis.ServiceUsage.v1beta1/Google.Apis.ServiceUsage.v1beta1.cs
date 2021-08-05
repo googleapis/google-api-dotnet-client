@@ -3055,8 +3055,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string DeprecationDescription { get; set; }
 
         /// <summary>
-        /// The description is the comment in front of the selected proto element, such as a message, a method, a
-        /// 'service' definition, or a field.
+        /// Description of the selected proto element (e.g. a message, a method, a 'service' definition, or a field).
+        /// Defaults to leading &amp;amp; trailing comments taken from the proto source definition of the proto element.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -4370,7 +4370,9 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in
-        /// Google Cloud SQL.
+        /// Google Cloud SQL. For a list of types, see [Monitoring resource
+        /// types](https://cloud.google.com/monitoring/api/resources) and [Logging resource
+        /// types](https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
