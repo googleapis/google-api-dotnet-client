@@ -69,9 +69,36 @@ namespace Google.Apis.Requests.Parameters
         {
             var dict = new Dictionary<string, object>();
             IterateParameters(request, (type, name, value) =>
+            {
+                if (dict.TryGetValue(name, out var existingValue))
+                {
+                    // Repeated enum query parameters end up with two properties: a single
+                    // one, and a Repeatable<T> (where the T is always non-nullable, whether or not the parameter
+                    // is optional). If both properties are set, we fail. Note that this delegate is called
+                    // for nullable enum properties with a null value, annoyingly... if that happens and we then
+                    // see a non-null value, we'll overwrite it. If that happens when we've already got a non-null
+                    // value, we'll ignore it.
+                    if (existingValue is null && value is object)
+                    {
+                        // Overwrite null value with non-null value
+                        dict[name] = value;
+                    }
+                    else if (value is null)
+                    {
+                        // Ignore new null value
+                    }
+                    else
+                    {
+                        // Throw if we see a second null value
+                        throw new InvalidOperationException(
+                            $"The query parameter '{name}' is set by multiple properties. For repeated enum query parameters, ensure that only one property is set to a non-null value.");
+                    }
+                }
+                else
                 {
                     dict.Add(name, value);
-                });
+                }
+            });
             return dict;
         }
 

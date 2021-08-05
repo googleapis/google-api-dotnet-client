@@ -16,7 +16,11 @@ limitations under the License.
 
 using Google.Apis.Requests;
 using Google.Apis.Requests.Parameters;
+using Google.Apis.Util;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Xunit;
 
 namespace Google.Apis.Tests.Apis.Requests.Parameters
@@ -74,6 +78,57 @@ namespace Google.Apis.Tests.Apis.Requests.Parameters
 
             //The parameter name for the custom parameters does not carry through to the resulting URI.
             Assert.DoesNotContain("query_param_attribute_name", result);
+        }
+
+        private class RepeatableEnumRequest
+        {
+            [RequestParameter("mode", RequestParameterType.Query)]
+            public FileMode? Mode { get; set; }
+
+            [RequestParameter("mode", RequestParameterType.Query)]
+            public Repeatable<FileMode> ModeList { get; set; }
+        }
+
+        [Fact]
+        public void RepeatableEnum_NoPropertiesSet()
+        {
+            var request = new RepeatableEnumRequest();
+            var dictionary = ParameterUtils.CreateParameterDictionary(request);
+            // For historical reasons, we end up with a null value from the "FileMode? Mode" property.
+            // That's fixable, but not worth the worry about whether it would break things.
+            var pair = Assert.Single(dictionary);
+            Assert.Equal("mode", pair.Key);
+            Assert.Null(pair.Value);
+        }
+
+        [Fact]
+        public void RepeatableEnum_SinglePropertySet()
+        {
+            var request = new RepeatableEnumRequest { Mode = FileMode.Open };
+            var dictionary = ParameterUtils.CreateParameterDictionary(request);
+            Assert.Equal(FileMode.Open, dictionary["mode"]);
+        }
+
+        [Fact]
+        public void RepeatableEnum_ListPropertySet()
+        {
+            var request = new RepeatableEnumRequest { ModeList = new[] { FileMode.Open, FileMode.Append } };
+            var dictionary = ParameterUtils.CreateParameterDictionary(request);
+            var pair = Assert.Single(dictionary);
+            Assert.Equal("mode", pair.Key);
+            var repeatable = (Repeatable<FileMode>) pair.Value;
+            Assert.Equal(new[] { FileMode.Open, FileMode.Append }, repeatable.ToArray());
+        }
+
+        [Fact]
+        public void RepeatableEnum_BothPropertiesSet()
+        {
+            var request = new RepeatableEnumRequest
+            {
+                Mode = FileMode.Open,
+                ModeList = new[] { FileMode.Create, FileMode.Append }
+            };
+            Assert.Throws<InvalidOperationException>(() => ParameterUtils.CreateParameterDictionary(request));
         }
     }
 }
