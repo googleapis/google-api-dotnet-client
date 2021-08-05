@@ -977,6 +977,10 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// <summary>Details of a build occurrence.</summary>
     public class BuildOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>In-toto Provenance representation as defined in spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intotoProvenance")]
+        public virtual InTotoProvenance IntotoProvenance { get; set; }
+
         /// <summary>Required. The actual provenance for the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual BuildProvenance Provenance { get; set; }
@@ -1064,6 +1068,15 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BuilderConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The category to which the update belongs.</summary>
     public class Category : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1134,6 +1147,31 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Indicates that the builder claims certain fields in this message to be complete.</summary>
+    public class Completeness : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly
+        /// captured in the recipe.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+        public virtual System.Nullable<bool> Arguments { get; set; }
+
+        /// <summary>If true, the builder claims that recipe.environment is claimed to be complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual System.Nullable<bool> Environment { get; set; }
+
+        /// <summary>
+        /// If true, the builder claims that materials are complete, usually through some controls to prevent network
+        /// access. Sometimes called "hermetic".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Nullable<bool> Materials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular
     /// resources or a specified reason.
@@ -1145,6 +1183,21 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantFiles")]
         public virtual System.Collections.Generic.IList<NonCompliantFile> NonCompliantFiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DSSEAttestationOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If doing something security critical, make sure to verify the signatures in this metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envelope")]
+        public virtual Envelope Envelope { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("statement")]
+        public virtual InTotoStatement Statement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1226,6 +1279,37 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of
+    /// arbitrary type.
+    /// </summary>
+    public class Envelope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual string Payload { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnvelopeSignature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("keyid")]
+        public virtual string Keyid { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sig")]
+        public virtual string Sig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1370,6 +1454,59 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class InTotoProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builderConfig")]
+        public virtual BuilderConfig BuilderConfig { get; set; }
+
+        /// <summary>
+        /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base
+        /// images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset
+        /// or null is equivalent to empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materials")]
+        public virtual System.Collections.Generic.IList<string> Materials { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual Metadata Metadata { get; set; }
+
+        /// <summary>
+        /// Identifies the configuration used for the build. When combined with materials, this SHOULD fully describe
+        /// the build, such that re-running this recipe results in bit-for-bit identical output (if the build is
+        /// reproducible). required
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipe")]
+        public virtual Recipe Recipe { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement
+    /// will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
+    /// </summary>
+    public class InTotoStatement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>"https://in-toto.io/Provenance/v0.1" for InTotoProvenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
+        public virtual string PredicateType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual InTotoProvenance Provenance { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual System.Collections.Generic.IList<Subject> Subject { get; set; }
+
+        /// <summary>Always "https://in-toto.io/Statement/v0.1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Jwt : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1458,6 +1595,38 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Other properties of the build.</summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The timestamp of when the build completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildFinishedOn")]
+        public virtual object BuildFinishedOn { get; set; }
+
+        /// <summary>
+        /// Identifies the particular build invocation, which can be useful for finding associated logs or other ad-hoc
+        /// analysis. The value SHOULD be globally unique, per in-toto Provenance spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildInvocationId")]
+        public virtual string BuildInvocationId { get; set; }
+
+        /// <summary>The timestamp of when the build started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStartedOn")]
+        public virtual object BuildStartedOn { get; set; }
+
+        /// <summary>Indicates that the builder claims certain fields in this message to be complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeness")]
+        public virtual Completeness Completeness { get; set; }
+
+        /// <summary>
+        /// If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reproducible")]
+        public virtual System.Nullable<bool> Reproducible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about files that caused a compliance check to fail.</summary>
     public class NonCompliantFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1507,6 +1676,14 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// <summary>Describes when a resource was discovered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discovery")]
         public virtual DiscoveryOccurrence Discovery { get; set; }
+
+        /// <summary>Describes an attestation of an artifact using dsse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dsseAttestation")]
+        public virtual DSSEAttestationOccurrence DsseAttestation { get; set; }
+
+        /// <summary>https://github.com/secure-systems-lab/dsse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envelope")]
+        public virtual Envelope Envelope { get; set; }
 
         /// <summary>Describes how this resource derives from the basis in the associated note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
@@ -1730,6 +1907,55 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the
+    /// recipe.
+    /// </summary>
+    public class Recipe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and
+        /// recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make
+        /// aside from the target, which is captured in recipe.entryPoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arguments")]
+        public virtual System.Collections.Generic.IList<string> Arguments { get; set; }
+
+        /// <summary>
+        /// Index in materials containing the recipe steps that are not implied by recipe.type. For example, if the
+        /// recipe type were "make", then this would point to the source containing the Makefile, not the make program
+        /// itself. Set to -1 if the recipe doesn't come from a material, as zero is default unset value for int64.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definedInMaterial")]
+        public virtual System.Nullable<long> DefinedInMaterial { get; set; }
+
+        /// <summary>
+        /// String identifying the entry point into the build. This is often a path to a configuration file and/or a
+        /// target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe
+        /// type were "make", then this would reference the directory in which to run make as well as which target to
+        /// use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoint")]
+        public virtual string EntryPoint { get; set; }
+
+        /// <summary>
+        /// Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for
+        /// reproducing the build but not evaluated as part of policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Environment { get; set; }
+
+        /// <summary>
+        /// URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint,
+        /// recipe.arguments, recipe.environment, and materials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for any related URL information.</summary>
     public class RelatedUrl : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1884,6 +2110,19 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Subject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>"": ""</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

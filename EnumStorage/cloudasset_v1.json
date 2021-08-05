@@ -5,7 +5,8 @@
     "IAM_POLICY",
     "ORG_POLICY",
     "ACCESS_POLICY",
-    "OS_INVENTORY"
+    "OS_INVENTORY",
+    "RELATIONSHIP"
   ],
   "Google.Apis.CloudAsset.v1.CloudAssetBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
@@ -27,6 +28,7 @@
     "IAM_POLICY",
     "ORG_POLICY",
     "ACCESS_POLICY",
-    "OS_INVENTORY"
+    "OS_INVENTORY",
+    "RELATIONSHIP"
   ]
 }

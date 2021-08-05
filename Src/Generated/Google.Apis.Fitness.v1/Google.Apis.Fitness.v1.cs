@@ -95,10 +95,10 @@ namespace Google.Apis.Fitness.v1
             /// </summary>
             public static string FitnessBloodPressureWrite = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
 
-            /// <summary>See info about your body measurements and heart rate in Google Fit</summary>
+            /// <summary>See info about your body measurements in Google Fit</summary>
             public static string FitnessBodyRead = "https://www.googleapis.com/auth/fitness.body.read";
 
-            /// <summary>Add info about your body measurements and heart rate to Google Fit</summary>
+            /// <summary>Add info about your body measurements to Google Fit</summary>
             public static string FitnessBodyWrite = "https://www.googleapis.com/auth/fitness.body.write";
 
             /// <summary>
@@ -205,10 +205,10 @@ namespace Google.Apis.Fitness.v1
             /// </summary>
             public const string FitnessBloodPressureWrite = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
 
-            /// <summary>See info about your body measurements and heart rate in Google Fit</summary>
+            /// <summary>See info about your body measurements in Google Fit</summary>
             public const string FitnessBodyRead = "https://www.googleapis.com/auth/fitness.body.read";
 
-            /// <summary>Add info about your body measurements and heart rate to Google Fit</summary>
+            /// <summary>Add info about your body measurements to Google Fit</summary>
             public const string FitnessBodyWrite = "https://www.googleapis.com/auth/fitness.body.write";
 
             /// <summary>

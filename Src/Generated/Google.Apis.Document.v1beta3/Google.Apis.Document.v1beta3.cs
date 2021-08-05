@@ -2533,8 +2533,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>
-        /// The index of the parent revisions corresponding collection of items (eg. list of entities, properties within
-        /// entities, etc.)
+        /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
+        /// entities, etc.) on parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -3631,8 +3631,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>
-        /// The index of the parent revisions corresponding collection of items (eg. list of entities, properties within
-        /// entities, etc.)
+        /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
+        /// entities, etc.) on parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -4919,8 +4919,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<int> Id { get; set; }
 
         /// <summary>
-        /// The index of the parent revisions corresponding collection of items (eg. list of entities, properties within
-        /// entities, etc.)
+        /// The index of the parent item in the corresponding item list (eg. list of entities, properties within
+        /// entities, etc.) on parent revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -5361,7 +5361,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing'
     /// processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice
     /// parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID:
-    /// 7.
+    /// 8.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorType : Google.Apis.Requests.IDirectResponseSchema
     {

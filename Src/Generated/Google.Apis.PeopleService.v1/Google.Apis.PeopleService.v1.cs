@@ -986,8 +986,13 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>
             /// Required. A field mask to restrict which fields on each person are returned. Multiple fields can be
-            /// specified by separating them with commas. Valid values are: * emailAddresses * metadata * names *
-            /// phoneNumbers * photos
+            /// specified by separating them with commas. What values are valid depend on what ReadSourceType is used.
+            /// If READ_SOURCE_TYPE_CONTACT is used, valid values are: * emailAddresses * metadata * names *
+            /// phoneNumbers * photos If READ_SOURCE_TYPE_PROFILE is used, valid values are: * addresses * ageRanges *
+            /// biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events *
+            /// externalIds * genders * imClients * interests * locales * locations * memberships * metadata *
+            /// miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations *
+            /// sipAddresses * skills * urls * userDefined
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -1001,25 +1006,13 @@ namespace Google.Apis.PeopleService.v1
             public virtual System.Nullable<bool> RequestSyncToken { get; set; }
 
             /// <summary>
-            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set. If
-            /// READ_SOURCE_TYPE_CONTACT is used, valid values for the readMask are: * emailAddresses * metadata * names
-            /// * phoneNumbers * photos If READ_SOURCE_TYPE_PROFILE is used, valid values for the readMask are: *
-            /// addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos *
-            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * locations *
-            /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
-            /// photos * relations * sipAddresses * skills * urls * userDefined
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
 
             /// <summary>
-            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set. If
-            /// READ_SOURCE_TYPE_CONTACT is used, valid values for the readMask are: * emailAddresses * metadata * names
-            /// * phoneNumbers * photos If READ_SOURCE_TYPE_PROFILE is used, valid values for the readMask are: *
-            /// addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos *
-            /// emailAddresses * events * externalIds * genders * imClients * interests * locales * locations *
-            /// memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers *
-            /// photos * relations * sipAddresses * skills * urls * userDefined
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
             public enum SourcesEnum
             {

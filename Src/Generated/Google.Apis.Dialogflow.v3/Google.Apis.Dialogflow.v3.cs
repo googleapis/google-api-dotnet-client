@@ -8706,10 +8706,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual object EndTime { get; set; }
 
         /// <summary>
-        /// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment/rollout. If
-        /// auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default
-        /// value and maximum will be 6 days.
-        /// LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
+        /// Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and
+        /// maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentLength")]
         public virtual object ExperimentLength { get; set; }
@@ -8727,6 +8725,23 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Inference result of the experiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual GoogleCloudDialogflowCxV3ExperimentResult Result { get; set; }
+
+        /// <summary>
+        /// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control
+        /// variant being the default version of the flow), the traffic allocation for the non-control variant will
+        /// gradually increase to 100% when conditions are met, and eventually replace the control variant to become the
+        /// default version of the flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutConfig")]
+        public virtual GoogleCloudDialogflowCxV3RolloutConfig RolloutConfig { get; set; }
+
+        /// <summary>The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutFailureReason")]
+        public virtual string RolloutFailureReason { get; set; }
+
+        /// <summary>State of the auto rollout process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutState")]
+        public virtual GoogleCloudDialogflowCxV3RolloutState RolloutState { get; set; }
 
         /// <summary>Start time of this experiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -10819,6 +10834,77 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Agent restore mode. If not specified, `KEEP` is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreOption")]
         public virtual string RestoreOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for auto rollout.</summary>
+    public class GoogleCloudDialogflowCxV3RolloutConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps
+        /// will fail. E.g. "containment_rate &amp;lt; 10% OR average_turn_count &amp;lt; 3". See the [conditions
+        /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCondition")]
+        public virtual string FailureCondition { get; set; }
+
+        /// <summary>
+        /// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps
+        /// will proceed to the next one unless failure conditions are met. E.g. "containment_rate &amp;gt; 60% AND
+        /// callback_rate &amp;lt; 20%". See the [conditions
+        /// reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutCondition")]
+        public virtual string RolloutCondition { get; set; }
+
+        /// <summary>
+        /// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutSteps")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3RolloutConfigRolloutStep> RolloutSteps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single rollout step with specified traffic allocation.</summary>
+    public class GoogleCloudDialogflowCxV3RolloutConfigRolloutStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the rollout step;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum
+        /// duration for each step will be 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDuration")]
+        public virtual object MinDuration { get; set; }
+
+        /// <summary>The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficPercent")]
+        public virtual System.Nullable<int> TrafficPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>State of the auto-rollout process.</summary>
+    public class GoogleCloudDialogflowCxV3RolloutState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Start time of the current step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>Display name of the current auto rollout step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual string Step { get; set; }
+
+        /// <summary>Index of the current step in the auto rollout steps list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepIndex")]
+        public virtual System.Nullable<int> StepIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

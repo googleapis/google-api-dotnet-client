@@ -71,10 +71,15 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Deployment Manager V2 API.</summary>
         public class Scope
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
             /// <summary>
@@ -91,10 +96,15 @@ namespace Google.Apis.DeploymentManager.alpha
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Deployment Manager V2 API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>See, edit, configure, and delete your Google Cloud Platform data</summary>
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
+            /// <summary>
+            /// View your data across Google Cloud services and see the email address of your Google Account
+            /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
 
             /// <summary>

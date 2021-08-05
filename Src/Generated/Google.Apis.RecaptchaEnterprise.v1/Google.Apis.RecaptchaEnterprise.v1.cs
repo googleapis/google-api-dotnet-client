@@ -1068,6 +1068,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics> ChallengeMetrics { get; set; }
 
         /// <summary>
+        /// Output only. The name of the metrics, in the format "projects/{project}/keys/{key}/metrics".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
         /// Metrics will be continuous and in order by dates, and in the granularity of day. All Key types should have
         /// score-based data.
         /// </summary>

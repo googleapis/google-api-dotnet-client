@@ -22,6 +22,7 @@
     "SBOM",
     "SPDX_PACKAGE",
     "SPDX_FILE",
-    "SPDX_RELATIONSHIP"
+    "SPDX_RELATIONSHIP",
+    "DSSE_ATTESTATION"
   ]
 }

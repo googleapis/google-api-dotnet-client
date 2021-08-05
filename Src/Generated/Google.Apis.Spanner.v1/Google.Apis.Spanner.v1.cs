@@ -5826,9 +5826,10 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this instance. This may be zero in API responses for instances that are not
-        /// yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)
-        /// for more information about nodes.
+        /// The number of nodes allocated to this instance. At most one of either node_count or processing_units should
+        /// be present in the message. This may be zero in API responses for instances that are not yet in state
+        /// `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
+        /// information about nodes and processing units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -5836,7 +5837,8 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// The number of processing units allocated to this instance. At most one of processing_units or node_count
         /// should be present in the message. This may be zero in API responses for instances that are not yet in state
-        /// `READY`.
+        /// `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
+        /// information about nodes and processing units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
