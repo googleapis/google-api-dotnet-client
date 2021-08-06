@@ -315,6 +315,12 @@ namespace Google.Apis.PagespeedInsights.v5
             /// <summary>
             /// A Lighthouse category to run; if none are given, only Performance category will be run
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("category", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CategoryEnum> CategoryList { get; set; }
+
+            /// <summary>
+            /// A Lighthouse category to run; if none are given, only Performance category will be run
+            /// </summary>
             public enum CategoryEnum
             {
                 /// <summary>Default UNDEFINED category.</summary>

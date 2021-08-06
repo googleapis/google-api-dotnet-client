@@ -4685,6 +4685,14 @@ namespace Google.Apis.ShoppingContent.v2
             /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
             /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusesEnum> StatusesList { get; set; }
+
+            /// <summary>
+            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
+            /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
+            /// </summary>
             public enum StatusesEnum
             {
                 /// <summary></summary>

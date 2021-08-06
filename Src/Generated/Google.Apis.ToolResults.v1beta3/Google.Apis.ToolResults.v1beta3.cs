@@ -1442,6 +1442,12 @@ namespace Google.Apis.ToolResults.v1beta3
                             /// <summary>
                             /// Specify one or more PerfMetricType values such as CPU to filter the result
                             /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<FilterEnum> FilterList { get; set; }
+
+                            /// <summary>
+                            /// Specify one or more PerfMetricType values such as CPU to filter the result
+                            /// </summary>
                             public enum FilterEnum
                             {
                                 /// <summary></summary>

@@ -1338,6 +1338,10 @@ namespace Google.Apis.Bigquery.v2
             public virtual System.Nullable<StateFilterEnum> StateFilter { get; set; }
 
             /// <summary>Filter for job state</summary>
+            [Google.Apis.Util.RequestParameterAttribute("stateFilter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StateFilterEnum> StateFilterList { get; set; }
+
+            /// <summary>Filter for job state</summary>
             public enum StateFilterEnum
             {
                 /// <summary>Finished jobs</summary>

@@ -982,6 +982,13 @@ namespace Google.Apis.Classroom.v1
                 /// Restriction on the `state` of announcements returned. If this argument is left unspecified, the
                 /// default value is `PUBLISHED`.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("announcementStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<AnnouncementStatesEnum> AnnouncementStatesList { get; set; }
+
+                /// <summary>
+                /// Restriction on the `state` of announcements returned. If this argument is left unspecified, the
+                /// default value is `PUBLISHED`.
+                /// </summary>
                 public enum AnnouncementStatesEnum
                 {
                     /// <summary>No state specified. This is never returned.</summary>
@@ -1501,6 +1508,13 @@ namespace Google.Apis.Classroom.v1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                    /// <summary>
+                    /// Requested submission states. If specified, returned student submissions match one of the
+                    /// specified submission states.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                     /// <summary>
                     /// Requested submission states. If specified, returned student submissions match one of the
@@ -2452,6 +2466,13 @@ namespace Google.Apis.Classroom.v1
                 /// Restriction on the work status to return. Only courseWork that matches is returned. If unspecified,
                 /// items with a work status of `PUBLISHED` is returned.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<CourseWorkStatesEnum> CourseWorkStatesList { get; set; }
+
+                /// <summary>
+                /// Restriction on the work status to return. Only courseWork that matches is returned. If unspecified,
+                /// items with a work status of `PUBLISHED` is returned.
+                /// </summary>
                 public enum CourseWorkStatesEnum
                 {
                     /// <summary>No state specified. This is never returned.</summary>
@@ -3042,6 +3063,13 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("courseWorkMaterialStates", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<CourseWorkMaterialStatesEnum> CourseWorkMaterialStates { get; set; }
+
+                /// <summary>
+                /// Restriction on the work status to return. Only course work material that matches is returned. If
+                /// unspecified, items with a work status of `PUBLISHED` is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkMaterialStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<CourseWorkMaterialStatesEnum> CourseWorkMaterialStatesList { get; set; }
 
                 /// <summary>
                 /// Restriction on the work status to return. Only course work material that matches is returned. If
@@ -4611,6 +4639,13 @@ namespace Google.Apis.Classroom.v1
             /// Restricts returned courses to those in one of the specified states The default value is ACTIVE,
             /// ARCHIVED, PROVISIONED, DECLINED.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("courseStates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CourseStatesEnum> CourseStatesList { get; set; }
+
+            /// <summary>
+            /// Restricts returned courses to those in one of the specified states The default value is ACTIVE,
+            /// ARCHIVED, PROVISIONED, DECLINED.
+            /// </summary>
             public enum CourseStatesEnum
             {
                 /// <summary>No course state. No returned Course message will use this value.</summary>
@@ -5636,6 +5671,13 @@ namespace Google.Apis.Classroom.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                /// <summary>
+                /// If specified, only results with the specified `state` values are returned. Otherwise, results with a
+                /// `state` of `PENDING` are returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                 /// <summary>
                 /// If specified, only results with the specified `state` values are returned. Otherwise, results with a

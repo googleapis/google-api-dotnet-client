@@ -345,6 +345,13 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
                 /// subscribed to any notification category will be returned.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
                 public enum NotificationCategoriesEnum
                 {
                     /// <summary>Notification category is unrecognized or unspecified.</summary>
@@ -929,6 +936,13 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
                 /// subscribed to any notification category will be returned.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
                 public enum NotificationCategoriesEnum
                 {
                     /// <summary>Notification category is unrecognized or unspecified.</summary>
@@ -1508,6 +1522,13 @@ namespace Google.Apis.Essentialcontacts.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<NotificationCategoriesEnum> NotificationCategories { get; set; }
+
+                /// <summary>
+                /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts
+                /// subscribed to any notification category will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("notificationCategories", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<NotificationCategoriesEnum> NotificationCategoriesList { get; set; }
 
                 /// <summary>
                 /// The categories of notifications to compute contacts for. If ALL is included in this list, contacts

@@ -6016,6 +6016,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// Obtains order returns that match any shipment state provided in this parameter. When this parameter is
             /// not provided, order returns are obtained regardless of their shipment states.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("shipmentStates", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ShipmentStatesEnum> ShipmentStatesList { get; set; }
+
+            /// <summary>
+            /// Obtains order returns that match any shipment state provided in this parameter. When this parameter is
+            /// not provided, order returns are obtained regardless of their shipment states.
+            /// </summary>
             public enum ShipmentStatesEnum
             {
                 /// <summary>Return shipments with `new` state only.</summary>
@@ -6045,6 +6052,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("shipmentStatus", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ShipmentStatusEnum> ShipmentStatus { get; set; }
+
+            /// <summary>
+            /// Obtains order returns that match any shipment status provided in this parameter. When this parameter is
+            /// not provided, order returns are obtained regardless of their shipment statuses.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("shipmentStatus", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ShipmentStatusEnum> ShipmentStatusList { get; set; }
 
             /// <summary>
             /// Obtains order returns that match any shipment status provided in this parameter. When this parameter is
@@ -6081,6 +6095,13 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("shipmentTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ShipmentTypesEnum> ShipmentTypes { get; set; }
+
+            /// <summary>
+            /// Obtains order returns that match any shipment type provided in this parameter. When this parameter is
+            /// not provided, order returns are obtained regardless of their shipment types.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("shipmentTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ShipmentTypesEnum> ShipmentTypesList { get; set; }
 
             /// <summary>
             /// Obtains order returns that match any shipment type provided in this parameter. When this parameter is
@@ -7137,6 +7158,14 @@ namespace Google.Apis.ShoppingContent.v2_1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusesEnum> Statuses { get; set; }
+
+            /// <summary>
+            /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for
+            /// `pendingShipment` and `partiallyShipped`, and `completed` is a shortcut for `shipped`,
+            /// `partiallyDelivered`, `delivered`, `partiallyReturned`, `returned`, and `canceled`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusesEnum> StatusesList { get; set; }
 
             /// <summary>
             /// Obtains orders that match any of the specified statuses. Please note that `active` is a shortcut for

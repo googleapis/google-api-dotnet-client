@@ -1338,6 +1338,10 @@ namespace Google.Apis.Gmail.v1
                 public virtual System.Nullable<HistoryTypesEnum> HistoryTypes { get; set; }
 
                 /// <summary>History types to be returned by the function</summary>
+                [Google.Apis.Util.RequestParameterAttribute("historyTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<HistoryTypesEnum> HistoryTypesList { get; set; }
+
+                /// <summary>History types to be returned by the function</summary>
                 public enum HistoryTypesEnum
                 {
                     /// <summary></summary>

@@ -2247,6 +2247,10 @@ namespace Google.Apis.Books.v1
             public virtual System.Nullable<FeaturesEnum> Features { get; set; }
 
             /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
+            [Google.Apis.Util.RequestParameterAttribute("features", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<FeaturesEnum> FeaturesList { get; set; }
+
+            /// <summary>List of features supported by the client, i.e., 'RENTALS'</summary>
             public enum FeaturesEnum
             {
                 /// <summary></summary>
@@ -4811,6 +4815,10 @@ namespace Google.Apis.Books.v1
                 public virtual System.Nullable<AcquireMethodEnum> AcquireMethod { get; set; }
 
                 /// <summary>How the book was acquired</summary>
+                [Google.Apis.Util.RequestParameterAttribute("acquireMethod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<AcquireMethodEnum> AcquireMethodList { get; set; }
+
+                /// <summary>How the book was acquired</summary>
                 public enum AcquireMethodEnum
                 {
                     /// <summary></summary>
@@ -4870,6 +4878,13 @@ namespace Google.Apis.Books.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ProcessingStateEnum> ProcessingState { get; set; }
+
+                /// <summary>
+                /// The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is
+                /// specified in the acquireMethod.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<ProcessingStateEnum> ProcessingStateList { get; set; }
 
                 /// <summary>
                 /// The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is
@@ -5230,6 +5245,10 @@ namespace Google.Apis.Books.v1
                 /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ProcessingStateEnum> ProcessingState { get; set; }
+
+                /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("processingState", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<ProcessingStateEnum> ProcessingStateList { get; set; }
 
                 /// <summary>The processing state of the user uploaded volumes to be returned.</summary>
                 public enum ProcessingStateEnum

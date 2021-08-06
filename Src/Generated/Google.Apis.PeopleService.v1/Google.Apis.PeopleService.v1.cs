@@ -1014,6 +1014,12 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1356,6 +1362,13 @@ namespace Google.Apis.PeopleService.v1
                 /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
                 /// READ_SOURCE_TYPE_PROFILE if not set.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+                /// <summary>
+                /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+                /// READ_SOURCE_TYPE_PROFILE if not set.
+                /// </summary>
                 public enum SourcesEnum
                 {
                     /// <summary>Unspecified.</summary>
@@ -1657,6 +1670,13 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1802,6 +1822,13 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -1922,6 +1949,13 @@ namespace Google.Apis.PeopleService.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
+            /// READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_PROFILE and
@@ -2058,6 +2092,13 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
             /// READ_SOURCE_TYPE_PROFILE if not set.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2165,6 +2206,13 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
             /// join keys such as email addresses or phone numbers.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<MergeSourcesEnum> MergeSourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. Additional data to merge into the directory sources if they are connected through verified
+            /// join keys such as email addresses or phone numbers.
+            /// </summary>
             public enum MergeSourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2213,6 +2261,10 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. Directory sources to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
@@ -2373,6 +2425,12 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+            /// </summary>
             public enum SourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2472,6 +2530,13 @@ namespace Google.Apis.PeopleService.v1
             /// Optional. Additional data to merge into the directory sources if they are connected through verified
             /// join keys such as email addresses or phone numbers.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("mergeSources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<MergeSourcesEnum> MergeSourcesList { get; set; }
+
+            /// <summary>
+            /// Optional. Additional data to merge into the directory sources if they are connected through verified
+            /// join keys such as email addresses or phone numbers.
+            /// </summary>
             public enum MergeSourcesEnum
             {
                 /// <summary>Unspecified.</summary>
@@ -2519,6 +2584,10 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>Required. Directory sources to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>Required. Directory sources to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>Required. Directory sources to return.</summary>
             public enum SourcesEnum
@@ -2666,6 +2735,13 @@ namespace Google.Apis.PeopleService.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<SourcesEnum> Sources { get; set; }
+
+            /// <summary>
+            /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and
+            /// READ_SOURCE_TYPE_PROFILE if not set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sources", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<SourcesEnum> SourcesList { get; set; }
 
             /// <summary>
             /// Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and

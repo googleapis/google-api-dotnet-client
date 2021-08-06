@@ -430,6 +430,12 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.
                 /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<IncludeEnum> IncludeList { get; set; }
+
+                /// <summary>
+                /// The information to be included in the response. Only sections listed here will be returned.
+                /// </summary>
                 public enum IncludeEnum
                 {
                     /// <summary>Unknown, never used.</summary>
@@ -521,6 +527,12 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<IncludeEnum> Include { get; set; }
+
+                /// <summary>
+                /// The information to be included in the response. Only sections listed here will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<IncludeEnum> IncludeList { get; set; }
 
                 /// <summary>
                 /// The information to be included in the response. Only sections listed here will be returned.

@@ -856,6 +856,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             /// Message types to return. If not populated - INFO, WARNING and ERROR messages are
                             /// returned.
                             /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<MessageTypesEnum> MessageTypesList { get; set; }
+
+                            /// <summary>
+                            /// Message types to return. If not populated - INFO, WARNING and ERROR messages are
+                            /// returned.
+                            /// </summary>
                             public enum MessageTypesEnum
                             {
                                 /// <summary>No severity specified.</summary>
@@ -1106,6 +1113,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                        /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                         /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                         public enum StatesEnum
@@ -2018,6 +2029,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         /// <summary>
                         /// Message types to return. If not populated - INFO, WARNING and ERROR messages are returned.
                         /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<MessageTypesEnum> MessageTypesList { get; set; }
+
+                        /// <summary>
+                        /// Message types to return. If not populated - INFO, WARNING and ERROR messages are returned.
+                        /// </summary>
                         public enum MessageTypesEnum
                         {
                             /// <summary>No severity specified.</summary>
@@ -2264,6 +2281,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<StatesEnum> States { get; set; }
+
+                    /// <summary>When specified, only transfer runs with requested states are returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<StatesEnum> StatesList { get; set; }
 
                     /// <summary>When specified, only transfer runs with requested states are returned.</summary>
                     public enum StatesEnum

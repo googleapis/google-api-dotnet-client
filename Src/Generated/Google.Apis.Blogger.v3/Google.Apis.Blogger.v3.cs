@@ -577,6 +577,9 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RoleEnum> Role { get; set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("role", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<RoleEnum> RoleList { get; set; }
+
             public enum RoleEnum
             {
                 /// <summary></summary>
@@ -599,6 +602,10 @@ namespace Google.Apis.Blogger.v3
             /// <summary>Default value of status is LIVE.</summary>
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+            /// <summary>Default value of status is LIVE.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
 
             /// <summary>Default value of status is LIVE.</summary>
             public enum StatusEnum
@@ -1155,6 +1162,9 @@ namespace Google.Apis.Blogger.v3
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
+
             public enum StatusEnum
             {
                 /// <summary></summary>
@@ -1423,6 +1433,9 @@ namespace Google.Apis.Blogger.v3
 
             [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RangeEnum> Range { get; set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<RangeEnum> RangeList { get; set; }
 
             public enum RangeEnum
             {
@@ -1724,6 +1737,9 @@ namespace Google.Apis.Blogger.v3
 
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
 
             public enum StatusEnum
             {
@@ -2269,6 +2285,9 @@ namespace Google.Apis.Blogger.v3
 
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
 
             public enum StatusEnum
             {
@@ -2847,6 +2866,9 @@ namespace Google.Apis.Blogger.v3
 
             [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+            [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<StatusEnum> StatusList { get; set; }
 
             public enum StatusEnum
             {

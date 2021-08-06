@@ -691,6 +691,10 @@ namespace Google.Apis.AndroidManagement.v1
                 public virtual System.Nullable<WipeDataFlagsEnum> WipeDataFlags { get; set; }
 
                 /// <summary>Optional flags that control the device wiping behavior.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("wipeDataFlags", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<WipeDataFlagsEnum> WipeDataFlagsList { get; set; }
+
+                /// <summary>Optional flags that control the device wiping behavior.</summary>
                 public enum WipeDataFlagsEnum
                 {
                     /// <summary>This value is ignored.</summary>

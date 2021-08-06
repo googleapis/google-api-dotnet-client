@@ -470,6 +470,12 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterStatusesEnum> UserProcessFilterStatusesList { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process statuses.
+            /// </summary>
             public enum UserProcessFilterStatusesEnum
             {
                 /// <summary>Unspecified status.</summary>
@@ -514,6 +520,12 @@ namespace Google.Apis.Script.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<UserProcessFilterTypesEnum> UserProcessFilterTypes { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process types.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterTypesEnum> UserProcessFilterTypesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
@@ -566,6 +578,12 @@ namespace Google.Apis.Script.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<UserProcessFilterUserAccessLevelsEnum> UserProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified user access levels.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<UserProcessFilterUserAccessLevelsEnum> UserProcessFilterUserAccessLevelsList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.
@@ -768,6 +786,12 @@ namespace Google.Apis.Script.v1
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process statuses.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterStatusesEnum> ScriptProcessFilterStatusesList { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process statuses.
+            /// </summary>
             public enum ScriptProcessFilterStatusesEnum
             {
                 /// <summary>Unspecified status.</summary>
@@ -812,6 +836,12 @@ namespace Google.Apis.Script.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScriptProcessFilterTypesEnum> ScriptProcessFilterTypes { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified process types.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterTypesEnum> ScriptProcessFilterTypesList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified process types.
@@ -864,6 +894,12 @@ namespace Google.Apis.Script.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>
+            /// Optional field used to limit returned processes to those having one of the specified user access levels.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevelsList { get; set; }
 
             /// <summary>
             /// Optional field used to limit returned processes to those having one of the specified user access levels.

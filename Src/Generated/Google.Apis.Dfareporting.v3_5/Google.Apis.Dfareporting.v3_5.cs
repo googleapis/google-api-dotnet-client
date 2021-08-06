@@ -1920,6 +1920,10 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual System.Nullable<TypeEnum> Type { get; set; }
 
             /// <summary>Select only ads with these types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
+
+            /// <summary>Select only ads with these types.</summary>
             public enum TypeEnum
             {
                 /// <summary></summary>
@@ -7687,6 +7691,10 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual System.Nullable<TypesEnum> Types { get; set; }
 
             /// <summary>Select only creatives with these creative types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TypesEnum> TypesList { get; set; }
+
+            /// <summary>Select only creatives with these creative types.</summary>
             public enum TypesEnum
             {
                 /// <summary></summary>
@@ -9044,6 +9052,14 @@ namespace Google.Apis.Dfareporting.v3_5
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTagTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<EventTagTypesEnum> EventTagTypes { get; set; }
+
+            /// <summary>
+            /// Select only event tags with the specified event tag types. Event tag types can be used to specify
+            /// whether to use a third-party pixel, a third-party JavaScript URL, or a third-party click-through URL for
+            /// either impression or click tracking.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("eventTagTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<EventTagTypesEnum> EventTagTypesList { get; set; }
 
             /// <summary>
             /// Select only event tags with the specified event tag types. Event tag types can be used to specify
@@ -11501,6 +11517,10 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual System.Nullable<DirectoriesEnum> Directories { get; set; }
 
             /// <summary>Select only apps from these directories.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("directories", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<DirectoriesEnum> DirectoriesList { get; set; }
+
+            /// <summary>Select only apps from these directories.</summary>
             public enum DirectoriesEnum
             {
                 /// <summary></summary>
@@ -12750,6 +12770,10 @@ namespace Google.Apis.Dfareporting.v3_5
             public virtual System.Nullable<PricingTypesEnum> PricingTypes { get; set; }
 
             /// <summary>Select only placement groups with these pricing types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<PricingTypesEnum> PricingTypesList { get; set; }
+
+            /// <summary>Select only placement groups with these pricing types.</summary>
             public enum PricingTypesEnum
             {
                 /// <summary></summary>
@@ -13628,6 +13652,13 @@ namespace Google.Apis.Dfareporting.v3_5
             /// Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for
             /// 1x1 placements.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("tagFormats", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TagFormatsEnum> TagFormatsList { get; set; }
+
+            /// <summary>
+            /// Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for
+            /// 1x1 placements.
+            /// </summary>
             public enum TagFormatsEnum
             {
                 /// <summary></summary>
@@ -13918,6 +13949,15 @@ namespace Google.Apis.Dfareporting.v3_5
             /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in
             /// in-stream video ads developed with the VAST standard.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("compatibilities", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<CompatibilitiesEnum> CompatibilitiesList { get; set; }
+
+            /// <summary>
+            /// Select only placements that are associated with these compatibilities. DISPLAY and DISPLAY_INTERSTITIAL
+            /// refer to rendering either on desktop or on mobile devices for regular or interstitial ads respectively.
+            /// APP and APP_INTERSTITIAL are for rendering in mobile apps. IN_STREAM_VIDEO refers to rendering in
+            /// in-stream video ads developed with the VAST standard.
+            /// </summary>
             public enum CompatibilitiesEnum
             {
                 /// <summary></summary>
@@ -14020,6 +14060,10 @@ namespace Google.Apis.Dfareporting.v3_5
             /// <summary>Select only placements with these pricing types.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PricingTypesEnum> PricingTypes { get; set; }
+
+            /// <summary>Select only placements with these pricing types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pricingTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<PricingTypesEnum> PricingTypesList { get; set; }
 
             /// <summary>Select only placements with these pricing types.</summary>
             public enum PricingTypesEnum

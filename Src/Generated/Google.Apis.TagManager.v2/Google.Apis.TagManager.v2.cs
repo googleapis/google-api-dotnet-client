@@ -1348,6 +1348,10 @@ namespace Google.Apis.TagManager.v2
                         public virtual System.Nullable<TypeEnum> Type { get; set; }
 
                         /// <summary>The types of built-in variables to enable.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
+
+                        /// <summary>The types of built-in variables to enable.</summary>
                         public enum TypeEnum
                         {
                             /// <summary></summary>
@@ -1865,6 +1869,10 @@ namespace Google.Apis.TagManager.v2
                         /// <summary>The types of built-in variables to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                        /// <summary>The types of built-in variables to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<TypeEnum> TypeList { get; set; }
 
                         /// <summary>The types of built-in variables to delete.</summary>
                         public enum TypeEnum

@@ -323,6 +323,10 @@ namespace Google.Apis.WebRisk.v1
             public virtual System.Nullable<ThreatTypesEnum> ThreatTypes { get; set; }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ThreatTypesEnum> ThreatTypesList { get; set; }
+
+            /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
             public enum ThreatTypesEnum
             {
                 /// <summary>No entries should match this threat type. This threat type is unused.</summary>
@@ -917,6 +921,10 @@ namespace Google.Apis.WebRisk.v1
             public virtual System.Nullable<ConstraintsSupportedCompressionsEnum> ConstraintsSupportedCompressions { get; set; }
 
             /// <summary>The compression types supported by the client.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("constraints.supportedCompressions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ConstraintsSupportedCompressionsEnum> ConstraintsSupportedCompressionsList { get; set; }
+
+            /// <summary>The compression types supported by the client.</summary>
             public enum ConstraintsSupportedCompressionsEnum
             {
                 /// <summary>Unknown.</summary>
@@ -1067,6 +1075,10 @@ namespace Google.Apis.WebRisk.v1
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
             [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ThreatTypesEnum> ThreatTypes { get; set; }
+
+            /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("threatTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<ThreatTypesEnum> ThreatTypesList { get; set; }
 
             /// <summary>Required. The ThreatLists to search in. Multiple ThreatLists may be specified.</summary>
             public enum ThreatTypesEnum

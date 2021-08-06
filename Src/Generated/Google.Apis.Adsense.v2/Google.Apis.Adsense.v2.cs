@@ -1943,6 +1943,10 @@ namespace Google.Apis.Adsense.v2
                 public virtual System.Nullable<DimensionsEnum> Dimensions { get; set; }
 
                 /// <summary>Dimensions to base the report on.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<DimensionsEnum> DimensionsList { get; set; }
+
+                /// <summary>Dimensions to base the report on.</summary>
                 public enum DimensionsEnum
                 {
                     /// <summary>Unspecified dimension.</summary>
@@ -2232,6 +2236,10 @@ namespace Google.Apis.Adsense.v2
                 /// <summary>Required. Reporting metrics.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MetricsEnum> Metrics { get; set; }
+
+                /// <summary>Required. Reporting metrics.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<MetricsEnum> MetricsList { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
                 public enum MetricsEnum
@@ -2699,6 +2707,10 @@ namespace Google.Apis.Adsense.v2
                 public virtual System.Nullable<DimensionsEnum> Dimensions { get; set; }
 
                 /// <summary>Dimensions to base the report on.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dimensions", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<DimensionsEnum> DimensionsList { get; set; }
+
+                /// <summary>Dimensions to base the report on.</summary>
                 public enum DimensionsEnum
                 {
                     /// <summary>Unspecified dimension.</summary>
@@ -2988,6 +3000,10 @@ namespace Google.Apis.Adsense.v2
                 /// <summary>Required. Reporting metrics.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<MetricsEnum> Metrics { get; set; }
+
+                /// <summary>Required. Reporting metrics.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("metrics", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<MetricsEnum> MetricsList { get; set; }
 
                 /// <summary>Required. Reporting metrics.</summary>
                 public enum MetricsEnum

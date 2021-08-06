@@ -2957,6 +2957,13 @@ namespace Google.Apis.Iam.v1
                     /// Filters the types of keys the user wants to include in the list response. Duplicate key types
                     /// are not allowed. If no key type is provided, all keys are returned.
                     /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("keyTypes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<KeyTypesEnum> KeyTypesList { get; set; }
+
+                    /// <summary>
+                    /// Filters the types of keys the user wants to include in the list response. Duplicate key types
+                    /// are not allowed. If no key type is provided, all keys are returned.
+                    /// </summary>
                     public enum KeyTypesEnum
                     {
                         /// <summary>

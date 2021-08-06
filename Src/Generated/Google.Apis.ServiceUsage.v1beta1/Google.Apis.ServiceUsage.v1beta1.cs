@@ -569,6 +569,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
                         public enum ForceOnlyEnum
                         {
                             /// <summary>Unspecified quota safety check.</summary>
@@ -679,6 +688,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
@@ -878,6 +896,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
                         public enum ForceOnlyEnum
                         {
                             /// <summary>Unspecified quota safety check.</summary>
@@ -1039,6 +1066,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
                         /// set.
                         /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
                         public enum ForceOnlyEnum
                         {
                             /// <summary>Unspecified quota safety check.</summary>
@@ -1149,6 +1185,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
@@ -1341,6 +1386,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ForceOnlyEnum> ForceOnly { get; set; }
+
+                        /// <summary>
+                        /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
+                        /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
+                        /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
+                        /// set.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<ForceOnlyEnum> ForceOnlyList { get; set; }
 
                         /// <summary>
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field

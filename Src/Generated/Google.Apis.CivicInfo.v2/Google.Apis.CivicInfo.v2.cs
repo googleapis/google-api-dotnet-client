@@ -505,6 +505,13 @@ namespace Google.Apis.CivicInfo.v2
             /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
             /// returned. Divisions that don't contain a matching office will not be returned.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("levels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<LevelsEnum> LevelsList { get; set; }
+
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum LevelsEnum
             {
                 /// <summary></summary>
@@ -550,6 +557,13 @@ namespace Google.Apis.CivicInfo.v2
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RolesEnum> Roles { get; set; }
+
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<RolesEnum> RolesList { get; set; }
 
             /// <summary>
             /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
@@ -686,6 +700,13 @@ namespace Google.Apis.CivicInfo.v2
             /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
             /// returned. Divisions that don't contain a matching office will not be returned.
             /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("levels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<LevelsEnum> LevelsList { get; set; }
+
+            /// <summary>
+            /// A list of office levels to filter by. Only offices that serve at least one of these levels will be
+            /// returned. Divisions that don't contain a matching office will not be returned.
+            /// </summary>
             public enum LevelsEnum
             {
                 /// <summary></summary>
@@ -739,6 +760,13 @@ namespace Google.Apis.CivicInfo.v2
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<RolesEnum> Roles { get; set; }
+
+            /// <summary>
+            /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.
+            /// Divisions that don't contain a matching office will not be returned.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("roles", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<RolesEnum> RolesList { get; set; }
 
             /// <summary>
             /// A list of office roles to filter by. Only offices fulfilling one of these roles will be returned.

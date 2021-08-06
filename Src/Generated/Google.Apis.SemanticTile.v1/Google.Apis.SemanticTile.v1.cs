@@ -760,6 +760,10 @@ namespace Google.Apis.SemanticTile.v1
             public virtual System.Nullable<TerrainFormatsEnum> TerrainFormats { get; set; }
 
             /// <summary>Terrain formats that the client understands.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("terrainFormats", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<TerrainFormatsEnum> TerrainFormatsList { get; set; }
+
+            /// <summary>Terrain formats that the client understands.</summary>
             public enum TerrainFormatsEnum
             {
                 /// <summary>An unknown or unspecified terrain format.</summary>
