@@ -6574,6 +6574,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locations")]
         public virtual System.Collections.Generic.IList<string> Locations { get; set; }
 
+        /// <summary>Logging configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
         /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: *
         /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
@@ -6599,6 +6603,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; }
+
+        /// <summary>Monitoring configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
+        public virtual MonitoringConfig MonitoringConfig { get; set; }
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: *
@@ -6764,6 +6772,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
         public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; }
 
+        /// <summary>Defines autoscaling behaviour.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
+        public virtual string AutoscalingProfile { get; set; }
+
         /// <summary>Enables automatic node pool creation and deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
         public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; }
@@ -6839,6 +6851,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; }
 
+        /// <summary>The desired logging configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredLoggingConfig")]
+        public virtual LoggingConfig DesiredLoggingConfig { get; set; }
+
         /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: *
         /// `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model *
@@ -6862,6 +6878,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterVersion")]
         public virtual string DesiredMasterVersion { get; set; }
+
+        /// <summary>The desired monitoring configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringConfig")]
+        public virtual MonitoringConfig DesiredMonitoringConfig { get; set; }
 
         /// <summary>
         /// The monitoring service the cluster should use to write metrics. Currently available options: *
@@ -7569,6 +7589,28 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LoggingComponentConfig is cluster logging component configuration.</summary>
+    public class LoggingComponentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Select components to collect logs. An empty set would disable all logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableComponents")]
+        public virtual System.Collections.Generic.IList<string> EnableComponents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LoggingConfig is cluster logging configuration.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Logging components configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentConfig")]
+        public virtual LoggingComponentConfig ComponentConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MaintenancePolicy defines the maintenance policy to be used for the cluster.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7718,6 +7760,28 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>For metrics with custom values (ratios, visual progress, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MonitoringComponentConfig is cluster monitoring component configuration.</summary>
+    public class MonitoringComponentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Select components to collect metrics. An empty set would disable all monitoring.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableComponents")]
+        public virtual System.Collections.Generic.IList<string> EnableComponents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MonitoringConfig is cluster monitoring configuration.</summary>
+    public class MonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Monitoring components configuration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentConfig")]
+        public virtual MonitoringComponentConfig ComponentConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8043,6 +8107,43 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters for node pool-level network config.</summary>
+    public class NodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for
+        /// `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or
+        /// `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is
+        /// used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after
+        /// the node pool has been created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createPodRange")]
+        public virtual System.Nullable<bool> CreatePodRange { get; set; }
+
+        /// <summary>
+        /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to
+        /// blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with
+        /// a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation
+        /// (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if
+        /// `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrBlock")]
+        public virtual string PodIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
+        /// If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if
+        /// `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podRange")]
+        public virtual string PodRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e.
     /// VM's), with a common configuration and specification, under the control of the cluster master. They may have a
@@ -8104,6 +8205,12 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The name of the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual NodeNetworkConfig NetworkConfig { get; set; }
 
         /// <summary>[Output only] The pod CIDR block size per node in this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrSize")]
