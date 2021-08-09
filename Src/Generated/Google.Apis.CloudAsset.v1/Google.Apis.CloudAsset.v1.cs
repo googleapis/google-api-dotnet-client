@@ -1956,6 +1956,17 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the metadata of the longrunning operation for the AnalyzeIamPolicyLongrunning rpc.</summary>
+    public class AnalyzeIamPolicyLongrunningMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request message for AssetService.AnalyzeIamPolicyLongrunning.</summary>
     public class AnalyzeIamPolicyLongrunningRequest : Google.Apis.Requests.IDirectResponseSchema
     {

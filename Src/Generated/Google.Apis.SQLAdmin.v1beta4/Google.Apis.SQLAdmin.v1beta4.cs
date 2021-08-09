@@ -2996,21 +2996,23 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
             /// <summary>Start External primary instance migration.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="project">ID of the project that contains the instance.</param>
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
-            public virtual StartExternalSyncRequest StartExternalSync(string project, string instance)
+            public virtual StartExternalSyncRequest StartExternalSync(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesStartExternalSyncRequest body, string project, string instance)
             {
-                return new StartExternalSyncRequest(service, project, instance);
+                return new StartExternalSyncRequest(service, body, project, instance);
             }
 
             /// <summary>Start External primary instance migration.</summary>
             public class StartExternalSyncRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
             {
                 /// <summary>Constructs a new StartExternalSync request.</summary>
-                public StartExternalSyncRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+                public StartExternalSyncRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesStartExternalSyncRequest body, string project, string instance) : base(service)
                 {
                     Project = project;
                     Instance = instance;
+                    Body = body;
                     InitParameters();
                 }
 
@@ -3022,31 +3024,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
-                /// <summary>Whether to skip the verification step (VESS).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("skipVerification", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> SkipVerification { get; set; }
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesStartExternalSyncRequest Body { get; set; }
 
-                /// <summary>External sync mode.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
-
-                /// <summary>External sync mode.</summary>
-                public enum SyncModeEnum
-                {
-                    /// <summary>Unknown external sync mode, will be defaulted to ONLINE mode</summary>
-                    [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
-                    EXTERNALSYNCMODEUNSPECIFIED = 0,
-
-                    /// <summary>Online external sync will set up replication after initial data external sync</summary>
-                    [Google.Apis.Util.StringValueAttribute("ONLINE")]
-                    ONLINE = 1,
-
-                    /// <summary>
-                    /// Offline external sync only dumps and loads a one-time snapshot of the primary instance's data
-                    /// </summary>
-                    [Google.Apis.Util.StringValueAttribute("OFFLINE")]
-                    OFFLINE = 2,
-                }
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "startExternalSync";
@@ -3077,41 +3059,27 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("skipVerification", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "skipVerification",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("syncMode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncMode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 }
             }
 
             /// <summary>Verify External primary instance external sync settings.</summary>
+            /// <param name="body">The body of the request.</param>
             /// <param name="project">Project ID of the project that contains the instance.</param>
             /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
-            public virtual VerifyExternalSyncSettingsRequest VerifyExternalSyncSettings(string project, string instance)
+            public virtual VerifyExternalSyncSettingsRequest VerifyExternalSyncSettings(Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsRequest body, string project, string instance)
             {
-                return new VerifyExternalSyncSettingsRequest(service, project, instance);
+                return new VerifyExternalSyncSettingsRequest(service, body, project, instance);
             }
 
             /// <summary>Verify External primary instance external sync settings.</summary>
             public class VerifyExternalSyncSettingsRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsResponse>
             {
                 /// <summary>Constructs a new VerifyExternalSyncSettings request.</summary>
-                public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+                public VerifyExternalSyncSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsRequest body, string project, string instance) : base(service)
                 {
                     Project = project;
                     Instance = instance;
+                    Body = body;
                     InitParameters();
                 }
 
@@ -3123,31 +3091,11 @@ namespace Google.Apis.SQLAdmin.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Instance { get; private set; }
 
-                /// <summary>External sync mode</summary>
-                [Google.Apis.Util.RequestParameterAttribute("syncMode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SyncModeEnum> SyncMode { get; set; }
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesVerifyExternalSyncSettingsRequest Body { get; set; }
 
-                /// <summary>External sync mode</summary>
-                public enum SyncModeEnum
-                {
-                    /// <summary>Unknown external sync mode, will be defaulted to ONLINE mode</summary>
-                    [Google.Apis.Util.StringValueAttribute("EXTERNAL_SYNC_MODE_UNSPECIFIED")]
-                    EXTERNALSYNCMODEUNSPECIFIED = 0,
-
-                    /// <summary>Online external sync will set up replication after initial data external sync</summary>
-                    [Google.Apis.Util.StringValueAttribute("ONLINE")]
-                    ONLINE = 1,
-
-                    /// <summary>
-                    /// Offline external sync only dumps and loads a one-time snapshot of the primary instance's data
-                    /// </summary>
-                    [Google.Apis.Util.StringValueAttribute("OFFLINE")]
-                    OFFLINE = 2,
-                }
-
-                /// <summary>Flag to enable verifying connection only</summary>
-                [Google.Apis.Util.RequestParameterAttribute("verifyConnectionOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "verifyExternalSyncSettings";
@@ -3175,22 +3123,6 @@ namespace Google.Apis.SQLAdmin.v1beta4
                         Name = "instance",
                         IsRequired = true,
                         ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("syncMode", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncMode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("verifyConnectionOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "verifyConnectionOnly",
-                        IsRequired = false,
-                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5182,6 +5114,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class IpConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The name of the allocated ip range for the private ip CloudSQL instance. For example:
+        /// "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range
+        /// name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63
+        /// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
+        public virtual string AllocatedIpRange { get; set; }
+
+        /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation,
         /// also known as 'slash' notation (for example: *192.168.100.0/24*).
         /// </summary>
@@ -5349,6 +5290,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verifyServerCertificate")]
         public virtual System.Nullable<bool> VerifyServerCertificate { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MySQL-specific external server sync settings.</summary>
+    public class MySqlSyncConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5816,6 +5764,42 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Required. The type of the reschedule the user wants.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reschedule")]
         public virtual Reschedule Reschedule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SqlInstancesStartExternalSyncRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>MySQL-specific settings for start external sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
+        public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
+
+        /// <summary>Whether to skip the verification step (VESS).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipVerification")]
+        public virtual System.Nullable<bool> SkipVerification { get; set; }
+
+        /// <summary>External sync mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
+        public virtual string SyncMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SqlInstancesVerifyExternalSyncSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. MySQL-specific settings for start external sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
+        public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
+
+        /// <summary>External sync mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
+        public virtual string SyncMode { get; set; }
+
+        /// <summary>Flag to enable verifying connection only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyConnectionOnly")]
+        public virtual System.Nullable<bool> VerifyConnectionOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -440,8 +440,464 @@ namespace Google.Apis.OSConfig.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Locations = new LocationsResource(service);
             PatchDeployments = new PatchDeploymentsResource(service);
             PatchJobs = new PatchJobsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Instances = new InstancesResource(service);
+            }
+
+            /// <summary>Gets the Instances resource.</summary>
+            public virtual InstancesResource Instances { get; }
+
+            /// <summary>The "instances" collection of methods.</summary>
+            public class InstancesResource
+            {
+                private const string Resource = "instances";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstancesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Inventories = new InventoriesResource(service);
+                    VulnerabilityReports = new VulnerabilityReportsResource(service);
+                }
+
+                /// <summary>Gets the Inventories resource.</summary>
+                public virtual InventoriesResource Inventories { get; }
+
+                /// <summary>The "inventories" collection of methods.</summary>
+                public class InventoriesResource
+                {
+                    private const string Resource = "inventories";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public InventoriesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Get inventory data for the specified VM instance. If the VM has no associated inventory, the
+                    /// message `NOT_FOUND` is returned.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. API resource name for inventory resource. Format:
+                    /// `projects/{project}/locations/{location}/instances/{instance}/inventory` For `{project}`, either
+                    /// `project-number` or `project-id` can be provided. For `{instance}`, either Compute Engine
+                    /// `instance-id` or `instance-name` can be provided.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Get inventory data for the specified VM instance. If the VM has no associated inventory, the
+                    /// message `NOT_FOUND` is returned.
+                    /// </summary>
+                    public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.Inventory>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. API resource name for inventory resource. Format:
+                        /// `projects/{project}/locations/{location}/instances/{instance}/inventory` For `{project}`,
+                        /// either `project-number` or `project-id` can be provided. For `{instance}`, either Compute
+                        /// Engine `instance-id` or `instance-name` can be provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Inventory view indicating what information should be included in the inventory resource. If
+                        /// unspecified, the default view is BASIC.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Inventory view indicating what information should be included in the inventory resource. If
+                        /// unspecified, the default view is BASIC.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default value. The API defaults to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INVENTORY_VIEW_UNSPECIFIED")]
+                            INVENTORYVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Returns the basic inventory information that includes `os_info`.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Returns all fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/inventory$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>List inventory data for all VM instances in the specified zone.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource name. Format:
+                    /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either `project-number`
+                    /// or `project-id` can be provided.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List inventory data for all VM instances in the specified zone.</summary>
+                    public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListInventoriesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either
+                        /// `project-number` or `project-id` can be provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// If provided, this field specifies the criteria that must be met by a `Inventory` API
+                        /// resource to be included in the response.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The maximum number of results to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A pagination token returned from a previous call to `ListInventories` that indicates where
+                        /// this listing should continue from.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// Inventory view indicating what information should be included in the inventory resource. If
+                        /// unspecified, the default view is BASIC.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Inventory view indicating what information should be included in the inventory resource. If
+                        /// unspecified, the default view is BASIC.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The default value. The API defaults to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("INVENTORY_VIEW_UNSPECIFIED")]
+                            INVENTORYVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Returns the basic inventory information that includes `os_info`.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>Returns all fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/inventories";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the VulnerabilityReports resource.</summary>
+                public virtual VulnerabilityReportsResource VulnerabilityReports { get; }
+
+                /// <summary>The "vulnerabilityReports" collection of methods.</summary>
+                public class VulnerabilityReportsResource
+                {
+                    private const string Resource = "vulnerabilityReports";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public VulnerabilityReportsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the vulnerability report for the specified VM instance. Only VMs with inventory data have
+                    /// vulnerability reports associated with them.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. API resource name for vulnerability resource. Format:
+                    /// `projects/{project}/locations/{location}/instances/{instance}/vulnerabilityReport` For
+                    /// `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`, either
+                    /// Compute Engine `instance-id` or `instance-name` can be provided.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the vulnerability report for the specified VM instance. Only VMs with inventory data have
+                    /// vulnerability reports associated with them.
+                    /// </summary>
+                    public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.VulnerabilityReport>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. API resource name for vulnerability resource. Format:
+                        /// `projects/{project}/locations/{location}/instances/{instance}/vulnerabilityReport` For
+                        /// `{project}`, either `project-number` or `project-id` can be provided. For `{instance}`,
+                        /// either Compute Engine `instance-id` or `instance-name` can be provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+/vulnerabilityReport$",
+                            });
+                        }
+                    }
+
+                    /// <summary>List vulnerability reports for all VM instances in the specified zone.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent resource name. Format:
+                    /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either `project-number`
+                    /// or `project-id` can be provided.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List vulnerability reports for all VM instances in the specified zone.</summary>
+                    public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ListVulnerabilityReportsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource name. Format:
+                        /// `projects/{project}/locations/{location}/instances/-` For `{project}`, either
+                        /// `project-number` or `project-id` can be provided.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// If provided, this field specifies the criteria that must be met by a `vulnerabilityReport`
+                        /// API resource to be included in the response.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The maximum number of results to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A pagination token returned from a previous call to `ListVulnerabilityReports` that
+                        /// indicates where this listing should continue from.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/vulnerabilityReports";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the PatchDeployments resource.</summary>
@@ -1111,6 +1567,84 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Common Vulnerability Scoring System version 3. For details, see
+    /// https://www.first.org/cvss/specification-document
+    /// </summary>
+    public class CVSSv3 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This metric describes the conditions beyond the attacker's control that must exist in order to exploit the
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackComplexity")]
+        public virtual string AttackComplexity { get; set; }
+
+        /// <summary>This metric reflects the context by which vulnerability exploitation is possible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackVector")]
+        public virtual string AttackVector { get; set; }
+
+        /// <summary>
+        /// This metric measures the impact to the availability of the impacted component resulting from a successfully
+        /// exploited vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityImpact")]
+        public virtual string AvailabilityImpact { get; set; }
+
+        /// <summary>
+        /// The base score is a function of the base metric scores.
+        /// https://www.first.org/cvss/specification-document#Base-Metrics
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseScore")]
+        public virtual System.Nullable<float> BaseScore { get; set; }
+
+        /// <summary>
+        /// This metric measures the impact to the confidentiality of the information resources managed by a software
+        /// component due to a successfully exploited vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidentialityImpact")]
+        public virtual string ConfidentialityImpact { get; set; }
+
+        /// <summary>
+        /// The Exploitability sub-score equation is derived from the Base Exploitability metrics.
+        /// https://www.first.org/cvss/specification-document#2-1-Exploitability-Metrics
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exploitabilityScore")]
+        public virtual System.Nullable<float> ExploitabilityScore { get; set; }
+
+        /// <summary>The Impact sub-score equation is derived from the Base Impact metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactScore")]
+        public virtual System.Nullable<float> ImpactScore { get; set; }
+
+        /// <summary>This metric measures the impact to integrity of a successfully exploited vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityImpact")]
+        public virtual string IntegrityImpact { get; set; }
+
+        /// <summary>
+        /// This metric describes the level of privileges an attacker must possess before successfully exploiting the
+        /// vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegesRequired")]
+        public virtual string PrivilegesRequired { get; set; }
+
+        /// <summary>
+        /// The Scope metric captures whether a vulnerability in one vulnerable component impacts resources in
+        /// components beyond its security scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// This metric captures the requirement for a human user, other than the attacker, to participate in the
+        /// successful compromise of the vulnerable component.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInteraction")]
+        public virtual string UserInteraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for canceling a patch job.</summary>
     public class CancelPatchJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1261,7 +1795,12 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The inventory details of a VM.</summary>
+    /// <summary>
+    /// This API resource represents the available inventory data for a Compute Engine virtual machine (VM) instance at
+    /// a given point in time. You can use this API resource to determine the inventory data of your VM. For more
+    /// information, see [Information provided by OS inventory
+    /// management](https://cloud.google.com/compute/docs/instances/os-inventory-management#data-collected).
+    /// </summary>
     public class Inventory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1272,9 +1811,20 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string, InventoryItem> Items { get; set; }
 
+        /// <summary>
+        /// Output only. The `Inventory` API resource name. Format:
+        /// `projects/{project_number}/locations/{location}/instances/{instance_id}/inventory`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
         /// <summary>Base level operating system information for the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osInfo")]
         public virtual InventoryOsInfo OsInfo { get; set; }
+
+        /// <summary>Output only. Timestamp of the last reported inventory for the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1553,6 +2103,21 @@ namespace Google.Apis.OSConfig.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A response message for listing inventory data for all VMs in a specified location.</summary>
+    public class ListInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of inventory objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventories")]
+        public virtual System.Collections.Generic.IList<Inventory> Inventories { get; set; }
+
+        /// <summary>The pagination token to retrieve the next page of inventory objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1608,6 +2173,23 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>The list of patch jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchJobs")]
         public virtual System.Collections.Generic.IList<PatchJob> PatchJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A response message for listing vulnerability reports for all VM instances in the specified location.
+    /// </summary>
+    public class ListVulnerabilityReportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pagination token to retrieve the next page of vulnerabilityReports object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of vulnerabilityReport objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityReports")]
+        public virtual System.Collections.Generic.IList<VulnerabilityReport> VulnerabilityReports { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2235,6 +2817,125 @@ namespace Google.Apis.OSConfig.v1.Data
         /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This API resource represents the vulnerability report for a specified Compute Engine virtual machine (VM)
+    /// instance at a given point in time. For more information, see [Vulnerability
+    /// reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports).
+    /// </summary>
+    public class VulnerabilityReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The `vulnerabilityReport` API resource name. Format:
+        /// `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp for when the last vulnerability report was generated for the VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>Output only. List of vulnerabilities affecting the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilities")]
+        public virtual System.Collections.Generic.IList<VulnerabilityReportVulnerability> Vulnerabilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A vulnerability affecting the VM instance.</summary>
+    public class VulnerabilityReportVulnerability : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the vulnerability report was not updated
+        /// after the VM inventory update, these values might not display in VM inventory. If there is no available fix,
+        /// the field is empty. The `inventory_item` value specifies the latest `SoftwarePackage` available to the VM
+        /// that fixes the vulnerability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableInventoryItemIds")]
+        public virtual System.Collections.Generic.IList<string> AvailableInventoryItemIds { get; set; }
+
+        /// <summary>The timestamp for when the vulnerability was first detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Contains metadata as per the upstream feed of the operating system and NVD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual VulnerabilityReportVulnerabilityDetails Details { get; set; }
+
+        /// <summary>
+        /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items
+        /// affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update,
+        /// these values might not display in VM inventory. For some distros, this field may be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installedInventoryItemIds")]
+        public virtual System.Collections.Generic.IList<string> InstalledInventoryItemIds { get; set; }
+
+        /// <summary>The timestamp for when the vulnerability was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains metadata information for the vulnerability. This information is collected from the upstream feed of the
+    /// operating system.
+    /// </summary>
+    public class VulnerabilityReportVulnerabilityDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The CVE of the vulnerability. CVE cannot be empty and the combination of should be unique across
+        /// vulnerabilities for a VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cve")]
+        public virtual string Cve { get; set; }
+
+        /// <summary>
+        /// The CVSS V2 score of this vulnerability. CVSS V2 score is on a scale of 0 - 10 where 0 indicates low
+        /// severity and 10 indicates high severity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV2Score")]
+        public virtual System.Nullable<float> CvssV2Score { get; set; }
+
+        /// <summary>The full description of the CVSSv3 for this vulnerability from NVD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cvssV3")]
+        public virtual CVSSv3 CvssV3 { get; set; }
+
+        /// <summary>The note or description describing the vulnerability from the distro.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Corresponds to the references attached to the `VulnerabilityDetails`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<VulnerabilityReportVulnerabilityDetailsReference> References { get; set; }
+
+        /// <summary>Assigned severity/impact ranking from the distro.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference for this vulnerability.</summary>
+    public class VulnerabilityReportVulnerabilityDetailsReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source of the reference e.g. NVD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The url of the reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

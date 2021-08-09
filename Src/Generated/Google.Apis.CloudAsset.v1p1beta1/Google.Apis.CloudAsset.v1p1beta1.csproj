@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudAsset.v1p1beta1 Client Library</Title>
-    <Version>1.53.0.2395</Version>
+    <Version>1.53.0.2409</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2021 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

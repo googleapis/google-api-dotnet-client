@@ -6764,10 +6764,6 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoprovisioningNodePoolDefaults")]
         public virtual AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaults { get; set; }
 
-        /// <summary>Defines autoscaling behaviour.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingProfile")]
-        public virtual string AutoscalingProfile { get; set; }
-
         /// <summary>Enables automatic node pool creation and deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNodeAutoprovisioning")]
         public virtual System.Nullable<bool> EnableNodeAutoprovisioning { get; set; }

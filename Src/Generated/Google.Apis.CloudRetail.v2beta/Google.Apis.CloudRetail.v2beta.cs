@@ -428,8 +428,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
                         /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Contact Retail Support
-                        /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -449,8 +450,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the added place IDs are not immediately
                         /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Contact Retail Support
-                        /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         public class AddFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -998,8 +1000,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
                         /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Contact Retail Support
-                        /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="product">
@@ -1019,8 +1022,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
                         /// As a consequence, when a response is returned, the removed place IDs are not immediately
                         /// manifested in the Product queried by GetProduct or ListProducts. This feature is only
-                        /// available for users who have Retail Search enabled. Contact Retail Support
-                        /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                        /// available for users who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         public class RemoveFulfillmentPlacesRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1086,8 +1090,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
-                        /// who have Retail Search enabled. Contact Retail Support (retail-search-support@google.com) if
-                        /// you are interested in using Retail Search.
+                        /// who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
@@ -1115,8 +1120,9 @@ namespace Google.Apis.CloudRetail.v2beta
                         /// UpdateProductRequest.set_mask, then any existing inventory information will be preserved.
                         /// Pre-existing inventory information can only be updated with SetInventory,
                         /// AddFulfillmentPlaces, and RemoveFulfillmentPlaces. This feature is only available for users
-                        /// who have Retail Search enabled. Contact Retail Support (retail-search-support@google.com) if
-                        /// you are interested in using Retail Search.
+                        /// who have Retail Search enabled. Please submit a form
+                        /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in
+                        /// using Retail Search.
                         /// </summary>
                         public class SetInventoryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                         {
@@ -1188,8 +1194,8 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>
                     /// Bulk import of processed completion dataset. Request processing may be synchronous. Partial
                     /// updating is not supported. This feature is only available for users who have Retail Search
-                    /// enabled. Contact Retail Support (retail-search-support@google.com) if you are interested in
-                    /// using Retail Search.
+                    /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if
+                    /// you are interested in using Retail Search.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1204,8 +1210,8 @@ namespace Google.Apis.CloudRetail.v2beta
                     /// <summary>
                     /// Bulk import of processed completion dataset. Request processing may be synchronous. Partial
                     /// updating is not supported. This feature is only available for users who have Retail Search
-                    /// enabled. Contact Retail Support (retail-search-support@google.com) if you are interested in
-                    /// using Retail Search.
+                    /// enabled. Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if
+                    /// you are interested in using Retail Search.
                     /// </summary>
                     public class ImportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
                     {
@@ -1509,8 +1515,8 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Contact Retail Support (retail-search-support@google.com) if you are interested in using Retail
-                    /// Search.
+                    /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                    /// interested in using Retail Search.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="placement">
@@ -1526,8 +1532,8 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Performs a search. This feature is only available for users who have Retail Search enabled.
-                    /// Contact Retail Support (retail-search-support@google.com) if you are interested in using Retail
-                    /// Search.
+                    /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                    /// interested in using Retail Search.
                     /// </summary>
                     public class SearchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaSearchResponse>
                     {
@@ -1965,8 +1971,8 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Completes the specified prefix with keyword suggestions. This feature is only available for users
-                /// who have Retail Search enabled. Contact Retail Support (retail-search-support@google.com) if you are
-                /// interested in using Retail Search.
+                /// who have Retail Search enabled. Please submit a form [here](https://cloud.google.com/contact) to
+                /// contact cloud sales if you are interested in using Retail Search.
                 /// </summary>
                 /// <param name="catalog">
                 /// Required. Catalog for which the completion is performed. Full resource name of catalog, such as
@@ -1979,8 +1985,8 @@ namespace Google.Apis.CloudRetail.v2beta
 
                 /// <summary>
                 /// Completes the specified prefix with keyword suggestions. This feature is only available for users
-                /// who have Retail Search enabled. Contact Retail Support (retail-search-support@google.com) if you are
-                /// interested in using Retail Search.
+                /// who have Retail Search enabled. Please submit a form [here](https://cloud.google.com/contact) to
+                /// contact cloud sales if you are interested in using Retail Search.
                 /// </summary>
                 public class CompleteQueryRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaCompleteQueryResponse>
                 {
@@ -2000,10 +2006,10 @@ namespace Google.Apis.CloudRetail.v2beta
 
                     /// <summary>
                     /// Determines which dataset to use for fetching completion. "user-data" will use the imported
-                    /// dataset through ImportCompletionData. "cloud-retail" will use the dataset generated by cloud
-                    /// retail based on user events. If leave empty, it will use the "user-data". Current supported
-                    /// values: * user-data * cloud-retail This option is not automatically enabled. Before using
-                    /// cloud-retail, contact retail-search-support@google.com first.
+                    /// dataset through CompletionService.ImportCompletionData. "cloud-retail" will use the dataset
+                    /// generated by cloud retail based on user events. If leave empty, it will use the "user-data".
+                    /// Current supported values: * user-data * cloud-retail This option requires additional
+                    /// allowlisting. Before using cloud-retail, contact Cloud Retail support team first.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dataset", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Dataset { get; set; }
@@ -2027,7 +2033,9 @@ namespace Google.Apis.CloudRetail.v2beta
                     public virtual Google.Apis.Util.Repeatable<string> LanguageCodes { get; set; }
 
                     /// <summary>
-                    /// Completion max suggestions. The maximum allowed max suggestions is 20. The default value is 20.
+                    /// Completion max suggestions. If left unset or set to 0, then will fallback to the configured
+                    /// value CompletionConfig.max_suggestions. The maximum allowed max suggestions is 20. If it is set
+                    /// higher, it will be capped by 20.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("maxSuggestions", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> MaxSuggestions { get; set; }
@@ -2124,8 +2132,8 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
                 /// specified parent catalog. This feature is only available for users who have Retail Search enabled.
-                /// Contact Retail Support (retail-search-support@google.com) if you are interested in using Retail
-                /// Search.
+                /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                /// interested in using Retail Search.
                 /// </summary>
                 /// <param name="catalog">
                 /// The parent catalog resource name, such as `projects/*/locations/global/catalogs/default_catalog`.
@@ -2138,8 +2146,8 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// <summary>
                 /// Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a
                 /// specified parent catalog. This feature is only available for users who have Retail Search enabled.
-                /// Contact Retail Support (retail-search-support@google.com) if you are interested in using Retail
-                /// Search.
+                /// Please submit a form [here](https://cloud.google.com/contact) to contact cloud sales if you are
+                /// interested in using Retail Search.
                 /// </summary>
                 public class GetDefaultBranchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaGetDefaultBranchResponse>
                 {
@@ -2350,8 +2358,9 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// from the old one. More specifically: * PredictionService will only return product IDs from branch
                 /// {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not
                 /// explicitly set). * UserEventService will only join events with products from branch {newBranch}.
-                /// This feature is only available for users who have Retail Search enabled. Contact Retail Support
-                /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                /// This feature is only available for users who have Retail Search enabled. Please submit a form
+                /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
+                /// Retail Search.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="catalog">
@@ -2377,8 +2386,9 @@ namespace Google.Apis.CloudRetail.v2beta
                 /// from the old one. More specifically: * PredictionService will only return product IDs from branch
                 /// {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not
                 /// explicitly set). * UserEventService will only join events with products from branch {newBranch}.
-                /// This feature is only available for users who have Retail Search enabled. Contact Retail Support
-                /// (retail-search-support@google.com) if you are interested in using Retail Search.
+                /// This feature is only available for users who have Retail Search enabled. Please submit a form
+                /// [here](https://cloud.google.com/contact) to contact cloud sales if you are interested in using
+                /// Retail Search.
                 /// </summary>
                 public class SetDefaultBranchRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleProtobufEmpty>
                 {
@@ -3510,12 +3520,12 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaCompleteQueryResponseCompletionResult> CompletionResults { get; set; }
 
         /// <summary>
-        /// Matched recent searches of this user. This field is a restricted feature. Contact Retail Support
-        /// (retail-search-support@google.com) if you are interested in enabling it. This feature is only available when
-        /// CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the
-        /// follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query
-        /// case insensitively. * They are transformed to lower cases. * They are UTF-8 safe. Recent searches are
-        /// deduplicated. More recent searches will be reserved when duplication happens.
+        /// Matched recent searches of this user. This field is a restricted feature. Contact Retail Search support team
+        /// if you are interested in enabling it. This feature is only available when CompleteQueryRequest.visitor_id
+        /// field is set and UserEvent is imported. The recent searches satisfy the follow rules: * They are ordered
+        /// from latest to oldest. * They are matched with CompleteQueryRequest.query case insensitively. * They are
+        /// transformed to lower cases. * They are UTF-8 safe. Recent searches are deduplicated. More recent searches
+        /// will be reserved when duplication happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult> RecentSearchResults { get; set; }
@@ -3554,7 +3564,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaCompletionDataInputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. BigQuery input source. Add the IAM permission “BigQuery Data Viewer” for
+        /// Required. BigQuery input source. Add the IAM permission "BigQuery Data Viewer" for
         /// cloud-retail-customer-data-access@system.gserviceaccount.com before using this feature otherwise an error is
         /// thrown.
         /// </summary>
@@ -4501,8 +4511,9 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// attributes as retrievable, include paths of the form "attributes.key" where "key" is the key of a custom
         /// attribute, as specified in attributes. For Type.PRIMARY and Type.COLLECTION, the following fields are always
         /// returned in SearchResponse by default: * name For Type.VARIANT, the following fields are always returned in
-        /// by default: * name * color_info Maximum number of paths is 20. Otherwise, an INVALID_ARGUMENT error is
-        /// returned.
+        /// by default: * name * color_info Maximum number of paths is 30. Otherwise, an INVALID_ARGUMENT error is
+        /// returned. Note: Returning more fields in SearchResponse may increase response payload size and serving
+        /// latency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievableFields")]
         public virtual object RetrievableFields { get; set; }
@@ -4584,8 +4595,11 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaProductDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Product information. Only Product.id field is used when ingesting an event, all other product
-        /// fields are ignored as we will look them up from the catalog.
+        /// Required. Product information. Required field(s): * Product.id Optional override field(s): *
+        /// Product.price_info If any supported optional fields are provided, we will treat them as a full override when
+        /// looking up product information from the catalog. Thus, it is important to ensure that the overriding fields
+        /// are accurate and complete. All other product fields are ignored and instead populated via catalog lookup
+        /// after event ingestion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual GoogleCloudRetailV2betaProduct Product { get; set; }
@@ -4922,8 +4936,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
 
         /// <summary>
         /// The specification for dynamically generated facets. Notice that only textual facets can be dynamically
-        /// generated. This feature requires additional allowlisting. Contact Retail Support
-        /// (retail-search-support@google.com) if you are interested in using dynamic facet feature.
+        /// generated. This feature requires additional allowlisting. Contact Retail Search support team if you are
+        /// interested in using dynamic facet feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicFacetSpec")]
         public virtual GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec DynamicFacetSpec { get; set; }
@@ -5006,20 +5020,20 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// The keys to fetch and rollup the matching variant Products attributes. The attributes from all the matching
         /// variant Products are merged and de-duplicated. Notice that rollup variant Products attributes will lead to
-        /// extra query latency. Maximum number of keys is 10. For Product.fulfillment_info, a fulfillment type and a
-        /// fulfillment ID must be provided in the format of "fulfillmentType.filfillmentId". E.g., in
-        /// "pickupInStore.store123", "pickupInStore" is fulfillment type and "store123" is the store ID. Supported keys
-        /// are: * colorFamilies * price * originalPrice * discount * attributes.key, where key is any key in the
-        /// Product.attributes map. * pickupInStore.id, where id is any FulfillmentInfo.ids for type
-        /// FulfillmentInfo.Type.PICKUP_IN_STORE. * shipToStore.id, where id is any FulfillmentInfo.ids for type
-        /// FulfillmentInfo.Type.SHIP_TO_STORE. * sameDayDelivery.id, where id is any FulfillmentInfo.ids for type
-        /// FulfillmentInfo.Type.SAME_DAY_DELIVERY. * nextDayDelivery.id, where id is any FulfillmentInfo.ids for type
-        /// FulfillmentInfo.Type.NEXT_DAY_DELIVERY. * customFulfillment1.id, where id is any FulfillmentInfo.ids for
-        /// type FulfillmentInfo.Type.CUSTOM_TYPE_1. * customFulfillment2.id, where id is any FulfillmentInfo.ids for
-        /// type FulfillmentInfo.Type.CUSTOM_TYPE_2. * customFulfillment3.id, where id is any FulfillmentInfo.ids for
-        /// type FulfillmentInfo.Type.CUSTOM_TYPE_3. * customFulfillment4.id, where id is any FulfillmentInfo.ids for
-        /// type FulfillmentInfo.Type.CUSTOM_TYPE_4. * customFulfillment5.id, where id is any FulfillmentInfo.ids for
-        /// type FulfillmentInfo.Type.CUSTOM_TYPE_5. If this field is set to an invalid value other than these, an
+        /// extra query latency. Maximum number of keys is 10. For FulfillmentInfo, a fulfillment type and a fulfillment
+        /// ID must be provided in the format of "fulfillmentType.fulfillmentId". E.g., in "pickupInStore.store123",
+        /// "pickupInStore" is fulfillment type and "store123" is the store ID. Supported keys are: * colorFamilies *
+        /// price * originalPrice * discount * attributes.key, where key is any key in the Product.attributes map. *
+        /// pickupInStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "pickup-in-store". *
+        /// shipToStore.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "ship-to-store". *
+        /// sameDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type "same-day-delivery".
+        /// * nextDayDelivery.id, where id is any FulfillmentInfo.place_ids for FulfillmentInfo.type
+        /// "next-day-delivery". * customFulfillment1.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "custom-type-1". * customFulfillment2.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "custom-type-2". * customFulfillment3.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "custom-type-3". * customFulfillment4.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "custom-type-4". * customFulfillment5.id, where id is any FulfillmentInfo.place_ids for
+        /// FulfillmentInfo.type "custom-type-5". If this field is set to an invalid value other than these, an
         /// INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantRollupKeys")]
@@ -5164,25 +5178,25 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// Required. Supported textual and numerical facet keys in Product object, over which the facet values are
         /// computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: *
-        /// textual_field = *# The Product.brands. * "brands"; *# The Product.categories. * "categories"; *# The
+        /// textual_field = *# The Product.brands. * | "brands"; *# The Product.categories. * | "categories"; *# The
         /// Audience.genders. * | "genders"; *# The Audience.age_groups. * | "ageGroups"; *# The Product.availability.
         /// Value is one of * *# "IN_STOCK", "OUT_OF_STOCK", PREORDER", "BACKORDER". * | "availability"; *# The
         /// ColorInfo.color_families. * | "colorFamilies"; *# The ColorInfo.colors. * | "colors"; *# The Product.sizes.
         /// * | "sizes"; *# The Product.materials. * | "materials"; *# The Product.patterns. * | "patterns"; *# The
         /// Product.conditions. * | "conditions"; *# The textual custom attribute in Product object. Key can * *# be any
-        /// key in the Product.attributes map * *# if the attribute values are textual. * *# map. * | "attributes.key";
-        /// *# The FulfillmentInfo.ids for type *# FulfillmentInfo.Type.PICKUP_IN_STORE. * | "pickupInStore"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.SHIP_TO_STORE. * | "shipToStore"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.SAME_DAY_DELIVERY. * | "sameDayDelivery"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.NEXT_DAY_DELIVERY. * | "nextDayDelivery"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_1. * | "customFulfillment1"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_2. * | "customFulfillment2"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_3. * | "customFulfillment3"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_4. * | "customFulfillment4"; *# The
-        /// FulfillmentInfo.ids for type *# FulfillmentInfo.Type.CUSTOM_TYPE_5. * | "customFulfillment5"; *
-        /// numerical_field = *# The PriceInfo.price. * "price"; *# The discount. Computed by
-        /// (original_price-price)/price * "discount"; *# The Rating.average_rating. * "rating"; *# The
-        /// Rating.rating_count. * "ratingCount"; *# The numerical custom attribute in Product object. Key can * *# be
+        /// key in the Product.attributes map * *# if the attribute values are textual. * | "attributes.key"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "pickup-in-store". * | "pickupInStore"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "ship-to-store". * | "shipToStore"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "same-day-delivery". * | "sameDayDelivery"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "next-day-delivery". * | "nextDayDelivery"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-1". * | "customFulfillment1"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-2". * | "customFulfillment2"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-3". * | "customFulfillment3"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-4". * | "customFulfillment4"; *# The
+        /// FulfillmentInfo.place_ids for FulfillmentInfo.type * *# "custom-type-5". * | "customFulfillment5"; *
+        /// numerical_field = *# The PriceInfo.price. * | "price"; *# The discount. Computed by
+        /// (original_price-price)/price * | "discount"; *# The Rating.average_rating. * | "rating"; *# The
+        /// Rating.rating_count. * | "ratingCount"; *# The numerical custom attribute in Product object. Key can * *# be
         /// any key in the Product.attributes map * *# if the attribute values are numerical. * | "attributes.key";
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
@@ -5193,7 +5207,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Facet.FacetValue.count descending. * "value desc", which means order by Facet.FacetValue.value descending.
         /// Only applies to textual facets. If not set, textual values are sorted in [natural
         /// order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given
-        /// by FacetSpec.FacetKey.intervals; FulfillmentInfo.ids are sorted in the order given by
+        /// by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by
         /// FacetSpec.FacetKey.restricted_values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
@@ -5384,7 +5398,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// is returned. For textual and numerical attributes, the rollup values is a list of string or double values
         /// with type google.protobuf.ListValue. For example, if there are two variants with colors "red" and "blue",
         /// the rollup values are { key: "colorFamilies" value { list_value { values { string_value: "red" } values {
-        /// string_value: "blue" } } } } For Product.fulfillment_info, the rollup values is a double value with type
+        /// string_value: "blue" } } } } For FulfillmentInfo, the rollup values is a double value with type
         /// google.protobuf.Value. For example, {key: "pickupInStore.store1" value { number_value: 10 }} means a there
         /// are 10 variants in this product are available in the store "store1".
         /// </summary>
